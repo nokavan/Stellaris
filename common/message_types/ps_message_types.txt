@@ -1,0 +1,133 @@
+# АВТОГЕНЕРАЦИЯ: tools/gen_specialists.py — правьте генератор, а не этот файл
+
+message_type = {
+	key = "SUBJECT_LEVEL_UP_specialist_ps_strike"
+	icon = "GFX_message_bulwark_level_up"
+	icon_frame = 1
+
+	sound = "discovery"
+	ping = "mixed_notification_green"
+
+	category = diplomacy
+}
+
+message_type = {
+	key = "WE_LEVEL_UP_specialist_ps_strike"
+	icon = "GFX_message_bulwark_level_up"
+	icon_frame = 1
+
+	sound = "discovery"
+	ping = "mixed_notification_green"
+
+	category = diplomacy
+}
+
+message_type = {
+	key = "SUBJECT_LEVEL_UP_specialist_ps_assault"
+	icon = "GFX_message_bulwark_level_up"
+	icon_frame = 1
+
+	sound = "discovery"
+	ping = "mixed_notification_green"
+
+	category = diplomacy
+}
+
+message_type = {
+	key = "WE_LEVEL_UP_specialist_ps_assault"
+	icon = "GFX_message_bulwark_level_up"
+	icon_frame = 1
+
+	sound = "discovery"
+	ping = "mixed_notification_green"
+
+	category = diplomacy
+}
+
+message_type = {
+	key = "SUBJECT_LEVEL_UP_specialist_ps_raiders"
+	icon = "GFX_message_bulwark_level_up"
+	icon_frame = 1
+
+	sound = "discovery"
+	ping = "mixed_notification_green"
+
+	category = diplomacy
+}
+
+message_type = {
+	key = "WE_LEVEL_UP_specialist_ps_raiders"
+	icon = "GFX_message_bulwark_level_up"
+	icon_frame = 1
+
+	sound = "discovery"
+	ping = "mixed_notification_green"
+
+	category = diplomacy
+}
+
+message_type = {
+	key = "SUBJECT_LEVEL_UP_specialist_ps_residency"
+	icon = "GFX_message_scholarium_level_up"
+	icon_frame = 1
+
+	sound = "discovery"
+	ping = "mixed_notification_green"
+
+	category = diplomacy
+}
+
+message_type = {
+	key = "WE_LEVEL_UP_specialist_ps_residency"
+	icon = "GFX_message_scholarium_level_up"
+	icon_frame = 1
+
+	sound = "discovery"
+	ping = "mixed_notification_green"
+
+	category = diplomacy
+}
+
+message_type = {
+	key = "SUBJECT_LEVEL_UP_specialist_ps_exchange"
+	icon = "GFX_message_prospectorium_level_up"
+	icon_frame = 1
+
+	sound = "discovery"
+	ping = "mixed_notification_green"
+
+	category = diplomacy
+}
+
+message_type = {
+	key = "WE_LEVEL_UP_specialist_ps_exchange"
+	icon = "GFX_message_prospectorium_level_up"
+	icon_frame = 1
+
+	sound = "discovery"
+	ping = "mixed_notification_green"
+
+	category = diplomacy
+}
+
+message_type = {
+	key = "SUBJECT_LEVEL_UP_specialist_ps_trust"
+	icon = "GFX_message_prospectorium_level_up"
+	icon_frame = 1
+
+	sound = "discovery"
+	ping = "mixed_notification_green"
+
+	category = diplomacy
+}
+
+message_type = {
+	key = "WE_LEVEL_UP_specialist_ps_trust"
+	icon = "GFX_message_prospectorium_level_up"
+	icon_frame = 1
+
+	sound = "discovery"
+	ping = "mixed_notification_green"
+
+	category = diplomacy
+}

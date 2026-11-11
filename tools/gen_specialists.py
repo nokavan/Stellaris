@@ -6,6 +6,7 @@
   common/specialist_subject_perks/ps_specialist_subject_perks.txt
   common/agreement_term_values/ps_agreement_term_values.txt
   common/agreement_presets/ps_specialist_presets.txt
+  common/message_types/ps_message_types.txt  (уведомления о новом уровне)
   interface/ps_specialists.gfx  + DDS-иконки (заглушки)
   localisation/{russian,english}/ps_specialists_l_*.yml
 
@@ -476,6 +477,31 @@ preset_{k} = {{
     return "".join(out)
 
 
+MSG_ICON = {"ps_strike": "bulwark", "ps_assault": "bulwark", "ps_raiders": "bulwark",
+            "ps_residency": "scholarium", "ps_exchange": "prospectorium", "ps_trust": "prospectorium"}
+
+
+def gen_message_types():
+    """Сообщения о повышении уровня — как в vanilla common/message_types/00_message_types.txt."""
+    out = ["# АВТОГЕНЕРАЦИЯ: tools/gen_specialists.py — правьте генератор, а не этот файл\n"]
+    for T in TYPES:
+        k = T["key"]
+        for who in ("SUBJECT", "WE"):
+            out.append(f"""
+message_type = {{
+	key = "{who}_LEVEL_UP_specialist_{k}"
+	icon = "GFX_message_{MSG_ICON[k]}_level_up"
+	icon_frame = 1
+
+	sound = "discovery"
+	ping = "mixed_notification_green"
+
+	category = diplomacy
+}}
+""")
+    return "".join(out)
+
+
 def gen_gfx():
     lines = ["spriteTypes = {"]
     for T in TYPES:
@@ -508,7 +534,10 @@ def loc(lang):
               f' specialist_{k}_desc:0 "{full}"',
               f' preset_{k}:0 "{name}"',
               f' preset_{k}_desc:0 "{full}"',
-              f' preset_{k}_flavor_desc:0 "${"preset_" + k}_desc$"']
+              f' preset_{k}_flavor_desc:0 "${"preset_" + k}_desc$"',
+              f' specialist_{k}_summary:0 "{name}: {desc}"',
+              f' MESSAGE_SUBJECT_LEVEL_UP_specialist_{k}_TITLE:0 "{("Новый уровень: " if ru else "Specialist level up: ") + name}"',
+              f' MESSAGE_WE_LEVEL_UP_specialist_{k}_TITLE:0 "$MESSAGE_WE_LEVEL_UP_TITLE$: {name}"']
         for i, Lv in enumerate(T["levels"], 1):
             lvl = LEVEL_RU[i - 1]
             L += [f' {k}_{i}_modifier:0 "{name} {lvl}"',
@@ -526,6 +555,7 @@ def main():
     w("common/agreement_term_values/ps_agreement_term_values.txt", gen_term_values())
     w("common/agreement_presets/ps_specialist_presets.txt", gen_presets())
     w("interface/ps_specialists.gfx", gen_gfx())
+    w("common/message_types/ps_message_types.txt", gen_message_types())
     for lang in ("russian", "english"):
         p = ROOT / f"localisation/{lang}/ps_specialists_l_{lang}.yml"
         p.write_bytes(b"\xef\xbb\xbf" + loc(lang).encode("utf-8"))
