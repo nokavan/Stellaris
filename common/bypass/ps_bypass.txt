@@ -1,0 +1,33 @@
+# Теневые врата Синдиката: сеть «любые ↔ любые», всегда активна.
+# Пользоваться могут партизанские империи и их вассалы.
+ps_shadow_gate_bypass = {
+	name = PS_SHADOW_GATE
+	is_pathfind = yes
+	uses_action = no
+	always_active = yes
+	windup_time = 0
+	winddown_time = 0
+	extends_sensors = no
+	ftl_multiplier = 0
+	icon_frame = 44
+	remember_instances = no
+	galactic_map_tooltip_header = PS_SHADOW_GATE_GALACTIC
+	galactic_map_tooltip_desc = PS_SHADOW_GATE_GALACTIC_DESC
+	connection_type = any_other
+	animation_time = 1
+	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
+	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
+
+	country_can_use = {
+		custom_tooltip = {
+			fail_text = PS_SHADOW_GATE_CANT_USE
+			OR = {
+				ps_is_partisan_empire = yes
+				AND = {
+					is_subject = yes
+					overlord = { ps_is_partisan_empire = yes }
+				}
+			}
+		}
+	}
+}

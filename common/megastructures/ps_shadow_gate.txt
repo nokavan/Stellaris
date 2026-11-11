@@ -1,0 +1,46 @@
+# Синдикат Сопротивления — Теневые врата
+# Идея и иконка — из мода «40k Nomadic Eldar and Drukhari Raider Origins»
+# (эльдарские врата Паутины; авторы разрешили использование), код переписан.
+# Постоянный проход «любые Теневые врата ↔ любые Теневые врата», без активации.
+
+ps_shadow_gate = {
+	entity = "gatebuilder_01_gateway_entity"
+	construction_entity = "gateway_portal_entity"
+	portrait = "GFX_megastructure_construction_background"
+	place_entity_on_planet_plane = no
+	show_in_outliner = no
+	build_outside_gravity_well = no
+	show_galactic_map_icon = no
+
+	build_time = 720
+
+	resources = {
+		category = megastructures_gateways
+		cost = {
+			alloys = 2000
+			influence = 50
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	potential = {
+		ps_is_partisan_empire = yes
+	}
+
+	possible = {
+		custom_tooltip = {
+			fail_text = "ps_shadow_gate_already_here"
+			NOT = { has_megastructure = ps_shadow_gate }
+		}
+	}
+
+	construction_blocks_and_blocked_by = self_type
+	custom_tooltip_requirements = "MEGASTRUCTURE_TOOLTIP_REQUIREMENTS_OUTSIDE_GRAVITY_WELL"
+	bypass_type = ps_shadow_gate_bypass
+
+	on_build_start = {}
+	on_build_cancel = {}
+	on_build_complete = {}
+}

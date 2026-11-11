@@ -1,0 +1,836 @@
+# АВТОГЕНЕРАЦИЯ: tools/gen_precursor_buildings.py
+# Синдикат Сопротивления — «Наследие Предтеч»: 10 зданий, тир 1 → тир 2.
+# Цивики «Партизанская сеть» / «Теневой сюзерен» строят тир 2 сразу.
+
+building_ps_pre_vacuum_generator_1 = {
+	base_buildtime = @b1_time
+	category = resource
+
+	building_sets = {
+		generator
+	}
+
+	potential = {
+		exists = owner
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	upgrades = {
+		building_ps_pre_vacuum_generator_2
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 400
+		}
+		upkeep = {
+			energy = 2
+		}
+		produces = {
+			energy = 12
+		}
+	}
+}
+
+building_ps_pre_vacuum_generator_2 = {
+	base_buildtime = @b2_time
+	category = resource
+
+	building_sets = {
+		generator
+	}
+
+	potential = {
+		exists = owner
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Строится сразу только с нашими цивиками; остальные — улучшением тира 1
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_pre_requires_civic_or_t1
+			OR = {
+				owner = { OR = { has_valid_civic = civic_ps_partisan_network has_valid_civic = civic_ps_shadow_overlord } }
+				has_building = building_ps_pre_vacuum_generator_1
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 600
+			alloys = 100
+		}
+		upkeep = {
+			energy = 4
+		}
+		produces = {
+			energy = 24
+		}
+	}
+}
+
+building_ps_pre_synthesizer_1 = {
+	base_buildtime = @b1_time
+	category = resource
+
+	building_sets = {
+		farming
+	}
+
+	potential = {
+		exists = owner
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	upgrades = {
+		building_ps_pre_synthesizer_2
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 400
+		}
+		upkeep = {
+			energy = 2
+		}
+		produces = {
+			food = 12
+		}
+	}
+}
+
+building_ps_pre_synthesizer_2 = {
+	base_buildtime = @b2_time
+	category = resource
+
+	building_sets = {
+		farming
+	}
+
+	potential = {
+		exists = owner
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Строится сразу только с нашими цивиками; остальные — улучшением тира 1
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_pre_requires_civic_or_t1
+			OR = {
+				owner = { OR = { has_valid_civic = civic_ps_partisan_network has_valid_civic = civic_ps_shadow_overlord } }
+				has_building = building_ps_pre_synthesizer_1
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 600
+			alloys = 100
+		}
+		upkeep = {
+			energy = 4
+		}
+		produces = {
+			food = 24
+		}
+	}
+}
+
+building_ps_pre_supply_elevator_1 = {
+	base_buildtime = @b1_time
+	category = resource
+
+	building_sets = {
+		mining
+	}
+
+	potential = {
+		exists = owner
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	upgrades = {
+		building_ps_pre_supply_elevator_2
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 400
+		}
+		upkeep = {
+			energy = 2
+		}
+		produces = {
+			minerals = 12
+		}
+	}
+}
+
+building_ps_pre_supply_elevator_2 = {
+	base_buildtime = @b2_time
+	category = resource
+
+	building_sets = {
+		mining
+	}
+
+	potential = {
+		exists = owner
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Строится сразу только с нашими цивиками; остальные — улучшением тира 1
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_pre_requires_civic_or_t1
+			OR = {
+				owner = { OR = { has_valid_civic = civic_ps_partisan_network has_valid_civic = civic_ps_shadow_overlord } }
+				has_building = building_ps_pre_supply_elevator_1
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 600
+			alloys = 100
+		}
+		upkeep = {
+			energy = 4
+		}
+		produces = {
+			minerals = 24
+		}
+	}
+}
+
+building_ps_pre_assembler_vats_1 = {
+	base_buildtime = @b1_time
+	category = manufacturing
+
+	building_sets = {
+		foundry
+	}
+
+	potential = {
+		exists = owner
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	upgrades = {
+		building_ps_pre_assembler_vats_2
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 400
+		}
+		upkeep = {
+			energy = 2
+		}
+		produces = {
+			alloys = 5
+		}
+	}
+}
+
+building_ps_pre_assembler_vats_2 = {
+	base_buildtime = @b2_time
+	category = manufacturing
+
+	building_sets = {
+		foundry
+	}
+
+	potential = {
+		exists = owner
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Строится сразу только с нашими цивиками; остальные — улучшением тира 1
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_pre_requires_civic_or_t1
+			OR = {
+				owner = { OR = { has_valid_civic = civic_ps_partisan_network has_valid_civic = civic_ps_shadow_overlord } }
+				has_building = building_ps_pre_assembler_vats_1
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 600
+			alloys = 100
+		}
+		upkeep = {
+			energy = 4
+		}
+		produces = {
+			alloys = 10
+		}
+	}
+}
+
+building_ps_pre_mercatus_vats_1 = {
+	base_buildtime = @b1_time
+	category = manufacturing
+
+	building_sets = {
+		factory
+	}
+
+	potential = {
+		exists = owner
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	upgrades = {
+		building_ps_pre_mercatus_vats_2
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 400
+		}
+		upkeep = {
+			energy = 2
+		}
+		produces = {
+			consumer_goods = 6
+		}
+	}
+}
+
+building_ps_pre_mercatus_vats_2 = {
+	base_buildtime = @b2_time
+	category = manufacturing
+
+	building_sets = {
+		factory
+	}
+
+	potential = {
+		exists = owner
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Строится сразу только с нашими цивиками; остальные — улучшением тира 1
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_pre_requires_civic_or_t1
+			OR = {
+				owner = { OR = { has_valid_civic = civic_ps_partisan_network has_valid_civic = civic_ps_shadow_overlord } }
+				has_building = building_ps_pre_mercatus_vats_1
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 600
+			alloys = 100
+		}
+		upkeep = {
+			energy = 4
+		}
+		produces = {
+			consumer_goods = 12
+		}
+	}
+}
+
+building_ps_pre_domain_archive_1 = {
+	base_buildtime = @b1_time
+	category = research
+
+	building_sets = {
+		research
+	}
+
+	potential = {
+		exists = owner
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	upgrades = {
+		building_ps_pre_domain_archive_2
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 400
+		}
+		upkeep = {
+			energy = 2
+		}
+		produces = {
+			physics_research = 4
+			society_research = 4
+			engineering_research = 4
+		}
+	}
+}
+
+building_ps_pre_domain_archive_2 = {
+	base_buildtime = @b2_time
+	category = research
+
+	building_sets = {
+		research
+	}
+
+	potential = {
+		exists = owner
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Строится сразу только с нашими цивиками; остальные — улучшением тира 1
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_pre_requires_civic_or_t1
+			OR = {
+				owner = { OR = { has_valid_civic = civic_ps_partisan_network has_valid_civic = civic_ps_shadow_overlord } }
+				has_building = building_ps_pre_domain_archive_1
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 600
+			alloys = 100
+		}
+		upkeep = {
+			energy = 4
+		}
+		produces = {
+			physics_research = 8
+			society_research = 8
+			engineering_research = 8
+		}
+	}
+}
+
+building_ps_pre_domicile_1 = {
+	base_buildtime = @b1_time
+	category = government
+
+	building_sets = {
+		urban
+	}
+
+	potential = {
+		exists = owner
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	upgrades = {
+		building_ps_pre_domicile_2
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	planet_modifier = {
+		planet_stability_add = 3
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 400
+		}
+		upkeep = {
+			energy = 2
+		}
+		produces = {
+			unity = 5
+		}
+	}
+}
+
+building_ps_pre_domicile_2 = {
+	base_buildtime = @b2_time
+	category = government
+
+	building_sets = {
+		urban
+	}
+
+	potential = {
+		exists = owner
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Строится сразу только с нашими цивиками; остальные — улучшением тира 1
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_pre_requires_civic_or_t1
+			OR = {
+				owner = { OR = { has_valid_civic = civic_ps_partisan_network has_valid_civic = civic_ps_shadow_overlord } }
+				has_building = building_ps_pre_domicile_1
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	planet_modifier = {
+		planet_stability_add = 6
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 600
+			alloys = 100
+		}
+		upkeep = {
+			energy = 4
+		}
+		produces = {
+			unity = 10
+		}
+	}
+}
+
+building_ps_pre_lifeworker_preserve_1 = {
+	base_buildtime = @b1_time
+	category = research
+
+	building_sets = {
+		society
+	}
+
+	potential = {
+		exists = owner
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	upgrades = {
+		building_ps_pre_lifeworker_preserve_2
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 400
+		}
+		upkeep = {
+			energy = 2
+		}
+		produces = {
+			society_research = 6
+			unity = 2
+		}
+	}
+}
+
+building_ps_pre_lifeworker_preserve_2 = {
+	base_buildtime = @b2_time
+	category = research
+
+	building_sets = {
+		society
+	}
+
+	potential = {
+		exists = owner
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Строится сразу только с нашими цивиками; остальные — улучшением тира 1
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_pre_requires_civic_or_t1
+			OR = {
+				owner = { OR = { has_valid_civic = civic_ps_partisan_network has_valid_civic = civic_ps_shadow_overlord } }
+				has_building = building_ps_pre_lifeworker_preserve_1
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 600
+			alloys = 100
+		}
+		upkeep = {
+			energy = 4
+		}
+		produces = {
+			society_research = 12
+			unity = 4
+		}
+	}
+}
+
+building_ps_pre_line_installation_1 = {
+	base_buildtime = @b1_time
+	category = army
+
+	building_sets = {
+		fortress
+	}
+
+	potential = {
+		exists = owner
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	upgrades = {
+		building_ps_pre_line_installation_2
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	planet_modifier = {
+		planet_stability_add = 5
+	}
+
+	country_modifier = {
+		army_damage_mult = 0.05
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 400
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+}
+
+building_ps_pre_line_installation_2 = {
+	base_buildtime = @b2_time
+	category = army
+
+	building_sets = {
+		fortress
+	}
+
+	potential = {
+		exists = owner
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Строится сразу только с нашими цивиками; остальные — улучшением тира 1
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_pre_requires_civic_or_t1
+			OR = {
+				owner = { OR = { has_valid_civic = civic_ps_partisan_network has_valid_civic = civic_ps_shadow_overlord } }
+				has_building = building_ps_pre_line_installation_1
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	planet_modifier = {
+		planet_stability_add = 10
+	}
+
+	country_modifier = {
+		army_damage_mult = 0.1
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 600
+			alloys = 100
+		}
+		upkeep = {
+			energy = 4
+		}
+	}
+}
+
+building_ps_pre_sentinel_foundry_1 = {
+	base_buildtime = @b1_time
+	category = manufacturing
+
+	building_sets = {
+		foundry
+	}
+
+	potential = {
+		exists = owner
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	upgrades = {
+		building_ps_pre_sentinel_foundry_2
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	country_modifier = {
+		country_naval_cap_add = 8
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 400
+		}
+		upkeep = {
+			energy = 2
+		}
+		produces = {
+			alloys = 3
+		}
+	}
+}
+
+building_ps_pre_sentinel_foundry_2 = {
+	base_buildtime = @b2_time
+	category = manufacturing
+
+	building_sets = {
+		foundry
+	}
+
+	potential = {
+		exists = owner
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Строится сразу только с нашими цивиками; остальные — улучшением тира 1
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_pre_requires_civic_or_t1
+			OR = {
+				owner = { OR = { has_valid_civic = civic_ps_partisan_network has_valid_civic = civic_ps_shadow_overlord } }
+				has_building = building_ps_pre_sentinel_foundry_1
+			}
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	country_modifier = {
+		country_naval_cap_add = 16
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 600
+			alloys = 100
+		}
+		upkeep = {
+			energy = 4
+		}
+		produces = {
+			alloys = 6
+		}
+	}
+}
+

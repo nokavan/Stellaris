@@ -1,0 +1,3 @@
+﻿l_english:
+ arkship_deep_scan_effect_no_header:0 "$TABBED_NEW_LINE$- Target is ['concept_survey',Surveyed], if not already. $TABBED_NEW_LINE$- §HResource Deposits§!, £anomaly£ §HAnomalies§!, or £archaeology£ §HArchaeology Sites§! not detected by §HSurveying§! may be uncovered. $TABBED_NEW_LINE$- When uncovering new §HResource Deposits§!, any §H$harvested_resources_mining$§! modifier is removed, allowing immediate Harvesting.$ps_dsc_effect$"
+ ps_dsc_effect:0 "$TABBED_NEW_LINE$- §G33%§! chance on failure to uncover anything to remove any §H$harvested_resources_mining$§! modifiers."

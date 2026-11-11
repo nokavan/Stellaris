@@ -1,0 +1,3 @@
+﻿l_russian:
+ arkship_deep_scan_effect_no_header:0 "$TABBED_NEW_LINE$• ['concept_survey', Изучить] цель, если она еще не изучена. $TABBED_NEW_LINE$• Могут быть обнаружены §Hзалежи ресурсов§!, £anomaly£ §Hаномалии§! или £archaeology£ §Hместа раскопок§!, не найденные в ходе §Hизучения§!. $TABBED_NEW_LINE$• При открытии новых §Hзалежей ресурсов§! модификатор §H«$harvested_resources_mining$»§! исчезает, позволяя немедленно начать сбор.$ps_dsc_effect$"
+ ps_dsc_effect:0 "$TABBED_NEW_LINE$• §G33%§! шанс при пустом результате снять модификатор §H«$harvested_resources_mining$»§!."

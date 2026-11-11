@@ -1,0 +1,10 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_ps_shadow_gate_outliner_icon"
+		texturefile = "gfx/interface/icons/megastructures/ps_shadow_gate.dds"
+	}
+	spriteType = {
+		name = "GFX_ps_shadow_gate_build_icon"
+		texturefile = "gfx/interface/icons/megastructures/ps_shadow_gate.dds"
+	}
+}

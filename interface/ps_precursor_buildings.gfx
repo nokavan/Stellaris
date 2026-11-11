@@ -1,0 +1,82 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_building_ps_pre_vacuum_generator_1"
+		texturefile = "gfx/interface/icons/buildings/building_ps_pre_vacuum_generator_1.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_pre_vacuum_generator_2"
+		texturefile = "gfx/interface/icons/buildings/building_ps_pre_vacuum_generator_2.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_pre_synthesizer_1"
+		texturefile = "gfx/interface/icons/buildings/building_ps_pre_synthesizer_1.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_pre_synthesizer_2"
+		texturefile = "gfx/interface/icons/buildings/building_ps_pre_synthesizer_2.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_pre_supply_elevator_1"
+		texturefile = "gfx/interface/icons/buildings/building_ps_pre_supply_elevator_1.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_pre_supply_elevator_2"
+		texturefile = "gfx/interface/icons/buildings/building_ps_pre_supply_elevator_2.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_pre_assembler_vats_1"
+		texturefile = "gfx/interface/icons/buildings/building_ps_pre_assembler_vats_1.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_pre_assembler_vats_2"
+		texturefile = "gfx/interface/icons/buildings/building_ps_pre_assembler_vats_2.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_pre_mercatus_vats_1"
+		texturefile = "gfx/interface/icons/buildings/building_ps_pre_mercatus_vats_1.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_pre_mercatus_vats_2"
+		texturefile = "gfx/interface/icons/buildings/building_ps_pre_mercatus_vats_2.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_pre_domain_archive_1"
+		texturefile = "gfx/interface/icons/buildings/building_ps_pre_domain_archive_1.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_pre_domain_archive_2"
+		texturefile = "gfx/interface/icons/buildings/building_ps_pre_domain_archive_2.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_pre_domicile_1"
+		texturefile = "gfx/interface/icons/buildings/building_ps_pre_domicile_1.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_pre_domicile_2"
+		texturefile = "gfx/interface/icons/buildings/building_ps_pre_domicile_2.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_pre_lifeworker_preserve_1"
+		texturefile = "gfx/interface/icons/buildings/building_ps_pre_lifeworker_preserve_1.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_pre_lifeworker_preserve_2"
+		texturefile = "gfx/interface/icons/buildings/building_ps_pre_lifeworker_preserve_2.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_pre_line_installation_1"
+		texturefile = "gfx/interface/icons/buildings/building_ps_pre_line_installation_1.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_pre_line_installation_2"
+		texturefile = "gfx/interface/icons/buildings/building_ps_pre_line_installation_2.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_pre_sentinel_foundry_1"
+		texturefile = "gfx/interface/icons/buildings/building_ps_pre_sentinel_foundry_1.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_pre_sentinel_foundry_2"
+		texturefile = "gfx/interface/icons/buildings/building_ps_pre_sentinel_foundry_2.dds"
+	}
+}

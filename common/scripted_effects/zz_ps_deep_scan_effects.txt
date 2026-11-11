@@ -1,0 +1,83 @@
+# Синдикат Сопротивления — улучшенное глубокое сканирование ковчега
+# Встроено из мода «Deep Scan Harvesting Improvement» (с разрешения авторов).
+# Переопределяет ванильный arkship_deep_scan_effect (имя файла после nomads_effects.txt).
+# Если при пустом результате сканирования (50%) на цели висит «Истощение ресурсов»,
+# с шансом 33% модификатор снимается — можно сразу собирать ресурсы снова.
+# Не включайте одновременно оригинальный мод — это тот же эффект.
+
+# Arkship Actions
+arkship_deep_scan_effect = {
+	if = {
+		limit = {
+			NOT = {
+				is_variable_set = times_deep_scanned
+			}
+		}
+		set_variable = {
+			which = times_deep_scanned
+			value = 1
+		}
+	}
+	else = {
+		change_variable = {
+			which = times_deep_scanned
+			value = 1
+		}
+	}
+	deep_scan_contract_tracker_effect = yes
+	deep_scan_intel_effect = yes
+	random_list = {
+		# Nothing, 50% chance
+		50 = {
+            ps_dsc_nothing_harvested_effect = yes
+			modifier = { # Nomadic Naturalist Improves Scanning
+				subtract = 10
+				event_target:arkship.leader? = {
+					has_leader_flag = nomadic_naturalist
+				}
+			}
+			modifier = {
+				is_variable_set = times_deep_scanned
+				factor = value:times_deep_scanned_mult
+			}
+		}
+		# Uncover Resource Cache, 15% chance
+		15 = {
+			discover_deep_scan_cache = yes
+		}
+		# Uncover Resource Deposit, 25% chance
+		25 = {
+			roll_resources_effect = yes
+		}
+		# Anomaly, 7% chance
+		7 = {
+			spawn_random_anomaly = {
+				target = event_target:arkship.controller
+			}
+			modifier = {
+				factor = event_target:arkship.value:scripted_modifier_mult|MODIFIER|ship_anomaly_generation_chance_mult|
+			}
+		}
+		# Dig Site, 3% chance
+		3 = {
+			create_archaeological_site = random
+			modifier = {
+				factor = event_target:arkship.value:scripted_modifier_mult|MODIFIER|find_arc_site_on_survey_chance_mult|
+			}
+		}
+	}
+}
+
+ps_dsc_nothing_harvested_effect = {
+#Below has been inserted from roll_resources_effect. When (Nothing, 50% Chance) Rolls, now removes the harvested modifier.
+    if = {
+        limit = {
+			has_modifier = harvested_resources_mining
+	    }
+		random = {
+    	chance = 33 #If you want to change the chance of the harvesting, alter this.
+        remove_modifier = harvested_resources_mining
+		}
+	}
+}
+
