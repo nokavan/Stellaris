@@ -330,3 +330,13 @@ ps_storm_survivors = {
 	planet_stability_add = 10
 	country_unity_produces_mult = 0.15
 }
+
+################################
+# Теневая логистика (решение на столице)
+################################
+ps_shadow_logistics = {
+	icon = @ps_icon
+	icon_frame = 1
+	ship_cloaking_strength_add = 1
+	ship_speed_mult = -0.05
+}

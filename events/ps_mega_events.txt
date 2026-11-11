@@ -1,0 +1,167 @@
+#####################################################
+# Синдикат Сопротивления — мегаструктурное заселение и теневая логистика
+#
+#  ps_mega.1   доктрина заселения (выбор специализации вассала)
+#  ps_mega.5   on_megastructure_built / upgraded: пометить систему
+#  ps_mega.6   через 5 дней: заселить новые миры системы вассалом
+#  ps_mega.7   уведомление
+#  ps_mega.20  ежемесячно: автомаскировка строителей и кораблей снабжения
+#####################################################
+
+namespace = ps_mega
+
+# ДОКТРИНА ЗАСЕЛЕНИЯ (открывается решением на столице)
+country_event = {
+	id = ps_mega.1
+	title = ps_mega.1.name
+	desc = ps_mega.1.desc
+	picture = GFX_ps_evt_syndicate
+	is_triggered_only = yes
+
+	option = {
+		name = ps_mega.1.strike
+		trigger = { NOT = { has_country_flag = ps_mega_seed_strike } }
+		ps_mega_clear_doctrine = yes
+		set_country_flag = ps_mega_seed_strike
+	}
+
+	option = {
+		name = ps_mega.1.assault
+		trigger = { NOT = { has_country_flag = ps_mega_seed_assault } }
+		ps_mega_clear_doctrine = yes
+		set_country_flag = ps_mega_seed_assault
+	}
+
+	option = {
+		name = ps_mega.1.raiders
+		trigger = { NOT = { has_country_flag = ps_mega_seed_raiders } }
+		ps_mega_clear_doctrine = yes
+		set_country_flag = ps_mega_seed_raiders
+	}
+
+	option = {
+		name = ps_mega.1.residency
+		trigger = { NOT = { has_country_flag = ps_mega_seed_residency } }
+		ps_mega_clear_doctrine = yes
+		set_country_flag = ps_mega_seed_residency
+	}
+
+	option = {
+		name = ps_mega.1.exchange
+		trigger = { NOT = { has_country_flag = ps_mega_seed_exchange } }
+		ps_mega_clear_doctrine = yes
+		set_country_flag = ps_mega_seed_exchange
+	}
+
+	option = {
+		name = ps_mega.1.trust
+		trigger = { NOT = { has_country_flag = ps_mega_seed_trust } }
+		ps_mega_clear_doctrine = yes
+		set_country_flag = ps_mega_seed_trust
+	}
+
+	option = {
+		name = ps_mega.1.client
+		trigger = { NOT = { has_country_flag = ps_mega_seed_client } }
+		ps_mega_clear_doctrine = yes
+		set_country_flag = ps_mega_seed_client
+	}
+
+	option = {
+		name = ps_mega.1.off
+		trigger = { ps_has_mega_doctrine = yes }
+		ps_mega_clear_doctrine = yes
+	}
+
+	option = {
+		name = ps_mega.1.close
+	}
+}
+
+# Мегаструктура построена или улучшена.
+# root = страна, from = мегаструктура, fromfrom = система.
+# Миры мегаструктуры могут появиться в on_build_complete чуть позже,
+# поэтому только помечаем систему и проверяем её через 5 дней.
+country_event = {
+	id = ps_mega.5
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		ps_is_partisan_empire = yes
+		ps_has_mega_doctrine = yes
+		exists = fromfrom
+	}
+
+	immediate = {
+		fromfrom = { set_star_flag = ps_mega_pending }
+		country_event = { id = ps_mega.6 days = 5 }
+	}
+}
+
+country_event = {
+	id = ps_mega.6
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = { ps_is_partisan_empire = yes }
+
+	immediate = {
+		every_system_within_border = {
+			limit = { has_star_flag = ps_mega_pending }
+			remove_star_flag = ps_mega_pending
+			if = {
+				limit = {
+					root = { ps_has_mega_doctrine = yes }
+					any_system_planet = {
+						is_colonizable = yes
+						NOT = { exists = owner }
+					}
+				}
+				ps_mega_seed_system = yes
+				root = { country_event = { id = ps_mega.7 } }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = ps_mega.7
+	title = ps_mega.7.name
+	desc = ps_mega.7.desc
+	picture = GFX_ps_evt_ark
+	is_triggered_only = yes
+
+	option = {
+		name = ps_mega.7.a
+	}
+}
+
+# ТЕНЕВАЯ ЛОГИСТИКА: строители, инженерные суда и корабли снабжения
+# партизан сами включают маскировку, если у них есть сила маскировки.
+# Ручное отключение кнопкой из модов Cloakable Construction / Logistics Ships
+# уважается (их флаги перезарядки).
+country_event = {
+	id = ps_mega.20
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		ps_is_partisan_empire = yes
+		has_country_flag = ps_shadow_logistics
+	}
+
+	immediate = {
+		every_owned_fleet = {
+			limit = {
+				ps_is_logistics_fleet = yes
+				is_cloaked = no
+				has_cloaking_strength > 0
+				NOT = { has_fleet_flag = construction_cloak_cooldown }
+				NOT = { has_fleet_flag = logistics_cloak_cooldown }
+				NOT = { has_fleet_flag = ps_cloak_hold }
+			}
+			set_cloaking_active = yes
+		}
+	}
+}

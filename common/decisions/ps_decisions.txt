@@ -104,3 +104,76 @@ decision_ps_ark_seed_cell = {
 	}
 }
 
+
+# МЕГАСТРУКТУРЫ: выбрать, какой вассал заселит новые миры мегаструктур
+# (кольцевые миры, хабитаты, Frameworld/аркологии/диски Альдерсона из Gigastructures…)
+decision_ps_mega_doctrine = {
+	owned_planets_only = yes
+
+	potential = {
+		is_capital = yes
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	effect = {
+		custom_tooltip = decision_ps_mega_doctrine_tooltip
+		hidden_effect = {
+			owner = { country_event = { id = ps_mega.1 } }
+		}
+	}
+}
+
+# ТЕНЕВАЯ ЛОГИСТИКА: включить автомаскировку строителей и кораблей снабжения
+decision_ps_shadow_logistics_on = {
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 50
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			ps_is_partisan_empire = yes
+			NOT = { has_country_flag = ps_shadow_logistics }
+		}
+	}
+
+	effect = {
+		owner = {
+			set_country_flag = ps_shadow_logistics
+			add_modifier = { modifier = ps_shadow_logistics }
+		}
+		custom_tooltip = decision_ps_shadow_logistics_on_tooltip
+	}
+}
+
+decision_ps_shadow_logistics_off = {
+	owned_planets_only = yes
+
+	potential = {
+		is_capital = yes
+		owner = {
+			ps_is_partisan_empire = yes
+			has_country_flag = ps_shadow_logistics
+		}
+	}
+
+	effect = {
+		owner = {
+			remove_country_flag = ps_shadow_logistics
+			remove_modifier = ps_shadow_logistics
+			every_owned_fleet = {
+				limit = {
+					ps_is_logistics_fleet = yes
+					is_cloaked = yes
+				}
+				set_cloaking_active = no
+			}
+		}
+		custom_tooltip = decision_ps_shadow_logistics_off_tooltip
+	}
+}

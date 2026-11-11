@@ -153,3 +153,28 @@ ps_storm_target = {
 		}
 	}
 }
+
+# Выбрана доктрина мегаструктурного заселения
+ps_has_mega_doctrine = {
+	OR = {
+		has_country_flag = ps_mega_seed_strike
+		has_country_flag = ps_mega_seed_assault
+		has_country_flag = ps_mega_seed_raiders
+		has_country_flag = ps_mega_seed_residency
+		has_country_flag = ps_mega_seed_exchange
+		has_country_flag = ps_mega_seed_trust
+		has_country_flag = ps_mega_seed_client
+	}
+}
+
+# Флот — строитель или корабль снабжения (логистика кочевников)
+ps_is_logistics_fleet = {
+	any_owned_ship = {
+		OR = {
+			is_ship_size = constructor
+			is_ship_size = engineer_vessel
+			is_ship_size = nomads_constructor
+			is_ship_size = nomads_engineer_vessel
+		}
+	}
+}

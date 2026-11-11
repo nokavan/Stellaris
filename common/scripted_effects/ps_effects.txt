@@ -24,3 +24,100 @@ ps_make_cell_subject = {
 	}
 }
 
+
+# Сделать текущую страну специализированным вассалом сюзерена OVERLORD
+# по соглашению PRESET (preset_ps_strike, preset_ps_trust и т. д.).
+# Запасной путь (флаг ps_puppet_council) ставит вызывающий код.
+ps_make_specialist_subject = {
+	set_subject_of = {
+		who = $OVERLORD$
+		agreement_preset = $PRESET$
+	}
+}
+
+# МЕГАСТРУКТУРНОЕ ЗАСЕЛЕНИЕ
+# scope = система с готовой мегаструктурой, root = страна-строитель.
+# Все свободные пригодные миры системы получает новое государство-вассал
+# той специализации, которую выбрала доктрина (флаги ps_mega_seed_*).
+ps_mega_seed_system = {
+	random_system_planet = {
+		limit = {
+			is_colonizable = yes
+			NOT = { exists = owner }
+		}
+		save_event_target_as = ps_mega_world
+	}
+	create_country = {
+		name = random
+		type = default
+		species = root.owner_species
+		authority = random
+		civics = random
+		ethos = random
+		ignore_initial_colony_error = yes
+		effect = {
+			save_event_target_as = ps_new_cell
+			set_country_flag = ps_mega_cell
+			set_country_flag = ps_partisan_rebel_state
+			set_timed_country_flag = { flag = ps_puppet_council days = 3600 }
+		}
+	}
+	every_system_planet = {
+		limit = {
+			is_colonizable = yes
+			NOT = { exists = owner }
+		}
+		set_owner = event_target:ps_new_cell
+		set_controller = event_target:ps_new_cell
+		while = {
+			count = 3
+			create_pop_group = {
+				species = root.owner_species
+			}
+		}
+		add_modifier = { modifier = ps_ark_cell_founding days = 3600 }
+	}
+	event_target:ps_new_cell = {
+		if = {
+			limit = { root = { has_country_flag = ps_mega_seed_strike } }
+			ps_make_specialist_subject = { OVERLORD = root PRESET = preset_ps_strike }
+		}
+		else_if = {
+			limit = { root = { has_country_flag = ps_mega_seed_assault } }
+			ps_make_specialist_subject = { OVERLORD = root PRESET = preset_ps_assault }
+		}
+		else_if = {
+			limit = { root = { has_country_flag = ps_mega_seed_raiders } }
+			ps_make_specialist_subject = { OVERLORD = root PRESET = preset_ps_raiders }
+		}
+		else_if = {
+			limit = { root = { has_country_flag = ps_mega_seed_residency } }
+			ps_make_specialist_subject = { OVERLORD = root PRESET = preset_ps_residency }
+		}
+		else_if = {
+			limit = { root = { has_country_flag = ps_mega_seed_exchange } }
+			ps_make_specialist_subject = { OVERLORD = root PRESET = preset_ps_exchange }
+		}
+		else_if = {
+			limit = { root = { has_country_flag = ps_mega_seed_trust } }
+			ps_make_specialist_subject = { OVERLORD = root PRESET = preset_ps_trust }
+		}
+		else = {
+			ps_make_cell_subject = { OVERLORD = root }
+		}
+		add_resource = { energy = 1000 minerals = 1000 food = 500 alloys = 300 }
+		add_opinion_modifier = { who = root modifier = opinion_ps_liberators }
+		add_modifier = { modifier = ps_liberated_state days = 7200 }
+	}
+}
+
+# Сбросить выбор доктрины заселения
+ps_mega_clear_doctrine = {
+	remove_country_flag = ps_mega_seed_strike
+	remove_country_flag = ps_mega_seed_assault
+	remove_country_flag = ps_mega_seed_raiders
+	remove_country_flag = ps_mega_seed_residency
+	remove_country_flag = ps_mega_seed_exchange
+	remove_country_flag = ps_mega_seed_trust
+	remove_country_flag = ps_mega_seed_client
+}

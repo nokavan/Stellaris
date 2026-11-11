@@ -52,6 +52,7 @@ on_branch_office_closed = {
 on_monthly_pulse_country = {
 	events = {
 		ps.70	# Ковчег: стоянка Сопротивления
+		ps_mega.20	# Теневая логистика: автомаскировка
 	}
 }
 
@@ -66,5 +67,19 @@ on_rebels_take_planet = {
 on_becoming_subject = {
 	events = {
 		ps.16	# 20 слотов владений у вассала партизанского сюзерена
+	}
+}
+
+# root = country, from = megastructure, fromfrom = system
+on_megastructure_built = {
+	events = {
+		ps_mega.5	# Мегаструктурное заселение
+	}
+}
+
+# root = country, from = megastructure, fromfrom = system
+on_megastructure_upgraded = {
+	events = {
+		ps_mega.5	# Мегаструктурное заселение (кольцевые миры, аркологии и т. п.)
 	}
 }
