@@ -1,0 +1,107 @@
+spriteTypes = {
+	corneredTileSpriteType = {
+		name = "GFX_waystation_network_bg"
+		textureFile = "gfx/interface/tiles/tile_large_bg_plain.dds"
+		borderSize = { x=250 y=296 }
+		effectFile = "gfx/FX/buttonstate_onlydisable.shader"
+	}
+
+	corneredTileSpriteType = {
+		name = "GFX_waystation_transparent_bg"
+		textureFile = "gfx/interface/tiles/dark_area.dds"
+		effectFile = "gfx/FX/buttonstate_onlydisable.shader"
+		borderSize = { x=1 y=1 }
+	}
+
+	spriteType = {
+		name = "GFX_waystation_entry_bg"
+		textureFile = "gfx/interface/buttons/waystation_entry.dds"
+		noOfFrames = 3
+		effectFile = "gfx/FX/buttonstate_onlydisable.shader"
+	}
+
+	spriteType = {
+		name = "GFX_waystation_entry_bg_selected"
+		textureFile = "gfx/interface/buttons/waystation_selected_entry.dds"
+		noOfFrames = 3
+		effectFile = "gfx/FX/buttonstate_onlydisable.shader"
+	}
+
+	spriteType = {
+		name = "GFX_waystation_logistics_indicator"
+		textureFile = "gfx/interface/icons/text_icons/icon_text_waystation_logistics.dds"
+	}
+
+	spriteType = {
+		name = "GFX_waystation_network_background"
+		textureFile = "gfx/interface/waystation/waystation_network_background.dds"
+	}
+
+	spriteType = {
+		name = "GFX_waystation_connection_line_before"
+		textureFile = "gfx/interface/waystation/waystation_connection_line_before.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_connection_line_after"
+		textureFile = "gfx/interface/waystation/waystation_connection_line_after.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_connection_separator_line"
+		textureFile = "gfx/interface/waystation/waystation_connection_separator_line.dds"
+	}
+
+	spriteType = {
+		name = "GFX_planet_waystation_view"
+		texturefile = "gfx/interface/waystation/planet_waystation_view.dds"
+		noOfFrames = 1
+	}
+
+	progressbarType = {
+		name = "GFX_waystation_stockpile_low_progressbar"
+		color = { 1.0 1.0 1.0 }
+		colorTwo = { 1.0 1.0 1.0 }
+		textureFile1 = "gfx/interface/waystation/stockpile_progress_bar_low_Filled.dds"
+		textureFile2 = "gfx/interface/waystation/stockpile_progress_bar_BG.dds"
+		size = { x = 9 y = 14 }
+		effectFile = "gfx/FX/progress.shader"
+		horizontal = no
+	}
+	progressbarType = {
+		name = "GFX_waystation_stockpile_mid_progressbar"
+		color = { 1.0 1.0 1.0 }
+		colorTwo = { 1.0 1.0 1.0 }
+		textureFile1 = "gfx/interface/waystation/stockpile_progress_bar_mid_Filled.dds"
+		textureFile2 = "gfx/interface/waystation/stockpile_progress_bar_BG.dds"
+		size = { x = 9 y = 14 }
+		effectFile = "gfx/FX/progress.shader"
+		horizontal = no
+	}
+	progressbarType = {
+		name = "GFX_waystation_stockpile_full_progressbar"
+		color = { 1.0 1.0 1.0 }
+		colorTwo = { 1.0 1.0 1.0 }
+		textureFile1 = "gfx/interface/waystation/stockpile_progress_bar_full_Filled.dds"
+		textureFile2 = "gfx/interface/waystation/stockpile_progress_bar_BG.dds"
+		size = { x = 9 y = 14 }
+		effectFile = "gfx/FX/progress.shader"
+		horizontal = no
+	}
+
+	spriteType = {
+		name = "GFX_waystation_network_background_stripes"
+		texturefile = "gfx/interface/waystation/waystation_network_background_stripes.dds"
+		effectFile = "gfx/FX/buttonstate_onlydisable.shader"
+		animation = {
+			animationmaskfile = "gfx/interface/waystation/waystation_network_background_stripes_mask.dds"
+			animationtexturefile = "gfx/interface/planetview/planetview_stripes_texture.dds"
+			animationrotation = 180.0
+			animationlooping = yes
+			animationtime = 160.0
+			animationdelay = 0.0
+			animationblendmode = "overlay"       #add, multiply, overlay
+			animationtype = "scrolling"      #scrolling, rotating, pulsing
+			animationrotationoffset = { x = 0.0 y = 0.0 }
+			animationtexturescale = { x = 1.0 y = 1.0 }
+		}
+	}
+}

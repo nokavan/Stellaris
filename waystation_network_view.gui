@@ -1,0 +1,581 @@
+guiTypes = {
+	containerWindowType = { #waystation_network_view
+		name = "waystation_network_view"
+		position = { x = 800 y = 100 }
+		size = { width = 540 height = 632 }
+		moveable = yes
+		clipping = no
+
+		backGround = {
+			name = "background"
+			quadTextureSprite ="GFX_waystation_network_bg"
+		}
+
+		# Header
+		buttonType = {
+			name = "rename_button"
+			text = "";
+			quadTextureSprite = "gfx_transparency_button"
+			position = { x = 10 y = 10 }
+			# size set by code to match name
+			oversound = no_sound
+		}
+
+		instantTextBoxType = {
+			name = "name"
+			font = "malgun_goth_24"
+			text = ""
+			position = { x = 10 y = 10 }
+			maxWidth = 500
+			maxHeight = 40
+			fixedSize = yes
+			format = left
+			alwaysTransparent = yes
+		}
+
+		# Header Buttons
+		containerWindowType = {
+			name = "header_actions"
+			position = { x = 385 y = 6 }
+			size = { width = 135 height = 40 }
+
+			buttonType = {
+				name = "previous_extra_shortcut"
+				quadTextureSprite = "gfx_transparency_button"
+				orientation = UPPER_RIGHT
+				position = { x = -119 y = 0 }
+				shortcut = "SHIFT+TAB"
+				clicksound = "click"
+			}
+
+			buttonType = {
+				name = "previous"
+				quadTextureSprite = "GFX_button_left_solid"
+				orientation = UPPER_RIGHT
+				position = { x = -119 y = 0 }
+				shortcut = "CTRL+TAB"
+				clicksound = "click"
+				pdx_tooltip = "PREV"
+			}
+
+			buttonType = {
+				name = "next"
+				quadTextureSprite = "GFX_button_right_solid"
+				orientation = UPPER_RIGHT
+				position = { x = -84 y = 0 }
+				shortcut = "TAB"
+				clicksound = "click"
+				pdx_tooltip = "NEXT"
+			}
+
+			buttonType = {
+				name = "close"
+				quadTextureSprite = "GFX_close_solid"
+				orientation = UPPER_RIGHT
+				position = { x = -34 y = 0 }
+				shortcut = "ESCAPE"
+				clicksound = "back_click"
+				actionShortcut = "cancel"
+				pdx_tooltip = "CLOSE_TITLE"
+			}
+		}
+
+		containerWindowType = {
+			name = "content"
+			position = { x = 10 y = 50 }
+			size = { width = 520 height = 572 }
+
+			background = {
+				name = "background"
+				quadTextureSprite = "GFX_dark_area"
+				alwaysTransparent = yes
+			}
+
+			containerWindowType = {
+				name = "modifiers_info"
+				position = { x = 10 y = 10 }
+				size = { width = 500 height = 166 }
+
+				background = {
+					name = "modifiers_info_background"
+					quadTextureSprite = "GFX_waystation_network_background"
+					alwaysTransparent = yes
+				}
+
+				containerWindowType = {
+					name = "extra_background"
+					position = { x = 0 y = 0 }
+					size = { width = 500 height= 166 }
+					clipping = yes
+
+					#This makes the previous  background image darker. Easier to read text on top of it.
+					background = {
+						name = "extra_background_background"
+						spriteType = "GFX_species_tiles_dark_area"
+					}
+
+					#Moving stripes
+					iconType = {
+						name = "extra_background_stripes"
+						spriteType = "GFX_waystation_network_background_stripes"
+					}
+				}
+
+				instantTextBoxType = {
+					name = "modifiers_info_label"
+					font = "malgun_goth_24"
+					text_color_code = "E"
+					text = "waystation_network_modifier_label"
+					position = { x = 10 y = 5 }
+					maxWidth = 501
+					maxHeight = 20
+					fixedSize = yes
+					alwaysTransparent = yes
+				}
+
+				instantTextBoxType = {
+					name = "modifiers_text"
+					font = "cg_16b"
+					position = { x = 10 y = 36 }
+					maxWidth = 491
+					maxHeight = 125
+					scrollbartype = "standardtext_slider_small"
+				}
+			}
+
+			containerWindowType = {
+				name = "waystation_list_container"
+				position = { x = 10 y = 186 }
+				size = { width = 510 height = 427 }
+
+				smoothListboxType = {
+					name = "waystation_list_listbox"
+					position = { x = 0 y = 0 }
+					backGround = ""
+					size = { x = 500 y = 376 }
+					borderSize = { x = 0 y = 0 }
+					spacing = 5
+					scrollbarType = "standardlistbox_slider"
+				}
+			}
+		}
+	}
+
+	containerWindowType = { ## waystation_view_entry
+		name = "waystation_view_entry"
+		size = { width = 500 height = 40 }
+		position = { x = 0 y = 0 }
+		moveable = no
+		clipping = no
+
+		background = {
+			name = "transparent_background"
+			size = { x = 500 y = 40 }
+			quadTextureSprite ="GFX_waystation_transparent_bg"
+			alwaysTransparent = yes
+		}
+
+		iconType = {
+			name = "connection_line_before"
+			position = { x = 20 y = -2 }
+			spriteType = "GFX_waystation_connection_line_before"
+		}
+
+		iconType = {
+			name = "connection_line_after"
+			position = { x = 20 y = 20 }
+			spriteType = "GFX_waystation_connection_line_after"
+		}
+
+		buttonType = {
+			name = "background"
+			quadTextureSprite = "GFX_waystation_entry_bg"
+			position = { x = -5 y = -5 }
+			clicksound = "click_outliner"
+			oversound = no_sound
+		}
+
+		iconType = {
+			name = "type"
+			position = { x = 8 y = 2 }
+			spriteType = "GFX_starbase_outliner"
+			frame = 0
+		}
+
+		iconType = {
+			name = "stockpile_local_collection_icon"
+			position = { x = -5 y = 14 }
+			spriteType = "GFX_waystation_stockpile_local_collection"
+			alwaysTransparent = yes
+			scale = 1
+
+		}
+
+		iconType = {
+			name = "stockpile_remote_collection_icon"
+			position = { x = 1 y = 24 }
+			spriteType = "GFX_waystation_stockpile_remote_collection_small"
+			alwaysTransparent = yes
+			scale = 1
+		}
+
+		instantTextBoxType = {
+			name = "name"
+			font = "cg_16b"
+			text = "0"
+			position = { x = 46 y = 3 }
+			maxWidth = 170
+			maxHeight = 20
+			fixedSize = yes
+			orientation = "UPPER_LEFT"
+			format = left
+			text_color_code = "E"
+			alwaysTransparent = yes
+		}
+
+		instantTextBoxType = {
+			name = "starbase_type"
+			font = "cg_16b"
+			text = "0"
+			position = { x = 46 y = 19 }
+			maxWidth = 200
+			maxHeight = 20
+			fixedSize = yes
+			orientation = "UPPER_LEFT"
+			format = left
+			alwaysTransparent = yes
+		}
+
+		instantTextBoxType = {
+			name = "system"
+			font = "cg_16b"
+			text = ""
+			position = { x = -70 y = 3 }
+			maxWidth = 65
+			maxHeight = 20
+			fixedSize = yes
+			orientation = "UPPER_RIGHT"
+			format = right
+		}
+
+		containerWindowType = {
+			name = "starbase_status_container"
+			size = { width = 45 height = 15 }
+			orientation = upper_right
+			position = { x = -220 y = 20 }
+
+			gridBoxType = {
+				name = "starbase_status_list"
+				slotSize = { width = 15 height = 15 }
+				max_slots_horizontal = 2
+				max_slots_vertical = 1
+				format = "UPPER_RIGHT"
+			}
+		}
+
+		containerWindowType = {
+			name = "constructions"
+			size = { width = 100% height = 100% }
+			position = { x = 0 y = 0 }
+			orientation = upper_left
+			moveable = no
+
+			OverlappingElementsBoxType = {
+				name = "box"
+				position = { x = 40 y = 20 }
+				size = { x = 115 y = 30 }
+				spacing = 2
+				format = left
+			}
+		}
+
+		buttonType = {
+			name = "system_owner_flag"
+			quadTextureSprite = "GFX_empire_flag_32"
+			position = { x= 230 y = 4	 }
+		}
+
+		containerWindowType = {
+			name = "colonies_info"
+			position = { x = 266 y = 11 }
+
+			iconType ={
+				name = "colonies_icon"
+				quadTextureSprite = "GFX_planet_waystation_view"
+				position = { x = -4 y = -6 }
+			}
+
+			instantTextBoxType = {
+				name = "colonies_count"
+				font = "cg_16b"
+				text = "0"
+				position = { x = 32 y = 0 }
+				maxWidth = 20
+				maxHeight = 20
+			}
+		}
+
+		containerWindowType = {
+			name = "stockpile_info"
+			position = { x = 360 y = 10 }
+
+			iconType ={
+				name = "logistics_indicator"
+				quadTextureSprite = "GFX_waystation_logistics_indicator"
+				position = { x = 0 y = 0 }
+			}
+
+			iconType = {
+				name = "stockpile_status_progressbar"
+				position = { x = 20 y = 2 }
+				spriteType = "GFX_waystation_stockpile_low_progressbar"
+				frame = 0
+			}
+
+			instantTextBoxType = {
+				name = "stockpile_status"
+				font = "cg_16b"
+				text = "Low"
+				position = { x = 35 y = 0 }
+				maxWidth = 58
+				maxHeight = 20
+				fixedSize = yes
+			}
+		}
+	}
+
+	containerWindowType = { ## waystation_network_view_entry
+		name = "waystation_network_view_entry"
+		size = { width = 500 height = 40 }
+		position = { x = 0 y = 0 }
+		moveable = no
+		clipping = no
+
+		background = {
+			name = "transparent_background"
+			size = { x = 500 y = 40 }
+			quadTextureSprite ="GFX_waystation_transparent_bg"
+			alwaysTransparent = yes
+		}
+
+		iconType = {
+			name = "connection_line_before"
+			position = { x = 20 y = -3 }
+			spriteType = "GFX_waystation_connection_line_before"
+		}
+
+		iconType = {
+			name = "connection_line_after"
+			position = { x = 20 y = 20 }
+			spriteType = "GFX_waystation_connection_line_after"
+		}
+
+		buttonType = {
+			name = "open_wayline_button"
+			quadTextureSprite = "GFX_waystation_entry_bg"
+			position = { x = -5 y = -5 }
+			clicksound = "click_outliner"
+			oversound = no_sound
+		}
+
+		buttonType = {
+			name = "owner_flag"
+			quadTextureSprite = "GFX_empire_flag_32"
+			position = { x= 8 y = 4	 }
+		}
+
+		instantTextBoxType = {
+			name = "name"
+			font = "cg_16b"
+			text = "0"
+			position = { x = 46 y = 3 }
+			maxWidth = 170
+			maxHeight = 20
+			fixedSize = yes
+			orientation = "UPPER_LEFT"
+			format = left
+			text_color_code = "E"
+			alwaysTransparent = yes
+		}
+
+		instantTextBoxType = {
+			name = "owner"
+			font = "cg_16b"
+			text = "0"
+			position = { x = 46 y = 19 }
+			maxWidth = 200
+			maxHeight = 20
+			fixedSize = yes
+			orientation = "UPPER_LEFT"
+			format = left
+			alwaysTransparent = yes
+		}
+
+		containerWindowType = {
+			name = "stations_info"
+			position = { x = 446 y = 10 }
+
+			iconType = {
+				name = "stations_icon"
+				spriteType = "GFX_starbase_outliner"
+				frame = 13
+				position = { x = 0 y = -8 }
+			}
+
+			instantTextBoxType = {
+				name = "stations_count"
+				font = "cg_16b"
+				text = "0"
+				position = { x = 32 y = 0 }
+				maxWidth = 20
+				maxHeight = 20
+			}
+		}
+	}
+
+	containerWindowType = { ## waystation_separator_view_entry
+		name = "waystation_separator_view_entry"
+		size = { width = 500 height = 20 }
+		position = { x = 0 y = 0 }
+		moveable = no
+		clipping = no
+
+		iconType = {
+			name = "connection_line"
+			position = { x = 20 y = -3 }
+			spriteType = "GFX_waystation_connection_separator_line"
+		}
+	}
+
+	containerWindowType = { ## outliner_member_waystation_entry_window
+		name = "outliner_member_waystation_entry_window"
+		size = { width = 318 height = 41 }
+		position = { x = 0 y = 0 }
+		moveable = no
+		clipping = no
+
+		buttonType = {
+			name = "background"
+			quadTextureSprite = "GFX_outliner_member_bg"
+			position = { x = -5 y = -5 }
+			clicksound = "click_outliner"
+			oversound = no_sound
+		}
+
+		iconType = {
+			name = "type"
+			position = { x = 8 y = 2 }
+			spriteType = "GFX_starbase_outliner"
+			frame = 0
+		}
+
+		iconType = {
+			name = "stockpile_local_collection_icon"
+			position = { x = -5 y = 14 }
+			spriteType = "GFX_waystation_stockpile_local_collection"
+			alwaysTransparent = yes
+			scale = 1
+
+		}
+
+		iconType = {
+			name = "stockpile_remote_collection_icon"
+			position = { x = 125 y = 20 }
+			spriteType = "GFX_waystation_stockpile_remote_collection"
+			alwaysTransparent = yes
+			scale = 1
+		}
+
+		instantTextBoxType = {
+			name = "name"
+			font = "cg_16b"
+			text = "0"
+			position = { x = 46 y = 3 }
+			maxWidth = 127
+			maxHeight = 20
+			fixedSize = yes
+			orientation = "UPPER_LEFT"
+			format = left
+			text_color_code = "E"
+			alwaysTransparent = yes
+		}
+
+		instantTextBoxType = {
+			name = "starbase_type"
+			font = "cg_16b"
+			text = "0"
+			position = { x = 46 y = 19 }
+			maxWidth = 200
+			maxHeight = 20
+			fixedSize = yes
+			orientation = "UPPER_LEFT"
+			format = left
+			alwaysTransparent = yes
+		}
+
+		instantTextBoxType = {
+			name = "system"
+			font = "cg_16b"
+			text = ""
+			position = { x = -145 y = 3 }
+			maxWidth = 65
+			maxHeight = 20
+			fixedSize = yes
+			orientation = "UPPER_RIGHT"
+			format = right
+		}
+
+		containerWindowType = {
+			name = "starbase_status_container"
+			size = { width = 45 height = 15 }
+			orientation = upper_right
+			position = { x = -343 y = 20 }
+
+			gridBoxType = {
+				name = "starbase_status_list"
+				slotSize = { width = 15 height = 15 }
+				max_slots_horizontal = 2
+				max_slots_vertical = 1
+				format = "UPPER_RIGHT"
+			}
+		}
+
+		containerWindowType = {
+			name = "constructions"
+			size = { width = 100% height = 100% }
+			position = { x = 0 y = 0 }
+			orientation = upper_left
+			moveable = no
+
+			OverlappingElementsBoxType = {
+				name = "box"
+				position = { x = 40 y = 20 }
+				size = { x = 115 y = 30 }
+				spacing = 2
+				format = left
+			}
+		}
+
+		containerWindowType = {
+			name = "stockpile_info"
+			position = { x = 198 y = 20 }
+
+			iconType = {
+				name = "stockpile_status_progressbar"
+				position = { x = 0 y = 1 }
+				spriteType = "GFX_waystation_stockpile_low_progressbar"
+				frame = 0
+			}
+
+			instantTextBoxType = {
+				name = "stockpile_status"
+				font = "cg_16b"
+				text = "Low"
+				position = { x = 15 y = 0 }
+				maxWidth = 58
+				maxHeight = 20
+				fixedSize = yes
+			}
+		}
+	}
+}

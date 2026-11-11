@@ -1,0 +1,44 @@
+
+spriteTypes = {
+	spriteType = {
+		name = "GFX_waystation_stockpile_local_collection"
+		textureFile = "gfx/interface/waystation/stockpile_local_collection.dds"
+	}
+
+	spriteType = {
+		name = "GFX_waystation_stockpile_local_collection_logistic_ship"
+		textureFile = "gfx/interface/waystation/stockpile_local_collection_logistic_ship.dds"
+	}
+
+	spriteType = {
+		name = "GFX_waystation_stockpile_remote_collection"
+		textureFile = "gfx/interface/waystation/stockpile_remote_collection.dds"
+	}
+
+	spriteType = {
+		name = "GFX_waystation_stockpile_remote_collection_small"
+		textureFile = "gfx/interface/waystation/stockpile_remote_collection_small.dds"
+	}
+
+	spriteType = {
+		name = "GFX_waystation_stockpile_ongoing_collection"
+		textureFile = "gfx/interface/waystation/stockpile_ongoing_collection.dds"
+	}
+
+	spriteType = {
+		name = "GFX_waystation_stockpile_ongoing_collection_logistic_ship"
+		textureFile = "gfx/interface/waystation/stockpile_ongoing_collection_logistic_ship.dds"
+	}
+
+	spriteType = {
+		name = "GFX_waystation_network_connection"
+		textureFile = "gfx/interface/waystation/wayline_connected.dds"
+	}
+
+	corneredTileSpriteType = {
+		name = "GFX_dark_area_cut_button"
+		textureFile = "gfx/interface/tiles/dark_area_cut.dds"
+		borderSize = { x=5 y=5 }
+		effectFile = "gfx/FX/buttonstate.shader"
+	}
+}
