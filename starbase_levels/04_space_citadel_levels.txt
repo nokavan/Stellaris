@@ -1,0 +1,28 @@
+starbase_level_deep_space_citadel_1 = {
+	picture = "GFX_deep_space_citadel_background"
+	ship_size = starbase_deep_space_citadel_1
+	next_level = starbase_level_deep_space_citadel_2
+	level_weight = 0
+	ai_weight = { weight = 1 }
+	potential_home_base = yes
+	can_always_dismantle = yes
+	building_slots = { 1 }
+}
+
+starbase_level_deep_space_citadel_2 = {
+	picture = "GFX_deep_space_citadel_background"
+	ship_size = starbase_deep_space_citadel_2
+	next_level = starbase_level_deep_space_citadel_3
+	level_weight = 2
+	ai_weight = { weight = 3 }
+	potential_home_base = yes
+	building_slots = { 1 2 }
+}
+starbase_level_deep_space_citadel_3 = {
+	picture = "GFX_deep_space_citadel_background"
+	ship_size = starbase_deep_space_citadel_3
+	level_weight = 3
+	ai_weight = { weight = 5 }
+	potential_home_base = yes
+	building_slots = { 1 2 3 4 }
+}

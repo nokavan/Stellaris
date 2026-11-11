@@ -1,0 +1,16 @@
+# Ethics AI weight modifier pair for an arkship megastructure. Include inside ai_weight block.
+# Parameters:
+#   ETHIC = pacifist | xenophile | spiritualist | authoritarian | xenophobe | militarist | materialist | egalitarian
+
+modifier = {
+	factor = 1.25
+	from = {
+		is_$ETHIC$ = yes
+	}
+}
+modifier = {
+	factor = 1.5
+	from = {
+		is_fanatic_$ETHIC$ = yes
+	}
+}

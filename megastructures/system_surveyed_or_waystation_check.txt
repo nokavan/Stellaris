@@ -1,0 +1,24 @@
+# A Waystation in the system grants the right to build here
+if = {
+	limit = {
+		NOT = {
+			any_starbase_in_system = {
+				is_waystation_starbase = yes
+				owner? = {
+					is_same_value = from
+				}
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = "requires_surveyed_system"
+		NOT = {
+			any_system_planet = {
+				is_surveyed = {
+					who = prev.from
+					status = no
+				}
+			}
+		}
+	}
+}

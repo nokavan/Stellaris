@@ -1,0 +1,163 @@
+# AI weight modifiers for a specific arkship type. Include inside ai_weight block.
+# Parameters:
+#   ARKSHIP_TYPE = civilian_arkship | science_arkship | military_arkship
+
+# Civic preference
+modifier = {
+	factor = 2
+	from = {
+		prefers_$ARKSHIP_TYPE$ = yes
+	}
+}
+
+# Repeat reduction
+modifier = {
+	factor = 1.25
+	from = {
+		count_owned_fleet = {
+			limit = {
+				any_owned_ship = {
+					is_$ARKSHIP_TYPE$ = yes
+				}
+			}
+			count = 0
+		}
+	}
+}
+modifier = {
+	factor = 0.5
+	from = {
+		count_owned_fleet = {
+			limit = {
+				any_owned_ship = {
+					is_$ARKSHIP_TYPE$ = yes
+				}
+			}
+			count >= 2
+		}
+	}
+}
+modifier = {
+	factor = 0.25
+	from = {
+		count_owned_fleet = {
+			limit = {
+				any_owned_ship = {
+					is_$ARKSHIP_TYPE$ = yes
+				}
+			}
+			count >= 3
+		}
+	}
+}
+
+# Starting arkship
+modifier = {
+	factor = 1.5
+	from = {
+		has_country_flag = starting_$ARKSHIP_TYPE$
+	}
+}
+
+# Survival motivation: strongly prefer building a 2nd Arkship when only 1 exists
+modifier = {
+	factor = 2.0
+	from = {
+		count_owned_fleet = {
+			limit = { is_arkship_fleet = yes }
+			count < 2
+		}
+	}
+}
+
+# Additional mid-game escalation if still only 1 Arkship total
+modifier = {
+	factor = 1.5
+	mid_game_years_passed > 0
+	from = {
+		count_owned_fleet = {
+			limit = { is_arkship_fleet = yes }
+			count < 2
+		}
+	}
+}
+
+# Push toward a 3rd Arkship by mid-game
+modifier = {
+	factor = 1.25
+	from = {
+		count_owned_fleet = {
+			limit = { is_arkship_fleet = yes }
+			count < 3
+		}
+	}
+}
+
+# Additional mid-game escalation if still fewer than 3 Arkships total
+modifier = {
+	factor = 2.0
+	mid_game_years_passed > 0
+	from = {
+		count_owned_fleet = {
+			limit = { is_arkship_fleet = yes }
+			count < 3
+		}
+	}
+}
+
+# Slow down after 3 arkships
+modifier = {
+	factor = 0.5
+	from = {
+		count_owned_fleet = {
+			limit = {
+				is_arkship_fleet = yes
+			}
+			count >= 4
+		}
+	}
+}
+
+# Slow down further after 5
+modifier = {
+	factor = 0.25
+	from = {
+		count_owned_fleet = {
+			limit = {
+				is_arkship_fleet = yes
+			}
+			count >= 6
+		}
+	}
+}
+
+# Hard stop at the Arkship build cap
+modifier = {
+	factor = 0
+	from = {
+		count_owned_fleet = {
+			limit = {
+				is_arkship_fleet = yes
+			}
+			count >= @ai_arkship_build_cap
+		}
+	}
+}
+
+# Upgrade an existing arkship before building another one
+modifier = {
+	factor = 0
+	from = {
+		has_upgradable_arkship = yes
+	}
+}
+
+# Do not build when hostile fleets are present in the system
+modifier = {
+	factor = 0
+	any_fleet_in_system = {
+		owner = {
+			is_hostile = root.from
+		}
+	}
+}

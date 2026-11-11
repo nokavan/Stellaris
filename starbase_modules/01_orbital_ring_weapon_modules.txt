@@ -1,0 +1,1031 @@
+# If you add a new orbital ring weapon module, also update the weights/checks for the relevant
+# starbase types in common/starbase_types/00_starbase_types.txt
+
+# Energy
+orbital_ring_laser_battery = {
+	section = "GUN_BATTERY_ORBITAL_RING_SECTION"
+	icon = "GFX_arkship_laser_battery"
+	construction_days = 180
+	starbase_type = orbital_ring
+	category = sm_defense_cat
+
+	potential = {
+		owner? = { has_technology = tech_lasers_1 }
+		is_orbital_ring = yes
+	}
+
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = @defense_platform_section_cost
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					country_uses_bio_ships = no
+				}
+			}
+			energy = 1
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					country_uses_bio_ships = yes
+				}
+			}
+			food = 1
+		}
+	}
+
+	station_modifier = {
+		ship_hull_mult = 0.20
+		ship_armor_mult = 0.20
+	}
+
+	triggered_station_modifier = {
+		potential = {
+			planet? = {
+				exists = owner.overlord
+				has_holding = {
+					holding = holding_orbital_assembly_complex
+					owner = owner.overlord
+				}
+			}
+		}
+		starbase_defense_platform_capacity_add = 1
+	}
+
+	triggered_component_set = {
+		potential = {
+			owner? = {
+				country_uses_bio_ships = no
+			}
+		}
+		component_set = RED_LASER
+	}
+	triggered_component_set = {
+		potential = {
+			owner? = {
+				country_uses_bio_ships = yes
+			}
+		}
+		component_set = RED_BIO_LASER
+	}
+	show_component_tooltips = yes
+	custom_tooltip_with_modifiers = sm_orbital_ring_laser_battery_tt
+
+	ai_weight = {
+		weight = 100
+	}
+
+	show_in_tech = "tech_lasers_1"
+
+	show_tech_unlock_if = {
+		has_overlord_dlc = yes
+		is_nomadic = no
+	}
+}
+
+orbital_ring_archaeo_laser_battery = {
+	section = "GUN_BATTERY_ORBITAL_RING_SECTION"
+	icon = "GFX_arkship_archaeo_laser_battery"
+	construction_days = 180
+	starbase_type = orbital_ring
+	category = sm_defense_cat
+
+	potential = {
+		owner? = { has_technology = tech_archaeo_lasers }
+		is_orbital_ring = yes
+	}
+
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = @defense_platform_section_cost
+			minor_artifacts = 45
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					country_uses_bio_ships = no
+				}
+			}
+			energy = 1
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					country_uses_bio_ships = yes
+				}
+			}
+			food = 1
+		}
+	}
+
+	station_modifier = {
+		ship_hull_mult = 0.20
+		ship_armor_mult = 0.20
+	}
+
+	triggered_station_modifier = {
+		potential = {
+			planet? = {
+				exists = owner.overlord
+				has_holding = {
+					holding = holding_orbital_assembly_complex
+					owner = owner.overlord
+				}
+			}
+		}
+		starbase_defense_platform_capacity_add = 1
+	}
+
+	triggered_component_set = {
+		potential = {
+			owner? = {
+				country_uses_bio_ships = no
+			}
+		}
+		component_set = ARCHAEO_LASER
+	}
+	triggered_component_set = {
+		potential = {
+			owner? = {
+				country_uses_bio_ships = yes
+			}
+		}
+		component_set = ARCHAEO_BIO_LASER
+	}
+	show_component_tooltips = yes
+	custom_tooltip_with_modifiers = sm_orbital_ring_archaeo_laser_battery_tt
+
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 1.25
+			ai_owner_has_archaeoengineers = yes
+		}
+	}
+
+	show_in_tech = "tech_archaeo_lasers"
+
+	show_tech_unlock_if = {
+		has_overlord_dlc = yes
+		is_nomadic = no
+	}
+}
+
+orbital_ring_particle_launcher = {
+	section = "MISSILE_BATTERY_ORBITAL_RING_SECTION"
+	icon = "GFX_arkship_particle_launcher"
+	construction_days = 180
+	starbase_type = orbital_ring
+	category = sm_defense_cat
+
+	potential = {
+		owner? = { has_technology = tech_energy_torpedoes_1 }
+		is_orbital_ring = yes
+	}
+
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = @defense_platform_section_cost
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					country_uses_bio_ships = no
+				}
+			}
+			energy = 1
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					country_uses_bio_ships = yes
+				}
+			}
+			food = 1
+		}
+	}
+
+	station_modifier = {
+		ship_hull_mult = 0.20
+		ship_armor_mult = 0.20
+	}
+
+	triggered_station_modifier = {
+		potential = {
+			planet? = {
+				exists = owner.overlord
+				has_holding = {
+					holding = holding_orbital_assembly_complex
+					owner = owner.overlord
+				}
+			}
+		}
+		starbase_defense_platform_capacity_add = 1
+	}
+
+	triggered_component_set = {
+		potential = {
+			owner? = {
+				country_uses_bio_ships = no
+			}
+		}
+		component_set = ENERGY_TORPEDO_1
+	}
+	triggered_component_set = {
+		potential = {
+			owner? = {
+				country_uses_bio_ships = yes
+			}
+		}
+		component_set = BIO_ENERGY_TORPEDO_1
+	}
+	show_component_tooltips = yes
+	custom_tooltip_with_modifiers = sm_orbital_ring_particle_launcher_tt
+
+	ai_weight = {
+		weight = 100
+	}
+
+	show_in_tech = "tech_energy_torpedoes_1"
+
+	show_tech_unlock_if = {
+		has_overlord_dlc = yes
+		is_nomadic = no
+	}
+}
+
+orbital_ring_psionic_torpedo = {
+	section = "MISSILE_BATTERY_ORBITAL_RING_SECTION"
+	icon = "GFX_arkship_psionic_torpedo"
+	construction_days = 180
+	starbase_type = orbital_ring
+	category = sm_defense_cat
+
+	potential = {
+		owner? = { has_technology = tech_zro_launcher }
+		is_orbital_ring = yes
+	}
+
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = @defense_platform_section_cost
+			sr_zro = 100
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					country_uses_bio_ships = no
+				}
+			}
+			energy = 1
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					country_uses_bio_ships = yes
+				}
+			}
+			food = 1
+		}
+	}
+
+	station_modifier = {
+		ship_hull_mult = 0.20
+		ship_armor_mult = 0.20
+	}
+
+	triggered_station_modifier = {
+		potential = {
+			planet? = {
+				exists = owner.overlord
+				has_holding = {
+					holding = holding_orbital_assembly_complex
+					owner = owner.overlord
+				}
+			}
+		}
+		starbase_defense_platform_capacity_add = 1
+	}
+
+	triggered_component_set = {
+		potential = {
+			owner? = {
+				country_uses_bio_ships = no
+			}
+		}
+		component_set = PSIONIC_TORPEDO
+	}
+	triggered_component_set = {
+		potential = {
+			owner? = {
+				country_uses_bio_ships = yes
+			}
+		}
+		component_set = BIO_PSIONIC_TORPEDO
+	}
+	show_component_tooltips = yes
+	custom_tooltip_with_modifiers = sm_orbital_ring_psionic_torpedo_tt
+
+	ai_weight = {
+		weight = 125 #psionic components are weighted higher as the AI needs to be psionic to unlock them
+	}
+
+	show_in_tech = "tech_zro_launcher"
+
+	show_tech_unlock_if = {
+		has_overlord_dlc = yes
+		is_nomadic = no
+	}
+}
+
+# Kinetic
+orbital_ring_mass_driver_battery = {
+	section = "GUN_BATTERY_ORBITAL_RING_SECTION"
+	icon = "GFX_arkship_mass_driver_battery"
+	construction_days = 180
+	starbase_type = orbital_ring
+	category = sm_defense_cat
+
+	potential = {
+		owner? = { has_technology = tech_mass_drivers_1 }
+		is_orbital_ring = yes
+	}
+
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = @defense_platform_section_cost
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					country_uses_bio_ships = no
+				}
+			}
+			energy = 1
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					country_uses_bio_ships = yes
+				}
+			}
+			food = 1
+		}
+	}
+
+	station_modifier = {
+		ship_hull_mult = 0.20
+		ship_armor_mult = 0.20
+	}
+
+	triggered_station_modifier = {
+		potential = {
+			planet? = {
+				exists = owner.overlord
+				has_holding = {
+					holding = holding_orbital_assembly_complex
+					owner = owner.overlord
+				}
+			}
+		}
+		starbase_defense_platform_capacity_add = 1
+	}
+
+	triggered_component_set = {
+		potential = {
+			owner? = {
+				country_uses_bio_ships = no
+			}
+		}
+		component_set = MASS_DRIVER_1
+	}
+	triggered_component_set = {
+		potential = {
+			owner? = {
+				country_uses_bio_ships = yes
+			}
+		}
+		component_set = BIO_MASS_DRIVER_1
+	}
+	show_component_tooltips = yes
+	custom_tooltip_with_modifiers = sm_orbital_ring_mass_driver_battery_tt
+
+	ai_weight = {
+		weight = 100
+	}
+
+	show_in_tech = "tech_mass_drivers_1"
+
+	show_tech_unlock_if = {
+		has_overlord_dlc = yes
+		is_nomadic = no
+	}
+}
+
+orbital_ring_archaeo_mass_driver_battery = {
+	section = "GUN_BATTERY_ORBITAL_RING_SECTION"
+	icon = "GFX_arkship_archaeo_mass_driver_battery"
+	construction_days = 180
+	starbase_type = orbital_ring
+	category = sm_defense_cat
+
+	potential = {
+		owner? = { has_technology = tech_archaeo_mass_drivers }
+		is_orbital_ring = yes
+	}
+
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = @defense_platform_section_cost
+			minor_artifacts = 45
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					country_uses_bio_ships = no
+				}
+			}
+			energy = 1
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					country_uses_bio_ships = yes
+				}
+			}
+			food = 1
+		}
+	}
+
+	station_modifier = {
+		ship_hull_mult = 0.20
+		ship_armor_mult = 0.20
+	}
+
+	triggered_station_modifier = {
+		potential = {
+			planet? = {
+				exists = owner.overlord
+				has_holding = {
+					holding = holding_orbital_assembly_complex
+					owner = owner.overlord
+				}
+			}
+		}
+		starbase_defense_platform_capacity_add = 1
+	}
+
+	triggered_component_set = {
+		potential = {
+			owner? = {
+				country_uses_bio_ships = no
+			}
+		}
+		component_set = ARCHAEO_KINETIC
+	}
+	triggered_component_set = {
+		potential = {
+			owner? = {
+				country_uses_bio_ships = yes
+			}
+		}
+		component_set = BIO_ARCHAEO_KINETIC
+	}
+	show_component_tooltips = yes
+	custom_tooltip_with_modifiers = sm_orbital_ring_archaeo_mass_driver_battery_tt
+
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 1.25
+			ai_owner_has_archaeoengineers = yes
+		}
+	}
+
+	show_in_tech = "tech_archaeo_mass_drivers"
+
+	show_tech_unlock_if = {
+		has_overlord_dlc = yes
+		is_nomadic = no
+	}
+}
+
+# Explosive
+orbital_ring_swarmer_missile_battery = {
+	section = "GUN_BATTERY_ORBITAL_RING_SECTION"
+	icon = "GFX_arkship_swamer_missile_battery"
+	construction_days = 180
+	starbase_type = orbital_ring
+	category = sm_defense_cat
+
+	potential = {
+		owner? = { has_technology = tech_swarmer_missiles_1 }
+		is_orbital_ring = yes
+	}
+
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = @defense_platform_section_cost
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					country_uses_bio_ships = no
+				}
+			}
+			energy = 1
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					country_uses_bio_ships = yes
+				}
+			}
+			food = 1
+		}
+	}
+
+	station_modifier = {
+		ship_hull_mult = 0.20
+		ship_armor_mult = 0.20
+	}
+
+	triggered_station_modifier = {
+		potential = {
+			planet? = {
+				exists = owner.overlord
+				has_holding = {
+					holding = holding_orbital_assembly_complex
+					owner = owner.overlord
+				}
+			}
+		}
+		starbase_defense_platform_capacity_add = 1
+	}
+
+	triggered_component_set = {
+		potential = {
+			owner? = {
+				country_uses_bio_ships = no
+			}
+		}
+		component_set = SWARMER_MISSILE_1
+	}
+	triggered_component_set = {
+		potential = {
+			owner? = {
+				country_uses_bio_ships = yes
+			}
+		}
+		component_set = BIO_SWARMER_MISSILE_1
+	}
+	show_component_tooltips = yes
+	custom_tooltip_with_modifiers = sm_orbital_ring_swarmer_missile_battery_tt
+
+	ai_weight = {
+		weight = 100
+	}
+
+	show_in_tech = "tech_swarmer_missiles_1"
+
+	show_tech_unlock_if = {
+		has_overlord_dlc = yes
+		is_nomadic = no
+	}
+}
+
+orbital_ring_scourge_missile_battery = {
+	section = "MISSILE_BATTERY_ORBITAL_RING_SECTION"
+	icon = "GFX_arkship_scourge_missile_battery"
+	construction_days = 180
+	starbase_type = orbital_ring
+	category = sm_defense_cat
+
+	potential = {
+		owner? = { has_technology = tech_scourge_missile_1 }
+		is_orbital_ring = yes
+	}
+
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = @defense_platform_section_cost
+		}
+		upkeep = {
+			energy = 1
+		}
+	}
+
+	station_modifier = {
+		ship_hull_mult = 0.20
+		ship_armor_mult = 0.20
+	}
+
+	triggered_station_modifier = {
+		potential = {
+			planet? = {
+				exists = owner.overlord
+				has_holding = {
+					holding = holding_orbital_assembly_complex
+					owner = owner.overlord
+				}
+			}
+		}
+		starbase_defense_platform_capacity_add = 1
+	}
+
+	component_set = SCOURGE_MISSILE_1
+	show_component_tooltips = yes
+	custom_tooltip_with_modifiers = sm_orbital_ring_scourge_missile_battery_tt
+
+	ai_weight = {
+		weight = 100
+	}
+
+	show_in_tech = "tech_scourge_missile_1"
+
+	show_tech_unlock_if = {
+		has_overlord_dlc = yes
+		is_nomadic = no
+	}
+}
+
+# Strike Craft
+orbital_ring_hangar_bay = {
+	section = "HANGAR_ORBITAL_RING_SECTION"
+	icon = "GFX_arkship_hangar_bay"
+	construction_days = 180
+	starbase_type = orbital_ring
+	category = sm_defense_cat
+
+	potential = {
+		owner? = { has_technology = tech_strike_craft_1 }
+		is_orbital_ring = yes
+	}
+
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = @defense_platform_section_cost
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					country_uses_bio_ships = no
+				}
+			}
+			energy = 1
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					country_uses_bio_ships = yes
+				}
+			}
+			food = 1
+		}
+	}
+
+	station_modifier = {
+		ship_hull_mult = 0.20
+		ship_armor_mult = 0.20
+	}
+
+	triggered_station_modifier = {
+		potential = {
+			planet? = {
+				exists = owner.overlord
+				has_holding = {
+					holding = holding_orbital_assembly_complex
+					owner = owner.overlord
+				}
+			}
+		}
+		starbase_defense_platform_capacity_add = 1
+	}
+
+	triggered_component_set = {
+		potential = {
+			owner? = {
+				country_uses_bio_ships = no
+			}
+		}
+		component_set = SCOUT_HANGAR_1
+	}
+	triggered_component_set = {
+		potential = {
+			owner? = {
+				country_uses_bio_ships = yes
+			}
+		}
+		component_set = BIO_SCOUT_HANGAR_1
+	}
+	show_component_tooltips = yes
+	custom_tooltip_with_modifiers = sm_orbital_ring_hangar_bay_tt
+
+	ai_weight = {
+		weight = 100
+	}
+
+	show_in_tech = "tech_strike_craft_1"
+
+	show_tech_unlock_if = {
+		has_overlord_dlc = yes
+		is_nomadic = no
+	}
+}
+
+orbital_ring_archaeo_hangar_bay = {
+	section = "HANGAR_ORBITAL_RING_SECTION"
+	icon = "GFX_arkship_archaeo_hangar_bay"
+	construction_days = 180
+	starbase_type = orbital_ring
+	category = sm_defense_cat
+
+	potential = {
+		owner? = { has_technology = tech_archaeo_strike_crafts }
+		is_orbital_ring = yes
+	}
+
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = @defense_platform_section_cost
+			minor_artifacts = 45
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					country_uses_bio_ships = no
+				}
+			}
+			energy = 1
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					country_uses_bio_ships = yes
+				}
+			}
+			food = 1
+		}
+	}
+
+	station_modifier = {
+		ship_hull_mult = 0.20
+		ship_armor_mult = 0.20
+	}
+
+	triggered_station_modifier = {
+		potential = {
+			planet? = {
+				exists = owner.overlord
+				has_holding = {
+					holding = holding_orbital_assembly_complex
+					owner = owner.overlord
+				}
+			}
+		}
+		starbase_defense_platform_capacity_add = 1
+	}
+
+	triggered_component_set = {
+		potential = {
+			owner? = {
+				country_uses_bio_ships = no
+			}
+		}
+		component_set = ARCHAEO_STRIKECRAFT
+	}
+	triggered_component_set = {
+		potential = {
+			owner? = {
+				country_uses_bio_ships = yes
+			}
+		}
+		component_set = BIO_ARCHAEO_STRIKECRAFT
+	}
+	show_component_tooltips = yes
+	custom_tooltip_with_modifiers = sm_orbital_ring_archaeo_hangar_bay_tt
+
+	ai_weight = {
+		weight = 100
+		modifier = {
+			factor = 1.25
+			ai_owner_has_archaeoengineers = yes
+		}
+	}
+
+	show_in_tech = "tech_archaeo_strike_crafts"
+
+	show_tech_unlock_if = {
+		has_overlord_dlc = yes
+		is_nomadic = no
+	}
+}
+
+orbital_ring_psionic_hangar_bay = {
+	section = "HANGAR_ORBITAL_RING_SECTION"
+	icon = "GFX_arkship_psionic_hangar_bay"
+	construction_days = 180
+	starbase_type = orbital_ring
+	category = sm_defense_cat
+
+	potential = {
+		owner? = { has_technology = tech_psionic_bombers }
+		is_orbital_ring = yes
+	}
+
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = @defense_platform_section_cost
+			sr_zro = 100
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					country_uses_bio_ships = no
+				}
+			}
+			energy = 1
+		}
+		upkeep = {
+			trigger = {
+				owner? = {
+					country_uses_bio_ships = yes
+				}
+			}
+			food = 1
+		}
+	}
+
+	station_modifier = {
+		ship_hull_mult = 0.20
+		ship_armor_mult = 0.20
+	}
+
+	triggered_station_modifier = {
+		potential = {
+			planet? = {
+				exists = owner.overlord
+				has_holding = {
+					holding = holding_orbital_assembly_complex
+					owner = owner.overlord
+				}
+			}
+		}
+		starbase_defense_platform_capacity_add = 1
+	}
+
+	triggered_component_set = {
+		potential = {
+			owner? = {
+				country_uses_bio_ships = no
+			}
+		}
+		component_set = PSIONIC_STRIKE_CRAFT
+	}
+	triggered_component_set = {
+		potential = {
+			owner? = {
+				country_uses_bio_ships = yes
+			}
+		}
+		component_set = BIO_PSIONIC_STRIKE_CRAFT
+	}
+	show_component_tooltips = yes
+	custom_tooltip_with_modifiers = sm_orbital_ring_psionic_hangar_bay_tt
+
+	ai_weight = {
+		weight = 125 #psionic components are weighted higher as the AI needs to be psionic to unlock them
+	}
+
+	show_in_tech = "tech_psionic_bombers"
+
+	show_tech_unlock_if = {
+		has_overlord_dlc = yes
+		is_nomadic = no
+	}
+}
+
+orbital_ring_amoeba_hangar_bay = {
+	section = "HANGAR_ORBITAL_RING_SECTION"
+	icon = "GFX_arkship_amoeba_hangar_bay"
+	construction_days = 180
+	starbase_type = orbital_ring
+	category = sm_defense_cat
+
+	potential = {
+		owner? = { has_technology = tech_amoeba_strike_craft_1 }
+		is_orbital_ring = yes
+	}
+
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = @defense_platform_section_cost
+		}
+		upkeep = {
+			energy = 1
+		}
+	}
+
+	station_modifier = {
+		ship_hull_mult = 0.20
+		ship_armor_mult = 0.20
+	}
+
+	triggered_station_modifier = {
+		potential = {
+			planet? = {
+				exists = owner.overlord
+				has_holding = {
+					holding = holding_orbital_assembly_complex
+					owner = owner.overlord
+				}
+			}
+		}
+		starbase_defense_platform_capacity_add = 1
+	}
+
+	component_set = AMOEBA_STRIKE_CRAFT_1
+	show_component_tooltips = yes
+	custom_tooltip_with_modifiers = sm_orbital_ring_amoeba_hangar_bay_tt
+
+	ai_weight = {
+		weight = 100
+	}
+
+	show_in_tech = "tech_amoeba_strike_craft_1"
+
+	show_tech_unlock_if = {
+		has_overlord_dlc = yes
+		is_nomadic = no
+	}
+}
+
+orbital_ring_swarm_hangar_bay = {
+	section = "HANGAR_ORBITAL_RING_SECTION"
+	icon = "GFX_arkship_swarm_hangar_bay"
+	construction_days = 180
+	starbase_type = orbital_ring
+	category = sm_defense_cat
+
+	potential = {
+		owner? = { has_technology = tech_swarm_strike_craft_1 }
+		is_orbital_ring = yes
+	}
+
+	resources = {
+		category = starbase_modules
+		cost = {
+			alloys = @defense_platform_section_cost
+		}
+		upkeep = {
+			energy = 1
+		}
+	}
+
+	station_modifier = {
+		ship_hull_mult = 0.20
+		ship_armor_mult = 0.20
+	}
+
+	triggered_station_modifier = {
+		potential = {
+			planet? = {
+				exists = owner.overlord
+				has_holding = {
+					holding = holding_orbital_assembly_complex
+					owner = owner.overlord
+				}
+			}
+		}
+		starbase_defense_platform_capacity_add = 1
+	}
+
+	component_set = SWARM_STRIKE_CRAFT_1
+	show_component_tooltips = yes
+	custom_tooltip_with_modifiers = sm_orbital_ring_swarm_hangar_bay_tt
+
+	ai_weight = {
+		weight = 100
+	}
+
+	show_in_tech = "tech_swarm_strike_craft_1"
+
+	show_tech_unlock_if = {
+		has_overlord_dlc = yes
+		is_nomadic = no
+	}
+}

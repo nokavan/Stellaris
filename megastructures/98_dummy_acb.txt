@@ -1,0 +1,95 @@
+star_eater_dummy = {
+	entity = "star_eater_ship_entity"
+	show_in_outliner = no
+	potential = {
+		always = no
+	}
+}
+
+collossus_mammalian_dummy = {
+	entity = "mammalian_01_colossus_ship_entity"
+	show_in_outliner = no
+	potential = {
+		always = no
+	}
+}
+
+collossus_reptile_dummy = {
+	entity = "reptilian_01_colossus_ship_entity"
+	show_in_outliner = no
+	potential = {
+		always = no
+	}
+}
+
+collossus_avian_dummy = {
+	entity = "avian_01_colossus_ship_entity"
+	show_in_outliner = no
+	potential = {
+		always = no
+	}
+}
+
+collossus_arthropoid_dummy = {
+	entity = "arthropoid_01_colossus_ship_entity"
+	show_in_outliner = no
+	potential = {
+		always = no
+	}
+}
+
+collossus_molluscoid_dummy = {
+	entity = "molluscoid_01_colossus_ship_entity"
+	show_in_outliner = no
+	potential = {
+		always = no
+	}
+}
+
+collossus_fungoid_dummy = {
+	entity = "fungoid_01_colossus_ship_entity"
+	show_in_outliner = no
+	potential = {
+		always = no
+	}
+}
+
+galactic_crucible_dummy = {
+	entity = "infernal_01_galactic_crucible_phase_05_entity"
+	show_in_outliner = no
+	potential = {
+		always = no
+	}
+}
+
+arkship_civilian_dummy = {
+	entity = "civilian_arkship_01_stage_2_ship_entity"
+	show_in_outliner = no
+	potential = {
+		always = no
+	}
+}
+
+arkship_science_dummy = {
+	entity = "science_arkship_01_stage_2_ship_entity"
+	show_in_outliner = no
+	potential = {
+		always = no
+	}
+}
+
+arkship_military_dummy = {
+	entity = "military_arkship_01_stage_2_ship_entity"
+	show_in_outliner = no
+	potential = {
+		always = no
+	}
+}
+
+paladin_dummy = {
+	entity = "nomads_01_hero_ship_01_plantoid_section_entity"
+	show_in_outliner = no
+	potential = {
+		always = no
+	}
+}

@@ -1,0 +1,559 @@
+#	Most of these parameters should also work for starbase buildings.
+#
+# example_starbase_module = {
+#
+# 	icon = GFX_KEY
+#
+#	section = SECTION_KEY
+#		(modules only) ship design section that determines hull/slot structure.
+#		When a module is installed, the corresponding section is added to the starbase's ship design.
+#		If a new module uses a different section than the one it replaces, the entire ship design is rebuilt.
+#
+#	component_set = COMPONENT_SET_KEY
+#	triggered_component_set = {
+#		potential = { ... }
+#		component_set = COMPONENT_SET_KEY
+#	}
+#		(modules only) equips the section's slots with components from this set,
+#		auto upgraded to the highest tier the owner has researched
+#		the triggered form applies only when its potential passes, in starbase scope with from = owner
+#		either form can be repeated, and the last one that applies is the one used,
+#		so an unconditional entry belongs first as the default
+#		when no set applies the section is filled automatically by the starbase designer
+#
+#	equipped_component = COMPONENT_KEY
+#	triggered_equipped_component = {
+#		potential = { ... }
+#		equipped_component = COMPONENT_KEY
+#	}
+#		(buildings only) directly equips the specified component to the starbase
+#		the triggered form applies only when its potential passes, in starbase scope with from = owner
+#		either form can be repeated, and every one that applies contributes
+#
+#	show_component_tooltips = yes|no
+#		default no
+#		if yes, the tooltip for the building or module will show the full stats of each equipped or resolved component
+#		for modules: uses the section slot count to show the quantity (e.g. 8x Advanced Missile Launcher)
+#		for buildings: groups duplicate equipped_component entries and shows the quantity alongside the stats
+#
+#   # default is "all". Used for the technology unlock text. Does not actually lock the component to that starbase type, so you probably want to also add a check in potential
+#   starbase_type = starbase|orbital_ring|waystation|arkship|all
+#
+#	empire_limit = { 	#optional: default is no limit
+# 		base = 5		#don't set base to less than 0, it will ignore it (for performance optimisation reasons)
+# 		modifier = { 	#triggers are country scope
+# 			add/factor = 2
+#	 		has_country_flag = test_flag
+# 		}
+#		# Mult by -1 to remove limit
+# }
+#	starbase_limit = { 	# optional: max capacity per starbase
+# 		base = 2		# default for starbase buildings: 1
+#						# default for starbase modules: no limit
+#						# don't set base to less than 0, it will ignore it (for performance optimisation reasons)
+#	 	modifier = { 	# triggers are starbase scope
+# 			add/factor = 2
+# 			has_starbase_size = test_size
+# 		}
+#		# Mult by -1 to remove limit
+#	 }
+#
+#	fits_on_slots = { <slot_key> <slot_key2> }			# whitelist of slots from starbase_level this can fit into. Optional: if empty, can fit into any slot except for the ones excluded by cannot_fit_on_slots
+#	cannot_fit_on_slots = { <slot_key> <slot_key2> }	# blacklist of slots from starbase_level this can NOT fit into. Optional
+#
+# 	potential = {
+# 		trigger to show in construction list.
+# 		root = starbase
+# 	}
+#
+# 	possible = {
+# 		trigger to be placed in the construction queue.
+# 		root = starbase
+# 	}
+#
+# 	replaceable = {
+# 		trigger for module to be removed.
+# 		root = starbase
+# 	}
+#
+# 	abort_construction_trigger = {
+# 		trigger for module construction to be automatically aborted.
+# 		root = starbase
+# 		from = owner
+# 	}
+# 	destroy_trigger = {
+#		#Module/building will be destroyed if this trigger returns true
+# 		starbase scope
+#		this trigger is checked monthly
+# 	}
+#
+# 	resources = {
+# 		category = starbase_modules
+# 		cost = {
+# 			resource = int
+# 		}
+# 		cost = {
+# 			trigger = {
+# 				trigger for triggered cost
+# 				root = starbase
+# 			}
+# 			resource = int
+# 		}
+# 		produces = {
+# 			resource = int
+# 		}
+# 		produces = {
+# 			trigger = {
+# 				trigger for triggered production
+# 				root = starbase
+# 			}
+# 			resource = int
+# 		}
+# 		upkeep = {
+# 			resource = int
+# 		}
+# 		upkeep = {
+# 			trigger = {
+# 				trigger for triggered upkeep
+# 				root = starbase
+# 			}
+# 			resource = int
+# 		}
+# 	}
+#
+#	collected_system_resources = {
+#		(modules only, waystation only) Resources collected from celestial body deposits in the system into the starbase's stockpile.
+#		Stockpiled resources can be collected by ships that have collects_starbase_stockpile = yes.
+#		Each entry key is a resource key or resource category (basic, advanced, strategic, rare,
+#		other, material, research, all). The value block is a trigger evaluated in starbase scope
+#		(this = starbase, prev = system) that gates whether the resource can be collected.
+#		The amount collected each month is determined by the deposits in the system and by the
+#		starbase_collected_system_<resource>_add and starbase_collected_system_resources_mult modifiers.
+#		A resource is collected at most once per month regardless of how many entries match it.
+#
+#		energy = {
+#			always = yes
+#		}
+#		sr_dark_matter = {
+#			# scope is starbase, prev is system, ergo prev.owner is the system owner
+#			exists = owner
+#			owner = {
+#				has_technology = tech_mine_dark_matter
+#			}
+#		}
+#		# category example: collect all basic resources if mechanized mining is researched
+#		basic = {
+#			owner = { has_technology = tech_nomads_mechanized_mining }
+#		}
+#	}
+#
+#	collected_colony_resources = {
+#		(modules only, waystation only) Resources collected from nearby colonies into the starbase's stockpile.
+#		Each monthly tick, for each matching colony the collection rate is multiplied against the
+#		colony's output and added to the stockpile. Stockpiled resources are collected and
+#		transported by logistic ships.
+#
+#		collection_type = steal|clone
+#		#   steal: resources are removed from the colony owner and added to the stockpile (default)
+#		#   clone: resources are added to the stockpile without removing them from the colony owner
+#
+#		# Each entry key is a resource key or resource category.
+#		# The entry block is a trigger evaluated in (this = starbase, from = colony) scope
+#		# that gates which colonies qualify for collection.
+#		#
+#		# Collection rate per resource = starbase_collected_colony_resources_add
+#		#                              + starbase_collected_colony_<resource>_add
+#		# Add starbase_collected_colony_resources_add to station_modifier / triggered_station_modifier
+#		# so the "Monthly Colony Tribute" modifier name and value appear in the module tooltip.
+#		#
+#		# All starbase_collected_colony_resources_add values across all modules on the station are
+#		# summed into a single rate. A resource is then collected once per colony per month regardless
+#		# of how many collector entries match it, so the combined rate is applied exactly once.
+#
+#		basic = {
+#			# collect from non-primitive subject colonies only
+#			from.owner = {
+#				has_overlord = root.owner
+#				is_primitive = no
+#			}
+#		}
+#		all = {
+#			# collect from any colony not owned by this waystation's owner
+#			NOT = { from.owner = { is_same_value = root.owner } }
+#		}
+#	}
+#
+# 	ai_weight = {
+# 		weight = 100
+		#use same weight here - ai weighting is done in starbase_types.txt
+# 	}
+#
+# 	initial = yes|no
+#		default no
+#		if yes, module is placed on new starbases at creation
+#
+#	initial_only = yes|no
+#		default no
+#		if yes, the module can ONLY be placed during initial starbase creation (not retrofitted later)
+#
+# 	ai_build_at_chokepoint = yes|no
+# 		default yes
+#		if no, sets ai_weight to 0 if the starbase is in a chokepoint
+#
+# 	ai_build_outside_chokepoint = yes|no
+# 		default yes
+#		if no, sets ai_weight to 0 if the starbase is NOT in a chokepoint
+#
+# 	construction_days = int
+# 		days to construct module, affected by
+#		starbase_module_build_time_mult (for modules)
+#		starbase_module_build_speed_mult (for modules)
+#		starbase_building_build_time_mult (for buildings)
+#		starbase_building_build_speed_mult (for buildings)
+#
+# 	orbit_modifier = {
+#		modifier applies to ships in orbit of starbase
+#		show_only_custom_tooltip = yes|no
+#		custom_tooltip = LOC_KEY
+#	}
+#
+# 	country_modifier = {
+#		modifier applies to starbase owner
+#		show_only_custom_tooltip = yes|no
+#		custom_tooltip = LOC_KEY
+#	}
+#
+# 	station_modifier = {
+#		modifier applies to starbase
+#		show_only_custom_tooltip = yes|no
+#		custom_tooltip = LOC_KEY
+#	}
+#
+# 	system_modifier = {
+#		modifier applies across solar system (planets, pops, fleets, ships, deposits)
+#		show_only_custom_tooltip = yes|no
+#		custom_tooltip = LOC_KEY
+#	}
+#
+# 	planet_modifier = {
+#		modifier applies to planet starbase is in orbit of
+#		show_only_custom_tooltip = yes|no
+#		custom_tooltip = LOC_KEY
+#	}
+#
+# 	ship_modifier = {
+#		modifier applies to ships constructed by starbase
+#		show_only_custom_tooltip = yes|no
+#		custom_tooltip = LOC_KEY
+#	}
+#
+# 	defense_platform_modifier = {
+#		modifier applies to defense platforms belonging to this starbase
+#		show_only_custom_tooltip = yes|no
+#		custom_tooltip = LOC_KEY
+#	}
+#
+# 	custom_tooltip = LOC_KEY
+#
+# 	show_in_tech = technology_key
+# 		technology entry to show starbase module in
+#
+# 	triggered_country_modifier = {
+#		potential = {
+#			trigger for triggered modifier
+#			root = starbase
+#		}
+#		modifier applies to starbase owner
+#	}
+#
+# 	triggered_station_modifier = {
+#		potential = {
+#			trigger for triggered modifier
+#			root = starbase
+#		}
+#		modifier applies to starbase
+#	}
+#
+# 	triggered_system_modifier = {
+#		potential = {
+#			trigger for triggered modifier
+#			root = starbase
+#		}
+#		modifier applies across solar system
+#	}
+#
+# 	triggered_planet_modifier = {
+#		potential = {
+#			trigger for triggered modifier
+#			root = starbase
+#		}
+#		modifier applies to planet starbase is in orbit of
+#	}
+#
+#	waystation_network_system_modifier = {
+#		modifier applies to planets and starbases in the systems connected to this waystation network
+#	}
+#	triggered_waystation_network_system_modifier = {
+#		potential = {
+#			trigger for triggered modifier
+#			root = starbase
+#		}
+#		modifier applies to planets and starbases in the systems connected to this waystation network
+#	}
+#
+#	waystation_network_country_modifier = {
+#		modifier applies to every country that is connected to this waystation network
+#	}
+#	triggered_waystation_network_country_modifier = {
+#		potential = {
+#			trigger for triggered modifier
+#			root = starbase
+#		}
+#		modifier applies to every country that is connected to this waystation network
+#	}
+#
+# 	on_queued = {
+#		effect executed when module is placed in construction queue
+#		root = starbase
+#	}
+#
+# 	on_unqueued = {
+#		effect executed when module is removed from construction queue
+#		root = starbase
+#	}
+#
+# 	on_aborted = {
+#		effect executed when module construction is aborted
+#		see abort_construction_trigger
+#		root = starbase
+#	}
+#
+# 	on_finished = {
+#		effect executed when module construction is completed
+#		root = starbase
+#	}
+#
+# 	on_destroyed = {
+#		effect executed when module is removed from starbase
+#		root = starbase
+#	}
+#
+#	scripted_effect_cooldown = 1800			# total days of the cooldown, drives the component icon progress bar
+#	scripted_effect_cooldown_flag = my_flag	# timed starbase flag (set elsewhere) that the cooldown reads
+#	scripted_effect_cooldown_flag_desc = {	# optional triggered desc for the cooldown tooltip line
+#		trigger = {}
+#		text = my_flag_desc
+#	}
+# }
+#
+#
+#	===========================================
+#	MODULE VS BUILDING DIFFERENCES
+#	===========================================
+#
+#	Modules:
+#	  Have a section that determines ship design structure
+#	  Have a component_set for auto equipping weapons/utilities
+#	  Can collect system and colony resources (collected_system_resources, collected_colony_resources) (waystation only)
+#	  Changing a module may trigger a ship design rebuild (if the section changes)
+#	  Default starbase_limit: no limit
+#	  Build speed modifiers: starbase_module_build_speed_mult / starbase_module_build_time_mult
+#
+#	Buildings:
+#	  Have equipped_component entries directly added to the station
+#	  Have a scripted effect cooldown system (scripted_effect_cooldown / scripted_effect_cooldown_flag)
+#	  Cannot collect resources
+#	  Default starbase_limit: 1
+#	  Build speed modifiers: starbase_building_build_speed_mult / starbase_building_build_time_mult
+#
+#
+#	===========================================
+#	SLOT SYSTEM
+#	===========================================
+#
+#	Module and building slots are determined by the starbase level (defined in common/starbase_levels/).
+#	Each level specifies a base number of module and building slots plus named slot types.
+#
+#	Slot count can be increased with modifiers:
+#	  starbase_module_capacity_add    Additional module slots
+#	  starbase_building_capacity_add  Additional building slots
+#
+#	Slot type fitting:
+#	  If fits_on_slots is empty, the component can go in any slot not in cannot_fit_on_slots.
+#	  If fits_on_slots is specified, the component can only go in those slot types.
+#	  Slots beyond the level's defined types accept any component.
+#
+#	Per component capacity:
+#	  starbase_limit controls max instances of this component per starbase (starbase scope).
+#	  empire_limit controls max instances across the entire empire (country scope).
+#
+#
+#	===========================================
+#	STARBASE TYPES
+#	===========================================
+#
+#	Waystation (starbase_type = waystation):
+#	  Can use waystation_network_system_modifier and waystation_network_country_modifier.
+#	  These propagate along wayline connections to all waystations in the network.
+#	  Colony resource collection (collected_colony_resources) only works on waystations.
+#
+#	Arkship (starbase_type = arkship):
+#	  Arkship buildings typically use equipped_component for armor/shields/weapons.
+#	  Typically have no cost/upkeep (nomad economy handles this differently).
+#	  Building category is usually starbase_arkship_upgrades.
+#
+#	Primary starbase (starbase_type = starbase):
+#	  Standard starbases for regular empires.
+#
+#	Orbital ring (starbase_type = orbital_ring):
+#	  Same component system but orbits a specific planet.
+#
+#	Remember: starbase_type only affects technology unlock text. To actually restrict a
+#	component to a starbase type, add a check in the potential block.
+#
+#
+#	===========================================
+#	MODIFIER SCOPES
+#	===========================================
+#
+#	There are 9 modifier scopes available for modules and buildings.
+#	Each can be static (always active) or triggered (conditional via potential block).
+#	Triggered modifiers are evaluated periodically (every few months) for performance.
+#
+#	  station_modifier                          Affects the starbase itself
+#	  country_modifier                          Affects the starbase's owner empire
+#	  system_modifier                           Affects everything in the solar system
+#	  planet_modifier                           Affects planets in the system
+#	  orbit_modifier                            Affects fleets orbiting the starbase
+#	  ship_modifier                             Affects ships constructed at this starbase
+#	  defense_platform_modifier                 Affects defense platforms at this starbase
+#	  waystation_network_system_modifier        Propagates through connected waystation network (system scope)
+#	  waystation_network_country_modifier       Propagates through connected waystation network (country scope)
+#
+#
+#	===========================================
+#	RELEVANT MODIFIERS
+#	===========================================
+#
+#	Capacity:
+#	  starbase_module_capacity_add                    Additional module slots
+#	  starbase_building_capacity_add                  Additional building slots
+#	  starbase_shipyard_capacity_add                  Parallel ship build slots
+#	  starbase_defense_platform_capacity_add / _mult  Defense platform capacity
+#	  starbase_stockpile_capacity_add / _mult         Waystation stockpile capacity
+#
+#	Construction:
+#	  starbase_module_build_speed_mult                Module build speed multiplier
+#	  starbase_module_build_time_mult                 Module build time multiplier
+#	  starbase_building_build_speed_mult              Building build speed multiplier
+#	  starbase_building_build_time_mult               Building build time multiplier
+#	  starbase_upgrade_speed_mult                     Starbase level upgrade speed
+#	  starbase_upgrade_build_time_mult                Starbase level upgrade time
+#	  starbase_upgrade_build_cost_mult                Starbase level upgrade cost
+#	  starbase_shipyard_build_speed_mult              Shipyard build speed
+#
+#	Resource Collection:
+#	  starbase_collected_system_resources_mult         Multiplier for all system resource collection
+#	  starbase_collected_system_<resource>_add          Per resource flat bonus for system collection
+#	  starbase_collected_colony_resources_add           Collection rate for colony resource collection.
+#	                                                     Add to station_modifier / triggered_station_modifier to
+#	                                                     set the rate and display "Monthly Colony Tribute" in the
+#	                                                     module tooltip alongside other station modifiers.
+#	  starbase_collected_colony_<resource>_add          Per-resource additive bonus. Stacks with
+#	                                                     starbase_collected_colony_resources_add for that
+#	                                                     specific resource only.
+#
+#
+#	===========================================
+#	RELATED TRIGGERS
+#	===========================================
+#
+#	has_starbase_module = <starbase_module>
+#		Scope: starbase. Checks if a specific module is installed.
+#
+#	has_starbase_building = <starbase_building>
+#		Scope: starbase. Checks if a specific building is installed.
+#
+#	count_starbase_modules = { type = <module> (optional) count <op> <int> include_being_constructed = yes/no }
+#		Scope: starbase, galactic_object, or country. Counts modules of a type (or all).
+#
+#	count_starbase_buildings = { type = <building> (optional) count <op> <int> include_being_constructed = yes/no }
+#		Scope: starbase, galactic_object, or country. Counts buildings of a type (or all).
+#
+#	has_starbase_size >= <starbase_ship_size>
+#		Scope: starbase. Compares starbase level via ship size. Supports >=, >, <=, <, ==.
+#
+#	is_starbase_type = <starbase_type>
+#		Scope: starbase. Checks starbase type classification (e.g. sfortress, sshipyard).
+#
+#	is_starbase_building_module = <starbase_module>
+#		Scope: starbase. Checks if a module is currently in the construction queue.
+#
+#	is_starbase_building_building = <starbase_building>
+#		Scope: starbase. Checks if a building is currently in the construction queue.
+#
+#	starbase_buildable_is_in_queue_before = { first = <buildable> second = <buildable> }
+#		Scope: starbase. Checks build queue ordering between two buildables.
+#		Returns false if first is not queued or both are not queued.
+#		Returns true if first is queued but second is not.
+#
+#	num_starbases >= <int>
+#		Scope: country. Counts total starbases owned.
+#
+#	count_starbase_sizes = { starbase_size = <ship_size> count <op> <int> }
+#		Scope: country. Counts starbases at a specific size level.
+#
+#	used_defense_platform_capacity_percent < 0.75
+#		Scope: starbase. Ratio (0.0 to 1.0) of defense platform capacity used.
+#
+#	waystation_network_stockpile_used >= 0.5
+#		Scope: starbase. Max stockpile usage ratio across all waystations in the network.
+#
+#	waystation_has_remote_collection = yes/no
+#		Scope: starbase. Whether this waystation has remote stockpile collection.
+#
+#	waystation_network_has_remote_collection = yes/no
+#		Scope: starbase. Whether any waystation in the network has remote collection.
+#
+#	starbase_network_size < <int>
+#		Scope: starbase. Number of starbases in the same waystation network.
+#
+#
+#	===========================================
+#	RELATED EFFECTS
+#	===========================================
+#
+#	create_starbase = { owner = <target> size = <ship_size> module = <module> building = <building> effect = { ... } }
+#		Scope: galactic_object or planet. Creates a new starbase. Module/building entries are repeatable.
+#		The effect = {} block runs in the new starbase's scope after creation.
+#
+#	set_starbase_module = { slot = <int> module = <starbase_module> }
+#		Scope: starbase. Places a module in a specific slot. Slot is 1 indexed.
+#
+#	set_starbase_building = { slot = <int> building = <starbase_building> }
+#		Scope: starbase. Places a building in a specific slot. Slot is 1 indexed.
+#
+#	remove_starbase_module = { slot = <int>/all  module = <starbase_module>/all }
+#		Scope: starbase. Removes module(s). Both params optional, default: all. Slot is 1 indexed.
+#		When both specified, only removes modules of that type in those slots.
+#
+#	remove_starbase_building = { slot = <int>/all  building = <starbase_building>/all }
+#		Scope: starbase. Removes building(s). Both params optional, default: all. Slot is 1 indexed.
+#
+#	remove_random_starbase_module = { type = <starbase_module>/all  count = <int> }
+#		Scope: starbase. Removes N random modules matching a type. Defaults: type = all, count = 1.
+#
+#	remove_random_starbase_building = { type = <starbase_building>/all  count = <int> }
+#		Scope: starbase. Removes N random buildings matching a type. Defaults: type = all, count = 1.
+#
+#	set_starbase_size = <ship_size>
+#		Scope: starbase. Changes the starbase's level/ship size.
+#
+#	add_starbase_component = { component = <component_key> }
+#		Scope: starbase. Adds a standalone ship component (not part of a module or building).
+#
+#	remove_starbase_component = { component = <component_key> }
+#		Scope: starbase. Removes a standalone ship component.
+#
+#	set_ship_construction_type = <starbase_type>/none
+#		Scope: starbase. Sets the starbase's construction type preference.
