@@ -1,0 +1,5 @@
+# Reinforced Plating doctrine field; sits on the starbase fleet so it covers its defensive platforms.
+defense_platform_reinforced_field = {
+	icon = "gfx/interface/icons/modifiers/mod_ship_damage_reduction_mult.dds"
+	ship_damage_reduction_mult = 0.15
+}

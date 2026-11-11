@@ -1,0 +1,701 @@
+####################
+# OPINION MODIFIERS
+####################
+
+opinion_dyson_gun_target = {
+	opinion = {
+		base = -1000
+	}
+	accumulative = yes
+	min = -5000
+	decay = {
+		base = 0.5
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+	}
+}
+
+opinion_dyson_gun_observer = {
+	opinion = {
+		base = -50
+	}
+	accumulative = yes
+	min = -5000
+	decay = {
+		base = 0.5
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+	}
+}
+
+opinion_unlicensed_waystations = {
+	min = -200
+	trigger = {
+		from = {
+			is_nomadic = yes
+			any_owned_ship = {
+				is_waystation_ship = yes
+				space_owner? = {
+					is_same_value = root
+				}
+				NOT = {
+					solar_system = {
+						has_star_flag = waystation_contract_system@this
+					}
+				}
+			}
+		}
+		NOT = {
+			benefits_from_waystation_network = {
+				NOMAD = from
+				SYSTEM_OWNER = root
+			}
+		}
+		NAND = {
+				root = { is_fallen_empire_spiritualist = yes }
+				from = { has_relic = r_severed_head }
+		}
+	}
+
+	opinion = {
+		base = -10		# Penalty per Waystation
+		mult = value:num_waystations_in_country_opinion_scaled|OWNER|from|
+	}
+}
+
+opinion_waystation_looted_detected = {
+	opinion = {
+		base = -75
+	}
+	accumulative = yes
+	decay = {
+		base = 1.5
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+	}
+}
+
+opinion_waystation_destroyed_detected = {
+	opinion = {
+		base = -200
+	}
+	accumulative = yes
+	decay = {
+		base = 1
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+	}
+}
+
+opinion_waystation_piracy = {
+	opinion = {
+		base = -25
+	}
+
+	accumulative = yes
+
+	min = -250
+	decay = {
+		base = 2.5
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+	}
+}
+
+# They revoked our waystation rights
+# Called from code, do not rename
+opinion_cancelled_waystation_pact = {
+	opinion = {
+		base = 0
+		modifier = {
+			add = -50
+			from = { is_nomadic = yes }
+			this = { is_nomadic = yes }
+		}
+		modifier = {
+			add = -15
+			from = { is_nomadic = yes }
+			this = { is_nomadic = no }
+		}
+		modifier = {
+			add = value:num_waystations_cancelled_pact_penalty|OWNER|from|
+			from = { is_nomadic = yes }
+			this = { is_nomadic = no }
+		}
+		modifier = {
+			add = -15
+			this = { is_nomadic = yes }
+			from = { is_nomadic = no }
+		}
+		modifier = {
+			add = from.value:num_waystations_cancelled_pact_penalty|OWNER|prev|
+			this = { is_nomadic = yes }
+			from = { is_nomadic = no }
+		}
+	}
+
+	accumulative = yes
+
+	decay = {
+		base = 2
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+	}
+}
+
+opinion_arkship_harvested_resources = {
+	opinion = {
+		base = @arkship_harvest_resources_opinion_penalty
+	}
+
+	accumulative = yes
+
+	min = -1000
+	decay = {
+		base = 1.25
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+	}
+}
+
+opinion_arkship_strip_mine = {
+	opinion = {
+		base = @arkship_strip_mine_opinion_penalty
+	}
+
+	accumulative = yes
+
+	min = -1000
+	decay = {
+		base = 2.0
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+	}
+}
+
+opinion_arkship_reprocess_planet = {
+	opinion = {
+		base = @arkship_reprocess_planet_opinion_penalty
+	}
+
+	accumulative = yes
+
+	min = -1000
+	decay = {
+		base = 1.5
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+	}
+}
+
+opinion_arkship_nanotech_consume_world = {
+	opinion = {
+		base = @arkship_nanite_consume_world_opinion_penalty
+	}
+
+	accumulative = yes
+
+	min = -1000
+	decay = {
+		base = 1.0
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+		modifier = { # Fellow Nanite empires understand your desire bur are still a bit upset with you
+			factor = 2
+			has_tradition = tr_nanotech_adopt
+		}
+	}
+}
+
+opinion_arkship_exodus_jump = {
+	opinion = {
+		base = @arkship_exodus_jump_opinion_penalty
+	}
+
+	accumulative = yes
+
+	min = -1000
+	decay = {
+		base = 1.0
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+	}
+}
+
+opinion_returned_contract_chance_find = {
+	opinion = {
+		base = 50
+	}
+	unique = yes
+
+	decay = {
+		base = 2.5
+		modifier = {
+			add = 0.5
+			has_ethic = "ethic_fanatic_xenophobe"
+		}
+
+		modifier = {
+			add = 1
+			has_ethic = "ethic_xenophobe"
+		}
+
+		modifier = {
+			add = -0.5
+			has_ethic = "ethic_xenophile"
+		}
+
+		modifier = {
+			add = -1
+			has_ethic = "ethic_fanatic_xenophile"
+		}
+
+		modifier = {
+			factor = value:positive_opinion_decay_rate
+		}
+	}
+}
+
+opinion_abused_contract = {
+	opinion = {
+		base = -50
+	}
+	decay = {
+		base = 0.5
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+	}
+}
+
+opinion_abused_contract_2 = {
+	opinion = {
+		base = -75
+	}
+	decay = {
+		base = 0.5
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+	}
+}
+
+opinion_arkship_breaching_borders = {
+    opinion = {
+        base = -50
+		modifier = {
+			factor = 0.5
+			from = { has_modifier = agenda_we_come_in_peace_nomads_finish }
+		}
+		modifier = {
+			factor = 0.25
+			space_owner = { is_fallen_empire = yes }
+		}
+    }
+	trigger = {
+		from = {
+			is_nomadic = yes
+			any_owned_fleet= {
+				is_arkship_fleet = yes
+				exists = space_owner
+				space_owner = {
+					is_same_value = root
+				}
+			}
+		}
+		NOT = {
+			exists = space_owner
+			space_owner = {
+				is_same_value = root
+				is_fallen_empire_spiritualist = yes
+			}
+			from = {
+				is_nomadic = yes
+				has_relic = r_severed_head
+			}
+		}
+	}
+    accumulative = yes
+    min = -1000
+    decay = {
+		base = 2.5
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+	}
+}
+
+opinion_arkship_archeological_theft = {
+    opinion = {
+        base = -100
+		modifier = {
+			factor = 1.5
+			OR = {
+				# Either we've closed borders to them
+				has_closed_borders = from
+				# Or recently expelled them
+				from = {
+					has_truce = root
+					has_country_flag = expelled_from_@root
+				}
+			}
+		}
+    }
+    accumulative = yes
+    min = -500
+    decay = {
+		base = 1
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+	}
+}
+
+opinion_completed_contract_small = {
+	opinion = {
+		base = @opinion_contract_small
+	}
+	accumulative = yes
+	decay = {
+		base = 0.75
+		modifier = {
+			factor = value:positive_opinion_decay_rate
+		}
+	}
+}
+
+opinion_completed_contract_regular = {
+	opinion = {
+		base = @opinion_contract_regular
+	}
+	accumulative = yes
+	decay = {
+		base = 0.75
+		modifier = {
+			factor = value:positive_opinion_decay_rate
+		}
+	}
+}
+
+opinion_completed_contract_large = {
+	opinion = {
+		base = @opinion_contract_large
+	}
+	accumulative = yes
+	decay = {
+		base = 0.75
+		modifier = {
+			factor = value:positive_opinion_decay_rate
+		}
+	}
+}
+
+opinion_failed_contract_small = {
+	opinion = {
+		base = @opinion_failed_contract_small
+	}
+	accumulative = yes
+	decay = {
+		base = 0.5
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+	}
+}
+
+opinion_failed_contract_regular = {
+	opinion = {
+		base = @opinion_failed_contract_regular
+	}
+	accumulative = yes
+	decay = {
+		base = 0.5
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+	}
+}
+
+opinion_failed_contract_large = {
+	opinion = {
+		base = @opinion_failed_contract_large
+	}
+	accumulative = yes
+	decay = {
+		base = 0.5
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+	}
+}
+
+opinion_diplomacy_contract_small = {
+	opinion = {
+		base = 75
+	}
+	accumulative = no
+	decay = {
+		base = 5
+		modifier = {
+			factor = value:positive_opinion_decay_rate
+		}
+	}
+}
+
+opinion_diplomacy_contract = {
+	opinion = {
+		base = 125
+	}
+	accumulative = no
+	decay = {
+		base = 5
+		modifier = {
+			factor = value:positive_opinion_decay_rate
+		}
+	}
+}
+
+opinion_diplomacy_contract_large = {
+	opinion = {
+		base = 200
+	}
+	accumulative = no
+	decay = {
+		base = 5
+		modifier = {
+			factor = value:positive_opinion_decay_rate
+		}
+	}
+}
+
+opinion_dropped_off_prisoners = {
+	opinion = {
+		base = -75
+	}
+	accumulative = yes
+	decay = {
+		base = 1
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+	}
+}
+
+opinion_dropped_off_our_prisoners = {
+	opinion = {
+		base = -150
+	}
+	accumulative = yes
+	decay = {
+		base = 1
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+	}
+}
+
+triggered_opinion_cfl_destroyer_trophy = {
+	trigger = {
+		is_diplomatic = yes
+		is_country_type = default
+		NOT = {
+			has_country_flag = champions_forge_stop_invitations
+		}
+		FROM = {
+			has_relic = r_tarnished_cfl_trophy
+			has_country_flag = champions_forge_destroyer
+		}
+	}
+	opinion = {
+		base = -50
+	}
+}
+
+opinion_head_of_zarqlan_nomad = {
+	trigger = {
+		is_spiritualist = yes
+		OR = {
+			is_country_type = fallen_empire
+			is_country_type = awakened_fallen_empire
+		}
+		FROM = {
+			has_relic = r_severed_head
+		}
+	}
+	opinion = {
+		base = 150
+	}
+}
+
+opinion_unexpected_cargo_negative = {
+    opinion = {
+        base = -35
+    }
+    decay = {
+		base = 0.5
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+	}
+}
+
+opinion_unexpected_cargo_positive = {
+    opinion = {
+        base = 50
+    }
+    decay = {
+		base = 0.5
+		modifier = {
+			factor = value:positive_opinion_decay_rate
+		}
+	}
+}
+
+##############################
+# Nomad Deterrence reputation
+##############################
+
+opinion_arkship_raid_purge_pops_known = {
+	trigger = {
+		is_nomadic = yes
+		from = {
+			is_nomadic = no
+			has_policy_flag = arkship_raid_purge_pops
+		}
+	}
+	opinion = {
+		base = @arkship_raid_purge_pops_reputation
+	}
+}
+
+opinion_arkship_raid_relocate_pops_known = {
+	trigger = {
+		is_nomadic = yes
+		from = {
+			is_nomadic = no
+			has_policy_flag = arkship_raid_relocate_pops
+		}
+	}
+	opinion = {
+		base = @arkship_raid_relocate_pops_reputation
+	}
+}
+
+opinion_arkship_raid_strip_districts_known = {
+	trigger = {
+		is_nomadic = yes
+		from = {
+			is_nomadic = no
+			has_policy_flag = arkship_raid_strip_districts
+		}
+	}
+	opinion = {
+		base = @arkship_raid_strip_districts_reputation
+	}
+}
+
+opinion_arkship_raid_do_no_harm_known = {
+	trigger = {
+		is_nomadic = yes
+		from = {
+			is_nomadic = no
+			has_policy_flag = arkship_raid_do_no_harm
+		}
+	}
+	opinion = {
+		base = @arkship_raid_do_no_harm_reputation
+	}
+}
+
+opinion_arkship_raid_purge_pops_xenophile = {
+	trigger = {
+		is_nomadic = no
+		is_xenophile = yes
+		from = {
+			is_nomadic = no
+			has_policy_flag = arkship_raid_purge_pops
+		}
+	}
+	opinion = {
+		base = @arkship_raid_purge_xenophile_penalty
+		modifier = {
+			add = @arkship_raid_purge_fanatic_xenophile_penalty
+			has_ethic = ethic_fanatic_xenophile
+		}
+	}
+}
+
+opinion_arkship_raid_purge_pops_xenophobe = {
+	trigger = {
+		is_nomadic = no
+		is_xenophobe = yes
+		from = {
+			is_nomadic = no
+			has_policy_flag = arkship_raid_purge_pops
+		}
+	}
+	opinion = {
+		base = @arkship_raid_purge_xenophobe_bonus
+		modifier = {
+			add = @arkship_raid_purge_fanatic_xenophobe_bonus
+			has_ethic = ethic_fanatic_xenophobe
+		}
+	}
+}
+
+##############################
+# Nomad Deterrence per-incident grievance
+##############################
+
+opinion_arkship_raid_purged = {
+	opinion = {
+		base = @arkship_raid_purged_incident
+	}
+	accumulative = yes
+	min = -1000
+	decay = {
+		base = 1.0
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+	}
+}
+
+opinion_arkship_raid_conscripted = {
+	opinion = {
+		base = @arkship_raid_conscripted_incident
+	}
+	accumulative = yes
+	min = -500
+	decay = {
+		base = 1
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+	}
+}
+
+opinion_arkship_raid_stripped = {
+	opinion = {
+		base = @arkship_raid_stripped_incident
+	}
+	accumulative = yes
+	min = -300
+	decay = {
+		base = 1.5
+		modifier = {
+			factor = value:negative_opinion_decay_rate
+		}
+	}
+}

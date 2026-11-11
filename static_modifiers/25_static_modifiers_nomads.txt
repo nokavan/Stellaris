@@ -1,0 +1,1400 @@
+### NOMADS modifiers ###
+
+#icon_frame = 1 # green frame
+#icon_frame = 2 # yellow frame
+#icon_frame = 3 # red frame
+
+##########################################################################
+# Empire Modifiers
+##########################################################################
+
+mobile = {
+	planet_jobs_unity_produces_mult   = 0.75   # immaterial bonus
+	planet_jobs_physics_research_produces_mult = 0.75
+	planet_jobs_society_research_produces_mult = 0.75
+	planet_jobs_engineering_research_produces_mult = 0.75
+	planet_jobs_energy_produces_mult   = -0.75  # material -75 %
+	planet_jobs_minerals_produces_mult = -0.75
+	planet_jobs_food_produces_mult     = -0.75
+	planet_jobs_consumer_goods_produces_mult = -0.75
+	planet_jobs_alloys_produces_mult   = -0.75
+	planet_jobs_trade_produces_mult   = -0.75
+    icon = "gfx/interface/icons/planet_modifiers/pm_mobile.dds"
+}
+
+stationary = {
+	planet_jobs_energy_produces_mult   = 0.75  # material +75 %
+	planet_jobs_minerals_produces_mult = 0.75
+	planet_jobs_food_produces_mult     = 0.75
+	planet_jobs_consumer_goods_produces_mult = 0.75
+	planet_jobs_alloys_produces_mult   = 0.75
+	planet_jobs_trade_produces_mult   = 0.75
+	planet_jobs_unity_produces_mult    = -0.75 # immaterial -75 %
+	planet_jobs_physics_research_produces_mult = -0.75
+	planet_jobs_society_research_produces_mult = -0.75
+	planet_jobs_engineering_research_produces_mult = -0.75
+	icon = "gfx/interface/icons/planet_modifiers/pm_stationary.dds"
+}
+
+# Anti Crisis modifiers
+crisis_analysis_upkeep_modifier = {
+	country_energy_produces_mult = -0.1
+	all_technology_research_speed = -0.05
+}
+
+	#Remember to update the loc in ambitions_l_english if you change the numbers
+crisis_analysis_khan_modifier = {
+	weapon_type_kinetic_weapon_damage_mult = -0.15
+	ship_speed_mult = -0.1
+}
+
+crisis_analysis_tempest_modifier = {
+	strike_craft_armor_mult = -0.5
+	ship_armor_mult = -0.15
+}
+
+crisis_analysis_voidworms_modifier = {
+	weapon_type_explosive_weapon_damage_mult = -0.2
+	ship_speed_mult = -0.1
+}
+
+crisis_analysis_cetana_modifier = {
+	ship_weapon_range_mult = -0.4
+	ship_accuracy_mult = -0.2
+}
+
+crisis_analysis_prethoryn_modifier = {
+	ship_evasion_mult = -0.2
+	ship_armor_mult = -0.10
+}
+
+crisis_analysis_contingency_modifier = {
+	weapon_type_energy_weapon_damage_mult = -0.2
+	ship_weapon_range_mult = -0.2
+}
+
+crisis_analysis_unbidden_modifier = {
+	ship_shield_hardening_add = -0.2
+	weapon_type_energy_weapon_damage_mult = -0.2
+}
+
+#crisis_analysis_cosmogenesis_modifier = {
+#	all_technology_research_speed = -0.25
+#	ship_military_upkeep_mult = 0.25
+#}
+#
+#crisis_analysis_nemesis_modifier = {
+#
+#}
+#
+#crisis_analysis_behemoth_modifier = {
+#}
+#
+#crisis_analysis_hyperthermia_modifier = {
+#}
+#
+#crisis_analysis_endofcycle_modifier = {
+#}
+#
+#crisis_analysis_endofcyclecultists_modifier = {
+#}
+
+# Paladins
+paladin_super_shield = {
+	ship_shield_mult = 10
+	ship_shield_regen_add_perc = 0.75
+	ship_shield_hardening_add = 0.15
+}
+
+paladin_air_superiority = {
+	weapon_type_point_defense_weapon_damage_mult = -0.85
+	weapon_type_strike_craft_weapon_damage_mult = -0.85
+	strike_craft_regeneration_mult = -0.85
+}
+
+paladin_plan_b = {
+	ship_damage_reduction_add = 10
+	ship_disengage_chance_mult = 2
+	ship_shield_penetration_mult = 0.25
+	ship_armor_penetration_mult = 0.25
+	ship_accuracy_mult = 0.5
+}
+
+paladin_sudden_strike = {
+	ship_fire_rate_mult = 0.3
+	ship_shield_penetration_mult = 0.75
+	ship_armor_penetration_mult = 0.75
+	ship_accuracy_mult = 0.2
+}
+
+paladin_field_repairs = {
+	ship_hull_regen_add_perc = 0.1
+	ship_armor_regen_add_perc = 0.1
+	ship_armor_hardening_add = 0.15
+}
+
+paladin_taunt = {
+	ship_damage_reduction_mult = 0.45
+	ship_damage_reduction_add = 35
+	ship_target_weight_mult = 10
+}
+
+paladin_hold_the_line = {
+	ship_fire_rate_mult = 0.25
+	ship_damage_reduction_add = 25
+	ship_size_damage_factor = 0.05
+	ship_disengage_chance_mult = -0.75
+}
+
+paladin_for_the_order = {
+	ship_fire_rate_mult = 0.30
+	ship_damage_reduction_add = 30
+	ship_size_damage_factor = 0.075
+	ship_disengage_chance_mult = -1.25
+}
+
+paladin_teamwork = {
+	ship_damage_reduction_mult = 0.075
+	ship_fire_rate_mult = 0.075
+	ship_evasion_mult = 0.075
+}
+
+paladin_leadership = {
+	ship_weapon_range_mult = 0.2
+	ship_weapon_damage = 0.2
+	ship_speed_mult = 0.2
+}
+
+paladin_harmonic_disruption = {
+	ship_weapon_range_mult = -0.2
+	ship_weapon_damage = -0.2
+	ship_speed_mult = -0.2
+}
+
+# Champions Forge Live Enclave Modifiers
+
+cfl_trophy = {
+	custom_tooltip = cfl_trophy_tt
+	show_only_custom_tooltip = yes
+	tradition_cost_mult = -0.999999999
+}
+
+tarnished_cfl_trophy = {
+	custom_tooltip = tarnished_cfl_trophy_tt
+	show_only_custom_tooltip = yes
+	tradition_cost_mult = -0.90
+}
+
+cfl_combat_data = {
+	damage_vs_rival_mult = 0.15
+}
+
+# Heirs of the Khan Modifiers
+
+heirs_battlestations = {
+	ship_fire_rate_mult = 0.1
+}
+
+heirs_evasive_actions = {
+	ship_speed_mult = 0.1
+	ship_windup_mult = 0.1
+}
+
+khans_forever = {
+	icon = "gfx/interface/icons/modifiers/cost_of_freedom_penalty.dds"
+	monthly_loyalty_from_subjects = -5
+}
+
+marauder_friend_discount = {
+	mod_ship_naval_cap_usage_mult = -0.75
+	ships_energy_upkeep_mult = -0.75
+}
+
+# The Sacred Path Modifiers
+
+first_light_guidance = {
+	icon = "gfx/interface/icons/jobs/job_sacred_path_elite.dds"
+	show_only_custom_tooltip = no
+	custom_tooltip = first_light_guidance_tt
+	planet_sacred_path_elites_unity_produces_add = 2
+#	planet_sacred_path_elites_stability_produces_add = 0.25	# See custom tooltip
+	planet_sacred_path_elites_consumer_goods_upkeep_add = 1
+	pop_ethic_spiritualist_attraction_mult = 0.1
+}
+
+incomplete_texts = {
+	icon = "gfx/interface/icons/jobs/job_sacred_path_specialist.dds"
+	planet_sacred_path_specialists_physics_research_produces_add = 0.25
+	planet_sacred_path_specialists_society_research_produces_add = 0.25
+	planet_sacred_path_specialists_engineering_research_produces_add = 0.25
+	planet_sacred_path_specialists_consumer_goods_upkeep_add = 0.5
+}
+
+incomplete_texts_2 = {
+	icon = "gfx/interface/icons/jobs/job_sacred_path_specialist.dds"
+	planet_sacred_path_specialists_physics_research_produces_add = 0.5
+	planet_sacred_path_specialists_society_research_produces_add = 0.5
+	planet_sacred_path_specialists_engineering_research_produces_add = 0.5
+	planet_sacred_path_specialists_consumer_goods_upkeep_add = 1
+}
+
+incomplete_texts_3 = {
+	icon = "gfx/interface/icons/jobs/job_sacred_path_specialist.dds"
+	planet_sacred_path_specialists_physics_research_produces_add = 0.75
+	planet_sacred_path_specialists_society_research_produces_add = 0.75
+	planet_sacred_path_specialists_engineering_research_produces_add = 0.75
+	planet_sacred_path_specialists_consumer_goods_upkeep_add = 1.5
+}
+
+glorious_pilgrims = {
+	icon = "gfx/interface/icons/jobs/job_sacred_path_elite.dds"
+	show_only_custom_tooltip = no
+	custom_tooltip = glorious_pilgrims_tt
+	planet_sacred_path_elites_unity_produces_add = 2
+	planet_sacred_path_elites_consumer_goods_upkeep_add = 1
+}
+
+glorious_pilgrims_2 = {
+	icon = "gfx/interface/icons/jobs/job_sacred_path_elite.dds"
+	show_only_custom_tooltip = no
+	custom_tooltip = glorious_pilgrims_tt
+	planet_sacred_path_elites_unity_produces_add = 3
+	planet_sacred_path_elites_consumer_goods_upkeep_add = 1.5
+}
+
+deeply_devoted = {
+	icon = "gfx/interface/icons/jobs/job_sacred_path_specialist.dds"
+	show_only_custom_tooltip = no
+	custom_tooltip = deeply_devoted_tt
+	planet_sacred_path_specialists_consumer_goods_upkeep_add = 0.25
+}
+
+deeply_devoted_2 = {
+	icon = "gfx/interface/icons/jobs/job_sacred_path_specialist.dds"
+	show_only_custom_tooltip = no
+	custom_tooltip = deeply_devoted_2_tt
+	planet_sacred_path_specialists_consumer_goods_upkeep_add = 0.5
+}
+
+forever_faithful = {
+	icon = "gfx/interface/icons/jobs/job_sacred_path_civilian.dds"
+	show_only_custom_tooltip = no
+	custom_tooltip = forever_faithful_tt
+	planet_sacred_path_civilians_energy_produces_add = 0.25
+	planet_sacred_path_civilians_minerals_produces_add = 0.25
+	planet_sacred_path_civilians_food_produces_add = 0.25
+	planet_sacred_path_civilians_unity_upkeep_add = 0.05
+}
+
+forever_faithful_2 = {
+	icon = "gfx/interface/icons/jobs/job_sacred_path_civilian.dds"
+	show_only_custom_tooltip = no
+	custom_tooltip = forever_faithful_tt
+	planet_sacred_path_civilians_energy_produces_add = 0.5
+	planet_sacred_path_civilians_minerals_produces_add = 0.5
+	planet_sacred_path_civilians_food_produces_add = 0.5
+	planet_sacred_path_civilians_unity_upkeep_add = 0.1
+}
+
+forever_faithful_lithoid = {
+	icon = "gfx/interface/icons/jobs/job_sacred_path_civilian.dds"
+	show_only_custom_tooltip = no
+	custom_tooltip = forever_faithful_tt
+	planet_sacred_path_civilians_energy_produces_add = 0.375
+	planet_sacred_path_civilians_minerals_produces_add = 0.375
+	planet_sacred_path_civilians_unity_upkeep_add = 0.05
+}
+
+forever_faithful_lithoid_2 = {
+	icon = "gfx/interface/icons/jobs/job_sacred_path_civilian.dds"
+	show_only_custom_tooltip = no
+	custom_tooltip = forever_faithful_tt
+	planet_sacred_path_civilians_energy_produces_add = 0.75
+	planet_sacred_path_civilians_minerals_produces_add = 0.75
+	planet_sacred_path_civilians_unity_upkeep_add = 0.1
+}
+
+forever_faithful_infernal = {
+	icon = "gfx/interface/icons/jobs/job_sacred_path_civilian.dds"
+	show_only_custom_tooltip = no
+	custom_tooltip = forever_faithful_tt
+	planet_sacred_path_civilians_energy_produces_add = 0.25
+	planet_sacred_path_civilians_minerals_produces_add = 0.25
+	planet_sacred_path_civilians_alloys_produces_add = 0.125
+	planet_sacred_path_civilians_unity_upkeep_add = 0.05
+}
+
+forever_faithful_infernal_2 = {
+	icon = "gfx/interface/icons/jobs/job_sacred_path_civilian.dds"
+	show_only_custom_tooltip = no
+	custom_tooltip = forever_faithful_tt
+	planet_sacred_path_civilians_energy_produces_add = 0.5
+	planet_sacred_path_civilians_minerals_produces_add = 0.5
+	planet_sacred_path_civilians_alloys_produces_add = 0.15
+	planet_sacred_path_civilians_unity_upkeep_add = 0.1
+}
+
+spiritual_equality_pilgrims = {
+	icon = "gfx/interface/icons/jobs/job_sacred_path_elite.dds"
+	planet_sacred_path_elites_unity_produces_add = 2
+	planet_sacred_path_elites_consumer_goods_upkeep_add = 1
+}
+
+spiritual_equality_devoted = {
+	icon = "gfx/interface/icons/jobs/job_sacred_path_specialist.dds"
+	show_only_custom_tooltip = no
+	custom_tooltip = spiritual_equality_devoted_tt
+	planet_sacred_path_specialists_consumer_goods_upkeep_add = 0.25
+}
+
+spiritual_equality_faithful = {
+	icon = "gfx/interface/icons/jobs/job_sacred_path_civilian.dds"
+	planet_sacred_path_civilians_energy_produces_add = 0.25
+	planet_sacred_path_civilians_minerals_produces_add = 0.25
+	planet_sacred_path_civilians_food_produces_add = 0.25
+	planet_sacred_path_civilians_unity_upkeep_add = 0.05
+}
+
+spiritual_equality_faithful_lithoid = {
+	icon = "gfx/interface/icons/jobs/job_sacred_path_civilian.dds"
+	planet_sacred_path_civilians_energy_produces_add = 0.375
+	planet_sacred_path_civilians_minerals_produces_add = 0.375
+	planet_sacred_path_civilians_unity_upkeep_add = 0.05
+}
+
+spiritual_equality_faithful_infernal = {
+	icon = "gfx/interface/icons/jobs/job_sacred_path_civilian.dds"
+	planet_sacred_path_civilians_energy_produces_add = 0.25
+	planet_sacred_path_civilians_minerals_produces_add = 0.25
+	planet_sacred_path_civilians_alloys_produces_add = 0.125
+	planet_sacred_path_civilians_unity_upkeep_add = 0.05
+}
+
+staunch_traditionalists = {
+	icon = "gfx/interface/icons/jobs/job_sacred_path_elite.dds"
+	planet_sacred_path_elites_unity_produces_add = 3
+	planet_sacred_path_elites_consumer_goods_upkeep_add = 1
+	pop_ethic_spiritualist_attraction_mult = 0.5
+}
+
+secular_murmurs = {
+	icon = "gfx/interface/icons/jobs/job_sacred_path_specialist.dds"
+	planet_sacred_path_specialists_physics_research_produces_add = 0.5
+	planet_sacred_path_specialists_society_research_produces_add = 0.5
+	planet_sacred_path_specialists_engineering_research_produces_add = 0.5
+	planet_sacred_path_specialists_consumer_goods_upkeep_add = 1
+}
+
+nondenominational_worship = {
+	pop_factions_produces_mult = 0.10
+	faction_demands_unmet_mult = -0.25
+	faction_demands_met_mult = 0.25
+}
+
+heretical_factionalism = {
+	faction_demands_unmet_mult = 0.25
+	sacred_path_jobs_bonus_workforce_mult = 0.10
+}
+
+joyous_enlightenment = {
+	custom_tooltip = joyous_enlightenment_tt
+	show_only_custom_tooltip = no
+	diplo_weight_mult = 0.1
+	country_unity_produces_mult = 0.1
+}
+
+middle_path = {
+	custom_tooltip = middle_path_tt
+	show_only_custom_tooltip = no
+	country_trust_cap_add = 25
+	country_trust_growth = 0.5
+	add_base_country_intel = 10
+	intel_gain_speed = 0.5
+}
+
+embracing_chaos = {
+	custom_tooltip = embracing_chaos_tt
+	show_only_custom_tooltip = no
+	ship_armor_hardening_add = 0.1
+	ship_shield_hardening_add = 0.1
+	ship_evasion_add = 5
+	ship_windup_mult = -0.10
+}
+
+steadfast_path = {
+	show_only_custom_tooltip = no
+	pop_happiness = 0.05
+	planet_crime_add = -5
+}
+
+steadfast_path_2 = {
+	show_only_custom_tooltip = no
+	pop_happiness = 0.1
+	planet_crime_add = -10
+}
+
+steadfast_path_3 = {
+	show_only_custom_tooltip = no
+	pop_happiness = 0.15
+	planet_crime_add = -15
+}
+
+sacred_substantiation = {
+	show_only_custom_tooltip = no
+	pop_ethic_authoritarian_attraction_mult = 0.25
+}
+
+historical_truth = {
+	show_only_custom_tooltip = no
+	pop_ethic_egalitarian_attraction_mult = 0.25
+}
+
+the_sacred_eye = {
+	show_only_custom_tooltip = no
+	planet_sacred_path_elites_physics_research_produces_add = 1
+	planet_sacred_path_elites_society_research_produces_add = 1
+	planet_sacred_path_elites_engineering_research_produces_add = 1
+	planet_sacred_path_elites_consumer_goods_upkeep_add = 2
+}
+
+mechsiah_blessings = {
+	science_ship_survey_speed = 0.1
+	ship_anomaly_research_speed_mult = 0.1
+}
+
+deity_detonators = {
+	army_damage_mult = 0.1
+}
+
+sealed_vaults = {
+	show_only_custom_tooltip = no
+	planet_crime_mult = -0.15
+}
+
+screaming_void = {
+	show_only_custom_tooltip = no
+	planet_crime_mult = -0.25
+}
+
+beastly_remains = {
+	show_only_custom_tooltip = no
+	planet_jobs_unity_produces_mult = 0.1
+	pop_ethic_spiritualist_attraction_mult = 0.05
+	planet_crime_add = -1
+}
+
+sacred_path_jobs_bonus_workforce_mult = {
+    custom_tooltip = sacred_path_jobs_bonus_workforce_mult_tt
+	pop_politician_bonus_workforce_mult = 1
+    pop_bureaucrat_bonus_workforce_mult = 1
+    pop_civilian_bonus_workforce_mult = 1
+}
+
+strike_craft_modifier = {
+	custom_tooltip = strike_craft_modifier_tt
+	strike_craft_count_add = 20
+}
+
+# Arkship Event Modifiers
+
+black_crystal_no_grand_archive = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_ship_in_orbit.dds"
+	icon_frame = 1
+	pop_happiness = 0.10
+}
+
+black_crystal_engine_speed = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_ship_in_orbit.dds"
+	icon_frame = 1
+	ship_speed_mult = 0.2
+	ship_evasion_mult = 0.1
+}
+
+mysterious_doll = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_engineering_research.dds"
+	icon_frame = 1
+	planet_jobs_physics_research_produces_mult = 0.05
+}
+
+happy_giants = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_atmospheric_aphrodisiac.dds"
+	icon_frame = 1
+	pop_happiness = 0.1
+	planet_crime_add = -5
+}
+
+dirty_generator = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_resentful_population.dds"
+	icon_frame = 3
+	planet_technician_energy_produces_add = -1
+}
+
+underclocked_generator = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_time_acceleration.dds"
+	icon_frame = 3
+	ship_speed_mult = -0.25
+	ship_windup_mult = 0.5
+}
+
+flight_telemetry = {
+	ship_windup_mult = -0.2
+	ship_speed_mult = 0.1
+	ship_evasion_mult = 0.05
+}
+
+module_recycling = {
+	starbase_module_build_speed_mult = 1
+	starbase_modules_cost_mult = -0.2
+}
+
+# Arkship Actions
+
+stellar_ignition_mod = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_stellar_ignition.dds"
+	station_gatherers_produces_mult = @stellar_ignition_mod
+	station_researchers_produces_mult = @stellar_ignition_mod
+	custom_tooltip = stellar_ignition_mod_tt
+	show_only_custom_tooltip = no
+}
+
+stellar_ignition_habitability_mod_1 = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_stellar_ignition.dds"
+	pop_environment_tolerance = @stellar_ignition_hab_penalty
+}
+
+stellar_ignition_habitability_mod_2 = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_stellar_ignition.dds"
+	pop_environment_tolerance = @[ stellar_ignition_hab_penalty * 2 ]
+}
+
+stellar_ignition_habitability_mod_3 = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_stellar_ignition.dds"
+	pop_environment_tolerance = @[ stellar_ignition_hab_penalty * 3 ]
+}
+
+stellar_ignition_habitability_mod_4 = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_stellar_ignition.dds"
+	pop_environment_tolerance = @[ stellar_ignition_hab_penalty * 4 ]
+}
+
+stellar_ignition_habitability_mod_5 = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_stellar_ignition.dds"
+	pop_environment_tolerance = @[ stellar_ignition_hab_penalty * 5 ]
+}
+
+harvested_resources_mining = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_arkship_harvested_resources.dds"
+	icon_frame = 3
+	station_gatherers_produces_mult = @arkship_harvest_resources_station_penalty
+	custom_tooltip = harvested_resources_mining_tt
+	show_only_custom_tooltip = no
+}
+
+caeli_core_conspiracy_modifier = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_glitchy_matrix.dds"
+	icon_frame = 1
+	pop_cat_worker_bonus_workforce_mult = 0.1
+}
+
+steris_core_conspiracy_modifier = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_assist_research.dds"
+	icon_frame = 1
+	ship_speed_mult = 0.1
+}
+
+hired_guns_modifier = {
+	ship_fire_rate_mult = 0.15
+	ships_upkeep_mult = -0.15
+}
+
+hg_ship_upkeep_bombing = {
+	ships_upkeep_mult = -0.10
+}
+
+statue_modifier = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_crime.dds"
+	icon_frame = 2
+	planet_amenities_mult = 0.05
+	planet_crime_add = 5
+}
+
+etherdrake_scales_modifier = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_engineering_research.dds"
+	icon_frame = 1
+	ship_armor_mult = 0.05
+	planet_jobs_engineering_research_produces_mult = 0.05
+}
+
+free_market = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_resources.dds"
+	icon_frame = 2
+	pop_happiness = 0.10
+	planet_crime_floor_add = 10
+	job_criminal_add = 300
+	planet_criminals_trade_produces_add = 3
+	pop_trader_bonus_workforce_mult = 0.03
+	}
+
+total_control = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_alien_propaganda.dds"
+	icon_frame = 2
+	planet_stability_add = 5
+	planet_crime_add = -20
+	pop_trader_bonus_workforce_mult = -0.03
+	pop_cat_worker_bonus_workforce_mult = 0.03
+}
+
+farms_in_flames_modifier = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_volcanic_critters.dds"
+	icon_frame = 3
+	district_farming_max_add = -2
+	planet_jobs_food_produces_mult = -0.1
+}
+
+mycelial_intelligence_modifier = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_lush.dds"
+	icon_frame = 1
+	planet_jobs_food_produces_mult = 0.1
+	planet_farmers_society_research_produces_add = 1.5
+}
+
+funghi_friends_modifier = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_overgrowth.dds"
+	icon_frame = 1
+	planet_jobs_food_produces_mult = 0.05
+}
+
+# Contracts
+
+nomad_espionage_support = {
+	espionage_operation_skill_add = 0.5
+	spy_network_daily_value_mult = 0.2
+}
+
+nomad_construction_assistance = {
+	megastructure_build_speed_mult = 2.5
+}
+
+nomad_criminal_disposal = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_crime.dds"
+	icon_frame = 1
+	planet_crime_mult = -0.2
+	planet_crime_floor_add = -10
+	job_criminal_add = -300
+	planet_stability_add = 5
+}
+
+nomad_criminals_on_board = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_smugglers_in_bar.dds"
+	icon_frame = 3
+	planet_crime_mult = 0.1
+	planet_crime_floor_add = 5
+	job_criminal_add = 300
+	planet_stability_add = -3
+}
+
+nomad_reformed_criminals_on_board = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_smugglers_in_bar.dds"
+	icon_frame = 3
+	planet_crime_mult = 0.05
+	planet_traders_produces_mult = 0.15
+	planet_jobs_society_research_produces_mult = 0.05
+}
+
+nomad_criminals_loose_on_board = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_smugglers_in_bar.dds"
+	icon_frame = 3
+	planet_crime_mult = 0.25
+	planet_crime_floor_add = 15
+	job_criminal_add = 500
+	planet_stability_add = -10
+}
+
+nomad_criminals_dropped_off = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_smugglers_in_bar.dds"
+	icon_frame = 3
+	planet_crime_mult = 0.2
+	planet_crime_floor_add = 10
+	job_criminal_add = 300
+	planet_stability_add = -5
+}
+
+nomad_contract_sightseeing = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_ocean_paradise.dds"
+	icon_frame = 1
+	pop_cat_ruler_bonus_workforce_mult = 0.1
+	planet_jobs_specialist_produces_mult = 0.05
+}
+
+nomad_contract_colony_support_civilian = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_resources.dds"
+	icon_frame = 1
+	planet_building_build_speed_mult = 0.5
+	planet_buildings_cost_mult = -0.25
+	logistic_growth_mult = 0.10
+	planet_pop_assembly_mult = 0.10
+	custom_tooltip = nomad_contract_colony_support_civilian_tt
+	show_only_custom_tooltip = no
+}
+
+nomad_contract_colony_support_scientific = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_engineering_research.dds"
+	icon_frame = 1
+	planet_building_build_speed_mult = 0.5
+	planet_buildings_cost_mult = -0.25
+	logistic_growth_mult = 0.10
+	planet_pop_assembly_mult = 0.10
+	custom_tooltip = nomad_contract_colony_support_scientific_tt
+	show_only_custom_tooltip = no
+}
+
+nomad_contract_colony_support_military = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_martial_law.dds"
+	icon_frame = 1
+	planet_building_build_speed_mult = 0.5
+	planet_buildings_cost_mult = -0.25
+	logistic_growth_mult = 0.10
+	planet_pop_assembly_mult = 0.10
+	custom_tooltip = nomad_contract_colony_support_military_tt
+	show_only_custom_tooltip = no
+}
+
+# Settling
+
+arkship_parts = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_ship_in_orbit.dds"
+	icon_frame = 1
+	pop_environment_tolerance = 0.60
+	planet_max_districts_add = 2
+}
+
+stripped_planet = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_irradiated.dds"
+	icon_frame = 3
+	pop_environment_tolerance = -0.60
+	planet_max_districts_add = -2
+}
+
+# Waystations
+
+tech_space_mining_nomads_mult = {
+	custom_tooltip = tech_space_mining_nomads_mult_tt
+	starbase_collected_system_minerals_mult = 1
+	starbase_collected_system_consumer_goods_mult = 1
+	starbase_collected_system_alloys_mult = 1
+}
+
+tech_space_science_nomads_mult = {
+	custom_tooltip = tech_space_science_nomads_mult_tt
+	starbase_collected_system_physics_research_mult = 1
+	starbase_collected_system_society_research_mult = 1
+	starbase_collected_system_engineering_research_mult = 1
+}
+
+fractured_spine_mult = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_arkship_harvested_resources.dds"
+	icon_frame = 3
+	ship_speed_mult = -0.3
+	ship_evasion_mult = -0.3
+}
+
+repaired_spine_mult = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_mobile.dds"
+	icon_frame = 1
+	ship_speed_mult = 0.05
+	ship_evasion_mult = 0.05
+}
+
+nebula_memory_fog = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_atmospheric_hallucinogen.dds"
+	icon_frame = 3
+	planet_jobs_unity_produces_mult = -0.10
+}
+
+engine_pressure_work_crews_mult = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_engineering_research.dds"
+	icon_frame = 3
+	pop_cat_worker_bonus_workforce_mult = -0.1
+}
+
+engine_pressure_drone_crews_mult = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_engineering_research.dds"
+	icon_frame = 3
+	planet_jobs_simple_drone_produces_mult = -0.1
+}
+
+engine_recalibration_slowed_mult = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_faith_in_science.dds"
+	icon_frame = 3
+	ship_speed_mult = -0.15
+	ship_evasion_mult = -0.15
+}
+
+happy_work_crews_mult = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_cultivated_worldscaping.dds"
+	icon_frame = 1
+	pop_happiness = 0.1
+	pop_cat_worker_bonus_workforce_mult = 0.05
+}
+
+happy_work_drones_mult = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_cultivated_worldscaping.dds"
+	icon_frame = 1
+	planet_jobs_simple_drone_produces_mult = 0.1
+}
+
+engine_recalibration_mult = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_faith_in_science.dds"
+	icon_frame = 1
+	ship_shield_mult = 0.1
+	ship_armor_mult = 0.1
+}
+
+checklist_unaligned_shields = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_faith_in_science.dds"
+	icon_frame = 3
+	ship_shield_mult = -0.50
+	ship_shield_regen_add_perc = -0.50
+}
+
+checklist_aligned_shields = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_faith_in_science.dds"
+	icon_frame = 1
+	ship_shield_mult = 0.05
+	ship_shield_regen_add_perc = 0.05
+}
+
+checklist_sensor_calibration = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_glitchy_matrix.dds"
+	icon_frame = 3
+	ship_sensor_range_add = -1
+	ship_tracking_add = -5
+	science_ship_survey_speed = -0.10
+}
+
+checklist_calibrated_sensors = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_glitchy_matrix.dds"
+	icon_frame = 1
+	science_ship_survey_speed = 0.15
+	ship_anomaly_generation_chance_mult = 0.10
+}
+
+checklist_corrosive_coolant = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_station_reactor.dds"
+	icon_frame = 3
+	ship_hull_mult = -0.5
+	ship_armor_mult = -0.5
+}
+
+checklist_flushed_coolant = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_station_reactor.dds"
+	icon_frame = 1
+	ship_speed_mult = 0.15
+	planet_technician_physics_research_produces_add = 0.05
+}
+
+checklist_replicating_signal = {
+	icon = "gfx/interface/icons/modifiers/mod_lost_encryption_key.dds"
+	envoys_add = -1
+	ships_logistics_mult = 0.25
+}
+
+checklist_deciphered_signal = {
+	icon = "gfx/interface/icons/modifiers/mod_found_encryption_key.dds"
+	first_contact_speed_mult = 0.15
+	spy_network_daily_value_mult = 0.15
+	ships_logistics_mult = -0.15
+}
+
+# Exploration Rewards - Hard Localized in mission descriptions change there too
+ancient_wonders_modifier = {
+	icon = "gfx/interface/icons/modifiers/mod_job_bureaucrat_produces_mult.dds"
+	bureaucrat_jobs_bonus_workforce_mult = 0.1
+}
+
+antique_threat_modifier = {
+	ship_speed_mult = 0.1
+}
+
+galactic_landmark_modifier = {
+	icon = "gfx/interface/icons/modifiers/job_engineer_mult.dds"
+	engineer_jobs_bonus_workforce_mult = 0.1
+}
+
+marauder_modifier = {
+	ship_fire_rate_mult = 0.1
+}
+
+natural_spectacle_modifier = {
+	starbase_collected_system_resources_mult = 0.1
+}
+
+precursor_modifier = {
+	icon = "gfx/interface/icons/modifiers/job_physicist_mult.dds"
+	physicist_jobs_bonus_workforce_mult = 0.1
+}
+
+space_ecology_modifier = {
+	icon = "gfx/interface/icons/modifiers/job_biologist_mult.dds"
+	biologist_jobs_bonus_workforce_mult = 0.1
+}
+
+enclave_modifier = {
+	country_naval_cap_mult = 0.1
+}
+
+
+checklist_harvest_resources_bonus = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_arkship_harvested_resources.dds"
+	icon_frame = 1
+	arkship_harvest_resources_produces_mult = 0.05
+}
+
+unknown_resource_demolished = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_natural_beauty.dds"
+	icon_frame = 1
+	planet_housing_add = 300
+	pop_cat_worker_bonus_workforce_mult = 0.05
+}
+
+wellness_retreat_permitted = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_natural_beauty.dds"
+	icon_frame = 1
+	pop_cat_worker_bonus_workforce_mult = 0.05
+	pop_happiness = 0.05
+}
+
+arkship_order_restored = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_natural_beauty.dds"
+	icon_frame = 1
+	planet_stability_add = 5
+}
+
+arkship_purge_enacted = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_natural_beauty.dds"
+	icon_frame = 1
+	planet_stability_add = 10
+}
+
+planet_deep_sleep = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_faith_in_science.dds"
+	icon_frame = 1
+	planet_jobs_upkeep_mult = -0.15
+}
+
+
+refurbishment_ongoing = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_trash_rings.dds"
+	icon_frame = 3
+	planet_stability_add = -10
+	worker_and_simple_drone_cat_bonus_workforce_mult = -0.05
+}
+
+refurbishment_generator_offline = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_weak_magnetic_field.dds"
+	icon_frame = 3
+	planet_district_ark_generator_build_speed_mult = -0.75
+	planet_technician_produces_mult = -0.15
+}
+
+refurbishment_farming_offline = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_archaeology.dds"
+	icon_frame = 3
+	planet_district_ark_basic_build_speed_mult = -0.75
+	planet_farmers_produces_mult = -0.15
+}
+
+refurbishment_military_offline = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_derelict_interior.dds"
+	icon_frame = 3
+	planet_district_ark_military_build_speed_mult = -0.75
+	ship_armor_mult = -0.15
+	ship_weapon_damage = -0.15
+}
+
+refurbishment_city_offline = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_arcology_project.dds"
+	icon_frame = 3
+	planet_district_ark_city_build_speed_mult = -0.75
+	planet_housing_mult = -0.15
+	worker_and_simple_drone_cat_bonus_workforce_mult = -0.12
+}
+
+refurbishment_low_morale = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_solar_aftermath_modifier.dds"
+	icon_frame = 3
+	planet_stability_add = -3
+	worker_and_simple_drone_cat_bonus_workforce_mult = -0.05
+}
+
+refurbishment_low_morale_2 = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_solar_aftermath_modifier.dds"
+	icon_frame = 3
+	planet_stability_add = -6
+	worker_and_simple_drone_cat_bonus_workforce_mult = -0.10
+}
+
+refurbishment_low_morale_3 = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_solar_aftermath_modifier.dds"
+	icon_frame = 3
+	planet_stability_add = -9
+	worker_and_simple_drone_cat_bonus_workforce_mult = -0.15
+}
+
+refurbishment_power_restoration = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_solar_aftermath_modifier.dds"
+	icon_frame = 3
+	planet_technician_produces_mult = -0.10
+}
+
+refurbishment_construction_fatigue = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_solar_aftermath_modifier.dds"
+	icon_frame = 3
+	planet_stability_add = -5
+	worker_and_simple_drone_cat_bonus_workforce_mult = -0.05
+}
+
+refurbishment_construction_fatigue_2 = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_solar_aftermath_modifier.dds"
+	icon_frame = 3
+	planet_stability_add = -10
+	worker_and_simple_drone_cat_bonus_workforce_mult = -0.10
+}
+
+refurbishment_construction_fatigue_3 = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_solar_aftermath_modifier.dds"
+	icon_frame = 3
+	planet_stability_add = -15
+	worker_and_simple_drone_cat_bonus_workforce_mult = -0.15
+}
+
+refurbishment_administrative_burden = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_solar_aftermath_modifier.dds"
+	icon_frame = 3
+	planet_stability_add = -5
+	planet_jobs_specialist_produces_mult = -0.05
+}
+
+refurbishment_extended_displacement = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_solar_aftermath_modifier.dds"
+	icon_frame = 3
+	planet_stability_add = -5
+	planet_housing_mult = -0.25
+}
+
+refurbishment_rework_zone = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_solar_aftermath_modifier.dds"
+	icon_frame = 3
+	planet_stability_add = -5
+	planet_max_districts_add = -1
+}
+
+refurbishment_inspection_hold = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_solar_aftermath_modifier.dds"
+	icon_frame = 3
+	planet_stability_add = -5
+	planet_building_build_speed_mult = -0.20
+}
+
+refurbishment_allowances_granted = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_solar_aftermath_modifier.dds"
+	icon_frame = 3
+	planet_amenities_mult = -0.10
+}
+
+refurbishment_bypass_routing = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_solar_aftermath_modifier.dds"
+	icon_frame = 3
+	planet_technician_produces_mult = -0.05
+}
+
+refurbishment_administrative_burden_gestalt = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_solar_aftermath_modifier.dds"
+	icon_frame = 3
+	planet_stability_add = -5
+	specialist_and_complex_drone_cat_bonus_workforce_mult = -0.05
+}
+
+refurbishment_power_grid = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_mobile.dds"
+	icon_frame = 1
+	planet_technician_produces_mult = 0.25
+	pop_cat_specialist_bonus_workforce_mult = 0.10
+}
+
+refurbishment_power_grid_partial = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_mobile.dds"
+	icon_frame = 2
+	planet_technician_produces_mult = 0.15
+	pop_cat_specialist_bonus_workforce_mult = 0.05
+}
+
+refurbishment_power_grid_weak = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_mobile.dds"
+	icon_frame = 2
+	planet_technician_produces_mult = 0.1
+	pop_cat_specialist_bonus_workforce_mult = 0.02
+}
+
+refurbishment_cultivation_decks = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_mobile.dds"
+	icon_frame = 1
+	planet_farmers_produces_mult = 0.25
+	pop_cat_worker_bonus_workforce_mult = 0.20
+}
+
+refurbishment_cultivation_decks_partial = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_mobile.dds"
+	icon_frame = 2
+	planet_farmers_produces_mult = 0.15
+	pop_cat_worker_bonus_workforce_mult = 0.10
+}
+
+refurbishment_cultivation_decks_weak = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_mobile.dds"
+	icon_frame = 2
+	planet_farmers_produces_mult = 0.1
+	pop_cat_worker_bonus_workforce_mult = 0.05
+}
+
+refurbishment_defense_systems = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_mobile.dds"
+	icon_frame = 1
+	ship_armor_mult = 0.20
+	ship_weapon_damage = 0.15
+}
+
+refurbishment_defense_systems_partial = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_mobile.dds"
+	icon_frame = 2
+	ship_armor_mult = 0.15
+	ship_weapon_damage = 0.1
+}
+
+refurbishment_defense_systems_weak = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_mobile.dds"
+	icon_frame = 2
+	ship_armor_mult = 0.1
+}
+
+refurbishment_residential_expansion = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_mobile.dds"
+	icon_frame = 1
+	planet_housing_mult = 0.20
+	pop_cat_ruler_bonus_workforce_mult = 0.15
+}
+
+refurbishment_residential_expansion_partial = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_mobile.dds"
+	icon_frame = 2
+	planet_housing_mult = 0.10
+	pop_cat_ruler_bonus_workforce_mult = 0.10
+}
+
+refurbishment_residential_expansion_weak = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_mobile.dds"
+	icon_frame = 2
+	planet_housing_mult = 0.08
+	pop_cat_ruler_bonus_workforce_mult = 0.05
+}
+
+refurbishment_power_grid_gestalt = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_mobile.dds"
+	icon_frame = 1
+	planet_technician_produces_mult = 0.25
+	specialist_and_complex_drone_cat_bonus_workforce_mult = 0.10
+}
+
+refurbishment_power_grid_partial_gestalt = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_mobile.dds"
+	icon_frame = 2
+	planet_technician_produces_mult = 0.15
+	specialist_and_complex_drone_cat_bonus_workforce_mult = 0.05
+}
+
+refurbishment_power_grid_weak_gestalt = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_mobile.dds"
+	icon_frame = 2
+	planet_technician_produces_mult = 0.1
+	specialist_and_complex_drone_cat_bonus_workforce_mult = 0.02
+}
+
+refurbishment_cultivation_decks_gestalt = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_mobile.dds"
+	icon_frame = 1
+	planet_farmers_produces_mult = 0.25
+	worker_and_simple_drone_cat_bonus_workforce_mult = 0.15
+}
+
+refurbishment_cultivation_decks_partial_gestalt = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_mobile.dds"
+	icon_frame = 2
+	planet_farmers_produces_mult = 0.15
+	worker_and_simple_drone_cat_bonus_workforce_mult = 0.10
+}
+
+refurbishment_cultivation_decks_weak_gestalt = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_mobile.dds"
+	icon_frame = 2
+	planet_farmers_produces_mult = 0.1
+	worker_and_simple_drone_cat_bonus_workforce_mult = 0.05
+}
+
+refurbishment_residential_expansion_gestalt = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_mobile.dds"
+	icon_frame = 1
+	planet_housing_mult = 0.20
+	planet_jobs_unity_produces_mult = 0.15
+}
+
+refurbishment_residential_expansion_partial_gestalt = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_mobile.dds"
+	icon_frame = 2
+	planet_housing_mult = 0.10
+	planet_jobs_unity_produces_mult = 0.10
+}
+
+refurbishment_residential_expansion_weak_gestalt = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_mobile.dds"
+	icon_frame = 2
+	planet_housing_mult = 0.08
+	planet_jobs_unity_produces_mult = 0.05
+}
+
+refurbishment_fleet_capacity = {
+	icon = "gfx/interface/icons/modifiers/mod_artificial_ship_naval_cap_usage_mult.dds"
+	country_naval_cap_mult = 0.05
+}
+
+agenda_arkship_engineering_mastery_finish = {
+	icon = "gfx/interface/icons/jobs/job_engineer.dds"
+	custom_tooltip = agenda_arkship_engineering_mastery_finish_modifier_tt
+	show_only_custom_tooltip = yes
+	# Scientific buff - Survey Speed
+	shipsize_civilian_arkship_tier_1_science_survey_speed = @arkship_mastery_mult
+	shipsize_civilian_arkship_tier_2_science_survey_speed = @arkship_mastery_mult
+	shipsize_civilian_arkship_tier_3_science_survey_speed = @arkship_mastery_mult
+	shipsize_science_arkship_tier_1_science_survey_speed = @arkship_mastery_mult
+	shipsize_science_arkship_tier_2_science_survey_speed = @arkship_mastery_mult
+	shipsize_science_arkship_tier_3_science_survey_speed = @arkship_mastery_mult
+	shipsize_military_arkship_tier_1_science_survey_speed = @arkship_mastery_mult
+	shipsize_military_arkship_tier_2_science_survey_speed = @arkship_mastery_mult
+	shipsize_military_arkship_tier_3_science_survey_speed = @arkship_mastery_mult
+	# Civilian buff - Sublight Speed
+	shipsize_civilian_arkship_tier_1_speed_mult = @arkship_mastery_mult
+	shipsize_civilian_arkship_tier_2_speed_mult = @arkship_mastery_mult
+	shipsize_civilian_arkship_tier_3_speed_mult = @arkship_mastery_mult
+	shipsize_science_arkship_tier_1_speed_mult = @arkship_mastery_mult
+	shipsize_science_arkship_tier_2_speed_mult = @arkship_mastery_mult
+	shipsize_science_arkship_tier_3_speed_mult = @arkship_mastery_mult
+	shipsize_military_arkship_tier_1_speed_mult = @arkship_mastery_mult
+	shipsize_military_arkship_tier_2_speed_mult = @arkship_mastery_mult
+	shipsize_military_arkship_tier_3_speed_mult = @arkship_mastery_mult
+	# Military buff - Evasion
+	shipsize_civilian_arkship_tier_1_evasion_add = @arkship_mastery_static
+	shipsize_civilian_arkship_tier_2_evasion_add = @arkship_mastery_static
+	shipsize_civilian_arkship_tier_3_evasion_add = @arkship_mastery_static
+	shipsize_science_arkship_tier_1_evasion_add = @arkship_mastery_static
+	shipsize_science_arkship_tier_2_evasion_add = @arkship_mastery_static
+	shipsize_science_arkship_tier_3_evasion_add = @arkship_mastery_static
+	shipsize_military_arkship_tier_1_evasion_add = @arkship_mastery_static
+	shipsize_military_arkship_tier_2_evasion_add = @arkship_mastery_static
+	shipsize_military_arkship_tier_3_evasion_add = @arkship_mastery_static
+	# Fire Rate
+	shipsize_civilian_arkship_tier_1_fire_rate_mult = @arkship_mastery_mult
+	shipsize_civilian_arkship_tier_2_fire_rate_mult = @arkship_mastery_mult
+	shipsize_civilian_arkship_tier_3_fire_rate_mult = @arkship_mastery_mult
+	shipsize_science_arkship_tier_1_fire_rate_mult = @arkship_mastery_mult
+	shipsize_science_arkship_tier_2_fire_rate_mult = @arkship_mastery_mult
+	shipsize_science_arkship_tier_3_fire_rate_mult = @arkship_mastery_mult
+	shipsize_military_arkship_tier_1_fire_rate_mult = @arkship_mastery_mult
+	shipsize_military_arkship_tier_2_fire_rate_mult = @arkship_mastery_mult
+	shipsize_military_arkship_tier_3_fire_rate_mult = @arkship_mastery_mult
+	# Stockpile Collection Speed
+	shipsize_civilian_arkship_tier_1_starbase_stockpile_collection_rate_mult = @arkship_mastery_mult
+	shipsize_civilian_arkship_tier_2_starbase_stockpile_collection_rate_mult = @arkship_mastery_mult
+	shipsize_civilian_arkship_tier_3_starbase_stockpile_collection_rate_mult = @arkship_mastery_mult
+	shipsize_science_arkship_tier_1_starbase_stockpile_collection_rate_mult = @arkship_mastery_mult
+	shipsize_science_arkship_tier_2_starbase_stockpile_collection_rate_mult = @arkship_mastery_mult
+	shipsize_science_arkship_tier_3_starbase_stockpile_collection_rate_mult = @arkship_mastery_mult
+	shipsize_military_arkship_tier_1_starbase_stockpile_collection_rate_mult = @arkship_mastery_mult
+	shipsize_military_arkship_tier_2_starbase_stockpile_collection_rate_mult = @arkship_mastery_mult
+	shipsize_military_arkship_tier_3_starbase_stockpile_collection_rate_mult = @arkship_mastery_mult
+	# Sensor Range
+	shipsize_civilian_arkship_tier_1_sensor_range_add = @arkship_mastery_sensor
+	shipsize_civilian_arkship_tier_2_sensor_range_add = @arkship_mastery_sensor
+	shipsize_civilian_arkship_tier_3_sensor_range_add = @arkship_mastery_sensor
+	shipsize_science_arkship_tier_1_sensor_range_add = @arkship_mastery_sensor
+	shipsize_science_arkship_tier_2_sensor_range_add = @arkship_mastery_sensor
+	shipsize_science_arkship_tier_3_sensor_range_add = @arkship_mastery_sensor
+	shipsize_military_arkship_tier_1_sensor_range_add = @arkship_mastery_sensor
+	shipsize_military_arkship_tier_2_sensor_range_add = @arkship_mastery_sensor
+	shipsize_military_arkship_tier_3_sensor_range_add = @arkship_mastery_sensor
+}
+
+arkship_fire_rate = {
+	custom_tooltip = nomads_arkship_fire_rate_tt
+	shipsize_civilian_arkship_tier_1_fire_rate_mult = 1
+	shipsize_civilian_arkship_tier_2_fire_rate_mult = 1
+	shipsize_civilian_arkship_tier_3_fire_rate_mult = 1
+	shipsize_science_arkship_tier_1_fire_rate_mult = 1
+	shipsize_science_arkship_tier_2_fire_rate_mult = 1
+	shipsize_science_arkship_tier_3_fire_rate_mult = 1
+	shipsize_military_arkship_tier_1_fire_rate_mult = 1
+	shipsize_military_arkship_tier_2_fire_rate_mult = 1
+	shipsize_military_arkship_tier_3_fire_rate_mult = 1
+}
+
+waystation_armor_hardening_add = {
+	custom_tooltip = nomads_waystation_weapon_damage_tt
+	shipsize_starbase_waystation_1_armor_hardening_add = 1
+	shipsize_starbase_waystation_2_armor_hardening_add = 1
+	shipsize_starbase_waystation_3_armor_hardening_add = 1
+
+}
+
+waystation_hull_mult = {
+	custom_tooltip = nomads_waystation_hull_mult_tt
+	shipsize_starbase_waystation_1_hull_mult = 1
+	shipsize_starbase_waystation_2_hull_mult = 1
+	shipsize_starbase_waystation_3_hull_mult = 1
+}
+
+waystation_shield_hardening_add = {
+	custom_tooltip = nomads_waystation_shield_hardening_add_tt
+	shipsize_starbase_waystation_1_shield_hardening_add = 1
+	shipsize_starbase_waystation_2_shield_hardening_add = 1
+	shipsize_starbase_waystation_3_shield_hardening_add = 1
+}
+
+downtime_denied = {
+	icon = "gfx/interface/icons/modifiers/mod_negative_pop_happiness.dds"
+	worker_and_simple_drone_cat_bonus_workforce_mult = -0.05
+}
+
+downtime_granted = {
+	icon = "gfx/interface/icons/modifiers/mod_pop_bonus_workforce_mult.dds"
+	worker_and_simple_drone_cat_bonus_workforce_mult = 0.05
+}
+
+jurisdictional_mediation = {
+	icon = "gfx/interface/icons/modifiers/mod_unity_produces_mult.dds"
+	country_unity_produces_mult = 0.05
+	planet_building_build_speed_mult = -0.05
+}
+
+command_reassigned = {
+	icon = "gfx/interface/icons/modifiers/mod_unity_loss_mult.dds"
+	country_unity_produces_mult = -0.05
+}
+
+tribute_vault_loyalty = {
+	icon = "gfx/interface/icons/modifiers/mod_monthly_loyalty_gain.dds"
+	monthly_loyalty = -0.5
+}
+
+# Applied to the Elder Voidspawn after it shrugs off a Stellar Cannon shot
+voidspawn_dyson_surge = {
+	icon = "gfx/interface/icons/modifiers/mod_ship_speed_mult.dds"
+	ship_speed_mult = 0.25
+}

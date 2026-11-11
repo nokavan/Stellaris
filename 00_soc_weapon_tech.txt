@@ -1,0 +1,107 @@
+# ## Society - Weapon Technologies
+
+# ##################
+# Biological Weapons
+# ##################
+
+# Space Amoeba Strike Craft
+tech_amoeba_strike_craft_1 = {
+	area = society
+	cost = @tier2cost3
+	tier = 2
+	category = { biology }
+	weight = 0
+
+	ai_weight = {
+		modifier = {
+			factor = 1.25
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.5
+			has_ethic = ethic_fanatic_militarist
+		}
+
+		inline_script = {
+			script = ai/weapon_preference_weight
+			WEAPON_TYPE = weapon_type_strike_craft
+		}
+	}
+}
+
+# Swarm Strike Craft
+tech_swarm_strike_craft_1 = {
+	area = society
+	cost = @tier5cost3
+	tier = 5
+	is_rare = yes
+	category = { biology }
+	weight = 0
+
+	ai_weight = {
+		modifier = {
+			factor = 1.25
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.5
+			has_ethic = ethic_fanatic_militarist
+		}
+
+		inline_script = {
+			script = ai/weapon_preference_weight
+			WEAPON_TYPE = weapon_type_strike_craft
+		}
+	}
+}
+
+# Swarm Scourge Missiles
+tech_scourge_missile_1 = {
+	area = society
+	cost = @tier5cost3
+	tier = 5
+	is_rare = yes
+	category = { biology }
+	weight = 0
+
+	ai_weight = {
+		modifier = {
+			factor = 1.25
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.5
+			has_ethic = ethic_fanatic_militarist
+		}
+
+		inline_script = {
+			script = ai/weapon_preference_weight
+			WEAPON_TYPE = weapon_type_explosive
+		}
+	}
+}
+
+# Space Whale Weapon
+tech_space_whale_weapon_1 = {
+	area = society
+	cost = @tier1cost3
+	tier = 1
+	category = { biology }
+	weight = 0
+
+	ai_weight = {
+		modifier = {
+			factor = 1.25
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			factor = 1.5
+			has_ethic = ethic_fanatic_militarist
+		}
+
+		inline_script = {
+			script = ai/weapon_preference_weight
+			WEAPON_TYPE = weapon_type_energy
+		}
+	}
+}

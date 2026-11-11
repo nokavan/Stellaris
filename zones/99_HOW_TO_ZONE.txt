@@ -1,0 +1,195 @@
+# Planet District Zones
+#
+# zone_test_01 = {
+#
+#	### Identity ###
+#
+#	icon = GFX_district_specialization_research  # Sprite key for the zone specialization icon shown in the UI
+#
+#	base_buildtime = 240                          # Build time in days
+#
+#	### Availability ###
+#
+#	potential = {                                 # Whether the zone can appear on this planet at all. Scope = Planet
+#		always = yes
+#	}
+#
+#	unlock = {                                    # Whether the zone is available to build. Multiple unlock blocks AND together. Scope = Planet
+#		always = yes
+#	}
+#
+#	destroy_trigger = {                           # Zone is destroyed when this evaluates true. Scope = Planet
+#		always = no
+#	}
+#
+#	convert_to = {                                # Ordered list of zones to convert to if potential becomes false. First valid entry wins.
+#		zone_city
+#	}
+#
+#	### Tech card integration ###
+#
+#	show_in_tech = tech_example                   # Zone appears in the "Unlocks" section of this tech card.
+#
+#	show_tech_unlock_if = {                       # Conditionally suppress the tech card entry. Scope = Country
+#		is_nomadic = yes
+#	}
+#
+#	### Cost ###
+#
+#	resources = {                                 # Build cost and upkeep. Scope = Planet
+#		category = planet_zones
+#		cost = {
+#			minerals = 50
+#		}
+#		upkeep = {
+#			energy = 2
+#		}
+#	}
+#
+#	### Building slots ###
+#
+#	max_buildings = 3                             # Number of building slots in the zone.
+#
+#	districts_per_building = 1.0                  # Number of districts required to unlock one building slot.
+#
+#	max_buildings_planet_class = yes              # Apply the planet-class-based cap to building slot count (default no).
+#
+#	is_capped_by_modifier = yes                   # Allow a modifier to dynamically cap the building limit (default no).
+#
+#	### Modifiers ###
+#
+#	planet_modifier = {                           # Flat planet modifier while zone exists.
+#	}
+#
+#	district_planet_modifier = {                  # Planet modifier multiplied by the district level.
+#	}
+#
+#	triggered_planet_modifier = {                 # Conditionally applied planet modifier. Scope = Planet
+#		potential = {
+#			always = yes
+#		}
+#	}
+#
+#	triggered_district_planet_modifier = {        # Conditionally applied planet modifier multiplied by district level. Scope = Planet
+#		potential = {
+#			always = yes
+#		}
+#	}
+#
+#	country_modifier = {                          # Flat country modifier while zone exists.
+#	}
+#
+#	district_country_modifier = {                 # Country modifier multiplied by the district level.
+#	}
+#
+#	triggered_country_modifier = {                # Conditionally applied country modifier. Scope = Planet
+#		potential = {
+#			always = yes
+#		}
+#	}
+#
+#	triggered_district_country_modifier = {       # Conditionally applied country modifier multiplied by district level. Scope = Planet
+#		potential = {
+#			always = yes
+#		}
+#	}
+#
+#	triggered_planet_pop_group_modifier_for_all = { }     # Pop group modifier applied to all pop groups on planet. See documentation in buildings file.
+#	triggered_planet_pop_group_modifier_for_species = { } # Pop group modifier applied to a specific species on planet. See documentation in buildings file.
+#
+#	### Buildings ###
+#
+#	include = {    }                              # Explicit buildings allowed in this zone.
+#
+#	exclude = {    }                              # Explicit buildings excluded from this zone.
+#
+#	included_building_sets = {                    # Buildings belonging to any listed set are allowed.
+#	}
+#
+#	excluded_building_sets = {                    # Buildings belonging to any listed set are excluded.
+#	}
+#
+#	### Zone sets ###
+#
+#	zone_sets = {                                 # All zones must belong to at least one zone set.
+#                                                 # Zone sets are used to determine in which slots zones can be built.
+#	}
+#
+#	### Descriptions ###
+#
+#	desc = {                                      # Primary description block. Scope = Planet
+#		trigger = {
+#			always = yes
+#		}
+#		text = zone_example_desc
+#	}
+#
+#	triggered_desc = {                            # Conditional description shown in the zone tooltip. Scope = Planet
+#		trigger = {
+#			exists = owner
+#		}
+#		text = job_clerk_effect_desc
+#	}
+#
+#	### Limits ###
+#
+#	empire_limit = {                              # Max number of this zone per empire (optional: default is no limit).
+#		base = 5                                  # Don't set base below 0 (ignored for performance reasons).
+#		modifier = {                              # Scope = Country
+#			add = 2
+#			has_country_flag = test_flag
+#		}
+#		# Multiply by -1 to remove limit.
+#	}
+#
+#	planet_limit = {                              # Max number of this zone per planet (optional: default is no limit).
+#		base = 5
+#		modifier = {                              # Scope = Planet
+#			add = 2
+#			has_carrier_flag = test_flag
+#		}
+#		# Multiply by -1 to remove limit (still affected by is_capped_by_modifier = yes).
+#	}
+#
+#	### Events ###
+#
+#	on_built = {                                  # Effects fired when zone is built.
+#		owner = { set_country_flag = built_one_ministry }
+#	}
+#
+#	on_queued = {                                 # Effects fired when zone is queued. Has access to local_spent_<resource>.
+#		owner = { remove_country_flag = artist_building_patron }
+#	}
+#
+#	on_unqueued = {                               # Effects fired when zone is removed from queue. Has access to local_spent_<resource>.
+#		owner = { set_country_flag = artist_building_patron }
+#	}
+#
+#	### Visuals ###
+#
+#	swap_type = district_generator                # District visual to use when this zone is the dominant specialization.
+#	swap_type_weight = 5                          # Weight for swap_type selection when multiple zones compete. Higher wins; must be > 0.
+#
+#	### AI ###
+#
+#	ai_priority = 3                               # Base priority for AI and planet automation zone selection. Higher = preferred.
+#
+#	ai_weight_coefficient = 1.0                   # Multiplier on the AI's base zone weight (default 1.0).
+#
+#	additional_ai_weight = {                      # Additional additive AI weight with triggered conditions.
+#		modifier = {
+#			add = 5
+#			has_carrier_flag = example_flag
+#		}
+#	}
+#
+#	ai_estimate_without_unemployment = yes        # Whether AI estimates production assuming no unemployment (default yes).
+#
+#	ai_resource_production = {                    # Explicit AI resource production estimation table for the zone.
+#		trigger = {
+#			always = yes
+#		}
+#		minerals = 5
+#	}
+#
+# }
