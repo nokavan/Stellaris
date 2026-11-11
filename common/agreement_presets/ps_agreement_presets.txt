@@ -1,0 +1,77 @@
+# Синдикат Сопротивления — предустановка соглашения с вассалом
+# Формат сверен с vanilla common/agreement_presets/00_agreement_presets.txt (4.x)
+# В potential: this = будущий вассал, FROM = сюзерен.
+
+preset_ps_partisan_franchise = {
+	icon = "GFX_diplomacy_status_is_subsidiary"
+	term_data = {
+		discrete_terms = {
+			{
+				key = specialist_type
+				value = specialist_none
+			}
+			{
+				key = subject_integration
+				value = subject_can_not_be_integrated
+			}
+			{
+				key = subject_diplomacy
+				value = subject_can_do_diplomacy_but_not_vote
+			}
+			{
+				key = subject_expand
+				value = subject_can_expand
+			}
+			{
+				key = joins_overlord_wars
+				value = joins_overlord_wars_all
+			}
+			{
+				key = joins_subject_wars
+				value = joins_subject_wars_all
+			}
+			{
+				key = subject_holdings_limit
+				value = subject_holdings_limit_2
+			}
+			{
+				key = subject_sensors
+				value = subject_gets_sensors
+			}
+			{
+				key = subject_loyalty
+				value = subject_loyalty_effects
+			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
+		}
+		resource_terms = {
+			{
+				key = resource_subsidies_basic
+				value = 0.2
+			}
+		}
+	}
+
+	overlord_weight = {
+		base = 100
+	}
+	subject_weight = {
+		base = 40
+	}
+
+	potential = {
+		from = {
+			ps_is_shadow_overlord = yes
+			NOT = { has_country_flag = heir_of_the_khan_khan }
+		}
+		NOR = {
+			is_nomadic = yes
+			has_civic = civic_inwards_perfection
+			has_origin = origin_nomadic_purger
+		}
+		from = { is_nomadic = no }
+	}
+}

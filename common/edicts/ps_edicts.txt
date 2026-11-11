@@ -1,36 +1,55 @@
 # Синдикат Сопротивления — эдикты
+# Формат сверен с vanilla common/edicts/00_edicts.txt (4.x)
 
 edict_ps_sleeper_cells = {
-	length = 0
+	length = -1
 	icon = "GFX_edict_type_policy"
 
 	resources = {
 		category = edicts
-		upkeep = { energy = 10 }
+		cost = {
+			unity = 20
+			multiplier = value:edict_size_effect
+		}
+		upkeep = {
+			unity = 20
+			multiplier = value:edict_size_effect
+		}
 	}
-
-	potential = { ps_is_partisan_empire = yes }
 
 	modifier = {
 		intel_encryption_add = 2
 		army_damage_mult = 0.10
-	}
-
-	ai_weight = { weight = 5 }
-}
-
-edict_ps_shadow_fleet = {
-	length = 0
-	icon = "GFX_edict_type_policy"
-
-	resources = {
-		category = edicts
-		upkeep = { energy = 15 }
+		spy_network_daily_value_mult = 0.10
 	}
 
 	potential = {
 		ps_is_partisan_empire = yes
-		has_technology = tech_ps_ghost_networks
+	}
+
+	ai_weight = {
+		weight = 10
+		modifier = {
+			factor = 3
+			is_at_war = yes
+		}
+	}
+}
+
+edict_ps_shadow_fleet = {
+	length = -1
+	icon = "GFX_edict_type_policy"
+
+	resources = {
+		category = edicts
+		cost = {
+			unity = 30
+			multiplier = value:edict_size_effect
+		}
+		upkeep = {
+			unity = 30
+			multiplier = value:edict_size_effect
+		}
 	}
 
 	modifier = {
@@ -38,5 +57,15 @@ edict_ps_shadow_fleet = {
 		ship_cloaking_strength_add = 1
 	}
 
-	ai_weight = { weight = 5 }
+	potential = {
+		ps_is_partisan_empire = yes
+	}
+
+	prerequisites = {
+		tech_ps_ghost_networks
+	}
+
+	ai_weight = {
+		weight = 10
+	}
 }

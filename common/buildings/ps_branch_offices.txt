@@ -1,56 +1,97 @@
 # Синдикат Сопротивления — здания филиалов
-# Строятся в филиалах на чужих планетах. Доход владельцу филиала
-# начисляется ежегодно событием ps.40 (events/ps_events.txt).
+# Формат сверен с vanilla common/buildings/14_branch_office_buildings.txt (4.x)
+#   triggered_country_modifier  -> действует на ВЛАДЕЛЬЦА ФИЛИАЛА
+#   triggered_planet_modifier   -> действует на планету-хозяина
+#   job_*_add = 100             -> одна должность (система workforce 4.x)
 
+# Партизанская ячейка: схрон, явка, радиостанция
 building_ps_partisan_cell = {
-	base_buildtime = 360
-	base_cap_amount = 1
-	category = unity
-	branch_office_building = yes
+	base_buildtime = @b1_time
+	planet_limit = 1
+
 	owner_type = corporate
+	category = army
 
 	potential = {
-		exists = branch_office_owner
+		has_branch_office = yes
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	resources = {
-		category = planet_branch_offices
-		cost = { energy = 400 }
-		upkeep = { energy = 2 }
+	# Владельцу филиала: агентура и доход
+	triggered_country_modifier = {
+		potential = { always = yes }
+		spy_network_levels_add = 2
+		country_base_energy_produces_add = 2
+		mult = value:branch_office_value_for_buildings
 	}
 
-	# Ячейка расшатывает планету-хозяина
-	planet_modifier = {
-		planet_crime_add = 10
+	# Планете-хозяину: подпольщики и преступность
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		job_criminal_add = 100
 		planet_stability_add = -2
 	}
 
-	ai_weight = { weight = 50 }
-}
-
-building_ps_underground_press = {
-	base_buildtime = 360
-	base_cap_amount = 1
-	category = unity
-	branch_office_building = yes
-	owner_type = corporate
-
-	potential = {
-		exists = branch_office_owner
-		branch_office_owner = { ps_is_partisan_empire = yes }
+	triggered_planet_modifier = {
+		planet_crime_add = 15
+		mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|
 	}
 
 	resources = {
-		category = planet_branch_offices
-		cost = { energy = 300 influence = 25 }
-		upkeep = { energy = 2 }
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 400
+			influence = 15
+		}
+		upkeep = {
+			energy = 2
+		}
 	}
 
-	# Листовки и подпольное радио
-	planet_modifier = {
+	ai_weight = {
+		factor = 15
+	}
+}
+
+# Подпольная типография: листовки, пиратское радио
+building_ps_underground_press = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = government
+
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 2
+		spy_network_levels_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		job_criminal_add = 100
 		planet_stability_add = -4
+		pop_government_ethic_attraction = -0.25
 	}
 
-	ai_weight = { weight = 30 }
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 25
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
 }

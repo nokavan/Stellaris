@@ -15,3 +15,12 @@ ps_is_shadow_overlord = {
 		has_valid_civic = civic_ps_shadow_overlord
 	}
 }
+
+# У сюзерена есть вассал со специализацией «Шпионская сеть»
+ps_has_spy_ring_subject = {
+	any_playable_country = {
+		is_subject = yes
+		overlord = { is_same_value = root }
+		has_country_flag = ps_spec_spy_ring
+	}
+}

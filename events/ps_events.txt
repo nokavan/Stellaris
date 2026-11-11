@@ -2,10 +2,9 @@
 # Синдикат Сопротивления — события
 #
 #  ps.1  - 3   Сюжет: Наследие Сопротивления
-#  ps.10 - 12  Специализированные вассалы
-#  ps.20 - 22  Агентурные операции (шпионаж)
-#  ps.30 - 31  Партизанская война
-#  ps.40       Доход от партизанских филиалов
+#  ps.10 - 13  Специализированные вассалы
+#  ps.20 - 22  Агентурные операции (через шпионские сети)
+#  ps.30 - 32  Партизанская война (on_planet_occupied / on_planet_returned)
 #  ps.50       Диспетчер (ежегодный)
 #####################################################
 
@@ -123,7 +122,7 @@ country_event = {
 #####################################################
 
 # Выбор специализации для нового вассала.
-# event_target:ps_subject задаётся в ps.11
+# event_target:ps_subject задаётся в ps.11 / ps.13
 country_event = {
 	id = ps.10
 	title = ps.10.name
@@ -184,6 +183,8 @@ country_event = {
 
 # Ежегодно: пересчёт бонусов сюзерена, дань специализаций,
 # предложение специализировать одного нового вассала.
+# Вассалы перебираются через every_playable_country + overlord,
+# как в ванильных событиях 4.x.
 country_event = {
 	id = ps.11
 	hide_window = yes
@@ -192,51 +193,85 @@ country_event = {
 	trigger = { ps_is_shadow_overlord = yes }
 
 	immediate = {
+		# Ванильные специалисты (Overlord) автоматически вписываются в сеть
+		every_playable_country = {
+			limit = {
+				is_subject = yes
+				overlord = { is_same_value = root }
+				NOT = { has_country_flag = ps_specialized }
+			}
+			if = {
+				limit = { is_specialist_subject_type = { TYPE = bulwark } }
+				set_country_flag = ps_specialized
+				set_country_flag = ps_spec_bastion
+			}
+			else_if = {
+				limit = { is_specialist_subject_type = { TYPE = scholarium } }
+				set_country_flag = ps_specialized
+				set_country_flag = ps_spec_underground_lab
+			}
+			else_if = {
+				limit = { is_specialist_subject_type = { TYPE = prospectorium } }
+				set_country_flag = ps_specialized
+				set_country_flag = ps_spec_black_market
+			}
+		}
+
 		remove_modifier = ps_overlord_spy_ring
 		remove_modifier = ps_overlord_bastion
 		remove_modifier = ps_overlord_black_market
 		remove_modifier = ps_overlord_underground_lab
 
 		if = {
-			limit = { any_subject = { has_country_flag = ps_spec_spy_ring } }
+			limit = { any_playable_country = { is_subject = yes overlord = { is_same_value = root } has_country_flag = ps_spec_spy_ring } }
 			add_modifier = { modifier = ps_overlord_spy_ring days = -1 }
 		}
 		if = {
-			limit = { any_subject = { has_country_flag = ps_spec_bastion } }
+			limit = { any_playable_country = { is_subject = yes overlord = { is_same_value = root } has_country_flag = ps_spec_bastion } }
 			add_modifier = { modifier = ps_overlord_bastion days = -1 }
 		}
 		if = {
-			limit = { any_subject = { has_country_flag = ps_spec_black_market } }
+			limit = { any_playable_country = { is_subject = yes overlord = { is_same_value = root } has_country_flag = ps_spec_black_market } }
 			add_modifier = { modifier = ps_overlord_black_market days = -1 }
 		}
 		if = {
-			limit = { any_subject = { has_country_flag = ps_spec_underground_lab } }
+			limit = { any_playable_country = { is_subject = yes overlord = { is_same_value = root } has_country_flag = ps_spec_underground_lab } }
 			add_modifier = { modifier = ps_overlord_underground_lab days = -1 }
 		}
 
 		# Специализированная дань (за каждого вассала)
-		every_subject = {
-			limit = { has_country_flag = ps_spec_spy_ring }
+		every_playable_country = {
+			limit = { is_subject = yes overlord = { is_same_value = root } has_country_flag = ps_spec_spy_ring }
 			root = { add_resource = { influence = 15 } }
 		}
-		every_subject = {
-			limit = { has_country_flag = ps_spec_bastion }
+		every_playable_country = {
+			limit = { is_subject = yes overlord = { is_same_value = root } has_country_flag = ps_spec_bastion }
 			root = { add_resource = { alloys = 75 } }
 		}
-		every_subject = {
-			limit = { has_country_flag = ps_spec_black_market }
+		every_playable_country = {
+			limit = { is_subject = yes overlord = { is_same_value = root } has_country_flag = ps_spec_black_market }
 			root = { add_resource = { energy = 150 } }
 		}
-		every_subject = {
-			limit = { has_country_flag = ps_spec_underground_lab }
+		every_playable_country = {
+			limit = { is_subject = yes overlord = { is_same_value = root } has_country_flag = ps_spec_underground_lab }
 			root = { add_resource = { physics_research = 50 society_research = 50 engineering_research = 50 } }
 		}
 
-		# Предложить специализацию одному новому вассалу
+		# Подстраховка: предложить роль одному вассалу без неё
 		if = {
-			limit = { any_subject = { NOT = { has_country_flag = ps_specialized } } }
-			random_subject = {
-				limit = { NOT = { has_country_flag = ps_specialized } }
+			limit = {
+				any_playable_country = {
+					is_subject = yes
+					overlord = { is_same_value = root }
+					NOT = { has_country_flag = ps_specialized }
+				}
+			}
+			random_playable_country = {
+				limit = {
+					is_subject = yes
+					overlord = { is_same_value = root }
+					NOT = { has_country_flag = ps_specialized }
+				}
 				save_event_target_as = ps_subject
 			}
 			country_event = { id = ps.10 }
@@ -268,8 +303,28 @@ country_event = {
 	}
 }
 
+# on_becoming_subject: this = новый вассал, from = сюзерен.
+# Сразу предлагаем сюзерену выбрать роль.
+country_event = {
+	id = ps.13
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		from = { ps_is_shadow_overlord = yes }
+		NOT = { has_country_flag = ps_specialized }
+	}
+
+	immediate = {
+		save_event_target_as = ps_subject
+		from = { country_event = { id = ps.10 days = 3 } }
+	}
+}
+
 #####################################################
 # АГЕНТУРНЫЕ ОПЕРАЦИИ
+# Работают через ванильные шпионские сети: цель выбирается
+# из ваших сетей, а «платой» служит уровень проникновения сети.
 #####################################################
 
 country_event = {
@@ -277,33 +332,38 @@ country_event = {
 	title = ps.20.name
 	desc = ps.20.desc
 	picture = GFX_ps_evt_spy
+	show_sound = event_encrypted_comms
 	is_triggered_only = yes
 
-	trigger = { ps_is_partisan_empire = yes }
-
-	immediate = {
-		random_country = {
-			limit = {
-				is_country_type = default
-				NOT = { is_same_value = root }
-				has_communications = root
-				NOT = { is_subject = yes }
-			}
-			save_event_target_as = ps_op_target
+	trigger = {
+		ps_is_partisan_empire = yes
+		has_active_spynetwork = yes
+		any_spynetwork = {
+			owner = { is_same_value = root }
+			is_spynetwork_level > 20
+			target = { is_country_type = default }
 		}
 	}
 
-	# Украсть технологические чертежи
+	immediate = {
+		random_spynetwork = {
+			limit = {
+				owner = { is_same_value = root }
+				is_spynetwork_level > 20
+				target = { is_country_type = default }
+			}
+			target = { save_event_target_as = ps_op_target }
+		}
+	}
+
+	# Украсть чертежи
 	option = {
 		name = ps.20.a
-		trigger = {
-			exists = event_target:ps_op_target
-			resource_stockpile_compare = { resource = influence value >= 50 }
-		}
-		add_resource = { influence = -50 }
+		custom_tooltip = ps.20.cost_10
+		hidden_effect = { ps_spend_network = { AMOUNT = -10 } }
 		random_list = {
 			70 = {
-				modifier = { factor = 1.5 any_subject = { has_country_flag = ps_spec_spy_ring } }
+				modifier = { factor = 1.5 ps_has_spy_ring_subject = yes }
 				add_monthly_resource_mult = {
 					resource = physics_research
 					value = 6
@@ -324,17 +384,14 @@ country_event = {
 		ai_chance = { factor = 2 }
 	}
 
-	# Саботировать верфи
+	# Диверсия на верфях
 	option = {
 		name = ps.20.b
-		trigger = {
-			exists = event_target:ps_op_target
-			resource_stockpile_compare = { resource = energy value >= 300 }
-		}
-		add_resource = { energy = -300 }
+		custom_tooltip = ps.20.cost_15
+		hidden_effect = { ps_spend_network = { AMOUNT = -15 } }
 		random_list = {
 			65 = {
-				modifier = { factor = 1.5 any_subject = { has_country_flag = ps_spec_spy_ring } }
+				modifier = { factor = 1.5 ps_has_spy_ring_subject = yes }
 				event_target:ps_op_target = {
 					add_modifier = { modifier = ps_sabotaged_shipyards days = 1800 }
 				}
@@ -352,14 +409,11 @@ country_event = {
 	# Поднять подполье
 	option = {
 		name = ps.20.c
-		trigger = {
-			exists = event_target:ps_op_target
-			resource_stockpile_compare = { resource = influence value >= 75 }
-		}
-		add_resource = { influence = -75 }
+		custom_tooltip = ps.20.cost_20
+		hidden_effect = { ps_spend_network = { AMOUNT = -20 } }
 		random_list = {
 			60 = {
-				modifier = { factor = 1.5 any_subject = { has_country_flag = ps_spec_spy_ring } }
+				modifier = { factor = 1.5 ps_has_spy_ring_subject = yes }
 				event_target:ps_op_target = {
 					add_modifier = { modifier = ps_incited_unrest days = 1800 }
 				}
@@ -375,10 +429,18 @@ country_event = {
 	# Обчистить казну
 	option = {
 		name = ps.20.d
-		trigger = { exists = event_target:ps_op_target }
+		custom_tooltip = ps.20.cost_10
+		hidden_effect = { ps_spend_network = { AMOUNT = -10 } }
 		random_list = {
 			60 = {
-				modifier = { factor = 1.5 any_subject = { has_country_flag = ps_spec_black_market } }
+				modifier = {
+					factor = 1.5
+					any_playable_country = {
+						is_subject = yes
+						overlord = { is_same_value = root }
+						has_country_flag = ps_spec_black_market
+					}
+				}
 				add_resource = { energy = 400 }
 				event_target:ps_op_target = {
 					add_modifier = { modifier = ps_stolen_ledgers days = 1080 }
@@ -391,10 +453,11 @@ country_event = {
 		ai_chance = { factor = 1 }
 	}
 
-	# Залечь на дно
+	# Залечь на дно: сеть растёт
 	option = {
 		name = ps.20.e
-		add_resource = { unity = 100 }
+		custom_tooltip = ps.20.e.tooltip
+		hidden_effect = { ps_spend_network = { AMOUNT = 5 } }
 		ai_chance = { factor = 0.5 }
 	}
 }
@@ -405,6 +468,7 @@ country_event = {
 	title = ps.21.name
 	desc = ps.21.desc
 	picture = GFX_ps_evt_spy
+	show_sound = event_encrypted_comms
 	is_triggered_only = yes
 
 	immediate = {
@@ -422,12 +486,13 @@ country_event = {
 	}
 }
 
-# Уведомление жертве
+# Уведомление жертве (from = страна-шпион)
 country_event = {
 	id = ps.22
 	title = ps.22.name
 	desc = ps.22.desc
 	picture = GFX_ps_evt_spy
+	show_sound = event_encrypted_comms
 	is_triggered_only = yes
 
 	option = {
@@ -437,65 +502,37 @@ country_event = {
 
 #####################################################
 # ПАРТИЗАНСКАЯ ВОЙНА
+# on_planet_occupied: root = планета, from = владелец, fromfrom = оккупант
+# on_planet_returned: root = планета, from = владелец, fromfrom = бывший оккупант
 #####################################################
 
-# Ежемесячно: наши оккупированные планеты поднимают партизан
-country_event = {
+planet_event = {
 	id = ps.30
 	hide_window = yes
 	is_triggered_only = yes
 
 	trigger = {
-		ps_is_partisan_empire = yes
-		any_owned_planet = {
-			OR = {
-				AND = {
-					NOT = { has_planet_flag = ps_resisting }
-					exists = controller
-					controller = { NOT = { is_same_value = root } }
-				}
-				AND = {
-					has_planet_flag = ps_resisting
-					controller = { is_same_value = root }
-				}
-			}
-		}
+		from = { ps_is_partisan_empire = yes }
+		NOT = { has_planet_flag = ps_resisting }
 	}
 
 	immediate = {
-		# Освобождённые планеты
-		every_owned_planet = {
-			limit = {
-				has_planet_flag = ps_resisting
-				controller = { is_same_value = root }
+		set_planet_flag = ps_resisting
+		save_event_target_as = ps_occupied_planet
+
+		fromfrom = {
+			if = {
+				limit = { NOT = { has_modifier = ps_partisan_harassment } }
+				add_modifier = { modifier = ps_partisan_harassment days = 360 }
 			}
-			remove_planet_flag = ps_resisting
 		}
 
-		# Новые оккупированные планеты
-		every_owned_planet = {
-			limit = {
-				NOT = { has_planet_flag = ps_resisting }
-				exists = controller
-				controller = { NOT = { is_same_value = root } }
-			}
-			set_planet_flag = ps_resisting
-			controller = {
-				if = {
-					limit = { NOT = { has_modifier = ps_partisan_harassment } }
-					add_modifier = { modifier = ps_partisan_harassment days = 360 }
-				}
-			}
-			root = {
-				add_resource = { unity = 150 influence = 10 }
-			}
+		from = {
+			add_resource = { unity = 150 influence = 10 }
 			if = {
-				limit = { NOT = { root = { has_country_flag = ps_resistance_notified } } }
-				save_event_target_as = ps_occupied_planet
-				root = {
-					set_timed_country_flag = { flag = ps_resistance_notified days = 720 }
-					country_event = { id = ps.31 }
-				}
+				limit = { NOT = { has_country_flag = ps_resistance_notified } }
+				set_timed_country_flag = { flag = ps_resistance_notified days = 720 }
+				country_event = { id = ps.31 }
 			}
 		}
 	}
@@ -513,33 +550,21 @@ country_event = {
 	}
 }
 
-#####################################################
-# ДОХОД ОТ ФИЛИАЛОВ
-#####################################################
-
-country_event = {
-	id = ps.40
+# Планета освобождена
+planet_event = {
+	id = ps.32
 	hide_window = yes
 	is_triggered_only = yes
 
-	trigger = { ps_is_partisan_empire = yes }
+	trigger = { has_planet_flag = ps_resisting }
 
 	immediate = {
-		every_galaxy_planet = {
-			limit = {
-				has_building = building_ps_partisan_cell
-				exists = branch_office_owner
-				branch_office_owner = { is_same_value = root }
+		remove_planet_flag = ps_resisting
+		from = {
+			if = {
+				limit = { ps_is_partisan_empire = yes }
+				add_resource = { unity = 100 }
 			}
-			root = { add_resource = { energy = 60 unity = 30 } }
-		}
-		every_galaxy_planet = {
-			limit = {
-				has_building = building_ps_underground_press
-				exists = branch_office_owner
-				branch_office_owner = { is_same_value = root }
-			}
-			root = { add_resource = { unity = 80 influence = 5 } }
 		}
 	}
 }
@@ -556,10 +581,10 @@ country_event = {
 	trigger = { ps_is_partisan_empire = yes }
 
 	immediate = {
-		# Агентурный отчёт — в среднем раз в 3 года
-		random = {
-			chance = 33
-			country_event = { id = ps.20 }
+		# Агентурный отчёт — в среднем раз в 3 года (нужна шпионская сеть)
+		random_list = {
+			33 = { country_event = { id = ps.20 } }
+			67 = { }
 		}
 
 		# Глава 2
@@ -569,9 +594,9 @@ country_event = {
 				years_passed > 15
 				NOT = { has_country_flag = ps_diary_found }
 			}
-			random = {
-				chance = 25
-				country_event = { id = ps.2 }
+			random_list = {
+				25 = { country_event = { id = ps.2 } }
+				75 = { }
 			}
 		}
 
@@ -583,9 +608,9 @@ country_event = {
 				has_country_flag = ps_diary_found
 				NOT = { has_country_flag = ps_final_done }
 			}
-			random = {
-				chance = 20
-				country_event = { id = ps.3 }
+			random_list = {
+				20 = { country_event = { id = ps.3 } }
+				80 = { }
 			}
 		}
 	}

@@ -74,6 +74,7 @@ ps_overlord_spy_ring = {
 	icon_frame = 1
 	intel_decryption_add = 1
 	envoys_add = 1
+	spy_network_daily_value_mult = 0.15
 }
 ps_overlord_bastion = {
 	icon = @ps_icon

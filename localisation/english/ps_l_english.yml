@@ -15,7 +15,7 @@
 
  civic_ps_shadow_overlord:0 "Shadow Overlord"
  civic_ps_shadow_overlord_desc:0 "The Syndicate's subjects are not mere tributaries. Each gets a role in the network: some listen, some hold the line, some trade, some invent."
- civic_tooltip_ps_shadow_overlord_effects:0 "- Envoys: §G+1§!\n- Encryption: §G+1§!\n- Unlocks §YSpecialized Subjects§!: assign each subject a role that grants bonuses to it and to you, plus yearly tribute."
+ civic_tooltip_ps_shadow_overlord_effects:0 "- Envoys: §G+1§!\n- Encryption: §G+1§!\n- Unlocks §YSpecialized Subjects§!: assign each subject a role that grants bonuses to it and to you, plus yearly tribute.\n- Unlocks the §YPartisan Franchise§! agreement."
 
  # ===== Buildings =====
  building_ps_partisan_cell:0 "Partisan Cell"
@@ -105,10 +105,10 @@
 
  # ===== Events: agents =====
  ps.20.name:0 "Agent Report"
- ps.20.desc:0 "Our contacts report a weakness in the structures of §Y[ps_op_target.GetName]§!. The resident agent awaits orders."
- ps.20.a:0 "Steal their blueprints. (§Y50§! Influence)"
- ps.20.b:0 "Sabotage their shipyards. (§Y300§! Energy)"
- ps.20.c:0 "Raise the underground. (§Y75§! Influence)"
+ ps.20.desc:0 "Our spy network in §Y[ps_op_target.GetName]§! has taken deep root. The resident agent reports a weakness and awaits orders.\n\nAny operation will cost us part of the network."
+ ps.20.a:0 "Steal their blueprints."
+ ps.20.b:0 "Sabotage their shipyards."
+ ps.20.c:0 "Raise the underground."
  ps.20.d:0 "Empty their treasury."
  ps.20.e:0 "Lie low."
  ps.21.name:0 "Agent Exposed"
@@ -122,3 +122,11 @@
  ps.31.name:0 "The Forests Burn Again"
  ps.31.desc:0 "The enemy has occupied §Y[ps_occupied_planet.GetName]§!, but has not taken it. The old caches are open, the contacts are back on the air, and on the very first night an occupier patrol vanished.\n\nJust as centuries ago, the network does what it was built for."
  ps.31.a:0 "Not one step back."
+ ps.20.cost_10:0 "Spy Network level: §R-10§!"
+ ps.20.cost_15:0 "Spy Network level: §R-15§!"
+ ps.20.cost_20:0 "Spy Network level: §R-20§!"
+ ps.20.e.tooltip:0 "Spy Network level: §G+5§!"
+
+ # ===== Subject agreement =====
+ preset_ps_partisan_franchise:0 "Partisan Franchise"
+ preset_ps_partisan_franchise_desc:0 "The subject becomes a full cell of the network: it joins all of the overlord's wars, shares sensors and pays moderate tribute."

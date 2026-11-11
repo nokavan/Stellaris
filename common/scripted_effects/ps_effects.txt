@@ -1,0 +1,13 @@
+# Синдикат Сопротивления — скриптовые эффекты
+
+# Изменить уровень проникновения шпионской сети, нацеленной на
+# event_target:ps_op_target. Отрицательное AMOUNT — «плата» за операцию.
+ps_spend_network = {
+	random_spynetwork = {
+		limit = {
+			owner = { is_same_value = root }
+			target = { is_same_value = event_target:ps_op_target }
+		}
+		add_spy_network_level = $AMOUNT$
+	}
+}
