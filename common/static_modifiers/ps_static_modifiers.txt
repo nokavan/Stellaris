@@ -40,57 +40,20 @@ ps_legacy_master = {
 }
 
 ################################
-# Специализированные вассалы — модификатор на ВАССАЛЕ
+# Вассалы
 ################################
-ps_subject_spy_ring = {
+# Присяга Синдиката: ускоряет набор опыта специализации
+ps_oath_loyalty = {
 	icon = @ps_icon
 	icon_frame = 1
-	intel_encryption_add = 2
-	intel_decryption_add = 1
+	monthly_loyalty = 1
 }
-ps_subject_bastion = {
+# Каперские рейды — на враге сюзерена
+ps_privateer_raids = {
 	icon = @ps_icon
-	icon_frame = 1
-	army_damage_mult = 0.25
-	starbase_defense_platform_capacity_add = 4
-}
-ps_subject_black_market = {
-	icon = @ps_icon
-	icon_frame = 1
-	planet_jobs_energy_produces_mult = 0.15
-	planet_crime_add = 5
-}
-ps_subject_underground_lab = {
-	icon = @ps_icon
-	icon_frame = 1
-	all_technology_research_speed = 0.10
-}
-
-################################
-# Специализированные вассалы — модификатор на СЮЗЕРЕНЕ
-################################
-ps_overlord_spy_ring = {
-	icon = @ps_icon
-	icon_frame = 1
-	intel_decryption_add = 1
-	envoys_add = 1
-	spy_network_daily_value_mult = 0.15
-}
-ps_overlord_bastion = {
-	icon = @ps_icon
-	icon_frame = 1
-	army_damage_mult = 0.10
-	ship_fire_rate_mult = 0.05
-}
-ps_overlord_black_market = {
-	icon = @ps_icon
-	icon_frame = 1
-	planet_jobs_energy_produces_mult = 0.05
-}
-ps_overlord_underground_lab = {
-	icon = @ps_icon
-	icon_frame = 1
-	all_technology_research_speed = 0.05
+	icon_frame = 3
+	country_energy_produces_mult = -0.10
+	ship_speed_mult = -0.05
 }
 
 ################################

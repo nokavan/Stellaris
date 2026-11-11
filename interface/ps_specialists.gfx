@@ -1,0 +1,130 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_diplomacy_specialist_subject_ps_strike"
+		texturefile = "gfx/interface/icons/specialists/ps_strike.dds"
+	}
+	spriteType = {
+		name = "GFX_diplomacy_specialist_subject_ps_strike_large"
+		texturefile = "gfx/interface/icons/specialists/ps_strike_large.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_strike_1_overlord_modifier"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_strike_1_overlord_modifier.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_strike_1_drills"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_strike_1_drills.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_strike_2_admirals"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_strike_2_admirals.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_strike_2_overlord_fleet"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_strike_2_overlord_fleet.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_strike_3_iron_fist"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_strike_3_iron_fist.dds"
+	}
+	spriteType = {
+		name = "GFX_diplomacy_specialist_subject_ps_assault"
+		texturefile = "gfx/interface/icons/specialists/ps_assault.dds"
+	}
+	spriteType = {
+		name = "GFX_diplomacy_specialist_subject_ps_assault_large"
+		texturefile = "gfx/interface/icons/specialists/ps_assault_large.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_assault_1_overlord_modifier"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_assault_1_overlord_modifier.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_assault_1_veterans"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_assault_1_veterans.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_assault_2_generals"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_assault_2_generals.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_assault_2_overlord_veterans"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_assault_2_overlord_veterans.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_assault_3_storm"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_assault_3_storm.dds"
+	}
+	spriteType = {
+		name = "GFX_diplomacy_specialist_subject_ps_raiders"
+		texturefile = "gfx/interface/icons/specialists/ps_raiders.dds"
+	}
+	spriteType = {
+		name = "GFX_diplomacy_specialist_subject_ps_raiders_large"
+		texturefile = "gfx/interface/icons/specialists/ps_raiders_large.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_raiders_1_overlord_modifier"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_raiders_1_overlord_modifier.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_raiders_1_letters_of_marque"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_raiders_1_letters_of_marque.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_raiders_2_prize_crews"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_raiders_2_prize_crews.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_raiders_3_wolfpacks"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_raiders_3_wolfpacks.dds"
+	}
+	spriteType = {
+		name = "GFX_diplomacy_specialist_subject_ps_residency"
+		texturefile = "gfx/interface/icons/specialists/ps_residency.dds"
+	}
+	spriteType = {
+		name = "GFX_diplomacy_specialist_subject_ps_residency_large"
+		texturefile = "gfx/interface/icons/specialists/ps_residency_large.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_residency_1_overlord_modifier"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_residency_1_overlord_modifier.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_residency_1_network"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_residency_1_network.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_residency_2_envoys"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_residency_2_envoys.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_residency_3_ghosts"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_residency_3_ghosts.dds"
+	}
+	spriteType = {
+		name = "GFX_diplomacy_specialist_subject_ps_exchange"
+		texturefile = "gfx/interface/icons/specialists/ps_exchange.dds"
+	}
+	spriteType = {
+		name = "GFX_diplomacy_specialist_subject_ps_exchange_large"
+		texturefile = "gfx/interface/icons/specialists/ps_exchange_large.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_exchange_1_overlord_modifier"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_exchange_1_overlord_modifier.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_exchange_1_ledgers"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_exchange_1_ledgers.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_exchange_2_dividends"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_exchange_2_dividends.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_exchange_3_cartel"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_exchange_3_cartel.dds"
+	}
+}

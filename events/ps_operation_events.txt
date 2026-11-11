@@ -1,0 +1,58 @@
+#####################################################
+# Синдикат Сопротивления — события шпионских операций
+# Формат сверен с vanilla events (nemesis_operations_events, 4.x)
+# this = operation; owner = мы; target = цель
+#####################################################
+
+namespace = ps_operation
+
+# Этап 1: связные в совете
+espionage_operation_event = {
+	id = ps_operation.1
+	title = ps_operation.1.name
+	desc = ps_operation.1.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_default
+	is_triggered_only = yes
+
+	option = { name = ps_operation.1.a }
+}
+
+# Этап 2: компромат и подкуп
+espionage_operation_event = {
+	id = ps_operation.2
+	title = ps_operation.2.name
+	desc = ps_operation.2.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_default
+	is_triggered_only = yes
+
+	option = { name = ps_operation.2.a }
+}
+
+# Этап 3: переворот
+espionage_operation_event = {
+	id = ps_operation.3
+	title = ps_operation.3.name
+	desc = ps_operation.3.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	location = target.capital_scope
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	option = {
+		name = ps_operation.3.a
+		custom_tooltip = ps_operation.3.a.tooltip
+		target = {
+			set_timed_country_flag = { flag = ps_puppet_council days = 3600 }
+			add_opinion_modifier = { who = root.owner modifier = opinion_ps_puppet_council }
+		}
+	}
+
+	after = {
+		destroy_espionage_operation = this
+	}
+}

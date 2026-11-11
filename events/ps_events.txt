@@ -2,7 +2,7 @@
 # Синдикат Сопротивления — события
 #
 #  ps.1  - 3   Сюжет: Наследие Сопротивления
-#  ps.10 - 13  Специализированные вассалы
+#  ps.14 - 15  Вассалы: присяга (прокачка) и каперские рейды
 #  ps.20 - 22  Агентурные операции (через шпионские сети)
 #  ps.30 - 32  Партизанская война (on_planet_occupied / on_planet_returned)
 #  ps.50       Диспетчер (ежегодный)
@@ -118,206 +118,92 @@ country_event = {
 }
 
 #####################################################
-# СПЕЦИАЛИЗИРОВАННЫЕ ВАССАЛЫ
+# ВАССАЛЫ
+# Сами специализации — настоящие типы вассалов (common/specialist_subject_*),
+# опыт копится от лояльности, перки открываются на уровнях I–III.
+# Перки ставят на вассала флаги ps_raiders_1..3 / ps_residency_active /
+# ps_exchange_active, которые читают события ниже.
 #####################################################
 
-# Выбор специализации для нового вассала.
-# event_target:ps_subject задаётся в ps.11 / ps.13
+# Ежегодно у сюзерена: Присяга Синдиката и каперские рейды
 country_event = {
-	id = ps.10
-	title = ps.10.name
-	desc = ps.10.desc
-	picture = GFX_ps_evt_syndicate
-	is_triggered_only = yes
-
-	trigger = { exists = event_target:ps_subject }
-
-	# Шпионская сеть
-	option = {
-		name = ps.10.a
-		custom_tooltip = ps.10.a.tooltip
-		event_target:ps_subject = {
-			set_country_flag = ps_specialized
-			set_country_flag = ps_spec_spy_ring
-			add_modifier = { modifier = ps_subject_spy_ring days = -1 }
-		}
-		ai_chance = { factor = 1 }
-	}
-	# Партизанский оплот
-	option = {
-		name = ps.10.b
-		custom_tooltip = ps.10.b.tooltip
-		event_target:ps_subject = {
-			set_country_flag = ps_specialized
-			set_country_flag = ps_spec_bastion
-			add_modifier = { modifier = ps_subject_bastion days = -1 }
-		}
-		ai_chance = {
-			factor = 1
-			modifier = { factor = 2 is_at_war = yes }
-		}
-	}
-	# Чёрный рынок
-	option = {
-		name = ps.10.c
-		custom_tooltip = ps.10.c.tooltip
-		event_target:ps_subject = {
-			set_country_flag = ps_specialized
-			set_country_flag = ps_spec_black_market
-			add_modifier = { modifier = ps_subject_black_market days = -1 }
-		}
-		ai_chance = { factor = 1.5 }
-	}
-	# Подпольная лаборатория
-	option = {
-		name = ps.10.d
-		custom_tooltip = ps.10.d.tooltip
-		event_target:ps_subject = {
-			set_country_flag = ps_specialized
-			set_country_flag = ps_spec_underground_lab
-			add_modifier = { modifier = ps_subject_underground_lab days = -1 }
-		}
-		ai_chance = { factor = 1 }
-	}
-}
-
-# Ежегодно: пересчёт бонусов сюзерена, дань специализаций,
-# предложение специализировать одного нового вассала.
-# Вассалы перебираются через every_playable_country + overlord,
-# как в ванильных событиях 4.x.
-country_event = {
-	id = ps.11
+	id = ps.14
 	hide_window = yes
 	is_triggered_only = yes
 
 	trigger = { ps_is_shadow_overlord = yes }
 
 	immediate = {
-		# Ванильные специалисты (Overlord) автоматически вписываются в сеть
-		every_playable_country = {
-			limit = {
-				is_subject = yes
-				overlord = { is_same_value = root }
-				NOT = { has_country_flag = ps_specialized }
-			}
-			if = {
-				limit = { is_specialist_subject_type = { TYPE = bulwark } }
-				set_country_flag = ps_specialized
-				set_country_flag = ps_spec_bastion
-			}
-			else_if = {
-				limit = { is_specialist_subject_type = { TYPE = scholarium } }
-				set_country_flag = ps_specialized
-				set_country_flag = ps_spec_underground_lab
-			}
-			else_if = {
-				limit = { is_specialist_subject_type = { TYPE = prospectorium } }
-				set_country_flag = ps_specialized
-				set_country_flag = ps_spec_black_market
-			}
-		}
-
-		remove_modifier = ps_overlord_spy_ring
-		remove_modifier = ps_overlord_bastion
-		remove_modifier = ps_overlord_black_market
-		remove_modifier = ps_overlord_underground_lab
-
+		# Присяга: +1 лояльность в месяц всем вассалам -> быстрее растёт опыт специализации
 		if = {
-			limit = { any_playable_country = { is_subject = yes overlord = { is_same_value = root } has_country_flag = ps_spec_spy_ring } }
-			add_modifier = { modifier = ps_overlord_spy_ring days = -1 }
-		}
-		if = {
-			limit = { any_playable_country = { is_subject = yes overlord = { is_same_value = root } has_country_flag = ps_spec_bastion } }
-			add_modifier = { modifier = ps_overlord_bastion days = -1 }
-		}
-		if = {
-			limit = { any_playable_country = { is_subject = yes overlord = { is_same_value = root } has_country_flag = ps_spec_black_market } }
-			add_modifier = { modifier = ps_overlord_black_market days = -1 }
-		}
-		if = {
-			limit = { any_playable_country = { is_subject = yes overlord = { is_same_value = root } has_country_flag = ps_spec_underground_lab } }
-			add_modifier = { modifier = ps_overlord_underground_lab days = -1 }
-		}
-
-		# Специализированная дань (за каждого вассала)
-		every_playable_country = {
-			limit = { is_subject = yes overlord = { is_same_value = root } has_country_flag = ps_spec_spy_ring }
-			root = { add_resource = { influence = 15 } }
-		}
-		every_playable_country = {
-			limit = { is_subject = yes overlord = { is_same_value = root } has_country_flag = ps_spec_bastion }
-			root = { add_resource = { alloys = 75 } }
-		}
-		every_playable_country = {
-			limit = { is_subject = yes overlord = { is_same_value = root } has_country_flag = ps_spec_black_market }
-			root = { add_resource = { energy = 150 } }
-		}
-		every_playable_country = {
-			limit = { is_subject = yes overlord = { is_same_value = root } has_country_flag = ps_spec_underground_lab }
-			root = { add_resource = { physics_research = 50 society_research = 50 engineering_research = 50 } }
-		}
-
-		# Подстраховка: предложить роль одному вассалу без неё
-		if = {
-			limit = {
-				any_playable_country = {
-					is_subject = yes
-					overlord = { is_same_value = root }
-					NOT = { has_country_flag = ps_specialized }
-				}
-			}
-			random_playable_country = {
+			limit = { has_edict = edict_ps_oath }
+			every_playable_country = {
 				limit = {
 					is_subject = yes
 					overlord = { is_same_value = root }
-					NOT = { has_country_flag = ps_specialized }
 				}
-				save_event_target_as = ps_subject
+				add_modifier = { modifier = ps_oath_loyalty days = 370 }
 			}
-			country_event = { id = ps.10 }
+		}
+
+		# Каперские рейды во время войны
+		if = {
+			limit = {
+				is_at_war = yes
+				any_playable_country = {
+					is_subject = yes
+					overlord = { is_same_value = root }
+					OR = {
+						has_country_flag = ps_raiders_1
+						has_country_flag = ps_raiders_2
+						has_country_flag = ps_raiders_3
+					}
+				}
+			}
+			every_playable_country = {
+				limit = {
+					is_subject = yes
+					overlord = { is_same_value = root }
+				}
+				if = {
+					limit = { has_country_flag = ps_raiders_3 }
+					root = { add_resource = { energy = 300 } }
+				}
+				else_if = {
+					limit = { has_country_flag = ps_raiders_2 }
+					root = { add_resource = { energy = 200 } }
+				}
+				else_if = {
+					limit = { has_country_flag = ps_raiders_1 }
+					root = { add_resource = { energy = 100 } }
+				}
+			}
+			every_playable_country = {
+				limit = {
+					is_at_war_with = root
+					NOT = { has_modifier = ps_privateer_raids }
+				}
+				add_modifier = { modifier = ps_privateer_raids days = 360 }
+			}
+			if = {
+				limit = { NOT = { has_country_flag = ps_raids_notified } }
+				set_timed_country_flag = { flag = ps_raids_notified days = 1800 }
+				country_event = { id = ps.15 }
+			}
 		}
 	}
 }
 
-# Бывший вассал теряет специализацию
+# Уведомление: каперы вышли на охоту
 country_event = {
-	id = ps.12
-	hide_window = yes
+	id = ps.15
+	title = ps.15.name
+	desc = ps.15.desc
+	picture = GFX_ps_evt_syndicate
 	is_triggered_only = yes
 
-	trigger = {
-		has_country_flag = ps_specialized
-		is_subject = no
-	}
-
-	immediate = {
-		remove_country_flag = ps_specialized
-		remove_country_flag = ps_spec_spy_ring
-		remove_country_flag = ps_spec_bastion
-		remove_country_flag = ps_spec_black_market
-		remove_country_flag = ps_spec_underground_lab
-		remove_modifier = ps_subject_spy_ring
-		remove_modifier = ps_subject_bastion
-		remove_modifier = ps_subject_black_market
-		remove_modifier = ps_subject_underground_lab
-	}
-}
-
-# on_becoming_subject: this = новый вассал, from = сюзерен.
-# Сразу предлагаем сюзерену выбрать роль.
-country_event = {
-	id = ps.13
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = {
-		from = { ps_is_shadow_overlord = yes }
-		NOT = { has_country_flag = ps_specialized }
-	}
-
-	immediate = {
-		save_event_target_as = ps_subject
-		from = { country_event = { id = ps.10 days = 3 } }
+	option = {
+		name = ps.15.a
 	}
 }
 
@@ -438,7 +324,7 @@ country_event = {
 					any_playable_country = {
 						is_subject = yes
 						overlord = { is_same_value = root }
-						has_country_flag = ps_spec_black_market
+						has_country_flag = ps_exchange_active
 					}
 				}
 				add_resource = { energy = 400 }

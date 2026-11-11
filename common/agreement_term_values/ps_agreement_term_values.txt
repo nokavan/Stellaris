@@ -1,0 +1,192 @@
+# АВТОГЕНЕРАЦИЯ: tools/gen_specialists.py — правьте генератор, а не этот файл
+# owner = сюзерен, target = вассал
+
+specialist_ps_strike = {
+	term = specialist_type
+	triggered_loyalty_change = {
+		trigger = {
+			target = { has_ethic = ethic_militarist }
+		}
+		loyalty_change = 5
+		ai_acceptance = {
+			subject = 25
+		}
+	}
+	triggered_loyalty_change = {
+		trigger = {
+			target = { has_ethic = ethic_pacifist }
+		}
+		loyalty_change = -20
+		ai_acceptance = {
+			subject = -100
+		}
+	}
+	# Тайный переворот (операция Синдиката) делает совет цели сговорчивым
+	triggered_loyalty_change = {
+		trigger = {
+			target = { has_country_flag = ps_puppet_council }
+		}
+		loyalty_change = 10
+		ai_acceptance = {
+			subject = 150
+		}
+	}
+	activate_effect = {
+		convert_to_specialist = specialist_ps_strike
+	}
+	potential = {
+		agreement_preset = preset_ps_strike
+	}
+}
+
+specialist_ps_assault = {
+	term = specialist_type
+	triggered_loyalty_change = {
+		trigger = {
+			target = { has_ethic = ethic_authoritarian }
+		}
+		loyalty_change = 5
+		ai_acceptance = {
+			subject = 25
+		}
+	}
+	triggered_loyalty_change = {
+		trigger = {
+			target = { has_ethic = ethic_egalitarian }
+		}
+		loyalty_change = -20
+		ai_acceptance = {
+			subject = -100
+		}
+	}
+	# Тайный переворот (операция Синдиката) делает совет цели сговорчивым
+	triggered_loyalty_change = {
+		trigger = {
+			target = { has_country_flag = ps_puppet_council }
+		}
+		loyalty_change = 10
+		ai_acceptance = {
+			subject = 150
+		}
+	}
+	activate_effect = {
+		convert_to_specialist = specialist_ps_assault
+	}
+	potential = {
+		agreement_preset = preset_ps_assault
+	}
+}
+
+specialist_ps_raiders = {
+	term = specialist_type
+	triggered_loyalty_change = {
+		trigger = {
+			target = { has_ethic = ethic_xenophobe }
+		}
+		loyalty_change = 5
+		ai_acceptance = {
+			subject = 25
+		}
+	}
+	triggered_loyalty_change = {
+		trigger = {
+			target = { has_ethic = ethic_xenophile }
+		}
+		loyalty_change = -20
+		ai_acceptance = {
+			subject = -100
+		}
+	}
+	# Тайный переворот (операция Синдиката) делает совет цели сговорчивым
+	triggered_loyalty_change = {
+		trigger = {
+			target = { has_country_flag = ps_puppet_council }
+		}
+		loyalty_change = 10
+		ai_acceptance = {
+			subject = 150
+		}
+	}
+	activate_effect = {
+		convert_to_specialist = specialist_ps_raiders
+	}
+	potential = {
+		agreement_preset = preset_ps_raiders
+	}
+}
+
+specialist_ps_residency = {
+	term = specialist_type
+	triggered_loyalty_change = {
+		trigger = {
+			target = { has_ethic = ethic_xenophile }
+		}
+		loyalty_change = 5
+		ai_acceptance = {
+			subject = 25
+		}
+	}
+	triggered_loyalty_change = {
+		trigger = {
+			target = { has_ethic = ethic_xenophobe }
+		}
+		loyalty_change = -20
+		ai_acceptance = {
+			subject = -100
+		}
+	}
+	# Тайный переворот (операция Синдиката) делает совет цели сговорчивым
+	triggered_loyalty_change = {
+		trigger = {
+			target = { has_country_flag = ps_puppet_council }
+		}
+		loyalty_change = 10
+		ai_acceptance = {
+			subject = 150
+		}
+	}
+	activate_effect = {
+		convert_to_specialist = specialist_ps_residency
+	}
+	potential = {
+		agreement_preset = preset_ps_residency
+	}
+}
+
+specialist_ps_exchange = {
+	term = specialist_type
+	triggered_loyalty_change = {
+		trigger = {
+			target = { has_ethic = ethic_egalitarian }
+		}
+		loyalty_change = 5
+		ai_acceptance = {
+			subject = 25
+		}
+	}
+	triggered_loyalty_change = {
+		trigger = {
+			target = { has_ethic = ethic_authoritarian }
+		}
+		loyalty_change = -20
+		ai_acceptance = {
+			subject = -100
+		}
+	}
+	# Тайный переворот (операция Синдиката) делает совет цели сговорчивым
+	triggered_loyalty_change = {
+		trigger = {
+			target = { has_country_flag = ps_puppet_council }
+		}
+		loyalty_change = 10
+		ai_acceptance = {
+			subject = 150
+		}
+	}
+	activate_effect = {
+		convert_to_specialist = specialist_ps_exchange
+	}
+	potential = {
+		agreement_preset = preset_ps_exchange
+	}
+}

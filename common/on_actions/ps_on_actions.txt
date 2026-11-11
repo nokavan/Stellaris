@@ -10,16 +10,8 @@ on_game_start_country = {
 # this = country
 on_yearly_pulse_country = {
 	events = {
-		ps.11	# Сюзерен: пересчёт бонусов, дань, роль для вассала без неё
-		ps.12	# Очистка у освободившихся вассалов
+		ps.14	# Сюзерен: Присяга Синдиката и каперские рейды
 		ps.50	# Диспетчер сюжета и агентурных отчётов
-	}
-}
-
-# this = subject, from = overlord
-on_becoming_subject = {
-	events = {
-		ps.13	# Сразу предложить роль новому вассалу
 	}
 }
 

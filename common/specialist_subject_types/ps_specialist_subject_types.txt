@@ -1,0 +1,191 @@
+# АВТОГЕНЕРАЦИЯ: tools/gen_specialists.py — правьте генератор, а не этот файл
+@ps_level_2_xp_cost = 1200
+@ps_level_3_xp_cost = 3600
+@ps_conversion_time = 30
+
+specialist_ps_strike = {
+	icon = "GFX_diplomacy_specialist_subject_ps_strike"
+	icon_large = "GFX_diplomacy_specialist_subject_ps_strike_large"
+	preferred_ethic = ethic_militarist
+	base_conversion_time = @ps_conversion_time
+
+	levels = {
+		# Level 1
+		{
+			experience_needed_for_next_level = @ps_level_2_xp_cost
+			perks = {
+				ps_strike_1_modifier
+				ps_strike_1_penalties
+				ps_strike_1_overlord_modifier
+				ps_strike_1_drills
+			}
+		}
+		# Level 2
+		{
+			experience_needed_for_next_level = @ps_level_3_xp_cost
+			perks = {
+				ps_strike_2_modifier
+				ps_strike_2_penalties
+				ps_strike_2_admirals
+				ps_strike_2_overlord_fleet
+			}
+		}
+		# Level 3
+		{
+			perks = {
+				ps_strike_3_modifier
+				ps_strike_3_penalties
+				ps_strike_3_iron_fist
+			}
+		}
+	}
+}
+
+specialist_ps_assault = {
+	icon = "GFX_diplomacy_specialist_subject_ps_assault"
+	icon_large = "GFX_diplomacy_specialist_subject_ps_assault_large"
+	preferred_ethic = ethic_authoritarian
+	base_conversion_time = @ps_conversion_time
+
+	levels = {
+		# Level 1
+		{
+			experience_needed_for_next_level = @ps_level_2_xp_cost
+			perks = {
+				ps_assault_1_modifier
+				ps_assault_1_penalties
+				ps_assault_1_overlord_modifier
+				ps_assault_1_veterans
+			}
+		}
+		# Level 2
+		{
+			experience_needed_for_next_level = @ps_level_3_xp_cost
+			perks = {
+				ps_assault_2_modifier
+				ps_assault_2_penalties
+				ps_assault_2_generals
+				ps_assault_2_overlord_veterans
+			}
+		}
+		# Level 3
+		{
+			perks = {
+				ps_assault_3_modifier
+				ps_assault_3_penalties
+				ps_assault_3_storm
+			}
+		}
+	}
+}
+
+specialist_ps_raiders = {
+	icon = "GFX_diplomacy_specialist_subject_ps_raiders"
+	icon_large = "GFX_diplomacy_specialist_subject_ps_raiders_large"
+	preferred_ethic = ethic_xenophobe
+	base_conversion_time = @ps_conversion_time
+
+	levels = {
+		# Level 1
+		{
+			experience_needed_for_next_level = @ps_level_2_xp_cost
+			perks = {
+				ps_raiders_1_modifier
+				ps_raiders_1_penalties
+				ps_raiders_1_overlord_modifier
+				ps_raiders_1_letters_of_marque
+			}
+		}
+		# Level 2
+		{
+			experience_needed_for_next_level = @ps_level_3_xp_cost
+			perks = {
+				ps_raiders_2_modifier
+				ps_raiders_2_penalties
+				ps_raiders_2_prize_crews
+			}
+		}
+		# Level 3
+		{
+			perks = {
+				ps_raiders_3_modifier
+				ps_raiders_3_penalties
+				ps_raiders_3_wolfpacks
+			}
+		}
+	}
+}
+
+specialist_ps_residency = {
+	icon = "GFX_diplomacy_specialist_subject_ps_residency"
+	icon_large = "GFX_diplomacy_specialist_subject_ps_residency_large"
+	preferred_ethic = ethic_xenophile
+	base_conversion_time = @ps_conversion_time
+
+	levels = {
+		# Level 1
+		{
+			experience_needed_for_next_level = @ps_level_2_xp_cost
+			perks = {
+				ps_residency_1_modifier
+				ps_residency_1_penalties
+				ps_residency_1_overlord_modifier
+				ps_residency_1_network
+			}
+		}
+		# Level 2
+		{
+			experience_needed_for_next_level = @ps_level_3_xp_cost
+			perks = {
+				ps_residency_2_modifier
+				ps_residency_2_penalties
+				ps_residency_2_envoys
+			}
+		}
+		# Level 3
+		{
+			perks = {
+				ps_residency_3_modifier
+				ps_residency_3_penalties
+				ps_residency_3_ghosts
+			}
+		}
+	}
+}
+
+specialist_ps_exchange = {
+	icon = "GFX_diplomacy_specialist_subject_ps_exchange"
+	icon_large = "GFX_diplomacy_specialist_subject_ps_exchange_large"
+	preferred_ethic = ethic_egalitarian
+	base_conversion_time = @ps_conversion_time
+
+	levels = {
+		# Level 1
+		{
+			experience_needed_for_next_level = @ps_level_2_xp_cost
+			perks = {
+				ps_exchange_1_modifier
+				ps_exchange_1_penalties
+				ps_exchange_1_overlord_modifier
+				ps_exchange_1_ledgers
+			}
+		}
+		# Level 2
+		{
+			experience_needed_for_next_level = @ps_level_3_xp_cost
+			perks = {
+				ps_exchange_2_modifier
+				ps_exchange_2_penalties
+				ps_exchange_2_dividends
+			}
+		}
+		# Level 3
+		{
+			perks = {
+				ps_exchange_3_modifier
+				ps_exchange_3_penalties
+				ps_exchange_3_cartel
+			}
+		}
+	}
+}

@@ -1,0 +1,515 @@
+# АВТОГЕНЕРАЦИЯ: tools/gen_specialists.py — правьте генератор, а не этот файл
+
+######## Strike Legion ########
+
+ps_strike_1_modifier = {
+	main_perk = yes
+	subject_modifier = {
+		ship_fire_rate_mult = 0.1
+		ship_weapon_damage = 0.05
+		country_naval_cap_mult = 0.15
+	}
+}
+
+ps_strike_1_penalties = {
+	main_perk = yes
+	subject_modifier = {
+		country_physics_research_produces_mult = -0.2
+		country_society_research_produces_mult = -0.2
+		country_engineering_research_produces_mult = -0.2
+		country_unity_produces_mult = -0.1
+	}
+}
+
+ps_strike_1_overlord_modifier = {
+	icon = "GFX_specialist_perk_ps_strike_1_overlord_modifier"
+	overlord_modifier = {
+		ship_fire_rate_mult = 0.03
+	}
+	desc = {
+		description = ps_strike_1_overlord_modifier_desc
+	}
+}
+
+ps_strike_1_drills = {
+	icon = "GFX_specialist_perk_ps_strike_1_drills"
+	subject_modifier = {
+		ship_speed_mult = 0.1
+	}
+	desc = {
+		description = ps_strike_1_drills_desc
+	}
+}
+
+ps_strike_2_modifier = {
+	main_perk = yes
+	subject_modifier = {
+		ship_fire_rate_mult = 0.15
+		ship_weapon_damage = 0.1
+		country_naval_cap_mult = 0.25
+	}
+}
+
+ps_strike_2_penalties = {
+	main_perk = yes
+	subject_modifier = {
+		country_physics_research_produces_mult = -0.3
+		country_society_research_produces_mult = -0.3
+		country_engineering_research_produces_mult = -0.3
+		country_unity_produces_mult = -0.15
+	}
+}
+
+ps_strike_2_admirals = {
+	icon = "GFX_specialist_perk_ps_strike_2_admirals"
+	subject_modifier = {
+		country_commander_cap_add = 1
+		commander_initial_skill = 1
+	}
+	desc = {
+		description = ps_strike_2_admirals_desc
+	}
+}
+
+ps_strike_2_overlord_fleet = {
+	icon = "GFX_specialist_perk_ps_strike_2_overlord_fleet"
+	overlord_modifier = {
+		country_naval_cap_add = 15
+	}
+	desc = {
+		description = ps_strike_2_overlord_fleet_desc
+	}
+}
+
+ps_strike_3_modifier = {
+	main_perk = yes
+	subject_modifier = {
+		ship_fire_rate_mult = 0.2
+		ship_weapon_damage = 0.15
+		country_naval_cap_mult = 0.35
+	}
+}
+
+ps_strike_3_penalties = {
+	main_perk = yes
+	subject_modifier = {
+		country_physics_research_produces_mult = -0.4
+		country_society_research_produces_mult = -0.4
+		country_engineering_research_produces_mult = -0.4
+		country_unity_produces_mult = -0.2
+	}
+}
+
+ps_strike_3_iron_fist = {
+	icon = "GFX_specialist_perk_ps_strike_3_iron_fist"
+	overlord_modifier = {
+		ship_weapon_damage = 0.05
+	}
+	desc = {
+		description = ps_strike_3_iron_fist_desc
+	}
+}
+
+######## Assault Corps ########
+
+ps_assault_1_modifier = {
+	main_perk = yes
+	subject_modifier = {
+		army_damage_mult = 0.25
+		army_health = 0.15
+		army_morale = 0.15
+		planet_army_build_speed_mult = 0.25
+	}
+}
+
+ps_assault_1_penalties = {
+	main_perk = yes
+	subject_modifier = {
+		country_naval_cap_mult = -0.25
+		country_energy_produces_mult = -0.1
+	}
+}
+
+ps_assault_1_overlord_modifier = {
+	icon = "GFX_specialist_perk_ps_assault_1_overlord_modifier"
+	overlord_modifier = {
+		army_damage_mult = 0.05
+	}
+	desc = {
+		description = ps_assault_1_overlord_modifier_desc
+	}
+}
+
+ps_assault_1_veterans = {
+	icon = "GFX_specialist_perk_ps_assault_1_veterans"
+	subject_modifier = {
+		army_starting_experience_add = 100
+	}
+	desc = {
+		description = ps_assault_1_veterans_desc
+	}
+}
+
+ps_assault_2_modifier = {
+	main_perk = yes
+	subject_modifier = {
+		army_damage_mult = 0.4
+		army_health = 0.25
+		army_morale = 0.25
+		planet_army_build_speed_mult = 0.5
+	}
+}
+
+ps_assault_2_penalties = {
+	main_perk = yes
+	subject_modifier = {
+		country_naval_cap_mult = -0.35
+		country_energy_produces_mult = -0.15
+	}
+}
+
+ps_assault_2_generals = {
+	icon = "GFX_specialist_perk_ps_assault_2_generals"
+	subject_modifier = {
+		country_commander_cap_add = 1
+		commander_initial_skill = 1
+	}
+	desc = {
+		description = ps_assault_2_generals_desc
+	}
+}
+
+ps_assault_2_overlord_veterans = {
+	icon = "GFX_specialist_perk_ps_assault_2_overlord_veterans"
+	overlord_modifier = {
+		army_starting_experience_add = 50
+	}
+	desc = {
+		description = ps_assault_2_overlord_veterans_desc
+	}
+}
+
+ps_assault_3_modifier = {
+	main_perk = yes
+	subject_modifier = {
+		army_damage_mult = 0.6
+		army_health = 0.35
+		army_morale = 0.35
+		planet_army_build_speed_mult = 0.75
+	}
+}
+
+ps_assault_3_penalties = {
+	main_perk = yes
+	subject_modifier = {
+		country_naval_cap_mult = -0.5
+		country_energy_produces_mult = -0.2
+	}
+}
+
+ps_assault_3_storm = {
+	icon = "GFX_specialist_perk_ps_assault_3_storm"
+	overlord_modifier = {
+		army_damage_mult = 0.1
+		army_health = 0.1
+	}
+	desc = {
+		description = ps_assault_3_storm_desc
+	}
+}
+
+######## Privateer Flotilla ########
+
+ps_raiders_1_modifier = {
+	main_perk = yes
+	subject_modifier = {
+		ship_evasion_add = 10
+		ship_speed_mult = 0.15
+		country_energy_produces_mult = 0.1
+	}
+}
+
+ps_raiders_1_penalties = {
+	main_perk = yes
+	subject_modifier = {
+		country_unity_produces_mult = -0.15
+		pop_happiness = -0.05
+	}
+}
+
+ps_raiders_1_overlord_modifier = {
+	icon = "GFX_specialist_perk_ps_raiders_1_overlord_modifier"
+	overlord_modifier = {
+		ship_speed_mult = 0.05
+	}
+	desc = {
+		description = ps_raiders_1_overlord_modifier_desc
+	}
+}
+
+ps_raiders_1_letters_of_marque = {
+	icon = "GFX_specialist_perk_ps_raiders_1_letters_of_marque"
+	activate_effect = {
+		target = { set_country_flag = ps_raiders_1 }
+	}
+	deactivate_effect = {
+		target = { remove_country_flag = ps_raiders_1 }
+	}
+	desc = {
+		description = ps_raiders_1_letters_of_marque_desc
+	}
+}
+
+ps_raiders_2_modifier = {
+	main_perk = yes
+	subject_modifier = {
+		ship_evasion_add = 15
+		ship_speed_mult = 0.2
+		country_energy_produces_mult = 0.15
+	}
+}
+
+ps_raiders_2_penalties = {
+	main_perk = yes
+	subject_modifier = {
+		country_unity_produces_mult = -0.2
+		pop_happiness = -0.05
+	}
+}
+
+ps_raiders_2_prize_crews = {
+	icon = "GFX_specialist_perk_ps_raiders_2_prize_crews"
+	activate_effect = {
+		target = { set_country_flag = ps_raiders_2 }
+	}
+	deactivate_effect = {
+		target = { remove_country_flag = ps_raiders_2 }
+	}
+	desc = {
+		description = ps_raiders_2_prize_crews_desc
+	}
+}
+
+ps_raiders_3_modifier = {
+	main_perk = yes
+	subject_modifier = {
+		ship_evasion_add = 20
+		ship_speed_mult = 0.25
+		country_energy_produces_mult = 0.2
+	}
+}
+
+ps_raiders_3_penalties = {
+	main_perk = yes
+	subject_modifier = {
+		country_unity_produces_mult = -0.25
+		pop_happiness = -0.1
+	}
+}
+
+ps_raiders_3_wolfpacks = {
+	icon = "GFX_specialist_perk_ps_raiders_3_wolfpacks"
+	overlord_modifier = {
+		ship_evasion_add = 3
+	}
+	activate_effect = {
+		target = { set_country_flag = ps_raiders_3 }
+	}
+	deactivate_effect = {
+		target = { remove_country_flag = ps_raiders_3 }
+	}
+	desc = {
+		description = ps_raiders_3_wolfpacks_desc
+	}
+}
+
+######## Spy Residency ########
+
+ps_residency_1_modifier = {
+	main_perk = yes
+	subject_modifier = {
+		intel_encryption_add = 2
+		intel_decryption_add = 1
+		spy_network_daily_value_mult = 0.2
+	}
+}
+
+ps_residency_1_penalties = {
+	main_perk = yes
+	subject_modifier = {
+		country_naval_cap_mult = -0.25
+		army_damage_mult = -0.2
+	}
+}
+
+ps_residency_1_overlord_modifier = {
+	icon = "GFX_specialist_perk_ps_residency_1_overlord_modifier"
+	overlord_modifier = {
+		intel_decryption_add = 1
+	}
+	desc = {
+		description = ps_residency_1_overlord_modifier_desc
+	}
+}
+
+ps_residency_1_network = {
+	icon = "GFX_specialist_perk_ps_residency_1_network"
+	overlord_modifier = {
+		spy_network_daily_value_mult = 0.1
+	}
+	activate_effect = {
+		target = { set_country_flag = ps_residency_active }
+	}
+	deactivate_effect = {
+		target = { remove_country_flag = ps_residency_active }
+	}
+	desc = {
+		description = ps_residency_1_network_desc
+	}
+}
+
+ps_residency_2_modifier = {
+	main_perk = yes
+	subject_modifier = {
+		intel_encryption_add = 3
+		intel_decryption_add = 2
+		spy_network_daily_value_mult = 0.35
+	}
+}
+
+ps_residency_2_penalties = {
+	main_perk = yes
+	subject_modifier = {
+		country_naval_cap_mult = -0.35
+		army_damage_mult = -0.3
+	}
+}
+
+ps_residency_2_envoys = {
+	icon = "GFX_specialist_perk_ps_residency_2_envoys"
+	overlord_modifier = {
+		envoys_add = 1
+	}
+	desc = {
+		description = ps_residency_2_envoys_desc
+	}
+}
+
+ps_residency_3_modifier = {
+	main_perk = yes
+	subject_modifier = {
+		intel_encryption_add = 4
+		intel_decryption_add = 3
+		spy_network_daily_value_mult = 0.5
+	}
+}
+
+ps_residency_3_penalties = {
+	main_perk = yes
+	subject_modifier = {
+		country_naval_cap_mult = -0.45
+		army_damage_mult = -0.4
+	}
+}
+
+ps_residency_3_ghosts = {
+	icon = "GFX_specialist_perk_ps_residency_3_ghosts"
+	overlord_modifier = {
+		intel_encryption_add = 2
+		spy_network_daily_value_mult = 0.15
+	}
+	desc = {
+		description = ps_residency_3_ghosts_desc
+	}
+}
+
+######## Shadow Exchange ########
+
+ps_exchange_1_modifier = {
+	main_perk = yes
+	subject_modifier = {
+		country_energy_produces_mult = 0.25
+	}
+}
+
+ps_exchange_1_penalties = {
+	main_perk = yes
+	subject_modifier = {
+		planet_crime_add = 10
+		country_naval_cap_mult = -0.2
+	}
+}
+
+ps_exchange_1_overlord_modifier = {
+	icon = "GFX_specialist_perk_ps_exchange_1_overlord_modifier"
+	overlord_modifier = {
+		country_base_energy_produces_add = 10
+	}
+	desc = {
+		description = ps_exchange_1_overlord_modifier_desc
+	}
+}
+
+ps_exchange_1_ledgers = {
+	icon = "GFX_specialist_perk_ps_exchange_1_ledgers"
+	activate_effect = {
+		target = { set_country_flag = ps_exchange_active }
+	}
+	deactivate_effect = {
+		target = { remove_country_flag = ps_exchange_active }
+	}
+	desc = {
+		description = ps_exchange_1_ledgers_desc
+	}
+}
+
+ps_exchange_2_modifier = {
+	main_perk = yes
+	subject_modifier = {
+		country_energy_produces_mult = 0.35
+	}
+}
+
+ps_exchange_2_penalties = {
+	main_perk = yes
+	subject_modifier = {
+		planet_crime_add = 15
+		country_naval_cap_mult = -0.3
+	}
+}
+
+ps_exchange_2_dividends = {
+	icon = "GFX_specialist_perk_ps_exchange_2_dividends"
+	overlord_modifier = {
+		country_base_energy_produces_add = 15
+		country_base_influence_produces_add = 0.5
+	}
+	desc = {
+		description = ps_exchange_2_dividends_desc
+	}
+}
+
+ps_exchange_3_modifier = {
+	main_perk = yes
+	subject_modifier = {
+		country_energy_produces_mult = 0.5
+	}
+}
+
+ps_exchange_3_penalties = {
+	main_perk = yes
+	subject_modifier = {
+		planet_crime_add = 20
+		country_naval_cap_mult = -0.4
+	}
+}
+
+ps_exchange_3_cartel = {
+	icon = "GFX_specialist_perk_ps_exchange_3_cartel"
+	overlord_modifier = {
+		country_energy_produces_mult = 0.05
+	}
+	desc = {
+		description = ps_exchange_3_cartel_desc
+	}
+}

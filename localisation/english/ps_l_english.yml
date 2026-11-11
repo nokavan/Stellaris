@@ -15,7 +15,7 @@
 
  civic_ps_shadow_overlord:0 "Shadow Overlord"
  civic_ps_shadow_overlord_desc:0 "The Syndicate's subjects are not mere tributaries. Each gets a role in the network: some listen, some hold the line, some trade, some invent."
- civic_tooltip_ps_shadow_overlord_effects:0 "- Envoys: §G+1§!\n- Encryption: §G+1§!\n- Unlocks §YSpecialized Subjects§!: assign each subject a role that grants bonuses to it and to you, plus yearly tribute.\n- Unlocks the §YPartisan Franchise§! agreement."
+ civic_tooltip_ps_shadow_overlord_effects:0 "- Envoys: §G+1§!\n- Encryption: §G+1§!\n- Unlocks §Y5 subject specializations§! that level up to III: §YStrike Legion§!, §YAssault Corps§!, §YPrivateer Flotilla§!, §YSpy Residency§!, §YShadow Exchange§!.\n- Unlocks the §YSyndicate Oath§! edict and the §YSilent Coup§! operation.\n- Unlocks the §YPartisan Franchise§! agreement."
 
  # ===== Buildings =====
  building_ps_partisan_cell:0 "Partisan Cell"
@@ -46,22 +46,6 @@
  ps_legacy_liberator_desc:0 "We are heirs of the partisans, not of their occupiers."
  ps_legacy_master:0 "Master Syndicate"
  ps_legacy_master_desc:0 "The Resistance won. The network is ours now."
- ps_subject_spy_ring:0 "Specialization: Spy Ring"
- ps_subject_spy_ring_desc:0 "This subject is the Syndicate's eyes and ears."
- ps_subject_bastion:0 "Specialization: Partisan Bastion"
- ps_subject_bastion_desc:0 "This subject is the network's fortified rear."
- ps_subject_black_market:0 "Specialization: Black Market"
- ps_subject_black_market_desc:0 "Illicit goods flow through this subject."
- ps_subject_underground_lab:0 "Specialization: Underground Lab"
- ps_subject_underground_lab_desc:0 "Things are developed here that never appear in reports."
- ps_overlord_spy_ring:0 "Subject Network: Intelligence"
- ps_overlord_spy_ring_desc:0 "At least one subject serves as a Spy Ring."
- ps_overlord_bastion:0 "Subject Network: Bastion"
- ps_overlord_bastion_desc:0 "At least one subject serves as a Partisan Bastion."
- ps_overlord_black_market:0 "Subject Network: Black Market"
- ps_overlord_black_market_desc:0 "At least one subject serves as a Black Market."
- ps_overlord_underground_lab:0 "Subject Network: Laboratory"
- ps_overlord_underground_lab_desc:0 "At least one subject serves as an Underground Lab."
  ps_partisan_harassment:0 "Partisan Warfare"
  ps_partisan_harassment_desc:0 "Partisans operate in occupied territory: ambushes, sabotage, vanishing patrols."
  ps_sabotaged_shipyards:0 "Shipyard Sabotage"
@@ -91,17 +75,6 @@
  ps.3.a:0 "We are liberators. Like our ancestors."
  ps.3.b:0 "We won. Now we write the rules."
 
- # ===== Events: subjects =====
- ps.10.name:0 "A Role in the Network"
- ps.10.desc:0 "Our subject §Y[ps_subject.GetName]§! has not yet been given a role in the Syndicate's network. The board must decide how it can serve best."
- ps.10.a:0 "Spy Ring"
- ps.10.a.tooltip:0 "Subject: §G+2§! Encryption, §G+1§! Decryption.\nYou: §G+1§! Decryption, §G+1§! Envoy; §G+15§! Influence per year. Improves agent operation odds."
- ps.10.b:0 "Partisan Bastion"
- ps.10.b.tooltip:0 "Subject: §G+25%§! Army Damage, §G+4§! Defense Platforms.\nYou: §G+10%§! Army Damage, §G+5%§! Fire Rate; §G+75§! Alloys per year."
- ps.10.c:0 "Black Market"
- ps.10.c.tooltip:0 "Subject: §G+15%§! Energy from jobs, §R+5§! Crime.\nYou: §G+5%§! Energy from jobs; §G+150§! Energy per year. Improves treasury heist odds."
- ps.10.d:0 "Underground Lab"
- ps.10.d.tooltip:0 "Subject: §G+10%§! Research Speed.\nYou: §G+5%§! Research Speed; §G+50§! of each research type per year."
 
  # ===== Events: agents =====
  ps.20.name:0 "Agent Report"
@@ -130,3 +103,32 @@
  # ===== Subject agreement =====
  preset_ps_partisan_franchise:0 "Partisan Franchise"
  preset_ps_partisan_franchise_desc:0 "The subject becomes a full cell of the network: it joins all of the overlord's wars, shares sensors and pays moderate tribute."
+
+ # ===== Subjects: progression and raids =====
+ edict_ps_oath:0 "Syndicate Oath"
+ edict_ps_oath_desc:0 "Subjects swear a yearly oath to the network. Their loyalty grows by §G+1§! per month, so their specialization levels up faster."
+ ps_oath_loyalty:0 "Syndicate Oath"
+ ps_oath_loyalty_desc:0 "This subject has sworn an oath to the Syndicate network."
+ ps_privateer_raids:0 "Privateer Raids"
+ ps_privateer_raids_desc:0 "Syndicate privateers are raiding our trade lanes and convoys."
+ ps.15.name:0 "The Privateers Go Hunting"
+ ps.15.desc:0 "Our privateer flotillas have their orders. While the war lasts, every enemy convoy is fair game, and a share of the prizes goes to the Syndicate treasury."
+ ps.15.a:0 "Good hunting."
+
+ # ===== Operation: Silent Coup =====
+ operation_ps_puppet_coup:0 "Silent Coup"
+ operation_ps_puppet_coup_desc:0 "Bribe and intimidate the target's council until it becomes a Syndicate puppet. On success, the target becomes §Gvery friendly§! to us for 10 years and readily accepts any Syndicate subject type."
+ operation_ps_puppet_coup_not_subject:0 "The target must not be anyone's subject."
+ operation_ps_puppet_coup_too_big:0 "The target must have fewer than §Y10§! planets."
+ operation_ps_puppet_coup_already:0 "The target's council is already ours."
+ opinion_ps_puppet_council:0 "Puppet Council"
+ ps_operation.1.name:0 "Contacts in the Council"
+ ps_operation.1.desc:0 "Our agents have found a way to several councillors of §Y[target.GetName]§!. Some love money, some fear their past. The network gets to work."
+ ps_operation.1.a:0 "Proceed."
+ ps_operation.2.name:0 "Kompromat"
+ ps_operation.2.desc:0 "The dossiers are ready. Half the council is bought, the other half knows that we know. All that remains is choosing the moment."
+ ps_operation.2.a:0 "Await the signal."
+ ps_operation.3.name:0 "Night of the Long Knives"
+ ps_operation.3.desc:0 "In a single night the council of §Y[target.GetName]§! changed its members. The new faces in government remember who they owe their seats to."
+ ps_operation.3.a:0 "Offer them our protection."
+ ps_operation.3.a.tooltip:0 "§Y[target.GetName]§! gains a §YPuppet Council§! for 10 years: §G+150§! opinion of us and §G+150§! willingness to accept any Syndicate specialist subject agreement."

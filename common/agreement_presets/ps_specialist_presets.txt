@@ -1,0 +1,487 @@
+# АВТОГЕНЕРАЦИЯ: tools/gen_specialists.py — правьте генератор, а не этот файл
+# potential: this = вассал, FROM = сюзерен (как в vanilla preset_bulwark)
+
+preset_ps_strike = {
+	specialist_type = specialist_ps_strike
+	term_data = {
+		resource_terms = {
+			{
+				key = resource_subsidies_basic
+				value = -0.2
+			}
+		}
+		discrete_terms = {
+			{
+				key = specialist_type
+				value = specialist_ps_strike
+			}
+			{
+				key = subject_integration
+				value = subject_can_not_be_integrated
+			}
+			{
+				key = subject_diplomacy
+				value = subject_can_do_diplomacy_but_not_vote
+			}
+			{
+				key = subject_expand
+				value = subject_can_expand
+			}
+			{
+				key = joins_overlord_wars
+				value = joins_overlord_wars_all
+			}
+			{
+				key = joins_subject_wars
+				value = joins_subject_wars_defensive
+			}
+			{
+				key = subject_holdings_limit
+				value = subject_holdings_limit_1
+			}
+			{
+				key = subject_loyalty
+				value = subject_loyalty_effects
+			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
+		}
+	}
+
+	overlord_weight = {
+		base = 50
+		modifier = {
+			add = 50
+			has_ethic = ethic_militarist
+		}
+	}
+
+	subject_weight = {
+		base = 25
+		modifier = {
+			add = 50
+			has_ethic = ethic_militarist
+		}
+		modifier = {
+			add = -50
+			has_ethic = ethic_pacifist
+		}
+		modifier = {
+			add = 300
+			has_country_flag = ps_puppet_council
+		}
+	}
+
+	potential = {
+		has_overlord_dlc = yes
+		FROM = { ps_is_shadow_overlord = yes }
+		NOR = {
+			is_nomadic = yes
+			has_civic = civic_inwards_perfection
+			FROM = { has_civic = civic_inwards_perfection }
+			FROM = { has_country_flag = heir_of_the_khan_khan }
+			has_origin = origin_nomadic_purger
+		}
+		OR = {
+			any_agreement = { agreement_preset = preset_ps_strike }
+			has_country_flag = specialistion_subject_conversion_flag
+			has_country_flag = ps_puppet_council
+			tech_unlocked_ratio = {
+				who = from
+				ratio >= 0.4
+			}
+		}
+		FROM = { is_nomadic = no }
+		is_nomadic = no
+	}
+}
+
+preset_ps_assault = {
+	specialist_type = specialist_ps_assault
+	term_data = {
+		resource_terms = {
+			{
+				key = resource_subsidies_basic
+				value = -0.2
+			}
+		}
+		discrete_terms = {
+			{
+				key = specialist_type
+				value = specialist_ps_assault
+			}
+			{
+				key = subject_integration
+				value = subject_can_not_be_integrated
+			}
+			{
+				key = subject_diplomacy
+				value = subject_can_do_diplomacy_but_not_vote
+			}
+			{
+				key = subject_expand
+				value = subject_can_expand
+			}
+			{
+				key = joins_overlord_wars
+				value = joins_overlord_wars_all
+			}
+			{
+				key = joins_subject_wars
+				value = joins_subject_wars_defensive
+			}
+			{
+				key = subject_holdings_limit
+				value = subject_holdings_limit_1
+			}
+			{
+				key = subject_loyalty
+				value = subject_loyalty_effects
+			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
+		}
+	}
+
+	overlord_weight = {
+		base = 50
+		modifier = {
+			add = 50
+			has_ethic = ethic_authoritarian
+		}
+	}
+
+	subject_weight = {
+		base = 25
+		modifier = {
+			add = 50
+			has_ethic = ethic_authoritarian
+		}
+		modifier = {
+			add = -50
+			has_ethic = ethic_egalitarian
+		}
+		modifier = {
+			add = 300
+			has_country_flag = ps_puppet_council
+		}
+	}
+
+	potential = {
+		has_overlord_dlc = yes
+		FROM = { ps_is_shadow_overlord = yes }
+		NOR = {
+			is_nomadic = yes
+			has_civic = civic_inwards_perfection
+			FROM = { has_civic = civic_inwards_perfection }
+			FROM = { has_country_flag = heir_of_the_khan_khan }
+			has_origin = origin_nomadic_purger
+		}
+		OR = {
+			any_agreement = { agreement_preset = preset_ps_assault }
+			has_country_flag = specialistion_subject_conversion_flag
+			has_country_flag = ps_puppet_council
+			tech_unlocked_ratio = {
+				who = from
+				ratio >= 0.4
+			}
+		}
+		FROM = { is_nomadic = no }
+		is_nomadic = no
+	}
+}
+
+preset_ps_raiders = {
+	specialist_type = specialist_ps_raiders
+	term_data = {
+		resource_terms = {
+			{
+				key = resource_subsidies_basic
+				value = 0
+			}
+		}
+		discrete_terms = {
+			{
+				key = specialist_type
+				value = specialist_ps_raiders
+			}
+			{
+				key = subject_integration
+				value = subject_can_not_be_integrated
+			}
+			{
+				key = subject_diplomacy
+				value = subject_can_do_diplomacy_but_not_vote
+			}
+			{
+				key = subject_expand
+				value = subject_can_expand
+			}
+			{
+				key = joins_overlord_wars
+				value = joins_overlord_wars_all
+			}
+			{
+				key = joins_subject_wars
+				value = joins_subject_wars_defensive
+			}
+			{
+				key = subject_holdings_limit
+				value = subject_holdings_limit_1
+			}
+			{
+				key = subject_loyalty
+				value = subject_loyalty_effects
+			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
+		}
+	}
+
+	overlord_weight = {
+		base = 50
+		modifier = {
+			add = 50
+			has_ethic = ethic_xenophobe
+		}
+	}
+
+	subject_weight = {
+		base = 25
+		modifier = {
+			add = 50
+			has_ethic = ethic_xenophobe
+		}
+		modifier = {
+			add = -50
+			has_ethic = ethic_xenophile
+		}
+		modifier = {
+			add = 300
+			has_country_flag = ps_puppet_council
+		}
+	}
+
+	potential = {
+		has_overlord_dlc = yes
+		FROM = { ps_is_shadow_overlord = yes }
+		NOR = {
+			is_nomadic = yes
+			has_civic = civic_inwards_perfection
+			FROM = { has_civic = civic_inwards_perfection }
+			FROM = { has_country_flag = heir_of_the_khan_khan }
+			has_origin = origin_nomadic_purger
+		}
+		OR = {
+			any_agreement = { agreement_preset = preset_ps_raiders }
+			has_country_flag = specialistion_subject_conversion_flag
+			has_country_flag = ps_puppet_council
+			tech_unlocked_ratio = {
+				who = from
+				ratio >= 0.4
+			}
+		}
+		FROM = { is_nomadic = no }
+		is_nomadic = no
+	}
+}
+
+preset_ps_residency = {
+	specialist_type = specialist_ps_residency
+	term_data = {
+		resource_terms = {
+			{
+				key = resource_subsidies_basic
+				value = -0.1
+			}
+		}
+		discrete_terms = {
+			{
+				key = specialist_type
+				value = specialist_ps_residency
+			}
+			{
+				key = subject_integration
+				value = subject_can_not_be_integrated
+			}
+			{
+				key = subject_diplomacy
+				value = subject_can_do_diplomacy_but_not_vote
+			}
+			{
+				key = subject_expand
+				value = subject_can_expand
+			}
+			{
+				key = joins_overlord_wars
+				value = joins_overlord_wars_defensive
+			}
+			{
+				key = joins_subject_wars
+				value = joins_subject_wars_defensive
+			}
+			{
+				key = subject_holdings_limit
+				value = subject_holdings_limit_1
+			}
+			{
+				key = subject_loyalty
+				value = subject_loyalty_effects
+			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
+		}
+	}
+
+	overlord_weight = {
+		base = 50
+		modifier = {
+			add = 50
+			has_ethic = ethic_xenophile
+		}
+	}
+
+	subject_weight = {
+		base = 25
+		modifier = {
+			add = 50
+			has_ethic = ethic_xenophile
+		}
+		modifier = {
+			add = -50
+			has_ethic = ethic_xenophobe
+		}
+		modifier = {
+			add = 300
+			has_country_flag = ps_puppet_council
+		}
+	}
+
+	potential = {
+		has_overlord_dlc = yes
+		FROM = { ps_is_shadow_overlord = yes }
+		NOR = {
+			is_nomadic = yes
+			has_civic = civic_inwards_perfection
+			FROM = { has_civic = civic_inwards_perfection }
+			FROM = { has_country_flag = heir_of_the_khan_khan }
+			has_origin = origin_nomadic_purger
+		}
+		OR = {
+			any_agreement = { agreement_preset = preset_ps_residency }
+			has_country_flag = specialistion_subject_conversion_flag
+			has_country_flag = ps_puppet_council
+			tech_unlocked_ratio = {
+				who = from
+				ratio >= 0.4
+			}
+		}
+		FROM = { is_nomadic = no }
+		is_nomadic = no
+	}
+}
+
+preset_ps_exchange = {
+	specialist_type = specialist_ps_exchange
+	term_data = {
+		resource_terms = {
+			{
+				key = resource_subsidies_basic
+				value = 0.3
+			}
+		}
+		discrete_terms = {
+			{
+				key = specialist_type
+				value = specialist_ps_exchange
+			}
+			{
+				key = subject_integration
+				value = subject_can_not_be_integrated
+			}
+			{
+				key = subject_diplomacy
+				value = subject_can_do_diplomacy_but_not_vote
+			}
+			{
+				key = subject_expand
+				value = subject_can_expand
+			}
+			{
+				key = joins_overlord_wars
+				value = joins_overlord_wars_defensive
+			}
+			{
+				key = joins_subject_wars
+				value = joins_subject_wars_defensive
+			}
+			{
+				key = subject_holdings_limit
+				value = subject_holdings_limit_1
+			}
+			{
+				key = subject_loyalty
+				value = subject_loyalty_effects
+			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
+		}
+	}
+
+	overlord_weight = {
+		base = 50
+		modifier = {
+			add = 50
+			has_ethic = ethic_egalitarian
+		}
+	}
+
+	subject_weight = {
+		base = 25
+		modifier = {
+			add = 50
+			has_ethic = ethic_egalitarian
+		}
+		modifier = {
+			add = -50
+			has_ethic = ethic_authoritarian
+		}
+		modifier = {
+			add = 300
+			has_country_flag = ps_puppet_council
+		}
+	}
+
+	potential = {
+		has_overlord_dlc = yes
+		FROM = { ps_is_shadow_overlord = yes }
+		NOR = {
+			is_nomadic = yes
+			has_civic = civic_inwards_perfection
+			FROM = { has_civic = civic_inwards_perfection }
+			FROM = { has_country_flag = heir_of_the_khan_khan }
+			has_origin = origin_nomadic_purger
+		}
+		OR = {
+			any_agreement = { agreement_preset = preset_ps_exchange }
+			has_country_flag = specialistion_subject_conversion_flag
+			has_country_flag = ps_puppet_council
+			tech_unlocked_ratio = {
+				who = from
+				ratio >= 0.4
+			}
+		}
+		FROM = { is_nomadic = no }
+		is_nomadic = no
+	}
+}

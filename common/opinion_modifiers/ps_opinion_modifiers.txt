@@ -2,3 +2,9 @@ opinion_ps_caught_spying = {
 	opinion = { base = -40 }
 	decay = { base = 1 }
 }
+
+# Тайный переворот: совет цели обязан Синдикату
+opinion_ps_puppet_council = {
+	opinion = { base = 150 }
+	decay = { base = 1 }
+}

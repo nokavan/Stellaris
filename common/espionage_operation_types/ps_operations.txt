@@ -1,0 +1,74 @@
+# Синдикат Сопротивления — шпионские операции
+# Формат сверен с vanilla common/espionage_operation_types/operations.txt (4.x)
+# this = spy network; owner = мы; target = цель
+
+# Тайный переворот: совет цели становится марионеточным и охотно
+# соглашается на вассалитет Синдиката (все типы ps-специалистов).
+operation_ps_puppet_coup = {
+	target = none
+	categories = { op_cat_subterfuge op_cat_government }
+	picture = GFX_evt_spy_network
+	desc = operation_ps_puppet_coup_desc
+	stages = 3
+	spy_power_cost = 60
+
+	resources = {
+		category = operations
+		cost = {
+			influence = 100
+		}
+		upkeep = {
+			energy = 10
+		}
+	}
+
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_shadow_overlord = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = operation_ps_puppet_coup_not_subject
+			target = { is_subject = no }
+		}
+		custom_tooltip = {
+			fail_text = operation_ps_puppet_coup_too_big
+			target = { num_owned_planets < 10 }
+		}
+		custom_tooltip = {
+			fail_text = operation_ps_puppet_coup_already
+			target = { NOT = { has_country_flag = ps_puppet_council } }
+		}
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 8
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_operation.1
+	}
+	stage = {
+		difficulty = 9
+		icon = GFX_espionage_chapter_icon_target
+		event = ps_operation.2
+	}
+	stage = {
+		difficulty = 10
+		icon = GFX_espionage_chapter_icon_motion
+		event = ps_operation.3
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {
+		target = {
+			set_timed_country_flag = {
+				flag = espionage_operation_targeted_by@root.owner
+				days = 10800
+			}
+		}
+	}
+}
