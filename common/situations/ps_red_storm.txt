@@ -1,0 +1,290 @@
+#####################################################
+# Синдикат Сопротивления — КРИЗИС КОНЦА ИГРЫ «КРАСНАЯ БУРЯ»
+# Империя провозглашает Мировую революцию и становится угрозой всей галактике.
+# Формат ситуаций сверен с vanilla 4.x (99_README_SITUATIONS.txt, 14_nomads_situations.txt).
+#
+# situation_ps_red_storm           — у кризисной империи: 5 уровней Бури
+# situation_ps_revolutionary_contagion — у всех остальных: зараза, отнимающая планеты
+#####################################################
+
+situation_ps_red_storm = {
+	picture = GFX_ps_evt_partisans
+	category = positive
+	situation_log_category = urgent_matters
+	permanent = yes
+
+	complete_icon = GFX_situation_outcome_revolt
+	complete_icon_frame = GFX_situation_outcome_frame_red
+
+	initial_progress = 0
+
+	abort_trigger = {
+		OR = {
+			NOT = { exists = owner }
+			owner = { num_owned_planets < 1 }
+			owner = { NOT = { has_country_flag = ps_red_storm } }
+		}
+	}
+
+	on_abort = {
+		hidden_effect = {
+			situation_event = { id = ps_storm.50 }
+		}
+	}
+
+	stages = {
+		ps_storm_level_1 = {
+			icon = GFX_situation_stage_1
+			icon_background = GFX_situation_stage_frame_red
+			end = 20
+			on_first_enter = { situation_event = { id = ps_storm.11 } }
+			modifier = {
+				army_damage_mult = 0.20
+				spy_network_daily_value_mult = 0.20
+				country_naval_cap_mult = 0.10
+			}
+		}
+		ps_storm_level_2 = {
+			icon = GFX_situation_stage_2
+			icon_background = GFX_situation_stage_frame_red
+			end = 40
+			on_first_enter = { situation_event = { id = ps_storm.12 } }
+			modifier = {
+				army_damage_mult = 0.35
+				spy_network_daily_value_mult = 0.30
+				country_naval_cap_mult = 0.25
+				ship_fire_rate_mult = 0.10
+			}
+		}
+		ps_storm_level_3 = {
+			icon = GFX_situation_stage_3
+			icon_background = GFX_situation_stage_frame_red
+			end = 60
+			on_first_enter = { situation_event = { id = ps_storm.13 } }
+			modifier = {
+				army_damage_mult = 0.50
+				spy_network_daily_value_mult = 0.40
+				country_naval_cap_mult = 0.50
+				ship_fire_rate_mult = 0.20
+				ship_hull_mult = 0.15
+			}
+		}
+		ps_storm_level_4 = {
+			icon = GFX_situation_stage_4
+			icon_background = GFX_situation_stage_frame_red
+			end = 80
+			on_first_enter = { situation_event = { id = ps_storm.14 } }
+			modifier = {
+				army_damage_mult = 0.75
+				spy_network_daily_value_mult = 0.50
+				country_naval_cap_mult = 0.75
+				ship_fire_rate_mult = 0.30
+				ship_hull_mult = 0.30
+				ship_speed_mult = 0.10
+			}
+		}
+		ps_storm_level_5 = {
+			icon = GFX_situation_stage_5
+			icon_background = GFX_situation_stage_frame_red
+			end = 100
+			on_first_enter = { situation_event = { id = ps_storm.15 } }
+			modifier = {
+				army_damage_mult = 1.00
+				spy_network_daily_value_mult = 0.75
+				country_naval_cap_mult = 1.00
+				ship_fire_rate_mult = 0.50
+				ship_hull_mult = 0.50
+				ship_speed_mult = 0.20
+				planet_stability_add = 10
+			}
+		}
+	}
+
+	monthly_progress = {
+		base = 0.5
+		modifier = {
+			add = 0.5
+			desc = ps_storm_progress_war
+			owner = { is_at_war = yes }
+		}
+		modifier = {
+			add = 1
+			desc = ps_storm_progress_victories
+			owner = { has_country_flag = ps_storm_recent_victory }
+		}
+		modifier = {
+			add = 0.5
+			desc = ps_storm_progress_cells
+			owner = {
+				any_playable_country = {
+					is_subject = yes
+					overlord = { has_country_flag = ps_red_storm }
+				}
+			}
+		}
+	}
+
+	approach = {
+		name = ps_storm_approach_world_revolution
+		icon = GFX_situation_approach_whip
+		icon_background = GFX_situation_approach_bg_red
+		default = yes
+		ai_weight = {
+			base = 1
+		}
+	}
+}
+
+situation_ps_revolutionary_contagion = {
+	picture = GFX_evt_alien_propaganda
+	category = negative
+	situation_log_category = urgent_matters
+	permanent = yes
+
+	fail_icon = GFX_situation_outcome_meh
+	fail_icon_frame = GFX_situation_outcome_frame_green
+	complete_icon = GFX_situation_outcome_revolt
+	complete_icon_frame = GFX_situation_outcome_frame_red
+
+	initial_progress = 20
+
+	abort_trigger = {
+		OR = {
+			NOT = { exists = owner }
+			NOT = { any_playable_country = { has_country_flag = ps_red_storm } }
+			owner = { has_country_flag = ps_red_storm }
+		}
+	}
+
+	stages = {
+		ps_contagion_stage_1 = {
+			icon = GFX_situation_stage_1
+			icon_background = GFX_situation_stage_frame_red
+			end = 33
+			modifier = {
+				planet_stability_add = -3
+				pop_government_ethic_attraction = -0.20
+			}
+		}
+		ps_contagion_stage_2 = {
+			icon = GFX_situation_stage_2
+			icon_background = GFX_situation_stage_frame_red
+			end = 66
+			modifier = {
+				planet_stability_add = -6
+				pop_government_ethic_attraction = -0.35
+				planet_crime_add = 10
+			}
+		}
+		ps_contagion_stage_3 = {
+			icon = GFX_situation_stage_3
+			icon_background = GFX_situation_stage_frame_red
+			end = 100
+			modifier = {
+				planet_stability_add = -10
+				pop_government_ethic_attraction = -0.50
+				planet_crime_add = 20
+			}
+		}
+	}
+
+	monthly_progress = {
+		base = 2
+		modifier = {
+			add = 1
+			desc = ps_contagion_progress_dawn
+			any_playable_country = { has_country_flag = ps_storm_dawn }
+		}
+		modifier = {
+			add = 1
+			desc = ps_contagion_progress_unrest
+			owner = {
+				any_owned_planet = { planet_stability < 30 }
+			}
+		}
+		modifier = {
+			subtract = 3
+			desc = ps_contagion_crackdown
+			current_situation_approach = ps_contagion_crackdown
+		}
+		modifier = {
+			subtract = 3
+			desc = ps_contagion_concessions
+			current_situation_approach = ps_contagion_concessions
+		}
+		modifier = {
+			subtract = 2
+			desc = ps_contagion_progress_war_on_storm
+			owner = {
+				any_playable_country = {
+					has_country_flag = ps_red_storm
+					is_at_war_with = prev
+				}
+			}
+		}
+	}
+
+	approach = {
+		name = ps_crisis_ignore
+		icon = GFX_situation_approach_this_is_fine
+		icon_background = GFX_situation_approach_bg_yellow
+		default = yes
+		ai_weight = {
+			base = 1
+		}
+	}
+
+	approach = {
+		name = ps_contagion_crackdown
+		icon = GFX_situation_approach_whip
+		icon_background = GFX_situation_approach_bg_red
+		modifier = {
+			pop_happiness = -0.10
+		}
+		resources = {
+			category = situations
+			upkeep = {
+				unity = 40
+			}
+		}
+		ai_weight = {
+			base = 4
+		}
+	}
+
+	approach = {
+		name = ps_contagion_concessions
+		icon = GFX_situation_approach_amenities
+		icon_background = GFX_situation_approach_bg_green
+		resources = {
+			category = situations
+			upkeep = {
+				consumer_goods = 30
+				energy = 30
+			}
+		}
+		ai_weight = {
+			base = 3
+		}
+	}
+
+	# Зараза победила: планеты переходят к Буре, отсчёт начинается заново
+	on_progress_complete = {
+		custom_tooltip = ps_contagion_complete_tooltip
+		hidden_effect = {
+			situation_event = { id = ps_storm.21 }
+		}
+	}
+
+	# Зараза подавлена: иммунитет на 10 лет
+	on_fail = {
+		custom_tooltip = ps_contagion_fail_tooltip
+		hidden_effect = {
+			owner = {
+				set_timed_country_flag = { flag = ps_storm_immune days = 3600 }
+				add_modifier = { modifier = ps_storm_resisted days = 3600 }
+			}
+			destroy_situation = this
+		}
+	}
+}

@@ -20,3 +20,8 @@ opinion_ps_covert_aid = {
 	opinion = { base = 75 }
 	decay = { base = 1 }
 }
+
+# Красная Буря: вся галактика видит в кризисной империи смертельную угрозу
+opinion_ps_red_storm = {
+	opinion = { base = -1000 }
+}

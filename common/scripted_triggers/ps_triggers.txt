@@ -115,3 +115,16 @@ ps_has_active_crisis = {
 		}
 	}
 }
+
+# ---- Красная Буря ----
+# Страна — цель Бури: обычная империя, не сама Буря и не её вассал (scope = страна)
+ps_storm_target = {
+	is_country_type = default
+	NOT = { has_country_flag = ps_red_storm }
+	NOT = {
+		AND = {
+			is_subject = yes
+			overlord = { has_country_flag = ps_red_storm }
+		}
+	}
+}
