@@ -435,8 +435,8 @@
  ps_storm_progress_size:0 "Great power (more than 10 planets)"
 
  operation_ps_red_storm:0 "Red Storm"
- operation_ps_red_storm_desc:0 "§REndgame crisis.§! Raise an uprising in the target empire that will not stop. The rebels get several restless planets, a quarter of their master's fleet and armies, then declare war on their master. Once it falls, the §RRed Storm§! will declare war on its neighbours one by one — on everyone except player partisan empires and their subjects.\n\nOnce per game."
- operation_ps_red_storm_too_early:0 "Only possible after year §Y100§!."
+ operation_ps_red_storm_desc:0 "§REndgame crisis.§! Raise an uprising in the target empire that will not stop. The rebels get several restless planets, a quarter of their master's fleet and armies, then declare war on their master. Once it falls, the §RRed Storm§! will declare war on its neighbours one by one — on everyone except player partisan empires and their subjects.\n\nCan be launched any number of times: each Storm wages its own wars."
+ operation_ps_red_storm_too_early:0 "Only possible after year §Y50§!."
  operation_ps_red_storm_tech:0 "Requires the §YGhost Networks§! technology."
  operation_ps_red_storm_small:0 "The target must have more than §Y4§! planets."
  operation_ps_red_storm_partisan:0 "The Storm cannot be raised against a player partisan empire or its subject."

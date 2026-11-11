@@ -11,7 +11,7 @@
 #  ps_storm.7   всем: Буря выбрала новую цель
 #  ps_storm.8   всем: Буря победила в войне
 #  ps_storm.30  ежегодно у Бури: следующая цель
-#  ps_storm.40  ежегодно: Буря может вспыхнуть сама в империи ИИ
+#  ps_storm.40  ежегодно: Буря может вспыхнуть сама в империи ИИ (раз за игру)
 #  ps_storm.50  Буря уничтожена (scope = ситуация)
 #  ps_storm.51  всем: Буря утихла
 #####################################################
@@ -63,7 +63,8 @@ espionage_operation_event = {
 	after = { destroy_espionage_operation = this }
 }
 
-# Ежегодно: Буря может вспыхнуть сама в крупной империи ИИ (раз за игру)
+# Ежегодно: Буря может вспыхнуть сама в крупной империи ИИ (раз за игру;
+# операцией партизан — без ограничений)
 country_event = {
 	id = ps_storm.40
 	hide_window = yes
@@ -75,7 +76,7 @@ country_event = {
 		years_passed > 150
 		num_owned_planets > 8
 		ps_storm_target = yes
-		NOT = { has_global_flag = ps_storm_happened }
+		NOT = { has_global_flag = ps_storm_ai_happened }
 		NOT = { has_global_flag = ps_storm_disabled }
 	}
 
@@ -83,6 +84,7 @@ country_event = {
 		random_list = {
 			1 = {
 				modifier = { factor = 3 any_owned_planet = { planet_stability < 30 } }
+				set_global_flag = ps_storm_ai_happened
 				random_owned_planet = {
 					limit = { is_capital = no }
 					carrier_event = { id = ps_storm.5 }
@@ -103,11 +105,10 @@ carrier_event = {
 
 	trigger = {
 		exists = owner
-		NOT = { has_global_flag = ps_storm_happened }
+		owner = { NOT = { has_country_flag = ps_red_storm } }
 	}
 
 	immediate = {
-		set_global_flag = ps_storm_happened
 		owner = { save_event_target_as = ps_storm_host }
 
 		# 1. Государство восставших
@@ -155,7 +156,7 @@ carrier_event = {
 			last_created_fleet = {
 				set_owner = event_target:ps_storm
 			}
-			set_country_flag = ps_storm_designated
+			set_country_flag = ps_storm_designated@event_target:ps_storm
 		}
 
 		# 4. Армии, ресурсы и рост Бури
@@ -199,11 +200,11 @@ country_event = {
 	id = ps_storm.2
 	title = ps_storm.2.name
 	desc = {
-		trigger = { has_country_flag = ps_storm_designated }
+		trigger = { is_same_value = event_target:ps_storm_host }
 		text = ps_storm.2.desc.host
 	}
 	desc = {
-		trigger = { NOT = { has_country_flag = ps_storm_designated } }
+		trigger = { NOT = { is_same_value = event_target:ps_storm_host } }
 		text = ps_storm.2.desc
 	}
 	picture = GFX_ps_evt_partisans
@@ -230,8 +231,8 @@ country_event = {
 		save_event_target_as = ps_storm
 		# Снять старую метку цели
 		every_playable_country = {
-			limit = { has_country_flag = ps_storm_designated }
-			remove_country_flag = ps_storm_designated
+			limit = { has_country_flag = ps_storm_designated@root }
+			remove_country_flag = ps_storm_designated@root
 		}
 		# Следующая цель: сначала сосед, иначе любая знакомая империя
 		if = {
@@ -253,7 +254,7 @@ country_event = {
 		if = {
 			limit = { exists = event_target:ps_storm_next }
 			event_target:ps_storm_next = {
-				set_country_flag = ps_storm_designated
+				set_country_flag = ps_storm_designated@root
 				country_event = { id = ps_storm.6 }
 			}
 			declare_war = {
@@ -263,7 +264,7 @@ country_event = {
 			every_playable_country = {
 				limit = {
 					is_country_type = default
-					NOT = { has_country_flag = ps_storm_designated }
+					NOT = { is_same_value = event_target:ps_storm_next }
 				}
 				country_event = { id = ps_storm.7 }
 			}
@@ -278,13 +279,6 @@ country_event = {
 	desc = ps_storm.6.desc
 	picture = GFX_ps_evt_partisans
 	is_triggered_only = yes
-
-	immediate = {
-		random_playable_country = {
-			limit = { has_country_flag = ps_red_storm }
-			save_event_target_as = ps_storm
-		}
-	}
 
 	option = { name = ps_storm.6.a }
 }
@@ -345,16 +339,8 @@ situation_event = {
 	is_triggered_only = yes
 
 	immediate = {
-		set_global_flag = ps_storm_ended
 		every_playable_country = {
-			limit = { has_country_flag = ps_storm_designated }
-			remove_country_flag = ps_storm_designated
-		}
-		every_playable_country = {
-			limit = {
-				is_country_type = default
-				NOT = { has_country_flag = ps_red_storm }
-			}
+			limit = { ps_storm_target = yes }
 			add_modifier = { modifier = ps_storm_survivors days = 3600 }
 			country_event = { id = ps_storm.51 }
 		}

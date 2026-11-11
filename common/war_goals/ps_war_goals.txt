@@ -11,7 +11,7 @@ wg_ps_red_storm = {
 		has_country_flag = ps_red_storm
 	}
 	possible = {
-		from = { has_country_flag = ps_storm_designated }
+		from = { has_country_flag = ps_storm_designated@root }
 	}
 
 	# Буря победила: все занятые ею планеты переходят к ней, Буря крепнет
@@ -21,7 +21,7 @@ wg_ps_red_storm = {
 			root = { save_event_target_as = ps_storm }
 			from = {
 				save_event_target_as = ps_storm_loser
-				remove_country_flag = ps_storm_designated
+				remove_country_flag = ps_storm_designated@root
 				every_owned_planet = {
 					limit = {
 						exists = controller
@@ -48,7 +48,7 @@ wg_ps_red_storm = {
 	# Белый мир: Буря отходит и ищет следующую цель
 	on_status_quo = {
 		hidden_effect = {
-			from = { remove_country_flag = ps_storm_designated }
+			from = { remove_country_flag = ps_storm_designated@root }
 			root = { set_timed_country_flag = { flag = ps_storm_war_cooldown days = 1080 } }
 		}
 	}

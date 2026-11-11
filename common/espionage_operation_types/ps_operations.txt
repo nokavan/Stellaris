@@ -930,7 +930,7 @@ operation_ps_covert_fleet_support = {
 }
 
 #####################################################
-# КРИЗИС КОНЦА ИГРЫ: «Красная Буря» (раз за игру)
+# КРИЗИС КОНЦА ИГРЫ: «Красная Буря» (без ограничения по числу запусков)
 #####################################################
 operation_ps_red_storm = {
 	target = none
@@ -942,7 +942,7 @@ operation_ps_red_storm = {
 
 	resources = {
 		category = operations
-		cost = { influence = 500 }
+		cost = { influence = 100 }
 		upkeep = { energy = 25 }
 	}
 
@@ -950,12 +950,11 @@ operation_ps_red_storm = {
 		has_nemesis = yes
 		owner = { ps_is_partisan_empire = yes }
 		target = { is_country_type = default }
-		NOT = { has_global_flag = ps_storm_happened }
 	}
 	allow = {
 		custom_tooltip = {
 			fail_text = operation_ps_red_storm_too_early
-			years_passed > 100
+			years_passed > 50
 		}
 		custom_tooltip = {
 			fail_text = operation_ps_red_storm_tech
