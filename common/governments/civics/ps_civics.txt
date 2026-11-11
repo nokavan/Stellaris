@@ -54,6 +54,10 @@ civic_ps_partisan_network = {
 	random_weight = { base = 5 }
 
 	modifier = {
+		# от «Пустотных налётчиков» (идея Corporate Pirates)
+		ship_cloaking_strength_add = 1
+		ship_military_alloys_cost_mult = -0.05
+		ship_military_energy_upkeep_mult = 0.05
 		leader_lifespan_add = 1000	# лидеры партизан не умирают от старости
 		intel_decryption_add = 1
 		envoys_add = 1

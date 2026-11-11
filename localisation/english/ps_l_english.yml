@@ -11,7 +11,7 @@
  # ===== Civics =====
  civic_ps_partisan_network:0 "Partisan Network"
  civic_ps_partisan_network_desc:0 "Every branch office is also a safehouse. Every courier is a contact. The corporation remembers how to fight without an army."
- civic_tooltip_ps_partisan_network_effects:0 "- Decryption: §G+1§!\n- Envoys: §G+1§!\n- Army Damage: §G+15%§!\n- Leaders §Gdo not die of old age§! (§G+1000§! years of lifespan)\n- Unlocks the §YPartisan Cell§! and §YUnderground Press§! branch office buildings\n- Unlocks §YAgent Operations§! and §YPartisan Warfare§!"
+ civic_tooltip_ps_partisan_network_effects:0 "- Decryption: §G+1§!\n- Envoys: §G+1§!\n- Army Damage: §G+15%§!\n- Ship Cloaking: §G+1§!, military ship alloy cost: §G-5%§!, military ship energy upkeep: §R+5%§! (as Void Reavers)\n- Leaders §Gdo not die of old age§! (§G+1000§! years of lifespan)\n- Unlocks pirate waystation modules: §YPrivateer Den§!, §YConcealment Field§!, §YPrivateer Citadel§!\n- Unlocks the §YPartisan Cell§! and §YUnderground Press§! branch office buildings\n- Unlocks §YAgent Operations§! and §YPartisan Warfare§!"
 
  civic_ps_shadow_overlord:0 "Shadow Overlord"
  civic_ps_shadow_overlord_desc:0 "The Syndicate's subjects are not mere tributaries. Each gets a role in the network: some listen, some hold the line, some trade, some invent."
@@ -476,3 +476,14 @@
  ps_storm.51.name:0 "The Storm Has Passed"
  ps_storm.51.desc:0 "The Red Storm has been destroyed. Its flags are torn down, its armies broken. The galaxy has endured, and the survivors begin to rebuild."
  ps_storm.51.a:0 "We survived."
+
+ # ===== Pirate waystation modules (idea: Corporate Pirates) =====
+ sm_waystation_ps_pirate_hideout:0 "Privateer Den"
+ sm_waystation_ps_pirate_hideout_plural:0 "Privateer Dens"
+ sm_waystation_ps_pirate_hideout_desc:0 "Syndicate partisan privateers 'collect tribute' from foreign colonies in the system. Works like the vanilla Pirate Hideout.\n\n§YAvailable to partisan empires.§!"
+ sm_waystation_ps_concealment_field:0 "Syndicate Concealment Field"
+ sm_waystation_ps_concealment_field_plural:0 "Syndicate Concealment Fields"
+ sm_waystation_ps_concealment_field_desc:0 "Hides the waystation from foreign sensors.\n\n§YAvailable to partisan empires.§!"
+ sm_waystation_ps_reaver_stronghold:0 "Privateer Citadel"
+ sm_waystation_ps_reaver_stronghold_plural:0 "Privateer Citadels"
+ sm_waystation_ps_reaver_stronghold_desc:0 "The main fortress of the Syndicate's privateer network. One per empire; doubles the loot of every Privateer Den.\n\n§YAvailable to partisan empires.§!"

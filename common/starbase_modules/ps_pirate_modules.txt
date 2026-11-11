@@ -1,0 +1,225 @@
+#####################################################
+# Синдикат Сопротивления — пиратские модули стоянок для партизан
+# Идея: мод Corporate Pirates (Void Reavers) — дать корпорациям пиратские модули.
+# Механика скопирована с vanilla 4.x starbase_modules/00_waystation_modules.txt
+# (waystation_pirate_hideout / waystation_concealment_field / waystation_reaver_stronghold),
+# но доступ — у партизанских империй (без перезаписи ванильных цивиков и триггеров).
+# У кого уже есть ванильный цивик «Пустотные налётчики», видит ванильные модули, а не эти.
+#####################################################
+
+# Логово каперов: ворует ресурсы у чужих колоний в системе
+waystation_ps_pirate_hideout = {
+	icon = "GFX_waystation_pirate_hideout"
+	section = "HANGAR_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_piracy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		exists = owner
+		owner = {
+			ps_is_partisan_empire = yes
+			NOT = { has_valid_civic = civic_void_reavers }
+		}
+	}
+
+	possible = {
+		custom_tooltip = {
+			fail_text = requires_colony_no
+			success_text = requires_colony
+			solar_system? = {
+				any_system_planet = {
+					is_colony = yes
+				}
+			}
+		}
+	}
+
+	collected_colony_resources = {
+		collection_type = steal
+		all = {
+			NOT = {
+				from.owner = {
+					is_same_value = root.owner
+				}
+			}
+		}
+	}
+
+	station_modifier = {
+		starbase_stockpile_capacity_add = 1000
+		starbase_collected_colony_resources_add = 0.015
+	}
+
+	# С Цитаделью каперов где-нибудь в сети — добыча вдвое больше
+	triggered_station_modifier = {
+		potential = {
+			owner? = {
+				any_owned_fleet = {
+					is_waystation_ship = yes
+					starbase? = {
+						OR = {
+							has_starbase_module = waystation_ps_reaver_stronghold
+							has_starbase_module = waystation_reaver_stronghold
+						}
+					}
+				}
+			}
+		}
+		custom_tooltip = waystation_pirate_hideout_reaver_stronghold_tt
+		show_only_custom_tooltip = no
+		starbase_collected_colony_resources_add = 0.015
+	}
+
+	on_finished = {
+		# ежемесячное событие недовольства жертв (как у ванильного логова)
+		if = {
+			limit = {
+				NOT = { has_starbase_flag = piracy_collected }
+			}
+			starbase_event = {
+				id = nomads.5010
+				days = 30
+			}
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 150
+		}
+		upkeep = {
+			trade = 8
+		}
+	}
+
+	custom_tooltip = waystation_pirate_hideout_tt
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+# Поле маскировки: прячет стоянку
+waystation_ps_concealment_field = {
+	icon = "GFX_waystation_concealment_field"
+	section = "CLOAKING_WAYSTATION_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_piracy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			has_cloaking_tech = yes
+			ps_is_partisan_empire = yes
+			NOT = { has_valid_civic = civic_void_reavers }
+		}
+	}
+
+	show_in_tech = "tech_cloaking_1"
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 150
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	station_modifier = {
+		ship_hull_mult = 0.20
+	}
+
+	triggered_station_modifier = {
+		potential = {
+			has_first_contact_dlc = yes
+		}
+		ship_cloaking_strength_add = 1
+	}
+
+	component_set = waystation_cloaking_components
+	custom_tooltip = sm_waystation_cloaking_tt
+
+	on_finished = {
+		fleet = {
+			fleet_event = {
+				id = fircon.28
+				days = 1
+			}
+		}
+	}
+
+	on_destroyed = {
+		fleet = {
+			set_cloaking_active = no
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+# Цитадель каперов: крепость сети (одна на империю)
+waystation_ps_reaver_stronghold = {
+	icon = "GFX_waystation_reaver_stronghold"
+	section = "HANGAR_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_piracy_cat
+
+	empire_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		exists = owner
+		owner = {
+			ps_is_partisan_empire = yes
+			NOT = { has_valid_civic = civic_void_reavers }
+		}
+	}
+
+	station_modifier = {
+		ship_hull_mult = 0.25
+		ship_fire_rate_mult = 0.25
+		ship_damage_reduction_mult = 0.30
+	}
+
+	triggered_station_modifier = {
+		potential = {
+			has_first_contact_dlc = yes
+		}
+		ship_cloaking_strength_add = -6
+	}
+
+	custom_tooltip_with_modifiers = waystation_reaver_stronghold_tt
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 1500
+		}
+		upkeep = {
+			trade = 50
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
