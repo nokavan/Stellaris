@@ -1,0 +1,75 @@
+#####################################################
+# Синдикат Сопротивления × XHK World Ark
+#
+# Происхождение XHK «Мировой ковчег» у мегакорпорации с «Криминальным наследием»
+# становится партизанским ковчегом (флаг ps_partisan_worldark): работают все механики
+# «Ковчега Сопротивления» из основного мода.
+#
+# Мировой ковчег получает специализации ВСЕХ трёх ванильных ковчегов (гражданский,
+# научный, военный) сразу на максимальном 3-м уровне. Специализации XHK хранятся в
+# переменных xhk_worldark_<тип>_upgrade_level (0–3) на планете ковчега и на его
+# станции (carrier) — см. XHK events/xhk_worldark_setup_events.txt.
+#####################################################
+
+namespace = ps_xhk
+
+# Старт игры: признать Мировой ковчег партизанским
+country_event = {
+	id = ps_xhk.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_xhk_worldark
+		has_authority = auth_corporate
+		has_valid_civic = civic_criminal_heritage
+	}
+
+	immediate = {
+		set_country_flag = ps_partisan_worldark
+		add_modifier = { modifier = ps_partisan_worldark_bonus days = -1 }
+		# Пролог «Ковчег Сопротивления» (выбор доктрины) — после настройки ковчега XHK
+		country_event = { id = ps.5 days = 3 }
+		# Все специализации — после того как XHK создаст Мировой ковчег
+		country_event = { id = ps_xhk.2 days = 5 }
+		country_event = { id = ps_xhk.3 days = 6 }
+	}
+}
+
+# Все три специализации на 3-м уровне (повторяется ежегодно — на случай пересоздания ковчега)
+country_event = {
+	id = ps_xhk.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_country_flag = ps_partisan_worldark
+	}
+
+	immediate = {
+		every_owned_planet = {
+			limit = { is_planet_class = xhk_pc_worldark }
+			set_variable = { which = xhk_worldark_civilian_upgrade_level value = 3 }
+			set_variable = { which = xhk_worldark_science_upgrade_level value = 3 }
+			set_variable = { which = xhk_worldark_military_upgrade_level value = 3 }
+			carrier = {
+				set_variable = { which = xhk_worldark_civilian_upgrade_level value = 3 }
+				set_variable = { which = xhk_worldark_science_upgrade_level value = 3 }
+				set_variable = { which = xhk_worldark_military_upgrade_level value = 3 }
+			}
+		}
+	}
+}
+
+# Уведомление игроку
+country_event = {
+	id = ps_xhk.3
+	title = ps_xhk.3.name
+	desc = ps_xhk.3.desc
+	picture = GFX_ps_evt_ark
+	is_triggered_only = yes
+
+	trigger = { has_country_flag = ps_partisan_worldark }
+
+	option = { name = ps_xhk.3.a }
+}

@@ -57,7 +57,7 @@ country_event = {
 	picture = GFX_ps_evt_ark
 	is_triggered_only = yes
 
-	trigger = { has_origin = origin_ps_partisan_ark }
+	trigger = { ps_is_partisan_ark = yes }
 
 	# Ковчег-крепость
 	option = {
@@ -631,7 +631,7 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_origin = origin_ps_partisan_ark
+		ps_is_partisan_ark = yes
 		any_owned_fleet = {
 			is_arkship_fleet = yes
 			exists = solar_system

@@ -223,10 +223,26 @@ python3 tools/gen_waystation_modules.py
 - **Без UIOD:** для прокрутки 50 модулей стоянки поставьте патч `partisan_syndicate_vanilla_ui_patch` после основного мода.
 - Мод **не переопределяет** ванильных файлов уровней стоянок: слоты добавляет модуль «Отсеки Синдиката», поэтому мод совместим с More Waystation Slots и похожими модами.
 
+## Рекомендуемый плейсет (моды, присланные авторами)
+Эти моды **остаются отдельными**: они перезаписывают ванильные файлы целиком (мегасооружения, размеры кораблей, советников, события), и копирование их в «Синдикат» вызвало бы конфликты. Пересечений файлов и ключей с «Синдикатом» у них **нет** (проверено). Ставьте их **выше** «Синдиката» в списке лаунчера.
+
+| Мод | Что даёт партизанам |
+|---|---|
+| **[4.5] XHK World Ark** + патч `xhk_worldark_patch` | Мировой ковчег как «Ковчег Сопротивления» со всеми тремя специализациями |
+| Wawunga's Arkship Class Districts | районы ковчега |
+| Nomad Can Build Megastructures — Mod Compatible Edition | мегасооружения для кочевников (берите именно Compatible Edition, не обе версии) |
+| Nomad Conquest Population Capture | захват населения при завоеваниях кочевником |
+| Cloakable Logistics Ships, Cloakable Construction Ships | маскировка кораблей снабжения и строителей |
+| Corporate Pirates (Void Reavers) | цивик «Пустотные налётчики» для корпораций-кочевников |
+| Mega Arkships, Deep Scan Harvesting Improvement, Bigger Operational Reserves | экономика ковчега |
+| More Waystation Slots | не обязателен: «Отсеки Синдиката» уже дают до 50 слотов, конфликта нет |
+
 ## Скачать
 Последняя версия одним архивом: **[releases/partisan_syndicate.zip](https://github.com/nokavan/stellaris/blob/main/releases/partisan_syndicate.zip)** (на странице файла — кнопка «Download raw file»; репозиторий приватный, нужен вход в ваш аккаунт GitHub)
 
-Без UIOD также скачайте [releases/partisan_syndicate_vanilla_ui_patch.zip](https://github.com/nokavan/stellaris/blob/main/releases/partisan_syndicate_vanilla_ui_patch.zip).
+Необязательные патчи (см. `compat/README.md`):
+- без UIOD — [releases/partisan_syndicate_vanilla_ui_patch.zip](https://github.com/nokavan/stellaris/blob/main/releases/partisan_syndicate_vanilla_ui_patch.zip);
+- с XHK World Ark — [releases/partisan_syndicate_xhk_worldark_patch.zip](https://github.com/nokavan/stellaris/blob/main/releases/partisan_syndicate_xhk_worldark_patch.zip).
 
 Распакуйте архив в `Документы/Paradox Interactive/Stellaris/mod/`: внутри уже лежат папка мода и файл `partisan_syndicate.mod` для лаунчера. Затем включите мод в лаунчере.
 

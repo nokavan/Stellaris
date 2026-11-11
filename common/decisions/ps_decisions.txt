@@ -81,7 +81,7 @@ decision_ps_ark_seed_cell = {
 
 	potential = {
 		is_capital = yes
-		owner = { has_origin = origin_ps_partisan_ark }
+		owner = { ps_is_partisan_ark = yes }
 	}
 
 	allow = {

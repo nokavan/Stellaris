@@ -1,0 +1,8 @@
+# Бонусы «Ковчега Сопротивления» для Мирового ковчега XHK (те же, что у origin_ps_partisan_ark)
+ps_partisan_worldark_bonus = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 1
+	intel_encryption_add = 1
+	envoys_add = 1
+	leader_lifespan_add = 1000
+}
