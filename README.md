@@ -187,7 +187,7 @@ python3 tools/gen_waystation_modules.py
 ---
 
 ## Скачать
-Последняя версия одним архивом: **[releases/partisan_syndicate.zip](https://github.com/nokavan/stellaris/raw/main/releases/partisan_syndicate.zip)**
+Последняя версия одним архивом: **[releases/partisan_syndicate.zip](https://github.com/nokavan/stellaris/blob/main/releases/partisan_syndicate.zip)** (на странице файла — кнопка «Download raw file»; репозиторий приватный, нужен вход в ваш аккаунт GitHub)
 
 Распакуйте архив в `Документы/Paradox Interactive/Stellaris/mod/`: внутри уже лежат папка мода и файл `partisan_syndicate.mod` для лаунчера. Затем включите мод в лаунчере.
 
