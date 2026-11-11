@@ -427,7 +427,7 @@ country_event = {
 # on_planet_returned: root = планета, from = владелец, fromfrom = бывший оккупант
 #####################################################
 
-planet_event = {
+carrier_event = {
 	id = ps.30
 	hide_window = yes
 	is_triggered_only = yes
@@ -472,7 +472,7 @@ country_event = {
 }
 
 # Планета освобождена
-planet_event = {
+carrier_event = {
 	id = ps.32
 	hide_window = yes
 	is_triggered_only = yes
@@ -543,7 +543,7 @@ country_event = {
 #   this = планета, from = владелец филиала
 #####################################################
 
-planet_event = {
+carrier_event = {
 	id = ps.60
 	hide_window = yes
 	is_triggered_only = yes
@@ -558,7 +558,7 @@ planet_event = {
 	}
 }
 
-planet_event = {
+carrier_event = {
 	id = ps.61
 	hide_window = yes
 	is_triggered_only = yes

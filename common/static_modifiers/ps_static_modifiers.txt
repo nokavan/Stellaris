@@ -141,3 +141,47 @@ ps_ark_aid = {
 	planet_amenities_add = 3
 	army_defense_damage_mult = 0.15
 }
+
+################################
+# Восстания
+################################
+# Планета цели: агитаторы Синдиката
+ps_sown_dissent = {
+	icon = @ps_icon
+	icon_frame = 3
+	planet_stability_add = -15
+	planet_crime_add = 10
+	pop_government_ethic_attraction = -0.25
+}
+# Планета цели: у подполья есть оружие, гарнизон деморализован
+ps_armed_underground = {
+	icon = @ps_icon
+	icon_frame = 3
+	planet_stability_add = -10
+	army_defense_damage_mult = -0.30
+	army_defense_health_mult = -0.20
+}
+# Государство восставших, которых поддержал Синдикат (по образцу vanilla sponsored_rebels)
+ps_liberated_state = {
+	icon = @ps_icon
+	icon_frame = 1
+	country_base_minerals_produces_add = 20
+	country_base_energy_produces_add = 20
+	country_base_influence_produces_add = 3
+	ships_upkeep_mult = -0.25
+	armies_upkeep_mult = -0.5
+	armies_cost_mult = -0.25
+	country_naval_cap_mult = 1.0
+	planet_army_build_speed_mult = 1.0
+	army_damage_mult = 0.25
+	planet_stability_add = 10
+}
+# Операция «Снабдить свободный мир»
+ps_rebel_supplies = {
+	icon = @ps_icon
+	icon_frame = 1
+	ship_fire_rate_mult = 0.15
+	ship_hull_mult = 0.10
+	army_damage_mult = 0.25
+	country_naval_cap_add = 20
+}

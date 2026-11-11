@@ -13,6 +13,7 @@ on_yearly_pulse_country = {
 	events = {
 		ps.14	# Сюзерен: Присяга Синдиката и каперские рейды
 		ps.50	# Диспетчер сюжета и агентурных отчётов
+		ps_revolt.30	# Фонд освобождения: поддержка чужих восстаний
 	}
 }
 
@@ -48,5 +49,12 @@ on_branch_office_closed = {
 on_monthly_pulse_country = {
 	events = {
 		ps.70	# Ковчег: стоянка Сопротивления
+	}
+}
+
+# this = rebel country, from = colony, fromfrom = war
+on_rebels_take_planet = {
+	events = {
+		ps_revolt.40	# Восставшие победили: бафф и награда покровителям
 	}
 }

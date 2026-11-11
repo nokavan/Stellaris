@@ -99,3 +99,33 @@ edict_ps_oath = {
 		weight = 10
 	}
 }
+
+# Фонд освобождения: ежегодно поддерживает все восстания у соседей (событие ps_revolt.30)
+edict_ps_liberation_fund = {
+	length = -1
+	icon = "GFX_edict_type_policy"
+
+	resources = {
+		category = edicts
+		cost = {
+			unity = 30
+			multiplier = value:edict_size_effect
+		}
+		upkeep = {
+			unity = 30
+			multiplier = value:edict_size_effect
+		}
+	}
+
+	modifier = {
+		spy_network_daily_value_mult = 0.05
+	}
+
+	potential = {
+		ps_is_partisan_empire = yes
+	}
+
+	ai_weight = {
+		weight = 5
+	}
+}

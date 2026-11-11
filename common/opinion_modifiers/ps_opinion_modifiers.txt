@@ -8,3 +8,9 @@ opinion_ps_puppet_council = {
 	opinion = { base = 150 }
 	decay = { base = 1 }
 }
+
+# Восставшие благодарны Синдикату за поддержку
+opinion_ps_liberators = {
+	opinion = { base = 200 }
+	decay = { base = 1 }
+}

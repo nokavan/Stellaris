@@ -1,0 +1,453 @@
+#####################################################
+# Синдикат Сопротивления — восстания в чужих империях
+#
+# Опирается на vanilla-ситуацию situation_planetary_revolt:
+#  - флаг revolt_joiner_empire_@<ситуация> у страны-покровителя даёт
+#    восстанию +2 прогресса в месяц («Внешняя поддержка»), а при победе
+#    планета может перейти к покровителю;
+#  - add_situation_progress двигает восстание вперёд.
+#
+#  ps_revolt.1  - 2   Операция «Посеять смуту»
+#  ps_revolt.3  - 5   Операция «Вооружить повстанцев»
+#  ps_revolt.6  - 8   Операция «Поднять восстание»
+#  ps_revolt.10 - 11  Операция «Снабдить свободный мир»
+#  ps_revolt.20 - 21  Поддержка восстания изнутри ситуации
+#  ps_revolt.30       Эдикт «Фонд освобождения» (ежегодно)
+#  ps_revolt.40 - 42  Восставшие победили: бафф нового государства
+#  ps_revolt.50 - 51  Служебные события планеты
+#
+# Скоупы операций: this = операция, owner = мы, target = цель
+#####################################################
+
+namespace = ps_revolt
+
+#####################################################
+# 1. ПОСЕЯТЬ СМУТУ
+#####################################################
+
+espionage_operation_event = {
+	id = ps_revolt.1
+	title = ps_revolt.1.name
+	desc = ps_revolt.1.desc
+	espionage_operation = yes
+	picture = GFX_evt_alien_propaganda
+	show_sound = event_default
+	is_triggered_only = yes
+
+	option = { name = ps_revolt.1.a }
+}
+
+espionage_operation_event = {
+	id = ps_revolt.2
+	title = ps_revolt.2.name
+	desc = ps_revolt.2.desc
+	espionage_operation = yes
+	picture = GFX_evt_alien_propaganda
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	immediate = {
+		owner = { save_event_target_as = ps_sponsor }
+		target = {
+			if = {
+				limit = {
+					any_owned_planet = {
+						is_capital = no
+						planet_stability < 50
+						NOT = { has_modifier = ps_sown_dissent }
+					}
+				}
+				random_owned_planet = {
+					limit = {
+						is_capital = no
+						planet_stability < 50
+						NOT = { has_modifier = ps_sown_dissent }
+					}
+					save_event_target_as = ps_revolt_planet
+				}
+			}
+			else = {
+				random_owned_planet = {
+					limit = { is_capital = no }
+					save_event_target_as = ps_revolt_planet
+				}
+			}
+		}
+	}
+
+	option = {
+		name = ps_revolt.2.a
+		custom_tooltip = ps_revolt.2.a.tooltip
+		if = {
+			limit = { exists = event_target:ps_revolt_planet }
+			event_target:ps_revolt_planet = {
+				add_modifier = { modifier = ps_sown_dissent days = 1800 }
+				carrier_event = { id = ps_revolt.50 }
+			}
+		}
+	}
+
+	after = {
+		destroy_espionage_operation = this
+	}
+}
+
+#####################################################
+# 2. ВООРУЖИТЬ ПОВСТАНЦЕВ
+#####################################################
+
+espionage_operation_event = {
+	id = ps_revolt.3
+	title = ps_revolt.3.name
+	desc = ps_revolt.3.desc
+	espionage_operation = yes
+	picture = GFX_evt_alien_propaganda
+	show_sound = event_default
+	is_triggered_only = yes
+
+	option = { name = ps_revolt.3.a }
+}
+
+espionage_operation_event = {
+	id = ps_revolt.4
+	title = ps_revolt.4.name
+	desc = ps_revolt.4.desc
+	espionage_operation = yes
+	picture = GFX_evt_alien_propaganda
+	show_sound = event_default
+	is_triggered_only = yes
+
+	option = { name = ps_revolt.4.a }
+}
+
+espionage_operation_event = {
+	id = ps_revolt.5
+	title = ps_revolt.5.name
+	desc = ps_revolt.5.desc
+	espionage_operation = yes
+	picture = GFX_evt_alien_propaganda
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	immediate = {
+		owner = { save_event_target_as = ps_sponsor }
+		target = {
+			random_situation = {
+				limit = { is_situation_type = situation_planetary_revolt }
+				save_event_target_as = ps_revolt_situation
+				target = { save_event_target_as = ps_revolt_planet }
+			}
+		}
+	}
+
+	option = {
+		name = ps_revolt.5.a
+		custom_tooltip = ps_revolt.5.a.tooltip
+		if = {
+			limit = { exists = event_target:ps_revolt_situation }
+			event_target:ps_revolt_situation = {
+				situation_event = { id = ps_revolt.20 }
+			}
+		}
+	}
+
+	after = {
+		destroy_espionage_operation = this
+	}
+}
+
+#####################################################
+# 3. ПОДНЯТЬ ВОССТАНИЕ
+#####################################################
+
+espionage_operation_event = {
+	id = ps_revolt.6
+	title = ps_revolt.6.name
+	desc = ps_revolt.6.desc
+	espionage_operation = yes
+	picture = GFX_evt_alien_propaganda
+	show_sound = event_default
+	is_triggered_only = yes
+
+	option = { name = ps_revolt.6.a }
+}
+
+espionage_operation_event = {
+	id = ps_revolt.7
+	title = ps_revolt.7.name
+	desc = ps_revolt.7.desc
+	espionage_operation = yes
+	picture = GFX_evt_alien_propaganda
+	show_sound = event_default
+	is_triggered_only = yes
+
+	option = { name = ps_revolt.7.a }
+}
+
+espionage_operation_event = {
+	id = ps_revolt.8
+	title = ps_revolt.8.name
+	desc = ps_revolt.8.desc
+	espionage_operation = yes
+	picture = GFX_evt_alien_propaganda
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	immediate = {
+		owner = { save_event_target_as = ps_sponsor }
+		target = {
+			random_owned_planet = {
+				limit = {
+					is_capital = no
+					planet_stability < 40
+				}
+				save_event_target_as = ps_revolt_planet
+			}
+		}
+	}
+
+	option = {
+		name = ps_revolt.8.a
+		custom_tooltip = ps_revolt.8.a.tooltip
+		if = {
+			limit = { exists = event_target:ps_revolt_planet }
+			event_target:ps_revolt_planet = {
+				add_modifier = { modifier = ps_sown_dissent days = 1800 }
+				add_modifier = { modifier = ps_armed_underground days = 1080 }
+				carrier_event = { id = ps_revolt.50 }
+				# Если восстания на планете ещё нет — запускаем vanilla-восстание
+				if = {
+					limit = {
+						owner = {
+							NOT = {
+								any_situation = {
+									is_situation_type = situation_planetary_revolt
+									target = { is_same_value = event_target:ps_revolt_planet }
+								}
+							}
+						}
+					}
+					owner = {
+						start_situation = {
+							type = situation_planetary_revolt
+							target = event_target:ps_revolt_planet
+						}
+					}
+				}
+				# Через день находим ситуацию и подключаемся к ней как покровитель
+				carrier_event = { id = ps_revolt.51 days = 1 }
+			}
+		}
+	}
+
+	after = {
+		destroy_espionage_operation = this
+	}
+}
+
+#####################################################
+# 4. СНАБДИТЬ СВОБОДНЫЙ МИР
+#####################################################
+
+espionage_operation_event = {
+	id = ps_revolt.10
+	title = ps_revolt.10.name
+	desc = ps_revolt.10.desc
+	espionage_operation = yes
+	picture = GFX_evt_alien_propaganda
+	show_sound = event_default
+	is_triggered_only = yes
+
+	option = { name = ps_revolt.10.a }
+}
+
+espionage_operation_event = {
+	id = ps_revolt.11
+	title = ps_revolt.11.name
+	desc = ps_revolt.11.desc
+	espionage_operation = yes
+	picture = GFX_evt_alien_propaganda
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	option = {
+		name = ps_revolt.11.a
+		target = {
+			add_modifier = { modifier = ps_rebel_supplies days = 3600 }
+			add_resource = { alloys = 300 energy = 500 }
+			add_opinion_modifier = { who = root.owner modifier = opinion_ps_liberators }
+		}
+	}
+
+	after = {
+		destroy_espionage_operation = this
+	}
+}
+
+#####################################################
+# ПОДДЕРЖКА ВОССТАНИЯ (scope = ситуация восстания)
+# event_target:ps_sponsor — страна-покровитель
+#####################################################
+
+# Сильная поддержка: оружие (операции)
+situation_event = {
+	id = ps_revolt.20
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		event_target:ps_sponsor = {
+			set_country_flag = revolt_joiner_empire_@root
+		}
+		add_situation_progress = 20
+		target = {
+			save_event_target_as = ps_revolt_planet
+			add_modifier = { modifier = ps_armed_underground days = 1080 }
+			carrier_event = { id = ps_revolt.50 }
+		}
+	}
+}
+
+# Обычная поддержка: деньги (эдикт «Фонд освобождения»)
+situation_event = {
+	id = ps_revolt.21
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		event_target:ps_sponsor = {
+			set_country_flag = revolt_joiner_empire_@root
+		}
+		add_situation_progress = 10
+		target = {
+			save_event_target_as = ps_revolt_planet
+			carrier_event = { id = ps_revolt.50 }
+		}
+	}
+}
+
+#####################################################
+# ЭДИКТ «ФОНД ОСВОБОЖДЕНИЯ» — ежегодно
+#####################################################
+
+country_event = {
+	id = ps_revolt.30
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		ps_is_partisan_empire = yes
+		has_edict = edict_ps_liberation_fund
+	}
+
+	immediate = {
+		save_event_target_as = ps_sponsor
+		every_playable_country = {
+			limit = {
+				is_country_type = default
+				NOT = { is_same_value = root }
+				has_communications = root
+				NOT = { is_in_federation_with = root }
+				NOT = { has_defensive_pact = root }
+				NOT = {
+					AND = {
+						is_subject = yes
+						overlord = { is_same_value = root }
+					}
+				}
+				any_situation = { is_situation_type = situation_planetary_revolt }
+			}
+			random_situation = {
+				limit = { is_situation_type = situation_planetary_revolt }
+				situation_event = { id = ps_revolt.21 }
+			}
+			root = { add_resource = { energy = -150 } }
+		}
+	}
+}
+
+#####################################################
+# ВОССТАВШИЕ ПОБЕДИЛИ
+# on_rebels_take_planet: this = страна восставших, from = планета
+#####################################################
+
+country_event = {
+	id = ps_revolt.40
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		from = { has_planet_flag = ps_partisan_sponsored }
+	}
+
+	immediate = {
+		save_event_target_as = ps_rebel_state
+		from = { save_event_target_as = ps_revolt_planet }
+
+		# Бафф нового государства
+		add_modifier = { modifier = ps_liberated_state days = 7200 }
+		add_resource = { energy = 1000 minerals = 500 alloys = 300 }
+		set_country_flag = ps_partisan_rebel_state
+		# Охотно примет вассалитет Синдиката (см. соглашения ps_*)
+		set_timed_country_flag = { flag = ps_puppet_council days = 3600 }
+
+		# Награда и уведомление покровителям
+		every_playable_country = {
+			limit = { has_country_flag = ps_rebel_sponsor@from }
+			root = { add_opinion_modifier = { who = prev modifier = opinion_ps_liberators } }
+			add_resource = { unity = 300 influence = 50 }
+			country_event = { id = ps_revolt.41 }
+		}
+	}
+}
+
+# Покровителю: восстание победило
+country_event = {
+	id = ps_revolt.41
+	title = ps_revolt.41.name
+	desc = ps_revolt.41.desc
+	picture = GFX_ps_evt_partisans
+	is_triggered_only = yes
+
+	option = {
+		name = ps_revolt.41.a
+		custom_tooltip = ps_revolt.41.a.tooltip
+	}
+}
+
+#####################################################
+# СЛУЖЕБНЫЕ (scope = планета)
+#####################################################
+
+# Пометить планету как поддержанную Синдикатом и запомнить покровителя
+carrier_event = {
+	id = ps_revolt.50
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		set_planet_flag = ps_partisan_sponsored
+		event_target:ps_sponsor = {
+			set_timed_country_flag = { flag = ps_rebel_sponsor@root days = 7200 }
+		}
+	}
+}
+
+# После start_situation: подключиться к новому восстанию
+carrier_event = {
+	id = ps_revolt.51
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		owner = {
+			random_situation = {
+				limit = {
+					is_situation_type = situation_planetary_revolt
+					target = { is_same_value = root }
+				}
+				situation_event = { id = ps_revolt.20 }
+			}
+		}
+	}
+}

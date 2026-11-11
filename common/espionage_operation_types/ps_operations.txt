@@ -72,3 +72,243 @@ operation_ps_puppet_coup = {
 		}
 	}
 }
+
+#####################################################
+# ВОССТАНИЯ
+# Работают поверх vanilla-ситуации situation_planetary_revolt
+# (common/situations/02_strategic_situations.txt).
+#####################################################
+
+# 1. Посеять смуту: подрывает стабильность одной планеты цели
+operation_ps_sow_dissent = {
+	target = none
+	categories = { op_cat_subterfuge op_cat_government }
+	picture = GFX_evt_alien_propaganda
+	desc = operation_ps_sow_dissent_desc
+	stages = 2
+	spy_power_cost = 30
+
+	resources = {
+		category = operations
+		cost = {
+			influence = 50
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = operation_ps_no_planets
+			target = { any_owned_planet = { is_capital = no } }
+		}
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 5
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_revolt.1
+	}
+	stage = {
+		difficulty = 6
+		icon = GFX_espionage_chapter_icon_motion
+		event = ps_revolt.2
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {
+		target = {
+			set_timed_country_flag = {
+				flag = espionage_operation_targeted_by@root.owner
+				days = 10800
+			}
+		}
+	}
+}
+
+# 2. Вооружить повстанцев: помогает уже идущему восстанию
+operation_ps_arm_rebels = {
+	target = none
+	categories = { op_cat_provocation op_cat_military }
+	picture = GFX_evt_alien_propaganda
+	desc = operation_ps_arm_rebels_desc
+	stages = 3
+	spy_power_cost = 40
+
+	resources = {
+		category = operations
+		cost = {
+			influence = 75
+		}
+		upkeep = {
+			energy = 8
+		}
+	}
+
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = operation_ps_no_revolt
+			target = { any_situation = { is_situation_type = situation_planetary_revolt } }
+		}
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 6
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_revolt.3
+	}
+	stage = {
+		difficulty = 6
+		icon = GFX_espionage_chapter_icon_target
+		event = ps_revolt.4
+	}
+	stage = {
+		difficulty = 7
+		icon = GFX_espionage_chapter_icon_motion
+		event = ps_revolt.5
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}
+
+# 3. Поднять восстание: начинает новое восстание на нестабильной планете
+operation_ps_spark_uprising = {
+	target = none
+	categories = { op_cat_subterfuge op_cat_military }
+	picture = GFX_evt_alien_propaganda
+	desc = operation_ps_spark_uprising_desc
+	stages = 4
+	spy_power_cost = 70
+
+	resources = {
+		category = operations
+		cost = {
+			influence = 150
+		}
+		upkeep = {
+			energy = 12
+		}
+	}
+
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = operation_ps_no_unstable_planet
+			target = {
+				any_owned_planet = {
+					is_capital = no
+					planet_stability < 40
+				}
+			}
+		}
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 7
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_revolt.6
+	}
+	stage = {
+		difficulty = 8
+		icon = GFX_espionage_chapter_icon_document
+		event = ps_revolt.7
+	}
+	stage = {
+		difficulty = 8
+		icon = GFX_espionage_chapter_icon_target
+		event = ps_revolt.7
+	}
+	stage = {
+		difficulty = 9
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_revolt.8
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {
+		target = {
+			set_timed_country_flag = {
+				flag = espionage_operation_targeted_by@root.owner
+				days = 10800
+			}
+		}
+	}
+}
+
+# 4. Снабдить свободный мир: усиливает государство восставших
+operation_ps_supply_rebels = {
+	target = none
+	categories = { op_cat_subterfuge op_cat_diplomacy }
+	picture = GFX_evt_alien_propaganda
+	desc = operation_ps_supply_rebels_desc
+	stages = 2
+	spy_power_cost = 25
+
+	resources = {
+		category = operations
+		cost = {
+			influence = 60
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { has_country_flag = ps_partisan_rebel_state }
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = operation_ps_already_supplied
+			target = { NOT = { has_modifier = ps_rebel_supplies } }
+		}
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 4
+		icon = GFX_espionage_chapter_icon_motion
+		event = ps_revolt.10
+	}
+	stage = {
+		difficulty = 4
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_revolt.11
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}
