@@ -1,0 +1,28 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_origin_ps_partisan_legacy"
+		texturefile = "gfx/interface/icons/origins/ps_origin_picture.dds"
+	}
+
+	spriteType = {
+		name = "GFX_ps_evt_partisans"
+		texturefile = "gfx/event_pictures/ps_evt_partisans.dds"
+	}
+	spriteType = {
+		name = "GFX_ps_evt_spy"
+		texturefile = "gfx/event_pictures/ps_evt_spy.dds"
+	}
+	spriteType = {
+		name = "GFX_ps_evt_syndicate"
+		texturefile = "gfx/event_pictures/ps_evt_syndicate.dds"
+	}
+
+	spriteType = {
+		name = "GFX_building_ps_partisan_cell"
+		texturefile = "gfx/interface/icons/buildings/building_ps_partisan_cell.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_underground_press"
+		texturefile = "gfx/interface/icons/buildings/building_ps_underground_press.dds"
+	}
+}

@@ -1,0 +1,84 @@
+# Синдикат Сопротивления — происхождение и цивики
+# Иконки цивиков берутся по имени файла:
+#   gfx/interface/icons/governments/civics/<ключ>.dds
+
+########################################
+# ПРОИСХОЖДЕНИЕ: Наследие Сопротивления
+########################################
+origin_ps_partisan_legacy = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_ps_partisan_legacy.dds"
+	picture = GFX_origin_ps_partisan_legacy
+
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+	}
+	possible = {
+		authority = {
+			value = auth_corporate
+			text = civic_tooltip_ps_requires_megacorp
+		}
+		civics = {
+			value = civic_criminal_heritage
+			text = civic_tooltip_ps_requires_criminal_heritage
+		}
+	}
+
+	description = "origin_tooltip_ps_partisan_legacy_effects"
+	random_weight = { base = 5 }
+
+	modifier = {
+		intel_encryption_add = 1
+		army_damage_mult = 0.10
+		envoys_add = 1
+	}
+}
+
+########################################
+# ЦИВИК: Партизанская сеть
+########################################
+civic_ps_partisan_network = {
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { value = auth_corporate }
+	}
+	possible = {
+		authority = {
+			value = auth_corporate
+			text = civic_tooltip_ps_requires_megacorp
+		}
+	}
+
+	description = "civic_tooltip_ps_partisan_network_effects"
+	random_weight = { base = 5 }
+
+	modifier = {
+		intel_decryption_add = 1
+		envoys_add = 1
+		army_damage_mult = 0.15
+	}
+}
+
+########################################
+# ЦИВИК: Теневой сюзерен
+########################################
+civic_ps_shadow_overlord = {
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { value = auth_corporate }
+	}
+	possible = {
+		authority = {
+			value = auth_corporate
+			text = civic_tooltip_ps_requires_megacorp
+		}
+	}
+
+	description = "civic_tooltip_ps_shadow_overlord_effects"
+	random_weight = { base = 5 }
+
+	modifier = {
+		envoys_add = 1
+		intel_encryption_add = 1
+	}
+}

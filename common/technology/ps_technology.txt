@@ -1,0 +1,39 @@
+# Синдикат Сопротивления — технологии
+# Иконки: gfx/interface/icons/technologies/<ключ>.dds
+
+tech_ps_guerrilla_doctrine = {
+	area = society
+	tier = 1
+	category = { statecraft }
+	cost = 2000
+	weight = 60
+
+	potential = { ps_is_partisan_empire = yes }
+
+	modifier = {
+		army_damage_mult = 0.10
+		intel_encryption_add = 1
+	}
+
+	weight_modifier = { factor = 2 }
+	ai_weight = { factor = 1.5 }
+}
+
+tech_ps_ghost_networks = {
+	area = society
+	tier = 3
+	category = { statecraft }
+	cost = 6000
+	weight = 40
+	prerequisites = { "tech_ps_guerrilla_doctrine" }
+
+	potential = { ps_is_partisan_empire = yes }
+
+	modifier = {
+		intel_decryption_add = 1
+		envoys_add = 1
+	}
+
+	weight_modifier = { factor = 1.5 }
+	ai_weight = { factor = 1.2 }
+}

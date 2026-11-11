@@ -1,0 +1,4 @@
+opinion_ps_caught_spying = {
+	opinion = { base = -40 }
+	decay = { base = 1 }
+}

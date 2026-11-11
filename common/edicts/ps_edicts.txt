@@ -1,0 +1,42 @@
+# Синдикат Сопротивления — эдикты
+
+edict_ps_sleeper_cells = {
+	length = 0
+	icon = "GFX_edict_type_policy"
+
+	resources = {
+		category = edicts
+		upkeep = { energy = 10 }
+	}
+
+	potential = { ps_is_partisan_empire = yes }
+
+	modifier = {
+		intel_encryption_add = 2
+		army_damage_mult = 0.10
+	}
+
+	ai_weight = { weight = 5 }
+}
+
+edict_ps_shadow_fleet = {
+	length = 0
+	icon = "GFX_edict_type_policy"
+
+	resources = {
+		category = edicts
+		upkeep = { energy = 15 }
+	}
+
+	potential = {
+		ps_is_partisan_empire = yes
+		has_technology = tech_ps_ghost_networks
+	}
+
+	modifier = {
+		ship_evasion_add = 5
+		ship_cloaking_strength_add = 1
+	}
+
+	ai_weight = { weight = 5 }
+}

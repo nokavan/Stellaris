@@ -1,0 +1,124 @@
+﻿l_english:
+ # ===== Common =====
+ civic_tooltip_ps_requires_megacorp:0 "Requires §YCorporate§! authority (Megacorporation)"
+ civic_tooltip_ps_requires_criminal_heritage:0 "Requires the §YCriminal Heritage§! civic"
+
+ # ===== Origin =====
+ origin_ps_partisan_legacy:0 "Legacy of the Resistance"
+ origin_ps_partisan_legacy_desc:0 "Long ago, occupiers came to our homeworld. Armies surrendered and governments fled, but partisans rose in the forests and mountains. They derailed trains, burned depots and held on where holding on was impossible.\n\nThe war ended long ago, yet the network never disbanded. Couriers became smugglers, detachment commanders became shadow directors, and the old partisan Code became the Syndicate's charter. Now the network reaches for the stars."
+ origin_tooltip_ps_partisan_legacy_effects:0 "£unity£ Starts the §YLegacy of the Resistance§! story chain (choose a Code at game start).\n- Encryption: §G+1§!\n- Army Damage: §G+10%§!\n- Envoys: §G+1§!\n- Unlocks §YSpecialized Subjects§!, §YPartisan Warfare§!, §YAgent Operations§! and partisan branch office buildings."
+
+ # ===== Civics =====
+ civic_ps_partisan_network:0 "Partisan Network"
+ civic_ps_partisan_network_desc:0 "Every branch office is also a safehouse. Every courier is a contact. The corporation remembers how to fight without an army."
+ civic_tooltip_ps_partisan_network_effects:0 "- Decryption: §G+1§!\n- Envoys: §G+1§!\n- Army Damage: §G+15%§!\n- Unlocks the §YPartisan Cell§! and §YUnderground Press§! branch office buildings\n- Unlocks §YAgent Operations§! and §YPartisan Warfare§!"
+
+ civic_ps_shadow_overlord:0 "Shadow Overlord"
+ civic_ps_shadow_overlord_desc:0 "The Syndicate's subjects are not mere tributaries. Each gets a role in the network: some listen, some hold the line, some trade, some invent."
+ civic_tooltip_ps_shadow_overlord_effects:0 "- Envoys: §G+1§!\n- Encryption: §G+1§!\n- Unlocks §YSpecialized Subjects§!: assign each subject a role that grants bonuses to it and to you, plus yearly tribute."
+
+ # ===== Buildings =====
+ building_ps_partisan_cell:0 "Partisan Cell"
+ building_ps_partisan_cell_desc:0 "Behind a warehouse sign: an arms cache, a safehouse and a radio station. The local authorities have no idea who their dockworkers really answer to."
+ building_ps_underground_press:0 "Underground Press"
+ building_ps_underground_press_desc:0 "Leaflets, pirate radio and holographic graffiti. The Syndicate reminds the locals they have a choice."
+
+ # ===== Edicts =====
+ edict_ps_sleeper_cells:0 "Sleeper Cells"
+ edict_ps_sleeper_cells_desc:0 "Caches and dormant squads are prepared across the empire in case of invasion."
+ edict_ps_shadow_fleet:0 "Shadow Fleet"
+ edict_ps_shadow_fleet_desc:0 "Ships run dark along smuggler routes."
+
+ # ===== Technology =====
+ tech_ps_guerrilla_doctrine:0 "Guerrilla Doctrine"
+ tech_ps_guerrilla_doctrine_desc:0 "Codifying the Resistance's experience: small groups, hit and run, reliance on the local population."
+ tech_ps_ghost_networks:0 "Ghost Networks"
+ tech_ps_ghost_networks_desc:0 "Quantum one-time pads and agents who never see each other's faces."
+
+ # ===== Modifiers =====
+ ps_code_honor:0 "Code of Honor"
+ ps_code_honor_desc:0 "The Syndicate remembers what the partisans fought for."
+ ps_code_profit:0 "Code of Profit"
+ ps_code_profit_desc:0 "The network must feed itself."
+ ps_code_silence:0 "Code of Silence"
+ ps_code_silence_desc:0 "The network lives as long as it stays unseen."
+ ps_legacy_liberator:0 "Liberator Syndicate"
+ ps_legacy_liberator_desc:0 "We are heirs of the partisans, not of their occupiers."
+ ps_legacy_master:0 "Master Syndicate"
+ ps_legacy_master_desc:0 "The Resistance won. The network is ours now."
+ ps_subject_spy_ring:0 "Specialization: Spy Ring"
+ ps_subject_spy_ring_desc:0 "This subject is the Syndicate's eyes and ears."
+ ps_subject_bastion:0 "Specialization: Partisan Bastion"
+ ps_subject_bastion_desc:0 "This subject is the network's fortified rear."
+ ps_subject_black_market:0 "Specialization: Black Market"
+ ps_subject_black_market_desc:0 "Illicit goods flow through this subject."
+ ps_subject_underground_lab:0 "Specialization: Underground Lab"
+ ps_subject_underground_lab_desc:0 "Things are developed here that never appear in reports."
+ ps_overlord_spy_ring:0 "Subject Network: Intelligence"
+ ps_overlord_spy_ring_desc:0 "At least one subject serves as a Spy Ring."
+ ps_overlord_bastion:0 "Subject Network: Bastion"
+ ps_overlord_bastion_desc:0 "At least one subject serves as a Partisan Bastion."
+ ps_overlord_black_market:0 "Subject Network: Black Market"
+ ps_overlord_black_market_desc:0 "At least one subject serves as a Black Market."
+ ps_overlord_underground_lab:0 "Subject Network: Laboratory"
+ ps_overlord_underground_lab_desc:0 "At least one subject serves as an Underground Lab."
+ ps_partisan_harassment:0 "Partisan Warfare"
+ ps_partisan_harassment_desc:0 "Partisans operate in occupied territory: ambushes, sabotage, vanishing patrols."
+ ps_sabotaged_shipyards:0 "Shipyard Sabotage"
+ ps_sabotaged_shipyards_desc:0 "Someone swapped the slipway calibration data."
+ ps_incited_unrest:0 "Underground Agitation"
+ ps_incited_unrest_desc:0 "Syndicate agents are stoking discontent."
+ ps_stolen_ledgers:0 "Stolen Ledgers"
+ ps_stolen_ledgers_desc:0 "Accounting still can't balance the books."
+
+ opinion_ps_caught_spying:0 "Caught Spying"
+
+ # ===== Events: story =====
+ ps.1.name:0 "Archive of the Resistance"
+ ps.1.desc:0 "In the basement of the old headquarters lies what the Syndicate shows no one: worn forest maps, detachment rosters, rusted radios and the first partisan Code, copied by hand.\n\nThe board of directors has gathered to decide what the Syndicate's Code will be now that the network is leaving its homeworld."
+ ps.1.a:0 "The Code of Honor. We remember what we fought for."
+ ps.1.b:0 "The Code of Profit. The network must feed itself."
+ ps.1.c:0 "The Code of Silence. We must not be seen."
+
+ ps.2.name:0 "The Commander's Notebook"
+ ps.2.desc:0 "Demolishing an old building, workers found a walled-up cache. Inside was the notebook of the network's founder, a partisan commander. Ciphered notes, cache coordinates, names of contacts, and a final entry: 'When the war ends, do not disband the network. Occupiers always come back, under other flags.'"
+ ps.2.a:0 "Publish it. Let everyone know where we came from."
+ ps.2.b:0 "Open the old caches."
+ ps.2.c:0 "Classify it. Board eyes only."
+
+ ps.3.name:0 "The Last Order"
+ ps.3.desc:0 "The cryptographers have finished the final pages of the commander's notebook. It was an order, not to the detachments, but to their descendants: to decide what the network becomes once it holds the power of entire star systems.\n\nThe board understands that today's decision will define what the Syndicate is to the galaxy: a shield for the oppressed, or a new master."
+ ps.3.a:0 "We are liberators. Like our ancestors."
+ ps.3.b:0 "We won. Now we write the rules."
+
+ # ===== Events: subjects =====
+ ps.10.name:0 "A Role in the Network"
+ ps.10.desc:0 "Our subject §Y[ps_subject.GetName]§! has not yet been given a role in the Syndicate's network. The board must decide how it can serve best."
+ ps.10.a:0 "Spy Ring"
+ ps.10.a.tooltip:0 "Subject: §G+2§! Encryption, §G+1§! Decryption.\nYou: §G+1§! Decryption, §G+1§! Envoy; §G+15§! Influence per year. Improves agent operation odds."
+ ps.10.b:0 "Partisan Bastion"
+ ps.10.b.tooltip:0 "Subject: §G+25%§! Army Damage, §G+4§! Defense Platforms.\nYou: §G+10%§! Army Damage, §G+5%§! Fire Rate; §G+75§! Alloys per year."
+ ps.10.c:0 "Black Market"
+ ps.10.c.tooltip:0 "Subject: §G+15%§! Energy from jobs, §R+5§! Crime.\nYou: §G+5%§! Energy from jobs; §G+150§! Energy per year. Improves treasury heist odds."
+ ps.10.d:0 "Underground Lab"
+ ps.10.d.tooltip:0 "Subject: §G+10%§! Research Speed.\nYou: §G+5%§! Research Speed; §G+50§! of each research type per year."
+
+ # ===== Events: agents =====
+ ps.20.name:0 "Agent Report"
+ ps.20.desc:0 "Our contacts report a weakness in the structures of §Y[ps_op_target.GetName]§!. The resident agent awaits orders."
+ ps.20.a:0 "Steal their blueprints. (§Y50§! Influence)"
+ ps.20.b:0 "Sabotage their shipyards. (§Y300§! Energy)"
+ ps.20.c:0 "Raise the underground. (§Y75§! Influence)"
+ ps.20.d:0 "Empty their treasury."
+ ps.20.e:0 "Lie low."
+ ps.21.name:0 "Agent Exposed"
+ ps.21.desc:0 "Our agent was captured by counterintelligence. The operation has failed and relations with the victim have soured."
+ ps.21.a:0 "They won't talk."
+ ps.22.name:0 "Foreign Agent"
+ ps.22.desc:0 "Our counterintelligence has detained an agent working for a foreign syndicate. The trail leads to §Y[From.GetName]§!."
+ ps.22.a:0 "We will not forget this."
+
+ # ===== Events: partisan warfare =====
+ ps.31.name:0 "The Forests Burn Again"
+ ps.31.desc:0 "The enemy has occupied §Y[ps_occupied_planet.GetName]§!, but has not taken it. The old caches are open, the contacts are back on the air, and on the very first night an occupier patrol vanished.\n\nJust as centuries ago, the network does what it was built for."
+ ps.31.a:0 "Not one step back."

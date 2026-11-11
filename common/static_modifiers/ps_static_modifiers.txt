@@ -1,0 +1,124 @@
+# Синдикат Сопротивления — статические модификаторы
+
+@ps_icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+
+################################
+# Кодекс (выбор в стартовом событии)
+################################
+ps_code_honor = {
+	icon = @ps_icon
+	icon_frame = 1
+	pop_happiness = 0.05
+	army_damage_mult = 0.10
+}
+ps_code_profit = {
+	icon = @ps_icon
+	icon_frame = 1
+	planet_jobs_energy_produces_mult = 0.10
+}
+ps_code_silence = {
+	icon = @ps_icon
+	icon_frame = 1
+	intel_encryption_add = 2
+}
+
+################################
+# Финал сюжетной ветки
+################################
+ps_legacy_liberator = {
+	icon = @ps_icon
+	icon_frame = 1
+	army_damage_mult = 0.15
+	pop_happiness = 0.05
+	planet_stability_add = 3
+}
+ps_legacy_master = {
+	icon = @ps_icon
+	icon_frame = 1
+	planet_jobs_energy_produces_mult = 0.15
+	intel_decryption_add = 1
+}
+
+################################
+# Специализированные вассалы — модификатор на ВАССАЛЕ
+################################
+ps_subject_spy_ring = {
+	icon = @ps_icon
+	icon_frame = 1
+	intel_encryption_add = 2
+	intel_decryption_add = 1
+}
+ps_subject_bastion = {
+	icon = @ps_icon
+	icon_frame = 1
+	army_damage_mult = 0.25
+	starbase_defense_platform_capacity_add = 4
+}
+ps_subject_black_market = {
+	icon = @ps_icon
+	icon_frame = 1
+	planet_jobs_energy_produces_mult = 0.15
+	planet_crime_add = 5
+}
+ps_subject_underground_lab = {
+	icon = @ps_icon
+	icon_frame = 1
+	all_technology_research_speed = 0.10
+}
+
+################################
+# Специализированные вассалы — модификатор на СЮЗЕРЕНЕ
+################################
+ps_overlord_spy_ring = {
+	icon = @ps_icon
+	icon_frame = 1
+	intel_decryption_add = 1
+	envoys_add = 1
+}
+ps_overlord_bastion = {
+	icon = @ps_icon
+	icon_frame = 1
+	army_damage_mult = 0.10
+	ship_fire_rate_mult = 0.05
+}
+ps_overlord_black_market = {
+	icon = @ps_icon
+	icon_frame = 1
+	planet_jobs_energy_produces_mult = 0.05
+}
+ps_overlord_underground_lab = {
+	icon = @ps_icon
+	icon_frame = 1
+	all_technology_research_speed = 0.05
+}
+
+################################
+# Партизанская война
+################################
+# Вешается на оккупанта нашей планеты
+ps_partisan_harassment = {
+	icon = @ps_icon
+	icon_frame = 3
+	army_damage_mult = -0.15
+	planet_stability_add = -3
+}
+
+################################
+# Шпионские операции — на ЦЕЛИ
+################################
+ps_sabotaged_shipyards = {
+	icon = @ps_icon
+	icon_frame = 3
+	starbase_shipyard_build_speed_mult = -0.25
+}
+ps_incited_unrest = {
+	icon = @ps_icon
+	icon_frame = 3
+	planet_stability_add = -5
+	planet_crime_add = 10
+}
+ps_stolen_ledgers = {
+	icon = @ps_icon
+	icon_frame = 3
+	planet_jobs_energy_produces_mult = -0.10
+}
