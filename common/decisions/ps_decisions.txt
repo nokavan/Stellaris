@@ -1,0 +1,66 @@
+# Синдикат Сопротивления — панель управления ячейками (вассалами)
+# Формат решений — как в модах Feudal Expanded (owned_planets_only/potential/allow/effect).
+# root = планета.
+
+# Открыть панель ячеек (на столице)
+decision_ps_cell_panel = {
+	owned_planets_only = yes
+
+	potential = {
+		is_capital = yes
+		owner = { ps_is_shadow_overlord = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = decision_ps_no_cells
+			owner = {
+				any_playable_country = {
+					is_subject = yes
+					overlord = { is_same_value = root.owner }
+				}
+			}
+		}
+	}
+
+	effect = {
+		owner = { country_event = { id = ps_panel.1 } }
+	}
+}
+
+# Передать эту планету выбранной в панели ячейке
+decision_ps_transfer_planet = {
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 25
+		}
+	}
+
+	potential = {
+		is_capital = no
+		owner = { ps_is_shadow_overlord = yes }
+	}
+
+	allow = {
+		is_colony = yes
+		custom_tooltip = {
+			fail_text = decision_ps_no_selected_cell
+			owner = { ps_has_selected_cell = yes }
+		}
+		custom_tooltip = {
+			fail_text = decision_ps_planet_occupied
+			exists = controller
+			controller = { is_same_value = root.owner }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_ps_transfer_planet_tooltip
+		hidden_effect = {
+			carrier_event = { id = ps_panel.50 }
+		}
+	}
+}

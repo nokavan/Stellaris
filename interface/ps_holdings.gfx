@@ -1,0 +1,402 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_holding_ps_cell_garrison"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_cell_garrison.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_militia_school"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_militia_school.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_arms_depot"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_arms_depot.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_recruitment_post"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_recruitment_post.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_watchtower"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_watchtower.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_bunker_network"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_bunker_network.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_naval_depot"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_naval_depot.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_officer_school"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_officer_school.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_fortress_cell"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_fortress_cell.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_rapid_response"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_rapid_response.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_strategic_reserve"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_strategic_reserve.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_partisan_citadel"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_partisan_citadel.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_listening_post"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_listening_post.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_safehouse"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_safehouse.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_courier_hub"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_courier_hub.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_watch_office"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_watch_office.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_cipher_station"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_cipher_station.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_decryption_center"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_decryption_center.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_agent_academy"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_agent_academy.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_informant_web"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_informant_web.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_envoy_residence"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_envoy_residence.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_black_archive"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_black_archive.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_counterintel_bureau"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_counterintel_bureau.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_shadow_directorate"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_shadow_directorate.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_tribute_office"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_tribute_office.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_trading_house"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_trading_house.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_exchange_office"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_exchange_office.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_bank_branch"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_bank_branch.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_customs_house"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_customs_house.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_insurance_agency"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_insurance_agency.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_investment_fund"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_investment_fund.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_market_hall"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_market_hall.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_casino_resort"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_casino_resort.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_syndicate_bank"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_syndicate_bank.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_offshore_zone"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_offshore_zone.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_trade_consortium"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_trade_consortium.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_mining_concession"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_mining_concession.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_farm_lease"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_farm_lease.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_power_plant"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_power_plant.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_alloy_works"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_alloy_works.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_goods_factory"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_goods_factory.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_crystal_mine"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_crystal_mine.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_gas_extractor"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_gas_extractor.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_mote_refinery"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_mote_refinery.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_resource_depot"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_resource_depot.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_rare_guidance"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_rare_guidance.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_industrial_combine"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_industrial_combine.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_strategic_stockpile"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_strategic_stockpile.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_research_outpost"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_research_outpost.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_patent_office"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_patent_office.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_xeno_institute"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_xeno_institute.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_physics_lab"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_physics_lab.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_joint_university"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_joint_university.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_tech_transfer"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_tech_transfer.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_data_center"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_data_center.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_archaeology_bureau"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_archaeology_bureau.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_secret_institute"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_secret_institute.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_think_tank"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_think_tank.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_propaganda_office"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_propaganda_office.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_memorial_hall"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_memorial_hall.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_radio_relay"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_radio_relay.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_youth_league"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_youth_league.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_cultural_center"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_cultural_center.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_oath_hall"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_oath_hall.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_veterans_union"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_veterans_union.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_press_agency"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_press_agency.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_unity_council"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_unity_council.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_hall_of_heroes"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_hall_of_heroes.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_aid_mission"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_aid_mission.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_construction_brigade"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_construction_brigade.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_clinic"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_clinic.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_food_aid"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_food_aid.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_power_grid"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_power_grid.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_mining_advisers"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_mining_advisers.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_industrial_aid"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_industrial_aid.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_research_aid"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_research_aid.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_housing_program"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_housing_program.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_security_service"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_security_service.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_culture_house"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_culture_house.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_refugee_center"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_refugee_center.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_logistics_hub"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_logistics_hub.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_reconstruction_fund"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_reconstruction_fund.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_medical_center"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_medical_center.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_prosperity_program"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_prosperity_program.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_fleet_yard"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_fleet_yard.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_gunnery_school"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_gunnery_school.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_assault_barracks"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_assault_barracks.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_drop_pod_factory"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_drop_pod_factory.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_privateer_harbor"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_privateer_harbor.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_prize_court"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_prize_court.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_residency_hq"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_residency_hq.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_embassy_quarter"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_embassy_quarter.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_clearing_house"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_clearing_house.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_hedge_fund"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_hedge_fund.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_trust_mines"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_trust_mines.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_trust_refinery"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_trust_refinery.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_guerrilla_camp"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_guerrilla_camp.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_sabotage_school"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_sabotage_school.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_partisan_hq"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_partisan_hq.dds"
+	}
+	spriteType = {
+		name = "GFX_holding_ps_liberation_school"
+		texturefile = "gfx/interface/icons/buildings/holding_ps_liberation_school.dds"
+	}
+}

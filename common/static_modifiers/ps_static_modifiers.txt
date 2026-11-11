@@ -220,3 +220,84 @@ ps_infrastructure_damage = {
 	planet_jobs_produces_mult = -0.15
 	planet_stability_add = -5
 }
+
+################################
+# Тайные операции (идеи Chris' Covert Operations / Criminal Underworld)
+################################
+ps_shifting_allegiance = {
+	icon = @ps_icon
+	icon_frame = 3
+	monthly_loyalty = -3
+}
+ps_fleet_command_infiltrated = {
+	icon = @ps_icon
+	icon_frame = 3
+	ship_fire_rate_mult = -0.15
+	ship_speed_mult = -0.10
+}
+ps_succession_crisis = {
+	icon = @ps_icon
+	icon_frame = 3
+	planet_stability_add = -10
+	country_unity_produces_mult = -0.20
+}
+ps_criminal_network = {
+	icon = @ps_icon
+	icon_frame = 3
+	planet_crime_add = 25
+}
+ps_shield_protocol = {
+	icon = @ps_icon
+	icon_frame = 1
+	intel_encryption_add = 2
+}
+ps_restored_order = {
+	icon = @ps_icon
+	icon_frame = 1
+	planet_stability_add = 10
+}
+ps_covert_fleet_support = {
+	icon = @ps_icon
+	icon_frame = 1
+	ship_fire_rate_mult = 0.10
+	country_naval_cap_add = 20
+}
+
+################################
+# Панель ячеек (на вассале)
+################################
+ps_cell_subsidized = {
+	icon = @ps_icon
+	icon_frame = 1
+	monthly_loyalty = 2
+}
+ps_cell_armed = {
+	icon = @ps_icon
+	icon_frame = 1
+	army_damage_mult = 0.15
+	ship_hull_mult = 0.05
+}
+ps_cell_honored = {
+	icon = @ps_icon
+	icon_frame = 1
+	monthly_loyalty = 3
+	pop_happiness = 0.05
+}
+ps_cell_mobilized = {
+	icon = @ps_icon
+	icon_frame = 2
+	ship_fire_rate_mult = 0.10
+	army_damage_mult = 0.15
+	country_naval_cap_mult = 0.20
+	monthly_loyalty = -1
+}
+ps_cell_tribute_demanded = {
+	icon = @ps_icon
+	icon_frame = 3
+	monthly_loyalty = -2
+}
+ps_cell_land_grant = {
+	icon = @ps_icon
+	icon_frame = 1
+	monthly_loyalty = 3
+}

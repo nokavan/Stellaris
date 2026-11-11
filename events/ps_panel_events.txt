@@ -1,0 +1,237 @@
+#####################################################
+# Синдикат Сопротивления — панель управления ячейками (вассалами)
+# Открывается решением «Панель ячеек» на столице.
+# Выбранная ячейка = вассал с флагом ps_cell_selected
+# (у вассала один сюзерен, поэтому флаг однозначен).
+#
+#  ps_panel.1   панель (меню действий)
+#  ps_panel.50  передача планеты (scope = планета, из решения)
+#  ps_panel.51  уведомление ячейке о передаче
+#####################################################
+
+namespace = ps_panel
+
+# ПАНЕЛЬ
+country_event = {
+	id = ps_panel.1
+	title = ps_panel.1.name
+	desc = ps_panel.1.desc
+	picture = GFX_ps_evt_syndicate
+	is_triggered_only = yes
+
+	trigger = {
+		ps_is_shadow_overlord = yes
+		any_playable_country = {
+			is_subject = yes
+			overlord = { is_same_value = root }
+		}
+	}
+
+	immediate = {
+		random_playable_country = {
+			limit = {
+				is_subject = yes
+				overlord = { is_same_value = root }
+				has_country_flag = ps_cell_selected
+			}
+			save_event_target_as = ps_cell
+		}
+		# Если ячейка ещё не выбрана — выбрать любого вассала
+		if = {
+			limit = { NOT = { exists = event_target:ps_cell } }
+			random_playable_country = {
+				limit = {
+					is_subject = yes
+					overlord = { is_same_value = root }
+				}
+				set_country_flag = ps_cell_selected
+				save_event_target_as = ps_cell
+			}
+		}
+	}
+
+	# Следующая ячейка
+	option = {
+		name = ps_panel.1.next
+		trigger = {
+			any_playable_country = {
+				is_subject = yes
+				overlord = { is_same_value = root }
+				NOT = { has_country_flag = ps_cell_selected }
+			}
+		}
+		hidden_effect = {
+			event_target:ps_cell = {
+				remove_country_flag = ps_cell_selected
+				set_timed_country_flag = { flag = ps_cell_skip days = 1 }
+			}
+			random_playable_country = {
+				limit = {
+					is_subject = yes
+					overlord = { is_same_value = root }
+					NOT = { has_country_flag = ps_cell_skip }
+				}
+				set_country_flag = ps_cell_selected
+			}
+			country_event = { id = ps_panel.1 }
+		}
+	}
+
+	# Субсидия
+	option = {
+		name = ps_panel.1.subsidy
+		trigger = {
+			resource_stockpile_compare = { resource = energy value >= 500 }
+		}
+		add_resource = { energy = -500 }
+		event_target:ps_cell = {
+			add_resource = { energy = 500 }
+			add_modifier = { modifier = ps_cell_subsidized days = 360 }
+		}
+		hidden_effect = { country_event = { id = ps_panel.1 } }
+	}
+
+	# Поставка сплавов
+	option = {
+		name = ps_panel.1.alloys
+		trigger = {
+			resource_stockpile_compare = { resource = alloys value >= 200 }
+		}
+		add_resource = { alloys = -200 }
+		event_target:ps_cell = {
+			add_resource = { alloys = 200 }
+			add_modifier = { modifier = ps_cell_armed days = 720 }
+		}
+		hidden_effect = { country_event = { id = ps_panel.1 } }
+	}
+
+	# Передать знания
+	option = {
+		name = ps_panel.1.tech
+		trigger = {
+			resource_stockpile_compare = { resource = influence value >= 50 }
+			event_target:ps_cell = { NOT = { has_country_flag = ps_cell_tech_cd } }
+		}
+		add_resource = { influence = -50 }
+		event_target:ps_cell = {
+			set_timed_country_flag = { flag = ps_cell_tech_cd days = 1800 }
+			add_monthly_resource_mult = { resource = physics_research value = 12 min = 300 max = 5000 }
+			add_monthly_resource_mult = { resource = society_research value = 12 min = 300 max = 5000 }
+			add_monthly_resource_mult = { resource = engineering_research value = 12 min = 300 max = 5000 }
+		}
+		hidden_effect = { country_event = { id = ps_panel.1 } }
+	}
+
+	# Наградить ячейку
+	option = {
+		name = ps_panel.1.honor
+		trigger = {
+			resource_stockpile_compare = { resource = influence value >= 50 }
+			event_target:ps_cell = { NOT = { has_modifier = ps_cell_honored } }
+		}
+		add_resource = { influence = -50 }
+		event_target:ps_cell = {
+			add_modifier = { modifier = ps_cell_honored days = 720 }
+		}
+		hidden_effect = { country_event = { id = ps_panel.1 } }
+	}
+
+	# Мобилизовать ячейку
+	option = {
+		name = ps_panel.1.mobilize
+		trigger = {
+			event_target:ps_cell = { NOT = { has_country_flag = ps_cell_mobilize_cd } }
+		}
+		event_target:ps_cell = {
+			set_timed_country_flag = { flag = ps_cell_mobilize_cd days = 1800 }
+			add_modifier = { modifier = ps_cell_mobilized days = 360 }
+		}
+		hidden_effect = { country_event = { id = ps_panel.1 } }
+	}
+
+	# Потребовать дань
+	option = {
+		name = ps_panel.1.tribute
+		trigger = {
+			event_target:ps_cell = { NOT = { has_country_flag = ps_cell_tribute_cd } }
+		}
+		event_target:ps_cell = {
+			set_timed_country_flag = { flag = ps_cell_tribute_cd days = 1800 }
+			add_resource = { energy = -300 minerals = -300 }
+			add_modifier = { modifier = ps_cell_tribute_demanded days = 720 }
+		}
+		add_resource = { energy = 300 minerals = 300 }
+		hidden_effect = { country_event = { id = ps_panel.1 } }
+	}
+
+	# Подсказка: как передать территорию
+	option = {
+		name = ps_panel.1.territory
+		custom_tooltip = ps_panel.1.territory.tooltip
+		hidden_effect = { country_event = { id = ps_panel.1 } }
+	}
+
+	# Закрыть
+	option = {
+		name = ps_panel.1.close
+	}
+}
+
+# ПЕРЕДАЧА ПЛАНЕТЫ (scope = планета; запускается решением decision_ps_transfer_planet)
+carrier_event = {
+	id = ps_panel.50
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		owner = { save_event_target_as = ps_overlord }
+		owner = {
+			random_playable_country = {
+				limit = {
+					is_subject = yes
+					overlord = { is_same_value = event_target:ps_overlord }
+					has_country_flag = ps_cell_selected
+				}
+				save_event_target_as = ps_cell
+			}
+		}
+		if = {
+			limit = { exists = event_target:ps_cell }
+			save_event_target_as = ps_transferred_planet
+			# Если это наша единственная колония в системе — отдаём и звёздную базу (всю систему)
+			if = {
+				limit = {
+					solar_system = {
+						exists = starbase
+						starbase = { is_owned_by = event_target:ps_overlord }
+						NOT = {
+							any_system_planet_colony = {
+								NOT = { is_same_value = root }
+								owner = { is_same_value = event_target:ps_overlord }
+							}
+						}
+					}
+				}
+				solar_system = {
+					starbase = { set_owner = event_target:ps_cell }
+				}
+			}
+			set_owner = event_target:ps_cell
+			set_controller = event_target:ps_cell
+			event_target:ps_cell = {
+				add_modifier = { modifier = ps_cell_land_grant days = 1800 }
+				country_event = { id = ps_panel.51 }
+			}
+		}
+	}
+}
+
+country_event = {
+	id = ps_panel.51
+	title = ps_panel.51.name
+	desc = ps_panel.51.desc
+	picture = GFX_ps_evt_syndicate
+	is_triggered_only = yes
+
+	option = { name = ps_panel.51.a }
+}

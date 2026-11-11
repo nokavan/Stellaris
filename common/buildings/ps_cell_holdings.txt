@@ -1,0 +1,4082 @@
+# АВТОГЕНЕРАЦИЯ: tools/gen_holdings.py — правьте генератор, а не этот файл
+# Синдикат Сопротивления — 100 владений («ячеек») на планетах вассалов
+
+holding_ps_cell_garrison = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = army
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	planet_modifier = {
+		planet_crime_add = -10
+		monthly_loyalty = 0.5
+		army_defense_damage_mult = 0.1
+	}
+}
+
+holding_ps_militia_school = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = army
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	planet_modifier = {
+		army_defense_damage_mult = 0.2
+		army_defense_health_mult = 0.2
+	}
+}
+
+holding_ps_arms_depot = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = army
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	planet_modifier = {
+		army_defense_health_mult = 0.15
+	}
+
+	country_modifier = {
+		army_damage_mult = 0.01
+	}
+}
+
+holding_ps_recruitment_post = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = army
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	country_modifier = {
+		country_naval_cap_add = 3
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_overlord_recruiter_add = 100
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_overlord_recruiter_drone_add = 100
+	}
+}
+
+holding_ps_watchtower = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = army
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	planet_modifier = {
+		planet_crime_add = -5
+		planet_stability_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_overlord_beholder_add = 100
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_overlord_beholder_drone_add = 100
+	}
+}
+
+holding_ps_bunker_network = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = army
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	planet_modifier = {
+		army_defense_damage_mult = 0.25
+		army_defense_health_mult = 0.25
+		planet_orbital_bombardment_damage = -0.2
+	}
+}
+
+holding_ps_naval_depot = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = army
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		country_naval_cap_add = 5
+	}
+}
+
+holding_ps_officer_school = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = army
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		army_starting_experience_add = 10
+	}
+}
+
+holding_ps_fortress_cell = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = army
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 4
+		}
+	}
+
+	planet_modifier = {
+		army_defense_damage_mult = 0.3
+		monthly_loyalty = 0.5
+	}
+}
+
+holding_ps_rapid_response = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = army
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_ghost_networks
+			owner.overlord = { has_technology = tech_ps_ghost_networks }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 800
+		}
+		upkeep = {
+			energy = 4
+		}
+	}
+
+	planet_modifier = {
+		planet_stability_add = 5
+		planet_crime_add = -15
+		monthly_loyalty = 0.5
+	}
+}
+
+holding_ps_strategic_reserve = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = army
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_ghost_networks
+			owner.overlord = { has_technology = tech_ps_ghost_networks }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 800
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	country_modifier = {
+		country_naval_cap_add = 8
+		army_damage_mult = 0.02
+	}
+}
+
+holding_ps_partisan_citadel = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = army
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_ghost_networks
+			owner.overlord = { has_technology = tech_ps_ghost_networks }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 800
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	planet_modifier = {
+		army_defense_damage_mult = 0.5
+		army_defense_health_mult = 0.5
+		planet_orbital_bombardment_damage = -0.35
+	}
+}
+
+holding_ps_listening_post = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	country_modifier = {
+		spy_network_levels_add = 2
+	}
+}
+
+holding_ps_safehouse = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	country_modifier = {
+		spy_network_levels_add = 1
+		country_base_unity_produces_add = 1
+	}
+}
+
+holding_ps_courier_hub = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	country_modifier = {
+		spy_network_daily_value_mult = 0.01
+	}
+}
+
+holding_ps_watch_office = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	planet_modifier = {
+		monthly_loyalty = 0.25
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_overlord_beholder_add = 100
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_overlord_beholder_drone_add = 100
+	}
+}
+
+holding_ps_cipher_station = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	empire_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		intel_encryption_add = 1
+	}
+}
+
+holding_ps_decryption_center = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	empire_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		intel_decryption_add = 1
+	}
+}
+
+holding_ps_agent_academy = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		spy_network_levels_add = 3
+	}
+}
+
+holding_ps_informant_web = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	planet_modifier = {
+		planet_crime_add = -5
+	}
+
+	country_modifier = {
+		spy_network_daily_value_mult = 0.02
+	}
+}
+
+holding_ps_envoy_residence = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	empire_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		envoys_add = 1
+	}
+}
+
+holding_ps_black_archive = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_ghost_networks
+			owner.overlord = { has_technology = tech_ps_ghost_networks }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 800
+		}
+		upkeep = {
+			energy = 4
+		}
+	}
+
+	country_modifier = {
+		spy_network_levels_add = 4
+		country_base_unity_produces_add = 1
+	}
+}
+
+holding_ps_counterintel_bureau = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	empire_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_ghost_networks
+			owner.overlord = { has_technology = tech_ps_ghost_networks }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 800
+		}
+		upkeep = {
+			energy = 4
+		}
+	}
+
+	planet_modifier = {
+		planet_crime_add = -10
+	}
+
+	country_modifier = {
+		intel_encryption_add = 1
+	}
+}
+
+holding_ps_shadow_directorate = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_ghost_networks
+			owner.overlord = { has_technology = tech_ps_ghost_networks }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 800
+		}
+		upkeep = {
+			energy = 4
+		}
+	}
+
+	country_modifier = {
+		spy_network_daily_value_mult = 0.03
+		spy_network_levels_add = 2
+	}
+}
+
+holding_ps_tribute_office = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = trade
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	planet_modifier = {
+		monthly_loyalty = -0.25
+	}
+
+	country_modifier = {
+		country_base_energy_produces_add = 3
+	}
+}
+
+holding_ps_trading_house = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = trade
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	country_modifier = {
+		country_base_energy_produces_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_overlord_trader_add = 100
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_overlord_trader_drone_add = 100
+	}
+}
+
+holding_ps_exchange_office = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = trade
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	country_modifier = {
+		country_base_energy_produces_add = 2
+		country_base_unity_produces_add = 1
+	}
+}
+
+holding_ps_bank_branch = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = trade
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	country_modifier = {
+		country_base_energy_produces_add = 3
+	}
+}
+
+holding_ps_customs_house = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = trade
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	planet_modifier = {
+		monthly_loyalty = -0.25
+	}
+
+	country_modifier = {
+		country_base_energy_produces_add = 4
+	}
+}
+
+holding_ps_insurance_agency = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = trade
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		country_base_energy_produces_add = 3
+		country_base_influence_produces_add = 0.2
+	}
+}
+
+holding_ps_investment_fund = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = trade
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	planet_modifier = {
+		planet_jobs_produces_mult = 0.03
+	}
+
+	country_modifier = {
+		country_base_energy_produces_add = 3
+	}
+}
+
+holding_ps_market_hall = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = trade
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		country_base_energy_produces_add = 3
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_overlord_trader_add = 200
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_overlord_trader_drone_add = 200
+	}
+}
+
+holding_ps_casino_resort = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = trade
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	planet_modifier = {
+		planet_amenities_add = 500
+	}
+
+	country_modifier = {
+		country_base_energy_produces_add = 4
+	}
+}
+
+holding_ps_syndicate_bank = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = trade
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_ghost_networks
+			owner.overlord = { has_technology = tech_ps_ghost_networks }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 800
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		country_base_energy_produces_add = 6
+		country_base_influence_produces_add = 0.3
+	}
+}
+
+holding_ps_offshore_zone = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = trade
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_ghost_networks
+			owner.overlord = { has_technology = tech_ps_ghost_networks }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 800
+		}
+		upkeep = {
+			energy = 4
+		}
+	}
+
+	planet_modifier = {
+		monthly_loyalty = -0.5
+	}
+
+	country_modifier = {
+		country_base_energy_produces_add = 8
+	}
+}
+
+holding_ps_trade_consortium = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = trade
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_ghost_networks
+			owner.overlord = { has_technology = tech_ps_ghost_networks }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 800
+		}
+		upkeep = {
+			energy = 4
+		}
+	}
+
+	country_modifier = {
+		country_base_energy_produces_add = 5
+		country_base_consumer_goods_produces_add = 2
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_overlord_trader_add = 200
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_overlord_trader_drone_add = 200
+	}
+}
+
+holding_ps_mining_concession = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = resource
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	planet_modifier = {
+		monthly_loyalty = -0.25
+	}
+
+	country_modifier = {
+		country_base_minerals_produces_add = 4
+	}
+}
+
+holding_ps_farm_lease = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = resource
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	planet_modifier = {
+		monthly_loyalty = -0.25
+	}
+
+	country_modifier = {
+		country_base_food_produces_add = 4
+	}
+}
+
+holding_ps_power_plant = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = resource
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	country_modifier = {
+		country_base_energy_produces_add = 3
+	}
+}
+
+holding_ps_alloy_works = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = resource
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	planet_modifier = {
+		monthly_loyalty = -0.25
+	}
+
+	country_modifier = {
+		country_base_alloys_produces_add = 2
+	}
+}
+
+holding_ps_goods_factory = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = resource
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	country_modifier = {
+		country_base_consumer_goods_produces_add = 2
+	}
+}
+
+holding_ps_crystal_mine = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = resource
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		country_base_rare_crystals_produces_add = 0.5
+	}
+}
+
+holding_ps_gas_extractor = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = resource
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		country_base_exotic_gases_produces_add = 0.5
+	}
+}
+
+holding_ps_mote_refinery = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = resource
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		country_base_volatile_motes_produces_add = 0.5
+	}
+}
+
+holding_ps_resource_depot = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = resource
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		country_resource_max_add = 1000
+	}
+}
+
+holding_ps_rare_guidance = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = resource
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_ghost_networks
+			owner.overlord = { has_technology = tech_ps_ghost_networks }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 800
+		}
+		upkeep = {
+			energy = 4
+		}
+	}
+
+	planet_modifier = {
+		planet_jobs_produces_mult = 0.05
+	}
+
+	country_modifier = {
+		country_base_rare_crystals_produces_add = 0.5
+		country_base_exotic_gases_produces_add = 0.5
+		country_base_volatile_motes_produces_add = 0.5
+	}
+}
+
+holding_ps_industrial_combine = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = resource
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_ghost_networks
+			owner.overlord = { has_technology = tech_ps_ghost_networks }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 800
+		}
+		upkeep = {
+			energy = 4
+		}
+	}
+
+	planet_modifier = {
+		monthly_loyalty = -0.5
+	}
+
+	country_modifier = {
+		country_base_alloys_produces_add = 4
+		country_base_minerals_produces_add = 2
+	}
+}
+
+holding_ps_strategic_stockpile = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = resource
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_ghost_networks
+			owner.overlord = { has_technology = tech_ps_ghost_networks }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 800
+		}
+		upkeep = {
+			energy = 4
+		}
+	}
+
+	country_modifier = {
+		country_resource_max_add = 3000
+		country_base_minerals_produces_add = 1
+	}
+}
+
+holding_ps_research_outpost = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = research
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_overlord_academic_add = 100
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_overlord_academic_drone_add = 100
+	}
+}
+
+holding_ps_patent_office = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = research
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	country_modifier = {
+		country_engineering_research_produces_mult = 0.01
+	}
+}
+
+holding_ps_xeno_institute = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = research
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	country_modifier = {
+		country_society_research_produces_mult = 0.01
+	}
+}
+
+holding_ps_physics_lab = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = research
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	country_modifier = {
+		country_physics_research_produces_mult = 0.01
+	}
+}
+
+holding_ps_joint_university = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = research
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	planet_modifier = {
+		monthly_loyalty = 0.5
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_overlord_academic_add = 200
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_overlord_academic_drone_add = 200
+	}
+}
+
+holding_ps_tech_transfer = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = research
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	planet_modifier = {
+		planet_jobs_produces_mult = 0.03
+		monthly_loyalty = 0.5
+	}
+}
+
+holding_ps_data_center = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = research
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		country_physics_research_produces_mult = 0.01
+		country_engineering_research_produces_mult = 0.01
+	}
+}
+
+holding_ps_archaeology_bureau = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = research
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		country_society_research_produces_mult = 0.015
+	}
+}
+
+holding_ps_secret_institute = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = research
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_ghost_networks
+			owner.overlord = { has_technology = tech_ps_ghost_networks }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 800
+		}
+		upkeep = {
+			energy = 4
+		}
+	}
+
+	country_modifier = {
+		country_physics_research_produces_mult = 0.015
+		country_society_research_produces_mult = 0.015
+		country_engineering_research_produces_mult = 0.015
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_overlord_academic_add = 100
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_overlord_academic_drone_add = 100
+	}
+}
+
+holding_ps_think_tank = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	empire_limit = 1
+
+	category = research
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_ghost_networks
+			owner.overlord = { has_technology = tech_ps_ghost_networks }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 800
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	country_modifier = {
+		all_technology_research_speed = 0.02
+	}
+}
+
+holding_ps_propaganda_office = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = unity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	planet_modifier = {
+		monthly_loyalty = 0.5
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_overlord_propagandist_add = 100
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_overlord_propagandist_drone_add = 100
+	}
+}
+
+holding_ps_memorial_hall = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = unity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	planet_modifier = {
+		monthly_loyalty = 0.5
+	}
+
+	country_modifier = {
+		country_base_unity_produces_add = 2
+	}
+}
+
+holding_ps_radio_relay = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = unity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	planet_modifier = {
+		monthly_loyalty = 0.25
+		planet_stability_add = 1
+	}
+
+	country_modifier = {
+		country_base_unity_produces_add = 1
+	}
+}
+
+holding_ps_youth_league = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = unity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	planet_modifier = {
+		monthly_loyalty = 0.75
+	}
+}
+
+holding_ps_cultural_center = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = unity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	planet_modifier = {
+		planet_amenities_add = 500
+		monthly_loyalty = 0.5
+	}
+
+	country_modifier = {
+		country_base_unity_produces_add = 2
+	}
+}
+
+holding_ps_oath_hall = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = unity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	planet_modifier = {
+		monthly_loyalty = 1
+	}
+}
+
+holding_ps_veterans_union = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = unity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	planet_modifier = {
+		monthly_loyalty = 0.5
+		planet_stability_add = 2
+	}
+
+	country_modifier = {
+		country_base_unity_produces_add = 2
+	}
+}
+
+holding_ps_press_agency = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = unity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		country_base_unity_produces_add = 3
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_overlord_propagandist_add = 100
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_overlord_propagandist_drone_add = 100
+	}
+}
+
+holding_ps_unity_council = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = unity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_ghost_networks
+			owner.overlord = { has_technology = tech_ps_ghost_networks }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 800
+		}
+		upkeep = {
+			energy = 4
+		}
+	}
+
+	planet_modifier = {
+		monthly_loyalty = 1
+	}
+
+	country_modifier = {
+		country_base_unity_produces_add = 4
+		country_base_influence_produces_add = 0.3
+	}
+}
+
+holding_ps_hall_of_heroes = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = unity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_ghost_networks
+			owner.overlord = { has_technology = tech_ps_ghost_networks }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 800
+		}
+		upkeep = {
+			energy = 4
+		}
+	}
+
+	planet_modifier = {
+		monthly_loyalty = 1
+		planet_stability_add = 3
+	}
+
+	country_modifier = {
+		country_base_unity_produces_add = 5
+	}
+}
+
+holding_ps_aid_mission = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = amenity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	planet_modifier = {
+		monthly_loyalty = 0.5
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_aid_worker_add = 100
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_aid_worker_drone_add = 100
+	}
+}
+
+holding_ps_construction_brigade = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = amenity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	planet_modifier = {
+		planet_building_build_speed_mult = 0.2
+		monthly_loyalty = 0.25
+	}
+}
+
+holding_ps_clinic = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = amenity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	planet_modifier = {
+		pop_happiness = 0.03
+		monthly_loyalty = 0.5
+	}
+}
+
+holding_ps_food_aid = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = amenity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	planet_modifier = {
+		planet_jobs_food_produces_mult = 0.1
+		monthly_loyalty = 0.25
+	}
+}
+
+holding_ps_power_grid = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = amenity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	planet_modifier = {
+		planet_jobs_energy_produces_mult = 0.1
+	}
+}
+
+holding_ps_mining_advisers = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = amenity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	planet_modifier = {
+		planet_jobs_minerals_produces_mult = 0.1
+		monthly_loyalty = 0.25
+	}
+}
+
+holding_ps_industrial_aid = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = amenity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	planet_modifier = {
+		planet_jobs_alloys_produces_mult = 0.1
+		planet_jobs_consumer_goods_produces_mult = 0.1
+	}
+}
+
+holding_ps_research_aid = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = amenity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	planet_modifier = {
+		planet_jobs_physics_research_produces_mult = 0.1
+		planet_jobs_society_research_produces_mult = 0.1
+		planet_jobs_engineering_research_produces_mult = 0.1
+	}
+}
+
+holding_ps_housing_program = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = amenity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = 500
+		monthly_loyalty = 0.5
+	}
+}
+
+holding_ps_security_service = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = amenity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	planet_modifier = {
+		planet_crime_add = -15
+		planet_stability_add = 3
+	}
+}
+
+holding_ps_culture_house = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = amenity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	planet_modifier = {
+		planet_amenities_add = 1000
+		monthly_loyalty = 0.25
+	}
+}
+
+holding_ps_refugee_center = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = amenity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	planet_modifier = {
+		planet_resettlement_unemployed_mult = 0.25
+		pop_happiness = 0.02
+	}
+}
+
+holding_ps_logistics_hub = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = amenity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_ghost_networks
+			owner.overlord = { has_technology = tech_ps_ghost_networks }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 800
+		}
+		upkeep = {
+			energy = 4
+		}
+	}
+
+	planet_modifier = {
+		planet_jobs_produces_mult = 0.05
+		monthly_loyalty = 0.5
+	}
+}
+
+holding_ps_reconstruction_fund = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = amenity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_ghost_networks
+			owner.overlord = { has_technology = tech_ps_ghost_networks }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 800
+		}
+		upkeep = {
+			energy = 4
+		}
+	}
+
+	planet_modifier = {
+		planet_building_build_speed_mult = 0.35
+		planet_stability_add = 3
+		monthly_loyalty = 0.5
+	}
+}
+
+holding_ps_medical_center = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = amenity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_ghost_networks
+			owner.overlord = { has_technology = tech_ps_ghost_networks }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 800
+		}
+		upkeep = {
+			energy = 4
+		}
+	}
+
+	planet_modifier = {
+		pop_happiness = 0.05
+		monthly_loyalty = 1
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = no }
+		}
+		job_aid_worker_add = 100
+	}
+
+	triggered_planet_modifier = {
+		potential = {
+			exists = planet.owner
+			planet.owner = { is_gestalt = yes }
+		}
+		job_aid_worker_drone_add = 100
+	}
+}
+
+holding_ps_prosperity_program = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = amenity
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_ghost_networks
+			owner.overlord = { has_technology = tech_ps_ghost_networks }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 800
+		}
+		upkeep = {
+			energy = 6
+		}
+	}
+
+	planet_modifier = {
+		planet_jobs_produces_mult = 0.08
+		pop_happiness = 0.03
+		monthly_loyalty = 1
+	}
+}
+
+holding_ps_fleet_yard = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+		custom_tooltip = {
+			fail_text = ps_holding_requires_ps_strike
+			exists = planet.owner
+			planet.owner = { any_agreement = { agreement_preset = preset_ps_strike } }
+		}
+	}
+
+	destroy_trigger = {
+		exists = planet.owner
+		planet.owner = {
+			NOT = { any_agreement = { agreement_preset = preset_ps_strike } }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		country_naval_cap_add = 10
+	}
+}
+
+holding_ps_gunnery_school = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+		custom_tooltip = {
+			fail_text = ps_holding_requires_ps_strike
+			exists = planet.owner
+			planet.owner = { any_agreement = { agreement_preset = preset_ps_strike } }
+		}
+	}
+
+	destroy_trigger = {
+		exists = planet.owner
+		planet.owner = {
+			NOT = { any_agreement = { agreement_preset = preset_ps_strike } }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		ship_fire_rate_mult = 0.03
+	}
+}
+
+holding_ps_assault_barracks = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+		custom_tooltip = {
+			fail_text = ps_holding_requires_ps_assault
+			exists = planet.owner
+			planet.owner = { any_agreement = { agreement_preset = preset_ps_assault } }
+		}
+	}
+
+	destroy_trigger = {
+		exists = planet.owner
+		planet.owner = {
+			NOT = { any_agreement = { agreement_preset = preset_ps_assault } }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	planet_modifier = {
+		army_defense_damage_mult = 0.25
+	}
+
+	country_modifier = {
+		army_damage_mult = 0.05
+	}
+}
+
+holding_ps_drop_pod_factory = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+		custom_tooltip = {
+			fail_text = ps_holding_requires_ps_assault
+			exists = planet.owner
+			planet.owner = { any_agreement = { agreement_preset = preset_ps_assault } }
+		}
+	}
+
+	destroy_trigger = {
+		exists = planet.owner
+		planet.owner = {
+			NOT = { any_agreement = { agreement_preset = preset_ps_assault } }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		army_starting_experience_add = 25
+	}
+}
+
+holding_ps_privateer_harbor = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+		custom_tooltip = {
+			fail_text = ps_holding_requires_ps_raiders
+			exists = planet.owner
+			planet.owner = { any_agreement = { agreement_preset = preset_ps_raiders } }
+		}
+	}
+
+	destroy_trigger = {
+		exists = planet.owner
+		planet.owner = {
+			NOT = { any_agreement = { agreement_preset = preset_ps_raiders } }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		ship_speed_mult = 0.02
+		country_base_energy_produces_add = 2
+	}
+}
+
+holding_ps_prize_court = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+		custom_tooltip = {
+			fail_text = ps_holding_requires_ps_raiders
+			exists = planet.owner
+			planet.owner = { any_agreement = { agreement_preset = preset_ps_raiders } }
+		}
+	}
+
+	destroy_trigger = {
+		exists = planet.owner
+		planet.owner = {
+			NOT = { any_agreement = { agreement_preset = preset_ps_raiders } }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	planet_modifier = {
+		monthly_loyalty = 0.25
+	}
+
+	country_modifier = {
+		country_base_energy_produces_add = 4
+	}
+}
+
+holding_ps_residency_hq = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+		custom_tooltip = {
+			fail_text = ps_holding_requires_ps_residency
+			exists = planet.owner
+			planet.owner = { any_agreement = { agreement_preset = preset_ps_residency } }
+		}
+	}
+
+	destroy_trigger = {
+		exists = planet.owner
+		planet.owner = {
+			NOT = { any_agreement = { agreement_preset = preset_ps_residency } }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		spy_network_levels_add = 5
+	}
+}
+
+holding_ps_embassy_quarter = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+		custom_tooltip = {
+			fail_text = ps_holding_requires_ps_residency
+			exists = planet.owner
+			planet.owner = { any_agreement = { agreement_preset = preset_ps_residency } }
+		}
+	}
+
+	destroy_trigger = {
+		exists = planet.owner
+		planet.owner = {
+			NOT = { any_agreement = { agreement_preset = preset_ps_residency } }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		spy_network_daily_value_mult = 0.03
+	}
+}
+
+holding_ps_clearing_house = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+		custom_tooltip = {
+			fail_text = ps_holding_requires_ps_exchange
+			exists = planet.owner
+			planet.owner = { any_agreement = { agreement_preset = preset_ps_exchange } }
+		}
+	}
+
+	destroy_trigger = {
+		exists = planet.owner
+		planet.owner = {
+			NOT = { any_agreement = { agreement_preset = preset_ps_exchange } }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		country_base_energy_produces_add = 8
+	}
+}
+
+holding_ps_hedge_fund = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+		custom_tooltip = {
+			fail_text = ps_holding_requires_ps_exchange
+			exists = planet.owner
+			planet.owner = { any_agreement = { agreement_preset = preset_ps_exchange } }
+		}
+	}
+
+	destroy_trigger = {
+		exists = planet.owner
+		planet.owner = {
+			NOT = { any_agreement = { agreement_preset = preset_ps_exchange } }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		country_base_energy_produces_add = 5
+		country_base_influence_produces_add = 0.3
+	}
+}
+
+holding_ps_trust_mines = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+		custom_tooltip = {
+			fail_text = ps_holding_requires_ps_trust
+			exists = planet.owner
+			planet.owner = { any_agreement = { agreement_preset = preset_ps_trust } }
+		}
+	}
+
+	destroy_trigger = {
+		exists = planet.owner
+		planet.owner = {
+			NOT = { any_agreement = { agreement_preset = preset_ps_trust } }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		country_base_minerals_produces_add = 6
+		country_base_alloys_produces_add = 1
+	}
+}
+
+holding_ps_trust_refinery = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = government
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+		custom_tooltip = {
+			fail_text = ps_holding_requires_ps_trust
+			exists = planet.owner
+			planet.owner = { any_agreement = { agreement_preset = preset_ps_trust } }
+		}
+	}
+
+	destroy_trigger = {
+		exists = planet.owner
+		planet.owner = {
+			NOT = { any_agreement = { agreement_preset = preset_ps_trust } }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		country_base_rare_crystals_produces_add = 0.5
+		country_base_exotic_gases_produces_add = 0.5
+		country_base_volatile_motes_produces_add = 0.5
+	}
+}
+
+holding_ps_guerrilla_camp = {
+	base_buildtime = @b1_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = army
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 300
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	planet_modifier = {
+		army_defense_damage_mult = 0.15
+	}
+
+	country_modifier = {
+		army_starting_experience_add = 5
+	}
+}
+
+holding_ps_sabotage_school = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = army
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_guerrilla_doctrine
+			owner.overlord = { has_technology = tech_ps_guerrilla_doctrine }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	country_modifier = {
+		spy_network_levels_add = 2
+		army_damage_mult = 0.01
+	}
+}
+
+holding_ps_partisan_hq = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	planet_limit = 1
+
+	category = army
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_ghost_networks
+			owner.overlord = { has_technology = tech_ps_ghost_networks }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 800
+		}
+		upkeep = {
+			energy = 4
+		}
+	}
+
+	planet_modifier = {
+		army_defense_damage_mult = 0.25
+		monthly_loyalty = 0.5
+	}
+
+	country_modifier = {
+		spy_network_levels_add = 2
+		country_base_unity_produces_add = 2
+	}
+}
+
+holding_ps_liberation_school = {
+	base_buildtime = @b2_time
+	owner_type = subject_holding
+	empire_limit = 1
+
+	category = army
+
+	potential = {
+		has_overlord_dlc = yes
+		exists = owner
+		owner = {
+			is_wilderness_empire = no
+			overlord = { ps_is_shadow_overlord = yes }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_holding_requires_tech_ps_ghost_networks
+			owner.overlord = { has_technology = tech_ps_ghost_networks }
+		}
+	}
+
+	resources = {
+		category = planet_holdings
+		cost = {
+			minerals = 800
+		}
+		upkeep = {
+			energy = 4
+		}
+	}
+
+	country_modifier = {
+		spy_network_daily_value_mult = 0.03
+	}
+}

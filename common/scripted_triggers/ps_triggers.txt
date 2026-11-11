@@ -66,3 +66,14 @@ ps_branch_host_is_enemy = {
 		}
 	}
 }
+
+# ---- Панель ячеек ----
+# У страны (сюзерена) есть выбранная в панели ячейка-вассал.
+# Вызывать в скоупе сюзерена; prevprev = сюзерен (scope: сюзерен -> вассал -> overlord).
+ps_has_selected_cell = {
+	any_playable_country = {
+		is_subject = yes
+		has_country_flag = ps_cell_selected
+		overlord = { is_same_value = prevprev }
+	}
+}

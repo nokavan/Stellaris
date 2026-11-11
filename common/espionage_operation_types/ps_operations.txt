@@ -574,3 +574,357 @@ operation_ps_hijack_squadron = {
 	}
 	on_create = {}
 }
+
+#####################################################
+# ТАЙНЫЕ ОПЕРАЦИИ (идеи из Chris' Covert Operations и
+# Criminal Underworld Overhaul, реализованы заново)
+#####################################################
+
+operation_ps_shifting_allegiance = {
+	target = none
+	categories = { op_cat_subterfuge op_cat_diplomacy }
+	picture = GFX_evt_spy_network
+	desc = operation_ps_shifting_allegiance_desc
+	stages = 3
+	spy_power_cost = 50
+	resources = {
+		category = operations
+		cost = { influence = 100 }
+		upkeep = { energy = 8 }
+	}
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = operation_ps_target_not_foreign_subject
+			target = {
+				is_subject = yes
+				NOT = { overlord = { is_same_value = root.owner } }
+			}
+		}
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 7
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_covert.1
+	}
+	stage = {
+		difficulty = 7
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_covert.1
+	}
+	stage = {
+		difficulty = 8
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_covert.2
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}
+
+operation_ps_infiltrate_fleet_command = {
+	target = none
+	categories = { op_cat_sabotage op_cat_military }
+	picture = GFX_evt_spy_network
+	desc = operation_ps_infiltrate_fleet_command_desc
+	stages = 2
+	spy_power_cost = 40
+	resources = {
+		category = operations
+		cost = { influence = 75 }
+		upkeep = { energy = 8 }
+	}
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 6
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_covert.1
+	}
+	stage = {
+		difficulty = 7
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_covert.3
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}
+
+operation_ps_decapitation = {
+	target = none
+	categories = { op_cat_sabotage op_cat_government }
+	picture = GFX_evt_spy_network
+	desc = operation_ps_decapitation_desc
+	stages = 4
+	spy_power_cost = 80
+	resources = {
+		category = operations
+		cost = { influence = 200 }
+		upkeep = { energy = 12 }
+	}
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = operation_ps_target_no_ruler
+			target = { exists = ruler }
+		}
+		custom_tooltip = {
+			fail_text = operation_ps_decapitation_cooldown
+			target = { NOT = { has_country_flag = ps_recently_decapitated } }
+		}
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 8
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_covert.1
+	}
+	stage = {
+		difficulty = 8
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_covert.1
+	}
+	stage = {
+		difficulty = 8
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_covert.1
+	}
+	stage = {
+		difficulty = 9
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_covert.4
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}
+
+operation_ps_seed_criminal_networks = {
+	target = none
+	categories = { op_cat_subterfuge op_cat_economy }
+	picture = GFX_evt_spy_network
+	desc = operation_ps_seed_criminal_networks_desc
+	stages = 2
+	spy_power_cost = 40
+	resources = {
+		category = operations
+		cost = { influence = 60 }
+		upkeep = { energy = 6 }
+	}
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = operation_ps_no_branch_offices
+			target = {
+				any_owned_planet = { has_branch_office = root.owner }
+			}
+		}
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 6
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_covert.1
+	}
+	stage = {
+		difficulty = 7
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_covert.5
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}
+
+operation_ps_shield_protocol = {
+	target = none
+	categories = { op_cat_subterfuge op_cat_diplomacy }
+	picture = GFX_evt_spy_network
+	desc = operation_ps_shield_protocol_desc
+	stages = 2
+	spy_power_cost = 20
+	resources = {
+		category = operations
+		cost = { influence = 40 }
+		upkeep = { energy = 4 }
+	}
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = operation_ps_target_not_ally
+			target = {
+				OR = {
+					is_in_federation_with = root.owner
+					has_defensive_pact = root.owner
+					is_friendly_to = root.owner
+					AND = {
+						is_subject = yes
+						overlord = { is_same_value = root.owner }
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 6
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_covert.1
+	}
+	stage = {
+		difficulty = 7
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_covert.6
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}
+
+operation_ps_suppress_insurgency = {
+	target = none
+	categories = { op_cat_subterfuge op_cat_government }
+	picture = GFX_evt_spy_network
+	desc = operation_ps_suppress_insurgency_desc
+	stages = 2
+	spy_power_cost = 30
+	resources = {
+		category = operations
+		cost = { influence = 50 }
+		upkeep = { energy = 5 }
+	}
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = operation_ps_target_not_ally
+			target = {
+				OR = {
+					is_in_federation_with = root.owner
+					has_defensive_pact = root.owner
+					is_friendly_to = root.owner
+					AND = {
+						is_subject = yes
+						overlord = { is_same_value = root.owner }
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = operation_ps_no_revolt
+			target = { any_situation = { is_situation_type = situation_planetary_revolt } }
+		}
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 6
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_covert.1
+	}
+	stage = {
+		difficulty = 7
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_covert.7
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}
+
+operation_ps_covert_fleet_support = {
+	target = none
+	categories = { op_cat_provocation op_cat_military }
+	picture = GFX_evt_spy_network
+	desc = operation_ps_covert_fleet_support_desc
+	stages = 2
+	spy_power_cost = 30
+	resources = {
+		category = operations
+		cost = { influence = 75 }
+		upkeep = { energy = 6 }
+	}
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = operation_ps_target_not_at_war
+			target = {
+				is_at_war = yes
+				NOT = { is_at_war_with = root.owner }
+				NOT = { is_rival = root.owner }
+			}
+		}
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 6
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_covert.1
+	}
+	stage = {
+		difficulty = 7
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_covert.8
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}

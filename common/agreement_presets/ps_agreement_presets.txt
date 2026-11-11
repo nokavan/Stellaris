@@ -75,3 +75,82 @@ preset_ps_partisan_franchise = {
 		# Сюзерен может быть кочевником (Ковчег Сопротивления)
 	}
 }
+
+# Режим-клиент (идея Criminal Underworld Overhaul): государство, чьи институты
+# захвачены Синдикатом. Дань не платит, но вступает в оборонительные войны и
+# держит много владений сюзерена. Доступно для стран с «Марионеточным советом»
+# (операции «Тайный переворот», «Смена присяги») или возникших из восстаний Синдиката.
+preset_ps_client_regime = {
+	icon = "GFX_diplomacy_status_is_subsidiary"
+	term_data = {
+		discrete_terms = {
+			{
+				key = specialist_type
+				value = specialist_none
+			}
+			{
+				key = subject_integration
+				value = subject_can_not_be_integrated
+			}
+			{
+				key = subject_diplomacy
+				value = subject_can_do_diplomacy_but_not_vote
+			}
+			{
+				key = subject_expand
+				value = subject_can_expand
+			}
+			{
+				key = joins_overlord_wars
+				value = joins_overlord_wars_defensive
+			}
+			{
+				key = joins_subject_wars
+				value = joins_subject_wars_defensive
+			}
+			{
+				key = subject_holdings_limit
+				value = subject_holdings_limit_3
+			}
+			{
+				key = subject_sensors
+				value = subject_gets_sensors
+			}
+			{
+				key = subject_loyalty
+				value = subject_loyalty_effects
+			}
+			{
+				key = protectorate
+				value = subject_is_not_protectorate
+			}
+		}
+		resource_terms = {
+			{
+				key = resource_subsidies_basic
+				value = 0
+			}
+		}
+	}
+
+	overlord_weight = {
+		base = 80
+	}
+	subject_weight = {
+		base = 60
+		modifier = {
+			add = 300
+			has_country_flag = ps_puppet_council
+		}
+	}
+
+	potential = {
+		from = { ps_is_shadow_overlord = yes }
+		OR = {
+			has_country_flag = ps_puppet_council
+			has_country_flag = ps_partisan_rebel_state
+			any_agreement = { agreement_preset = preset_ps_client_regime }
+		}
+		is_nomadic = no
+	}
+}

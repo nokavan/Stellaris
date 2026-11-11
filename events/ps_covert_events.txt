@@ -1,0 +1,204 @@
+#####################################################
+# Синдикат Сопротивления — тайные операции
+# Идеи из модов Chris' Covert Operations и Criminal Underworld Overhaul,
+# реализованы заново под механики Синдиката.
+#
+# Скоупы операций: this = операция, owner = мы, target = цель.
+#####################################################
+
+namespace = ps_covert
+
+# Общий подготовительный этап
+espionage_operation_event = {
+	id = ps_covert.1
+	title = ps_covert.1.name
+	desc = ps_covert.1.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_default
+	is_triggered_only = yes
+
+	option = { name = ps_covert.1.a }
+}
+
+# СМЕНА ПРИСЯГИ: чужой вассал теряет лояльность и тянется к Синдикату
+espionage_operation_event = {
+	id = ps_covert.2
+	title = ps_covert.2.name
+	desc = ps_covert.2.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	option = {
+		name = ps_covert.2.a
+		target = {
+			add_modifier = { modifier = ps_shifting_allegiance days = 1800 }
+			set_timed_country_flag = { flag = ps_puppet_council days = 3600 }
+			add_opinion_modifier = { who = root.owner modifier = opinion_ps_puppet_council }
+		}
+	}
+
+	after = { destroy_espionage_operation = this }
+}
+
+# ВНЕДРЕНИЕ В ШТАБ ФЛОТА
+espionage_operation_event = {
+	id = ps_covert.3
+	title = ps_covert.3.name
+	desc = ps_covert.3.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	option = {
+		name = ps_covert.3.a
+		target = {
+			add_modifier = { modifier = ps_fleet_command_infiltrated days = 360 }
+		}
+	}
+
+	after = { destroy_espionage_operation = this }
+}
+
+# ОБЕЗГЛАВЛИВАНИЕ: правитель цели погибает, начинается кризис наследования
+espionage_operation_event = {
+	id = ps_covert.4
+	title = ps_covert.4.name
+	desc = ps_covert.4.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	option = {
+		name = ps_covert.4.a
+		target = {
+			set_timed_country_flag = { flag = ps_recently_decapitated days = 3600 }
+			add_modifier = { modifier = ps_succession_crisis days = 720 }
+			if = {
+				limit = { exists = ruler }
+				ruler = { kill_leader = { show_notification = yes } }
+			}
+		}
+	}
+
+	after = { destroy_espionage_operation = this }
+}
+
+# ПРЕСТУПНЫЕ СЕТИ: преступность на всех планетах цели с нашими филиалами
+espionage_operation_event = {
+	id = ps_covert.5
+	title = ps_covert.5.name
+	desc = ps_covert.5.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	option = {
+		name = ps_covert.5.a
+		target = {
+			every_owned_planet = {
+				limit = { has_branch_office = root.owner }
+				add_modifier = { modifier = ps_criminal_network days = 3600 }
+			}
+		}
+		owner = { add_resource = { energy = 300 } }
+	}
+
+	after = { destroy_espionage_operation = this }
+}
+
+# ПРОТОКОЛ ЩИТА: помощь союзнику против чужого шпионажа
+espionage_operation_event = {
+	id = ps_covert.6
+	title = ps_covert.6.name
+	desc = ps_covert.6.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	option = {
+		name = ps_covert.6.a
+		target = {
+			add_modifier = { modifier = ps_shield_protocol days = 1800 }
+			add_opinion_modifier = { who = root.owner modifier = opinion_ps_covert_aid }
+		}
+	}
+
+	after = { destroy_espionage_operation = this }
+}
+
+# ПОДАВИТЬ СМУТУ: помощь союзнику против восстания
+espionage_operation_event = {
+	id = ps_covert.7
+	title = ps_covert.7.name
+	desc = ps_covert.7.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	immediate = {
+		target = {
+			random_situation = {
+				limit = { is_situation_type = situation_planetary_revolt }
+				save_event_target_as = ps_ally_revolt
+			}
+		}
+	}
+
+	option = {
+		name = ps_covert.7.a
+		if = {
+			limit = { exists = event_target:ps_ally_revolt }
+			event_target:ps_ally_revolt = { situation_event = { id = ps_covert.20 } }
+		}
+		target = {
+			add_opinion_modifier = { who = root.owner modifier = opinion_ps_covert_aid }
+		}
+	}
+
+	after = { destroy_espionage_operation = this }
+}
+
+# ТАЙНАЯ ПОМОЩЬ ФЛОТОМ: союзнику на войне
+espionage_operation_event = {
+	id = ps_covert.8
+	title = ps_covert.8.name
+	desc = ps_covert.8.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	option = {
+		name = ps_covert.8.a
+		owner = { add_resource = { alloys = -300 } }
+		target = {
+			add_modifier = { modifier = ps_covert_fleet_support days = 720 }
+			add_resource = { alloys = 300 }
+			add_opinion_modifier = { who = root.owner modifier = opinion_ps_covert_aid }
+		}
+	}
+
+	after = { destroy_espionage_operation = this }
+}
+
+# scope = ситуация восстания у союзника
+situation_event = {
+	id = ps_covert.20
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		add_situation_progress = -30
+		target = {
+			add_modifier = { modifier = ps_restored_order days = 720 }
+		}
+	}
+}
