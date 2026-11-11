@@ -28,6 +28,7 @@ origin_ps_partisan_legacy = {
 	random_weight = { base = 5 }
 
 	modifier = {
+		leader_lifespan_add = 1000	# лидеры партизан не умирают от старости
 		intel_encryption_add = 1
 		army_damage_mult = 0.10
 		envoys_add = 1
@@ -53,6 +54,7 @@ civic_ps_partisan_network = {
 	random_weight = { base = 5 }
 
 	modifier = {
+		leader_lifespan_add = 1000	# лидеры партизан не умирают от старости
 		intel_decryption_add = 1
 		envoys_add = 1
 		army_damage_mult = 0.15
@@ -118,6 +120,7 @@ origin_ps_partisan_ark = {
 	random_weight = { base = 1 }
 
 	modifier = {
+		leader_lifespan_add = 1000	# лидеры партизан не умирают от старости
 		arkship_action_speed = 0.15
 		intel_encryption_add = 1
 		envoys_add = 1

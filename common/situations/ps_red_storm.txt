@@ -39,6 +39,7 @@ situation_ps_red_storm = {
 			icon_background = GFX_situation_stage_frame_red
 			end = 20
 			modifier = {
+				leader_lifespan_add = 1000
 				army_damage_mult = 0.25
 				army_health = 0.25
 				country_naval_cap_mult = 0.25
@@ -52,6 +53,7 @@ situation_ps_red_storm = {
 			end = 40
 			on_first_enter = { situation_event = { id = ps_storm.3 } }
 			modifier = {
+				leader_lifespan_add = 1000
 				army_damage_mult = 0.40
 				army_health = 0.40
 				country_naval_cap_mult = 0.50
@@ -66,6 +68,7 @@ situation_ps_red_storm = {
 			end = 60
 			on_first_enter = { situation_event = { id = ps_storm.3 } }
 			modifier = {
+				leader_lifespan_add = 1000
 				army_damage_mult = 0.60
 				army_health = 0.60
 				country_naval_cap_mult = 0.75
@@ -80,6 +83,7 @@ situation_ps_red_storm = {
 			end = 80
 			on_first_enter = { situation_event = { id = ps_storm.3 } }
 			modifier = {
+				leader_lifespan_add = 1000
 				army_damage_mult = 0.80
 				army_health = 0.80
 				country_naval_cap_mult = 1.00
@@ -95,6 +99,7 @@ situation_ps_red_storm = {
 			end = 100
 			on_first_enter = { situation_event = { id = ps_storm.3 } }
 			modifier = {
+				leader_lifespan_add = 1000
 				army_damage_mult = 1.00
 				army_health = 1.00
 				country_naval_cap_mult = 1.50
