@@ -1,0 +1,10 @@
+# Синдикат Сопротивления — переопределение defines
+# Vanilla (00_defines.txt, NGameplay):
+#   BASE_PLANET_BRANCH_OFFICE_BUILDING_SLOTS = 0
+#   MAX_PLANET_BRANCH_OFFICE_BUILDING_SLOTS  = 4   <- потолок
+# Поднимаем потолок до 20. Партизанские филиалы получают +20 модификатором
+# ps_branch_network_slots, так что у них ровно 20 слотов. Остальным империям
+# ваниль даёт меньше 4, поэтому для них ничего не меняется.
+NGameplay = {
+	MAX_PLANET_BRANCH_OFFICE_BUILDING_SLOTS = 20
+}

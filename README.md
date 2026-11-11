@@ -60,7 +60,7 @@
 Срабатывает сразу при оккупации (`on_planet_occupied`). Оккупант получает модификатор «Партизанская война» (−15% к урону армий, −3 стабильности), а вы получаете +150 единства и +10 влияния. При освобождении планеты (`on_planet_returned`) вы получаете ещё +100 единства. Сюжетное уведомление «Леса снова горят» приходит не чаще раза в 2 года.
 
 ### Здания филиалов: 100 штук и 20 слотов
-Когда партизанская империя открывает филиал, планета получает модификатор **«Сеть Синдиката»**: **+20 слотов** под здания филиала (`branch_office_owner_max_buildings_add`). Число задаётся переменной `@ps_branch_slots` в `common/static_modifiers/ps_static_modifiers.txt`. Модификатор добавляется к базовым слотам игры. Ставит его событие `ps.60`, а при закрытии филиала снимает `ps.61`.
+У филиалов партизанской империи **ровно 20 слотов** под здания. В ванили база 0 слотов, а потолок `MAX_PLANET_BRANCH_OFFICE_BUILDING_SLOTS` равен 4. Мод поднимает потолок до 20 (`common/defines/ps_defines.txt`), а при открытии филиала планета получает модификатор **«Сеть Синдиката»** на +20 слотов (событие `ps.60`, снимается `ps.61`). Остальным империям ваниль даёт меньше 4, поэтому их это не касается. Чтобы поменять число, правьте `@ps_branch_slots` в `common/static_modifiers/ps_static_modifiers.txt` и потолок в `ps_defines.txt`.
 
 **100 зданий** в трёх уровнях. Уровень II требует «Партизанскую доктрину», уровень III — «Призрачные сети».
 
@@ -122,6 +122,7 @@ common/edicts/ps_edicts.txt
 common/technology/ps_technology.txt
 common/on_actions/ps_on_actions.txt
 common/scripted_triggers/ps_triggers.txt
+common/defines/ps_defines.txt          потолок слотов филиала = 20
 common/scripted_effects/ps_effects.txt
 common/agreement_presets/ps_agreement_presets.txt      «Партизанская франшиза»
 common/agreement_presets/ps_specialist_presets.txt     } генерирует
