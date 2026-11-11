@@ -1,0 +1,250 @@
+# АВТОГЕНЕРАЦИЯ: tools/gen_vassal_mgmt.py
+
+defined_text = {
+	name = PsVmSpec
+	text = {
+		trigger = { any_agreement = { agreement_preset = preset_ps_strike } }
+		localization_key = specialist_ps_strike
+	}
+	text = {
+		trigger = { any_agreement = { agreement_preset = preset_ps_assault } }
+		localization_key = specialist_ps_assault
+	}
+	text = {
+		trigger = { any_agreement = { agreement_preset = preset_ps_raiders } }
+		localization_key = specialist_ps_raiders
+	}
+	text = {
+		trigger = { any_agreement = { agreement_preset = preset_ps_residency } }
+		localization_key = specialist_ps_residency
+	}
+	text = {
+		trigger = { any_agreement = { agreement_preset = preset_ps_exchange } }
+		localization_key = specialist_ps_exchange
+	}
+	text = {
+		trigger = { any_agreement = { agreement_preset = preset_ps_trust } }
+		localization_key = specialist_ps_trust
+	}
+	text = {
+		trigger = { any_agreement = { agreement_preset = preset_ps_devotee } }
+		localization_key = specialist_ps_devotee
+	}
+	text = {
+		trigger = { any_agreement = { agreement_preset = preset_ps_client_regime } }
+		localization_key = preset_ps_client_regime
+	}
+	text = {
+		trigger = { any_agreement = { agreement_preset = preset_bulwark } }
+		localization_key = preset_bulwark
+	}
+	text = {
+		trigger = { any_agreement = { agreement_preset = preset_prospectorium } }
+		localization_key = preset_prospectorium
+	}
+	text = {
+		trigger = { any_agreement = { agreement_preset = preset_scholarium } }
+		localization_key = preset_scholarium
+	}
+	text = {
+		trigger = { any_agreement = { agreement_preset = preset_vassal } }
+		localization_key = preset_vassal
+	}
+	text = {
+		trigger = { any_agreement = { agreement_preset = preset_tributary } }
+		localization_key = preset_tributary
+	}
+	text = {
+		trigger = { any_agreement = { agreement_preset = preset_protectorate } }
+		localization_key = preset_protectorate
+	}
+	text = {
+		localization_key = ps_vm_none
+	}
+}
+
+defined_text = {
+	name = PsVmAuth
+	text = {
+		trigger = { has_authority = auth_democratic }
+		localization_key = auth_democratic
+	}
+	text = {
+		trigger = { has_authority = auth_oligarchic }
+		localization_key = auth_oligarchic
+	}
+	text = {
+		trigger = { has_authority = auth_dictatorial }
+		localization_key = auth_dictatorial
+	}
+	text = {
+		trigger = { has_authority = auth_imperial }
+		localization_key = auth_imperial
+	}
+	text = {
+		trigger = { has_authority = auth_corporate }
+		localization_key = auth_corporate
+	}
+	text = {
+		trigger = { has_authority = auth_hive_mind }
+		localization_key = auth_hive_mind
+	}
+	text = {
+		trigger = { has_authority = auth_machine_intelligence }
+		localization_key = auth_machine_intelligence
+	}
+	text = {
+		localization_key = ps_vm_none
+	}
+}
+
+defined_text = {
+	name = PsVmEthMil
+	text = {
+		trigger = { is_militarist = yes }
+		localization_key = ethic_militarist
+	}
+	text = {
+		trigger = { is_pacifist = yes }
+		localization_key = ethic_pacifist
+	}
+	text = {
+		localization_key = ps_vm_neutral
+	}
+}
+
+defined_text = {
+	name = PsVmEthXen
+	text = {
+		trigger = { is_xenophile = yes }
+		localization_key = ethic_xenophile
+	}
+	text = {
+		trigger = { is_xenophobe = yes }
+		localization_key = ethic_xenophobe
+	}
+	text = {
+		localization_key = ps_vm_neutral
+	}
+}
+
+defined_text = {
+	name = PsVmEthEga
+	text = {
+		trigger = { is_egalitarian = yes }
+		localization_key = ethic_egalitarian
+	}
+	text = {
+		trigger = { is_authoritarian = yes }
+		localization_key = ethic_authoritarian
+	}
+	text = {
+		localization_key = ps_vm_neutral
+	}
+}
+
+defined_text = {
+	name = PsVmEthMat
+	text = {
+		trigger = { is_materialist = yes }
+		localization_key = ethic_materialist
+	}
+	text = {
+		trigger = { is_spiritualist = yes }
+		localization_key = ethic_spiritualist
+	}
+	text = {
+		localization_key = ps_vm_neutral
+	}
+}
+
+defined_text = {
+	name = PsVmRecSpec
+	text = {
+		trigger = { has_country_flag = ps_rec_spec_strike }
+		localization_key = ps_vm_recspec_strike
+	}
+	text = {
+		trigger = { has_country_flag = ps_rec_spec_residency }
+		localization_key = ps_vm_recspec_residency
+	}
+	text = {
+		trigger = { has_country_flag = ps_rec_spec_trust }
+		localization_key = ps_vm_recspec_trust
+	}
+	text = {
+		trigger = { has_country_flag = ps_rec_spec_exchange }
+		localization_key = ps_vm_recspec_exchange
+	}
+	text = {
+		trigger = { has_country_flag = ps_rec_spec_devotee }
+		localization_key = ps_vm_recspec_devotee
+	}
+	text = {
+		trigger = { has_country_flag = ps_rec_spec_assault }
+		localization_key = ps_vm_recspec_assault
+	}
+	text = {
+		localization_key = ps_vm_none
+	}
+}
+
+defined_text = {
+	name = PsVmRec_basic
+	text = {
+		trigger = { check_variable = { which = ps_rec_basic value > 0 } }
+		localization_key = ps_vm_rec_tax
+	}
+	text = {
+		trigger = { check_variable = { which = ps_rec_basic value < 0 } }
+		localization_key = ps_vm_rec_subsidy
+	}
+	text = {
+		localization_key = ps_vm_rec_keep
+	}
+}
+
+defined_text = {
+	name = PsVmRec_adv
+	text = {
+		trigger = { check_variable = { which = ps_rec_adv value > 0 } }
+		localization_key = ps_vm_rec_tax
+	}
+	text = {
+		trigger = { check_variable = { which = ps_rec_adv value < 0 } }
+		localization_key = ps_vm_rec_subsidy
+	}
+	text = {
+		localization_key = ps_vm_rec_keep
+	}
+}
+
+defined_text = {
+	name = PsVmRec_res
+	text = {
+		trigger = { check_variable = { which = ps_rec_res value > 0 } }
+		localization_key = ps_vm_rec_tax
+	}
+	text = {
+		trigger = { check_variable = { which = ps_rec_res value < 0 } }
+		localization_key = ps_vm_rec_subsidy
+	}
+	text = {
+		localization_key = ps_vm_rec_keep
+	}
+}
+
+defined_text = {
+	name = PsVmRec_str
+	text = {
+		trigger = { check_variable = { which = ps_rec_str value > 0 } }
+		localization_key = ps_vm_rec_tax
+	}
+	text = {
+		trigger = { check_variable = { which = ps_rec_str value < 0 } }
+		localization_key = ps_vm_rec_subsidy
+	}
+	text = {
+		localization_key = ps_vm_rec_keep
+	}
+}

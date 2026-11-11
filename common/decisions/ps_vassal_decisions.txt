@@ -1,0 +1,752 @@
+# АВТОГЕНЕРАЦИЯ: tools/gen_vassal_mgmt.py
+# Управление вассалами и вассальные проекты (решения на столице, root = планета)
+
+decision_ps_vassal_management = {
+	owned_planets_only = yes
+
+	potential = {
+		is_capital = yes
+		owner = { is_ai = no }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = decision_ps_no_cells
+			owner = { any_subject = { always = yes } }
+		}
+	}
+
+	effect = {
+		owner = { country_event = { id = ps_vm.1 } }
+	}
+}
+
+decision_ps_vp_chancellery_1 = {
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 2000
+			alloys = 500
+			influence = 100
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			NOT = { has_country_flag = ps_vp_chancellery_1 }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = decision_ps_no_cells
+			owner = { any_subject = { always = yes } }
+		}
+		custom_tooltip = {
+			fail_text = ps_vp_cooldown
+			owner = { NOT = { has_country_flag = ps_vp_cd } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_ps_vp_chancellery_1_tooltip
+		hidden_effect = {
+			owner = {
+				set_country_flag = ps_vp_chancellery_1
+				set_timed_country_flag = { flag = ps_vp_cd days = 720 }
+				remove_modifier = ps_vp_chancellery_ov_0
+				add_modifier = { modifier = ps_vp_chancellery_ov_1 days = -1 }
+				country_event = { id = ps_vm.90 }
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_ps_vp_chancellery_2 = {
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 4000
+			alloys = 1000
+			influence = 200
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			has_country_flag = ps_vp_chancellery_1
+			NOT = { has_country_flag = ps_vp_chancellery_2 }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = decision_ps_no_cells
+			owner = { any_subject = { always = yes } }
+		}
+		custom_tooltip = {
+			fail_text = ps_vp_cooldown
+			owner = { NOT = { has_country_flag = ps_vp_cd } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_ps_vp_chancellery_2_tooltip
+		hidden_effect = {
+			owner = {
+				set_country_flag = ps_vp_chancellery_2
+				set_timed_country_flag = { flag = ps_vp_cd days = 720 }
+				remove_modifier = ps_vp_chancellery_ov_1
+				add_modifier = { modifier = ps_vp_chancellery_ov_2 days = -1 }
+				country_event = { id = ps_vm.90 }
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_ps_vp_chancellery_3 = {
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 8000
+			alloys = 2000
+			influence = 300
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			has_country_flag = ps_vp_chancellery_2
+			NOT = { has_country_flag = ps_vp_chancellery_3 }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = decision_ps_no_cells
+			owner = { any_subject = { always = yes } }
+		}
+		custom_tooltip = {
+			fail_text = ps_vp_cooldown
+			owner = { NOT = { has_country_flag = ps_vp_cd } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_ps_vp_chancellery_3_tooltip
+		hidden_effect = {
+			owner = {
+				set_country_flag = ps_vp_chancellery_3
+				set_timed_country_flag = { flag = ps_vp_cd days = 720 }
+				remove_modifier = ps_vp_chancellery_ov_2
+				add_modifier = { modifier = ps_vp_chancellery_ov_3 days = -1 }
+				country_event = { id = ps_vm.90 }
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_ps_vp_development_bank_1 = {
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 2000
+			alloys = 500
+			influence = 100
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			NOT = { has_country_flag = ps_vp_development_bank_1 }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = decision_ps_no_cells
+			owner = { any_subject = { always = yes } }
+		}
+		custom_tooltip = {
+			fail_text = ps_vp_cooldown
+			owner = { NOT = { has_country_flag = ps_vp_cd } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_ps_vp_development_bank_1_tooltip
+		hidden_effect = {
+			owner = {
+				set_country_flag = ps_vp_development_bank_1
+				set_timed_country_flag = { flag = ps_vp_cd days = 720 }
+				remove_modifier = ps_vp_development_bank_ov_0
+				add_modifier = { modifier = ps_vp_development_bank_ov_1 days = -1 }
+				country_event = { id = ps_vm.90 }
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_ps_vp_development_bank_2 = {
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 4000
+			alloys = 1000
+			influence = 200
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			has_country_flag = ps_vp_development_bank_1
+			NOT = { has_country_flag = ps_vp_development_bank_2 }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = decision_ps_no_cells
+			owner = { any_subject = { always = yes } }
+		}
+		custom_tooltip = {
+			fail_text = ps_vp_cooldown
+			owner = { NOT = { has_country_flag = ps_vp_cd } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_ps_vp_development_bank_2_tooltip
+		hidden_effect = {
+			owner = {
+				set_country_flag = ps_vp_development_bank_2
+				set_timed_country_flag = { flag = ps_vp_cd days = 720 }
+				remove_modifier = ps_vp_development_bank_ov_1
+				add_modifier = { modifier = ps_vp_development_bank_ov_2 days = -1 }
+				country_event = { id = ps_vm.90 }
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_ps_vp_development_bank_3 = {
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 8000
+			alloys = 2000
+			influence = 300
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			has_country_flag = ps_vp_development_bank_2
+			NOT = { has_country_flag = ps_vp_development_bank_3 }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = decision_ps_no_cells
+			owner = { any_subject = { always = yes } }
+		}
+		custom_tooltip = {
+			fail_text = ps_vp_cooldown
+			owner = { NOT = { has_country_flag = ps_vp_cd } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_ps_vp_development_bank_3_tooltip
+		hidden_effect = {
+			owner = {
+				set_country_flag = ps_vp_development_bank_3
+				set_timed_country_flag = { flag = ps_vp_cd days = 720 }
+				remove_modifier = ps_vp_development_bank_ov_2
+				add_modifier = { modifier = ps_vp_development_bank_ov_3 days = -1 }
+				country_event = { id = ps_vm.90 }
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_ps_vp_governor_academy_1 = {
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 2000
+			alloys = 500
+			influence = 100
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			NOT = { has_country_flag = ps_vp_governor_academy_1 }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = decision_ps_no_cells
+			owner = { any_subject = { always = yes } }
+		}
+		custom_tooltip = {
+			fail_text = ps_vp_cooldown
+			owner = { NOT = { has_country_flag = ps_vp_cd } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_ps_vp_governor_academy_1_tooltip
+		hidden_effect = {
+			owner = {
+				set_country_flag = ps_vp_governor_academy_1
+				set_timed_country_flag = { flag = ps_vp_cd days = 720 }
+				remove_modifier = ps_vp_governor_academy_ov_0
+				add_modifier = { modifier = ps_vp_governor_academy_ov_1 days = -1 }
+				country_event = { id = ps_vm.90 }
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_ps_vp_governor_academy_2 = {
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 4000
+			alloys = 1000
+			influence = 200
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			has_country_flag = ps_vp_governor_academy_1
+			NOT = { has_country_flag = ps_vp_governor_academy_2 }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = decision_ps_no_cells
+			owner = { any_subject = { always = yes } }
+		}
+		custom_tooltip = {
+			fail_text = ps_vp_cooldown
+			owner = { NOT = { has_country_flag = ps_vp_cd } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_ps_vp_governor_academy_2_tooltip
+		hidden_effect = {
+			owner = {
+				set_country_flag = ps_vp_governor_academy_2
+				set_timed_country_flag = { flag = ps_vp_cd days = 720 }
+				remove_modifier = ps_vp_governor_academy_ov_1
+				add_modifier = { modifier = ps_vp_governor_academy_ov_2 days = -1 }
+				country_event = { id = ps_vm.90 }
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_ps_vp_governor_academy_3 = {
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 8000
+			alloys = 2000
+			influence = 300
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			has_country_flag = ps_vp_governor_academy_2
+			NOT = { has_country_flag = ps_vp_governor_academy_3 }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = decision_ps_no_cells
+			owner = { any_subject = { always = yes } }
+		}
+		custom_tooltip = {
+			fail_text = ps_vp_cooldown
+			owner = { NOT = { has_country_flag = ps_vp_cd } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_ps_vp_governor_academy_3_tooltip
+		hidden_effect = {
+			owner = {
+				set_country_flag = ps_vp_governor_academy_3
+				set_timed_country_flag = { flag = ps_vp_cd days = 720 }
+				remove_modifier = ps_vp_governor_academy_ov_2
+				add_modifier = { modifier = ps_vp_governor_academy_ov_3 days = -1 }
+				country_event = { id = ps_vm.90 }
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_ps_vp_war_college_1 = {
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 2000
+			alloys = 500
+			influence = 100
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			NOT = { has_country_flag = ps_vp_war_college_1 }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = decision_ps_no_cells
+			owner = { any_subject = { always = yes } }
+		}
+		custom_tooltip = {
+			fail_text = ps_vp_cooldown
+			owner = { NOT = { has_country_flag = ps_vp_cd } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_ps_vp_war_college_1_tooltip
+		hidden_effect = {
+			owner = {
+				set_country_flag = ps_vp_war_college_1
+				set_timed_country_flag = { flag = ps_vp_cd days = 720 }
+				remove_modifier = ps_vp_war_college_ov_0
+				add_modifier = { modifier = ps_vp_war_college_ov_1 days = -1 }
+				country_event = { id = ps_vm.90 }
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_ps_vp_war_college_2 = {
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 4000
+			alloys = 1000
+			influence = 200
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			has_country_flag = ps_vp_war_college_1
+			NOT = { has_country_flag = ps_vp_war_college_2 }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = decision_ps_no_cells
+			owner = { any_subject = { always = yes } }
+		}
+		custom_tooltip = {
+			fail_text = ps_vp_cooldown
+			owner = { NOT = { has_country_flag = ps_vp_cd } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_ps_vp_war_college_2_tooltip
+		hidden_effect = {
+			owner = {
+				set_country_flag = ps_vp_war_college_2
+				set_timed_country_flag = { flag = ps_vp_cd days = 720 }
+				remove_modifier = ps_vp_war_college_ov_1
+				add_modifier = { modifier = ps_vp_war_college_ov_2 days = -1 }
+				country_event = { id = ps_vm.90 }
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_ps_vp_war_college_3 = {
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 8000
+			alloys = 2000
+			influence = 300
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			has_country_flag = ps_vp_war_college_2
+			NOT = { has_country_flag = ps_vp_war_college_3 }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = decision_ps_no_cells
+			owner = { any_subject = { always = yes } }
+		}
+		custom_tooltip = {
+			fail_text = ps_vp_cooldown
+			owner = { NOT = { has_country_flag = ps_vp_cd } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_ps_vp_war_college_3_tooltip
+		hidden_effect = {
+			owner = {
+				set_country_flag = ps_vp_war_college_3
+				set_timed_country_flag = { flag = ps_vp_cd days = 720 }
+				remove_modifier = ps_vp_war_college_ov_2
+				add_modifier = { modifier = ps_vp_war_college_ov_3 days = -1 }
+				country_event = { id = ps_vm.90 }
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_ps_vp_science_exchange_1 = {
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 2000
+			alloys = 500
+			influence = 100
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			NOT = { has_country_flag = ps_vp_science_exchange_1 }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = decision_ps_no_cells
+			owner = { any_subject = { always = yes } }
+		}
+		custom_tooltip = {
+			fail_text = ps_vp_cooldown
+			owner = { NOT = { has_country_flag = ps_vp_cd } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_ps_vp_science_exchange_1_tooltip
+		hidden_effect = {
+			owner = {
+				set_country_flag = ps_vp_science_exchange_1
+				set_timed_country_flag = { flag = ps_vp_cd days = 720 }
+				remove_modifier = ps_vp_science_exchange_ov_0
+				add_modifier = { modifier = ps_vp_science_exchange_ov_1 days = -1 }
+				country_event = { id = ps_vm.90 }
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_ps_vp_science_exchange_2 = {
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 4000
+			alloys = 1000
+			influence = 200
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			has_country_flag = ps_vp_science_exchange_1
+			NOT = { has_country_flag = ps_vp_science_exchange_2 }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = decision_ps_no_cells
+			owner = { any_subject = { always = yes } }
+		}
+		custom_tooltip = {
+			fail_text = ps_vp_cooldown
+			owner = { NOT = { has_country_flag = ps_vp_cd } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_ps_vp_science_exchange_2_tooltip
+		hidden_effect = {
+			owner = {
+				set_country_flag = ps_vp_science_exchange_2
+				set_timed_country_flag = { flag = ps_vp_cd days = 720 }
+				remove_modifier = ps_vp_science_exchange_ov_1
+				add_modifier = { modifier = ps_vp_science_exchange_ov_2 days = -1 }
+				country_event = { id = ps_vm.90 }
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}
+
+decision_ps_vp_science_exchange_3 = {
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+		cost = {
+			energy = 8000
+			alloys = 2000
+			influence = 300
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = {
+			has_country_flag = ps_vp_science_exchange_2
+			NOT = { has_country_flag = ps_vp_science_exchange_3 }
+		}
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = decision_ps_no_cells
+			owner = { any_subject = { always = yes } }
+		}
+		custom_tooltip = {
+			fail_text = ps_vp_cooldown
+			owner = { NOT = { has_country_flag = ps_vp_cd } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_ps_vp_science_exchange_3_tooltip
+		hidden_effect = {
+			owner = {
+				set_country_flag = ps_vp_science_exchange_3
+				set_timed_country_flag = { flag = ps_vp_cd days = 720 }
+				remove_modifier = ps_vp_science_exchange_ov_2
+				add_modifier = { modifier = ps_vp_science_exchange_ov_3 days = -1 }
+				country_event = { id = ps_vm.90 }
+			}
+		}
+	}
+
+	ai_weight = {
+		weight = 0
+	}
+}

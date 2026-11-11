@@ -164,11 +164,11 @@ country_event = {
 		hidden_effect = { country_event = { id = ps_panel.1 } }
 	}
 
-	# Подсказка: как передать территорию
+	# Управление вассалами: системы, обзор, карточка, бюджет
 	option = {
 		name = ps_panel.1.territory
 		custom_tooltip = ps_panel.1.territory.tooltip
-		hidden_effect = { country_event = { id = ps_panel.1 } }
+		hidden_effect = { country_event = { id = ps_vm.1 } }
 	}
 
 	# Закрыть

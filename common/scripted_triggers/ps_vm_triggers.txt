@@ -1,0 +1,100 @@
+# АВТОГЕНЕРАЦИЯ: tools/gen_vassal_mgmt.py — правьте генератор
+
+# Можно ли передать систему (scope = система). GIVER — текущий владелец, RECEIVER — получатель.
+ps_vm_sys_ok = {
+	custom_tooltip = {
+		fail_text = ps_vm_fail_peace
+		root = { is_at_war = no }
+		$GIVER$ = { is_at_war = no }
+		$RECEIVER$ = { is_at_war = no }
+	}
+	custom_tooltip = {
+		fail_text = ps_vm_fail_same
+		NOT = { $RECEIVER$ = { is_same_value = $GIVER$ } }
+	}
+	custom_tooltip = {
+		fail_text = ps_vm_fail_outpost
+		exists = starbase
+		starbase = {
+			exists = controller
+			controller = { is_same_value = $GIVER$ }
+		}
+	}
+	custom_tooltip = {
+		fail_text = ps_vm_fail_colonies
+		NOT = {
+			any_system_planet = {
+				exists = owner
+				owner = { is_same_value = $GIVER$ }
+				OR = {
+					NOT = { exists = controller }
+					NOT = { controller = { is_same_value = $GIVER$ } }
+				}
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = ps_vm_fail_capital
+		NOT = { any_system_planet = { is_capital = yes } }
+	}
+	custom_tooltip = {
+		fail_text = ps_vm_fail_last
+		$GIVER$ = { any_system_within_border = { NOT = { has_star_flag = ps_sys_cursor } } }
+	}
+	custom_tooltip = {
+		fail_text = ps_vm_fail_combat
+		NOT = { any_system_planet = { has_ground_combat = yes } }
+	}
+	# колония в процессе основания: у планеты уже есть владелец, но ещё нет населения
+	custom_tooltip = {
+		fail_text = ps_vm_fail_colonizing
+		NOT = {
+			any_system_planet = {
+				exists = owner
+				NOT = { any_owned_pop_group = { always = yes } }
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = ps_vm_fail_foreign
+		NOT = {
+			any_system_planet = {
+				exists = owner
+				NOT = { owner = { is_same_value = $GIVER$ } }
+			}
+		}
+	}
+	custom_tooltip = {
+		fail_text = ps_vm_fail_cooldown
+		NOT = { has_star_flag = ps_sys_transfer_cd }
+	}
+}
+
+ps_vm_can_afford = {
+	custom_tooltip = {
+		fail_text = ps_vm_no_influence
+		OR = {
+			AND = { check_variable = { which = ps_sys_colonies value = 0 } resource_stockpile_compare = { resource = influence value >= 25 } }
+			AND = { check_variable = { which = ps_sys_colonies value = 1 } resource_stockpile_compare = { resource = influence value >= 75 } }
+			AND = { check_variable = { which = ps_sys_colonies value = 2 } resource_stockpile_compare = { resource = influence value >= 125 } }
+			AND = { check_variable = { which = ps_sys_colonies value = 3 } resource_stockpile_compare = { resource = influence value >= 175 } }
+			AND = { check_variable = { which = ps_sys_colonies value = 4 } resource_stockpile_compare = { resource = influence value >= 225 } }
+			AND = { check_variable = { which = ps_sys_colonies value = 5 } resource_stockpile_compare = { resource = influence value >= 275 } }
+			AND = { check_variable = { which = ps_sys_colonies value = 6 } resource_stockpile_compare = { resource = influence value >= 325 } }
+			AND = { check_variable = { which = ps_sys_colonies value = 7 } resource_stockpile_compare = { resource = influence value >= 375 } }
+			AND = { check_variable = { which = ps_sys_colonies value = 8 } resource_stockpile_compare = { resource = influence value >= 425 } }
+			AND = { check_variable = { which = ps_sys_colonies value = 9 } resource_stockpile_compare = { resource = influence value >= 475 } }
+			AND = { check_variable = { which = ps_sys_colonies value = 10 } resource_stockpile_compare = { resource = influence value >= 525 } }
+			AND = { check_variable = { which = ps_sys_colonies value = 11 } resource_stockpile_compare = { resource = influence value >= 575 } }
+			AND = { check_variable = { which = ps_sys_colonies value = 12 } resource_stockpile_compare = { resource = influence value >= 625 } }
+			AND = { check_variable = { which = ps_sys_colonies value = 13 } resource_stockpile_compare = { resource = influence value >= 675 } }
+			AND = { check_variable = { which = ps_sys_colonies value = 14 } resource_stockpile_compare = { resource = influence value >= 725 } }
+			AND = { check_variable = { which = ps_sys_colonies value = 15 } resource_stockpile_compare = { resource = influence value >= 775 } }
+			AND = { check_variable = { which = ps_sys_colonies value = 16 } resource_stockpile_compare = { resource = influence value >= 825 } }
+			AND = { check_variable = { which = ps_sys_colonies value = 17 } resource_stockpile_compare = { resource = influence value >= 875 } }
+			AND = { check_variable = { which = ps_sys_colonies value = 18 } resource_stockpile_compare = { resource = influence value >= 925 } }
+			AND = { check_variable = { which = ps_sys_colonies value = 19 } resource_stockpile_compare = { resource = influence value >= 975 } }
+			AND = { check_variable = { which = ps_sys_colonies value = 20 } resource_stockpile_compare = { resource = influence value >= 1025 } }
+		}
+	}
+}

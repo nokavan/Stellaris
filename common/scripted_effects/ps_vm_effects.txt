@@ -1,0 +1,2008 @@
+# АВТОГЕНЕРАЦИЯ: tools/gen_vassal_mgmt.py — правьте генератор
+
+ps_vm_collect_stats = {
+	export_trigger_value_to_variable = { trigger = fleet_power variable = ps_fp rounded = yes }
+	export_trigger_value_to_variable = { trigger = num_researched_techs variable = ps_tech rounded = yes }
+	export_trigger_value_to_variable = { trigger = used_naval_capacity_integer variable = ps_nav rounded = yes }
+	export_trigger_value_to_variable = { trigger = max_naval_capacity variable = ps_navmax rounded = yes }
+	export_trigger_value_to_variable = { trigger = controlled_systems variable = ps_sysn rounded = yes }
+	export_trigger_value_to_variable = { trigger = num_sapient_pops variable = ps_pops rounded = yes }
+	export_trigger_value_to_variable = { trigger = diplomacy_weight variable = ps_dw rounded = yes }
+	export_trigger_value_to_variable = { trigger = expenses variable = ps_exp rounded = yes }
+	if = {
+		limit = { has_monthly_income = { resource = energy value >= 2000 } }
+		set_variable = { which = ps_inc_energy value = 2000 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = energy value >= 1000 } }
+		set_variable = { which = ps_inc_energy value = 1000 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = energy value >= 500 } }
+		set_variable = { which = ps_inc_energy value = 500 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = energy value >= 300 } }
+		set_variable = { which = ps_inc_energy value = 300 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = energy value >= 200 } }
+		set_variable = { which = ps_inc_energy value = 200 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = energy value >= 150 } }
+		set_variable = { which = ps_inc_energy value = 150 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = energy value >= 100 } }
+		set_variable = { which = ps_inc_energy value = 100 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = energy value >= 75 } }
+		set_variable = { which = ps_inc_energy value = 75 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = energy value >= 50 } }
+		set_variable = { which = ps_inc_energy value = 50 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = energy value >= 30 } }
+		set_variable = { which = ps_inc_energy value = 30 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = energy value >= 20 } }
+		set_variable = { which = ps_inc_energy value = 20 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = energy value >= 10 } }
+		set_variable = { which = ps_inc_energy value = 10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = energy value >= 5 } }
+		set_variable = { which = ps_inc_energy value = 5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = energy value >= 2 } }
+		set_variable = { which = ps_inc_energy value = 2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = energy value >= 0 } }
+		set_variable = { which = ps_inc_energy value = 0 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = energy value >= -2 } }
+		set_variable = { which = ps_inc_energy value = -2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = energy value >= -5 } }
+		set_variable = { which = ps_inc_energy value = -5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = energy value >= -10 } }
+		set_variable = { which = ps_inc_energy value = -10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = energy value >= -20 } }
+		set_variable = { which = ps_inc_energy value = -20 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = energy value >= -50 } }
+		set_variable = { which = ps_inc_energy value = -50 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = energy value >= -100 } }
+		set_variable = { which = ps_inc_energy value = -100 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = energy value >= -200 } }
+		set_variable = { which = ps_inc_energy value = -200 }
+	}
+	else = {
+		set_variable = { which = ps_inc_energy value = -400 }
+	}
+	if = {
+		limit = { has_monthly_income = { resource = minerals value >= 2000 } }
+		set_variable = { which = ps_inc_minerals value = 2000 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = minerals value >= 1000 } }
+		set_variable = { which = ps_inc_minerals value = 1000 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = minerals value >= 500 } }
+		set_variable = { which = ps_inc_minerals value = 500 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = minerals value >= 300 } }
+		set_variable = { which = ps_inc_minerals value = 300 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = minerals value >= 200 } }
+		set_variable = { which = ps_inc_minerals value = 200 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = minerals value >= 150 } }
+		set_variable = { which = ps_inc_minerals value = 150 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = minerals value >= 100 } }
+		set_variable = { which = ps_inc_minerals value = 100 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = minerals value >= 75 } }
+		set_variable = { which = ps_inc_minerals value = 75 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = minerals value >= 50 } }
+		set_variable = { which = ps_inc_minerals value = 50 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = minerals value >= 30 } }
+		set_variable = { which = ps_inc_minerals value = 30 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = minerals value >= 20 } }
+		set_variable = { which = ps_inc_minerals value = 20 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = minerals value >= 10 } }
+		set_variable = { which = ps_inc_minerals value = 10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = minerals value >= 5 } }
+		set_variable = { which = ps_inc_minerals value = 5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = minerals value >= 2 } }
+		set_variable = { which = ps_inc_minerals value = 2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = minerals value >= 0 } }
+		set_variable = { which = ps_inc_minerals value = 0 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = minerals value >= -2 } }
+		set_variable = { which = ps_inc_minerals value = -2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = minerals value >= -5 } }
+		set_variable = { which = ps_inc_minerals value = -5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = minerals value >= -10 } }
+		set_variable = { which = ps_inc_minerals value = -10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = minerals value >= -20 } }
+		set_variable = { which = ps_inc_minerals value = -20 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = minerals value >= -50 } }
+		set_variable = { which = ps_inc_minerals value = -50 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = minerals value >= -100 } }
+		set_variable = { which = ps_inc_minerals value = -100 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = minerals value >= -200 } }
+		set_variable = { which = ps_inc_minerals value = -200 }
+	}
+	else = {
+		set_variable = { which = ps_inc_minerals value = -400 }
+	}
+	if = {
+		limit = { has_monthly_income = { resource = food value >= 2000 } }
+		set_variable = { which = ps_inc_food value = 2000 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = food value >= 1000 } }
+		set_variable = { which = ps_inc_food value = 1000 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = food value >= 500 } }
+		set_variable = { which = ps_inc_food value = 500 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = food value >= 300 } }
+		set_variable = { which = ps_inc_food value = 300 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = food value >= 200 } }
+		set_variable = { which = ps_inc_food value = 200 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = food value >= 150 } }
+		set_variable = { which = ps_inc_food value = 150 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = food value >= 100 } }
+		set_variable = { which = ps_inc_food value = 100 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = food value >= 75 } }
+		set_variable = { which = ps_inc_food value = 75 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = food value >= 50 } }
+		set_variable = { which = ps_inc_food value = 50 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = food value >= 30 } }
+		set_variable = { which = ps_inc_food value = 30 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = food value >= 20 } }
+		set_variable = { which = ps_inc_food value = 20 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = food value >= 10 } }
+		set_variable = { which = ps_inc_food value = 10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = food value >= 5 } }
+		set_variable = { which = ps_inc_food value = 5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = food value >= 2 } }
+		set_variable = { which = ps_inc_food value = 2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = food value >= 0 } }
+		set_variable = { which = ps_inc_food value = 0 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = food value >= -2 } }
+		set_variable = { which = ps_inc_food value = -2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = food value >= -5 } }
+		set_variable = { which = ps_inc_food value = -5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = food value >= -10 } }
+		set_variable = { which = ps_inc_food value = -10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = food value >= -20 } }
+		set_variable = { which = ps_inc_food value = -20 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = food value >= -50 } }
+		set_variable = { which = ps_inc_food value = -50 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = food value >= -100 } }
+		set_variable = { which = ps_inc_food value = -100 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = food value >= -200 } }
+		set_variable = { which = ps_inc_food value = -200 }
+	}
+	else = {
+		set_variable = { which = ps_inc_food value = -400 }
+	}
+	if = {
+		limit = { has_monthly_income = { resource = alloys value >= 2000 } }
+		set_variable = { which = ps_inc_alloys value = 2000 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = alloys value >= 1000 } }
+		set_variable = { which = ps_inc_alloys value = 1000 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = alloys value >= 500 } }
+		set_variable = { which = ps_inc_alloys value = 500 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = alloys value >= 300 } }
+		set_variable = { which = ps_inc_alloys value = 300 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = alloys value >= 200 } }
+		set_variable = { which = ps_inc_alloys value = 200 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = alloys value >= 150 } }
+		set_variable = { which = ps_inc_alloys value = 150 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = alloys value >= 100 } }
+		set_variable = { which = ps_inc_alloys value = 100 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = alloys value >= 75 } }
+		set_variable = { which = ps_inc_alloys value = 75 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = alloys value >= 50 } }
+		set_variable = { which = ps_inc_alloys value = 50 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = alloys value >= 30 } }
+		set_variable = { which = ps_inc_alloys value = 30 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = alloys value >= 20 } }
+		set_variable = { which = ps_inc_alloys value = 20 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = alloys value >= 10 } }
+		set_variable = { which = ps_inc_alloys value = 10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = alloys value >= 5 } }
+		set_variable = { which = ps_inc_alloys value = 5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = alloys value >= 2 } }
+		set_variable = { which = ps_inc_alloys value = 2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = alloys value >= 0 } }
+		set_variable = { which = ps_inc_alloys value = 0 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = alloys value >= -2 } }
+		set_variable = { which = ps_inc_alloys value = -2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = alloys value >= -5 } }
+		set_variable = { which = ps_inc_alloys value = -5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = alloys value >= -10 } }
+		set_variable = { which = ps_inc_alloys value = -10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = alloys value >= -20 } }
+		set_variable = { which = ps_inc_alloys value = -20 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = alloys value >= -50 } }
+		set_variable = { which = ps_inc_alloys value = -50 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = alloys value >= -100 } }
+		set_variable = { which = ps_inc_alloys value = -100 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = alloys value >= -200 } }
+		set_variable = { which = ps_inc_alloys value = -200 }
+	}
+	else = {
+		set_variable = { which = ps_inc_alloys value = -400 }
+	}
+	if = {
+		limit = { has_monthly_income = { resource = consumer_goods value >= 2000 } }
+		set_variable = { which = ps_inc_consumer_goods value = 2000 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = consumer_goods value >= 1000 } }
+		set_variable = { which = ps_inc_consumer_goods value = 1000 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = consumer_goods value >= 500 } }
+		set_variable = { which = ps_inc_consumer_goods value = 500 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = consumer_goods value >= 300 } }
+		set_variable = { which = ps_inc_consumer_goods value = 300 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = consumer_goods value >= 200 } }
+		set_variable = { which = ps_inc_consumer_goods value = 200 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = consumer_goods value >= 150 } }
+		set_variable = { which = ps_inc_consumer_goods value = 150 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = consumer_goods value >= 100 } }
+		set_variable = { which = ps_inc_consumer_goods value = 100 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = consumer_goods value >= 75 } }
+		set_variable = { which = ps_inc_consumer_goods value = 75 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = consumer_goods value >= 50 } }
+		set_variable = { which = ps_inc_consumer_goods value = 50 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = consumer_goods value >= 30 } }
+		set_variable = { which = ps_inc_consumer_goods value = 30 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = consumer_goods value >= 20 } }
+		set_variable = { which = ps_inc_consumer_goods value = 20 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = consumer_goods value >= 10 } }
+		set_variable = { which = ps_inc_consumer_goods value = 10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = consumer_goods value >= 5 } }
+		set_variable = { which = ps_inc_consumer_goods value = 5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = consumer_goods value >= 2 } }
+		set_variable = { which = ps_inc_consumer_goods value = 2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = consumer_goods value >= 0 } }
+		set_variable = { which = ps_inc_consumer_goods value = 0 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = consumer_goods value >= -2 } }
+		set_variable = { which = ps_inc_consumer_goods value = -2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = consumer_goods value >= -5 } }
+		set_variable = { which = ps_inc_consumer_goods value = -5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = consumer_goods value >= -10 } }
+		set_variable = { which = ps_inc_consumer_goods value = -10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = consumer_goods value >= -20 } }
+		set_variable = { which = ps_inc_consumer_goods value = -20 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = consumer_goods value >= -50 } }
+		set_variable = { which = ps_inc_consumer_goods value = -50 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = consumer_goods value >= -100 } }
+		set_variable = { which = ps_inc_consumer_goods value = -100 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = consumer_goods value >= -200 } }
+		set_variable = { which = ps_inc_consumer_goods value = -200 }
+	}
+	else = {
+		set_variable = { which = ps_inc_consumer_goods value = -400 }
+	}
+	if = {
+		limit = { has_monthly_income = { resource = physics_research value >= 2000 } }
+		set_variable = { which = ps_inc_physics_research value = 2000 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = physics_research value >= 1000 } }
+		set_variable = { which = ps_inc_physics_research value = 1000 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = physics_research value >= 500 } }
+		set_variable = { which = ps_inc_physics_research value = 500 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = physics_research value >= 300 } }
+		set_variable = { which = ps_inc_physics_research value = 300 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = physics_research value >= 200 } }
+		set_variable = { which = ps_inc_physics_research value = 200 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = physics_research value >= 150 } }
+		set_variable = { which = ps_inc_physics_research value = 150 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = physics_research value >= 100 } }
+		set_variable = { which = ps_inc_physics_research value = 100 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = physics_research value >= 75 } }
+		set_variable = { which = ps_inc_physics_research value = 75 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = physics_research value >= 50 } }
+		set_variable = { which = ps_inc_physics_research value = 50 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = physics_research value >= 30 } }
+		set_variable = { which = ps_inc_physics_research value = 30 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = physics_research value >= 20 } }
+		set_variable = { which = ps_inc_physics_research value = 20 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = physics_research value >= 10 } }
+		set_variable = { which = ps_inc_physics_research value = 10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = physics_research value >= 5 } }
+		set_variable = { which = ps_inc_physics_research value = 5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = physics_research value >= 2 } }
+		set_variable = { which = ps_inc_physics_research value = 2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = physics_research value >= 0 } }
+		set_variable = { which = ps_inc_physics_research value = 0 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = physics_research value >= -2 } }
+		set_variable = { which = ps_inc_physics_research value = -2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = physics_research value >= -5 } }
+		set_variable = { which = ps_inc_physics_research value = -5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = physics_research value >= -10 } }
+		set_variable = { which = ps_inc_physics_research value = -10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = physics_research value >= -20 } }
+		set_variable = { which = ps_inc_physics_research value = -20 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = physics_research value >= -50 } }
+		set_variable = { which = ps_inc_physics_research value = -50 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = physics_research value >= -100 } }
+		set_variable = { which = ps_inc_physics_research value = -100 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = physics_research value >= -200 } }
+		set_variable = { which = ps_inc_physics_research value = -200 }
+	}
+	else = {
+		set_variable = { which = ps_inc_physics_research value = -400 }
+	}
+	if = {
+		limit = { has_monthly_income = { resource = society_research value >= 2000 } }
+		set_variable = { which = ps_inc_society_research value = 2000 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = society_research value >= 1000 } }
+		set_variable = { which = ps_inc_society_research value = 1000 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = society_research value >= 500 } }
+		set_variable = { which = ps_inc_society_research value = 500 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = society_research value >= 300 } }
+		set_variable = { which = ps_inc_society_research value = 300 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = society_research value >= 200 } }
+		set_variable = { which = ps_inc_society_research value = 200 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = society_research value >= 150 } }
+		set_variable = { which = ps_inc_society_research value = 150 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = society_research value >= 100 } }
+		set_variable = { which = ps_inc_society_research value = 100 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = society_research value >= 75 } }
+		set_variable = { which = ps_inc_society_research value = 75 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = society_research value >= 50 } }
+		set_variable = { which = ps_inc_society_research value = 50 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = society_research value >= 30 } }
+		set_variable = { which = ps_inc_society_research value = 30 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = society_research value >= 20 } }
+		set_variable = { which = ps_inc_society_research value = 20 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = society_research value >= 10 } }
+		set_variable = { which = ps_inc_society_research value = 10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = society_research value >= 5 } }
+		set_variable = { which = ps_inc_society_research value = 5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = society_research value >= 2 } }
+		set_variable = { which = ps_inc_society_research value = 2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = society_research value >= 0 } }
+		set_variable = { which = ps_inc_society_research value = 0 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = society_research value >= -2 } }
+		set_variable = { which = ps_inc_society_research value = -2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = society_research value >= -5 } }
+		set_variable = { which = ps_inc_society_research value = -5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = society_research value >= -10 } }
+		set_variable = { which = ps_inc_society_research value = -10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = society_research value >= -20 } }
+		set_variable = { which = ps_inc_society_research value = -20 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = society_research value >= -50 } }
+		set_variable = { which = ps_inc_society_research value = -50 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = society_research value >= -100 } }
+		set_variable = { which = ps_inc_society_research value = -100 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = society_research value >= -200 } }
+		set_variable = { which = ps_inc_society_research value = -200 }
+	}
+	else = {
+		set_variable = { which = ps_inc_society_research value = -400 }
+	}
+	if = {
+		limit = { has_monthly_income = { resource = engineering_research value >= 2000 } }
+		set_variable = { which = ps_inc_engineering_research value = 2000 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = engineering_research value >= 1000 } }
+		set_variable = { which = ps_inc_engineering_research value = 1000 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = engineering_research value >= 500 } }
+		set_variable = { which = ps_inc_engineering_research value = 500 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = engineering_research value >= 300 } }
+		set_variable = { which = ps_inc_engineering_research value = 300 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = engineering_research value >= 200 } }
+		set_variable = { which = ps_inc_engineering_research value = 200 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = engineering_research value >= 150 } }
+		set_variable = { which = ps_inc_engineering_research value = 150 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = engineering_research value >= 100 } }
+		set_variable = { which = ps_inc_engineering_research value = 100 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = engineering_research value >= 75 } }
+		set_variable = { which = ps_inc_engineering_research value = 75 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = engineering_research value >= 50 } }
+		set_variable = { which = ps_inc_engineering_research value = 50 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = engineering_research value >= 30 } }
+		set_variable = { which = ps_inc_engineering_research value = 30 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = engineering_research value >= 20 } }
+		set_variable = { which = ps_inc_engineering_research value = 20 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = engineering_research value >= 10 } }
+		set_variable = { which = ps_inc_engineering_research value = 10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = engineering_research value >= 5 } }
+		set_variable = { which = ps_inc_engineering_research value = 5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = engineering_research value >= 2 } }
+		set_variable = { which = ps_inc_engineering_research value = 2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = engineering_research value >= 0 } }
+		set_variable = { which = ps_inc_engineering_research value = 0 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = engineering_research value >= -2 } }
+		set_variable = { which = ps_inc_engineering_research value = -2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = engineering_research value >= -5 } }
+		set_variable = { which = ps_inc_engineering_research value = -5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = engineering_research value >= -10 } }
+		set_variable = { which = ps_inc_engineering_research value = -10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = engineering_research value >= -20 } }
+		set_variable = { which = ps_inc_engineering_research value = -20 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = engineering_research value >= -50 } }
+		set_variable = { which = ps_inc_engineering_research value = -50 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = engineering_research value >= -100 } }
+		set_variable = { which = ps_inc_engineering_research value = -100 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = engineering_research value >= -200 } }
+		set_variable = { which = ps_inc_engineering_research value = -200 }
+	}
+	else = {
+		set_variable = { which = ps_inc_engineering_research value = -400 }
+	}
+	if = {
+		limit = { has_monthly_income = { resource = rare_crystals value >= 100 } }
+		set_variable = { which = ps_inc_rare_crystals value = 100 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = rare_crystals value >= 50 } }
+		set_variable = { which = ps_inc_rare_crystals value = 50 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = rare_crystals value >= 30 } }
+		set_variable = { which = ps_inc_rare_crystals value = 30 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = rare_crystals value >= 20 } }
+		set_variable = { which = ps_inc_rare_crystals value = 20 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = rare_crystals value >= 15 } }
+		set_variable = { which = ps_inc_rare_crystals value = 15 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = rare_crystals value >= 10 } }
+		set_variable = { which = ps_inc_rare_crystals value = 10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = rare_crystals value >= 5 } }
+		set_variable = { which = ps_inc_rare_crystals value = 5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = rare_crystals value >= 3 } }
+		set_variable = { which = ps_inc_rare_crystals value = 3 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = rare_crystals value >= 2 } }
+		set_variable = { which = ps_inc_rare_crystals value = 2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = rare_crystals value >= 1 } }
+		set_variable = { which = ps_inc_rare_crystals value = 1 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = rare_crystals value >= 0 } }
+		set_variable = { which = ps_inc_rare_crystals value = 0 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = rare_crystals value >= -1 } }
+		set_variable = { which = ps_inc_rare_crystals value = -1 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = rare_crystals value >= -2 } }
+		set_variable = { which = ps_inc_rare_crystals value = -2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = rare_crystals value >= -3 } }
+		set_variable = { which = ps_inc_rare_crystals value = -3 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = rare_crystals value >= -5 } }
+		set_variable = { which = ps_inc_rare_crystals value = -5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = rare_crystals value >= -10 } }
+		set_variable = { which = ps_inc_rare_crystals value = -10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = rare_crystals value >= -20 } }
+		set_variable = { which = ps_inc_rare_crystals value = -20 }
+	}
+	else = {
+		set_variable = { which = ps_inc_rare_crystals value = -40 }
+	}
+	if = {
+		limit = { has_monthly_income = { resource = exotic_gases value >= 100 } }
+		set_variable = { which = ps_inc_exotic_gases value = 100 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = exotic_gases value >= 50 } }
+		set_variable = { which = ps_inc_exotic_gases value = 50 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = exotic_gases value >= 30 } }
+		set_variable = { which = ps_inc_exotic_gases value = 30 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = exotic_gases value >= 20 } }
+		set_variable = { which = ps_inc_exotic_gases value = 20 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = exotic_gases value >= 15 } }
+		set_variable = { which = ps_inc_exotic_gases value = 15 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = exotic_gases value >= 10 } }
+		set_variable = { which = ps_inc_exotic_gases value = 10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = exotic_gases value >= 5 } }
+		set_variable = { which = ps_inc_exotic_gases value = 5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = exotic_gases value >= 3 } }
+		set_variable = { which = ps_inc_exotic_gases value = 3 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = exotic_gases value >= 2 } }
+		set_variable = { which = ps_inc_exotic_gases value = 2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = exotic_gases value >= 1 } }
+		set_variable = { which = ps_inc_exotic_gases value = 1 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = exotic_gases value >= 0 } }
+		set_variable = { which = ps_inc_exotic_gases value = 0 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = exotic_gases value >= -1 } }
+		set_variable = { which = ps_inc_exotic_gases value = -1 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = exotic_gases value >= -2 } }
+		set_variable = { which = ps_inc_exotic_gases value = -2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = exotic_gases value >= -3 } }
+		set_variable = { which = ps_inc_exotic_gases value = -3 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = exotic_gases value >= -5 } }
+		set_variable = { which = ps_inc_exotic_gases value = -5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = exotic_gases value >= -10 } }
+		set_variable = { which = ps_inc_exotic_gases value = -10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = exotic_gases value >= -20 } }
+		set_variable = { which = ps_inc_exotic_gases value = -20 }
+	}
+	else = {
+		set_variable = { which = ps_inc_exotic_gases value = -40 }
+	}
+	if = {
+		limit = { has_monthly_income = { resource = volatile_motes value >= 100 } }
+		set_variable = { which = ps_inc_volatile_motes value = 100 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = volatile_motes value >= 50 } }
+		set_variable = { which = ps_inc_volatile_motes value = 50 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = volatile_motes value >= 30 } }
+		set_variable = { which = ps_inc_volatile_motes value = 30 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = volatile_motes value >= 20 } }
+		set_variable = { which = ps_inc_volatile_motes value = 20 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = volatile_motes value >= 15 } }
+		set_variable = { which = ps_inc_volatile_motes value = 15 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = volatile_motes value >= 10 } }
+		set_variable = { which = ps_inc_volatile_motes value = 10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = volatile_motes value >= 5 } }
+		set_variable = { which = ps_inc_volatile_motes value = 5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = volatile_motes value >= 3 } }
+		set_variable = { which = ps_inc_volatile_motes value = 3 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = volatile_motes value >= 2 } }
+		set_variable = { which = ps_inc_volatile_motes value = 2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = volatile_motes value >= 1 } }
+		set_variable = { which = ps_inc_volatile_motes value = 1 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = volatile_motes value >= 0 } }
+		set_variable = { which = ps_inc_volatile_motes value = 0 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = volatile_motes value >= -1 } }
+		set_variable = { which = ps_inc_volatile_motes value = -1 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = volatile_motes value >= -2 } }
+		set_variable = { which = ps_inc_volatile_motes value = -2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = volatile_motes value >= -3 } }
+		set_variable = { which = ps_inc_volatile_motes value = -3 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = volatile_motes value >= -5 } }
+		set_variable = { which = ps_inc_volatile_motes value = -5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = volatile_motes value >= -10 } }
+		set_variable = { which = ps_inc_volatile_motes value = -10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = volatile_motes value >= -20 } }
+		set_variable = { which = ps_inc_volatile_motes value = -20 }
+	}
+	else = {
+		set_variable = { which = ps_inc_volatile_motes value = -40 }
+	}
+	if = {
+		limit = { has_monthly_income = { resource = unity value >= 2000 } }
+		set_variable = { which = ps_inc_unity value = 2000 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = unity value >= 1000 } }
+		set_variable = { which = ps_inc_unity value = 1000 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = unity value >= 500 } }
+		set_variable = { which = ps_inc_unity value = 500 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = unity value >= 300 } }
+		set_variable = { which = ps_inc_unity value = 300 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = unity value >= 200 } }
+		set_variable = { which = ps_inc_unity value = 200 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = unity value >= 150 } }
+		set_variable = { which = ps_inc_unity value = 150 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = unity value >= 100 } }
+		set_variable = { which = ps_inc_unity value = 100 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = unity value >= 75 } }
+		set_variable = { which = ps_inc_unity value = 75 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = unity value >= 50 } }
+		set_variable = { which = ps_inc_unity value = 50 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = unity value >= 30 } }
+		set_variable = { which = ps_inc_unity value = 30 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = unity value >= 20 } }
+		set_variable = { which = ps_inc_unity value = 20 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = unity value >= 10 } }
+		set_variable = { which = ps_inc_unity value = 10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = unity value >= 5 } }
+		set_variable = { which = ps_inc_unity value = 5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = unity value >= 2 } }
+		set_variable = { which = ps_inc_unity value = 2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = unity value >= 0 } }
+		set_variable = { which = ps_inc_unity value = 0 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = unity value >= -2 } }
+		set_variable = { which = ps_inc_unity value = -2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = unity value >= -5 } }
+		set_variable = { which = ps_inc_unity value = -5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = unity value >= -10 } }
+		set_variable = { which = ps_inc_unity value = -10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = unity value >= -20 } }
+		set_variable = { which = ps_inc_unity value = -20 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = unity value >= -50 } }
+		set_variable = { which = ps_inc_unity value = -50 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = unity value >= -100 } }
+		set_variable = { which = ps_inc_unity value = -100 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = unity value >= -200 } }
+		set_variable = { which = ps_inc_unity value = -200 }
+	}
+	else = {
+		set_variable = { which = ps_inc_unity value = -400 }
+	}
+	if = {
+		limit = { has_monthly_income = { resource = influence value >= 2000 } }
+		set_variable = { which = ps_inc_influence value = 2000 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = influence value >= 1000 } }
+		set_variable = { which = ps_inc_influence value = 1000 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = influence value >= 500 } }
+		set_variable = { which = ps_inc_influence value = 500 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = influence value >= 300 } }
+		set_variable = { which = ps_inc_influence value = 300 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = influence value >= 200 } }
+		set_variable = { which = ps_inc_influence value = 200 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = influence value >= 150 } }
+		set_variable = { which = ps_inc_influence value = 150 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = influence value >= 100 } }
+		set_variable = { which = ps_inc_influence value = 100 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = influence value >= 75 } }
+		set_variable = { which = ps_inc_influence value = 75 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = influence value >= 50 } }
+		set_variable = { which = ps_inc_influence value = 50 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = influence value >= 30 } }
+		set_variable = { which = ps_inc_influence value = 30 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = influence value >= 20 } }
+		set_variable = { which = ps_inc_influence value = 20 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = influence value >= 10 } }
+		set_variable = { which = ps_inc_influence value = 10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = influence value >= 5 } }
+		set_variable = { which = ps_inc_influence value = 5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = influence value >= 2 } }
+		set_variable = { which = ps_inc_influence value = 2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = influence value >= 0 } }
+		set_variable = { which = ps_inc_influence value = 0 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = influence value >= -2 } }
+		set_variable = { which = ps_inc_influence value = -2 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = influence value >= -5 } }
+		set_variable = { which = ps_inc_influence value = -5 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = influence value >= -10 } }
+		set_variable = { which = ps_inc_influence value = -10 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = influence value >= -20 } }
+		set_variable = { which = ps_inc_influence value = -20 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = influence value >= -50 } }
+		set_variable = { which = ps_inc_influence value = -50 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = influence value >= -100 } }
+		set_variable = { which = ps_inc_influence value = -100 }
+	}
+	else_if = {
+		limit = { has_monthly_income = { resource = influence value >= -200 } }
+		set_variable = { which = ps_inc_influence value = -200 }
+	}
+	else = {
+		set_variable = { which = ps_inc_influence value = -400 }
+	}
+	if = {
+		limit = { resource_stockpile_compare = { resource = energy value >= 100000 } }
+		set_variable = { which = ps_stock_energy value = 100000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = energy value >= 50000 } }
+		set_variable = { which = ps_stock_energy value = 50000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = energy value >= 25000 } }
+		set_variable = { which = ps_stock_energy value = 25000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = energy value >= 10000 } }
+		set_variable = { which = ps_stock_energy value = 10000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = energy value >= 5000 } }
+		set_variable = { which = ps_stock_energy value = 5000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = energy value >= 2500 } }
+		set_variable = { which = ps_stock_energy value = 2500 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = energy value >= 1000 } }
+		set_variable = { which = ps_stock_energy value = 1000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = energy value >= 500 } }
+		set_variable = { which = ps_stock_energy value = 500 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = energy value >= 250 } }
+		set_variable = { which = ps_stock_energy value = 250 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = energy value >= 100 } }
+		set_variable = { which = ps_stock_energy value = 100 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = energy value >= 0 } }
+		set_variable = { which = ps_stock_energy value = 0 }
+	}
+	else = {
+		set_variable = { which = ps_stock_energy value = 0 }
+	}
+	if = {
+		limit = { resource_stockpile_compare = { resource = minerals value >= 100000 } }
+		set_variable = { which = ps_stock_minerals value = 100000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = minerals value >= 50000 } }
+		set_variable = { which = ps_stock_minerals value = 50000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = minerals value >= 25000 } }
+		set_variable = { which = ps_stock_minerals value = 25000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = minerals value >= 10000 } }
+		set_variable = { which = ps_stock_minerals value = 10000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = minerals value >= 5000 } }
+		set_variable = { which = ps_stock_minerals value = 5000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = minerals value >= 2500 } }
+		set_variable = { which = ps_stock_minerals value = 2500 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = minerals value >= 1000 } }
+		set_variable = { which = ps_stock_minerals value = 1000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = minerals value >= 500 } }
+		set_variable = { which = ps_stock_minerals value = 500 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = minerals value >= 250 } }
+		set_variable = { which = ps_stock_minerals value = 250 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = minerals value >= 100 } }
+		set_variable = { which = ps_stock_minerals value = 100 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = minerals value >= 0 } }
+		set_variable = { which = ps_stock_minerals value = 0 }
+	}
+	else = {
+		set_variable = { which = ps_stock_minerals value = 0 }
+	}
+	if = {
+		limit = { resource_stockpile_compare = { resource = food value >= 100000 } }
+		set_variable = { which = ps_stock_food value = 100000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = food value >= 50000 } }
+		set_variable = { which = ps_stock_food value = 50000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = food value >= 25000 } }
+		set_variable = { which = ps_stock_food value = 25000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = food value >= 10000 } }
+		set_variable = { which = ps_stock_food value = 10000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = food value >= 5000 } }
+		set_variable = { which = ps_stock_food value = 5000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = food value >= 2500 } }
+		set_variable = { which = ps_stock_food value = 2500 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = food value >= 1000 } }
+		set_variable = { which = ps_stock_food value = 1000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = food value >= 500 } }
+		set_variable = { which = ps_stock_food value = 500 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = food value >= 250 } }
+		set_variable = { which = ps_stock_food value = 250 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = food value >= 100 } }
+		set_variable = { which = ps_stock_food value = 100 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = food value >= 0 } }
+		set_variable = { which = ps_stock_food value = 0 }
+	}
+	else = {
+		set_variable = { which = ps_stock_food value = 0 }
+	}
+	if = {
+		limit = { resource_stockpile_compare = { resource = alloys value >= 100000 } }
+		set_variable = { which = ps_stock_alloys value = 100000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = alloys value >= 50000 } }
+		set_variable = { which = ps_stock_alloys value = 50000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = alloys value >= 25000 } }
+		set_variable = { which = ps_stock_alloys value = 25000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = alloys value >= 10000 } }
+		set_variable = { which = ps_stock_alloys value = 10000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = alloys value >= 5000 } }
+		set_variable = { which = ps_stock_alloys value = 5000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = alloys value >= 2500 } }
+		set_variable = { which = ps_stock_alloys value = 2500 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = alloys value >= 1000 } }
+		set_variable = { which = ps_stock_alloys value = 1000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = alloys value >= 500 } }
+		set_variable = { which = ps_stock_alloys value = 500 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = alloys value >= 250 } }
+		set_variable = { which = ps_stock_alloys value = 250 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = alloys value >= 100 } }
+		set_variable = { which = ps_stock_alloys value = 100 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = alloys value >= 0 } }
+		set_variable = { which = ps_stock_alloys value = 0 }
+	}
+	else = {
+		set_variable = { which = ps_stock_alloys value = 0 }
+	}
+	if = {
+		limit = { resource_stockpile_compare = { resource = consumer_goods value >= 100000 } }
+		set_variable = { which = ps_stock_consumer_goods value = 100000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = consumer_goods value >= 50000 } }
+		set_variable = { which = ps_stock_consumer_goods value = 50000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = consumer_goods value >= 25000 } }
+		set_variable = { which = ps_stock_consumer_goods value = 25000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = consumer_goods value >= 10000 } }
+		set_variable = { which = ps_stock_consumer_goods value = 10000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = consumer_goods value >= 5000 } }
+		set_variable = { which = ps_stock_consumer_goods value = 5000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = consumer_goods value >= 2500 } }
+		set_variable = { which = ps_stock_consumer_goods value = 2500 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = consumer_goods value >= 1000 } }
+		set_variable = { which = ps_stock_consumer_goods value = 1000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = consumer_goods value >= 500 } }
+		set_variable = { which = ps_stock_consumer_goods value = 500 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = consumer_goods value >= 250 } }
+		set_variable = { which = ps_stock_consumer_goods value = 250 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = consumer_goods value >= 100 } }
+		set_variable = { which = ps_stock_consumer_goods value = 100 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = consumer_goods value >= 0 } }
+		set_variable = { which = ps_stock_consumer_goods value = 0 }
+	}
+	else = {
+		set_variable = { which = ps_stock_consumer_goods value = 0 }
+	}
+	if = {
+		limit = { resource_stockpile_compare = { resource = rare_crystals value >= 5000 } }
+		set_variable = { which = ps_stock_rare_crystals value = 5000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = rare_crystals value >= 2500 } }
+		set_variable = { which = ps_stock_rare_crystals value = 2500 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = rare_crystals value >= 1000 } }
+		set_variable = { which = ps_stock_rare_crystals value = 1000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = rare_crystals value >= 500 } }
+		set_variable = { which = ps_stock_rare_crystals value = 500 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = rare_crystals value >= 250 } }
+		set_variable = { which = ps_stock_rare_crystals value = 250 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = rare_crystals value >= 100 } }
+		set_variable = { which = ps_stock_rare_crystals value = 100 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = rare_crystals value >= 50 } }
+		set_variable = { which = ps_stock_rare_crystals value = 50 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = rare_crystals value >= 25 } }
+		set_variable = { which = ps_stock_rare_crystals value = 25 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = rare_crystals value >= 10 } }
+		set_variable = { which = ps_stock_rare_crystals value = 10 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = rare_crystals value >= 0 } }
+		set_variable = { which = ps_stock_rare_crystals value = 0 }
+	}
+	else = {
+		set_variable = { which = ps_stock_rare_crystals value = 0 }
+	}
+	if = {
+		limit = { resource_stockpile_compare = { resource = exotic_gases value >= 5000 } }
+		set_variable = { which = ps_stock_exotic_gases value = 5000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = exotic_gases value >= 2500 } }
+		set_variable = { which = ps_stock_exotic_gases value = 2500 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = exotic_gases value >= 1000 } }
+		set_variable = { which = ps_stock_exotic_gases value = 1000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = exotic_gases value >= 500 } }
+		set_variable = { which = ps_stock_exotic_gases value = 500 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = exotic_gases value >= 250 } }
+		set_variable = { which = ps_stock_exotic_gases value = 250 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = exotic_gases value >= 100 } }
+		set_variable = { which = ps_stock_exotic_gases value = 100 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = exotic_gases value >= 50 } }
+		set_variable = { which = ps_stock_exotic_gases value = 50 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = exotic_gases value >= 25 } }
+		set_variable = { which = ps_stock_exotic_gases value = 25 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = exotic_gases value >= 10 } }
+		set_variable = { which = ps_stock_exotic_gases value = 10 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = exotic_gases value >= 0 } }
+		set_variable = { which = ps_stock_exotic_gases value = 0 }
+	}
+	else = {
+		set_variable = { which = ps_stock_exotic_gases value = 0 }
+	}
+	if = {
+		limit = { resource_stockpile_compare = { resource = volatile_motes value >= 5000 } }
+		set_variable = { which = ps_stock_volatile_motes value = 5000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = volatile_motes value >= 2500 } }
+		set_variable = { which = ps_stock_volatile_motes value = 2500 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = volatile_motes value >= 1000 } }
+		set_variable = { which = ps_stock_volatile_motes value = 1000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = volatile_motes value >= 500 } }
+		set_variable = { which = ps_stock_volatile_motes value = 500 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = volatile_motes value >= 250 } }
+		set_variable = { which = ps_stock_volatile_motes value = 250 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = volatile_motes value >= 100 } }
+		set_variable = { which = ps_stock_volatile_motes value = 100 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = volatile_motes value >= 50 } }
+		set_variable = { which = ps_stock_volatile_motes value = 50 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = volatile_motes value >= 25 } }
+		set_variable = { which = ps_stock_volatile_motes value = 25 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = volatile_motes value >= 10 } }
+		set_variable = { which = ps_stock_volatile_motes value = 10 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = volatile_motes value >= 0 } }
+		set_variable = { which = ps_stock_volatile_motes value = 0 }
+	}
+	else = {
+		set_variable = { which = ps_stock_volatile_motes value = 0 }
+	}
+	if = {
+		limit = { resource_stockpile_compare = { resource = influence value >= 100000 } }
+		set_variable = { which = ps_stock_influence value = 100000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = influence value >= 50000 } }
+		set_variable = { which = ps_stock_influence value = 50000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = influence value >= 25000 } }
+		set_variable = { which = ps_stock_influence value = 25000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = influence value >= 10000 } }
+		set_variable = { which = ps_stock_influence value = 10000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = influence value >= 5000 } }
+		set_variable = { which = ps_stock_influence value = 5000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = influence value >= 2500 } }
+		set_variable = { which = ps_stock_influence value = 2500 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = influence value >= 1000 } }
+		set_variable = { which = ps_stock_influence value = 1000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = influence value >= 500 } }
+		set_variable = { which = ps_stock_influence value = 500 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = influence value >= 250 } }
+		set_variable = { which = ps_stock_influence value = 250 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = influence value >= 100 } }
+		set_variable = { which = ps_stock_influence value = 100 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = influence value >= 0 } }
+		set_variable = { which = ps_stock_influence value = 0 }
+	}
+	else = {
+		set_variable = { which = ps_stock_influence value = 0 }
+	}
+	if = {
+		limit = { resource_stockpile_compare = { resource = unity value >= 100000 } }
+		set_variable = { which = ps_stock_unity value = 100000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = unity value >= 50000 } }
+		set_variable = { which = ps_stock_unity value = 50000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = unity value >= 25000 } }
+		set_variable = { which = ps_stock_unity value = 25000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = unity value >= 10000 } }
+		set_variable = { which = ps_stock_unity value = 10000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = unity value >= 5000 } }
+		set_variable = { which = ps_stock_unity value = 5000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = unity value >= 2500 } }
+		set_variable = { which = ps_stock_unity value = 2500 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = unity value >= 1000 } }
+		set_variable = { which = ps_stock_unity value = 1000 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = unity value >= 500 } }
+		set_variable = { which = ps_stock_unity value = 500 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = unity value >= 250 } }
+		set_variable = { which = ps_stock_unity value = 250 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = unity value >= 100 } }
+		set_variable = { which = ps_stock_unity value = 100 }
+	}
+	else_if = {
+		limit = { resource_stockpile_compare = { resource = unity value >= 0 } }
+		set_variable = { which = ps_stock_unity value = 0 }
+	}
+	else = {
+		set_variable = { which = ps_stock_unity value = 0 }
+	}
+	set_variable = { which = ps_inc_basic value = ps_inc_energy }
+	change_variable = { which = ps_inc_basic value = ps_inc_minerals }
+	change_variable = { which = ps_inc_basic value = ps_inc_food }
+	if = {
+		limit = { check_variable = { which = ps_inc_basic value >= 300 } }
+		set_variable = { which = ps_rec_basic value = 75 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_basic value >= 150 } }
+		set_variable = { which = ps_rec_basic value = 50 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_basic value >= 75 } }
+		set_variable = { which = ps_rec_basic value = 25 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_basic value >= 25 } }
+		set_variable = { which = ps_rec_basic value = 10 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_basic value >= 0 } }
+		set_variable = { which = ps_rec_basic value = 0 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_basic value >= -25 } }
+		set_variable = { which = ps_rec_basic value = -10 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_basic value >= -75 } }
+		set_variable = { which = ps_rec_basic value = -25 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_basic value >= -150 } }
+		set_variable = { which = ps_rec_basic value = -50 }
+	}
+	else = {
+		set_variable = { which = ps_rec_basic value = -75 }
+	}
+	set_variable = { which = ps_inc_adv value = ps_inc_alloys }
+	change_variable = { which = ps_inc_adv value = ps_inc_consumer_goods }
+	if = {
+		limit = { check_variable = { which = ps_inc_adv value >= 80 } }
+		set_variable = { which = ps_rec_adv value = 75 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_adv value >= 40 } }
+		set_variable = { which = ps_rec_adv value = 50 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_adv value >= 20 } }
+		set_variable = { which = ps_rec_adv value = 25 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_adv value >= 8 } }
+		set_variable = { which = ps_rec_adv value = 10 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_adv value >= 0 } }
+		set_variable = { which = ps_rec_adv value = 0 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_adv value >= -8 } }
+		set_variable = { which = ps_rec_adv value = -10 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_adv value >= -20 } }
+		set_variable = { which = ps_rec_adv value = -25 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_adv value >= -40 } }
+		set_variable = { which = ps_rec_adv value = -50 }
+	}
+	else = {
+		set_variable = { which = ps_rec_adv value = -75 }
+	}
+	set_variable = { which = ps_inc_res value = ps_inc_physics_research }
+	change_variable = { which = ps_inc_res value = ps_inc_society_research }
+	change_variable = { which = ps_inc_res value = ps_inc_engineering_research }
+	if = {
+		limit = { check_variable = { which = ps_inc_res value >= 300 } }
+		set_variable = { which = ps_rec_res value = 75 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_res value >= 150 } }
+		set_variable = { which = ps_rec_res value = 50 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_res value >= 75 } }
+		set_variable = { which = ps_rec_res value = 25 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_res value >= 25 } }
+		set_variable = { which = ps_rec_res value = 10 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_res value >= 0 } }
+		set_variable = { which = ps_rec_res value = 0 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_res value >= -25 } }
+		set_variable = { which = ps_rec_res value = -10 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_res value >= -75 } }
+		set_variable = { which = ps_rec_res value = -25 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_res value >= -150 } }
+		set_variable = { which = ps_rec_res value = -50 }
+	}
+	else = {
+		set_variable = { which = ps_rec_res value = -75 }
+	}
+	set_variable = { which = ps_inc_str value = ps_inc_rare_crystals }
+	change_variable = { which = ps_inc_str value = ps_inc_exotic_gases }
+	change_variable = { which = ps_inc_str value = ps_inc_volatile_motes }
+	if = {
+		limit = { check_variable = { which = ps_inc_str value >= 20 } }
+		set_variable = { which = ps_rec_str value = 75 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_str value >= 10 } }
+		set_variable = { which = ps_rec_str value = 50 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_str value >= 5 } }
+		set_variable = { which = ps_rec_str value = 25 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_str value >= 2 } }
+		set_variable = { which = ps_rec_str value = 10 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_str value >= 0 } }
+		set_variable = { which = ps_rec_str value = 0 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_str value >= -2 } }
+		set_variable = { which = ps_rec_str value = -10 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_str value >= -5 } }
+		set_variable = { which = ps_rec_str value = -25 }
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_str value >= -10 } }
+		set_variable = { which = ps_rec_str value = -50 }
+	}
+	else = {
+		set_variable = { which = ps_rec_str value = -75 }
+	}
+}
+
+
+# Рекомендация специализации по сильным сторонам вассала (scope = вассал)
+ps_vm_recommend_spec = {
+	remove_country_flag = ps_rec_spec_strike
+	remove_country_flag = ps_rec_spec_trust
+	remove_country_flag = ps_rec_spec_exchange
+	remove_country_flag = ps_rec_spec_residency
+	remove_country_flag = ps_rec_spec_devotee
+	remove_country_flag = ps_rec_spec_assault
+	if = {
+		limit = { check_variable = { which = ps_fp value >= event_target:ps_vm_overlord.ps_fp_half } }
+		set_country_flag = ps_rec_spec_strike
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_res value >= 150 } }
+		set_country_flag = ps_rec_spec_residency
+	}
+	else_if = {
+		limit = {
+			check_variable = { which = ps_inc_minerals value >= 50 }
+			check_variable = { which = ps_inc_food value >= 20 }
+		}
+		set_country_flag = ps_rec_spec_trust
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_energy value >= 50 } }
+		set_country_flag = ps_rec_spec_exchange
+	}
+	else_if = {
+		limit = { check_variable = { which = ps_inc_unity value >= 20 } }
+		set_country_flag = ps_rec_spec_devotee
+	}
+	else = {
+		set_country_flag = ps_rec_spec_assault
+	}
+}
+
+# Подготовка меню (scope = сюзерен): выбранная ячейка и курсор системы
+ps_vm_prepare = {
+	save_event_target_as = ps_vm_overlord
+	random_playable_country = {
+		limit = {
+			is_subject = yes
+			overlord = { is_same_value = root }
+			has_country_flag = ps_cell_selected
+		}
+		save_event_target_as = ps_cell
+	}
+	if = {
+		limit = { NOT = { exists = event_target:ps_cell } }
+		random_playable_country = {
+			limit = {
+				is_subject = yes
+				overlord = { is_same_value = root }
+			}
+			set_country_flag = ps_cell_selected
+			save_event_target_as = ps_cell
+		}
+	}
+	random_system = {
+		limit = {
+			has_star_flag = ps_sys_cursor
+			exists = space_owner
+			space_owner = {
+				OR = {
+					is_same_value = root
+					AND = {
+						is_subject = yes
+						overlord = { is_same_value = root }
+					}
+				}
+			}
+		}
+		save_event_target_as = ps_sys
+		space_owner = { save_event_target_as = ps_sys_owner }
+	}
+	# цена: 25 влияния + 50 за каждую колонию владельца в системе
+	set_variable = { which = ps_sys_cost value = 25 }
+	set_variable = { which = ps_sys_colonies value = 0 }
+	if = {
+		limit = { exists = event_target:ps_sys }
+		event_target:ps_sys = {
+			every_system_planet = {
+				limit = {
+					exists = owner
+					owner = { is_same_value = event_target:ps_sys_owner }
+				}
+				root = {
+					change_variable = { which = ps_sys_cost value = 50 }
+					change_variable = { which = ps_sys_colonies value = 1 }
+				}
+			}
+		}
+	}
+}
+
+ps_vm_cursor_clear = {
+	every_system = {
+		limit = { has_star_flag = ps_sys_cursor }
+		remove_star_flag = ps_sys_cursor
+	}
+}
+
+# Курсор по системам страны OWNER (каждая система по разу за круг)
+ps_vm_cursor_in = {
+	ps_vm_cursor_clear = yes
+	$OWNER$ = {
+		if = {
+			limit = { NOT = { any_system_within_border = { NOT = { has_star_flag = $SEEN$ } } } }
+			every_system_within_border = { remove_star_flag = $SEEN$ }
+		}
+		random_system_within_border = {
+			limit = { NOT = { has_star_flag = $SEEN$ } }
+			set_star_flag = $SEEN$
+			set_star_flag = ps_sys_cursor
+		}
+	}
+}
+
+# Курсор по системам любых вассалов сюзерена (scope = сюзерен)
+ps_vm_cursor_vassals = {
+	ps_vm_cursor_clear = yes
+	if = {
+		limit = {
+			NOT = {
+				any_system = {
+					exists = space_owner
+					space_owner = { is_subject = yes overlord = { is_same_value = root } }
+					NOT = { has_star_flag = ps_sys_seen_v }
+				}
+			}
+		}
+		every_system = {
+			limit = { has_star_flag = ps_sys_seen_v }
+			remove_star_flag = ps_sys_seen_v
+		}
+	}
+	random_system = {
+		limit = {
+			exists = space_owner
+			space_owner = { is_subject = yes overlord = { is_same_value = root } }
+			NOT = { has_star_flag = ps_sys_seen_v }
+		}
+		set_star_flag = ps_sys_seen_v
+		set_star_flag = ps_sys_cursor
+	}
+}
+
+# Оплата передачи (scope = сюзерен)
+ps_vm_pay_transfer = {
+	add_resource = { influence = -25 }
+	event_target:ps_sys = {
+		every_system_planet = {
+			limit = {
+				exists = owner
+				owner = { is_same_value = event_target:ps_sys_owner }
+			}
+			root = { add_resource = { influence = -50 } }
+		}
+	}
+}
+
+# Передача системы (scope = система). Чужие объекты (станции кочевников и т. п.) не трогаются.
+ps_vm_transfer_system = {
+	every_system_planet = {
+		limit = {
+			exists = owner
+			owner = { is_same_value = $GIVER$ }
+		}
+		set_owner = $RECEIVER$
+		set_controller = $RECEIVER$
+	}
+	starbase = { set_owner = $RECEIVER$ }
+	set_timed_star_flag = { flag = ps_sys_transfer_cd days = 1800 }
+	remove_star_flag = ps_sys_cursor
+}
+
+# Изъятие у вассала: -10 лояльности (scope = сюзерен)
+ps_vm_loyalty_penalty = {
+	random_agreement = {
+		limit = {
+			owner = { is_same_value = root }
+			target = { is_same_value = $WHO$ }
+		}
+		add_loyalty = -10
+	}
+}
+
+# Следующая ячейка (scope = сюзерен)
+ps_vm_next_cell = {
+	every_subject = {
+		limit = { has_country_flag = ps_cell_selected }
+		remove_country_flag = ps_cell_selected
+		set_timed_country_flag = { flag = ps_cell_skip days = 1 }
+	}
+	random_playable_country = {
+		limit = {
+			is_subject = yes
+			overlord = { is_same_value = root }
+			NOT = { has_country_flag = ps_cell_skip }
+		}
+		set_country_flag = ps_cell_selected
+	}
+	# если вассал один — оставить его выбранным
+	if = {
+		limit = { NOT = { any_subject = { has_country_flag = ps_cell_selected } } }
+		random_playable_country = {
+			limit = {
+				is_subject = yes
+				overlord = { is_same_value = root }
+			}
+			set_country_flag = ps_cell_selected
+		}
+	}
+}
+
+# Лидеры и отстающие среди вассалов (scope = сюзерен)
+ps_vm_rank = {
+	every_subject = {
+		save_event_target_as = ps_vm_cmp
+		if = {
+			limit = { root = { NOT = { any_subject = { check_variable = { which = ps_fp value > event_target:ps_vm_cmp.ps_fp } } } } }
+			save_event_target_as = ps_vm_lead_fp
+		}
+		if = {
+			limit = { root = { NOT = { any_subject = { check_variable = { which = ps_fp value < event_target:ps_vm_cmp.ps_fp } } } } }
+			save_event_target_as = ps_vm_lag_fp
+		}
+	}
+	every_subject = {
+		save_event_target_as = ps_vm_cmp
+		if = {
+			limit = { root = { NOT = { any_subject = { check_variable = { which = ps_tech value > event_target:ps_vm_cmp.ps_tech } } } } }
+			save_event_target_as = ps_vm_lead_tech
+		}
+		if = {
+			limit = { root = { NOT = { any_subject = { check_variable = { which = ps_tech value < event_target:ps_vm_cmp.ps_tech } } } } }
+			save_event_target_as = ps_vm_lag_tech
+		}
+	}
+	every_subject = {
+		save_event_target_as = ps_vm_cmp
+		if = {
+			limit = { root = { NOT = { any_subject = { check_variable = { which = ps_nav value > event_target:ps_vm_cmp.ps_nav } } } } }
+			save_event_target_as = ps_vm_lead_nav
+		}
+		if = {
+			limit = { root = { NOT = { any_subject = { check_variable = { which = ps_nav value < event_target:ps_vm_cmp.ps_nav } } } } }
+			save_event_target_as = ps_vm_lag_nav
+		}
+	}
+	every_subject = {
+		save_event_target_as = ps_vm_cmp
+		if = {
+			limit = { root = { NOT = { any_subject = { check_variable = { which = ps_inc_basic value > event_target:ps_vm_cmp.ps_inc_basic } } } } }
+			save_event_target_as = ps_vm_lead_inc_basic
+		}
+		if = {
+			limit = { root = { NOT = { any_subject = { check_variable = { which = ps_inc_basic value < event_target:ps_vm_cmp.ps_inc_basic } } } } }
+			save_event_target_as = ps_vm_lag_inc_basic
+		}
+	}
+}
