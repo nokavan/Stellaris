@@ -82,3 +82,47 @@ civic_ps_shadow_overlord = {
 		intel_encryption_add = 1
 	}
 }
+
+########################################
+# ПРОИСХОЖДЕНИЕ: Ковчег Сопротивления (кочевники, DLC Nomads)
+# Формат сверен с vanilla origin_default_nomads / origin_heirs_of_the_khan
+########################################
+origin_ps_partisan_ark = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_ps_partisan_ark.dds"
+	picture = GFX_origin_ps_partisan_ark
+
+	non_colonizable_planet_class_neighbor = yes
+
+	playable = {
+		has_nomads_dlc = yes
+	}
+	ai_playable = { has_nomads_dlc = yes }
+
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+	}
+	possible = {
+		is_nomadic = yes
+		authority = {
+			value = auth_corporate
+			text = civic_tooltip_ps_requires_megacorp
+		}
+		civics = {
+			value = civic_criminal_heritage
+			text = civic_tooltip_ps_requires_criminal_heritage
+		}
+	}
+
+	description = "origin_tooltip_ps_partisan_ark_effects"
+	random_weight = { base = 1 }
+
+	modifier = {
+		arkship_action_speed = 0.15
+		intel_encryption_add = 1
+		envoys_add = 1
+		shipsize_military_arkship_tier_1_hull_mult = 0.10
+		shipsize_military_arkship_tier_2_hull_mult = 0.10
+		shipsize_military_arkship_tier_3_hull_mult = 0.10
+	}
+}

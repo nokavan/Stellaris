@@ -99,3 +99,44 @@ ps_branch_network_slots = {
 	icon_frame = 1
 	branch_office_owner_max_buildings_add = @ps_branch_slots
 }
+
+################################
+# Ковчег Сопротивления
+################################
+ps_ark_fortress = {
+	icon = @ps_icon
+	icon_frame = 1
+	shipsize_military_arkship_tier_1_hull_mult = 0.15
+	shipsize_military_arkship_tier_2_hull_mult = 0.15
+	shipsize_military_arkship_tier_3_hull_mult = 0.15
+	army_damage_mult = 0.10
+}
+ps_ark_market = {
+	icon = @ps_icon
+	icon_frame = 1
+	arkship_harvest_resources_produces_mult = 0.15
+	planet_jobs_energy_produces_mult = 0.10
+}
+ps_ark_ghost = {
+	icon = @ps_icon
+	icon_frame = 1
+	shipsize_military_arkship_tier_1_evasion_add = 10
+	shipsize_military_arkship_tier_2_evasion_add = 10
+	shipsize_military_arkship_tier_3_evasion_add = 10
+	intel_encryption_add = 2
+}
+# На чужой колонии рядом со стоянкой ковчега
+ps_ark_contraband = {
+	icon = @ps_icon
+	icon_frame = 3
+	planet_crime_add = 10
+	planet_stability_add = -3
+}
+# На союзной колонии рядом со стоянкой ковчега
+ps_ark_aid = {
+	icon = @ps_icon
+	icon_frame = 1
+	planet_stability_add = 5
+	planet_amenities_add = 3
+	army_defense_damage_mult = 0.15
+}

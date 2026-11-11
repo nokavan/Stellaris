@@ -17,4 +17,12 @@ spriteTypes = {
 		texturefile = "gfx/event_pictures/ps_evt_syndicate.dds"
 	}
 
+	spriteType = {
+		name = "GFX_origin_ps_partisan_ark"
+		texturefile = "gfx/interface/icons/origins/ps_origin_ark_picture.dds"
+	}
+	spriteType = {
+		name = "GFX_ps_evt_ark"
+		texturefile = "gfx/event_pictures/ps_evt_ark.dds"
+	}
 }

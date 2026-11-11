@@ -1,9 +1,18 @@
 # Синдикат Сопротивления — общие триггеры
 
+# Одно из партизанских происхождений (сюжетная цепочка)
+ps_has_partisan_origin = {
+	OR = {
+		has_origin = origin_ps_partisan_legacy
+		has_origin = origin_ps_partisan_ark
+	}
+}
+
 # Империя, ведущая партизанскую сеть (происхождение или цивик)
 ps_is_partisan_empire = {
 	OR = {
 		has_origin = origin_ps_partisan_legacy
+		has_origin = origin_ps_partisan_ark
 		has_valid_civic = civic_ps_partisan_network
 	}
 }
@@ -12,6 +21,7 @@ ps_is_partisan_empire = {
 ps_is_shadow_overlord = {
 	OR = {
 		has_origin = origin_ps_partisan_legacy
+		has_origin = origin_ps_partisan_ark
 		has_valid_civic = civic_ps_shadow_overlord
 	}
 }

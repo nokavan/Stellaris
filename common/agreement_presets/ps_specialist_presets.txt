@@ -93,7 +93,7 @@ preset_ps_strike = {
 				ratio >= 0.4
 			}
 		}
-		FROM = { is_nomadic = no }
+		# Сюзерен может быть кочевником (Ковчег Сопротивления), вассал — нет
 		is_nomadic = no
 	}
 }
@@ -190,7 +190,7 @@ preset_ps_assault = {
 				ratio >= 0.4
 			}
 		}
-		FROM = { is_nomadic = no }
+		# Сюзерен может быть кочевником (Ковчег Сопротивления), вассал — нет
 		is_nomadic = no
 	}
 }
@@ -287,7 +287,7 @@ preset_ps_raiders = {
 				ratio >= 0.4
 			}
 		}
-		FROM = { is_nomadic = no }
+		# Сюзерен может быть кочевником (Ковчег Сопротивления), вассал — нет
 		is_nomadic = no
 	}
 }
@@ -384,7 +384,7 @@ preset_ps_residency = {
 				ratio >= 0.4
 			}
 		}
-		FROM = { is_nomadic = no }
+		# Сюзерен может быть кочевником (Ковчег Сопротивления), вассал — нет
 		is_nomadic = no
 	}
 }
@@ -481,7 +481,7 @@ preset_ps_exchange = {
 				ratio >= 0.4
 			}
 		}
-		FROM = { is_nomadic = no }
+		# Сюзерен может быть кочевником (Ковчег Сопротивления), вассал — нет
 		is_nomadic = no
 	}
 }
@@ -578,7 +578,7 @@ preset_ps_trust = {
 				ratio >= 0.4
 			}
 		}
-		FROM = { is_nomadic = no }
+		# Сюзерен может быть кочевником (Ковчег Сопротивления), вассал — нет
 		is_nomadic = no
 	}
 }

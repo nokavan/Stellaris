@@ -105,6 +105,13 @@ def main():
     save_dds(icon("eye", 52), "gfx/interface/icons/technologies/tech_ps_ghost_networks.dds")
     save_dds(icon("star", 32), "gfx/interface/icons/modifiers/mod_ps_partisan.dds")
     save_dds(scene(450, 150, (170, 40, 30, 255), 2), "gfx/event_pictures/ps_evt_partisans.dds")
+    save_dds(icon("crown", 64), "gfx/interface/icons/origins/origin_ps_partisan_ark.dds")
+    ark = scene(450, 150, (90, 140, 200, 255), 6)
+    d = ImageDraw.Draw(ark)
+    d.polygon([(120, 70), (330, 55), (370, 70), (330, 85)], fill=(150, 150, 165, 255))  # силуэт ковчега
+    d.polygon(star_points(300, 70, 9, 4), fill=RED)
+    save_dds(ark, "gfx/interface/icons/origins/ps_origin_ark_picture.dds")
+    save_dds(ark, "gfx/event_pictures/ps_evt_ark.dds")
     save_dds(scene(450, 150, (60, 80, 140, 255), 3), "gfx/event_pictures/ps_evt_spy.dds")
     save_dds(scene(450, 150, (200, 160, 70, 255), 4), "gfx/event_pictures/ps_evt_syndicate.dds")
 

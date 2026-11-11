@@ -1,7 +1,8 @@
 #####################################################
 # Синдикат Сопротивления — события
 #
-#  ps.1  - 3   Сюжет: Наследие Сопротивления
+#  ps.1  - 5   Сюжет: Наследие Сопротивления (ps.5 — пролог Ковчега)
+#  ps.70 - 71  Ковчег: стоянка Сопротивления
 #  ps.14 - 15  Вассалы: присяга (прокачка) и каперские рейды
 #  ps.20 - 22  Агентурные операции (через шпионские сети)
 #  ps.30 - 32  Партизанская война (on_planet_occupied / on_planet_returned)
@@ -48,6 +49,39 @@ country_event = {
 	}
 }
 
+# Пролог для кочевников: Ковчег Сопротивления
+country_event = {
+	id = ps.5
+	title = ps.5.name
+	desc = ps.5.desc
+	picture = GFX_ps_evt_ark
+	is_triggered_only = yes
+
+	trigger = { has_origin = origin_ps_partisan_ark }
+
+	# Ковчег-крепость
+	option = {
+		name = ps.5.a
+		add_modifier = { modifier = ps_ark_fortress days = -1 }
+		set_country_flag = ps_code_honor
+		ai_chance = { factor = 1 }
+	}
+	# Ковчег-рынок
+	option = {
+		name = ps.5.b
+		add_modifier = { modifier = ps_ark_market days = -1 }
+		set_country_flag = ps_code_profit
+		ai_chance = { factor = 2 }
+	}
+	# Ковчег-призрак
+	option = {
+		name = ps.5.c
+		add_modifier = { modifier = ps_ark_ghost days = -1 }
+		set_country_flag = ps_code_silence
+		ai_chance = { factor = 1 }
+	}
+}
+
 # Глава 2: Тетрадь командира
 country_event = {
 	id = ps.2
@@ -56,7 +90,7 @@ country_event = {
 	picture = GFX_ps_evt_partisans
 	is_triggered_only = yes
 
-	trigger = { has_origin = origin_ps_partisan_legacy }
+	trigger = { ps_has_partisan_origin = yes }
 
 	immediate = { set_country_flag = ps_diary_found }
 
@@ -94,7 +128,7 @@ country_event = {
 	picture = GFX_ps_evt_syndicate
 	is_triggered_only = yes
 
-	trigger = { has_origin = origin_ps_partisan_legacy }
+	trigger = { ps_has_partisan_origin = yes }
 
 	immediate = { set_country_flag = ps_final_done }
 
@@ -477,7 +511,7 @@ country_event = {
 		# Глава 2
 		if = {
 			limit = {
-				has_origin = origin_ps_partisan_legacy
+				ps_has_partisan_origin = yes
 				years_passed > 15
 				NOT = { has_country_flag = ps_diary_found }
 			}
@@ -490,7 +524,7 @@ country_event = {
 		# Глава 3
 		if = {
 			limit = {
-				has_origin = origin_ps_partisan_legacy
+				ps_has_partisan_origin = yes
 				years_passed > 40
 				has_country_flag = ps_diary_found
 				NOT = { has_country_flag = ps_final_done }
@@ -533,5 +567,98 @@ planet_event = {
 
 	immediate = {
 		remove_modifier = ps_branch_network_slots
+	}
+}
+
+#####################################################
+# КОВЧЕГ: СТОЯНКА СОПРОТИВЛЕНИЯ
+# Пока ковчег стоит лагерем (is_system_locked), он работает
+# с чужими колониями в своей системе:
+#   союзникам  — помощь (ps_ark_aid),
+#   остальным  — контрабанда и подполье (ps_ark_contraband).
+# Модификаторы на 40 дней обновляются ежемесячно и сами
+# спадают, когда ковчег уходит.
+#####################################################
+
+country_event = {
+	id = ps.70
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_origin = origin_ps_partisan_ark
+		any_owned_fleet = {
+			is_arkship_fleet = yes
+			exists = solar_system
+			any_owned_ship = {
+				is_arkship_ship = yes
+				is_system_locked = yes
+			}
+		}
+	}
+
+	immediate = {
+		every_owned_fleet = {
+			limit = {
+				is_arkship_fleet = yes
+				exists = solar_system
+				any_owned_ship = {
+					is_arkship_ship = yes
+					is_system_locked = yes
+				}
+			}
+			solar_system = {
+				every_system_planet_colony = {
+					limit = {
+						exists = owner
+						owner = {
+							is_country_type = default
+							NOT = { is_same_value = root }
+						}
+					}
+					if = {
+						limit = {
+							owner = {
+								OR = {
+									is_in_federation_with = root
+									has_defensive_pact = root
+									is_friendly_to = root
+									AND = {
+										is_subject = yes
+										overlord = { is_same_value = root }
+									}
+								}
+							}
+						}
+						add_modifier = { modifier = ps_ark_aid days = 40 }
+						root = { add_resource = { unity = 15 influence = 1 } }
+					}
+					else = {
+						add_modifier = { modifier = ps_ark_contraband days = 40 }
+						root = { add_resource = { energy = 30 unity = 5 } }
+					}
+					if = {
+						limit = { NOT = { root = { has_country_flag = ps_ark_camp_notified } } }
+						save_event_target_as = ps_ark_planet
+						root = {
+							set_country_flag = ps_ark_camp_notified
+							country_event = { id = ps.71 }
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+country_event = {
+	id = ps.71
+	title = ps.71.name
+	desc = ps.71.desc
+	picture = GFX_ps_evt_ark
+	is_triggered_only = yes
+
+	option = {
+		name = ps.71.a
 	}
 }

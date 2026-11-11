@@ -4,6 +4,7 @@
 on_game_start_country = {
 	events = {
 		ps.1	# Пролог: Архив Сопротивления
+		ps.5	# Пролог: Ковчег Сопротивления
 	}
 }
 
@@ -40,5 +41,12 @@ on_branch_office_established = {
 on_branch_office_closed = {
 	events = {
 		ps.61	# убрать слоты
+	}
+}
+
+# this = country
+on_monthly_pulse_country = {
+	events = {
+		ps.70	# Ковчег: стоянка Сопротивления
 	}
 }

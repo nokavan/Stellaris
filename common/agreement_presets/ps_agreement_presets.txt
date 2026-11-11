@@ -72,6 +72,6 @@ preset_ps_partisan_franchise = {
 			has_civic = civic_inwards_perfection
 			has_origin = origin_nomadic_purger
 		}
-		from = { is_nomadic = no }
+		# Сюзерен может быть кочевником (Ковчег Сопротивления)
 	}
 }
