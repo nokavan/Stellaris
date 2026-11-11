@@ -1,0 +1,4666 @@
+# АВТОГЕНЕРАЦИЯ: tools/gen_waystation_modules.py — правьте генератор, а не этот файл
+# 100 модулей станций-стоянок Синдиката
+
+waystation_ps_raider_dock = {
+	icon = "GFX_waystation_ps_raider_dock"
+	section = "ANCHORAGE_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_naval_support_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	country_modifier = {
+		country_naval_cap_add = 2
+	}
+
+	orbit_modifier = {
+		ship_repair_hull_mult = 0.1
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_crew_barracks = {
+	icon = "GFX_waystation_ps_crew_barracks"
+	section = "ANCHORAGE_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_naval_support_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	ship_modifier = {
+		ship_starting_experience_add = 50
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_privateer_berth = {
+	icon = "GFX_waystation_ps_privateer_berth"
+	section = "ANCHORAGE_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_naval_support_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	country_modifier = {
+		country_naval_cap_add = 3
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_field_repair_yard = {
+	icon = "GFX_waystation_ps_field_repair_yard"
+	section = "SHIPYARD_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_naval_support_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	orbit_modifier = {
+		ship_repair_hull_mult = 0.25
+		ship_repair_armor_mult = 0.25
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_munitions_store = {
+	icon = "GFX_waystation_ps_munitions_store"
+	section = "MISSILE_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_naval_support_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	station_modifier = {
+		ship_fire_rate_mult = 0.1
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_ambush_beacon = {
+	icon = "GFX_waystation_ps_ambush_beacon"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_naval_support_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = { is_same_value = root.owner }
+		}
+		custom_tooltip = ps_waystation_own_tt
+		show_only_custom_tooltip = no
+		ship_speed_mult = 0.1
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_fleet_hangar = {
+	icon = "GFX_waystation_ps_fleet_hangar"
+	section = "SHIPYARD_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_naval_support_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	station_modifier = {
+		starbase_shipyard_capacity_add = 1
+		starbase_shipyard_build_speed_mult = 0.1
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_shadow_shipyard = {
+	icon = "GFX_waystation_ps_shadow_shipyard"
+	section = "SHIPYARD_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_naval_support_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	station_modifier = {
+		starbase_shipyard_build_speed_mult = 0.25
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_flagship_workshop = {
+	icon = "GFX_waystation_ps_flagship_workshop"
+	section = "SHIPYARD_STARBASE_SECTION"
+	construction_days = 360
+	starbase_type = waystation
+	category = sm_naval_support_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_ghost_networks
+		}
+	}
+
+	show_in_tech = "tech_ps_ghost_networks"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 300
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	ship_modifier = {
+		ship_starting_experience_add = 100
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_convoy_escort = {
+	icon = "GFX_waystation_ps_convoy_escort"
+	section = "ANCHORAGE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_naval_support_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	waystation_network_system_modifier = {
+		ship_repair_hull_mult = 0.05
+		ship_repair_armor_mult = 0.05
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_wolfpack_hq = {
+	icon = "GFX_waystation_ps_wolfpack_hq"
+	section = "HANGAR_STARBASE_SECTION"
+	construction_days = 360
+	starbase_type = waystation
+	category = sm_naval_support_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_ghost_networks
+		}
+	}
+
+	show_in_tech = "tech_ps_ghost_networks"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 300
+		}
+		upkeep = {
+			trade = 4
+		}
+	}
+
+	station_modifier = {
+		ship_fire_rate_mult = 0.05
+	}
+
+	country_modifier = {
+		country_naval_cap_add = 5
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_sensor_picket = {
+	icon = "GFX_waystation_ps_sensor_picket"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_naval_support_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	station_modifier = {
+		ship_sensor_range_add = 3
+		ship_cloaking_detection_add = 1
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_armor_plating = {
+	icon = "GFX_waystation_ps_armor_plating"
+	section = "BATTERY_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_defense_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	station_modifier = {
+		ship_armor_mult = 0.25
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_hull_bracing = {
+	icon = "GFX_waystation_ps_hull_bracing"
+	section = "BATTERY_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_defense_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	station_modifier = {
+		ship_hull_mult = 0.25
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_shield_capacitors = {
+	icon = "GFX_waystation_ps_shield_capacitors"
+	section = "BATTERY_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_defense_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	station_modifier = {
+		ship_shield_mult = 0.25
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_hardened_bulkheads = {
+	icon = "GFX_waystation_ps_hardened_bulkheads"
+	section = "BATTERY_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_defense_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	station_modifier = {
+		ship_shield_hardening_add = 0.1
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_point_defense_grid = {
+	icon = "GFX_waystation_ps_point_defense_grid"
+	section = "BATTERY_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_defense_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	station_modifier = {
+		ship_tracking_add = 10
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_long_range_guns = {
+	icon = "GFX_waystation_ps_long_range_guns"
+	section = "BATTERY_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_defense_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	station_modifier = {
+		ship_weapon_range_mult = 0.15
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_platform_dock = {
+	icon = "GFX_waystation_ps_platform_dock"
+	section = "BATTERY_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_defense_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	station_modifier = {
+		starbase_defense_platform_capacity_add = 2
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_heavy_platform_dock = {
+	icon = "GFX_waystation_ps_heavy_platform_dock"
+	section = "BATTERY_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_defense_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 200
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	station_modifier = {
+		starbase_defense_platform_capacity_add = 4
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_damage_dampers = {
+	icon = "GFX_waystation_ps_damage_dampers"
+	section = "BATTERY_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_defense_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	station_modifier = {
+		ship_damage_reduction_mult = 0.15
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_partisan_garrison = {
+	icon = "GFX_waystation_ps_partisan_garrison"
+	section = "BATTERY_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_defense_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	station_modifier = {
+		ship_fire_rate_mult = 0.1
+		ship_hull_mult = 0.1
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_fortress_core = {
+	icon = "GFX_waystation_ps_fortress_core"
+	section = "BATTERY_STARBASE_SECTION"
+	construction_days = 360
+	starbase_type = waystation
+	category = sm_defense_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_ghost_networks
+		}
+	}
+
+	show_in_tech = "tech_ps_ghost_networks"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 500
+		}
+		upkeep = {
+			trade = 4
+		}
+	}
+
+	station_modifier = {
+		ship_hull_mult = 0.5
+		ship_armor_mult = 0.5
+		ship_shield_mult = 0.5
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_energy_tap = {
+	icon = "GFX_waystation_ps_energy_tap"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	collected_system_resources = {
+		energy = {
+			always = yes
+		}
+	}
+
+	station_modifier = {
+		starbase_collected_system_energy_add = 3
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_mineral_scoop = {
+	icon = "GFX_waystation_ps_mineral_scoop"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	collected_system_resources = {
+		minerals = {
+			always = yes
+		}
+	}
+
+	station_modifier = {
+		starbase_collected_system_minerals_add = 3
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_food_trawler = {
+	icon = "GFX_waystation_ps_food_trawler"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	collected_system_resources = {
+		food = {
+			always = yes
+		}
+	}
+
+	station_modifier = {
+		starbase_collected_system_food_add = 3
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_trade_relay = {
+	icon = "GFX_waystation_ps_trade_relay"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	collected_system_resources = {
+		trade = {
+			always = yes
+		}
+	}
+
+	station_modifier = {
+		starbase_collected_system_trade_add = 3
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_physics_siphon = {
+	icon = "GFX_waystation_ps_physics_siphon"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	collected_system_resources = {
+		physics_research = {
+			always = yes
+		}
+	}
+
+	station_modifier = {
+		starbase_collected_system_physics_research_add = 3
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_society_siphon = {
+	icon = "GFX_waystation_ps_society_siphon"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	collected_system_resources = {
+		society_research = {
+			always = yes
+		}
+	}
+
+	station_modifier = {
+		starbase_collected_system_society_research_add = 3
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_engineering_siphon = {
+	icon = "GFX_waystation_ps_engineering_siphon"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	collected_system_resources = {
+		engineering_research = {
+			always = yes
+		}
+	}
+
+	station_modifier = {
+		starbase_collected_system_engineering_research_add = 3
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_unity_beacon = {
+	icon = "GFX_waystation_ps_unity_beacon"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	collected_system_resources = {
+		unity = {
+			always = yes
+		}
+	}
+
+	station_modifier = {
+		starbase_collected_system_unity_add = 3
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_gas_harvester = {
+	icon = "GFX_waystation_ps_gas_harvester"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 150
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	collected_system_resources = {
+		exotic_gases = {
+			always = yes
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_crystal_harvester = {
+	icon = "GFX_waystation_ps_crystal_harvester"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 150
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	collected_system_resources = {
+		rare_crystals = {
+			always = yes
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_mote_harvester = {
+	icon = "GFX_waystation_ps_mote_harvester"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 150
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	collected_system_resources = {
+		volatile_motes = {
+			always = yes
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_resource_hub = {
+	icon = "GFX_waystation_ps_resource_hub"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 200
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	station_modifier = {
+		starbase_collected_system_resources_mult = 0.15
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_big_silo = {
+	icon = "GFX_waystation_ps_big_silo"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	station_modifier = {
+		starbase_stockpile_capacity_add = 2000
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_collection_crews = {
+	icon = "GFX_waystation_ps_collection_crews"
+	section = "ANCHORAGE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	station_modifier = {
+		ship_starbase_stockpile_collection_rate_mult = 0.25
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_smuggler_exchange = {
+	icon = "GFX_waystation_ps_smuggler_exchange"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 150
+		}
+		upkeep = {
+			trade = 2
+		}
+		produces = {
+			trade = 3
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_black_bank = {
+	icon = "GFX_waystation_ps_black_bank"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 150
+		}
+		upkeep = {
+			trade = 2
+		}
+		produces = {
+			energy = 4
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_casino_ring = {
+	icon = "GFX_waystation_ps_casino_ring"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 150
+		}
+		upkeep = {
+			trade = 2
+		}
+		produces = {
+			energy = 3
+			unity = 1
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_loan_office = {
+	icon = "GFX_waystation_ps_loan_office"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 150
+		}
+		upkeep = {
+			trade = 2
+		}
+		produces = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_insurance_office = {
+	icon = "GFX_waystation_ps_insurance_office"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 150
+		}
+		upkeep = {
+			trade = 2
+		}
+		produces = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_contraband_vault = {
+	icon = "GFX_waystation_ps_contraband_vault"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 250
+		}
+		upkeep = {
+			trade = 3
+		}
+		produces = {
+			trade = 2
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_commodity_futures = {
+	icon = "GFX_waystation_ps_commodity_futures"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 250
+		}
+		upkeep = {
+			trade = 3
+		}
+		produces = {
+			trade = 4
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_tax_haven = {
+	icon = "GFX_waystation_ps_tax_haven"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 250
+		}
+		upkeep = {
+			trade = 3
+		}
+		produces = {
+			energy = 5
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_currency_mint = {
+	icon = "GFX_waystation_ps_currency_mint"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 360
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_ghost_networks
+		}
+	}
+
+	show_in_tech = "tech_ps_ghost_networks"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 350
+		}
+		upkeep = {
+			trade = 4
+		}
+		produces = {
+			energy = 6
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_offshore_node = {
+	icon = "GFX_waystation_ps_offshore_node"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 360
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_ghost_networks
+		}
+	}
+
+	show_in_tech = "tech_ps_ghost_networks"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 350
+		}
+		upkeep = {
+			trade = 4
+		}
+		produces = {
+			energy = 4
+			influence = 1
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_stolen_data_core = {
+	icon = "GFX_waystation_ps_stolen_data_core"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	country_modifier = {
+		country_physics_research_produces_mult = 0.01
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_xeno_lab = {
+	icon = "GFX_waystation_ps_xeno_lab"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	collected_system_resources = {
+		society_research = {
+			always = yes
+		}
+	}
+
+	station_modifier = {
+		starbase_collected_system_society_research_add = 5
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_engineering_testbed = {
+	icon = "GFX_waystation_ps_engineering_testbed"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	collected_system_resources = {
+		engineering_research = {
+			always = yes
+		}
+	}
+
+	station_modifier = {
+		starbase_collected_system_engineering_research_add = 5
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_physics_array = {
+	icon = "GFX_waystation_ps_physics_array"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	collected_system_resources = {
+		physics_research = {
+			always = yes
+		}
+	}
+
+	station_modifier = {
+		starbase_collected_system_physics_research_add = 5
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_archive_node = {
+	icon = "GFX_waystation_ps_archive_node"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	waystation_network_country_modifier = {
+		rare_tech_research_speed_mult = 0.05
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_research_exchange = {
+	icon = "GFX_waystation_ps_research_exchange"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	waystation_network_country_modifier = {
+		research_sharing_mult = 0.05
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_survey_beacon = {
+	icon = "GFX_waystation_ps_survey_beacon"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	station_modifier = {
+		science_ship_survey_speed = 0.2
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_deep_scanner = {
+	icon = "GFX_waystation_ps_deep_scanner"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	station_modifier = {
+		ship_sensor_range_add = 5
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_listening_array = {
+	icon = "GFX_waystation_ps_listening_array"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	country_modifier = {
+		spy_network_levels_add = 2
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_cipher_vault = {
+	icon = "GFX_waystation_ps_cipher_vault"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	empire_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	country_modifier = {
+		intel_encryption_add = 1
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_decrypt_array = {
+	icon = "GFX_waystation_ps_decrypt_array"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	empire_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	country_modifier = {
+		intel_decryption_add = 1
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_agent_dropoff = {
+	icon = "GFX_waystation_ps_agent_dropoff"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	country_modifier = {
+		spy_network_levels_add = 3
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_counter_surveillance = {
+	icon = "GFX_waystation_ps_counter_surveillance"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	station_modifier = {
+		ship_cloaking_detection_add = 2
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_informant_relay = {
+	icon = "GFX_waystation_ps_informant_relay"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	country_modifier = {
+		spy_network_daily_value_mult = 0.02
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_envoy_lounge = {
+	icon = "GFX_waystation_ps_envoy_lounge"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	empire_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	country_modifier = {
+		envoys_add = 1
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_sabotage_cache = {
+	icon = "GFX_waystation_ps_sabotage_cache"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+		produces = {
+			energy = 1
+		}
+	}
+
+	country_modifier = {
+		spy_network_levels_add = 2
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_dossier_bank = {
+	icon = "GFX_waystation_ps_dossier_bank"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 360
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_ghost_networks
+		}
+	}
+
+	show_in_tech = "tech_ps_ghost_networks"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 300
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	country_modifier = {
+		spy_network_levels_add = 4
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_ghost_relay = {
+	icon = "GFX_waystation_ps_ghost_relay"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 360
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_ghost_networks
+		}
+	}
+
+	show_in_tech = "tech_ps_ghost_networks"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 300
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	country_modifier = {
+		spy_network_daily_value_mult = 0.03
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_pirate_broadcast = {
+	icon = "GFX_waystation_ps_pirate_broadcast"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+		produces = {
+			unity = 2
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_memorial_beacon = {
+	icon = "GFX_waystation_ps_memorial_beacon"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+		produces = {
+			unity = 3
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_agitprop_relay = {
+	icon = "GFX_waystation_ps_agitprop_relay"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+		produces = {
+			unity = 1
+		}
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_rival = root.owner
+					is_at_war_with = root.owner
+					opinion_level = {
+						who = root.owner
+						level <= poor
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_enemy_tt
+		show_only_custom_tooltip = no
+		pop_government_ethic_attraction = -0.15
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_tradition_archive = {
+	icon = "GFX_waystation_ps_tradition_archive"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	waystation_network_country_modifier = {
+		tradition_cost_mult = -0.02
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_leaders_club = {
+	icon = "GFX_waystation_ps_leaders_club"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	waystation_network_country_modifier = {
+		leaders_cost_mult = -0.05
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_code_shrine = {
+	icon = "GFX_waystation_ps_code_shrine"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 360
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_ghost_networks
+		}
+	}
+
+	show_in_tech = "tech_ps_ghost_networks"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 300
+		}
+		upkeep = {
+			trade = 2
+		}
+		produces = {
+			unity = 4
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_resistance_radio = {
+	icon = "GFX_waystation_ps_resistance_radio"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+		produces = {
+			unity = 2
+		}
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = { is_same_value = root.owner }
+		}
+		custom_tooltip = ps_waystation_own_tt
+		show_only_custom_tooltip = no
+		planet_stability_add = 2
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_diaspora_center = {
+	icon = "GFX_waystation_ps_diaspora_center"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	country_modifier = {
+		species_leader_exp_gain = 0.05
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_ally_repair_dock = {
+	icon = "GFX_waystation_ps_ally_repair_dock"
+	section = "SHIPYARD_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_naval_support_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	orbit_modifier = {
+		ship_repair_hull_mult = 0.25
+		ship_repair_armor_mult = 0.25
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_ally_supply_depot = {
+	icon = "GFX_waystation_ps_ally_supply_depot"
+	section = "ANCHORAGE_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_naval_support_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_in_federation_with = root.owner
+					has_defensive_pact = root.owner
+					is_friendly_to = root.owner
+					is_overlord_to = root.owner
+					AND = {
+						is_subject = yes
+						overlord = { is_same_value = root.owner }
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_ally_tt
+		show_only_custom_tooltip = no
+		ship_speed_mult = 0.1
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_ally_relief_station = {
+	icon = "GFX_waystation_ps_ally_relief_station"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_in_federation_with = root.owner
+					has_defensive_pact = root.owner
+					is_friendly_to = root.owner
+					is_overlord_to = root.owner
+					AND = {
+						is_subject = yes
+						overlord = { is_same_value = root.owner }
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_ally_tt
+		show_only_custom_tooltip = no
+		planet_stability_add = 5
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_ally_trade_post = {
+	icon = "GFX_waystation_ps_ally_trade_post"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+		produces = {
+			trade = 1
+		}
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_in_federation_with = root.owner
+					has_defensive_pact = root.owner
+					is_friendly_to = root.owner
+					is_overlord_to = root.owner
+					AND = {
+						is_subject = yes
+						overlord = { is_same_value = root.owner }
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_ally_tt
+		show_only_custom_tooltip = no
+		station_gatherers_produces_mult = 0.1
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_ally_research_support = {
+	icon = "GFX_waystation_ps_ally_research_support"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_in_federation_with = root.owner
+					has_defensive_pact = root.owner
+					is_friendly_to = root.owner
+					is_overlord_to = root.owner
+					AND = {
+						is_subject = yes
+						overlord = { is_same_value = root.owner }
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_ally_tt
+		show_only_custom_tooltip = no
+		station_researchers_produces_mult = 0.15
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_ally_food_aid = {
+	icon = "GFX_waystation_ps_ally_food_aid"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_in_federation_with = root.owner
+					has_defensive_pact = root.owner
+					is_friendly_to = root.owner
+					is_overlord_to = root.owner
+					AND = {
+						is_subject = yes
+						overlord = { is_same_value = root.owner }
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_ally_tt
+		show_only_custom_tooltip = no
+		station_gatherers_food_produces_mult = 0.2
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_ally_energy_aid = {
+	icon = "GFX_waystation_ps_ally_energy_aid"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_in_federation_with = root.owner
+					has_defensive_pact = root.owner
+					is_friendly_to = root.owner
+					is_overlord_to = root.owner
+					AND = {
+						is_subject = yes
+						overlord = { is_same_value = root.owner }
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_ally_tt
+		show_only_custom_tooltip = no
+		station_gatherers_energy_produces_mult = 0.2
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_ally_mining_aid = {
+	icon = "GFX_waystation_ps_ally_mining_aid"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_in_federation_with = root.owner
+					has_defensive_pact = root.owner
+					is_friendly_to = root.owner
+					is_overlord_to = root.owner
+					AND = {
+						is_subject = yes
+						overlord = { is_same_value = root.owner }
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_ally_tt
+		show_only_custom_tooltip = no
+		station_gatherers_minerals_produces_mult = 0.2
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_ally_alloy_aid = {
+	icon = "GFX_waystation_ps_ally_alloy_aid"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_in_federation_with = root.owner
+					has_defensive_pact = root.owner
+					is_friendly_to = root.owner
+					is_overlord_to = root.owner
+					AND = {
+						is_subject = yes
+						overlord = { is_same_value = root.owner }
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_ally_tt
+		show_only_custom_tooltip = no
+		station_gatherers_alloys_produces_mult = 0.2
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_ally_goods_aid = {
+	icon = "GFX_waystation_ps_ally_goods_aid"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_in_federation_with = root.owner
+					has_defensive_pact = root.owner
+					is_friendly_to = root.owner
+					is_overlord_to = root.owner
+					AND = {
+						is_subject = yes
+						overlord = { is_same_value = root.owner }
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_ally_tt
+		show_only_custom_tooltip = no
+		station_gatherers_consumer_goods_produces_mult = 0.2
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_ally_strategic_aid = {
+	icon = "GFX_waystation_ps_ally_strategic_aid"
+	section = "REFINERY_STARBASE_SECTION"
+	construction_days = 360
+	starbase_type = waystation
+	category = sm_economy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_ghost_networks
+		}
+	}
+
+	show_in_tech = "tech_ps_ghost_networks"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 300
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_in_federation_with = root.owner
+					has_defensive_pact = root.owner
+					is_friendly_to = root.owner
+					is_overlord_to = root.owner
+					AND = {
+						is_subject = yes
+						overlord = { is_same_value = root.owner }
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_ally_tt
+		show_only_custom_tooltip = no
+		station_gatherers_exotic_gases_produces_mult = 0.15
+		station_gatherers_rare_crystals_produces_mult = 0.15
+		station_gatherers_volatile_motes_produces_mult = 0.15
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_ally_refugee_ship = {
+	icon = "GFX_waystation_ps_ally_refugee_ship"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_in_federation_with = root.owner
+					has_defensive_pact = root.owner
+					is_friendly_to = root.owner
+					is_overlord_to = root.owner
+					AND = {
+						is_subject = yes
+						overlord = { is_same_value = root.owner }
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_ally_tt
+		show_only_custom_tooltip = no
+		planet_resettlement_unemployed_mult = 0.25
+		planet_stability_add = 2
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_ally_shield_net = {
+	icon = "GFX_waystation_ps_ally_shield_net"
+	section = "BATTERY_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_defense_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	station_modifier = {
+		ship_shield_mult = 0.25
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_in_federation_with = root.owner
+					has_defensive_pact = root.owner
+					is_friendly_to = root.owner
+					is_overlord_to = root.owner
+					AND = {
+						is_subject = yes
+						overlord = { is_same_value = root.owner }
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_ally_tt
+		show_only_custom_tooltip = no
+		ship_speed_mult = 0.05
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_ally_training_school = {
+	icon = "GFX_waystation_ps_ally_training_school"
+	section = "ANCHORAGE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_naval_support_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	ship_modifier = {
+		ship_starting_experience_add = 50
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_in_federation_with = root.owner
+					has_defensive_pact = root.owner
+					is_friendly_to = root.owner
+					is_overlord_to = root.owner
+					AND = {
+						is_subject = yes
+						overlord = { is_same_value = root.owner }
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_ally_tt
+		show_only_custom_tooltip = no
+		planet_stability_add = 2
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_ally_network_pact = {
+	icon = "GFX_waystation_ps_ally_network_pact"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	waystation_network_country_modifier = {
+		commercial_pact_mult = 0.1
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_ally_research_pact = {
+	icon = "GFX_waystation_ps_ally_research_pact"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	waystation_network_country_modifier = {
+		research_sharing_mult = 0.1
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_ally_embassy_ship = {
+	icon = "GFX_waystation_ps_ally_embassy_ship"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	empire_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	country_modifier = {
+		envoys_add = 1
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_in_federation_with = root.owner
+					has_defensive_pact = root.owner
+					is_friendly_to = root.owner
+					is_overlord_to = root.owner
+					AND = {
+						is_subject = yes
+						overlord = { is_same_value = root.owner }
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_ally_tt
+		show_only_custom_tooltip = no
+		planet_stability_add = 3
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_ally_war_relief = {
+	icon = "GFX_waystation_ps_ally_war_relief"
+	section = "SHIPYARD_STARBASE_SECTION"
+	construction_days = 360
+	starbase_type = waystation
+	category = sm_naval_support_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_ghost_networks
+		}
+	}
+
+	show_in_tech = "tech_ps_ghost_networks"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 400
+		}
+		upkeep = {
+			trade = 4
+		}
+	}
+
+	orbit_modifier = {
+		ship_repair_hull_mult = 0.15
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_in_federation_with = root.owner
+					has_defensive_pact = root.owner
+					is_friendly_to = root.owner
+					is_overlord_to = root.owner
+					AND = {
+						is_subject = yes
+						overlord = { is_same_value = root.owner }
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_ally_tt
+		show_only_custom_tooltip = no
+		planet_stability_add = 5
+		station_gatherers_produces_mult = 0.1
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_ally_convoy_hub = {
+	icon = "GFX_waystation_ps_ally_convoy_hub"
+	section = "ANCHORAGE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_naval_support_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	orbit_modifier = {
+		ship_repair_hull_mult = 0.1
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_in_federation_with = root.owner
+					has_defensive_pact = root.owner
+					is_friendly_to = root.owner
+					is_overlord_to = root.owner
+					AND = {
+						is_subject = yes
+						overlord = { is_same_value = root.owner }
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_ally_tt
+		show_only_custom_tooltip = no
+		ship_speed_mult = 0.1
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_sub_jammer = {
+	icon = "GFX_waystation_ps_sub_jammer"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_piracy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_rival = root.owner
+					is_at_war_with = root.owner
+					opinion_level = {
+						who = root.owner
+						level <= poor
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_enemy_tt
+		show_only_custom_tooltip = no
+		station_gatherers_produces_mult = -0.15
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_sub_agitators = {
+	icon = "GFX_waystation_ps_sub_agitators"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 180
+	starbase_type = waystation
+	category = sm_piracy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+		}
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_rival = root.owner
+					is_at_war_with = root.owner
+					opinion_level = {
+						who = root.owner
+						level <= poor
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_enemy_tt
+		show_only_custom_tooltip = no
+		planet_stability_add = -5
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_sub_lab_raid = {
+	icon = "GFX_waystation_ps_sub_lab_raid"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_piracy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_rival = root.owner
+					is_at_war_with = root.owner
+					opinion_level = {
+						who = root.owner
+						level <= poor
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_enemy_tt
+		show_only_custom_tooltip = no
+		station_researchers_produces_mult = -0.2
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_sub_food_blockade = {
+	icon = "GFX_waystation_ps_sub_food_blockade"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_piracy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_rival = root.owner
+					is_at_war_with = root.owner
+					opinion_level = {
+						who = root.owner
+						level <= poor
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_enemy_tt
+		show_only_custom_tooltip = no
+		station_gatherers_food_produces_mult = -0.25
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_sub_energy_drain = {
+	icon = "GFX_waystation_ps_sub_energy_drain"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_piracy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+		produces = {
+			energy = 2
+		}
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_rival = root.owner
+					is_at_war_with = root.owner
+					opinion_level = {
+						who = root.owner
+						level <= poor
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_enemy_tt
+		show_only_custom_tooltip = no
+		station_gatherers_energy_produces_mult = -0.25
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_sub_mineral_theft = {
+	icon = "GFX_waystation_ps_sub_mineral_theft"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_piracy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+		produces = {
+			minerals = 2
+		}
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_rival = root.owner
+					is_at_war_with = root.owner
+					opinion_level = {
+						who = root.owner
+						level <= poor
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_enemy_tt
+		show_only_custom_tooltip = no
+		station_gatherers_minerals_produces_mult = -0.25
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_sub_ethic_subversion = {
+	icon = "GFX_waystation_ps_sub_ethic_subversion"
+	section = "SCIENCE_STARBASE_SECTION"
+	construction_days = 270
+	starbase_type = waystation
+	category = sm_piracy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	show_in_tech = "tech_ps_guerrilla_doctrine"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 100
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_rival = root.owner
+					is_at_war_with = root.owner
+					opinion_level = {
+						who = root.owner
+						level <= poor
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_enemy_tt
+		show_only_custom_tooltip = no
+		pop_government_ethic_attraction = -0.25
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}
+
+waystation_ps_sub_blockade_fleet = {
+	icon = "GFX_waystation_ps_sub_blockade_fleet"
+	section = "MISSILE_STARBASE_SECTION"
+	construction_days = 360
+	starbase_type = waystation
+	category = sm_piracy_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_ghost_networks
+		}
+	}
+
+	show_in_tech = "tech_ps_ghost_networks"
+	show_tech_unlock_if = {
+		ps_is_partisan_empire = yes
+		is_nomadic = yes
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 400
+		}
+		upkeep = {
+			trade = 4
+		}
+	}
+
+	triggered_system_modifier = {
+		potential = {
+			exists = owner
+			space_owner? = {
+				NOT = { is_same_value = root.owner }
+				OR = {
+					is_rival = root.owner
+					is_at_war_with = root.owner
+					opinion_level = {
+						who = root.owner
+						level <= poor
+					}
+				}
+			}
+		}
+		custom_tooltip = ps_waystation_enemy_tt
+		show_only_custom_tooltip = no
+		ship_speed_mult = -0.15
+		planet_stability_add = -3
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}

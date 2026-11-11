@@ -1,0 +1,402 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_waystation_ps_raider_dock"
+		texturefile = "gfx/interface/icons/waystation/ps_raider_dock.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_crew_barracks"
+		texturefile = "gfx/interface/icons/waystation/ps_crew_barracks.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_privateer_berth"
+		texturefile = "gfx/interface/icons/waystation/ps_privateer_berth.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_field_repair_yard"
+		texturefile = "gfx/interface/icons/waystation/ps_field_repair_yard.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_munitions_store"
+		texturefile = "gfx/interface/icons/waystation/ps_munitions_store.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_ambush_beacon"
+		texturefile = "gfx/interface/icons/waystation/ps_ambush_beacon.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_fleet_hangar"
+		texturefile = "gfx/interface/icons/waystation/ps_fleet_hangar.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_shadow_shipyard"
+		texturefile = "gfx/interface/icons/waystation/ps_shadow_shipyard.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_flagship_workshop"
+		texturefile = "gfx/interface/icons/waystation/ps_flagship_workshop.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_convoy_escort"
+		texturefile = "gfx/interface/icons/waystation/ps_convoy_escort.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_wolfpack_hq"
+		texturefile = "gfx/interface/icons/waystation/ps_wolfpack_hq.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_sensor_picket"
+		texturefile = "gfx/interface/icons/waystation/ps_sensor_picket.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_armor_plating"
+		texturefile = "gfx/interface/icons/waystation/ps_armor_plating.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_hull_bracing"
+		texturefile = "gfx/interface/icons/waystation/ps_hull_bracing.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_shield_capacitors"
+		texturefile = "gfx/interface/icons/waystation/ps_shield_capacitors.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_hardened_bulkheads"
+		texturefile = "gfx/interface/icons/waystation/ps_hardened_bulkheads.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_point_defense_grid"
+		texturefile = "gfx/interface/icons/waystation/ps_point_defense_grid.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_long_range_guns"
+		texturefile = "gfx/interface/icons/waystation/ps_long_range_guns.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_platform_dock"
+		texturefile = "gfx/interface/icons/waystation/ps_platform_dock.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_heavy_platform_dock"
+		texturefile = "gfx/interface/icons/waystation/ps_heavy_platform_dock.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_damage_dampers"
+		texturefile = "gfx/interface/icons/waystation/ps_damage_dampers.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_partisan_garrison"
+		texturefile = "gfx/interface/icons/waystation/ps_partisan_garrison.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_fortress_core"
+		texturefile = "gfx/interface/icons/waystation/ps_fortress_core.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_energy_tap"
+		texturefile = "gfx/interface/icons/waystation/ps_energy_tap.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_mineral_scoop"
+		texturefile = "gfx/interface/icons/waystation/ps_mineral_scoop.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_food_trawler"
+		texturefile = "gfx/interface/icons/waystation/ps_food_trawler.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_trade_relay"
+		texturefile = "gfx/interface/icons/waystation/ps_trade_relay.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_physics_siphon"
+		texturefile = "gfx/interface/icons/waystation/ps_physics_siphon.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_society_siphon"
+		texturefile = "gfx/interface/icons/waystation/ps_society_siphon.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_engineering_siphon"
+		texturefile = "gfx/interface/icons/waystation/ps_engineering_siphon.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_unity_beacon"
+		texturefile = "gfx/interface/icons/waystation/ps_unity_beacon.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_gas_harvester"
+		texturefile = "gfx/interface/icons/waystation/ps_gas_harvester.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_crystal_harvester"
+		texturefile = "gfx/interface/icons/waystation/ps_crystal_harvester.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_mote_harvester"
+		texturefile = "gfx/interface/icons/waystation/ps_mote_harvester.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_resource_hub"
+		texturefile = "gfx/interface/icons/waystation/ps_resource_hub.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_big_silo"
+		texturefile = "gfx/interface/icons/waystation/ps_big_silo.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_collection_crews"
+		texturefile = "gfx/interface/icons/waystation/ps_collection_crews.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_smuggler_exchange"
+		texturefile = "gfx/interface/icons/waystation/ps_smuggler_exchange.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_black_bank"
+		texturefile = "gfx/interface/icons/waystation/ps_black_bank.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_casino_ring"
+		texturefile = "gfx/interface/icons/waystation/ps_casino_ring.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_loan_office"
+		texturefile = "gfx/interface/icons/waystation/ps_loan_office.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_insurance_office"
+		texturefile = "gfx/interface/icons/waystation/ps_insurance_office.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_contraband_vault"
+		texturefile = "gfx/interface/icons/waystation/ps_contraband_vault.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_commodity_futures"
+		texturefile = "gfx/interface/icons/waystation/ps_commodity_futures.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_tax_haven"
+		texturefile = "gfx/interface/icons/waystation/ps_tax_haven.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_currency_mint"
+		texturefile = "gfx/interface/icons/waystation/ps_currency_mint.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_offshore_node"
+		texturefile = "gfx/interface/icons/waystation/ps_offshore_node.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_stolen_data_core"
+		texturefile = "gfx/interface/icons/waystation/ps_stolen_data_core.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_xeno_lab"
+		texturefile = "gfx/interface/icons/waystation/ps_xeno_lab.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_engineering_testbed"
+		texturefile = "gfx/interface/icons/waystation/ps_engineering_testbed.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_physics_array"
+		texturefile = "gfx/interface/icons/waystation/ps_physics_array.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_archive_node"
+		texturefile = "gfx/interface/icons/waystation/ps_archive_node.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_research_exchange"
+		texturefile = "gfx/interface/icons/waystation/ps_research_exchange.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_survey_beacon"
+		texturefile = "gfx/interface/icons/waystation/ps_survey_beacon.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_deep_scanner"
+		texturefile = "gfx/interface/icons/waystation/ps_deep_scanner.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_listening_array"
+		texturefile = "gfx/interface/icons/waystation/ps_listening_array.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_cipher_vault"
+		texturefile = "gfx/interface/icons/waystation/ps_cipher_vault.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_decrypt_array"
+		texturefile = "gfx/interface/icons/waystation/ps_decrypt_array.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_agent_dropoff"
+		texturefile = "gfx/interface/icons/waystation/ps_agent_dropoff.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_counter_surveillance"
+		texturefile = "gfx/interface/icons/waystation/ps_counter_surveillance.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_informant_relay"
+		texturefile = "gfx/interface/icons/waystation/ps_informant_relay.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_envoy_lounge"
+		texturefile = "gfx/interface/icons/waystation/ps_envoy_lounge.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_sabotage_cache"
+		texturefile = "gfx/interface/icons/waystation/ps_sabotage_cache.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_dossier_bank"
+		texturefile = "gfx/interface/icons/waystation/ps_dossier_bank.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_ghost_relay"
+		texturefile = "gfx/interface/icons/waystation/ps_ghost_relay.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_pirate_broadcast"
+		texturefile = "gfx/interface/icons/waystation/ps_pirate_broadcast.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_memorial_beacon"
+		texturefile = "gfx/interface/icons/waystation/ps_memorial_beacon.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_agitprop_relay"
+		texturefile = "gfx/interface/icons/waystation/ps_agitprop_relay.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_tradition_archive"
+		texturefile = "gfx/interface/icons/waystation/ps_tradition_archive.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_leaders_club"
+		texturefile = "gfx/interface/icons/waystation/ps_leaders_club.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_code_shrine"
+		texturefile = "gfx/interface/icons/waystation/ps_code_shrine.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_resistance_radio"
+		texturefile = "gfx/interface/icons/waystation/ps_resistance_radio.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_diaspora_center"
+		texturefile = "gfx/interface/icons/waystation/ps_diaspora_center.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_ally_repair_dock"
+		texturefile = "gfx/interface/icons/waystation/ps_ally_repair_dock.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_ally_supply_depot"
+		texturefile = "gfx/interface/icons/waystation/ps_ally_supply_depot.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_ally_relief_station"
+		texturefile = "gfx/interface/icons/waystation/ps_ally_relief_station.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_ally_trade_post"
+		texturefile = "gfx/interface/icons/waystation/ps_ally_trade_post.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_ally_research_support"
+		texturefile = "gfx/interface/icons/waystation/ps_ally_research_support.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_ally_food_aid"
+		texturefile = "gfx/interface/icons/waystation/ps_ally_food_aid.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_ally_energy_aid"
+		texturefile = "gfx/interface/icons/waystation/ps_ally_energy_aid.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_ally_mining_aid"
+		texturefile = "gfx/interface/icons/waystation/ps_ally_mining_aid.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_ally_alloy_aid"
+		texturefile = "gfx/interface/icons/waystation/ps_ally_alloy_aid.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_ally_goods_aid"
+		texturefile = "gfx/interface/icons/waystation/ps_ally_goods_aid.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_ally_strategic_aid"
+		texturefile = "gfx/interface/icons/waystation/ps_ally_strategic_aid.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_ally_refugee_ship"
+		texturefile = "gfx/interface/icons/waystation/ps_ally_refugee_ship.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_ally_shield_net"
+		texturefile = "gfx/interface/icons/waystation/ps_ally_shield_net.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_ally_training_school"
+		texturefile = "gfx/interface/icons/waystation/ps_ally_training_school.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_ally_network_pact"
+		texturefile = "gfx/interface/icons/waystation/ps_ally_network_pact.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_ally_research_pact"
+		texturefile = "gfx/interface/icons/waystation/ps_ally_research_pact.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_ally_embassy_ship"
+		texturefile = "gfx/interface/icons/waystation/ps_ally_embassy_ship.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_ally_war_relief"
+		texturefile = "gfx/interface/icons/waystation/ps_ally_war_relief.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_ally_convoy_hub"
+		texturefile = "gfx/interface/icons/waystation/ps_ally_convoy_hub.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_sub_jammer"
+		texturefile = "gfx/interface/icons/waystation/ps_sub_jammer.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_sub_agitators"
+		texturefile = "gfx/interface/icons/waystation/ps_sub_agitators.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_sub_lab_raid"
+		texturefile = "gfx/interface/icons/waystation/ps_sub_lab_raid.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_sub_food_blockade"
+		texturefile = "gfx/interface/icons/waystation/ps_sub_food_blockade.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_sub_energy_drain"
+		texturefile = "gfx/interface/icons/waystation/ps_sub_energy_drain.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_sub_mineral_theft"
+		texturefile = "gfx/interface/icons/waystation/ps_sub_mineral_theft.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_sub_ethic_subversion"
+		texturefile = "gfx/interface/icons/waystation/ps_sub_ethic_subversion.dds"
+	}
+	spriteType = {
+		name = "GFX_waystation_ps_sub_blockade_fleet"
+		texturefile = "gfx/interface/icons/waystation/ps_sub_blockade_fleet.dds"
+	}
+}
