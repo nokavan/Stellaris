@@ -3,7 +3,7 @@
 #
 #  ps.1  - 5   Сюжет: Наследие Сопротивления (ps.5 — пролог Ковчега)
 #  ps.70 - 71  Ковчег: стоянка Сопротивления
-#  ps.14 - 15  Вассалы: присяга (прокачка) и каперские рейды
+#  ps.14 - 17  Вассалы: присяга (прокачка), каперские рейды, слоты владений
 #  ps.20 - 22  Агентурные операции (через шпионские сети)
 #  ps.30 - 32  Партизанская война (on_planet_occupied / on_planet_returned)
 #  ps.50       Диспетчер (ежегодный)
@@ -181,6 +181,16 @@ country_event = {
 			}
 		}
 
+		# Ячейки Синдиката: 20 слотов владений у каждого вассала
+		every_playable_country = {
+			limit = {
+				is_subject = yes
+				overlord = { is_same_value = root }
+				NOT = { has_modifier = ps_cell_holding_slots }
+			}
+			add_modifier = { modifier = ps_cell_holding_slots days = -1 }
+		}
+
 		# Каперские рейды во время войны
 		if = {
 			limit = {
@@ -226,6 +236,41 @@ country_event = {
 				country_event = { id = ps.15 }
 			}
 		}
+	}
+}
+
+# on_becoming_subject: this = новый вассал, from = сюзерен — сразу выдать слоты владений
+country_event = {
+	id = ps.16
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		from = { ps_is_shadow_overlord = yes }
+		NOT = { has_modifier = ps_cell_holding_slots }
+	}
+
+	immediate = {
+		add_modifier = { modifier = ps_cell_holding_slots days = -1 }
+	}
+}
+
+# Ежегодно: снять слоты, если страна больше не вассал партизанского сюзерена
+country_event = {
+	id = ps.17
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_modifier = ps_cell_holding_slots
+		OR = {
+			is_subject = no
+			overlord = { NOT = { ps_is_shadow_overlord = yes } }
+		}
+	}
+
+	immediate = {
+		remove_modifier = ps_cell_holding_slots
 	}
 }
 

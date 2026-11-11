@@ -1,0 +1,381 @@
+#####################################################
+# Синдикат Сопротивления — диверсионные операции
+# Идеи взяты из мода Skullduggery и переработаны под Синдикат:
+# ликвидация лидера, вооружённый бунт (армии повстанцев на планете),
+# всеобщая забастовка, радио «Свобода», подрыв инфраструктуры, угон эскадры.
+#
+# Скоупы операций: this = операция, owner = мы, target = цель.
+# События планет в 4.x — carrier_event.
+#####################################################
+
+namespace = ps_sabotage
+
+#####################################################
+# Общий первый этап (наблюдение)
+#####################################################
+espionage_operation_event = {
+	id = ps_sabotage.5
+	title = ps_sabotage.5.name
+	desc = ps_sabotage.5.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_default
+	is_triggered_only = yes
+
+	option = { name = ps_sabotage.5.a }
+}
+
+#####################################################
+# ЛИКВИДАЦИЯ
+#####################################################
+espionage_operation_event = {
+	id = ps_sabotage.1
+	title = ps_sabotage.1.name
+	desc = ps_sabotage.1.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_default
+	is_triggered_only = yes
+
+	option = { name = ps_sabotage.1.a }
+}
+
+espionage_operation_event = {
+	id = ps_sabotage.2
+	title = ps_sabotage.2.name
+	desc = ps_sabotage.2.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	immediate = {
+		target = {
+			random_owned_leader = {
+				save_event_target_as = ps_liquidation_target
+			}
+		}
+	}
+
+	option = {
+		name = ps_sabotage.2.a
+		custom_tooltip = ps_sabotage.2.a.tooltip
+		if = {
+			limit = { exists = event_target:ps_liquidation_target }
+			event_target:ps_liquidation_target = {
+				kill_leader = { show_notification = yes }
+			}
+		}
+	}
+
+	after = {
+		destroy_espionage_operation = this
+	}
+}
+
+#####################################################
+# ВООРУЖЁННЫЙ БУНТ
+#####################################################
+espionage_operation_event = {
+	id = ps_sabotage.3
+	title = ps_sabotage.3.name
+	desc = ps_sabotage.3.desc
+	espionage_operation = yes
+	picture = GFX_evt_alien_propaganda
+	show_sound = event_default
+	is_triggered_only = yes
+
+	option = { name = ps_sabotage.3.a }
+}
+
+espionage_operation_event = {
+	id = ps_sabotage.4
+	title = ps_sabotage.4.name
+	desc = ps_sabotage.4.desc
+	espionage_operation = yes
+	picture = GFX_evt_alien_propaganda
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	immediate = {
+		owner = { save_event_target_as = ps_sponsor }
+		target = {
+			random_owned_planet = {
+				limit = {
+					is_capital = no
+					planet_stability < 50
+				}
+				save_event_target_as = ps_revolt_planet
+			}
+		}
+	}
+
+	option = {
+		name = ps_sabotage.4.a
+		custom_tooltip = ps_sabotage.4.a.tooltip
+		if = {
+			limit = { exists = event_target:ps_revolt_planet }
+			event_target:ps_revolt_planet = {
+				add_modifier = { modifier = ps_armed_underground days = 1080 }
+				# Пометить как поддержанную Синдикатом (см. ps_revolt.50)
+				carrier_event = { id = ps_revolt.50 }
+				# Высадить армии повстанцев
+				carrier_event = { id = ps_sabotage.50 }
+			}
+		}
+	}
+
+	after = {
+		destroy_espionage_operation = this
+	}
+}
+
+# Планета: создать скрытую страну повстанцев и её армии (идея Skullduggery «Riot»)
+carrier_event = {
+	id = ps_sabotage.50
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		create_country = {
+			name = "NAME_ps_partisan_insurgents"
+			species = root.owner_species
+			type = "ps_partisan_insurgents"
+			ignore_initial_colony_error = yes
+			name_list = "Prethoryn"
+			flag = {
+				background = {
+					category = "backgrounds"
+					file = "new_dawn.dds"
+				}
+				colors = {
+					"red"
+					"black"
+					"null"
+					"null"
+				}
+			}
+			effect = {
+				save_event_target_as = ps_insurgents
+			}
+		}
+		# Базово 3 отряда; больше, если на планете уже есть смута и подполье
+		while = {
+			count = 3
+			create_army = {
+				name = "NAME_ps_partisan_detachment"
+				owner = event_target:ps_insurgents
+				type = ps_partisan_insurgent
+			}
+		}
+		if = {
+			limit = { has_modifier = ps_sown_dissent }
+			while = {
+				count = 2
+				create_army = {
+					name = "NAME_ps_partisan_detachment"
+					owner = event_target:ps_insurgents
+					type = ps_partisan_insurgent
+				}
+			}
+		}
+		if = {
+			limit = { has_planet_flag = ps_partisan_sponsored }
+			create_army = {
+				name = "NAME_ps_partisan_detachment"
+				owner = event_target:ps_insurgents
+				type = ps_partisan_insurgent
+			}
+		}
+		owner = { country_event = { id = ps_sabotage.20 } }
+	}
+}
+
+#####################################################
+# ВСЕОБЩАЯ ЗАБАСТОВКА
+#####################################################
+espionage_operation_event = {
+	id = ps_sabotage.6
+	title = ps_sabotage.6.name
+	desc = ps_sabotage.6.desc
+	espionage_operation = yes
+	picture = GFX_evt_alien_propaganda
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	immediate = {
+		target = {
+			random_owned_planet = {
+				limit = { is_capital = no }
+				save_event_target_as = ps_strike_planet
+			}
+		}
+	}
+
+	option = {
+		name = ps_sabotage.6.a
+		if = {
+			limit = { exists = event_target:ps_strike_planet }
+			event_target:ps_strike_planet = {
+				add_modifier = { modifier = ps_general_strike days = 360 }
+			}
+		}
+	}
+
+	after = {
+		destroy_espionage_operation = this
+	}
+}
+
+#####################################################
+# РАДИО «СВОБОДА»
+#####################################################
+espionage_operation_event = {
+	id = ps_sabotage.7
+	title = ps_sabotage.7.name
+	desc = ps_sabotage.7.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	immediate = {
+		owner = { save_event_target_as = ps_sponsor }
+		target = {
+			random_owned_planet = {
+				save_event_target_as = ps_radio_planet
+			}
+		}
+	}
+
+	option = {
+		name = ps_sabotage.7.a
+		if = {
+			limit = { exists = event_target:ps_radio_planet }
+			event_target:ps_radio_planet = {
+				add_modifier = { modifier = ps_radio_liberty days = 1800 }
+				carrier_event = { id = ps_revolt.50 }
+			}
+		}
+	}
+
+	after = {
+		destroy_espionage_operation = this
+	}
+}
+
+#####################################################
+# ПОДРЫВ ИНФРАСТРУКТУРЫ
+#####################################################
+espionage_operation_event = {
+	id = ps_sabotage.8
+	title = ps_sabotage.8.name
+	desc = ps_sabotage.8.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	immediate = {
+		target = {
+			random_owned_planet = {
+				limit = { is_capital = no }
+				save_event_target_as = ps_blast_planet
+			}
+		}
+	}
+
+	option = {
+		name = ps_sabotage.8.a
+		if = {
+			limit = { exists = event_target:ps_blast_planet }
+			event_target:ps_blast_planet = {
+				add_planet_devastation = 20
+				add_modifier = { modifier = ps_infrastructure_damage days = 720 }
+			}
+		}
+	}
+
+	after = {
+		destroy_espionage_operation = this
+	}
+}
+
+#####################################################
+# УГОН ЭСКАДРЫ (идея Skullduggery «Hijack»)
+#####################################################
+espionage_operation_event = {
+	id = ps_sabotage.9
+	title = ps_sabotage.9.name
+	desc = ps_sabotage.9.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_default
+	is_triggered_only = yes
+
+	option = { name = ps_sabotage.9.a }
+}
+
+espionage_operation_event = {
+	id = ps_sabotage.10
+	title = ps_sabotage.10.name
+	desc = ps_sabotage.10.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	immediate = {
+		owner = { save_event_target_as = ps_sponsor }
+	}
+
+	option = {
+		name = ps_sabotage.10.a
+		custom_tooltip = ps_sabotage.10.a.tooltip
+		target = {
+			set_timed_country_flag = { flag = ps_recently_hijacked days = 1800 }
+			# Эскадра ~5% от вместимости флота цели; цель теряет сплавы на её «постройку»
+			create_fleet_from_naval_cap = 0.05
+			last_created_fleet = {
+				owner = {
+					add_resource = {
+						alloys = -10
+						mult = trigger:max_naval_capacity
+					}
+				}
+				set_owner = event_target:ps_sponsor
+			}
+			country_event = { id = ps_sabotage.21 }
+		}
+	}
+
+	after = {
+		destroy_espionage_operation = this
+	}
+}
+
+#####################################################
+# УВЕДОМЛЕНИЯ ЖЕРТВАМ
+#####################################################
+
+# Бунт на планете
+country_event = {
+	id = ps_sabotage.20
+	title = ps_sabotage.20.name
+	desc = ps_sabotage.20.desc
+	picture = GFX_evt_alien_propaganda
+	is_triggered_only = yes
+
+	option = { name = ps_sabotage.20.a }
+}
+
+# Эскадра угнана
+country_event = {
+	id = ps_sabotage.21
+	title = ps_sabotage.21.name
+	desc = ps_sabotage.21.desc
+	picture = GFX_evt_spy_network
+	is_triggered_only = yes
+
+	option = { name = ps_sabotage.21.a }
+}

@@ -185,3 +185,38 @@ ps_rebel_supplies = {
 	army_damage_mult = 0.25
 	country_naval_cap_add = 20
 }
+
+################################
+# Слоты владений (holdings) у вассалов партизанского сюзерена
+################################
+# Вешается на страну-вассала (события ps.16 / ps.14, снимается ps.17).
+# Ваниль: база 0, потолок 4 — потолок поднят до 20 в common/defines/ps_defines.txt.
+@ps_cell_slots = 20
+
+ps_cell_holding_slots = {
+	icon = @ps_icon
+	icon_frame = 1
+	subject_holding_target_max_buildings_add = @ps_cell_slots
+}
+
+################################
+# Диверсии (идеи Skullduggery)
+################################
+ps_general_strike = {
+	icon = @ps_icon
+	icon_frame = 3
+	planet_jobs_produces_mult = -0.50
+	planet_stability_add = -5
+}
+ps_radio_liberty = {
+	icon = @ps_icon
+	icon_frame = 3
+	pop_ethics_shift_speed_mult = 0.50
+	pop_government_ethic_attraction = -0.50
+}
+ps_infrastructure_damage = {
+	icon = @ps_icon
+	icon_frame = 3
+	planet_jobs_produces_mult = -0.15
+	planet_stability_add = -5
+}

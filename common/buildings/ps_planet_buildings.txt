@@ -1,0 +1,168 @@
+# Синдикат Сопротивления — здания на своих планетах
+# Идея из мода Skullduggery: бонусы растут вместе с числом соперников и контактов
+# (mult = owner.trigger:num_rivals / num_communications — как в vanilla).
+
+building_ps_resistance_hq = {
+	base_buildtime = @b2_time
+	category = government
+	empire_limit = 1
+
+	building_sets = {
+		government
+		unity
+		urban
+	}
+
+	potential = {
+		exists = owner
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	triggered_country_modifier = {
+		potential = { always = yes }
+		spy_network_levels_add = 2
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 1000
+			influence = 50
+		}
+		upkeep = {
+			energy = 5
+		}
+		# За каждого соперника
+		produces = {
+			unity = 10
+			influence = 0.5
+			mult = owner.trigger:num_rivals
+		}
+	}
+}
+
+building_ps_intelligence_ministry = {
+	base_buildtime = @b2_time
+	category = government
+	empire_limit = 1
+
+	building_sets = {
+		government
+		unity
+		urban
+	}
+
+	potential = {
+		exists = owner
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	# За каждую империю, с которой есть контакт
+	triggered_country_modifier = {
+		potential = { always = yes }
+		add_base_country_intel = 0.5
+		intel_gain_speed = 0.05
+		mult = owner.trigger:num_communications
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 1500
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+}
+
+building_ps_liberation_committee = {
+	base_buildtime = @b2_time
+	category = government
+	empire_limit = 1
+
+	building_sets = {
+		government
+		unity
+		urban
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_guerrilla_doctrine
+		}
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	triggered_country_modifier = {
+		potential = { always = yes }
+		spy_network_daily_value_mult = 0.10
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 1000
+			influence = 100
+		}
+		upkeep = {
+			energy = 4
+		}
+		produces = {
+			unity = 20
+		}
+	}
+}
+
+building_ps_partisan_academy = {
+	base_buildtime = @b2_time
+	category = army
+	empire_limit = 1
+
+	building_sets = {
+		fortress
+		urban
+	}
+
+	potential = {
+		exists = owner
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	destroy_trigger = {
+		exists = owner
+		owner = { NOT = { ps_is_partisan_empire = yes } }
+	}
+
+	triggered_country_modifier = {
+		potential = { always = yes }
+		army_starting_experience_add = 100
+		army_damage_mult = 0.10
+	}
+
+	resources = {
+		category = planet_buildings
+		cost = {
+			minerals = 1000
+		}
+		upkeep = {
+			energy = 4
+		}
+	}
+}

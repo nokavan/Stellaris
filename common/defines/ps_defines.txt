@@ -5,6 +5,10 @@
 # Поднимаем потолок до 20. Партизанские филиалы получают +20 модификатором
 # ps_branch_network_slots, так что у них ровно 20 слотов. Остальным империям
 # ваниль даёт меньше 4, поэтому для них ничего не меняется.
+# То же для владений сюзерена на планетах вассала (DLC Overlord):
+#   BASE_PLANET_SUBJECT_HOLDING_BUILDING_SLOTS = 0, MAX = 4 -> потолок 20.
+# Вассалы партизанского сюзерена получают +20 модификатором ps_cell_holding_slots.
 NGameplay = {
 	MAX_PLANET_BRANCH_OFFICE_BUILDING_SLOTS = 20
+	MAX_PLANET_SUBJECT_HOLDING_BUILDING_SLOTS = 20
 }

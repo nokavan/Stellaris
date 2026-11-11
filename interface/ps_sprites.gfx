@@ -25,4 +25,20 @@ spriteTypes = {
 		name = "GFX_ps_evt_ark"
 		texturefile = "gfx/event_pictures/ps_evt_ark.dds"
 	}
+	spriteType = {
+		name = "GFX_building_ps_resistance_hq"
+		texturefile = "gfx/interface/icons/buildings/building_ps_resistance_hq.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_intelligence_ministry"
+		texturefile = "gfx/interface/icons/buildings/building_ps_intelligence_ministry.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_liberation_committee"
+		texturefile = "gfx/interface/icons/buildings/building_ps_liberation_committee.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_partisan_academy"
+		texturefile = "gfx/interface/icons/buildings/building_ps_partisan_academy.dds"
+	}
 }

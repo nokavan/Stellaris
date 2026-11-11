@@ -312,3 +312,265 @@ operation_ps_supply_rebels = {
 	}
 	on_create = {}
 }
+
+#####################################################
+# ДИВЕРСИИ (идеи из мода Skullduggery, переработаны под Синдикат)
+#####################################################
+
+# Ликвидация: убить лидера цели
+operation_ps_liquidation = {
+	target = none
+	categories = { op_cat_sabotage op_cat_government }
+	picture = GFX_evt_spy_network
+	desc = operation_ps_liquidation_desc
+	stages = 2
+	spy_power_cost = 50
+	resources = {
+		category = operations
+		cost = { influence = 75 }
+		upkeep = { energy = 8 }
+	}
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 7
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_sabotage.1
+	}
+	stage = {
+		difficulty = 9
+		icon = GFX_espionage_chapter_icon_target
+		event = ps_sabotage.2
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}
+
+# Вооружённый бунт: армии повстанцев на чужой планете — настоящий наземный бой
+operation_ps_armed_uprising = {
+	target = none
+	categories = { op_cat_provocation op_cat_military }
+	picture = GFX_evt_alien_propaganda
+	desc = operation_ps_armed_uprising_desc
+	stages = 3
+	spy_power_cost = 60
+	resources = {
+		category = operations
+		cost = { influence = 120 }
+		upkeep = { energy = 10 }
+	}
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default is_gestalt = no }
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = operation_ps_no_restless_planet
+			target = {
+				any_owned_planet = {
+					is_capital = no
+					planet_stability < 50
+				}
+			}
+		}
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 7
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_sabotage.3
+	}
+	stage = {
+		difficulty = 8
+		icon = GFX_espionage_chapter_icon_document
+		event = ps_sabotage.3
+	}
+	stage = {
+		difficulty = 9
+		icon = GFX_espionage_chapter_icon_motion
+		event = ps_sabotage.4
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}
+
+# Всеобщая забастовка: экономика одной планеты встаёт на год
+operation_ps_general_strike = {
+	target = none
+	categories = { op_cat_sabotage op_cat_economy }
+	picture = GFX_evt_alien_propaganda
+	desc = operation_ps_general_strike_desc
+	stages = 2
+	spy_power_cost = 40
+	resources = {
+		category = operations
+		cost = { influence = 60 }
+		upkeep = { energy = 6 }
+	}
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default is_gestalt = no }
+	}
+	allow = {
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 6
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_sabotage.5
+	}
+	stage = {
+		difficulty = 7
+		icon = GFX_espionage_chapter_icon_motion
+		event = ps_sabotage.6
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}
+
+# Радио «Свобода»: пропаганда против правительства цели
+operation_ps_radio_liberty = {
+	target = none
+	categories = { op_cat_manipulation op_cat_government }
+	picture = GFX_evt_spy_network
+	desc = operation_ps_radio_liberty_desc
+	stages = 1
+	spy_power_cost = 30
+	resources = {
+		category = operations
+		cost = { influence = 45 }
+		upkeep = { energy = 5 }
+	}
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default is_gestalt = no }
+	}
+	allow = {
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 6
+		icon = GFX_espionage_chapter_icon_motion
+		event = ps_sabotage.7
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}
+
+# Подрыв инфраструктуры: разрушения на планете
+operation_ps_infrastructure_sabotage = {
+	target = none
+	categories = { op_cat_sabotage op_cat_military }
+	picture = GFX_evt_spy_network
+	desc = operation_ps_infrastructure_sabotage_desc
+	stages = 2
+	spy_power_cost = 50
+	resources = {
+		category = operations
+		cost = { influence = 75 }
+		upkeep = { energy = 8 }
+	}
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 7
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_sabotage.5
+	}
+	stage = {
+		difficulty = 8
+		icon = GFX_espionage_chapter_icon_target
+		event = ps_sabotage.8
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}
+
+# Угон эскадры: часть флота цели переходит к нам
+operation_ps_hijack_squadron = {
+	target = none
+	categories = { op_cat_subterfuge op_cat_military }
+	picture = GFX_evt_spy_network
+	desc = operation_ps_hijack_squadron_desc
+	stages = 3
+	spy_power_cost = 70
+	resources = {
+		category = operations
+		cost = { influence = 200 }
+		upkeep = { energy = 10 }
+	}
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = operation_ps_hijack_cooldown
+			target = { NOT = { has_country_flag = ps_recently_hijacked } }
+		}
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 8
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_sabotage.9
+	}
+	stage = {
+		difficulty = 9
+		icon = GFX_espionage_chapter_icon_document
+		event = ps_sabotage.9
+	}
+	stage = {
+		difficulty = 10
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_sabotage.10
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}

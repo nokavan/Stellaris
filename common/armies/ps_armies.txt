@@ -1,0 +1,15 @@
+# Синдикат Сопротивления — армии повстанцев (создаются только событием ps_sabotage.50)
+ps_partisan_insurgent = {
+	damage = 1.5
+	morale_damage = 1.5
+	collateral_damage = 2
+	health = 1.5
+	morale = 1.00
+	time = 90
+	has_species = no
+	defensive = yes
+	icon = GFX_army_type_assault
+	potential_country = {
+		always = no
+	}
+}

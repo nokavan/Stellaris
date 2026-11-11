@@ -11,7 +11,8 @@ on_game_start_country = {
 # this = country
 on_yearly_pulse_country = {
 	events = {
-		ps.14	# Сюзерен: Присяга Синдиката и каперские рейды
+		ps.14	# Сюзерен: Присяга Синдиката, каперские рейды, слоты владений
+		ps.17	# Снять слоты владений у бывших вассалов
 		ps.50	# Диспетчер сюжета и агентурных отчётов
 		ps_revolt.30	# Фонд освобождения: поддержка чужих восстаний
 	}
@@ -56,5 +57,12 @@ on_monthly_pulse_country = {
 on_rebels_take_planet = {
 	events = {
 		ps_revolt.40	# Восставшие победили: бафф и награда покровителям
+	}
+}
+
+# this = subject, from = overlord
+on_becoming_subject = {
+	events = {
+		ps.16	# 20 слотов владений у вассала партизанского сюзерена
 	}
 }
