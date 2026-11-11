@@ -236,6 +236,7 @@ python3 tools/gen_waystation_modules.py
 
 | Мод | Что даёт партизанам |
 |---|---|
+| **Gigastructural Engineering & More (4.5)** | гигаструктуры, кризисы, мегасооружения. Совместим без патча: файлов, ключей, событий и defines, общих с «Синдикатом», нет (проверено) |
 | **[4.5] XHK World Ark** + патч `xhk_worldark_patch` | Мировой ковчег как «Ковчег Сопротивления» со всеми тремя специализациями |
 | Wawunga's Arkship Class Districts | районы ковчега |
 | Nomad Can Build Megastructures — Mod Compatible Edition | мегасооружения для кочевников (берите именно Compatible Edition, не обе версии) |
