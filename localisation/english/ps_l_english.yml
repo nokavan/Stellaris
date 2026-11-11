@@ -401,3 +401,15 @@
  ps_cell_tribute_demanded_desc:0 "Our overlord took part of our stockpiles."
  ps_cell_land_grant:0 "Land Grant"
  ps_cell_land_grant_desc:0 "Our overlord gave us a planet."
+
+ # ===== Ark: seed a cell =====
+ decision_ps_ark_seed_cell:0 "Seed a Cell"
+ decision_ps_ark_seed_cell_desc:0 "Part of the ark's crew stays on a free planet in the system where the ark is encamped and founds a new state, a subject of the Syndicate."
+ decision_ps_ark_seed_cell_tooltip:0 "A §Ynew state§! of our species appears on a free habitable planet in the encamped ark's system. It becomes our subject (§YClient Regime§!), gets starting resources, §GLiberated World§! for 20 years and §G+200§! opinion of us.\nCan be repeated after 5 years."
+ decision_ps_ark_seed_cooldown:0 "The ark recently seeded a cell (once per 5 years)."
+ decision_ps_ark_no_camp_world:0 "The ark must be encamped in an unowned or our own system with a §Yfree habitable planet§!."
+ ps_ark.11.name:0 "A New Cell"
+ ps_ark.11.desc:0 "The ark's airlocks opened above §Y[ps_cell_world.GetName]§!. Volunteers, families, instructors and supplies for the first years. A new state was born here, §Y[ps_new_cell.GetName]§!, and its first council swore loyalty to the Syndicate.\n\nThe ark moves on. The cell remains."
+ ps_ark.11.a:0 "The network grows."
+ ps_ark_cell_founding:0 "Ark Cell"
+ ps_ark_cell_founding_desc:0 "A young colony founded by the crew of a Syndicate ark."

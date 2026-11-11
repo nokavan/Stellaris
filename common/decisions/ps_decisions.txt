@@ -64,3 +64,42 @@ decision_ps_transfer_planet = {
 		}
 	}
 }
+
+# КОВЧЕГ: высадить ячейку — основать новое государство-вассала на свободной
+# планете в системе, где стоит лагерем наш ковчег.
+decision_ps_ark_seed_cell = {
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+		cost = {
+			alloys = 1000
+			food = 500
+			influence = 150
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = { has_origin = origin_ps_partisan_ark }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = decision_ps_ark_seed_cooldown
+			owner = { NOT = { has_country_flag = ps_ark_seed_cooldown } }
+		}
+		custom_tooltip = {
+			fail_text = decision_ps_ark_no_camp_world
+			owner = { ps_ark_has_seedable_world = yes }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_ps_ark_seed_cell_tooltip
+		hidden_effect = {
+			owner = { set_timed_country_flag = { flag = ps_ark_seed_cooldown days = 1800 } }
+			carrier_event = { id = ps_ark.10 }
+		}
+	}
+}

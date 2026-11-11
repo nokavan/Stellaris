@@ -77,3 +77,27 @@ ps_has_selected_cell = {
 		overlord = { is_same_value = prevprev }
 	}
 }
+
+# ---- Ковчег: высадка ячейки ----
+# Есть стоящий лагерем ковчег, а в его системе — свободная пригодная планета,
+# и система ничья или наша. Scope = страна.
+ps_ark_has_seedable_world = {
+	any_owned_fleet = {
+		is_arkship_fleet = yes
+		exists = solar_system
+		any_owned_ship = {
+			is_arkship_ship = yes
+			is_system_locked = yes
+		}
+		solar_system = {
+			OR = {
+				NOT = { exists = space_owner }
+				space_owner = { is_same_value = prevprev.owner }
+			}
+			any_system_planet = {
+				is_colonizable = yes
+				NOT = { exists = owner }
+			}
+		}
+	}
+}

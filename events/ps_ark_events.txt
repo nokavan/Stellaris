@@ -1,0 +1,102 @@
+#####################################################
+# Синдикат Сопротивления — ковчег высаживает ячейку
+# Решение decision_ps_ark_seed_cell (на столице кочевника) -> ps_ark.10
+#####################################################
+
+namespace = ps_ark
+
+# scope = столица (колония ковчега); root.owner = Синдикат
+carrier_event = {
+	id = ps_ark.10
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		owner = { save_event_target_as = ps_ark_owner }
+
+		# 1. Найти свободную пригодную планету в системе стоящего ковчега
+		owner = {
+			random_owned_fleet = {
+				limit = {
+					is_arkship_fleet = yes
+					exists = solar_system
+					any_owned_ship = {
+						is_arkship_ship = yes
+						is_system_locked = yes
+					}
+					solar_system = {
+						any_system_planet = {
+							is_colonizable = yes
+							NOT = { exists = owner }
+						}
+					}
+				}
+				solar_system = {
+					random_system_planet = {
+						limit = {
+							is_colonizable = yes
+							NOT = { exists = owner }
+						}
+						save_event_target_as = ps_cell_world
+					}
+				}
+			}
+		}
+
+		if = {
+			limit = { exists = event_target:ps_cell_world }
+
+			# 2. Новое государство — потомки экипажа ковчега
+			create_country = {
+				name = random
+				type = default
+				species = root.owner_species
+				authority = random
+				civics = random
+				ethos = random
+				ignore_initial_colony_error = yes
+				effect = {
+					save_event_target_as = ps_new_cell
+					set_country_flag = ps_ark_cell
+					set_country_flag = ps_partisan_rebel_state
+					set_timed_country_flag = { flag = ps_puppet_council days = 3600 }
+				}
+			}
+
+			# 3. Колония: планета и первые поселенцы с ковчега
+			event_target:ps_cell_world = {
+				set_owner = event_target:ps_new_cell
+				set_controller = event_target:ps_new_cell
+				while = {
+					count = 3
+					create_pop_group = {
+						species = root.owner_species
+					}
+				}
+				add_modifier = { modifier = ps_ark_cell_founding days = 3600 }
+			}
+
+			# 4. Вассалитет, ресурсы и благодарность
+			event_target:ps_new_cell = {
+				ps_make_cell_subject = { OVERLORD = event_target:ps_ark_owner }
+				add_resource = { energy = 1000 minerals = 1000 food = 500 alloys = 300 }
+				add_opinion_modifier = { who = event_target:ps_ark_owner modifier = opinion_ps_liberators }
+				add_modifier = { modifier = ps_liberated_state days = 7200 }
+			}
+
+			owner = { country_event = { id = ps_ark.11 } }
+		}
+	}
+}
+
+country_event = {
+	id = ps_ark.11
+	title = ps_ark.11.name
+	desc = ps_ark.11.desc
+	picture = GFX_ps_evt_ark
+	is_triggered_only = yes
+
+	option = {
+		name = ps_ark.11.a
+	}
+}
