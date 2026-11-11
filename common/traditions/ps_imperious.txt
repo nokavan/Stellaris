@@ -1,0 +1,69 @@
+# «Имперская» традиция: командование вассалами (см. tradition_categories/ps_imperious.txt)
+
+tr_ps_imperious_adopt = {
+	unlocks_agenda = agenda_ps_vassal_legates
+	modifier = {
+		monthly_loyalty_from_subjects = 1
+	}
+	on_enabled = {
+		add_resource = { influence = 200 }
+	}
+}
+
+tr_ps_imperious_finish = {
+	modifier = {
+		ascension_perks_add = 1
+		country_subject_acceptance_add = 25
+	}
+}
+
+# Сеть данников: вассалы лояльнее и легче соглашаются на вассалитет
+tr_ps_imperious_tributary_networks = {
+	modifier = {
+		monthly_loyalty_from_subjects = 1
+		country_subject_acceptance_add = 10
+	}
+}
+
+# Имперская администрация: открывает политику «Курс сюзерена»
+tr_ps_imperious_imperial_administration = {
+	possible = {
+		has_tradition = tr_ps_imperious_tributary_networks
+	}
+	on_enabled = {
+		custom_tooltip = tr_ps_imperious_imperial_administration_effects
+	}
+}
+
+# Имперский указ: открывает указы вассалам (эдикты «Указ: ...»)
+tr_ps_imperious_imperial_decree = {
+	possible = {
+		has_tradition = tr_ps_imperious_tributary_networks
+	}
+	on_enabled = {
+		custom_tooltip = tr_ps_imperious_imperial_decree_effects
+	}
+}
+
+# Дипломатическое превосходство
+tr_ps_imperious_diplomatic_supremacy = {
+	possible = {
+		has_tradition = tr_ps_imperious_imperial_administration
+	}
+	modifier = {
+		diplo_weight_mult = 0.10
+		country_subject_acceptance_add = 15
+		envoys_add = 1
+	}
+}
+
+# Верховная власть: флоты вассалов усиливают наш флот
+tr_ps_imperious_supreme_authority = {
+	possible = {
+		has_tradition = tr_ps_imperious_diplomatic_supremacy
+	}
+	modifier = {
+		country_naval_capacity_contribution_from_subjects_mult = 0.15
+		monthly_loyalty_from_subjects = 1
+	}
+}

@@ -1,0 +1,159 @@
+# «Имперские указы» вассалам — открываются традицией «Имперский указ».
+# Идея — указы (decrees) удалённого дерева Imperious мода 2945942583; код написан заново под 4.x.
+
+edict_ps_decree_tribute = {
+	length = 3600
+	icon = "GFX_edict_type_time"
+
+	resources = {
+		category = edicts
+		cost = {
+			influence = 50
+		}
+	}
+
+	potential = {
+		has_tradition = tr_ps_imperious_imperial_decree
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_decree_requires_subjects
+			any_playable_country = {
+				is_subject = yes
+				overlord = { is_same_value = root }
+			}
+		}
+	}
+
+	effect = {
+		custom_tooltip = edict_ps_decree_tribute_tooltip
+		hidden_effect = {
+		every_playable_country = {
+			limit = {
+				is_subject = yes
+				overlord = { is_same_value = root }
+			}
+			if = {
+				limit = { resource_stockpile_compare = { resource = energy value >= 600 } }
+				add_resource = { energy = -300 }
+				root = { add_resource = { energy = 300 } }
+			}
+			if = {
+				limit = { resource_stockpile_compare = { resource = minerals value >= 600 } }
+				add_resource = { minerals = -300 }
+				root = { add_resource = { minerals = 300 } }
+			}
+			if = {
+				limit = { resource_stockpile_compare = { resource = food value >= 400 } }
+				add_resource = { food = -200 }
+				root = { add_resource = { food = 200 } }
+			}
+			if = {
+				limit = { resource_stockpile_compare = { resource = consumer_goods value >= 200 } }
+				add_resource = { consumer_goods = -100 }
+				root = { add_resource = { consumer_goods = 100 } }
+			}
+			if = {
+				limit = { resource_stockpile_compare = { resource = alloys value >= 200 } }
+				add_resource = { alloys = -100 }
+				root = { add_resource = { alloys = 100 } }
+			}
+		}
+		}
+	}
+
+	ai_weight = {
+		weight = 10
+	}
+}
+
+edict_ps_decree_mobilization = {
+	length = 3600
+	icon = "GFX_edict_type_time"
+
+	resources = {
+		category = edicts
+		cost = {
+			influence = 75
+		}
+	}
+
+	potential = {
+		has_tradition = tr_ps_imperious_imperial_decree
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_decree_requires_subjects
+			any_playable_country = {
+				is_subject = yes
+				overlord = { is_same_value = root }
+			}
+		}
+	}
+
+	effect = {
+		custom_tooltip = edict_ps_decree_mobilization_tooltip
+		hidden_effect = {
+		every_playable_country = {
+			limit = {
+				is_subject = yes
+				overlord = { is_same_value = root }
+			}
+			add_modifier = { modifier = ps_decree_mobilized days = 3600 }
+		}
+		}
+	}
+
+	ai_weight = {
+		weight = 5
+	}
+}
+
+edict_ps_decree_development = {
+	length = 3600
+	icon = "GFX_edict_type_time"
+
+	resources = {
+		category = edicts
+		cost = {
+			influence = 50
+			energy = 500
+		}
+	}
+
+	potential = {
+		has_tradition = tr_ps_imperious_imperial_decree
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_decree_requires_subjects
+			any_playable_country = {
+				is_subject = yes
+				overlord = { is_same_value = root }
+			}
+		}
+	}
+
+	effect = {
+		custom_tooltip = edict_ps_decree_development_tooltip
+		hidden_effect = {
+		every_playable_country = {
+			limit = {
+				is_subject = yes
+				overlord = { is_same_value = root }
+			}
+			every_owned_planet = {
+				add_modifier = { modifier = ps_decree_development days = 3600 }
+			}
+		}
+		}
+	}
+
+	ai_weight = {
+		weight = 5
+	}
+}
+

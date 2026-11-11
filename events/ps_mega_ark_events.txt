@@ -1,0 +1,37 @@
+# Встроено из мода «Mega Arkships» (с разрешения автора), ключи переименованы с префиксом ps_.
+namespace = ps_megaark
+
+# Reconciliation event: keeps every player arkship world boosted and cleans up stale boosts.
+# Fired at game start and monthly so it covers existing saves and arkships created, upgraded,
+# captured, or lost after the mod is enabled, without depending on any specific creation
+# mechanism (patch resistant). The leading is_ai = no guard makes the whole mod player only:
+# AI empires never receive the boost, never run the colony scan, and a boost that follows an
+# arkship handed from a player to an AI is deliberately left in place, since reconciling it would
+# cost a monthly scan of every AI empire for a cosmetic edge case. For human empires the trigger
+# still fires for nomadic empires, for any owner of an arkship world (so the boost reaches an
+# arkship world held by a non-nomadic human empire, as modded ship-planet arkships allow), and
+# for any human empire still holding the modifier so cleanup reaches it; is_nomadic short-circuits
+# the common case cheaply. Scope: country
+country_event = {
+	id = ps_megaark.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		is_ai = no
+		OR = {
+			is_nomadic = yes
+			any_owned_colony = {
+				OR = {
+					ps_is_mega_ark_planet = yes
+					has_modifier = ps_mega_ark_boost
+				}
+			}
+		}
+	}
+
+	immediate = {
+		ps_mega_ark_apply_boost = yes
+		ps_mega_ark_cleanup_boost = yes
+	}
+}

@@ -1,0 +1,10 @@
+# Встроено из мода «Mega Arkships» (с разрешения автора), ключи переименованы с префиксом ps_.
+# Permanent planet modifier applied to every arkship (pc_ark) world.
+# Uses relative multipliers only, so it tracks vanilla values across updates.
+ps_mega_ark_boost = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_arkship_harvested_resources.dds"
+
+	planet_max_districts_mult = @ps_mega_ark_district_mult
+	planet_jobs_energy_produces_mult = @ps_mega_ark_energy_produces_mult
+	planet_jobs_minerals_produces_mult = @ps_mega_ark_minerals_produces_mult
+}

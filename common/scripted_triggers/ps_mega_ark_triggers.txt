@@ -1,0 +1,14 @@
+# Встроено из мода «Mega Arkships» (с разрешения автора), ключи переименованы с префиксом ps_.
+# Dynamic arkship-planet detector, centralized here so every detection site stays DRY and also
+# recognizes modded ship-planet arkships (e.g. SRA's pc_SRA_Spear_Of_Galaxy_Zenith_Ark), not only vanilla pc_ark.
+# is_planet_class = pc_ark is the cheap fast path for vanilla arkships (and keeps them detected even if a hull
+# is ever orphaned from its ship). carrier_is_type = ship is the generic, class-agnostic catch: it is the vanilla
+# trigger for "this colony is carried by a ship", which is true for every arkship and false for normal planets,
+# habitats, and ringworlds, so modded ship-planet arkships are caught with no scope change and no false positives
+# Planet scope
+ps_is_mega_ark_planet = {
+	OR = {
+		is_planet_class = pc_ark
+		carrier_is_type = ship
+	}
+}

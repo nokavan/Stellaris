@@ -1,0 +1,77 @@
+# «Курс сюзерена» — политика из «Имперской» традиции (идея — дерево Imperious мода 2945942583)
+ps_overlord_stance = {
+	potential = {
+		has_tradition = tr_ps_imperious_imperial_administration
+	}
+
+	allow = {
+	}
+
+	option = {
+		name = "ps_overlord_stance_equitable"
+
+		policy_flags = {
+			ps_overlord_stance_equitable
+		}
+
+		modifier = {
+		}
+
+		ai_weight = {
+			weight = 10
+		}
+	}
+
+	option = {
+		name = "ps_overlord_stance_benevolence"
+
+		policy_flags = {
+			ps_overlord_stance_benevolence
+		}
+
+		modifier = {
+			all_technology_research_speed = -0.05
+			diplo_weight_mult = 0.10
+			monthly_loyalty_from_subjects = 2
+		}
+
+		ai_weight = {
+			weight = 10
+		}
+	}
+
+	option = {
+		name = "ps_overlord_stance_acculturation"
+
+		policy_flags = {
+			ps_overlord_stance_acculturation
+		}
+
+		modifier = {
+			planet_jobs_unity_produces_mult = -0.05
+			country_subject_acceptance_add = 20
+		}
+
+		ai_weight = {
+			weight = 10
+		}
+	}
+
+	option = {
+		name = "ps_overlord_stance_cruel"
+
+		policy_flags = {
+			ps_overlord_stance_cruel
+		}
+
+		modifier = {
+			pop_happiness = -0.05
+			pop_slave_bonus_workforce_mult = 0.20
+			monthly_loyalty_from_subjects = -2
+		}
+
+		ai_weight = {
+			weight = 10
+		}
+	}
+}

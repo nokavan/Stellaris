@@ -1,0 +1,5 @@
+﻿l_english:
+ ps_mega_ark_boost:0 "Mega Arkship Overcharge"
+ ps_mega_ark_boost_desc:0 "This arkship's modular hull has been pushed far beyond its rated tolerances: vastly more district capacity and dramatically higher energy and mineral output."
+ building_ps_mega_ark_mine:0 "Arkship Mining Rig"
+ building_ps_mega_ark_mine_desc:0 "A modular ore-extraction rig bolted into the arkship's harvesting bays. Unlike the single-build purification hubs, these rigs can be installed en masse to flood the holds with raw minerals."

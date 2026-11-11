@@ -1,0 +1,43 @@
+# Синдикат Сопротивления — «Имперская» традиция (командование вассалами).
+# Идея, структура и иконки — из удалённого (необновлённого) дерева Imperious мода
+# 2945942583 (Galactic Diplomacy); переписано под 4.x, ключи с префиксом ps_.
+tradition_ps_imperious = {
+	tree_template = "tree_12_11_11"
+	adoption_bonus = "tr_ps_imperious_adopt"
+	finish_bonus = "tr_ps_imperious_finish"
+	traditions = {
+		"tr_ps_imperious_tributary_networks"
+		"tr_ps_imperious_imperial_administration"
+		"tr_ps_imperious_diplomatic_supremacy"
+		"tr_ps_imperious_imperial_decree"
+		"tr_ps_imperious_supreme_authority"
+	}
+
+	potential = {
+		is_gestalt = no
+	}
+
+	ai_weight = {
+		factor = 5
+		modifier = {
+			factor = 0
+			is_overlord = no
+		}
+		modifier = {
+			factor = 0.2
+			is_pacifist = yes
+		}
+		modifier = {
+			factor = 3
+			is_authoritarian = yes
+		}
+		modifier = {
+			factor = 3
+			is_militarist = yes
+		}
+		modifier = {
+			factor = 10
+			ps_is_shadow_overlord = yes
+		}
+	}
+}

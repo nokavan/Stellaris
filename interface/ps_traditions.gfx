@@ -1,0 +1,40 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_tr_ps_imperious_tributary_networks"
+		textureFile = "gfx/interface/icons/traditions/tr_ps_imperious_tributary_networks.dds"
+	}
+	spriteType = {
+		name = "GFX_tr_ps_imperious_imperial_administration"
+		textureFile = "gfx/interface/icons/traditions/tr_ps_imperious_imperial_administration.dds"
+	}
+	spriteType = {
+		name = "GFX_tr_ps_imperious_imperial_decree"
+		textureFile = "gfx/interface/icons/traditions/tr_ps_imperious_imperial_decree.dds"
+	}
+	spriteType = {
+		name = "GFX_tr_ps_imperious_diplomatic_supremacy"
+		textureFile = "gfx/interface/icons/traditions/tr_ps_imperious_diplomatic_supremacy.dds"
+	}
+	spriteType = {
+		name = "GFX_tr_ps_imperious_supreme_authority"
+		textureFile = "gfx/interface/icons/traditions/tr_ps_imperious_supreme_authority.dds"
+	}
+	spriteType = {
+		name = "GFX_tradition_hex_bg_tradition_ps_imperious"
+		textureFile = "gfx/interface/traditions/tradition_hex_bg_ps_imperious.dds"
+	}
+	spriteType = {
+		name = "GFX_tradition_category_icon_tradition_ps_imperious"
+		textureFile = "gfx/interface/icons/traditions/tree_icons/tradition_icon_ps_imperious.dds"
+	}
+	corneredTileSpriteType = {
+		name = "GFX_tradition_category_tile_tradition_ps_imperious"
+		textureFile = "gfx/interface/icons/traditions/tree_icons/tradition_category_tile_ps_imperious.dds"
+		borderSize = { x=140 y=140 }
+		effectFile = "gfx/FX/buttonstate_onlydisable.shader"
+	}
+	spriteType = {
+		name = "GFX_tradition_category_bg_tradition_ps_imperious"
+		textureFile = "gfx/interface/icons/traditions/tree_icons/tradition_category_tile_ps_imperious.dds"
+	}
+}

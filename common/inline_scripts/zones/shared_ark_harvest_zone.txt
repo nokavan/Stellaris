@@ -1,0 +1,50 @@
+# Встроено из «Mega Arkships» (с разрешения автора). Переопределяет ванильный инлайн-скрипт —
+# не включайте оригинальный мод вместе с «Синдикатом».
+# Override of the base game's arkship Harvesting Bay zone body.
+# Identical to vanilla except included_building_sets gains the mineral sets so the
+# Harvesting Bay can build the same mineral buildings as a Habitat Complex Astro-Mining
+# Bay (mine_generic, fe_mine_2, automation_miner_2; purification_hub is already in the
+# harvest set). Re-verify this file against vanilla after major Stellaris updates.
+icon = GFX_district_specialization_minerals
+base_buildtime = @zone_buildtime
+
+potential = { # planet scope
+	exists = owner
+	owner = {
+		is_wilderness_empire = no
+		has_technology = tech_nomads_mechanized_mining
+	}
+}
+
+resources = {
+	category = planet_zones
+	inline_script = {
+		script = buildings/nomadic_cost_switcher
+		REGULAR_RESOURCE = minerals
+		NOMADIC_RESOURCE = alloys
+		COST = @zone_cost
+		NOMADIC_COST_MULT = 0.5
+	}
+}
+
+inline_script = {
+	script = jobs/zone_ark_harvester_add
+	AMOUNT = $AMOUNT$
+}
+
+included_building_sets = {
+	harvest
+	industrial
+	mining
+	fallen_empire_mining
+	mining_automation
+}
+
+planet_modifier = {
+	zone_building_slots_add = 3
+}
+
+swap_type = district_ark_harvest
+swap_type_weight = 5
+
+ai_priority = 5

@@ -1,0 +1,11 @@
+# Синдикат Сопротивления — встроено из «Megacorp Imperial Elections» (с разрешения автора).
+# Мегакорпорации правят как имперские автократии: наследник получает власть после
+# смерти правителя, корпоративных выборов нет.
+# Власти в Stellaris «расширяемые» (см. заголовок ванильного 00_authorities.txt):
+# этот блок дописывается к ванильной auth_corporate, а не заменяет её.
+auth_corporate = {
+	has_heir = yes
+	election_type = none
+	election_term_years = 0
+	can_have_emergency_elections = no
+}

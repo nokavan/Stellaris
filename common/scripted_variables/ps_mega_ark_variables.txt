@@ -1,0 +1,22 @@
+# Встроено из мода «Mega Arkships» (с разрешения автора), ключи переименованы с префиксом ps_.
+# Tunable values for the Mega Arkships mod.
+# All effects are expressed as relative multipliers so they scale with whatever
+# the base game produces, keeping the mod patch resistant.
+
+# Max-district multiplier. The game computes max districts as
+# (NUM_DISTRICTS_BASE + planet_size * NUM_DISTRICTS_FROM_PLANET_SIZE
+#  + sum of planet_max_districts_add) * (1 + planet_max_districts_mult).
+# For an arkship the base comes from planet_size (pc_ark is size 9), and upgrades add
+# more via planet_max_districts_add (d_compact_modules +1 each, arkship_parts +2). Since
+# the mult scales the whole sum, a value of 9 yields exactly 10x the vanilla district
+# total at any upgrade level, regardless of how those districts are sourced.
+@ps_mega_ark_district_mult = 9
+
+# Energy job output multiplier for arkships. Sized so an arkship reactor district
+# out-produces a Habitat Complex Reactor District even while the arkship is mobile
+# (which itself applies -0.75 to energy output).
+@ps_mega_ark_energy_produces_mult = 2.5
+
+# Mineral job output multiplier for arkships. Sized so an arkship Harvesting Bay
+# out-produces a Habitat Complex Astro-Mining Bay even while the arkship is mobile.
+@ps_mega_ark_minerals_produces_mult = 1.5

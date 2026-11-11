@@ -340,3 +340,33 @@ ps_shadow_logistics = {
 	ship_cloaking_strength_add = 1
 	ship_speed_mult = -0.05
 }
+
+################################
+# «Имперская» традиция: повестка и указы вассалам
+################################
+agenda_ps_vassal_legates_finish = {
+	icon = @ps_icon
+	icon_frame = 1
+	country_trust_growth = 0.25
+	monthly_loyalty_from_subjects = 0.5
+	country_base_influence_produces_add = 0.5
+}
+agenda_ps_vassal_legates_subjects = {
+	icon = @ps_icon
+	icon_frame = 1
+	planet_stability_add = 5
+}
+ps_decree_mobilized = {
+	icon = @ps_icon
+	icon_frame = 1
+	ship_fire_rate_mult = 0.10
+	army_damage_mult = 0.10
+	country_naval_cap_mult = 0.10
+}
+ps_decree_development = {
+	icon = @ps_icon
+	icon_frame = 1
+	planet_building_build_speed_mult = 0.25
+	planet_stability_add = 5
+	planet_jobs_produces_mult = 0.05
+}

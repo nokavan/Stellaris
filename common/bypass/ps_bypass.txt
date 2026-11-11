@@ -18,6 +18,12 @@ ps_shadow_gate_bypass = {
 	ftl_ship_effect = "gateway_ftl_ship_effect_entity"
 	ftl_bypass_effect = "gateway_ftl_bypass_effect_entity"
 
+	# Не пускать тех, кто враждебен владельцу врат, и тех, кому закрыты границы
+	respect_closed_borders = yes
+	block_access_if_hostile = yes
+
+	# Пользуются: партизаны, их вассалы, их союзники (федерация или оборонительный пакт).
+	# Враги (кто воюет с партизанами) — нет.
 	country_can_use = {
 		custom_tooltip = {
 			fail_text = PS_SHADOW_GATE_CANT_USE
@@ -26,6 +32,14 @@ ps_shadow_gate_bypass = {
 				AND = {
 					is_subject = yes
 					overlord = { ps_is_partisan_empire = yes }
+				}
+				any_playable_country = {
+					ps_is_partisan_empire = yes
+					NOT = { is_at_war_with = prev }
+					OR = {
+						is_in_federation_with = prev
+						has_defensive_pact = prev
+					}
 				}
 			}
 		}

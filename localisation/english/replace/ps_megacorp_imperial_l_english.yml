@@ -1,0 +1,30 @@
+﻿l_english:
+ ####################################
+ # Government Authorities
+ ####################################
+
+ auth_corporate:0 "Imperial Megacorporation"
+ auth_corporate_desc:0 "When you just want to dominate the market with your profitable empire and don't want to deal with pesky elections"
+ gov_megacorporation:0 "Imperial Megacorporation"
+ gov_megacorporation_desc:0 "This government is a form of imperial tyranny, where the entire state has been organized by a single figure who dominates the entire senate"
+ casus_belli_cb_megacorp_subjugate:0 "Aquire Foreign Assets"
+ war_goal_wg_megacorp_subjugate:0 "Demand loyalty from a lesser empire"
+
+ gov_megachurch:0 "Holy Proclamation"
+ gov_megachurch_desc:0 "This government is a holy imperialistic state that priorizes profits and holy doctrines over serving the less fortunate."
+
+ ####################################
+ # Rulers / Heirs
+ ####################################
+
+ RT_CEO:0 "High Lord Financer"
+ RT_CEO_FEMALE:0 "High Lady Financer"
+ RT_HALLOWED_COMPTROLLER:0 "Venerated Profiteer"
+ RT_HALLOWED_COMPTROLLER_FEMALE:0 "$RT_HALLOWED_COMPTROLLER$"
+
+ ####################################
+ # Succession
+ ####################################
+
+ # Vanilla auth_corporate keeps its AUTHORITY_CORPORATE_SUCCESSION tag, so show the Imperial heir text there.
+ AUTHORITY_CORPORATE_SUCCESSION:0 "$AUTHORITY_HAS_HEIR$"

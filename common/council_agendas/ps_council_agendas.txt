@@ -1,0 +1,28 @@
+# Повестка совета «Наместники в вассалах» (из «Имперской» традиции)
+agenda_ps_vassal_legates = {
+	agenda_cost = 7000
+	allow = {
+		has_tradition = tr_ps_imperious_adopt
+	}
+	potential = {
+		has_paragon_dlc = yes
+		is_machine_empire = no
+	}
+	modifier = {
+		envoys_add = -1
+	}
+	finish_modifier = agenda_ps_vassal_legates_finish
+	# При запуске: вассалы получают +5 к стабильности на 10 лет
+	effect = {
+		every_playable_country = {
+			limit = {
+				is_subject = yes
+				overlord = { is_same_value = root }
+			}
+			add_modifier = {
+				modifier = agenda_ps_vassal_legates_subjects
+				years = 10
+			}
+		}
+	}
+}

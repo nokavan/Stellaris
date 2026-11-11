@@ -1,0 +1,34 @@
+# Встроено из мода «Mega Arkships» (с разрешения автора), ключи переименованы с префиксом ps_.
+# Idempotently applies the ps_mega_ark_boost modifier to every arkship world the country owns.
+# Invoked only for human empires: its sole caller, ps_megaark.1, gates on is_ai = no, so the
+# boost stays player only without a redundant guard here. Safe to call repeatedly; the has_modifier
+# guard prevents re-adding. Arkships build building_ps_mega_ark_mine for generic mining; no tech
+# grant is used, since granting the is_nomadic = no tech_mechanized_mining does not stick on a
+# nomadic empire. Scope: country
+ps_mega_ark_apply_boost = {
+	every_owned_colony = {
+		limit = {
+			ps_is_mega_ark_planet = yes
+			NOT = { has_modifier = ps_mega_ark_boost }
+		}
+		add_modifier = {
+			modifier = ps_mega_ark_boost
+			days = -1
+		}
+	}
+}
+
+# Removes the boost from any world a human empire owns that carries it but is no longer an arkship
+# (e.g. a captured/converted hull or a future class reuse), so the modifier never lingers for the
+# player. A boost on an arkship handed to an AI is intentionally not reconciled: the AI never runs
+# ps_megaark.1, so the modifier simply rides along, which is cheaper than scanning every AI empire
+# monthly to strip a cosmetic edge case. Scope: country
+ps_mega_ark_cleanup_boost = {
+	every_owned_colony = {
+		limit = {
+			has_modifier = ps_mega_ark_boost
+			NOT = { ps_is_mega_ark_planet = yes }
+		}
+		remove_modifier = ps_mega_ark_boost
+	}
+}

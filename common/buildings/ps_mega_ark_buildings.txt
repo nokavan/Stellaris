@@ -1,0 +1,54 @@
+# Встроено из мода «Mega Arkships» (с разрешения автора), ключи переименованы с префиксом ps_.
+# Arkship-only generic mining building. The vanilla building_mine_generic cannot be made
+# buildable on arkships: its prerequisite tech_mechanized_mining is potential = { is_nomadic = no }
+# with no nomad technology_swap, and give_technology does not stick on a still-nomadic empire.
+# This mirrors building_mine_generic's output and cost but gates on tech_nomads_mechanized_mining,
+# the nomad mining start-tech that every arkship Harvesting Bay already requires. It has no
+# planet_limit, so it can be built in mass, and is restricted to arkship worlds so it never
+# appears on habitats or normal planets that share the 'mining' building set. The owner is_ai = no
+# gate keeps it player only, in step with the ps_mega_ark_boost modifier: an AI nomad never
+# gains the mass-buildable mine, so the mod confers no economic edge on bot empires
+building_ps_mega_ark_mine = {
+	base_buildtime = @b1_time
+	category = resource
+	icon = building_mine_generic
+
+	building_sets = {
+		mining
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			is_nomadic = yes
+			is_ai = no
+		}
+		planet = { ps_is_mega_ark_planet = yes }
+		NOT = { has_modifier = resort_colony }
+	}
+
+	prerequisites = {
+		"tech_nomads_mechanized_mining"
+	}
+
+	inline_script = {
+		script = jobs/miners_add
+		AMOUNT = @building_static_jobs
+	}
+
+	resources = {
+		category = planet_buildings
+		inline_script = {
+			script = buildings/nomadic_cost_switcher
+			REGULAR_RESOURCE = minerals
+			NOMADIC_RESOURCE = alloys
+			COST = @b1_minerals
+			NOMADIC_COST_MULT = 0.5
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight_coefficient = @static_jobs_ai_weight_coefficient
+}
