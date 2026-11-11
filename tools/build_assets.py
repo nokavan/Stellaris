@@ -103,8 +103,6 @@ def main():
     save_dds(icon("crown", 64), "gfx/interface/icons/governments/civics/civic_ps_shadow_overlord.dds")
     save_dds(icon("tree", 52), "gfx/interface/icons/technologies/tech_ps_guerrilla_doctrine.dds")
     save_dds(icon("eye", 52), "gfx/interface/icons/technologies/tech_ps_ghost_networks.dds")
-    save_dds(icon("star", 128), "gfx/interface/icons/buildings/building_ps_partisan_cell.dds")
-    save_dds(icon("press", 128), "gfx/interface/icons/buildings/building_ps_underground_press.dds")
     save_dds(icon("star", 32), "gfx/interface/icons/modifiers/mod_ps_partisan.dds")
     save_dds(scene(450, 150, (170, 40, 30, 255), 2), "gfx/event_pictures/ps_evt_partisans.dds")
     save_dds(scene(450, 150, (60, 80, 140, 255), 3), "gfx/event_pictures/ps_evt_spy.dds")

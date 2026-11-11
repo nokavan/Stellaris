@@ -127,4 +127,32 @@ spriteTypes = {
 		name = "GFX_specialist_perk_ps_exchange_3_cartel"
 		texturefile = "gfx/interface/icons/specialists/perks/ps_exchange_3_cartel.dds"
 	}
+	spriteType = {
+		name = "GFX_diplomacy_specialist_subject_ps_trust"
+		texturefile = "gfx/interface/icons/specialists/ps_trust.dds"
+	}
+	spriteType = {
+		name = "GFX_diplomacy_specialist_subject_ps_trust_large"
+		texturefile = "gfx/interface/icons/specialists/ps_trust_large.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_trust_1_overlord_modifier"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_trust_1_overlord_modifier.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_trust_1_stockpiles"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_trust_1_stockpiles.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_trust_2_strategic"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_trust_2_strategic.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_trust_2_bank"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_trust_2_bank.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_trust_3_monopoly"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_trust_3_monopoly.dds"
+	}
 }

@@ -190,3 +190,41 @@ specialist_ps_exchange = {
 		agreement_preset = preset_ps_exchange
 	}
 }
+
+specialist_ps_trust = {
+	term = specialist_type
+	triggered_loyalty_change = {
+		trigger = {
+			target = { has_ethic = ethic_materialist }
+		}
+		loyalty_change = 5
+		ai_acceptance = {
+			subject = 25
+		}
+	}
+	triggered_loyalty_change = {
+		trigger = {
+			target = { has_ethic = ethic_spiritualist }
+		}
+		loyalty_change = -20
+		ai_acceptance = {
+			subject = -100
+		}
+	}
+	# Тайный переворот (операция Синдиката) делает совет цели сговорчивым
+	triggered_loyalty_change = {
+		trigger = {
+			target = { has_country_flag = ps_puppet_council }
+		}
+		loyalty_change = 10
+		ai_acceptance = {
+			subject = 150
+		}
+	}
+	activate_effect = {
+		convert_to_specialist = specialist_ps_trust
+	}
+	potential = {
+		agreement_preset = preset_ps_trust
+	}
+}

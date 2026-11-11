@@ -24,3 +24,35 @@ ps_has_spy_ring_subject = {
 		has_country_flag = ps_residency_active
 	}
 }
+
+# ---- Здания филиалов (scope = планета-хозяин) ----
+
+# Хозяин планеты — союзник владельца филиала
+ps_branch_host_is_friend = {
+	exists = owner
+	exists = branch_office_owner
+	branch_office_owner = {
+		OR = {
+			is_overlord_to = prev.owner
+			is_in_federation_with = prev.owner
+			has_defensive_pact = prev.owner
+			is_friendly_to = prev.owner
+		}
+	}
+}
+
+# Хозяин планеты — соперник/враг владельца филиала
+ps_branch_host_is_enemy = {
+	exists = owner
+	exists = branch_office_owner
+	branch_office_owner = {
+		OR = {
+			is_rival = prev.owner
+			is_at_war_with = prev.owner
+			opinion_level = {
+				who = prev.owner
+				level <= poor
+			}
+		}
+	}
+}

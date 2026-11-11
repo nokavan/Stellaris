@@ -223,6 +223,54 @@ TYPES = [
              ]},
         ],
     },
+    {
+        "key": "ps_trust",
+        "ethic": "ethic_materialist", "anti": "ethic_spiritualist",
+        "ethic_ru": "Материалисты", "anti_ru": "Спиритуалисты",
+        "ethic_en": "Materialist", "anti_en": "Spiritualist",
+        "subsidy": 0.45,
+        "color": (90, 160, 80),
+        "ru": ("Ресурсный трест", "Экономический вассал. Шахты, фермы, литейные и банки работают на Синдикат: трест добывает ресурсы, торгует ими и переводит деньги сюзерену."),
+        "en": ("Resource Trust", "An economic subject. Mines, farms, foundries and banks work for the Syndicate: the trust extracts resources, trades them and sends money to the overlord."),
+        "levels": [
+            {"main": {"country_minerals_produces_mult": 0.20, "country_food_produces_mult": 0.20,
+                      "country_energy_produces_mult": 0.15, "country_alloys_produces_mult": 0.10},
+             "pen": {**research(-0.15), "country_naval_cap_mult": -0.25, "army_damage_mult": -0.15},
+             "perks": [
+                 ("overlord_modifier", {}, {"country_base_minerals_produces_add": 10, "country_base_energy_produces_add": 5}, None,
+                  "Поставки треста", "Трест ежемесячно отгружает сюзерену минералы и энергию.",
+                  "Trust Shipments", "The trust ships minerals and energy to the overlord every month."),
+                 ("stockpiles", {"country_resource_max_add": 2000}, {"country_resource_max_add": 1000}, None,
+                  "Склады треста", "Огромные хранилища для ресурсов треста и сюзерена.",
+                  "Trust Warehouses", "Huge storage for the trust's and the overlord's resources."),
+             ]},
+            {"main": {"country_minerals_produces_mult": 0.30, "country_food_produces_mult": 0.30,
+                      "country_energy_produces_mult": 0.25, "country_alloys_produces_mult": 0.15,
+                      "country_rare_crystals_produces_mult": 0.15, "country_exotic_gases_produces_mult": 0.15,
+                      "country_volatile_motes_produces_mult": 0.15},
+             "pen": {**research(-0.25), "country_naval_cap_mult": -0.35, "army_damage_mult": -0.25},
+             "perks": [
+                 ("strategic", {}, {"country_base_rare_crystals_produces_add": 1, "country_base_exotic_gases_produces_add": 1,
+                                    "country_base_volatile_motes_produces_add": 1}, None,
+                  "Стратегический резерв", "Трест поставляет сюзерену редкие ресурсы.",
+                  "Strategic Reserve", "The trust supplies the overlord with rare resources."),
+                 ("bank", {}, {"country_base_energy_produces_add": 15, "country_base_alloys_produces_add": 3}, None,
+                  "Банк треста", "Деньги и сплавы текут в казну сюзерена.",
+                  "Trust Bank", "Money and alloys flow into the overlord's treasury."),
+             ]},
+            {"main": {"country_minerals_produces_mult": 0.40, "country_food_produces_mult": 0.40,
+                      "country_energy_produces_mult": 0.35, "country_alloys_produces_mult": 0.25,
+                      "country_rare_crystals_produces_mult": 0.25, "country_exotic_gases_produces_mult": 0.25,
+                      "country_volatile_motes_produces_mult": 0.25},
+             "pen": {**research(-0.35), "country_naval_cap_mult": -0.45, "army_damage_mult": -0.35},
+             "perks": [
+                 ("monopoly", {}, {"country_minerals_produces_mult": 0.05, "country_alloys_produces_mult": 0.05,
+                                   "country_energy_produces_mult": 0.05}, None,
+                  "Монополия", "Трест контролирует рынки всей империи сюзерена.",
+                  "Monopoly", "The trust controls the markets of the overlord's whole empire."),
+             ]},
+        ],
+    },
 ]
 
 LEVEL_RU = ["I", "II", "III"]
@@ -489,7 +537,7 @@ def main():
     except ImportError:
         print("Pillow не найден — иконки не созданы")
         return
-    kinds = {"ps_strike": "star", "ps_assault": "tree", "ps_raiders": "net", "ps_residency": "eye", "ps_exchange": "crown"}
+    kinds = {"ps_trust": "press", "ps_strike": "star", "ps_assault": "tree", "ps_raiders": "net", "ps_residency": "eye", "ps_exchange": "crown"}
     for T in TYPES:
         k = T["key"]
         save_dds(icon(kinds[k], 40), f"gfx/interface/icons/specialists/{k}.dds")

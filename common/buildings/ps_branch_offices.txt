@@ -1,23 +1,18 @@
-# Синдикат Сопротивления — здания филиалов
-# Формат сверен с vanilla common/buildings/14_branch_office_buildings.txt (4.x)
-#   triggered_country_modifier  -> действует на ВЛАДЕЛЬЦА ФИЛИАЛА
-#   triggered_planet_modifier   -> действует на планету-хозяина
-#   job_*_add = 100             -> одна должность (система workforce 4.x)
+# АВТОГЕНЕРАЦИЯ: tools/gen_branch_buildings.py — правьте генератор, а не этот файл
+# Синдикат Сопротивления — 100 зданий филиалов
 
-# Партизанская ячейка: схрон, явка, радиостанция
 building_ps_partisan_cell = {
 	base_buildtime = @b1_time
 	planet_limit = 1
 
 	owner_type = corporate
 	category = army
-
 	potential = {
 		has_branch_office = yes
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала: агентура и доход
+	# Владельцу филиала (растёт с ценностью филиала)
 	triggered_country_modifier = {
 		potential = { always = yes }
 		spy_network_levels_add = 2
@@ -25,10 +20,9 @@ building_ps_partisan_cell = {
 		mult = value:branch_office_value_for_buildings
 	}
 
-	# Планете-хозяину: подпольщики и преступность
+	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
-		job_criminal_add = 100
 		planet_stability_add = -2
 	}
 
@@ -37,11 +31,16 @@ building_ps_partisan_cell = {
 		mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|
 	}
 
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		job_criminal_add = 100
+	}
+
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
-			minerals = 400
-			influence = 15
+			minerals = 300
+			influence = 10
 		}
 		upkeep = {
 			energy = 2
@@ -49,23 +48,147 @@ building_ps_partisan_cell = {
 	}
 
 	ai_weight = {
-		factor = 15
+		factor = 10
 	}
 }
 
-# Подпольная типография: листовки, пиратское радио
-building_ps_underground_press = {
-	base_buildtime = @b2_time
+building_ps_arms_cache = {
+	base_buildtime = @b1_time
 	planet_limit = 1
 
 	owner_type = corporate
-	category = government
-
+	category = army
 	potential = {
 		has_branch_office = yes
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_alloys_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Владельцу филиала (фиксированно)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		army_damage_mult = 0.01
+	}
+
+	triggered_planet_modifier = {
+		planet_crime_add = 5
+		mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_safehouse = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = army
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		spy_network_levels_add = 1
+		country_base_unity_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_forest_camp = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = army
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Владельцу филиала (фиксированно)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		army_starting_experience_add = 5
+	}
+
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		job_criminal_add = 100
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_radio_station = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = army
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_base_unity_produces_add = 2
@@ -73,21 +196,4102 @@ building_ps_underground_press = {
 		mult = value:branch_office_value_for_buildings
 	}
 
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_partisan_hospital = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = army
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
-		job_criminal_add = 100
-		planet_stability_add = -4
-		pop_government_ethic_attraction = -0.25
+		pop_happiness = 0.02
 	}
 
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
 			minerals = 300
-			influence = 25
+			influence = 10
 		}
 		upkeep = {
 			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_courier_network = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = army
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_energy_produces_add = 1
+		country_base_influence_produces_add = 0.25
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_sabotage_school = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = army
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		spy_network_levels_add = 2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Владельцу филиала (фиксированно)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		army_damage_mult = 0.02
+	}
+
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		job_criminal_add = 100
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_veterans_club = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = army
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Владельцу филиала (фиксированно)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		army_starting_experience_add = 10
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_memorial = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = army
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 3
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		pop_happiness = 0.02
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_mountain_base = {
+	base_buildtime = @b3_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = army
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_ghost_networks"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_naval_cap_add = 3
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Владельцу филиала (фиксированно)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		army_damage_mult = 0.02
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 800
+			influence = 30
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_partisan_hq = {
+	base_buildtime = @b3_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = army
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_ghost_networks"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		spy_network_levels_add = 3
+		country_base_unity_produces_add = 3
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Владельцу филиала (фиксированно)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		army_damage_mult = 0.02
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		planet_stability_add = -3
+	}
+
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		job_criminal_add = 100
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 800
+			influence = 30
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_dead_drop = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = government
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		spy_network_levels_add = 1
+		country_base_energy_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_listening_post = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = government
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		spy_network_levels_add = 2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_honey_trap = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = government
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		spy_network_levels_add = 2
+		country_base_influence_produces_add = 0.2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_forgery_shop = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = government
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		spy_network_levels_add = 1
+		country_base_energy_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_cipher_bureau = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = government
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		spy_network_levels_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Владельцу филиала (фиксированно)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		spy_network_daily_value_mult = 0.01
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_informant_network = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = government
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		spy_network_levels_add = 3
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_embassy_cover = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = government
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		spy_network_levels_add = 2
+		country_base_influence_produces_add = 0.3
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_data_haven = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = government
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		spy_network_levels_add = 2
+		country_base_energy_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_sleeper_agents = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = government
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		spy_network_levels_add = 3
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		planet_stability_add = -2
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_counterintel_office = {
+	base_buildtime = @b3_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = government
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_ghost_networks"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		spy_network_levels_add = 2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Владельцу филиала (фиксированно)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		spy_network_daily_value_mult = 0.02
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 800
+			influence = 30
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_black_archive = {
+	base_buildtime = @b3_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = government
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_ghost_networks"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		spy_network_levels_add = 4
+		country_base_unity_produces_add = 2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 800
+			influence = 30
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_shadow_consulate = {
+	base_buildtime = @b3_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = government
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_ghost_networks"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		spy_network_levels_add = 3
+		country_base_influence_produces_add = 0.5
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 800
+			influence = 30
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_front_company = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = trade
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_energy_produces_add = 3
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_money_laundry = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = trade
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_energy_produces_add = 2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	triggered_planet_modifier = {
+		planet_crime_add = 5
+		mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|
+	}
+
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		job_criminal_add = 100
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_pawnshop = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = trade
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_energy_produces_add = 2
+		country_base_consumer_goods_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_currency_exchange = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = trade
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_energy_produces_add = 2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_underground_bank = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = trade
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_energy_produces_add = 4
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_casino = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = trade
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_energy_produces_add = 3
+		country_base_unity_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		planet_amenities_add = 2
+	}
+
+	inline_script = {
+		script = jobs/entertainers_add
+		AMOUNT = 100
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_insurance_racket = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = trade
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_energy_produces_add = 4
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		planet_stability_add = -2
+	}
+
+	triggered_planet_modifier = {
+		planet_crime_add = 5
+		mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|
+	}
+
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		job_criminal_add = 100
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_loan_sharks = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = trade
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_energy_produces_add = 3
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		planet_stability_add = -1
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_smugglers_market = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = trade
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_energy_produces_add = 2
+		country_base_consumer_goods_produces_add = 2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		job_criminal_add = 100
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_offshore = {
+	base_buildtime = @b3_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = trade
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_ghost_networks"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_energy_produces_add = 6
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 800
+			influence = 30
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_trade_guild = {
+	base_buildtime = @b3_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = trade
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_ghost_networks"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_energy_produces_add = 4
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		planet_jobs_trade_produces_mult = 0.05
+	}
+
+	inline_script = {
+		script = jobs/trader_add
+		AMOUNT = 100
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 800
+			influence = 30
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_syndicate_exchange = {
+	base_buildtime = @b3_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = trade
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_ghost_networks"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_energy_produces_add = 5
+		country_base_influence_produces_add = 0.3
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 800
+			influence = 30
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_mining_claim = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = resource
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_minerals_produces_add = 3
+		mult = value:branch_office_value_for_buildings
+	}
+
+	inline_script = {
+		script = jobs/miners_add
+		AMOUNT = 100
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_ore_smugglers = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = resource
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_minerals_produces_add = 2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	triggered_planet_modifier = {
+		planet_crime_add = 3
+		mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_scrap_yard = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = resource
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_alloys_produces_add = 1
+		country_base_minerals_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_hydroponic_den = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = resource
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_food_produces_add = 3
+		mult = value:branch_office_value_for_buildings
+	}
+
+	inline_script = {
+		script = jobs/farmers_add
+		AMOUNT = 100
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_goods_workshop = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = resource
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_consumer_goods_produces_add = 2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_crystal_cartel = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = resource
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_rare_crystals_produces_add = 0.5
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_gas_siphon = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = resource
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_exotic_gases_produces_add = 0.5
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_mote_refinery = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = resource
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_volatile_motes_produces_add = 0.5
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_alloy_forge = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = resource
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_alloys_produces_add = 2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	inline_script = {
+		script = jobs/foundry_add
+		AMOUNT = 100
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_resource_depot = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = resource
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_minerals_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Владельцу филиала (фиксированно)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_resource_max_add = 500
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_strip_mine = {
+	base_buildtime = @b3_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = resource
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_ghost_networks"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_minerals_produces_add = 5
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		planet_stability_add = -2
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 800
+			influence = 30
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_rare_trading_post = {
+	base_buildtime = @b3_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = resource
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_ghost_networks"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_rare_crystals_produces_add = 0.5
+		country_base_exotic_gases_produces_add = 0.5
+		country_base_volatile_motes_produces_add = 0.5
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 800
+			influence = 30
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_stolen_patents = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = research
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (фиксированно)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_physics_research_produces_mult = 0.01
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_back_alley_lab = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = research
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (фиксированно)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_engineering_research_produces_mult = 0.01
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_sociology_circle = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = research
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (фиксированно)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_society_research_produces_mult = 0.01
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_xeno_dealers = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = research
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (фиксированно)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_society_research_produces_mult = 0.01
+		country_physics_research_produces_mult = 0.01
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_tech_smugglers = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = research
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (фиксированно)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_engineering_research_produces_mult = 0.015
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_brain_drain = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = research
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (фиксированно)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_physics_research_produces_mult = 0.01
+		country_society_research_produces_mult = 0.01
+		country_engineering_research_produces_mult = 0.01
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		planet_jobs_physics_research_produces_mult = -0.02
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_prototype_shop = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = research
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_alloys_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Владельцу филиала (фиксированно)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_engineering_research_produces_mult = 0.01
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_data_brokers = {
+	base_buildtime = @b3_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = research
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_ghost_networks"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		spy_network_levels_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Владельцу филиала (фиксированно)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_physics_research_produces_mult = 0.02
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 800
+			influence = 30
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_secret_institute = {
+	base_buildtime = @b3_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = research
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_ghost_networks"
+	}
+
+	# Владельцу филиала (фиксированно)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_physics_research_produces_mult = 0.015
+		country_society_research_produces_mult = 0.015
+		country_engineering_research_produces_mult = 0.015
+	}
+
+	inline_script = {
+		script = jobs/researchers_add
+		AMOUNT = 100
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 800
+			influence = 30
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_dissident_academy = {
+	base_buildtime = @b3_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = research
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_ghost_networks"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Владельцу филиала (фиксированно)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_society_research_produces_mult = 0.02
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 800
+			influence = 30
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_underground_press = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = unity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 2
+		spy_network_levels_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		planet_stability_add = -4
+		pop_government_ethic_attraction = -0.25
+	}
+
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		job_criminal_add = 100
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_pirate_radio = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = unity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_graffiti_crew = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = unity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		planet_stability_add = -1
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_leaflet_drop = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = unity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 1
+		country_base_influence_produces_add = 0.1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_resistance_choir = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = unity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		pop_happiness = 0.01
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_holo_cinema = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = unity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		planet_amenities_add = 2
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_martyr_shrine = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = unity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 3
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_agitprop = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = unity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 2
+		country_base_influence_produces_add = 0.2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		pop_government_ethic_attraction = -0.15
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_ideology_school = {
+	base_buildtime = @b3_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = unity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_ghost_networks"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 4
+		country_base_influence_produces_add = 0.3
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 800
+			influence = 30
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_legend_museum = {
+	base_buildtime = @b3_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = unity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_ghost_networks"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 5
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 800
+			influence = 30
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_smuggler_dock = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = army
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_naval_cap_add = 2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_ship_breakers = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = army
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_alloys_produces_add = 1
+		country_base_minerals_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_crew_recruiters = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = army
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_naval_cap_add = 3
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_hidden_shipyard = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = army
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_alloys_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Владельцу филиала (фиксированно)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		starbase_shipyard_build_speed_mult = 0.01
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_fuel_depot = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = army
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_energy_produces_add = 2
+		country_naval_cap_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_privateer_berth = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = army
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_naval_cap_add = 3
+		country_base_energy_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_navigator_guild = {
+	base_buildtime = @b3_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = army
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_ghost_networks"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_energy_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Владельцу филиала (фиксированно)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		ship_speed_mult = 0.01
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 800
+			influence = 30
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_fleet_yards = {
+	base_buildtime = @b3_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = army
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	prerequisites = {
+		"tech_ps_ghost_networks"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_naval_cap_add = 5
+		country_base_alloys_produces_add = 2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 800
+			influence = 30
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_aid_clinic = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = amenity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_friend_fail
+			ps_branch_host_is_friend = yes
+		}
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { ps_branch_host_is_friend = yes }
+		pop_happiness = 0.03
+	}
+
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		job_healthcare_add = 100
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_aid_food_bank = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = amenity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_friend_fail
+			ps_branch_host_is_friend = yes
+		}
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_influence_produces_add = 0.1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { ps_branch_host_is_friend = yes }
+		planet_jobs_food_produces_mult = 0.05
+	}
+
+	inline_script = {
+		script = jobs/farmers_add
+		AMOUNT = 100
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_aid_militia_trainers = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = amenity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_friend_fail
+			ps_branch_host_is_friend = yes
+		}
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { ps_branch_host_is_friend = yes }
+		army_defense_damage_mult = 0.15
+		army_defense_health_mult = 0.15
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_aid_engineers = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = amenity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_friend_fail
+			ps_branch_host_is_friend = yes
+		}
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { ps_branch_host_is_friend = yes }
+		planet_building_build_speed_mult = 0.2
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_aid_culture_house = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = amenity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_friend_fail
+			ps_branch_host_is_friend = yes
+		}
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { ps_branch_host_is_friend = yes }
+		planet_amenities_add = 2
+	}
+
+	inline_script = {
+		script = jobs/entertainers_add
+		AMOUNT = 100
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_aid_power_grid = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = amenity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_friend_fail
+			ps_branch_host_is_friend = yes
+		}
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_energy_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { ps_branch_host_is_friend = yes }
+		planet_jobs_energy_produces_mult = 0.1
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_aid_mining_advisers = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = amenity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_friend_fail
+			ps_branch_host_is_friend = yes
+		}
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_minerals_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { ps_branch_host_is_friend = yes }
+		planet_jobs_minerals_produces_mult = 0.05
+	}
+
+	inline_script = {
+		script = jobs/miners_add
+		AMOUNT = 100
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_aid_foundry = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = amenity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_friend_fail
+			ps_branch_host_is_friend = yes
+		}
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_alloys_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	inline_script = {
+		script = jobs/foundry_add
+		AMOUNT = 100
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_aid_research_exchange = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = amenity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_friend_fail
+			ps_branch_host_is_friend = yes
+		}
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	inline_script = {
+		script = jobs/researchers_add
+		AMOUNT = 100
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_aid_security = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = amenity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_friend_fail
+			ps_branch_host_is_friend = yes
+		}
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_influence_produces_add = 0.2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { ps_branch_host_is_friend = yes }
+		planet_crime_add = -15
+		planet_stability_add = 3
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_aid_refugee_center = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = amenity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_friend_fail
+			ps_branch_host_is_friend = yes
+		}
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { ps_branch_host_is_friend = yes }
+		pop_happiness = 0.02
+		planet_stability_add = 2
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_aid_trade_bridge = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = amenity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_friend_fail
+			ps_branch_host_is_friend = yes
+		}
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_energy_produces_add = 2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { ps_branch_host_is_friend = yes }
+		planet_jobs_trade_produces_mult = 0.1
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_aid_logistics = {
+	base_buildtime = @b3_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = amenity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_friend_fail
+			ps_branch_host_is_friend = yes
+		}
+	}
+
+	prerequisites = {
+		"tech_ps_ghost_networks"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_energy_produces_add = 2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { ps_branch_host_is_friend = yes }
+		planet_jobs_produces_mult = 0.05
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 800
+			influence = 30
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_aid_fortifications = {
+	base_buildtime = @b3_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = amenity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_friend_fail
+			ps_branch_host_is_friend = yes
+		}
+	}
+
+	prerequisites = {
+		"tech_ps_ghost_networks"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { ps_branch_host_is_friend = yes }
+		army_defense_damage_mult = 0.3
+		army_defense_health_mult = 0.3
+		planet_orbital_bombardment_damage = -0.25
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 800
+			influence = 30
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_aid_war_chest = {
+	base_buildtime = @b3_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = amenity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_friend_fail
+			ps_branch_host_is_friend = yes
+		}
+	}
+
+	prerequisites = {
+		"tech_ps_ghost_networks"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_alloys_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { ps_branch_host_is_friend = yes }
+		planet_jobs_alloys_produces_mult = 0.1
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 800
+			influence = 30
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_aid_unity_council = {
+	base_buildtime = @b3_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = amenity
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_friend_fail
+			ps_branch_host_is_friend = yes
+		}
+	}
+
+	prerequisites = {
+		"tech_ps_ghost_networks"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_influence_produces_add = 0.3
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { ps_branch_host_is_friend = yes }
+		planet_jobs_unity_produces_mult = 0.1
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 800
+			influence = 30
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_sub_strike_committee = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = government
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_enemy_fail
+			ps_branch_host_is_enemy = yes
+		}
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_unity_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { ps_branch_host_is_enemy = yes }
+		planet_jobs_produces_mult = -0.05
+		planet_stability_add = -3
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_sub_rumor_mill = {
+	base_buildtime = @b1_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = government
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_enemy_fail
+			ps_branch_host_is_enemy = yes
+		}
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		spy_network_levels_add = 2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { ps_branch_host_is_enemy = yes }
+		planet_stability_add = -4
+		pop_happiness = -0.05
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 300
+			influence = 10
+		}
+		upkeep = {
+			energy = 2
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_sub_saboteurs = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = government
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_enemy_fail
+			ps_branch_host_is_enemy = yes
+		}
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_alloys_produces_add = 1
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { ps_branch_host_is_enemy = yes }
+		planet_jobs_alloys_produces_mult = -0.15
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_sub_blackout = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = government
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_enemy_fail
+			ps_branch_host_is_enemy = yes
+		}
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_energy_produces_add = 2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { ps_branch_host_is_enemy = yes }
+		planet_jobs_energy_produces_mult = -0.15
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_sub_crime_wave = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = government
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_enemy_fail
+			ps_branch_host_is_enemy = yes
+		}
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_energy_produces_add = 2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	triggered_planet_modifier = {
+		planet_crime_add = 20
+		mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|
+	}
+
+	triggered_planet_modifier = {
+		potential = { always = yes }
+		job_criminal_add = 100
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_sub_food_riots = {
+	base_buildtime = @b2_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = government
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_enemy_fail
+			ps_branch_host_is_enemy = yes
+		}
+	}
+
+	prerequisites = {
+		"tech_ps_guerrilla_doctrine"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_base_food_produces_add = 2
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { ps_branch_host_is_enemy = yes }
+		planet_jobs_food_produces_mult = -0.2
+		planet_stability_add = -3
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 500
+			influence = 20
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_sub_brain_poaching = {
+	base_buildtime = @b3_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = government
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_enemy_fail
+			ps_branch_host_is_enemy = yes
+		}
+	}
+
+	prerequisites = {
+		"tech_ps_ghost_networks"
+	}
+
+	# Владельцу филиала (фиксированно)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		country_physics_research_produces_mult = 0.01
+		country_society_research_produces_mult = 0.01
+		country_engineering_research_produces_mult = 0.01
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { ps_branch_host_is_enemy = yes }
+		planet_jobs_physics_research_produces_mult = -0.1
+		planet_jobs_society_research_produces_mult = -0.1
+		planet_jobs_engineering_research_produces_mult = -0.1
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 800
+			influence = 30
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+
+	ai_weight = {
+		factor = 10
+	}
+}
+
+building_ps_sub_mutiny_cells = {
+	base_buildtime = @b3_time
+	planet_limit = 1
+
+	owner_type = corporate
+	category = government
+	potential = {
+		has_branch_office = yes
+		branch_office_owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = ps_branch_host_is_enemy_fail
+			ps_branch_host_is_enemy = yes
+		}
+	}
+
+	prerequisites = {
+		"tech_ps_ghost_networks"
+	}
+
+	# Владельцу филиала (растёт с ценностью филиала)
+	triggered_country_modifier = {
+		potential = { always = yes }
+		spy_network_levels_add = 3
+		mult = value:branch_office_value_for_buildings
+	}
+
+	# Планете-хозяину
+	triggered_planet_modifier = {
+		potential = { ps_branch_host_is_enemy = yes }
+		army_defense_damage_mult = -0.25
+		planet_stability_add = -5
+	}
+
+	resources = {
+		category = planet_branch_office_buildings
+		cost = {
+			minerals = 800
+			influence = 30
+		}
+		upkeep = {
+			energy = 5
 		}
 	}
 

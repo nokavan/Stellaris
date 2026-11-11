@@ -15,13 +15,8 @@
 
  civic_ps_shadow_overlord:0 "Shadow Overlord"
  civic_ps_shadow_overlord_desc:0 "The Syndicate's subjects are not mere tributaries. Each gets a role in the network: some listen, some hold the line, some trade, some invent."
- civic_tooltip_ps_shadow_overlord_effects:0 "- Envoys: §G+1§!\n- Encryption: §G+1§!\n- Unlocks §Y5 subject specializations§! that level up to III: §YStrike Legion§!, §YAssault Corps§!, §YPrivateer Flotilla§!, §YSpy Residency§!, §YShadow Exchange§!.\n- Unlocks the §YSyndicate Oath§! edict and the §YSilent Coup§! operation.\n- Unlocks the §YPartisan Franchise§! agreement."
+ civic_tooltip_ps_shadow_overlord_effects:0 "- Envoys: §G+1§!\n- Encryption: §G+1§!\n- Unlocks §Y6 subject specializations§! that level up to III: §YStrike Legion§!, §YAssault Corps§!, §YPrivateer Flotilla§!, §YSpy Residency§!, §YShadow Exchange§!, §YResource Trust§!.\n- Unlocks the §YSyndicate Oath§! edict and the §YSilent Coup§! operation.\n- Unlocks the §YPartisan Franchise§! agreement."
 
- # ===== Buildings =====
- building_ps_partisan_cell:0 "Partisan Cell"
- building_ps_partisan_cell_desc:0 "Behind a warehouse sign: an arms cache, a safehouse and a radio station. The local authorities have no idea who their dockworkers really answer to."
- building_ps_underground_press:0 "Underground Press"
- building_ps_underground_press_desc:0 "Leaflets, pirate radio and holographic graffiti. The Syndicate reminds the locals they have a choice."
 
  # ===== Edicts =====
  edict_ps_sleeper_cells:0 "Sleeper Cells"
@@ -132,3 +127,6 @@
  ps_operation.3.desc:0 "In a single night the council of §Y[target.GetName]§! changed its members. The new faces in government remember who they owe their seats to."
  ps_operation.3.a:0 "Offer them our protection."
  ps_operation.3.a.tooltip:0 "§Y[target.GetName]§! gains a §YPuppet Council§! for 10 years: §G+150§! opinion of us and §G+150§! willingness to accept any Syndicate specialist subject agreement."
+
+ ps_branch_network_slots:0 "Syndicate Network"
+ ps_branch_network_slots_desc:0 "A partisan network branch: extra branch office building slots."

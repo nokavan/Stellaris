@@ -86,3 +86,16 @@ ps_stolen_ledgers = {
 	icon_frame = 3
 	planet_jobs_energy_produces_mult = -0.10
 }
+
+################################
+# Слоты зданий филиала
+################################
+# Вешается на планету, где открыт филиал партизанской империи
+# (события ps.60 / ps.61). Число слотов меняйте здесь:
+@ps_branch_slots = 20
+
+ps_branch_network_slots = {
+	icon = @ps_icon
+	icon_frame = 1
+	branch_office_owner_max_buildings_add = @ps_branch_slots
+}

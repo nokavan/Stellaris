@@ -189,3 +189,41 @@ specialist_ps_exchange = {
 		}
 	}
 }
+
+specialist_ps_trust = {
+	icon = "GFX_diplomacy_specialist_subject_ps_trust"
+	icon_large = "GFX_diplomacy_specialist_subject_ps_trust_large"
+	preferred_ethic = ethic_materialist
+	base_conversion_time = @ps_conversion_time
+
+	levels = {
+		# Level 1
+		{
+			experience_needed_for_next_level = @ps_level_2_xp_cost
+			perks = {
+				ps_trust_1_modifier
+				ps_trust_1_penalties
+				ps_trust_1_overlord_modifier
+				ps_trust_1_stockpiles
+			}
+		}
+		# Level 2
+		{
+			experience_needed_for_next_level = @ps_level_3_xp_cost
+			perks = {
+				ps_trust_2_modifier
+				ps_trust_2_penalties
+				ps_trust_2_strategic
+				ps_trust_2_bank
+			}
+		}
+		# Level 3
+		{
+			perks = {
+				ps_trust_3_modifier
+				ps_trust_3_penalties
+				ps_trust_3_monopoly
+			}
+		}
+	}
+}

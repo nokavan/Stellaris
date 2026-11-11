@@ -1,0 +1,402 @@
+spriteTypes = {
+	spriteType = {
+		name = "GFX_building_ps_partisan_cell"
+		texturefile = "gfx/interface/icons/buildings/building_ps_partisan_cell.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_arms_cache"
+		texturefile = "gfx/interface/icons/buildings/building_ps_arms_cache.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_safehouse"
+		texturefile = "gfx/interface/icons/buildings/building_ps_safehouse.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_forest_camp"
+		texturefile = "gfx/interface/icons/buildings/building_ps_forest_camp.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_radio_station"
+		texturefile = "gfx/interface/icons/buildings/building_ps_radio_station.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_partisan_hospital"
+		texturefile = "gfx/interface/icons/buildings/building_ps_partisan_hospital.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_courier_network"
+		texturefile = "gfx/interface/icons/buildings/building_ps_courier_network.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_sabotage_school"
+		texturefile = "gfx/interface/icons/buildings/building_ps_sabotage_school.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_veterans_club"
+		texturefile = "gfx/interface/icons/buildings/building_ps_veterans_club.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_memorial"
+		texturefile = "gfx/interface/icons/buildings/building_ps_memorial.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_mountain_base"
+		texturefile = "gfx/interface/icons/buildings/building_ps_mountain_base.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_partisan_hq"
+		texturefile = "gfx/interface/icons/buildings/building_ps_partisan_hq.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_dead_drop"
+		texturefile = "gfx/interface/icons/buildings/building_ps_dead_drop.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_listening_post"
+		texturefile = "gfx/interface/icons/buildings/building_ps_listening_post.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_honey_trap"
+		texturefile = "gfx/interface/icons/buildings/building_ps_honey_trap.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_forgery_shop"
+		texturefile = "gfx/interface/icons/buildings/building_ps_forgery_shop.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_cipher_bureau"
+		texturefile = "gfx/interface/icons/buildings/building_ps_cipher_bureau.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_informant_network"
+		texturefile = "gfx/interface/icons/buildings/building_ps_informant_network.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_embassy_cover"
+		texturefile = "gfx/interface/icons/buildings/building_ps_embassy_cover.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_data_haven"
+		texturefile = "gfx/interface/icons/buildings/building_ps_data_haven.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_sleeper_agents"
+		texturefile = "gfx/interface/icons/buildings/building_ps_sleeper_agents.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_counterintel_office"
+		texturefile = "gfx/interface/icons/buildings/building_ps_counterintel_office.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_black_archive"
+		texturefile = "gfx/interface/icons/buildings/building_ps_black_archive.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_shadow_consulate"
+		texturefile = "gfx/interface/icons/buildings/building_ps_shadow_consulate.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_front_company"
+		texturefile = "gfx/interface/icons/buildings/building_ps_front_company.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_money_laundry"
+		texturefile = "gfx/interface/icons/buildings/building_ps_money_laundry.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_pawnshop"
+		texturefile = "gfx/interface/icons/buildings/building_ps_pawnshop.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_currency_exchange"
+		texturefile = "gfx/interface/icons/buildings/building_ps_currency_exchange.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_underground_bank"
+		texturefile = "gfx/interface/icons/buildings/building_ps_underground_bank.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_casino"
+		texturefile = "gfx/interface/icons/buildings/building_ps_casino.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_insurance_racket"
+		texturefile = "gfx/interface/icons/buildings/building_ps_insurance_racket.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_loan_sharks"
+		texturefile = "gfx/interface/icons/buildings/building_ps_loan_sharks.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_smugglers_market"
+		texturefile = "gfx/interface/icons/buildings/building_ps_smugglers_market.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_offshore"
+		texturefile = "gfx/interface/icons/buildings/building_ps_offshore.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_trade_guild"
+		texturefile = "gfx/interface/icons/buildings/building_ps_trade_guild.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_syndicate_exchange"
+		texturefile = "gfx/interface/icons/buildings/building_ps_syndicate_exchange.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_mining_claim"
+		texturefile = "gfx/interface/icons/buildings/building_ps_mining_claim.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_ore_smugglers"
+		texturefile = "gfx/interface/icons/buildings/building_ps_ore_smugglers.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_scrap_yard"
+		texturefile = "gfx/interface/icons/buildings/building_ps_scrap_yard.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_hydroponic_den"
+		texturefile = "gfx/interface/icons/buildings/building_ps_hydroponic_den.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_goods_workshop"
+		texturefile = "gfx/interface/icons/buildings/building_ps_goods_workshop.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_crystal_cartel"
+		texturefile = "gfx/interface/icons/buildings/building_ps_crystal_cartel.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_gas_siphon"
+		texturefile = "gfx/interface/icons/buildings/building_ps_gas_siphon.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_mote_refinery"
+		texturefile = "gfx/interface/icons/buildings/building_ps_mote_refinery.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_alloy_forge"
+		texturefile = "gfx/interface/icons/buildings/building_ps_alloy_forge.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_resource_depot"
+		texturefile = "gfx/interface/icons/buildings/building_ps_resource_depot.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_strip_mine"
+		texturefile = "gfx/interface/icons/buildings/building_ps_strip_mine.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_rare_trading_post"
+		texturefile = "gfx/interface/icons/buildings/building_ps_rare_trading_post.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_stolen_patents"
+		texturefile = "gfx/interface/icons/buildings/building_ps_stolen_patents.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_back_alley_lab"
+		texturefile = "gfx/interface/icons/buildings/building_ps_back_alley_lab.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_sociology_circle"
+		texturefile = "gfx/interface/icons/buildings/building_ps_sociology_circle.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_xeno_dealers"
+		texturefile = "gfx/interface/icons/buildings/building_ps_xeno_dealers.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_tech_smugglers"
+		texturefile = "gfx/interface/icons/buildings/building_ps_tech_smugglers.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_brain_drain"
+		texturefile = "gfx/interface/icons/buildings/building_ps_brain_drain.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_prototype_shop"
+		texturefile = "gfx/interface/icons/buildings/building_ps_prototype_shop.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_data_brokers"
+		texturefile = "gfx/interface/icons/buildings/building_ps_data_brokers.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_secret_institute"
+		texturefile = "gfx/interface/icons/buildings/building_ps_secret_institute.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_dissident_academy"
+		texturefile = "gfx/interface/icons/buildings/building_ps_dissident_academy.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_underground_press"
+		texturefile = "gfx/interface/icons/buildings/building_ps_underground_press.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_pirate_radio"
+		texturefile = "gfx/interface/icons/buildings/building_ps_pirate_radio.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_graffiti_crew"
+		texturefile = "gfx/interface/icons/buildings/building_ps_graffiti_crew.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_leaflet_drop"
+		texturefile = "gfx/interface/icons/buildings/building_ps_leaflet_drop.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_resistance_choir"
+		texturefile = "gfx/interface/icons/buildings/building_ps_resistance_choir.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_holo_cinema"
+		texturefile = "gfx/interface/icons/buildings/building_ps_holo_cinema.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_martyr_shrine"
+		texturefile = "gfx/interface/icons/buildings/building_ps_martyr_shrine.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_agitprop"
+		texturefile = "gfx/interface/icons/buildings/building_ps_agitprop.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_ideology_school"
+		texturefile = "gfx/interface/icons/buildings/building_ps_ideology_school.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_legend_museum"
+		texturefile = "gfx/interface/icons/buildings/building_ps_legend_museum.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_smuggler_dock"
+		texturefile = "gfx/interface/icons/buildings/building_ps_smuggler_dock.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_ship_breakers"
+		texturefile = "gfx/interface/icons/buildings/building_ps_ship_breakers.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_crew_recruiters"
+		texturefile = "gfx/interface/icons/buildings/building_ps_crew_recruiters.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_hidden_shipyard"
+		texturefile = "gfx/interface/icons/buildings/building_ps_hidden_shipyard.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_fuel_depot"
+		texturefile = "gfx/interface/icons/buildings/building_ps_fuel_depot.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_privateer_berth"
+		texturefile = "gfx/interface/icons/buildings/building_ps_privateer_berth.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_navigator_guild"
+		texturefile = "gfx/interface/icons/buildings/building_ps_navigator_guild.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_fleet_yards"
+		texturefile = "gfx/interface/icons/buildings/building_ps_fleet_yards.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_aid_clinic"
+		texturefile = "gfx/interface/icons/buildings/building_ps_aid_clinic.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_aid_food_bank"
+		texturefile = "gfx/interface/icons/buildings/building_ps_aid_food_bank.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_aid_militia_trainers"
+		texturefile = "gfx/interface/icons/buildings/building_ps_aid_militia_trainers.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_aid_engineers"
+		texturefile = "gfx/interface/icons/buildings/building_ps_aid_engineers.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_aid_culture_house"
+		texturefile = "gfx/interface/icons/buildings/building_ps_aid_culture_house.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_aid_power_grid"
+		texturefile = "gfx/interface/icons/buildings/building_ps_aid_power_grid.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_aid_mining_advisers"
+		texturefile = "gfx/interface/icons/buildings/building_ps_aid_mining_advisers.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_aid_foundry"
+		texturefile = "gfx/interface/icons/buildings/building_ps_aid_foundry.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_aid_research_exchange"
+		texturefile = "gfx/interface/icons/buildings/building_ps_aid_research_exchange.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_aid_security"
+		texturefile = "gfx/interface/icons/buildings/building_ps_aid_security.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_aid_refugee_center"
+		texturefile = "gfx/interface/icons/buildings/building_ps_aid_refugee_center.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_aid_trade_bridge"
+		texturefile = "gfx/interface/icons/buildings/building_ps_aid_trade_bridge.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_aid_logistics"
+		texturefile = "gfx/interface/icons/buildings/building_ps_aid_logistics.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_aid_fortifications"
+		texturefile = "gfx/interface/icons/buildings/building_ps_aid_fortifications.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_aid_war_chest"
+		texturefile = "gfx/interface/icons/buildings/building_ps_aid_war_chest.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_aid_unity_council"
+		texturefile = "gfx/interface/icons/buildings/building_ps_aid_unity_council.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_sub_strike_committee"
+		texturefile = "gfx/interface/icons/buildings/building_ps_sub_strike_committee.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_sub_rumor_mill"
+		texturefile = "gfx/interface/icons/buildings/building_ps_sub_rumor_mill.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_sub_saboteurs"
+		texturefile = "gfx/interface/icons/buildings/building_ps_sub_saboteurs.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_sub_blackout"
+		texturefile = "gfx/interface/icons/buildings/building_ps_sub_blackout.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_sub_crime_wave"
+		texturefile = "gfx/interface/icons/buildings/building_ps_sub_crime_wave.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_sub_food_riots"
+		texturefile = "gfx/interface/icons/buildings/building_ps_sub_food_riots.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_sub_brain_poaching"
+		texturefile = "gfx/interface/icons/buildings/building_ps_sub_brain_poaching.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_sub_mutiny_cells"
+		texturefile = "gfx/interface/icons/buildings/building_ps_sub_mutiny_cells.dds"
+	}
+}

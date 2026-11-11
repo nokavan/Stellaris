@@ -28,3 +28,17 @@ on_planet_returned = {
 		ps.32	# Планета освобождена
 	}
 }
+
+# this = planet, from = branch office owner
+on_branch_office_established = {
+	events = {
+		ps.60	# +20 слотов зданий филиала
+	}
+}
+
+# this = planet, from = branch office owner
+on_branch_office_closed = {
+	events = {
+		ps.61	# убрать слоты
+	}
+}

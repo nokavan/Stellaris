@@ -6,6 +6,7 @@
 #  ps.20 - 22  Агентурные операции (через шпионские сети)
 #  ps.30 - 32  Партизанская война (on_planet_occupied / on_planet_returned)
 #  ps.50       Диспетчер (ежегодный)
+#  ps.60 - 61  Слоты зданий филиалов
 #####################################################
 
 namespace = ps
@@ -499,5 +500,38 @@ country_event = {
 				80 = { }
 			}
 		}
+	}
+}
+
+#####################################################
+# СЛОТЫ ФИЛИАЛОВ
+# on_branch_office_established / on_branch_office_closed:
+#   this = планета, from = владелец филиала
+#####################################################
+
+planet_event = {
+	id = ps.60
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		from = { ps_is_partisan_empire = yes }
+		NOT = { has_modifier = ps_branch_network_slots }
+	}
+
+	immediate = {
+		add_modifier = { modifier = ps_branch_network_slots days = -1 }
+	}
+}
+
+planet_event = {
+	id = ps.61
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = { has_modifier = ps_branch_network_slots }
+
+	immediate = {
+		remove_modifier = ps_branch_network_slots
 	}
 }

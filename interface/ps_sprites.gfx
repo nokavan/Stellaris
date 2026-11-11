@@ -17,12 +17,4 @@ spriteTypes = {
 		texturefile = "gfx/event_pictures/ps_evt_syndicate.dds"
 	}
 
-	spriteType = {
-		name = "GFX_building_ps_partisan_cell"
-		texturefile = "gfx/interface/icons/buildings/building_ps_partisan_cell.dds"
-	}
-	spriteType = {
-		name = "GFX_building_ps_underground_press"
-		texturefile = "gfx/interface/icons/buildings/building_ps_underground_press.dds"
-	}
 }
