@@ -117,14 +117,27 @@ ps_has_active_crisis = {
 }
 
 # ---- Красная Буря ----
-# Страна — цель Бури: обычная империя, не сама Буря и не её вассал (scope = страна)
+# Партизанская империя под управлением игрока (Буря её не трогает)
+ps_is_partisan_player = {
+	is_ai = no
+	ps_is_partisan_empire = yes
+}
+
+# Страна — допустимая цель Бури: обычная империя, не сама Буря и не её вассал,
+# не партизанская империя игрока и не вассал такой империи (scope = страна)
 ps_storm_target = {
 	is_country_type = default
 	NOT = { has_country_flag = ps_red_storm }
+	NOT = { ps_is_partisan_player = yes }
 	NOT = {
 		AND = {
 			is_subject = yes
-			overlord = { has_country_flag = ps_red_storm }
+			overlord = {
+				OR = {
+					has_country_flag = ps_red_storm
+					ps_is_partisan_player = yes
+				}
+			}
 		}
 	}
 }

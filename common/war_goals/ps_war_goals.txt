@@ -1,0 +1,59 @@
+# Синдикат Сопротивления — цель войны Красной Бури
+# on_accept: root = Буря (победитель), from = побеждённая империя
+wg_ps_red_storm = {
+	casus_belli = cb_ps_red_storm
+	hide = no_cb
+	cede_claims = no
+	set_defender_wargoal = wg_humiliation
+	surrender_acceptance = -100
+
+	potential = {
+		has_country_flag = ps_red_storm
+	}
+	possible = {
+		from = { has_country_flag = ps_storm_designated }
+	}
+
+	# Буря победила: все занятые ею планеты переходят к ней, Буря крепнет
+	on_accept = {
+		custom_tooltip = wg_ps_red_storm_accept
+		hidden_effect = {
+			root = { save_event_target_as = ps_storm }
+			from = {
+				save_event_target_as = ps_storm_loser
+				remove_country_flag = ps_storm_designated
+				every_owned_planet = {
+					limit = {
+						exists = controller
+						controller = { is_same_value = event_target:ps_storm }
+					}
+					set_owner = event_target:ps_storm
+					add_modifier = { modifier = ps_storm_liberated_world days = 1800 }
+				}
+			}
+			root = {
+				set_timed_country_flag = { flag = ps_storm_war_cooldown days = 720 }
+				random_situation = {
+					limit = { is_situation_type = situation_ps_red_storm }
+					add_situation_progress = 20
+				}
+			}
+			every_playable_country = {
+				limit = { is_country_type = default }
+				country_event = { id = ps_storm.8 }
+			}
+		}
+	}
+
+	# Белый мир: Буря отходит и ищет следующую цель
+	on_status_quo = {
+		hidden_effect = {
+			from = { remove_country_flag = ps_storm_designated }
+			root = { set_timed_country_flag = { flag = ps_storm_war_cooldown days = 1080 } }
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}

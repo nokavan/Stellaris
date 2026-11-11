@@ -24,16 +24,3 @@ ps_make_cell_subject = {
 	}
 }
 
-# КРАСНАЯ БУРЯ: страна (scope) провозглашает Мировую революцию и становится кризисом
-ps_storm_ignite = {
-	set_country_flag = ps_red_storm
-	set_global_flag = ps_storm_happened
-	start_situation = { type = situation_ps_red_storm }
-	add_resource = { alloys = 5000 energy = 5000 influence = 300 unity = 2000 }
-	every_playable_country = {
-		limit = { ps_storm_target = yes }
-		add_opinion_modifier = { who = prev modifier = opinion_ps_red_storm }
-		country_event = { id = ps_storm.2 }
-	}
-	country_event = { id = ps_storm.1 }
-}

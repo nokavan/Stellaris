@@ -928,3 +928,79 @@ operation_ps_covert_fleet_support = {
 	}
 	on_create = {}
 }
+
+#####################################################
+# КРИЗИС КОНЦА ИГРЫ: «Красная Буря» (раз за игру)
+#####################################################
+operation_ps_red_storm = {
+	target = none
+	categories = { op_cat_provocation op_cat_government }
+	picture = GFX_evt_alien_propaganda
+	desc = operation_ps_red_storm_desc
+	stages = 5
+	spy_power_cost = 100
+
+	resources = {
+		category = operations
+		cost = { influence = 500 }
+		upkeep = { energy = 25 }
+	}
+
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+		NOT = { has_global_flag = ps_storm_happened }
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = operation_ps_red_storm_too_early
+			years_passed > 100
+		}
+		custom_tooltip = {
+			fail_text = operation_ps_red_storm_tech
+			owner = { has_technology = tech_ps_ghost_networks }
+		}
+		custom_tooltip = {
+			fail_text = operation_ps_red_storm_small
+			target = { num_owned_planets > 4 }
+		}
+		custom_tooltip = {
+			fail_text = operation_ps_red_storm_partisan
+			target = { ps_storm_target = yes }
+		}
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 9
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_crisis.1
+	}
+	stage = {
+		difficulty = 10
+		icon = GFX_espionage_chapter_icon_document
+		event = ps_crisis.1
+	}
+	stage = {
+		difficulty = 10
+		icon = GFX_espionage_chapter_icon_target
+		event = ps_crisis.1
+	}
+	stage = {
+		difficulty = 11
+		icon = GFX_espionage_chapter_icon_motion
+		event = ps_crisis.1
+	}
+	stage = {
+		difficulty = 12
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_storm.1
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}

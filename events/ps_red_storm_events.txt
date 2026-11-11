@@ -1,53 +1,69 @@
 #####################################################
-# Синдикат Сопротивления — КРИЗИС «КРАСНАЯ БУРЯ» (Мировая революция)
+# Синдикат Сопротивления — КРИЗИС «КРАСНАЯ БУРЯ»
+# Восстание свергает своего хозяина, затем по одному объявляет войну соседям.
+# Партизанские империи игроков и их вассалов Буря не трогает.
 #
-#  ps_storm.1   кризисной империи: революция провозглашена
-#  ps_storm.2   всем остальным: в галактике родилась Буря
-#  ps_storm.3   всем: Буря поднялась на новый уровень
-#  ps_storm.11-15  уровни 1–5 (scope = ситуация Бури, owner = Буря)
-#  ps_storm.21  у жертвы победила «Революционная зараза» (scope = ситуация)
-#  ps_storm.22  жертве: планеты ушли к Буре
-#  ps_storm.30  ежегодно у Бури: распространение заразы и натиск на 5-м уровне
-#  ps_storm.40  ежегодно: Буря может родиться в империи ИИ
-#  ps_storm.50  Буря уничтожена (scope = ситуация, при abort)
+#  ps_storm.1   операция «Красная Буря»: финальный этап (scope = операция)
+#  ps_storm.2   всем: Буря родилась
+#  ps_storm.3   всем: Буря выросла на уровень (scope = ситуация)
+#  ps_storm.5   РОЖДЕНИЕ БУРИ (scope = планета хозяина)
+#  ps_storm.6   жертве: Буря объявила войну
+#  ps_storm.7   всем: Буря выбрала новую цель
+#  ps_storm.8   всем: Буря победила в войне
+#  ps_storm.30  ежегодно у Бури: следующая цель
+#  ps_storm.40  ежегодно: Буря может вспыхнуть сама в империи ИИ
+#  ps_storm.50  Буря уничтожена (scope = ситуация)
 #  ps_storm.51  всем: Буря утихла
-#  ps_storm.60  планета переходит к Буре (scope = планета)
 #####################################################
 
 namespace = ps_storm
 
 #####################################################
-# РОЖДЕНИЕ
+# ЗАПУСК
 #####################################################
 
-country_event = {
+# Финал операции «Красная Буря» (scope = операция; owner = партизаны; target = хозяин)
+espionage_operation_event = {
 	id = ps_storm.1
 	title = ps_storm.1.name
 	desc = ps_storm.1.desc
+	espionage_operation = yes
 	picture = GFX_ps_evt_partisans
-	is_triggered_only = yes
-
-	option = { name = ps_storm.1.a }
-}
-
-country_event = {
-	id = ps_storm.2
-	title = ps_storm.2.name
-	desc = ps_storm.2.desc
-	picture = GFX_ps_evt_partisans
+	show_sound = event_espionage_concluded
 	is_triggered_only = yes
 
 	immediate = {
-		random_playable_country = {
-			limit = { has_country_flag = ps_red_storm }
-			save_event_target_as = ps_storm
+		owner = { save_event_target_as = ps_storm_sponsor }
+		target = {
+			if = {
+				limit = { any_owned_planet = { is_capital = no planet_stability < 40 } }
+				random_owned_planet = {
+					limit = { is_capital = no planet_stability < 40 }
+					save_event_target_as = ps_storm_cradle
+				}
+			}
+			else = {
+				random_owned_planet = {
+					limit = { is_capital = no }
+					save_event_target_as = ps_storm_cradle
+				}
+			}
 		}
 	}
 
-	option = { name = ps_storm.2.a }
+	option = {
+		name = ps_storm.1.a
+		custom_tooltip = ps_storm.1.a.tooltip
+		if = {
+			limit = { exists = event_target:ps_storm_cradle }
+			event_target:ps_storm_cradle = { carrier_event = { id = ps_storm.5 } }
+		}
+	}
+
+	after = { destroy_espionage_operation = this }
 }
 
-# Ежегодно: Буря может вспыхнуть в империи ИИ в поздней игре (раз за игру)
+# Ежегодно: Буря может вспыхнуть сама в крупной империи ИИ (раз за игру)
 country_event = {
 	id = ps_storm.40
 	hide_window = yes
@@ -57,7 +73,8 @@ country_event = {
 		is_ai = yes
 		is_country_type = default
 		years_passed > 150
-		num_owned_planets > 5
+		num_owned_planets > 8
+		ps_storm_target = yes
 		NOT = { has_global_flag = ps_storm_happened }
 		NOT = { has_global_flag = ps_storm_disabled }
 	}
@@ -65,9 +82,11 @@ country_event = {
 	immediate = {
 		random_list = {
 			1 = {
-				modifier = { factor = 10 ps_is_partisan_empire = yes }
 				modifier = { factor = 3 any_owned_planet = { planet_stability < 30 } }
-				ps_storm_ignite = yes
+				random_owned_planet = {
+					limit = { is_capital = no }
+					carrier_event = { id = ps_storm.5 }
+				}
 			}
 			400 = { }
 		}
@@ -75,186 +94,189 @@ country_event = {
 }
 
 #####################################################
-# УРОВНИ БУРИ (scope = ситуация; owner = Буря)
+# РОЖДЕНИЕ БУРИ (scope = планета-колыбель; owner = хозяин)
 #####################################################
-
-# 1. Искра: смута в каждой империи
-situation_event = {
-	id = ps_storm.11
+carrier_event = {
+	id = ps_storm.5
 	hide_window = yes
 	is_triggered_only = yes
 
-	immediate = {
-		owner = {
-			save_event_target_as = ps_storm
-			save_event_target_as = ps_sponsor
-		}
-		set_global_flag = ps_storm_level_1
-		every_playable_country = {
-			limit = { ps_storm_target = yes }
-			random_owned_planet = {
-				limit = { is_capital = no }
-				add_modifier = { modifier = ps_sown_dissent days = 1800 }
-				carrier_event = { id = ps_revolt.50 }
-			}
-			country_event = { id = ps_storm.3 }
-		}
-		owner = { country_event = { id = ps_storm.3 } }
+	trigger = {
+		exists = owner
+		NOT = { has_global_flag = ps_storm_happened }
 	}
-}
-
-# 2. Пожар: восстание в каждой империи
-situation_event = {
-	id = ps_storm.12
-	hide_window = yes
-	is_triggered_only = yes
 
 	immediate = {
-		owner = {
-			save_event_target_as = ps_storm
-			save_event_target_as = ps_sponsor
+		set_global_flag = ps_storm_happened
+		owner = { save_event_target_as = ps_storm_host }
+
+		# 1. Государство восставших
+		create_country = {
+			name = "NAME_ps_red_storm"
+			type = default
+			species = root.owner_species
+			authority = random
+			civics = random
+			ethos = random
+			ignore_initial_colony_error = yes
+			effect = {
+				save_event_target_as = ps_storm
+				set_country_flag = ps_red_storm
+			}
 		}
-		remove_global_flag = ps_storm_level_1
-		set_global_flag = ps_storm_level_2
-		every_playable_country = {
-			limit = { ps_storm_target = yes }
-			random_owned_planet = {
-				limit = {
-					is_capital = no
-					planet_stability < 50
-				}
-				save_event_target_as = ps_revolt_planet
-				add_modifier = { modifier = ps_armed_underground days = 1080 }
-				carrier_event = { id = ps_revolt.50 }
-				owner = {
-					start_situation = {
-						type = situation_planetary_revolt
-						target = event_target:ps_revolt_planet
+
+		# 2. Колыбель и ещё до 4 неспокойных планет хозяина переходят к Буре
+		set_owner = event_target:ps_storm
+		set_controller = event_target:ps_storm
+		add_modifier = { modifier = ps_storm_liberated_world days = 1800 }
+		event_target:ps_storm_host = {
+			while = {
+				count = 4
+				if = {
+					limit = {
+						any_owned_planet = {
+							is_capital = no
+							planet_stability < 50
+						}
+					}
+					random_owned_planet = {
+						limit = {
+							is_capital = no
+							planet_stability < 50
+						}
+						set_owner = event_target:ps_storm
+						set_controller = event_target:ps_storm
+						add_modifier = { modifier = ps_storm_liberated_world days = 1800 }
 					}
 				}
-				carrier_event = { id = ps_revolt.51 days = 1 }
 			}
-			country_event = { id = ps_storm.3 }
-		}
-		owner = { country_event = { id = ps_storm.3 } }
-	}
-}
-
-# 3. Буря: революционная зараза в каждой империи
-situation_event = {
-	id = ps_storm.13
-	hide_window = yes
-	is_triggered_only = yes
-
-	immediate = {
-		remove_global_flag = ps_storm_level_2
-		set_global_flag = ps_storm_level_3
-		set_global_flag = ps_storm_contagion_active
-		every_playable_country = {
-			limit = { ps_storm_target = yes }
-			if = {
-				limit = {
-					NOT = { has_country_flag = ps_storm_immune }
-					NOT = { any_situation = { is_situation_type = situation_ps_revolutionary_contagion } }
-				}
-				start_situation = { type = situation_ps_revolutionary_contagion }
+			# 3. Мятеж: четверть флота хозяина переходит к восставшим
+			create_fleet_from_naval_cap = 0.25
+			last_created_fleet = {
+				set_owner = event_target:ps_storm
 			}
-			country_event = { id = ps_storm.3 }
+			set_country_flag = ps_storm_designated
 		}
-		owner = { country_event = { id = ps_storm.3 } }
-	}
-}
 
-# 4. Красный рассвет: самые нестабильные планеты галактики сразу переходят к Буре
-situation_event = {
-	id = ps_storm.14
-	hide_window = yes
-	is_triggered_only = yes
-
-	immediate = {
-		owner = {
-			save_event_target_as = ps_storm
-			set_country_flag = ps_storm_dawn
-		}
-		remove_global_flag = ps_storm_level_3
-		set_global_flag = ps_storm_level_4
-		every_playable_country = {
-			limit = { ps_storm_target = yes }
+		# 4. Армии, ресурсы и рост Бури
+		event_target:ps_storm = {
 			every_owned_planet = {
-				limit = {
-					is_capital = no
-					planet_stability < 25
+				while = {
+					count = 3
+					create_army = {
+						name = "NAME_ps_partisan_detachment"
+						owner = event_target:ps_storm
+						type = ps_partisan_insurgent
+					}
 				}
-				set_planet_flag = ps_storm_defecting
-				carrier_event = { id = ps_storm.60 }
 			}
-			country_event = { id = ps_storm.3 }
+			add_resource = { energy = 5000 minerals = 5000 alloys = 3000 food = 2000 influence = 300 }
+			start_situation = { type = situation_ps_red_storm }
+			if = {
+				limit = { exists = event_target:ps_storm_sponsor }
+				add_opinion_modifier = { who = event_target:ps_storm_sponsor modifier = opinion_ps_liberators }
+			}
+			# 5. Первая война — против хозяина
+			declare_war = {
+				target = event_target:ps_storm_host
+				attacker_war_goal = wg_ps_red_storm
+			}
 		}
-		owner = { country_event = { id = ps_storm.3 } }
-	}
-}
 
-# 5. Конец старого мира: ежегодный натиск (см. ps_storm.30)
-situation_event = {
-	id = ps_storm.15
-	hide_window = yes
-	is_triggered_only = yes
-
-	immediate = {
-		owner = { set_country_flag = ps_storm_final }
-		remove_global_flag = ps_storm_level_4
-		set_global_flag = ps_storm_level_5
+		# 6. Галактика узнаёт о Буре; все её будущие цели видят в ней смертельную угрозу
 		every_playable_country = {
 			limit = { ps_storm_target = yes }
-			country_event = { id = ps_storm.3 }
+			add_opinion_modifier = { who = event_target:ps_storm modifier = opinion_ps_red_storm }
 		}
-		owner = { country_event = { id = ps_storm.3 } }
+		every_playable_country = {
+			limit = { is_country_type = default }
+			country_event = { id = ps_storm.2 }
+		}
 	}
 }
 
-# Всем: новый уровень Бури
 country_event = {
-	id = ps_storm.3
-	title = ps_storm.3.name
+	id = ps_storm.2
+	title = ps_storm.2.name
 	desc = {
-		trigger = { has_global_flag = ps_storm_level_1 }
-		text = ps_storm.3.desc.1
+		trigger = { has_country_flag = ps_storm_designated }
+		text = ps_storm.2.desc.host
 	}
 	desc = {
-		trigger = { has_global_flag = ps_storm_level_2 }
-		text = ps_storm.3.desc.2
-	}
-	desc = {
-		trigger = { has_global_flag = ps_storm_level_3 }
-		text = ps_storm.3.desc.3
-	}
-	desc = {
-		trigger = { has_global_flag = ps_storm_level_4 }
-		text = ps_storm.3.desc.4
-	}
-	desc = {
-		trigger = { has_global_flag = ps_storm_level_5 }
-		text = ps_storm.3.desc.5
+		trigger = { NOT = { has_country_flag = ps_storm_designated } }
+		text = ps_storm.2.desc
 	}
 	picture = GFX_ps_evt_partisans
 	is_triggered_only = yes
 
-	option = {
-		name = ps_storm.3.a
-		trigger = { has_country_flag = ps_red_storm }
-	}
-	option = {
-		name = ps_storm.3.b
-		trigger = { NOT = { has_country_flag = ps_red_storm } }
-	}
+	option = { name = ps_storm.2.a }
 }
 
 #####################################################
-# ЗАРАЗА ПОБЕДИЛА У ЖЕРТВЫ (scope = ситуация; owner = жертва)
+# ПОХОД НА СОСЕДЕЙ — ежегодно у Бури
 #####################################################
-situation_event = {
-	id = ps_storm.21
+country_event = {
+	id = ps_storm.30
 	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		has_country_flag = ps_red_storm
+		is_at_war = no
+		NOT = { has_country_flag = ps_storm_war_cooldown }
+	}
+
+	immediate = {
+		save_event_target_as = ps_storm
+		# Снять старую метку цели
+		every_playable_country = {
+			limit = { has_country_flag = ps_storm_designated }
+			remove_country_flag = ps_storm_designated
+		}
+		# Следующая цель: сначала сосед, иначе любая знакомая империя
+		if = {
+			limit = { any_neighbor_country = { ps_storm_target = yes } }
+			random_neighbor_country = {
+				limit = { ps_storm_target = yes }
+				save_event_target_as = ps_storm_next
+			}
+		}
+		else = {
+			random_playable_country = {
+				limit = {
+					ps_storm_target = yes
+					has_communications = root
+				}
+				save_event_target_as = ps_storm_next
+			}
+		}
+		if = {
+			limit = { exists = event_target:ps_storm_next }
+			event_target:ps_storm_next = {
+				set_country_flag = ps_storm_designated
+				country_event = { id = ps_storm.6 }
+			}
+			declare_war = {
+				target = event_target:ps_storm_next
+				attacker_war_goal = wg_ps_red_storm
+			}
+			every_playable_country = {
+				limit = {
+					is_country_type = default
+					NOT = { has_country_flag = ps_storm_designated }
+				}
+				country_event = { id = ps_storm.7 }
+			}
+		}
+	}
+}
+
+# Жертве: Буря объявила войну
+country_event = {
+	id = ps_storm.6
+	title = ps_storm.6.name
+	desc = ps_storm.6.desc
+	picture = GFX_ps_evt_partisans
 	is_triggered_only = yes
 
 	immediate = {
@@ -262,123 +284,56 @@ situation_event = {
 			limit = { has_country_flag = ps_red_storm }
 			save_event_target_as = ps_storm
 		}
-		if = {
-			limit = { exists = event_target:ps_storm }
-			owner = {
-				while = {
-					count = 3
-					if = {
-						limit = {
-							any_owned_planet = {
-								is_capital = no
-								NOT = { has_planet_flag = ps_storm_defecting }
-							}
-						}
-						random_owned_planet = {
-							limit = {
-								is_capital = no
-								NOT = { has_planet_flag = ps_storm_defecting }
-							}
-							set_planet_flag = ps_storm_defecting
-							carrier_event = { id = ps_storm.60 }
-						}
-					}
-					else = {
-						# Осталась только столица — пала и она
-						random_owned_planet = {
-							limit = { NOT = { has_planet_flag = ps_storm_defecting } }
-							set_planet_flag = ps_storm_defecting
-							carrier_event = { id = ps_storm.60 }
-						}
-					}
-				}
-				country_event = { id = ps_storm.22 }
-			}
+	}
+
+	option = { name = ps_storm.6.a }
+}
+
+# Всем: Буря выбрала новую цель
+country_event = {
+	id = ps_storm.7
+	title = ps_storm.7.name
+	desc = ps_storm.7.desc
+	picture = GFX_ps_evt_partisans
+	is_triggered_only = yes
+
+	option = { name = ps_storm.7.a }
+}
+
+# Всем: Буря победила в войне (из wg_ps_red_storm, event_target:ps_storm / ps_storm_loser)
+country_event = {
+	id = ps_storm.8
+	title = ps_storm.8.name
+	desc = ps_storm.8.desc
+	picture = GFX_ps_evt_partisans
+	is_triggered_only = yes
+
+	option = { name = ps_storm.8.a }
+}
+
+# Всем: Буря выросла на уровень (scope = ситуация)
+situation_event = {
+	id = ps_storm.3
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		owner = { save_event_target_as = ps_storm }
+		every_playable_country = {
+			limit = { is_country_type = default }
+			country_event = { id = ps_storm.4 }
 		}
-		# Зараза не уходит: отсчёт начинается заново
-		add_situation_progress = -60
 	}
 }
 
 country_event = {
-	id = ps_storm.22
-	title = ps_storm.22.name
-	desc = ps_storm.22.desc
-	picture = GFX_evt_alien_propaganda
+	id = ps_storm.4
+	title = ps_storm.4.name
+	desc = ps_storm.4.desc
+	picture = GFX_ps_evt_partisans
 	is_triggered_only = yes
 
-	option = { name = ps_storm.22.a }
-}
-
-#####################################################
-# ЕЖЕГОДНО У БУРИ
-#####################################################
-country_event = {
-	id = ps_storm.30
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = { has_country_flag = ps_red_storm }
-
-	immediate = {
-		save_event_target_as = ps_storm
-
-		# С 3-го уровня зараза приходит в каждую империю без иммунитета
-		if = {
-			limit = { has_global_flag = ps_storm_contagion_active }
-			every_playable_country = {
-				limit = {
-					ps_storm_target = yes
-					NOT = { has_country_flag = ps_storm_immune }
-					NOT = { any_situation = { is_situation_type = situation_ps_revolutionary_contagion } }
-				}
-				start_situation = { type = situation_ps_revolutionary_contagion }
-			}
-		}
-
-		# 5-й уровень: каждая империя ежегодно теряет планету
-		if = {
-			limit = { has_country_flag = ps_storm_final }
-			every_playable_country = {
-				limit = { ps_storm_target = yes }
-				if = {
-					limit = { any_owned_planet = { is_capital = no } }
-					random_owned_planet = {
-						limit = { is_capital = no }
-						set_planet_flag = ps_storm_defecting
-						carrier_event = { id = ps_storm.60 }
-					}
-				}
-				else = {
-					random_owned_planet = {
-						set_planet_flag = ps_storm_defecting
-						carrier_event = { id = ps_storm.60 }
-					}
-				}
-			}
-		}
-	}
-}
-
-#####################################################
-# ПЛАНЕТА ПЕРЕХОДИТ К БУРЕ (scope = планета)
-#####################################################
-carrier_event = {
-	id = ps_storm.60
-	hide_window = yes
-	is_triggered_only = yes
-
-	trigger = { exists = event_target:ps_storm }
-
-	immediate = {
-		remove_planet_flag = ps_storm_defecting
-		set_owner = event_target:ps_storm
-		set_controller = event_target:ps_storm
-		add_modifier = { modifier = ps_storm_liberated_world days = 1800 }
-		event_target:ps_storm = {
-			set_timed_country_flag = { flag = ps_storm_recent_victory days = 360 }
-		}
-	}
+	option = { name = ps_storm.4.a }
 }
 
 #####################################################
@@ -391,12 +346,10 @@ situation_event = {
 
 	immediate = {
 		set_global_flag = ps_storm_ended
-		remove_global_flag = ps_storm_level_1
-		remove_global_flag = ps_storm_level_2
-		remove_global_flag = ps_storm_level_3
-		remove_global_flag = ps_storm_level_4
-		remove_global_flag = ps_storm_level_5
-		remove_global_flag = ps_storm_contagion_active
+		every_playable_country = {
+			limit = { has_country_flag = ps_storm_designated }
+			remove_country_flag = ps_storm_designated
+		}
 		every_playable_country = {
 			limit = {
 				is_country_type = default

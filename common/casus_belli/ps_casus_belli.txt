@@ -1,0 +1,26 @@
+# Синдикат Сопротивления — повод к войне Красной Бури
+# Действует только против текущей цели Бури (флаг ps_storm_designated),
+# поэтому Буря воюет строго с одной империей за раз.
+# this = Буря, from = цель
+cb_ps_red_storm = {
+	show_in_diplomacy = no
+	show_notification = no
+
+	potential = {
+		has_country_flag = ps_red_storm
+	}
+
+	is_valid = {
+		has_country_flag = ps_red_storm
+		from = { has_country_flag = ps_storm_designated }
+		NOT = { has_truce = from }
+		NOT = { is_same_value = from }
+	}
+
+	destroy_if = {
+		OR = {
+			NOT = { has_country_flag = ps_red_storm }
+			NOT = { from = { has_country_flag = ps_storm_designated } }
+		}
+	}
+}
