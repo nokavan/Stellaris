@@ -1,0 +1,686 @@
+# АВТОГЕНЕРАЦИЯ: tools/gen_crises.py — правьте генератор, а не этот файл
+# Синдикат Сопротивления — 5 кризисов (ситуации у жертвы)
+
+situation_ps_general_strike = {
+	picture = GFX_evt_alien_propaganda
+	category = negative
+	situation_log_category = urgent_matters
+
+	fail_icon = GFX_situation_outcome_meh
+	fail_icon_frame = GFX_situation_outcome_frame_green
+	complete_icon = GFX_situation_outcome_revolt
+	complete_icon_frame = GFX_situation_outcome_frame_red
+
+	initial_progress = 20
+
+	stages = {
+		ps_general_strike_stage_1 = {
+			icon = GFX_situation_stage_1
+			icon_background = GFX_situation_stage_frame_red
+			end = 25
+			modifier = {
+				planet_jobs_produces_mult = -0.05
+				planet_stability_add = -2
+			}
+		}
+		ps_general_strike_stage_2 = {
+			icon = GFX_situation_stage_2
+			icon_background = GFX_situation_stage_frame_red
+			end = 50
+			modifier = {
+				planet_jobs_produces_mult = -0.1
+				planet_stability_add = -4
+			}
+		}
+		ps_general_strike_stage_3 = {
+			icon = GFX_situation_stage_3
+			icon_background = GFX_situation_stage_frame_red
+			end = 75
+			modifier = {
+				planet_jobs_produces_mult = -0.15
+				planet_stability_add = -6
+			}
+		}
+		ps_general_strike_stage_4 = {
+			icon = GFX_situation_stage_4
+			icon_background = GFX_situation_stage_frame_red
+			end = 100
+			modifier = {
+				planet_jobs_produces_mult = -0.2
+				planet_stability_add = -8
+			}
+		}
+	}
+
+	monthly_progress = {
+		base = 2
+		modifier = {
+			add = 1
+			desc = ps_crisis_progress_unrest
+			owner = {
+				any_owned_planet = { planet_stability < 30 }
+			}
+		}
+		modifier = {
+			add = 1
+			desc = ps_crisis_progress_agents
+			any_playable_country = { has_country_flag = ps_crisis_agents@root.owner }
+		}
+		modifier = {
+			subtract = 3
+			desc = ps_general_strike_concessions
+			current_situation_approach = ps_general_strike_concessions
+		}
+		modifier = {
+			subtract = 2
+			desc = ps_general_strike_crackdown
+			current_situation_approach = ps_general_strike_crackdown
+		}
+	}
+
+	approach = {
+		name = ps_crisis_ignore
+		icon = GFX_situation_approach_this_is_fine
+		icon_background = GFX_situation_approach_bg_yellow
+		default = yes
+		ai_weight = {
+			base = 1
+		}
+	}
+
+	approach = {
+		name = ps_general_strike_concessions
+		icon = GFX_situation_approach_amenities
+		icon_background = GFX_situation_approach_bg_green
+		resources = {
+			category = situations
+			upkeep = {
+				consumer_goods = 20
+				energy = 20
+			}
+		}
+		ai_weight = {
+			base = 3
+		}
+	}
+
+	approach = {
+		name = ps_general_strike_crackdown
+		icon = GFX_situation_approach_whip
+		icon_background = GFX_situation_approach_bg_red
+		modifier = {
+			planet_stability_add = -5
+		}
+		resources = {
+			category = situations
+			upkeep = {
+				unity = 30
+			}
+		}
+		ai_weight = {
+			base = 3
+		}
+	}
+
+	on_progress_complete = {
+		custom_tooltip = situation_ps_general_strike_complete_tooltip
+		hidden_effect = {
+			situation_event = { id = ps_crisis.101 }
+		}
+	}
+
+	on_fail = {
+		custom_tooltip = ps_crisis_fail_tooltip
+		hidden_effect = {
+			owner = { add_modifier = { modifier = ps_crisis_overcome days = 1800 } }
+			destroy_situation = this
+		}
+	}
+}
+
+situation_ps_insurgency = {
+	picture = GFX_evt_alien_propaganda
+	category = negative
+	situation_log_category = urgent_matters
+
+	fail_icon = GFX_situation_outcome_meh
+	fail_icon_frame = GFX_situation_outcome_frame_green
+	complete_icon = GFX_situation_outcome_revolt
+	complete_icon_frame = GFX_situation_outcome_frame_red
+
+	initial_progress = 20
+
+	stages = {
+		ps_insurgency_stage_1 = {
+			icon = GFX_situation_stage_1
+			icon_background = GFX_situation_stage_frame_red
+			end = 25
+			modifier = {
+				planet_stability_add = -3
+				planet_crime_add = 5
+			}
+		}
+		ps_insurgency_stage_2 = {
+			icon = GFX_situation_stage_2
+			icon_background = GFX_situation_stage_frame_red
+			end = 50
+			modifier = {
+				planet_stability_add = -5
+				planet_crime_add = 10
+				army_defense_damage_mult = -0.1
+			}
+		}
+		ps_insurgency_stage_3 = {
+			icon = GFX_situation_stage_3
+			icon_background = GFX_situation_stage_frame_red
+			end = 75
+			modifier = {
+				planet_stability_add = -7
+				planet_crime_add = 15
+				army_defense_damage_mult = -0.2
+			}
+		}
+		ps_insurgency_stage_4 = {
+			icon = GFX_situation_stage_4
+			icon_background = GFX_situation_stage_frame_red
+			end = 100
+			modifier = {
+				planet_stability_add = -10
+				planet_crime_add = 20
+				army_defense_damage_mult = -0.3
+			}
+		}
+	}
+
+	monthly_progress = {
+		base = 2
+		modifier = {
+			add = 1
+			desc = ps_crisis_progress_unrest
+			owner = {
+				any_owned_planet = { planet_stability < 30 }
+			}
+		}
+		modifier = {
+			add = 1
+			desc = ps_crisis_progress_agents
+			any_playable_country = { has_country_flag = ps_crisis_agents@root.owner }
+		}
+		modifier = {
+			subtract = 3
+			desc = ps_insurgency_counterinsurgency
+			current_situation_approach = ps_insurgency_counterinsurgency
+		}
+		modifier = {
+			subtract = 2
+			desc = ps_insurgency_amnesty
+			current_situation_approach = ps_insurgency_amnesty
+		}
+	}
+
+	approach = {
+		name = ps_crisis_ignore
+		icon = GFX_situation_approach_this_is_fine
+		icon_background = GFX_situation_approach_bg_yellow
+		default = yes
+		ai_weight = {
+			base = 1
+		}
+	}
+
+	approach = {
+		name = ps_insurgency_counterinsurgency
+		icon = GFX_situation_approach_whip
+		icon_background = GFX_situation_approach_bg_red
+		modifier = {
+			pop_happiness = -0.05
+		}
+		resources = {
+			category = situations
+			upkeep = {
+				unity = 30
+				energy = 20
+			}
+		}
+		ai_weight = {
+			base = 3
+		}
+	}
+
+	approach = {
+		name = ps_insurgency_amnesty
+		icon = GFX_situation_approach_unity
+		icon_background = GFX_situation_approach_bg_green
+		modifier = {
+			pop_happiness = 0.05
+		}
+		resources = {
+			category = situations
+			upkeep = {
+				influence = 1
+			}
+		}
+		ai_weight = {
+			base = 3
+		}
+	}
+
+	on_progress_complete = {
+		custom_tooltip = situation_ps_insurgency_complete_tooltip
+		hidden_effect = {
+			situation_event = { id = ps_crisis.102 }
+		}
+	}
+
+	on_fail = {
+		custom_tooltip = ps_crisis_fail_tooltip
+		hidden_effect = {
+			owner = { add_modifier = { modifier = ps_crisis_overcome days = 1800 } }
+			destroy_situation = this
+		}
+	}
+}
+
+situation_ps_financial_collapse = {
+	picture = GFX_evt_spy_network
+	category = negative
+	situation_log_category = urgent_matters
+
+	fail_icon = GFX_situation_outcome_meh
+	fail_icon_frame = GFX_situation_outcome_frame_green
+	complete_icon = GFX_situation_outcome_revolt
+	complete_icon_frame = GFX_situation_outcome_frame_red
+
+	initial_progress = 20
+
+	stages = {
+		ps_financial_collapse_stage_1 = {
+			icon = GFX_situation_stage_1
+			icon_background = GFX_situation_stage_frame_red
+			end = 25
+			modifier = {
+				country_energy_produces_mult = -0.05
+			}
+		}
+		ps_financial_collapse_stage_2 = {
+			icon = GFX_situation_stage_2
+			icon_background = GFX_situation_stage_frame_red
+			end = 50
+			modifier = {
+				country_energy_produces_mult = -0.1
+				country_trade_produces_mult = -0.1
+			}
+		}
+		ps_financial_collapse_stage_3 = {
+			icon = GFX_situation_stage_3
+			icon_background = GFX_situation_stage_frame_red
+			end = 75
+			modifier = {
+				country_energy_produces_mult = -0.15
+				country_trade_produces_mult = -0.15
+			}
+		}
+		ps_financial_collapse_stage_4 = {
+			icon = GFX_situation_stage_4
+			icon_background = GFX_situation_stage_frame_red
+			end = 100
+			modifier = {
+				country_energy_produces_mult = -0.2
+				country_trade_produces_mult = -0.2
+				planet_stability_add = -5
+			}
+		}
+	}
+
+	monthly_progress = {
+		base = 2
+		modifier = {
+			add = 1
+			desc = ps_crisis_progress_unrest
+			owner = {
+				any_owned_planet = { planet_stability < 30 }
+			}
+		}
+		modifier = {
+			add = 1
+			desc = ps_crisis_progress_agents
+			any_playable_country = { has_country_flag = ps_crisis_agents@root.owner }
+		}
+		modifier = {
+			subtract = 4
+			desc = ps_financial_collapse_bailout
+			current_situation_approach = ps_financial_collapse_bailout
+		}
+		modifier = {
+			subtract = 3
+			desc = ps_financial_collapse_austerity
+			current_situation_approach = ps_financial_collapse_austerity
+		}
+	}
+
+	approach = {
+		name = ps_crisis_ignore
+		icon = GFX_situation_approach_this_is_fine
+		icon_background = GFX_situation_approach_bg_yellow
+		default = yes
+		ai_weight = {
+			base = 1
+		}
+	}
+
+	approach = {
+		name = ps_financial_collapse_bailout
+		icon = GFX_situation_approach_amenities
+		icon_background = GFX_situation_approach_bg_green
+		resources = {
+			category = situations
+			upkeep = {
+				energy = 50
+			}
+		}
+		ai_weight = {
+			base = 3
+		}
+	}
+
+	approach = {
+		name = ps_financial_collapse_austerity
+		icon = GFX_situation_approach_whip
+		icon_background = GFX_situation_approach_bg_red
+		modifier = {
+			pop_happiness = -0.1
+		}
+		ai_weight = {
+			base = 3
+		}
+	}
+
+	on_progress_complete = {
+		custom_tooltip = situation_ps_financial_collapse_complete_tooltip
+		hidden_effect = {
+			situation_event = { id = ps_crisis.103 }
+		}
+	}
+
+	on_fail = {
+		custom_tooltip = ps_crisis_fail_tooltip
+		hidden_effect = {
+			owner = { add_modifier = { modifier = ps_crisis_overcome days = 1800 } }
+			destroy_situation = this
+		}
+	}
+}
+
+situation_ps_legitimacy = {
+	picture = GFX_evt_alien_propaganda
+	category = negative
+	situation_log_category = urgent_matters
+
+	fail_icon = GFX_situation_outcome_meh
+	fail_icon_frame = GFX_situation_outcome_frame_green
+	complete_icon = GFX_situation_outcome_revolt
+	complete_icon_frame = GFX_situation_outcome_frame_red
+
+	initial_progress = 20
+
+	stages = {
+		ps_legitimacy_stage_1 = {
+			icon = GFX_situation_stage_1
+			icon_background = GFX_situation_stage_frame_red
+			end = 25
+			modifier = {
+				country_unity_produces_mult = -0.05
+				pop_government_ethic_attraction = -0.1
+			}
+		}
+		ps_legitimacy_stage_2 = {
+			icon = GFX_situation_stage_2
+			icon_background = GFX_situation_stage_frame_red
+			end = 50
+			modifier = {
+				country_unity_produces_mult = -0.1
+				pop_government_ethic_attraction = -0.2
+			}
+		}
+		ps_legitimacy_stage_3 = {
+			icon = GFX_situation_stage_3
+			icon_background = GFX_situation_stage_frame_red
+			end = 75
+			modifier = {
+				country_unity_produces_mult = -0.15
+				pop_government_ethic_attraction = -0.3
+				country_influence_produces_mult = -0.1
+			}
+		}
+		ps_legitimacy_stage_4 = {
+			icon = GFX_situation_stage_4
+			icon_background = GFX_situation_stage_frame_red
+			end = 100
+			modifier = {
+				country_unity_produces_mult = -0.2
+				pop_government_ethic_attraction = -0.4
+				country_influence_produces_mult = -0.2
+			}
+		}
+	}
+
+	monthly_progress = {
+		base = 2
+		modifier = {
+			add = 1
+			desc = ps_crisis_progress_unrest
+			owner = {
+				any_owned_planet = { planet_stability < 30 }
+			}
+		}
+		modifier = {
+			add = 1
+			desc = ps_crisis_progress_agents
+			any_playable_country = { has_country_flag = ps_crisis_agents@root.owner }
+		}
+		modifier = {
+			subtract = 3
+			desc = ps_legitimacy_propaganda
+			current_situation_approach = ps_legitimacy_propaganda
+		}
+		modifier = {
+			subtract = 3
+			desc = ps_legitimacy_reforms
+			current_situation_approach = ps_legitimacy_reforms
+		}
+	}
+
+	approach = {
+		name = ps_crisis_ignore
+		icon = GFX_situation_approach_this_is_fine
+		icon_background = GFX_situation_approach_bg_yellow
+		default = yes
+		ai_weight = {
+			base = 1
+		}
+	}
+
+	approach = {
+		name = ps_legitimacy_propaganda
+		icon = GFX_situation_approach_unity
+		icon_background = GFX_situation_approach_bg_green
+		resources = {
+			category = situations
+			upkeep = {
+				unity = 40
+			}
+		}
+		ai_weight = {
+			base = 3
+		}
+	}
+
+	approach = {
+		name = ps_legitimacy_reforms
+		icon = GFX_situation_approach_amenities
+		icon_background = GFX_situation_approach_bg_yellow
+		modifier = {
+			pop_happiness = 0.05
+		}
+		resources = {
+			category = situations
+			upkeep = {
+				influence = 2
+			}
+		}
+		ai_weight = {
+			base = 3
+		}
+	}
+
+	on_progress_complete = {
+		custom_tooltip = situation_ps_legitimacy_complete_tooltip
+		hidden_effect = {
+			situation_event = { id = ps_crisis.104 }
+		}
+	}
+
+	on_fail = {
+		custom_tooltip = ps_crisis_fail_tooltip
+		hidden_effect = {
+			owner = { add_modifier = { modifier = ps_crisis_overcome days = 1800 } }
+			destroy_situation = this
+		}
+	}
+}
+
+situation_ps_naval_mutiny = {
+	picture = GFX_evt_spy_network
+	category = negative
+	situation_log_category = urgent_matters
+
+	fail_icon = GFX_situation_outcome_meh
+	fail_icon_frame = GFX_situation_outcome_frame_green
+	complete_icon = GFX_situation_outcome_revolt
+	complete_icon_frame = GFX_situation_outcome_frame_red
+
+	initial_progress = 20
+
+	stages = {
+		ps_naval_mutiny_stage_1 = {
+			icon = GFX_situation_stage_1
+			icon_background = GFX_situation_stage_frame_red
+			end = 25
+			modifier = {
+				ship_fire_rate_mult = -0.05
+			}
+		}
+		ps_naval_mutiny_stage_2 = {
+			icon = GFX_situation_stage_2
+			icon_background = GFX_situation_stage_frame_red
+			end = 50
+			modifier = {
+				ship_fire_rate_mult = -0.1
+				ship_speed_mult = -0.05
+			}
+		}
+		ps_naval_mutiny_stage_3 = {
+			icon = GFX_situation_stage_3
+			icon_background = GFX_situation_stage_frame_red
+			end = 75
+			modifier = {
+				ship_fire_rate_mult = -0.15
+				ship_speed_mult = -0.1
+			}
+		}
+		ps_naval_mutiny_stage_4 = {
+			icon = GFX_situation_stage_4
+			icon_background = GFX_situation_stage_frame_red
+			end = 100
+			modifier = {
+				ship_fire_rate_mult = -0.2
+				ship_speed_mult = -0.15
+				country_naval_cap_mult = -0.1
+			}
+		}
+	}
+
+	monthly_progress = {
+		base = 2
+		modifier = {
+			add = 1
+			desc = ps_crisis_progress_unrest
+			owner = {
+				any_owned_planet = { planet_stability < 30 }
+			}
+		}
+		modifier = {
+			add = 1
+			desc = ps_crisis_progress_agents
+			any_playable_country = { has_country_flag = ps_crisis_agents@root.owner }
+		}
+		modifier = {
+			subtract = 3
+			desc = ps_naval_mutiny_purge_officers
+			current_situation_approach = ps_naval_mutiny_purge_officers
+		}
+		modifier = {
+			subtract = 3
+			desc = ps_naval_mutiny_pay_raise
+			current_situation_approach = ps_naval_mutiny_pay_raise
+		}
+	}
+
+	approach = {
+		name = ps_crisis_ignore
+		icon = GFX_situation_approach_this_is_fine
+		icon_background = GFX_situation_approach_bg_yellow
+		default = yes
+		ai_weight = {
+			base = 1
+		}
+	}
+
+	approach = {
+		name = ps_naval_mutiny_purge_officers
+		icon = GFX_situation_approach_whip
+		icon_background = GFX_situation_approach_bg_red
+		modifier = {
+			ship_fire_rate_mult = -0.05
+		}
+		resources = {
+			category = situations
+			upkeep = {
+				unity = 30
+			}
+		}
+		ai_weight = {
+			base = 3
+		}
+	}
+
+	approach = {
+		name = ps_naval_mutiny_pay_raise
+		icon = GFX_situation_approach_amenities
+		icon_background = GFX_situation_approach_bg_green
+		resources = {
+			category = situations
+			upkeep = {
+				energy = 40
+			}
+		}
+		ai_weight = {
+			base = 3
+		}
+	}
+
+	on_progress_complete = {
+		custom_tooltip = situation_ps_naval_mutiny_complete_tooltip
+		hidden_effect = {
+			situation_event = { id = ps_crisis.105 }
+		}
+	}
+
+	on_fail = {
+		custom_tooltip = ps_crisis_fail_tooltip
+		hidden_effect = {
+			owner = { add_modifier = { modifier = ps_crisis_overcome days = 1800 } }
+			destroy_situation = this
+		}
+	}
+}

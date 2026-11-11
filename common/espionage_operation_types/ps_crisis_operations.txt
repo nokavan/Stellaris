@@ -1,0 +1,332 @@
+# АВТОГЕНЕРАЦИЯ: tools/gen_crises.py — правьте генератор, а не этот файл
+# Синдикат Сопротивления — операции, запускающие кризисы
+
+operation_ps_crisis_general_strike = {
+	target = none
+	categories = { op_cat_sabotage op_cat_economy }
+	picture = GFX_evt_alien_propaganda
+	desc = operation_ps_crisis_general_strike_desc
+	stages = 4
+	spy_power_cost = 80
+
+	resources = {
+		category = operations
+		cost = { influence = 200 }
+		upkeep = { energy = 15 }
+	}
+
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = operation_ps_crisis_already
+			target = { ps_has_active_crisis = no }
+		}
+		custom_tooltip = {
+			fail_text = operation_ps_crisis_cooldown
+			target = { NOT = { has_country_flag = ps_crisis_cooldown } }
+		}
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 8
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_crisis.1
+	}
+	stage = {
+		difficulty = 9
+		icon = GFX_espionage_chapter_icon_document
+		event = ps_crisis.1
+	}
+	stage = {
+		difficulty = 10
+		icon = GFX_espionage_chapter_icon_target
+		event = ps_crisis.1
+	}
+	stage = {
+		difficulty = 11
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_crisis.11
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {
+		target = {
+			set_timed_country_flag = {
+				flag = espionage_operation_targeted_by@root.owner
+				days = 10800
+			}
+		}
+	}
+}
+
+operation_ps_crisis_insurgency = {
+	target = none
+	categories = { op_cat_provocation op_cat_military }
+	picture = GFX_evt_alien_propaganda
+	desc = operation_ps_crisis_insurgency_desc
+	stages = 4
+	spy_power_cost = 80
+
+	resources = {
+		category = operations
+		cost = { influence = 200 }
+		upkeep = { energy = 15 }
+	}
+
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = operation_ps_crisis_already
+			target = { ps_has_active_crisis = no }
+		}
+		custom_tooltip = {
+			fail_text = operation_ps_crisis_cooldown
+			target = { NOT = { has_country_flag = ps_crisis_cooldown } }
+		}
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 8
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_crisis.1
+	}
+	stage = {
+		difficulty = 9
+		icon = GFX_espionage_chapter_icon_document
+		event = ps_crisis.1
+	}
+	stage = {
+		difficulty = 10
+		icon = GFX_espionage_chapter_icon_target
+		event = ps_crisis.1
+	}
+	stage = {
+		difficulty = 11
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_crisis.12
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {
+		target = {
+			set_timed_country_flag = {
+				flag = espionage_operation_targeted_by@root.owner
+				days = 10800
+			}
+		}
+	}
+}
+
+operation_ps_crisis_financial_collapse = {
+	target = none
+	categories = { op_cat_sabotage op_cat_economy }
+	picture = GFX_evt_spy_network
+	desc = operation_ps_crisis_financial_collapse_desc
+	stages = 4
+	spy_power_cost = 80
+
+	resources = {
+		category = operations
+		cost = { influence = 200 }
+		upkeep = { energy = 15 }
+	}
+
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = operation_ps_crisis_already
+			target = { ps_has_active_crisis = no }
+		}
+		custom_tooltip = {
+			fail_text = operation_ps_crisis_cooldown
+			target = { NOT = { has_country_flag = ps_crisis_cooldown } }
+		}
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 8
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_crisis.1
+	}
+	stage = {
+		difficulty = 9
+		icon = GFX_espionage_chapter_icon_document
+		event = ps_crisis.1
+	}
+	stage = {
+		difficulty = 10
+		icon = GFX_espionage_chapter_icon_target
+		event = ps_crisis.1
+	}
+	stage = {
+		difficulty = 11
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_crisis.13
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {
+		target = {
+			set_timed_country_flag = {
+				flag = espionage_operation_targeted_by@root.owner
+				days = 10800
+			}
+		}
+	}
+}
+
+operation_ps_crisis_legitimacy = {
+	target = none
+	categories = { op_cat_manipulation op_cat_government }
+	picture = GFX_evt_alien_propaganda
+	desc = operation_ps_crisis_legitimacy_desc
+	stages = 4
+	spy_power_cost = 80
+
+	resources = {
+		category = operations
+		cost = { influence = 200 }
+		upkeep = { energy = 15 }
+	}
+
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = operation_ps_crisis_already
+			target = { ps_has_active_crisis = no }
+		}
+		custom_tooltip = {
+			fail_text = operation_ps_crisis_cooldown
+			target = { NOT = { has_country_flag = ps_crisis_cooldown } }
+		}
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 8
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_crisis.1
+	}
+	stage = {
+		difficulty = 9
+		icon = GFX_espionage_chapter_icon_document
+		event = ps_crisis.1
+	}
+	stage = {
+		difficulty = 10
+		icon = GFX_espionage_chapter_icon_target
+		event = ps_crisis.1
+	}
+	stage = {
+		difficulty = 11
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_crisis.14
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {
+		target = {
+			set_timed_country_flag = {
+				flag = espionage_operation_targeted_by@root.owner
+				days = 10800
+			}
+		}
+	}
+}
+
+operation_ps_crisis_naval_mutiny = {
+	target = none
+	categories = { op_cat_subterfuge op_cat_military }
+	picture = GFX_evt_spy_network
+	desc = operation_ps_crisis_naval_mutiny_desc
+	stages = 4
+	spy_power_cost = 80
+
+	resources = {
+		category = operations
+		cost = { influence = 200 }
+		upkeep = { energy = 15 }
+	}
+
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = operation_ps_crisis_already
+			target = { ps_has_active_crisis = no }
+		}
+		custom_tooltip = {
+			fail_text = operation_ps_crisis_cooldown
+			target = { NOT = { has_country_flag = ps_crisis_cooldown } }
+		}
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 8
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_crisis.1
+	}
+	stage = {
+		difficulty = 9
+		icon = GFX_espionage_chapter_icon_document
+		event = ps_crisis.1
+	}
+	stage = {
+		difficulty = 10
+		icon = GFX_espionage_chapter_icon_target
+		event = ps_crisis.1
+	}
+	stage = {
+		difficulty = 11
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_crisis.15
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {
+		target = {
+			set_timed_country_flag = {
+				flag = espionage_operation_targeted_by@root.owner
+				days = 10800
+			}
+		}
+	}
+}

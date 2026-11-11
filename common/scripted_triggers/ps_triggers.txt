@@ -101,3 +101,17 @@ ps_ark_has_seedable_world = {
 		}
 	}
 }
+
+# ---- Кризисы ----
+# У страны уже идёт кризис Синдиката (scope = страна)
+ps_has_active_crisis = {
+	any_situation = {
+		OR = {
+			is_situation_type = situation_ps_general_strike
+			is_situation_type = situation_ps_insurgency
+			is_situation_type = situation_ps_financial_collapse
+			is_situation_type = situation_ps_legitimacy
+			is_situation_type = situation_ps_naval_mutiny
+		}
+	}
+}

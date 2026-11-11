@@ -1,0 +1,38 @@
+# АВТОГЕНЕРАЦИЯ: tools/gen_crises.py
+
+@ps_icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+
+ps_crisis_overcome = {
+	icon = @ps_icon
+	icon_frame = 1
+	planet_stability_add = 5
+	country_unity_produces_mult = 0.05
+}
+
+ps_crisis_strike_aftermath = {
+	icon = @ps_icon
+	icon_frame = 3
+	planet_jobs_produces_mult = -0.25
+	planet_stability_add = -10
+}
+
+ps_crisis_bankrupt = {
+	icon = @ps_icon
+	icon_frame = 3
+	country_energy_produces_mult = -0.25
+	ships_upkeep_mult = 0.15
+}
+
+ps_crisis_regime_discredited = {
+	icon = @ps_icon
+	icon_frame = 3
+	pop_government_ethic_attraction = -0.5
+	planet_stability_add = -5
+}
+
+ps_crisis_fleet_purged = {
+	icon = @ps_icon
+	icon_frame = 3
+	ship_fire_rate_mult = -0.15
+	country_naval_cap_mult = -0.2
+}

@@ -1,0 +1,381 @@
+#####################################################
+# АВТОГЕНЕРАЦИЯ: tools/gen_crises.py — правьте генератор, а не этот файл
+# Синдикат Сопротивления — 5 кризисов
+#  ps_crisis.1        общий этап операций
+#  ps_crisis.11-15    финал операции: запуск кризиса у цели
+#  ps_crisis.101-105  финал кризиса (scope = ситуация, owner = жертва)
+#  ps_crisis.200      уведомление покровителю
+#####################################################
+
+namespace = ps_crisis
+
+espionage_operation_event = {
+	id = ps_crisis.1
+	title = ps_crisis.1.name
+	desc = ps_crisis.1.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_default
+	is_triggered_only = yes
+
+	option = { name = ps_crisis.1.a }
+}
+
+# Запуск кризиса «Великая забастовка»
+espionage_operation_event = {
+	id = ps_crisis.11
+	title = situation_ps_general_strike
+	desc = ps_crisis.11.desc
+	espionage_operation = yes
+	picture = GFX_evt_alien_propaganda
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	option = {
+		name = ps_crisis.launch.a
+		custom_tooltip = ps_crisis.launch.tooltip
+		owner = {
+			set_timed_country_flag = { flag = ps_crisis_sponsor@root.target days = 3600 }
+			set_timed_country_flag = { flag = ps_crisis_agents@root.target days = 1080 }
+		}
+		target = {
+			set_timed_country_flag = { flag = ps_crisis_cooldown days = 3600 }
+			start_situation = { type = situation_ps_general_strike }
+		}
+	}
+
+	after = { destroy_espionage_operation = this }
+}
+
+# Финал кризиса «Великая забастовка»
+situation_event = {
+	id = ps_crisis.101
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		random_playable_country = {
+			limit = { has_country_flag = ps_crisis_sponsor@root.owner }
+			save_event_target_as = ps_sponsor
+		}
+
+		owner = {
+			add_modifier = { modifier = ps_crisis_strike_aftermath days = 1080 }
+			every_owned_planet = {
+				limit = { is_capital = no }
+				add_modifier = { modifier = ps_sown_dissent days = 1800 }
+				if = {
+					limit = { exists = event_target:ps_sponsor }
+					carrier_event = { id = ps_revolt.50 }
+				}
+			}
+		}
+		owner = { country_event = { id = ps_crisis.151 } }
+		every_playable_country = {
+			limit = { has_country_flag = ps_crisis_sponsor@root.owner }
+			add_resource = { unity = 500 influence = 50 }
+			country_event = { id = ps_crisis.200 }
+		}
+		destroy_situation = this
+	}
+}
+
+# Жертве: кризис разразился
+country_event = {
+	id = ps_crisis.151
+	title = situation_ps_general_strike
+	desc = ps_crisis.151.desc
+	picture = GFX_evt_alien_propaganda
+	is_triggered_only = yes
+
+	option = { name = ps_crisis.victim.a }
+}
+
+# Запуск кризиса «Партизанская война в тылу»
+espionage_operation_event = {
+	id = ps_crisis.12
+	title = situation_ps_insurgency
+	desc = ps_crisis.12.desc
+	espionage_operation = yes
+	picture = GFX_evt_alien_propaganda
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	option = {
+		name = ps_crisis.launch.a
+		custom_tooltip = ps_crisis.launch.tooltip
+		owner = {
+			set_timed_country_flag = { flag = ps_crisis_sponsor@root.target days = 3600 }
+			set_timed_country_flag = { flag = ps_crisis_agents@root.target days = 1080 }
+		}
+		target = {
+			set_timed_country_flag = { flag = ps_crisis_cooldown days = 3600 }
+			start_situation = { type = situation_ps_insurgency }
+		}
+	}
+
+	after = { destroy_espionage_operation = this }
+}
+
+# Финал кризиса «Партизанская война в тылу»
+situation_event = {
+	id = ps_crisis.102
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		random_playable_country = {
+			limit = { has_country_flag = ps_crisis_sponsor@root.owner }
+			save_event_target_as = ps_sponsor
+		}
+
+		while = {
+			count = 3
+			owner = {
+				random_owned_planet = {
+					limit = {
+						is_capital = no
+						NOT = { has_modifier = ps_armed_underground }
+					}
+					add_modifier = { modifier = ps_armed_underground days = 1080 }
+					carrier_event = { id = ps_sabotage.50 }
+					if = {
+						limit = { exists = event_target:ps_sponsor }
+						carrier_event = { id = ps_revolt.50 }
+					}
+				}
+			}
+		}
+		owner = { country_event = { id = ps_crisis.152 } }
+		every_playable_country = {
+			limit = { has_country_flag = ps_crisis_sponsor@root.owner }
+			add_resource = { unity = 500 influence = 50 }
+			country_event = { id = ps_crisis.200 }
+		}
+		destroy_situation = this
+	}
+}
+
+# Жертве: кризис разразился
+country_event = {
+	id = ps_crisis.152
+	title = situation_ps_insurgency
+	desc = ps_crisis.152.desc
+	picture = GFX_evt_alien_propaganda
+	is_triggered_only = yes
+
+	option = { name = ps_crisis.victim.a }
+}
+
+# Запуск кризиса «Финансовый крах»
+espionage_operation_event = {
+	id = ps_crisis.13
+	title = situation_ps_financial_collapse
+	desc = ps_crisis.13.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	option = {
+		name = ps_crisis.launch.a
+		custom_tooltip = ps_crisis.launch.tooltip
+		owner = {
+			set_timed_country_flag = { flag = ps_crisis_sponsor@root.target days = 3600 }
+			set_timed_country_flag = { flag = ps_crisis_agents@root.target days = 1080 }
+		}
+		target = {
+			set_timed_country_flag = { flag = ps_crisis_cooldown days = 3600 }
+			start_situation = { type = situation_ps_financial_collapse }
+		}
+	}
+
+	after = { destroy_espionage_operation = this }
+}
+
+# Финал кризиса «Финансовый крах»
+situation_event = {
+	id = ps_crisis.103
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		random_playable_country = {
+			limit = { has_country_flag = ps_crisis_sponsor@root.owner }
+			save_event_target_as = ps_sponsor
+		}
+
+		owner = {
+			add_modifier = { modifier = ps_crisis_bankrupt days = 1080 }
+		}
+		every_playable_country = {
+			limit = { has_country_flag = ps_crisis_sponsor@root.owner }
+			add_resource = { energy = 2000 }
+		}
+		owner = { country_event = { id = ps_crisis.153 } }
+		every_playable_country = {
+			limit = { has_country_flag = ps_crisis_sponsor@root.owner }
+			add_resource = { unity = 500 influence = 50 }
+			country_event = { id = ps_crisis.200 }
+		}
+		destroy_situation = this
+	}
+}
+
+# Жертве: кризис разразился
+country_event = {
+	id = ps_crisis.153
+	title = situation_ps_financial_collapse
+	desc = ps_crisis.153.desc
+	picture = GFX_evt_spy_network
+	is_triggered_only = yes
+
+	option = { name = ps_crisis.victim.a }
+}
+
+# Запуск кризиса «Кризис легитимности»
+espionage_operation_event = {
+	id = ps_crisis.14
+	title = situation_ps_legitimacy
+	desc = ps_crisis.14.desc
+	espionage_operation = yes
+	picture = GFX_evt_alien_propaganda
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	option = {
+		name = ps_crisis.launch.a
+		custom_tooltip = ps_crisis.launch.tooltip
+		owner = {
+			set_timed_country_flag = { flag = ps_crisis_sponsor@root.target days = 3600 }
+			set_timed_country_flag = { flag = ps_crisis_agents@root.target days = 1080 }
+		}
+		target = {
+			set_timed_country_flag = { flag = ps_crisis_cooldown days = 3600 }
+			start_situation = { type = situation_ps_legitimacy }
+		}
+	}
+
+	after = { destroy_espionage_operation = this }
+}
+
+# Финал кризиса «Кризис легитимности»
+situation_event = {
+	id = ps_crisis.104
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		random_playable_country = {
+			limit = { has_country_flag = ps_crisis_sponsor@root.owner }
+			save_event_target_as = ps_sponsor
+		}
+
+		owner = {
+			add_modifier = { modifier = ps_succession_crisis days = 720 }
+			add_modifier = { modifier = ps_crisis_regime_discredited days = 1800 }
+			if = {
+				limit = { exists = ruler }
+				ruler = { kill_leader = { show_notification = yes } }
+			}
+		}
+		owner = { country_event = { id = ps_crisis.154 } }
+		every_playable_country = {
+			limit = { has_country_flag = ps_crisis_sponsor@root.owner }
+			add_resource = { unity = 500 influence = 50 }
+			country_event = { id = ps_crisis.200 }
+		}
+		destroy_situation = this
+	}
+}
+
+# Жертве: кризис разразился
+country_event = {
+	id = ps_crisis.154
+	title = situation_ps_legitimacy
+	desc = ps_crisis.154.desc
+	picture = GFX_evt_alien_propaganda
+	is_triggered_only = yes
+
+	option = { name = ps_crisis.victim.a }
+}
+
+# Запуск кризиса «Мятеж флота»
+espionage_operation_event = {
+	id = ps_crisis.15
+	title = situation_ps_naval_mutiny
+	desc = ps_crisis.15.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	option = {
+		name = ps_crisis.launch.a
+		custom_tooltip = ps_crisis.launch.tooltip
+		owner = {
+			set_timed_country_flag = { flag = ps_crisis_sponsor@root.target days = 3600 }
+			set_timed_country_flag = { flag = ps_crisis_agents@root.target days = 1080 }
+		}
+		target = {
+			set_timed_country_flag = { flag = ps_crisis_cooldown days = 3600 }
+			start_situation = { type = situation_ps_naval_mutiny }
+		}
+	}
+
+	after = { destroy_espionage_operation = this }
+}
+
+# Финал кризиса «Мятеж флота»
+situation_event = {
+	id = ps_crisis.105
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		random_playable_country = {
+			limit = { has_country_flag = ps_crisis_sponsor@root.owner }
+			save_event_target_as = ps_sponsor
+		}
+
+		owner = {
+			add_modifier = { modifier = ps_crisis_fleet_purged days = 720 }
+			if = {
+				limit = { exists = event_target:ps_sponsor }
+				create_fleet_from_naval_cap = 0.10
+				last_created_fleet = {
+					set_owner = event_target:ps_sponsor
+				}
+			}
+		}
+		owner = { country_event = { id = ps_crisis.155 } }
+		every_playable_country = {
+			limit = { has_country_flag = ps_crisis_sponsor@root.owner }
+			add_resource = { unity = 500 influence = 50 }
+			country_event = { id = ps_crisis.200 }
+		}
+		destroy_situation = this
+	}
+}
+
+# Жертве: кризис разразился
+country_event = {
+	id = ps_crisis.155
+	title = situation_ps_naval_mutiny
+	desc = ps_crisis.155.desc
+	picture = GFX_evt_spy_network
+	is_triggered_only = yes
+
+	option = { name = ps_crisis.victim.a }
+}
+
+# Покровителю: кризис у цели разразился
+country_event = {
+	id = ps_crisis.200
+	title = ps_crisis.200.name
+	desc = ps_crisis.200.desc
+	picture = GFX_ps_evt_partisans
+	is_triggered_only = yes
+
+	option = { name = ps_crisis.200.a }
+}
