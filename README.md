@@ -209,9 +209,9 @@
 ```bash
 python3 tools/gen_waystation_modules.py
 ```
-> Если в окне стоянки по-прежнему 6 слотов (а не 50): значит, файл `common/starbase_levels/05_waystation_levels.txt` из этого мода перезаписал другой мод. Поставьте «Синдикат Сопротивления» **ниже** остальных модов в списке лаунчера (он загрузится последним) и проверьте, нет ли в плейсете модов, меняющих стоянки (waystations).
+> **Окно стоянки.** С **UI Overhaul Dynamic** 50 слотов прокручиваются в родном окне UIOD (5 модулей в ряд), ничего ставить не нужно. **Без UIOD** установите необязательный патч `releases/partisan_syndicate_vanilla_ui_patch.zip`: он добавляет прокрутку в ванильное окно (см. `compat/README.md`).
 >
-> Ванильное окно стоянки показывает модули сеткой по 3 в ряд без прокрутки, и 50 слотов не поместились бы. Мод переопределяет `interface/waystation_view.gui`: блок модулей получает прокрутку и 4 модуля в ряд, остальное окно не тронуто. ⚠️ Проверьте в игре, работает ли прокрутка.
+> Если в окне по-прежнему 6 слотов, значит, файл `common/starbase_levels/05_waystation_levels.txt` перезаписал другой мод. Поставьте «Синдикат Сопротивления» ниже остальных модов в списке лаунчера.
 
 ### Эдикты и технологии
 - Технологии **Партизанская доктрина** (T1) и **Призрачные сети** (T3).
@@ -219,8 +219,15 @@ python3 tools/gen_waystation_modules.py
 
 ---
 
+## Совместимость
+- **UI Overhaul Dynamic (UIOD):** совместим. Основной мод не переопределяет ни одного окна интерфейса (`.gui`), поэтому порядок загрузки относительно UIOD не важен. Патч для ванильного окна стоянки с UIOD **не ставьте**.
+- **Без UIOD:** для прокрутки 50 модулей стоянки поставьте патч `partisan_syndicate_vanilla_ui_patch` после основного мода.
+- Мод переопределяет один ванильный файл, `common/starbase_levels/05_waystation_levels.txt` (50 слотов у стоянки). Если другой мод тоже меняет уровни стоянок, ставьте «Синдикат» ниже него.
+
 ## Скачать
 Последняя версия одним архивом: **[releases/partisan_syndicate.zip](https://github.com/nokavan/stellaris/blob/main/releases/partisan_syndicate.zip)** (на странице файла — кнопка «Download raw file»; репозиторий приватный, нужен вход в ваш аккаунт GitHub)
+
+Без UIOD также скачайте [releases/partisan_syndicate_vanilla_ui_patch.zip](https://github.com/nokavan/stellaris/blob/main/releases/partisan_syndicate_vanilla_ui_patch.zip).
 
 Распакуйте архив в `Документы/Paradox Interactive/Stellaris/mod/`: внутри уже лежат папка мода и файл `partisan_syndicate.mod` для лаунчера. Затем включите мод в лаунчере.
 
@@ -289,7 +296,6 @@ common/situations/ps_red_storm.txt         кризис конца игры «К
 events/ps_red_storm_events.txt             Красная Буря
 common/casus_belli/ps_casus_belli.txt      повод к войне Бури
 common/war_goals/ps_war_goals.txt          цель войны «Мировая революция»
-interface/waystation_view.gui          переопределение: прокрутка модулей стоянки
 common/opinion_modifiers/ps_opinion_modifiers.txt
 events/ps_events.txt
 interface/ps_sprites.gfx
