@@ -1,5 +1,9 @@
 spriteTypes = {
 	spriteType = {
+		name = "GFX_waystation_ps_cell_bays"
+		texturefile = "gfx/interface/icons/waystation/ps_cell_bays.dds"
+	}
+	spriteType = {
 		name = "GFX_waystation_ps_raider_dock"
 		texturefile = "gfx/interface/icons/waystation/ps_raider_dock.dds"
 	}

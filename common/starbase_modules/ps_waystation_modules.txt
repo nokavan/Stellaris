@@ -1,6 +1,52 @@
 # АВТОГЕНЕРАЦИЯ: tools/gen_waystation_modules.py — правьте генератор, а не этот файл
 # 100 модулей станций-стоянок Синдиката
 
+
+waystation_ps_cell_bays = {
+	icon = "GFX_waystation_ps_cell_bays"
+	section = "ANCHORAGE_STARBASE_SECTION"
+	construction_days = 120
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_waystation_starbase = yes
+		owner? = { ps_is_partisan_empire = yes }
+	}
+
+	resources = {
+		category = starbase_waystations_modules
+		cost = {
+			alloys = 200
+		}
+		upkeep = {
+			trade = 2
+		}
+	}
+
+	triggered_station_modifier = {
+		potential = { has_starbase_size = starbase_waystation_1 }
+		starbase_module_capacity_add = 8
+	}
+
+	triggered_station_modifier = {
+		potential = { has_starbase_size = starbase_waystation_2 }
+		starbase_module_capacity_add = 21
+	}
+
+	triggered_station_modifier = {
+		potential = { has_starbase_size = starbase_waystation_3 }
+		starbase_module_capacity_add = 44
+	}
+
+	ai_weight = {
+		weight = 1000
+	}
+}
 waystation_ps_raider_dock = {
 	icon = "GFX_waystation_ps_raider_dock"
 	section = "ANCHORAGE_STARBASE_SECTION"

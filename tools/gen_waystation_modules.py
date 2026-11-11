@@ -2,13 +2,13 @@
 """Генератор модулей кочевых станций-стоянок (waystations) Синдиката — 100 шт.
 
 Создаёт:
-  common/starbase_levels/05_waystation_levels.txt   (переопределение vanilla: 50 слотов на уровне 3)
+  (+ модуль «Отсеки Синдиката»: starbase_module_capacity_add — до 10/25/50 слотов, только у партизан)
   common/starbase_modules/ps_waystation_modules.txt
   interface/ps_waystation_modules.gfx + DDS-иконки (заглушки)
   localisation/{russian,english}/ps_waystation_l_*.yml
 
 Формат сверен с vanilla 4.x:
-  starbase_levels/05_waystation_levels.txt, starbase_levels/00_documentation.txt
+  starbase_levels/00_documentation.txt
   starbase_modules/00_waystation_modules.txt, starbase_modules/00_example.txt
   ключи локализации: sm_<module>, sm_<module>_plural, sm_<module>_desc (nomads_1_l_russian.yml)
 
@@ -20,7 +20,6 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "tools"))
 
-WAYSTATION_SLOTS = 50  # слоты модулей на стоянке 3-го уровня (vanilla: 6)
 
 M = []
 
@@ -325,58 +324,61 @@ def module(x):
     return "".join(o)
 
 
-def levels():
-    slots = " ".join(str(i) for i in range(1, WAYSTATION_SLOTS + 1))
-    return f"""# Синдикат Сопротивления: ПЕРЕОПРЕДЕЛЕНИЕ vanilla common/starbase_levels/05_waystation_levels.txt
-# (АВТОГЕНЕРАЦИЯ: tools/gen_waystation_modules.py)
-# Единственное отличие от ванили — {WAYSTATION_SLOTS} слотов модулей на уровне 3 (в ванили 6).
-# Слоты общие для всех кочевников: ванильные модули почти все ограничены 1 штукой на станцию,
-# а 100 модулей Синдиката доступны только партизанским империям.
+THEME = {NAV: "star", DEF: "crown", ECO: "press", UTL: "eye", PIR: "net"}
 
-starbase_level_waystation_1 = {{
-	starbase_capacity_used = 1
-	picture = "GFX_waystation_background"
-	ship_size = starbase_waystation_1
-	next_level = starbase_level_waystation_2
-	level_weight = 0
-	ai_weight = {{ weight = 1 }}
-	can_always_dismantle = yes
-	show_in_outliner = yes
-	module_slots = {{ 1 2 }}
-}}
 
-starbase_level_waystation_2 = {{
-	starbase_capacity_used = 1
-	picture = "GFX_waystation_background"
-	ship_size = starbase_waystation_2
-	next_level = starbase_level_waystation_3
-	level_weight = 2
-	ai_weight = {{ weight = 3 }}
-	module_slots = {{ 1 2 3 4 }}
-}}
+# Особый модуль: увеличивает вместимость модулей ЭТОЙ стоянки (только у партизан).
+# Ванильная вместимость стоянки: 2 / 4 / 6 слотов на уровнях 1 / 2 / 3
+# (starbase_modules/00_example.txt: «Slot count can be increased with modifiers:
+#  starbase_module_capacity_add»). С модулем: 10 / 25 / 50.
+CAPACITY = {1: 8, 2: 21, 3: 44}
 
-starbase_level_waystation_3 = {{
-	starbase_capacity_used = 1
-	picture = "GFX_waystation_background"
-	ship_size = starbase_waystation_3
-	level_weight = 3
-	ai_weight = {{ weight = 5 }}
-	module_slots = {{ {slots} }}
+
+def capacity_module():
+    trig = "".join(
+        f"\n\ttriggered_station_modifier = {{\n\t\tpotential = {{ has_starbase_size = starbase_waystation_{lvl} }}\n"
+        f"\t\tstarbase_module_capacity_add = {add}\n\t}}\n" for lvl, add in CAPACITY.items())
+    return f"""
+waystation_ps_cell_bays = {{
+	icon = "GFX_waystation_ps_cell_bays"
+	section = "ANCHORAGE_STARBASE_SECTION"
+	construction_days = 120
+	starbase_type = waystation
+	category = sm_utility_cat
+
+	starbase_limit = {{
+		base = 1
+	}}
+
+	potential = {{
+		is_waystation_starbase = yes
+		owner? = {{ ps_is_partisan_empire = yes }}
+	}}
+
+	resources = {{
+		category = starbase_waystations_modules
+		cost = {{
+			alloys = 200
+		}}
+		upkeep = {{
+			trade = 2
+		}}
+	}}
+{trig}
+	ai_weight = {{
+		weight = 1000
+	}}
 }}
 """
 
 
-THEME = {NAV: "star", DEF: "crown", ECO: "press", UTL: "eye", PIR: "net"}
-
-
 def main():
-    (ROOT / "common/starbase_levels").mkdir(parents=True, exist_ok=True)
-    (ROOT / "common/starbase_levels/05_waystation_levels.txt").write_text(levels(), encoding="utf-8")
     (ROOT / "common/starbase_modules").mkdir(parents=True, exist_ok=True)
     hdr = "# АВТОГЕНЕРАЦИЯ: tools/gen_waystation_modules.py — правьте генератор, а не этот файл\n# 100 модулей станций-стоянок Синдиката\n\n"
-    (ROOT / "common/starbase_modules/ps_waystation_modules.txt").write_text(hdr + "\n".join(module(x) for x in M), encoding="utf-8")
+    (ROOT / "common/starbase_modules/ps_waystation_modules.txt").write_text(hdr + capacity_module() + "\n".join(module(x) for x in M), encoding="utf-8")
 
-    gfx = ["spriteTypes = {"] + [
+    gfx = ["spriteTypes = {",
+           '\tspriteType = {\n\t\tname = "GFX_waystation_ps_cell_bays"\n\t\ttexturefile = "gfx/interface/icons/waystation/ps_cell_bays.dds"\n\t}'] + [
         f'\tspriteType = {{\n\t\tname = "GFX_waystation_ps_{x["key"]}"\n\t\ttexturefile = "gfx/interface/icons/waystation/ps_{x["key"]}.dds"\n\t}}'
         for x in M] + ["}\n"]
     (ROOT / "interface/ps_waystation_modules.gfx").write_text("\n".join(gfx), encoding="utf-8")
@@ -384,6 +386,9 @@ def main():
     for lang in ("russian", "english"):
         ru = lang == "russian"
         L = [f"l_{lang}:"]
+        bay_n, bay_d = (("Отсеки Синдиката", "Расширяет станцию дополнительными отсеками для модулей: до §G10§! слотов на 1-м уровне, §G25§! на 2-м и §G50§! на 3-м. Постройте его первым.") if ru else
+                        ("Syndicate Bays", "Expands the station with extra module bays: up to §G10§! slots at level 1, §G25§! at level 2 and §G50§! at level 3. Build it first."))
+        L += [f' sm_waystation_ps_cell_bays:0 "{bay_n}"', f' sm_waystation_ps_cell_bays_plural:0 "{bay_n}"', f' sm_waystation_ps_cell_bays_desc:0 "{bay_d}"']
         for x in M:
             k = f"sm_waystation_ps_{x['key']}"
             name, desc = x["ru"] if ru else x["en"]
@@ -423,8 +428,9 @@ def main():
         if x["enemy"]:
             d.rectangle([48, 6, 58, 16], fill=(200, 30, 30, 255))
         save_dds(img, f"gfx/interface/icons/waystation/ps_{x['key']}.dds")
+    save_dds(icon("crown", 64), "gfx/interface/icons/waystation/ps_cell_bays.dds")
     from collections import Counter
-    print("ok:", len(M), "modules;", dict(Counter(x["cat"] for x in M)), "; slots:", WAYSTATION_SLOTS)
+    print("ok:", len(M), "modules;", dict(Counter(x["cat"] for x in M)))
 
 
 if __name__ == "__main__":
