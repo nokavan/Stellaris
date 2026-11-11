@@ -643,3 +643,109 @@ ps_trust_3_monopoly = {
 		description = ps_trust_3_monopoly_desc
 	}
 }
+
+######## Order of Devotees ########
+
+ps_devotee_1_modifier = {
+	main_perk = yes
+	subject_modifier = {
+		country_unity_produces_mult = 0.2
+		category_statecraft_research_speed_mult = 0.05
+	}
+}
+
+ps_devotee_1_penalties = {
+	main_perk = yes
+	subject_modifier = {
+		country_consumer_goods_produces_mult = -0.3
+	}
+}
+
+ps_devotee_1_overlord_modifier = {
+	icon = "GFX_specialist_perk_ps_devotee_1_overlord_modifier"
+	overlord_modifier = {
+		country_unity_produces_mult = 0.1
+	}
+	desc = {
+		description = ps_devotee_1_overlord_modifier_desc
+	}
+}
+
+ps_devotee_1_guidance = {
+	icon = "GFX_specialist_perk_ps_devotee_1_guidance"
+	subject_modifier = {
+		planet_stability_add = 5
+		pop_ethic_spiritualist_attraction_mult = 0.25
+	}
+	desc = {
+		description = ps_devotee_1_guidance_desc
+	}
+}
+
+ps_devotee_2_modifier = {
+	main_perk = yes
+	subject_modifier = {
+		country_unity_produces_mult = 0.3
+		category_statecraft_research_speed_mult = 0.1
+	}
+}
+
+ps_devotee_2_penalties = {
+	main_perk = yes
+	subject_modifier = {
+		country_consumer_goods_produces_mult = -0.4
+	}
+}
+
+ps_devotee_2_governors = {
+	icon = "GFX_specialist_perk_ps_devotee_2_governors"
+	subject_modifier = {
+		leaders_upkeep_mult = -0.25
+		country_leader_cap_add = 1
+	}
+	desc = {
+		description = ps_devotee_2_governors_desc
+	}
+}
+
+ps_devotee_2_commissars = {
+	icon = "GFX_specialist_perk_ps_devotee_2_commissars"
+	overlord_modifier = {
+		planet_stability_add = 2
+		monthly_loyalty_from_subjects = 0.5
+	}
+	desc = {
+		description = ps_devotee_2_commissars_desc
+	}
+}
+
+ps_devotee_3_modifier = {
+	main_perk = yes
+	subject_modifier = {
+		country_unity_produces_mult = 0.4
+		category_statecraft_research_speed_mult = 0.15
+	}
+}
+
+ps_devotee_3_penalties = {
+	main_perk = yes
+	subject_modifier = {
+		country_consumer_goods_produces_mult = -0.5
+	}
+}
+
+ps_devotee_3_council_of_state = {
+	icon = "GFX_specialist_perk_ps_devotee_3_council_of_state"
+	subject_modifier = {
+		country_leader_cap_add = 2
+		envoys_add = 2
+		councilor_skill_add = 1
+	}
+	overlord_modifier = {
+		diplomacy_upkeep_mult = -0.1
+		empire_size_pops_mult = -0.05
+	}
+	desc = {
+		description = ps_devotee_3_council_of_state_desc
+	}
+}

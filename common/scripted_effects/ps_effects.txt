@@ -102,6 +102,10 @@ ps_mega_seed_system = {
 			limit = { root = { has_country_flag = ps_mega_seed_trust } }
 			ps_make_specialist_subject = { OVERLORD = root PRESET = preset_ps_trust }
 		}
+		else_if = {
+			limit = { root = { has_country_flag = ps_mega_seed_devotee } }
+			ps_make_specialist_subject = { OVERLORD = root PRESET = preset_ps_devotee }
+		}
 		else = {
 			ps_make_cell_subject = { OVERLORD = root }
 		}
@@ -120,4 +124,5 @@ ps_mega_clear_doctrine = {
 	remove_country_flag = ps_mega_seed_exchange
 	remove_country_flag = ps_mega_seed_trust
 	remove_country_flag = ps_mega_seed_client
+	remove_country_flag = ps_mega_seed_devotee
 }

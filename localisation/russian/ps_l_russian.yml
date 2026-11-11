@@ -498,6 +498,7 @@
  ps_mega.1.residency:0 "$specialist_ps_residency$"
  ps_mega.1.exchange:0 "$specialist_ps_exchange$"
  ps_mega.1.trust:0 "$specialist_ps_trust$"
+ ps_mega.1.devotee:0 "$specialist_ps_devotee$"
  ps_mega.1.client:0 "Режим-клиент (обычная ячейка)"
  ps_mega.1.off:0 "Отключить заселение"
  ps_mega.1.close:0 "Оставить как есть"

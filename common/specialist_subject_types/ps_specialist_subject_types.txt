@@ -227,3 +227,41 @@ specialist_ps_trust = {
 		}
 	}
 }
+
+specialist_ps_devotee = {
+	icon = "GFX_diplomacy_specialist_subject_ps_devotee"
+	icon_large = "GFX_diplomacy_specialist_subject_ps_devotee_large"
+	preferred_ethic = ethic_spiritualist
+	base_conversion_time = @ps_conversion_time
+
+	levels = {
+		# Level 1
+		{
+			experience_needed_for_next_level = @ps_level_2_xp_cost
+			perks = {
+				ps_devotee_1_modifier
+				ps_devotee_1_penalties
+				ps_devotee_1_overlord_modifier
+				ps_devotee_1_guidance
+			}
+		}
+		# Level 2
+		{
+			experience_needed_for_next_level = @ps_level_3_xp_cost
+			perks = {
+				ps_devotee_2_modifier
+				ps_devotee_2_penalties
+				ps_devotee_2_governors
+				ps_devotee_2_commissars
+			}
+		}
+		# Level 3
+		{
+			perks = {
+				ps_devotee_3_modifier
+				ps_devotee_3_penalties
+				ps_devotee_3_council_of_state
+			}
+		}
+	}
+}

@@ -1,0 +1,16 @@
+if = {
+	limit = {
+		from = {
+			is_nomadic = no
+		}
+	}
+	custom_tooltip = {
+		fail_text = "requires_less_than_x_deep_space_citadel"
+		count_ship_in_system = {
+			limit = {
+				is_space_citadel_ship_size = yes
+			}
+			count < from.modifier:deep_space_citadel_limit_add
+		}
+	}
+}

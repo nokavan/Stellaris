@@ -164,6 +164,7 @@ ps_has_mega_doctrine = {
 		has_country_flag = ps_mega_seed_exchange
 		has_country_flag = ps_mega_seed_trust
 		has_country_flag = ps_mega_seed_client
+		has_country_flag = ps_mega_seed_devotee
 	}
 }
 

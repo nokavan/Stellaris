@@ -1,0 +1,23 @@
+# Встроено из «Nomad Conquest Population Capture» (с разрешения автора).
+nomad_capture_all_pops_effect = {
+	$NOMAD$ = {
+		capital_scope? = {
+			save_event_target_as = capture_arkship
+		}
+	}
+
+	if = {
+		limit = {
+			exists = event_target:capture_arkship
+		}
+
+		every_owned_pop_group = {
+			resettle_pop_group = {
+				POP_GROUP = this
+				PLANET = event_target:capture_arkship
+				PERCENTAGE = 100
+			}
+		}
+		destroy_colony = yes
+	}
+}

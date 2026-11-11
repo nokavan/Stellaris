@@ -155,4 +155,32 @@ spriteTypes = {
 		name = "GFX_specialist_perk_ps_trust_3_monopoly"
 		texturefile = "gfx/interface/icons/specialists/perks/ps_trust_3_monopoly.dds"
 	}
+	spriteType = {
+		name = "GFX_diplomacy_specialist_subject_ps_devotee"
+		texturefile = "gfx/interface/icons/specialists/ps_devotee.dds"
+	}
+	spriteType = {
+		name = "GFX_diplomacy_specialist_subject_ps_devotee_large"
+		texturefile = "gfx/interface/icons/specialists/ps_devotee_large.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_devotee_1_overlord_modifier"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_devotee_1_overlord_modifier.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_devotee_1_guidance"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_devotee_1_guidance.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_devotee_2_governors"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_devotee_2_governors.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_devotee_2_commissars"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_devotee_2_commissars.dds"
+	}
+	spriteType = {
+		name = "GFX_specialist_perk_ps_devotee_3_council_of_state"
+		texturefile = "gfx/interface/icons/specialists/perks/ps_devotee_3_council_of_state.dds"
+	}
 }

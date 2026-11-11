@@ -1,0 +1,224 @@
+# Встроено из «Bigger Operational Reserves» (с разрешения автора). Переопределяет ванильный файл ситуаций кочевников целиком.
+### Nomad Mineral Situation
+situation_nomad_economy = {
+	picture = GFX_evt_waystation
+	situation_log_category = empire_concerns
+
+	category = neutral
+
+	initial_progress = 30000
+
+	abort_trigger = {
+		OR = {
+			NOT = { exists = owner }
+			owner = {
+				is_nomadic = no
+			}
+		}
+	}
+
+	on_start = {
+		set_situation_approach = situation_nomad_economy_smooth_spending
+	}
+
+	on_fail = {}
+
+	on_progress_complete = {}
+
+	permanent = yes
+	show_in_outliner = no
+
+	stages = {
+		situation_nomad_economy_stage_1_struggle = {
+			icon = GFX_situation_stage_1
+			icon_background = GFX_situation_stage_frame_blue
+			color = light_orange
+			end = 20000
+			modifier = {
+				ship_fire_rate_mult = -0.5
+				ship_shield_mult = -0.5
+				ship_armor_mult = -0.5
+				planet_stability_add = -5
+			}
+			triggered_modifier = {
+				potential = {
+					situation_progress < 1000
+				}
+				country_physics_research_produces_mult = -0.75
+				country_society_research_produces_mult = -0.75
+				country_engineering_research_produces_mult = -0.75
+				country_unity_produces_mult = -0.75
+				country_alloys_produces_mult = -0.75
+			}
+			custom_tooltip = "situation_nomad_economy_stage_1_struggle_effects"
+		}
+		situation_nomad_economy_stage_2_stable = {
+			icon = GFX_situation_stage_2
+			icon_background = GFX_situation_stage_frame_blue
+			color = white
+			end = 40000
+			modifier = {
+				planet_stability_add = 5
+			}
+			custom_tooltip = "situation_nomad_economy_stage_2_stable_effects"
+		}
+		situation_nomad_economy_stage_3_thriving = {
+			icon = GFX_situation_stage_3
+			icon_background = GFX_situation_stage_frame_green
+			color = light_green
+			end = 6000000
+			modifier = {
+				planet_stability_add = 10
+				all_technology_research_speed = 0.1
+			}
+			custom_tooltip = "situation_nomad_economy_stage_3_thriving_effects"
+		}
+	}
+
+	approach = {
+		name = situation_nomad_economy_stringent_budget
+		icon = GFX_situation_approach_nomad_neutral
+		icon_background = GFX_situation_approach_bg_yellow
+		on_select = {
+			custom_tooltip = "situation_nomad_economy_stringent_budget_tt"
+			hidden_effect = {
+				owner = {
+					country_event = {
+						id = nomads.37
+					}
+				}
+			}
+		}
+		default = yes
+		ai_weight = {
+			base = 0
+			modifier = {
+				add = 50
+				owner = {
+					any_situation = {
+						is_situation_type = situation_nomad_economy
+						current_stage = situation_nomad_economy_stage_1_struggle
+					}
+				}
+			}
+		}
+
+		modifier = {
+			planet_jobs_upkeep_mult = -0.5
+			bureaucrat_jobs_bonus_workforce_mult = -0.5
+			researcher_jobs_bonus_workforce_mult = -0.5
+		}
+	}
+
+	approach = {
+		name = situation_nomad_economy_smooth_spending
+		icon = GFX_situation_approach_nomad_good
+		icon_background = GFX_situation_approach_bg_green
+		on_select = {
+			custom_tooltip = "situation_nomad_economy_smooth_spending_tt"
+		}
+		ai_weight = {
+			base = 10
+		}
+		modifier = {
+		}
+	}
+
+	approach = {
+		name = situation_nomad_economy_full_spending
+		icon = GFX_situation_approach_nomad_very_good
+		icon_background = GFX_situation_approach_bg_green
+		allow = {
+			custom_tooltip = {
+				fail_text = no_situation_progress_good
+				owner = {
+					any_situation = {
+						is_situation_type = situation_nomad_economy
+						situation_progress >= 20000
+					}
+				}
+			}
+		}
+		on_select = {
+			custom_tooltip = "situation_nomad_economy_full_spending_tt"
+		}
+		ai_weight = {
+			base = 0
+			modifier = {
+				add = 50
+				owner = {
+					any_situation = {
+						is_situation_type = situation_nomad_economy
+						situation_progress >= @ai_nomad_full_spending_progress_threshold
+					}
+				}
+			}
+		}
+		modifier = {
+			planet_building_build_speed_mult = 0.5
+			specialist_and_complex_drone_cat_bonus_workforce_mult = 0.5
+		}
+	}
+
+	approach = {
+		name = situation_nomad_economy_harvest_everything
+		icon = GFX_situation_approach_nomad_emergency
+		icon_background = GFX_situation_approach_bg_yellow
+		potential = {
+			owner? = {
+				is_star_seeker_empire = yes
+			}
+		}
+		allow = {
+			custom_tooltip = {
+				fail_text = no_arkship_is_encamped
+				owner = {
+					any_owned_ship = {
+						is_arkship_ship = yes
+						is_system_locked = yes
+					}
+				}
+			}
+			custom_tooltip = {
+				fail_text = no_situation_progress
+				owner = {
+					any_situation = {
+						is_situation_type = situation_nomad_economy
+						situation_progress >= 10001
+					}
+				}
+			}
+		}
+		on_select = {
+			custom_tooltip = "situation_nomad_economy_harvest_everything_tt"
+		}
+		modifier = {
+			specialist_and_complex_drone_cat_bonus_workforce_mult = 10
+			founder_species_growth_mult = 10
+			diplo_weight_economy_mult = -0.9
+		}
+		ai_weight = {
+			base = 0
+		}
+	}
+	on_monthly = {
+		events = {
+			nomads.38		# Festival duration countdown
+		}
+	}
+	monthly_progress = {
+		base = 0
+		# Modifiers are defined in tooltip order, most important first
+		modifier = {
+			subtract = value:nomad_celebration_upkeep
+			desc = "Celebration_Approach"
+			current_situation_approach = situation_nomad_economy_harvest_everything
+		}
+	}
+	triggered_blocked_desc = {
+		trigger = {
+			situation_progress < 1000
+		}
+		text = situation_nomad_economy_critical_reserves_desc
+	}
+}

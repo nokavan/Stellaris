@@ -1,9 +1,10 @@
 # АВТОГЕНЕРАЦИЯ: tools/gen_precursor_buildings.py
-# Синдикат Сопротивления — «Наследие Предтеч»: 10 зданий, тир 1 → тир 2.
+# «Наследие Предтеч»: 10 зданий, тир 1 → тир 2 (значения — из оригинального мода о Предтечах).
 # Цивики «Партизанская сеть» / «Теневой сюзерен» строят тир 2 сразу.
 
 building_ps_pre_vacuum_generator_1 = {
-	base_buildtime = @b1_time
+	base_buildtime = @b2_time
+	base_cap_amount = 1
 	category = resource
 
 	building_sets = {
@@ -27,19 +28,20 @@ building_ps_pre_vacuum_generator_1 = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 400
+			minerals = @b2_minerals
 		}
 		upkeep = {
-			energy = 2
+			rare_crystals = 1
 		}
 		produces = {
-			energy = 12
+			energy = 125
 		}
 	}
 }
 
 building_ps_pre_vacuum_generator_2 = {
-	base_buildtime = @b2_time
+	base_buildtime = @b3_time
+	base_cap_amount = 1
 	category = resource
 
 	building_sets = {
@@ -70,20 +72,20 @@ building_ps_pre_vacuum_generator_2 = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 600
-			alloys = 100
+			minerals = @b3_minerals
 		}
 		upkeep = {
-			energy = 4
+			rare_crystals = 2
 		}
 		produces = {
-			energy = 24
+			energy = 250
 		}
 	}
 }
 
 building_ps_pre_synthesizer_1 = {
-	base_buildtime = @b1_time
+	base_buildtime = @b2_time
+	base_cap_amount = 1
 	category = resource
 
 	building_sets = {
@@ -107,19 +109,20 @@ building_ps_pre_synthesizer_1 = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 400
+			minerals = @b2_minerals
 		}
 		upkeep = {
-			energy = 2
+			energy = 10
 		}
 		produces = {
-			food = 12
+			food = 50
 		}
 	}
 }
 
 building_ps_pre_synthesizer_2 = {
-	base_buildtime = @b2_time
+	base_buildtime = @b3_time
+	base_cap_amount = 1
 	category = resource
 
 	building_sets = {
@@ -150,21 +153,21 @@ building_ps_pre_synthesizer_2 = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 600
-			alloys = 100
+			minerals = @b3_minerals
 		}
 		upkeep = {
-			energy = 4
+			energy = 20
 		}
 		produces = {
-			food = 24
+			food = 100
 		}
 	}
 }
 
 building_ps_pre_supply_elevator_1 = {
-	base_buildtime = @b1_time
-	category = resource
+	base_buildtime = @b2_time
+	base_cap_amount = 1
+	category = manufacturing
 
 	building_sets = {
 		mining
@@ -187,20 +190,24 @@ building_ps_pre_supply_elevator_1 = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 400
+			minerals = @b2_minerals
 		}
 		upkeep = {
-			energy = 2
+			energy = 10
 		}
 		produces = {
-			minerals = 12
+			minerals = 50
+			rare_crystals = 5
+			exotic_gases = 5
+			volatile_motes = 5
 		}
 	}
 }
 
 building_ps_pre_supply_elevator_2 = {
-	base_buildtime = @b2_time
-	category = resource
+	base_buildtime = @b3_time
+	base_cap_amount = 1
+	category = manufacturing
 
 	building_sets = {
 		mining
@@ -230,23 +237,27 @@ building_ps_pre_supply_elevator_2 = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 600
-			alloys = 100
+			minerals = @b3_minerals
 		}
 		upkeep = {
-			energy = 4
+			energy = 20
 		}
 		produces = {
-			minerals = 24
+			minerals = 100
+			rare_crystals = 10
+			exotic_gases = 10
+			volatile_motes = 10
 		}
 	}
 }
 
 building_ps_pre_assembler_vats_1 = {
-	base_buildtime = @b1_time
+	base_buildtime = @b2_time
+	base_cap_amount = 1
 	category = manufacturing
 
 	building_sets = {
+		industrial
 		foundry
 	}
 
@@ -264,25 +275,34 @@ building_ps_pre_assembler_vats_1 = {
 		owner = { NOT = { ps_is_partisan_empire = yes } }
 	}
 
+	planet_modifier = {
+		planet_structures_cost_mult = -0.075
+		planet_building_build_speed_mult = 0.075
+	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 400
+			minerals = @b2_minerals
 		}
 		upkeep = {
-			energy = 2
+			minerals = 15
+			energy = 5
 		}
 		produces = {
-			alloys = 5
+			alloys = 15
+			nanites = 5
 		}
 	}
 }
 
 building_ps_pre_assembler_vats_2 = {
-	base_buildtime = @b2_time
+	base_buildtime = @b3_time
+	base_cap_amount = 1
 	category = manufacturing
 
 	building_sets = {
+		industrial
 		foundry
 	}
 
@@ -307,26 +327,34 @@ building_ps_pre_assembler_vats_2 = {
 		owner = { NOT = { ps_is_partisan_empire = yes } }
 	}
 
+	planet_modifier = {
+		planet_structures_cost_mult = -0.15
+		planet_building_build_speed_mult = 0.15
+	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 600
-			alloys = 100
+			minerals = @b3_minerals
 		}
 		upkeep = {
-			energy = 4
+			minerals = 30
+			energy = 10
 		}
 		produces = {
-			alloys = 10
+			alloys = 30
+			nanites = 10
 		}
 	}
 }
 
 building_ps_pre_mercatus_vats_1 = {
-	base_buildtime = @b1_time
+	base_buildtime = @b2_time
+	base_cap_amount = 1
 	category = manufacturing
 
 	building_sets = {
+		industrial
 		factory
 	}
 
@@ -347,22 +375,25 @@ building_ps_pre_mercatus_vats_1 = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 400
+			minerals = @b2_minerals
 		}
 		upkeep = {
-			energy = 2
+			minerals = 12.5
+			energy = 5
 		}
 		produces = {
-			consumer_goods = 6
+			consumer_goods = 25
 		}
 	}
 }
 
 building_ps_pre_mercatus_vats_2 = {
-	base_buildtime = @b2_time
+	base_buildtime = @b3_time
+	base_cap_amount = 1
 	category = manufacturing
 
 	building_sets = {
+		industrial
 		factory
 	}
 
@@ -390,20 +421,21 @@ building_ps_pre_mercatus_vats_2 = {
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 600
-			alloys = 100
+			minerals = @b3_minerals
 		}
 		upkeep = {
-			energy = 4
+			minerals = 25
+			energy = 10
 		}
 		produces = {
-			consumer_goods = 12
+			consumer_goods = 50
 		}
 	}
 }
 
 building_ps_pre_domain_archive_1 = {
-	base_buildtime = @b1_time
+	base_buildtime = @b2_time
+	base_cap_amount = 1
 	category = research
 
 	building_sets = {
@@ -424,24 +456,34 @@ building_ps_pre_domain_archive_1 = {
 		owner = { NOT = { ps_is_partisan_empire = yes } }
 	}
 
+	planet_modifier = {
+		planet_physicists_physics_research_produces_add = 1
+		planet_biologists_society_research_produces_add = 1
+		planet_engineers_engineering_research_produces_add = 1
+		job_physicist_add = 100
+		job_biologist_add = 100
+		job_engineer_add = 100
+	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 400
+			minerals = @b2_minerals
 		}
 		upkeep = {
-			energy = 2
+			energy = 12.5
 		}
 		produces = {
-			physics_research = 4
-			society_research = 4
-			engineering_research = 4
+			physics_research = 50
+			society_research = 50
+			engineering_research = 50
 		}
 	}
 }
 
 building_ps_pre_domain_archive_2 = {
-	base_buildtime = @b2_time
+	base_buildtime = @b3_time
+	base_cap_amount = 1
 	category = research
 
 	building_sets = {
@@ -469,26 +511,35 @@ building_ps_pre_domain_archive_2 = {
 		owner = { NOT = { ps_is_partisan_empire = yes } }
 	}
 
+	planet_modifier = {
+		planet_physicists_physics_research_produces_add = 2
+		planet_biologists_society_research_produces_add = 2
+		planet_engineers_engineering_research_produces_add = 2
+		job_physicist_add = 200
+		job_biologist_add = 200
+		job_engineer_add = 200
+	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 600
-			alloys = 100
+			minerals = @b3_minerals
 		}
 		upkeep = {
-			energy = 4
+			energy = 25
 		}
 		produces = {
-			physics_research = 8
-			society_research = 8
-			engineering_research = 8
+			physics_research = 100
+			society_research = 100
+			engineering_research = 100
 		}
 	}
 }
 
 building_ps_pre_domicile_1 = {
-	base_buildtime = @b1_time
-	category = government
+	base_buildtime = @b2_time
+	base_cap_amount = 1
+	category = amenity
 
 	building_sets = {
 		urban
@@ -509,26 +560,25 @@ building_ps_pre_domicile_1 = {
 	}
 
 	planet_modifier = {
-		planet_stability_add = 3
+		planet_housing_add = 1000
+		planet_amenities_add = 1000
 	}
 
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 400
+			minerals = @b2_minerals
 		}
 		upkeep = {
-			energy = 2
-		}
-		produces = {
-			unity = 5
+			energy = 5
 		}
 	}
 }
 
 building_ps_pre_domicile_2 = {
-	base_buildtime = @b2_time
-	category = government
+	base_buildtime = @b3_time
+	base_cap_amount = 1
+	category = amenity
 
 	building_sets = {
 		urban
@@ -556,30 +606,28 @@ building_ps_pre_domicile_2 = {
 	}
 
 	planet_modifier = {
-		planet_stability_add = 6
+		planet_housing_add = 2000
+		planet_amenities_add = 2000
 	}
 
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 600
-			alloys = 100
+			minerals = @b3_minerals
 		}
 		upkeep = {
-			energy = 4
-		}
-		produces = {
-			unity = 10
+			energy = 10
 		}
 	}
 }
 
 building_ps_pre_lifeworker_preserve_1 = {
-	base_buildtime = @b1_time
-	category = research
+	base_buildtime = @b2_time
+	base_cap_amount = 1
+	category = amenity
 
 	building_sets = {
-		society
+		urban
 	}
 
 	potential = {
@@ -596,27 +644,30 @@ building_ps_pre_lifeworker_preserve_1 = {
 		owner = { NOT = { ps_is_partisan_empire = yes } }
 	}
 
+	planet_modifier = {
+		planet_amenities_add = 750
+		planet_housing_add = 1500
+		job_xeno_zoo_keeper_add = 100
+	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 400
+			minerals = @b2_minerals
 		}
 		upkeep = {
-			energy = 2
-		}
-		produces = {
-			society_research = 6
-			unity = 2
+			energy = 5
 		}
 	}
 }
 
 building_ps_pre_lifeworker_preserve_2 = {
-	base_buildtime = @b2_time
-	category = research
+	base_buildtime = @b3_time
+	base_cap_amount = 1
+	category = amenity
 
 	building_sets = {
-		society
+		urban
 	}
 
 	potential = {
@@ -640,24 +691,26 @@ building_ps_pre_lifeworker_preserve_2 = {
 		owner = { NOT = { ps_is_partisan_empire = yes } }
 	}
 
+	planet_modifier = {
+		planet_amenities_add = 1500
+		planet_housing_add = 3000
+		job_xeno_zoo_keeper_add = 200
+	}
+
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 600
-			alloys = 100
+			minerals = @b3_minerals
 		}
 		upkeep = {
-			energy = 4
-		}
-		produces = {
-			society_research = 12
-			unity = 4
+			energy = 10
 		}
 	}
 }
 
 building_ps_pre_line_installation_1 = {
-	base_buildtime = @b1_time
+	base_buildtime = @b2_time
+	base_cap_amount = 1
 	category = army
 
 	building_sets = {
@@ -679,26 +732,24 @@ building_ps_pre_line_installation_1 = {
 	}
 
 	planet_modifier = {
-		planet_stability_add = 5
-	}
-
-	country_modifier = {
-		army_damage_mult = 0.05
+		planet_orbital_bombardment_damage = -0.25
+		job_soldier_add = 250
 	}
 
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 400
+			minerals = @b2_minerals
 		}
 		upkeep = {
-			energy = 2
+			energy = 2.5
 		}
 	}
 }
 
 building_ps_pre_line_installation_2 = {
-	base_buildtime = @b2_time
+	base_buildtime = @b3_time
+	base_cap_amount = 1
 	category = army
 
 	building_sets = {
@@ -727,31 +778,29 @@ building_ps_pre_line_installation_2 = {
 	}
 
 	planet_modifier = {
-		planet_stability_add = 10
-	}
-
-	country_modifier = {
-		army_damage_mult = 0.1
+		planet_orbital_bombardment_damage = -0.5
+		job_soldier_add = 500
 	}
 
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 600
-			alloys = 100
+			minerals = @b3_minerals
 		}
 		upkeep = {
-			energy = 4
+			energy = 5
 		}
 	}
 }
 
 building_ps_pre_sentinel_foundry_1 = {
-	base_buildtime = @b1_time
-	category = manufacturing
+	base_buildtime = @b2_time
+	base_cap_amount = 1
+	category = pop_assembly
 
 	building_sets = {
-		foundry
+		government
+		urban
 	}
 
 	potential = {
@@ -768,30 +817,32 @@ building_ps_pre_sentinel_foundry_1 = {
 		owner = { NOT = { ps_is_partisan_empire = yes } }
 	}
 
-	country_modifier = {
-		country_naval_cap_add = 8
+	planet_modifier = {
+		planet_pop_assembly_mult = 0.075
+		army_defense_health_mult = 0.075
+		planet_buildings_upkeep_mult = -0.075
+		job_roboticist_add = 100
 	}
 
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 400
+			minerals = @b2_minerals
 		}
 		upkeep = {
-			energy = 2
-		}
-		produces = {
-			alloys = 3
+			energy = 2.5
 		}
 	}
 }
 
 building_ps_pre_sentinel_foundry_2 = {
-	base_buildtime = @b2_time
-	category = manufacturing
+	base_buildtime = @b3_time
+	base_cap_amount = 1
+	category = pop_assembly
 
 	building_sets = {
-		foundry
+		government
+		urban
 	}
 
 	potential = {
@@ -815,21 +866,20 @@ building_ps_pre_sentinel_foundry_2 = {
 		owner = { NOT = { ps_is_partisan_empire = yes } }
 	}
 
-	country_modifier = {
-		country_naval_cap_add = 16
+	planet_modifier = {
+		planet_pop_assembly_mult = 0.15
+		army_defense_health_mult = 0.15
+		planet_buildings_upkeep_mult = -0.15
+		job_roboticist_add = 200
 	}
 
 	resources = {
 		category = planet_buildings
 		cost = {
-			minerals = 600
-			alloys = 100
+			minerals = @b3_minerals
 		}
 		upkeep = {
-			energy = 4
-		}
-		produces = {
-			alloys = 6
+			energy = 5
 		}
 	}
 }

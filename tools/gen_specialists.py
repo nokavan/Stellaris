@@ -272,6 +272,46 @@ TYPES = [
              ]},
         ],
     },
+    {
+        # На основе «Vassals Expanded – Devotee» (Workshop 2993710737, 3.14), переписано под 4.x
+        "key": "ps_devotee",
+        "ethic": "ethic_spiritualist", "anti": "ethic_materialist",
+        "ethic_ru": "Спиритуалисты", "anti_ru": "Материалисты",
+        "ethic_en": "Spiritualist", "anti_en": "Materialist",
+        "subsidy": 0.0,
+        "color": (200, 170, 230),
+        "ru": ("Орден Подвижников", "Идейный вассал. Комиссары, проповедники и чиновники, лично отобранные сюзереном, держат порядок, бюрократию и веру в Дело — ценой производства товаров."),
+        "en": ("Order of Devotees", "An ideological subject. Commissars, preachers and officials hand-picked by the overlord keep order, bureaucracy and faith in the Cause — at the cost of consumer goods."),
+        "levels": [
+            {"main": {"country_unity_produces_mult": 0.20, "category_statecraft_research_speed_mult": 0.05},
+             "pen": {"country_consumer_goods_produces_mult": -0.30},
+             "perks": [
+                 ("overlord_modifier", {}, {"country_unity_produces_mult": 0.10}, None,
+                  "Консультации подвижников", "Подвижники советуют сюзерену в делах управления.",
+                  "Devotee Counsel", "The devotees advise the overlord on matters of governance."),
+                 ("guidance", {"planet_stability_add": 5, "pop_ethic_spiritualist_attraction_mult": 0.25}, {}, None,
+                  "Наставничество", "Проповедники ведут заблудших на верный путь.",
+                  "Guidance", "Preachers lead the lost onto the right path."),
+             ]},
+            {"main": {"country_unity_produces_mult": 0.30, "category_statecraft_research_speed_mult": 0.10},
+             "pen": {"country_consumer_goods_produces_mult": -0.40},
+             "perks": [
+                 ("governors", {"leaders_upkeep_mult": -0.25, "country_leader_cap_add": 1}, {}, None,
+                  "Губернаторы-подвижники", "Лучшие кадры ордена управляют мирами вассала.",
+                  "Devotee Governors", "The order's best cadres govern the subject's worlds."),
+                 ("commissars", {}, {"planet_stability_add": 2, "monthly_loyalty_from_subjects": 0.5}, None,
+                  "Комиссары Дела", "Подвижники следят за верностью всех вассалов сюзерена.",
+                  "Commissars of the Cause", "Devotees watch over the loyalty of all the overlord's subjects."),
+             ]},
+            {"main": {"country_unity_produces_mult": 0.40, "category_statecraft_research_speed_mult": 0.15},
+             "pen": {"country_consumer_goods_produces_mult": -0.50},
+             "perks": [
+                 ("council_of_state", {"country_leader_cap_add": 2, "envoys_add": 2, "councilor_skill_add": 1}, {"diplomacy_upkeep_mult": -0.10, "empire_size_pops_mult": -0.05}, None,
+                  "Государственный совет", "Совет, отобранный сюзереном, ведёт к процветанию и вассала, и сюзерена.",
+                  "Council of State", "A council chosen by the overlord leads both subject and overlord to prosperity."),
+             ]},
+        ],
+    },
 ]
 
 LEVEL_RU = ["I", "II", "III"]
@@ -478,7 +518,8 @@ preset_{k} = {{
 
 
 MSG_ICON = {"ps_strike": "bulwark", "ps_assault": "bulwark", "ps_raiders": "bulwark",
-            "ps_residency": "scholarium", "ps_exchange": "prospectorium", "ps_trust": "prospectorium"}
+            "ps_residency": "scholarium", "ps_exchange": "prospectorium", "ps_trust": "prospectorium",
+            "ps_devotee": "scholarium"}
 
 
 def gen_message_types():
@@ -567,11 +608,17 @@ def main():
     except ImportError:
         print("Pillow не найден — иконки не созданы")
         return
-    kinds = {"ps_trust": "press", "ps_strike": "star", "ps_assault": "tree", "ps_raiders": "net", "ps_residency": "eye", "ps_exchange": "crown"}
+    kinds = {"ps_trust": "press", "ps_strike": "star", "ps_assault": "tree", "ps_raiders": "net", "ps_residency": "eye", "ps_exchange": "crown", "ps_devotee": "star"}
     for T in TYPES:
         k = T["key"]
-        save_dds(icon(kinds[k], 40), f"gfx/interface/icons/specialists/{k}.dds")
-        save_dds(icon(kinds[k], 80), f"gfx/interface/icons/specialists/{k}_large.dds")
+        orig = ROOT / "tools" / "assets"
+        if (orig / f"{k}.dds").exists():  # оригинальные иконки (напр. из Vassals Expanded – Devotee)
+            import shutil
+            shutil.copyfile(orig / f"{k}.dds", ROOT / f"gfx/interface/icons/specialists/{k}.dds")
+            shutil.copyfile(orig / f"{k}_large.dds", ROOT / f"gfx/interface/icons/specialists/{k}_large.dds")
+        else:
+            save_dds(icon(kinds[k], 40), f"gfx/interface/icons/specialists/{k}.dds")
+            save_dds(icon(kinds[k], 80), f"gfx/interface/icons/specialists/{k}_large.dds")
         for i, Lv in enumerate(T["levels"], 1):
             for p in Lv["perks"]:
                 img = icon(kinds[k], 48)

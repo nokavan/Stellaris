@@ -61,6 +61,13 @@ country_event = {
 	}
 
 	option = {
+		name = ps_mega.1.devotee
+		trigger = { NOT = { has_country_flag = ps_mega_seed_devotee } }
+		ps_mega_clear_doctrine = yes
+		set_country_flag = ps_mega_seed_devotee
+	}
+
+	option = {
 		name = ps_mega.1.client
 		trigger = { NOT = { has_country_flag = ps_mega_seed_client } }
 		ps_mega_clear_doctrine = yes
