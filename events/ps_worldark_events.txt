@@ -1,0 +1,15 @@
+# Синдикат Сопротивления — «Мировой ковчег Сопротивления»: окно создания Мирового ковчега XHK
+namespace = ps_wark
+
+country_event = {
+	id = ps_wark.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = { has_origin = origin_ps_partisan_worldark }
+
+	immediate = {
+		set_country_flag = ps_wark_started
+		set_timed_country_flag = { flag = ps_wark_pending days = 20 }
+	}
+}

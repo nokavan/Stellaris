@@ -1,5 +1,6 @@
 # Синдикат Сопротивления: копия файла XHK World Ark с добавленным происхождением origin_ps_partisan_worldark.
-# Патч грузится после XHK World Ark и заменяет этот файл. При обновлении XHK пересоздать.
+# Лежит в ОСНОВНОМ моде («Синдикат» должен стоять в плейсете ниже XHK World Ark). Путь есть только у XHK,
+# поэтому без XHK файл не используется. При обновлении XHK пересоздать.
 xhk_worldark_situation_main = {
     picture = GFX_evt_arkship_bridge
     situation_log_category = xhk_worldark_situation_category
