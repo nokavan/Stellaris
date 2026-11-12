@@ -31,6 +31,7 @@ STATIC = {
     "starbase_shipyard_build_speed_mult", "ship_speed_mult", "country_resource_max_add",
     "country_physics_research_produces_mult", "country_society_research_produces_mult",
     "country_engineering_research_produces_mult",
+    "intel_encryption_add", "diplo_weight_mult",
 }
 PHY, SOC, ENG = ("country_physics_research_produces_mult", "country_society_research_produces_mult",
                  "country_engineering_research_produces_mult")
@@ -41,9 +42,9 @@ PHY, SOC, ENG = ("country_physics_research_produces_mult", "country_society_rese
 B = []
 
 
-def b(key, cat, tier, owner, host=None, jobs=None, req=None, ru=("", ""), en=("", "")):
+def b(key, cat, tier, owner, host=None, jobs=None, req=None, ru=("", ""), en=("", ""), crim=False):
     B.append(dict(key=key, cat=cat, tier=tier, owner=owner, host=host or {}, jobs=jobs or [], req=req,
-                  ru=ru, en=en))
+                  ru=ru, en=en, crim=crim))
 
 
 CRIM = [("job_criminal_add", 100)]
@@ -368,8 +369,117 @@ b("sub_mutiny_cells", "government", 3, {SPY: 3}, {"army_defense_damage_mult": -0
   ru=("Ячейки мятежа", "Гарнизон врага ненадёжен."),
   en=("Mutiny Cells", "The enemy garrison is unreliable."))
 
-assert len(B) == 100, len(B)
-assert len({x["key"] for x in B}) == 100
+# ===== J. Криминальные синдикаты (только владельцу с «Криминальным наследием»; идеи автора мода) =====
+def c(key, cat, tier, owner, host, ru, en, req=None):
+    b("crim_" + key, cat, tier, owner, host, None, req, ru=ru, en=en, crim=True)
+
+c("aid_fund", "government", 1, {I: 0.5}, {"planet_stability_add": 5},
+  ("Фонд «помощи» чиновникам", "Конверты с «материальной помощью» успокаивают местную власть."),
+  ("Officials' «Aid» Fund", "Envelopes of «financial aid» keep local officials calm."))
+c("echo_botfarm", "research", 1, {SPY: 1}, {"planet_jobs_physics_research_produces_mult": 0.05, "planet_jobs_society_research_produces_mult": 0.05, "planet_jobs_engineering_research_produces_mult": 0.05},
+  ("Ферма ботов «Эхо»", "Тысячи ботов собирают данные и разгоняют нужные темы."),
+  ("«Echo» Bot Farm", "Thousands of bots harvest data and push the right topics."))
+c("kompromat_press", "government", 2, {I: 1}, {"planet_stability_add": -5, "planet_crime_add": 10},
+  ("Подпольная типография компромата", "Листовки о грехах местной элиты расходятся быстрее газет."),
+  ("Underground Kompromat Press", "Leaflets on the local elite's sins spread faster than newspapers."))
+c("web_informants", "government", 2, {SPY: 2, "add_base_country_intel": 1}, {},
+  ("Сеть осведомителей «Паутина»", "Таксисты, официанты и швейцары знают всё — и рассказывают нам."),
+  ("«Web» Informant Network", "Cab drivers, waiters and doormen know everything — and tell us."))
+c("backdoor_cluster", "research", 2, {"intel_encryption_add": 1}, {"planet_jobs_physics_research_produces_mult": 0.05, "planet_jobs_society_research_produces_mult": 0.05, "planet_jobs_engineering_research_produces_mult": 0.05},
+  ("Хакерский кластер «Чёрный вход»", "Серверная в подвале, через которую проходит половина сети планеты."),
+  ("«Backdoor» Hacker Cluster", "A basement server room that half the planet's network passes through."))
+c("pr_agency", "unity", 1, {U: 2}, {"planet_stability_add": 3},
+  ("Подставное PR-агентство", "Хорошие новости о власти — по нашему прейскуранту."),
+  ("Front PR Agency", "Good news about the authorities — at our rates."))
+c("negotiators_school", "government", 2, {"diplo_weight_mult": 0.05}, {"envoys_add": 1},
+  ("Школа «переговорщиков»", "Здесь учат договариваться так, чтобы отказаться было невозможно."),
+  ("«Negotiators» School", "Teaches negotiating so that refusal is impossible."))
+c("data_vault", "research", 2, {SPY: 1}, {"planet_jobs_physics_research_produces_mult": 0.05, "planet_jobs_society_research_produces_mult": 0.05, "planet_jobs_engineering_research_produces_mult": 0.05},
+  ("Подпольный архив данных", "Украденные базы данных, отсортированные и проиндексированные."),
+  ("Underground Data Vault", "Stolen databases, sorted and indexed."))
+c("leak_network", "government", 2, {I: 1}, {"planet_stability_add": -5},
+  ("Сеть «случайных» утечек", "Секреты врага «случайно» попадают в прессу."),
+  ("«Accidental» Leak Network", "The enemy's secrets «accidentally» reach the press."), req="enemy")
+c("cyber_brothel", "trade", 1, {E: 3}, {"planet_amenities_add": 200, "planet_crime_add": 5},
+  ("Кибер-бордель «Аноним»", "Анонимность гарантирована. Почти."),
+  ("«Anonymous» Cyber-Brothel", "Anonymity guaranteed. Almost."))
+c("pirate_radio", "unity", 1, {U: 1}, {"planet_jobs_unity_produces_mult": 0.05, "planet_crime_add": 10},
+  ("Подпольная радиостанция Синдиката", "Музыка, новости и шифровки для своих."),
+  ("Syndicate Pirate Radio", "Music, news and coded messages for those in the know."))
+c("protection_racket", "trade", 1, {E: 2}, {"planet_stability_add": 3},
+  ("«Крыша» для торговцев", "Платишь — спишь спокойно."),
+  ("Merchants' «Protection»", "Pay up and sleep soundly."))
+c("fight_club", "unity", 1, {U: 2}, {"planet_amenities_add": 150, "planet_crime_add": 5},
+  ("Подпольный бойцовский клуб", "Первое правило клуба — платить взнос."),
+  ("Underground Fight Club", "The first rule of the club: pay your dues."))
+c("bouncers", "army", 1, {A: 1}, {"army_defense_health_mult": 0.15},
+  ("Сеть «вышибал»", "Крепкие ребята у каждой двери, готовые к драке."),
+  ("«Bouncer» Network", "Tough guys at every door, ready for a fight."))
+c("security_firm", "army", 2, {NAVAL: 3}, {"planet_stability_add": 3},
+  ("Подставная охранная фирма", "Лицензированная охрана, которая подчиняется не только заказчику."),
+  ("Front Security Firm", "Licensed guards who answer to more than their client."))
+c("lost_weapons", "army", 2, {A: 1.5}, {"army_defense_damage_mult": 0.15},
+  ("Склад «потерянного» оружия", "Списанное армейское оружие, которое так и не доехало до утилизации."),
+  ("«Lost» Weapons Depot", "Decommissioned army weapons that never made it to the scrapyard."))
+c("shooting_ranges", "army", 1, {U: 1}, {"planet_army_build_speed_mult": 0.20},
+  ("Подпольные тиры", "Стрельба по мишеням — и не только по мишеням."),
+  ("Underground Shooting Ranges", "Target practice — and not only on targets."))
+c("debt_collectors", "trade", 1, {E: 3}, {"planet_jobs_trade_produces_mult": 0.05, "planet_crime_add": 5},
+  ("Сеть «долговых» коллекторов", "Долги возвращаются всегда. С процентами."),
+  ("«Debt» Collector Network", "Debts always come back. With interest."))
+c("front_gym", "army", 1, {U: 1.5}, {"army_defense_health_mult": 0.10},
+  ("Подставной «спортзал»", "Качалка для будущих бойцов Синдиката."),
+  ("Front «Gym»", "A gym for the Syndicate's future fighters."))
+c("silence_prison", "government", 2, {I: 0.5}, {"planet_stability_add": 5},
+  ("Тайная тюрьма «Тишина»", "Те, кто слишком много говорил, теперь молчат."),
+  ("«Silence» Secret Prison", "Those who talked too much are quiet now."))
+c("disposal_service", "resource", 2, {M: 3}, {"planet_jobs_alloys_produces_mult": 0.05, "planet_crime_add": 10},
+  ("«Служба утилизации» конкурентов", "Конкуренты исчезают, их склады — тоже."),
+  ("Competitor «Disposal Service»", "Competitors vanish, and so do their warehouses."))
+
+# ===== K. Корпоративные филиалы для союзников (как у обычной мегакорпорации) =====
+def k(key, cat, tier, owner, host, ru, en):
+    b("corp_" + key, cat, tier, owner, host, None, "ally", ru=ru, en=en)
+
+k("logistics_hub", "trade", 1, {E: 3}, {"planet_building_build_speed_mult": 0.10},
+  ("Логистический хаб корпорации", "Склады и транспорт корпорации ускоряют стройки союзника."),
+  ("Corporate Logistics Hub", "The corporation's warehouses and transport speed up the ally's construction."))
+k("bank", "trade", 2, {E: 4, I: 0.25}, {"planet_jobs_energy_produces_mult": 0.05},
+  ("Отделение банка корпорации", "Кредиты для союзника, проценты для корпорации."),
+  ("Corporate Bank Branch", "Credit for the ally, interest for the corporation."))
+k("mining_consortium", "resource", 1, {M: 4}, {"planet_jobs_minerals_produces_mult": 0.05},
+  ("Горный консорциум", "Совместная добыча: оборудование наше, недра — союзника."),
+  ("Mining Consortium", "Joint extraction: our equipment, the ally's deposits."))
+k("agri_holding", "resource", 1, {F: 4}, {"planet_jobs_food_produces_mult": 0.05},
+  ("Агрохолдинг", "Удобрения, семена и сбыт урожая."),
+  ("Agri-Holding", "Fertiliser, seed and a market for the harvest."))
+k("foundry_contract", "resource", 2, {A: 2}, {"planet_jobs_alloys_produces_mult": 0.05},
+  ("Литейный подряд", "Корпорация модернизирует литейные союзника."),
+  ("Foundry Contract", "The corporation modernises the ally's foundries."))
+k("consumer_chain", "trade", 1, {CG: 2}, {"planet_jobs_consumer_goods_produces_mult": 0.05},
+  ("Торговая сеть корпорации", "Супермаркеты с товарами на любой вкус."),
+  ("Corporate Retail Chain", "Supermarkets with goods for every taste."))
+k("research_park", "research", 2, {PHY: 0.01, SOC: 0.01, ENG: 0.01}, {"planet_jobs_physics_research_produces_mult": 0.05, "planet_jobs_society_research_produces_mult": 0.05, "planet_jobs_engineering_research_produces_mult": 0.05},
+  ("Научный парк корпорации", "Общие лаборатории учёных корпорации и союзника."),
+  ("Corporate Research Park", "Shared labs for corporate and allied scientists."))
+k("media_group", "unity", 1, {U: 2}, {"planet_stability_add": 3},
+  ("Медиагруппа корпорации", "Каналы и сериалы, которые смотрит вся планета."),
+  ("Corporate Media Group", "Channels and series the whole planet watches."))
+k("clinic_network", "amenity", 1, {U: 1, E: 1}, {"pop_happiness": 0.03},
+  ("Сеть клиник корпорации", "Платная медицина хорошего уровня."),
+  ("Corporate Clinic Network", "Good-quality private medicine."))
+k("shipyard_contract", "army", 2, {NAVAL: 2, A: 1}, {"planet_stability_add": 2},
+  ("Верфевой подряд", "Корпорация строит союзнику корабли, а часть заказа оставляет себе."),
+  ("Shipyard Contract", "The corporation builds ships for the ally and keeps part of the order."))
+k("strategic_traders", "trade", 3, {RC: 0.25, EG: 0.25, VM: 0.25}, {"planet_jobs_trade_produces_mult": 0.05},
+  ("Биржа стратегических ресурсов", "Торговля редкими ресурсами через корпорацию."),
+  ("Strategic Resource Exchange", "Rare resources traded through the corporation."))
+k("security_contract", "army", 2, {"army_damage_mult": 0.01}, {"army_defense_health_mult": 0.10},
+  ("Охранный контракт", "Частные военные корпорации защищают союзника."),
+  ("Security Contract", "The corporation's private military protects the ally."))
+
+assert len(B) == 133, len(B)
+assert len({x["key"] for x in B}) == 133
 
 TIER = {1: dict(time="@b1_time", min=300, inf=10, up=2, pre=None),
         2: dict(time="@b2_time", min=500, inf=20, up=3, pre="tech_ps_guerrilla_doctrine"),
@@ -385,7 +495,8 @@ def building(x):
     t = TIER[x["tier"]]
     o = []
     o.append(f"{k} = {{\n\tbase_buildtime = {t['time']}\n\tplanet_limit = 1\n\n\towner_type = corporate\n\tcategory = {x['cat']}\n")
-    o.append("\tpotential = {\n\t\thas_branch_office = yes\n\t\tbranch_office_owner = { ps_is_partisan_empire = yes }\n\t}\n")
+    owner_trig = "is_criminal_syndicate = yes" if x.get("crim") else "ps_is_partisan_empire = yes"
+    o.append(f"\tpotential = {{\n\t\thas_branch_office = yes\n\t\tbranch_office_owner = {{ {owner_trig} }}\n\t}}\n")
     if x["req"]:
         trig = "ps_branch_host_is_friend" if x["req"] == "ally" else "ps_branch_host_is_enemy"
         o.append(f"\n\tallow = {{\n\t\tcustom_tooltip = {{\n\t\t\tfail_text = {trig}_fail\n\t\t\t{trig} = yes\n\t\t}}\n\t}}\n")
@@ -433,7 +544,7 @@ THEMES_RU = {"army": "армия/флот", "government": "шпионаж/под
 
 def main():
     hdr = ("# АВТОГЕНЕРАЦИЯ: tools/gen_branch_buildings.py — правьте генератор, а не этот файл\n"
-           "# Синдикат Сопротивления — 100 зданий филиалов\n\n")
+           "# Синдикат Сопротивления — 133 здания филиалов\n\n")
     (ROOT / "common/buildings/ps_branch_offices.txt").write_text(hdr + "\n".join(building(x) for x in B), encoding="utf-8")
 
     gfx = ["spriteTypes = {"]
@@ -452,7 +563,9 @@ def main():
             if x["req"] == "ally":
                 desc += "\\n\\n§Y" + ("Только на планетах союзников, вассалов, членов федерации и дружественных империй." if ru else
                                      "Allied, subject, federation or friendly worlds only.") + "§!"
-            elif x["req"] == "enemy":
+            if x.get("crim"):
+                desc += "\\n\\n§Y" + ("Только для криминальных синдикатов." if ru else "Criminal syndicates only.") + "§!"
+            if x["req"] == "enemy":
                 desc += "\\n\\n§R" + ("Только на планетах соперников, врагов и недружественных империй." if ru else
                                      "Rival, enemy or unfriendly worlds only.") + "§!"
             L += [f' {k}:0 "{name}"', f' {k}_desc:0 "{desc}"']

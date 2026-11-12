@@ -399,4 +399,136 @@ spriteTypes = {
 		name = "GFX_building_ps_sub_mutiny_cells"
 		texturefile = "gfx/interface/icons/buildings/building_ps_sub_mutiny_cells.dds"
 	}
+	spriteType = {
+		name = "GFX_building_ps_crim_aid_fund"
+		texturefile = "gfx/interface/icons/buildings/building_ps_crim_aid_fund.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_crim_echo_botfarm"
+		texturefile = "gfx/interface/icons/buildings/building_ps_crim_echo_botfarm.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_crim_kompromat_press"
+		texturefile = "gfx/interface/icons/buildings/building_ps_crim_kompromat_press.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_crim_web_informants"
+		texturefile = "gfx/interface/icons/buildings/building_ps_crim_web_informants.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_crim_backdoor_cluster"
+		texturefile = "gfx/interface/icons/buildings/building_ps_crim_backdoor_cluster.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_crim_pr_agency"
+		texturefile = "gfx/interface/icons/buildings/building_ps_crim_pr_agency.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_crim_negotiators_school"
+		texturefile = "gfx/interface/icons/buildings/building_ps_crim_negotiators_school.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_crim_data_vault"
+		texturefile = "gfx/interface/icons/buildings/building_ps_crim_data_vault.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_crim_leak_network"
+		texturefile = "gfx/interface/icons/buildings/building_ps_crim_leak_network.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_crim_cyber_brothel"
+		texturefile = "gfx/interface/icons/buildings/building_ps_crim_cyber_brothel.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_crim_pirate_radio"
+		texturefile = "gfx/interface/icons/buildings/building_ps_crim_pirate_radio.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_crim_protection_racket"
+		texturefile = "gfx/interface/icons/buildings/building_ps_crim_protection_racket.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_crim_fight_club"
+		texturefile = "gfx/interface/icons/buildings/building_ps_crim_fight_club.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_crim_bouncers"
+		texturefile = "gfx/interface/icons/buildings/building_ps_crim_bouncers.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_crim_security_firm"
+		texturefile = "gfx/interface/icons/buildings/building_ps_crim_security_firm.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_crim_lost_weapons"
+		texturefile = "gfx/interface/icons/buildings/building_ps_crim_lost_weapons.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_crim_shooting_ranges"
+		texturefile = "gfx/interface/icons/buildings/building_ps_crim_shooting_ranges.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_crim_debt_collectors"
+		texturefile = "gfx/interface/icons/buildings/building_ps_crim_debt_collectors.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_crim_front_gym"
+		texturefile = "gfx/interface/icons/buildings/building_ps_crim_front_gym.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_crim_silence_prison"
+		texturefile = "gfx/interface/icons/buildings/building_ps_crim_silence_prison.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_crim_disposal_service"
+		texturefile = "gfx/interface/icons/buildings/building_ps_crim_disposal_service.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_corp_logistics_hub"
+		texturefile = "gfx/interface/icons/buildings/building_ps_corp_logistics_hub.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_corp_bank"
+		texturefile = "gfx/interface/icons/buildings/building_ps_corp_bank.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_corp_mining_consortium"
+		texturefile = "gfx/interface/icons/buildings/building_ps_corp_mining_consortium.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_corp_agri_holding"
+		texturefile = "gfx/interface/icons/buildings/building_ps_corp_agri_holding.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_corp_foundry_contract"
+		texturefile = "gfx/interface/icons/buildings/building_ps_corp_foundry_contract.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_corp_consumer_chain"
+		texturefile = "gfx/interface/icons/buildings/building_ps_corp_consumer_chain.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_corp_research_park"
+		texturefile = "gfx/interface/icons/buildings/building_ps_corp_research_park.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_corp_media_group"
+		texturefile = "gfx/interface/icons/buildings/building_ps_corp_media_group.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_corp_clinic_network"
+		texturefile = "gfx/interface/icons/buildings/building_ps_corp_clinic_network.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_corp_shipyard_contract"
+		texturefile = "gfx/interface/icons/buildings/building_ps_corp_shipyard_contract.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_corp_strategic_traders"
+		texturefile = "gfx/interface/icons/buildings/building_ps_corp_strategic_traders.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_corp_security_contract"
+		texturefile = "gfx/interface/icons/buildings/building_ps_corp_security_contract.dds"
+	}
 }
