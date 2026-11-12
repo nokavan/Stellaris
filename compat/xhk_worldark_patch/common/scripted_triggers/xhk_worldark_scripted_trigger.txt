@@ -1,9 +1,18 @@
 # Синдикат Сопротивления: копия файла XHK World Ark с добавленным происхождением origin_ps_partisan_worldark.
 # Патч грузится после XHK World Ark и заменяет этот файл. При обновлении XHK пересоздать.
+# То же определение, что в основном моде (scripted_triggers/zzz_ps_xhk_worldark_origin.txt), со страховкой.
 xhk_has_worldark_origin = {
-    OR = {
-        OR = { has_origin = origin_xhk_worldark has_origin = origin_ps_partisan_worldark }
-    }
+	OR = {
+		has_origin = origin_xhk_worldark
+		AND = {
+			has_origin = origin_ps_partisan_worldark
+			OR = {
+				NOT = { has_country_flag = ps_wark_started }
+				has_country_flag = ps_wark_pending
+				has_technology = xhk_tech_worldark_1
+			}
+		}
+	}
 }
 
 xhk_is_worldark_ship = {
