@@ -1,0 +1,617 @@
+@base_cost = 300
+@city_cost = 500
+@advanced_cost = 1000
+@advanced_rare_cost = 50
+@advanced_double_cost = 2000
+@advanced_double_rare_cost = 100
+@mega_cost = 2000
+@mega_alloy_cost = 500
+@mega_rare_cost = 250
+
+@base_upkeep = 1
+@city_upkeep = 2
+@advanced_upkeep = 5
+@advanced_rare_upkeep = 1
+@advanced_double_upkeep = 10
+@advanced_double_rare_upkeep = 2
+@mega_upkeep = 20
+@mega_alloy_upkeep = 5
+@mega_rare_upkeep = 5
+
+@base_time = 240
+@city_time = 480
+@advanced_time = 720
+@mega_time = 960
+
+@frame_housing = 400
+@frame_housing_half = 200
+
+## DARK MATTER
+# Only appears when penrosed, no cap
+# disabled if voidframe is loaded
+district_xhk_extraframe_darkmatter = {
+    expansion_planner = no
+    base_buildtime = @city_time
+    icon = district_cosmogenesis_world_science
+    overlay_icon = GFX_giga_district_dark_matter
+    base_cap_amount = 1
+    gridbox = district_polytechnic
+    district_background = district_arcology_research
+
+    zone_slots = {
+        slot_xhk_extraframe_darkmatter
+    }
+
+    show_on_uncolonized = {
+        always = no
+    }
+
+    potential = {
+        exists = owner
+        uses_district_set = giga_frameworld
+        has_deposit = d_frameworld_penrose
+        NOT = { has_global_flag = anz_voidframe_installed}
+        owner = {
+            has_technology = tech_mine_dark_matter
+        }
+    }
+
+    resources = {
+        category = planet_districts
+        cost = {
+            alloys = @base_cost
+        }
+        upkeep = {
+            energy = 5
+        }
+    }
+
+    planet_modifier = { planet_housing_add = @frame_housing  }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_gestalt = no
+            }
+        }
+        job_giga_dark_matter_weaver_add = 100
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_gestalt = yes
+            }
+        }
+        job_giga_dark_matter_weaver_drone_add = 100
+    }
+
+    triggered_name = {
+        trigger = {
+            has_zone = { zone = zone_xhk_extraframe_darkmatter }
+        }
+        text = xhk_dark_matter_extra_text
+    }
+}
+
+## RESORT DISTRICT
+# Only has a 1 slot based on the actual resort attraction district, +1 cap per 4 outposts (1 base)
+district_xhk_extraframe_resort = {
+    base_buildtime = @base_time
+    is_uncapped = {
+        always = no
+    }
+    base_cap_amount = 1
+    exempt_from_ai_planet_specialization = yes
+    district_background = district_resort_secondary_bg
+    icon = district_resort_secondary
+    overlay_icon = GFX_district_amenities
+    gridbox = district_resort
+
+    zone_slots = {
+        slot_xhk_extraframe_resort
+    }
+
+    show_on_uncolonized = {
+        always = no
+    }
+
+    potential = {
+        exists = owner
+        uses_district_set = giga_frameworld
+        owner = {
+            has_technology = tech_resort_colonies
+        }
+    }
+
+    resources = {
+        category = planet_districts
+        cost = {
+            minerals = @base_cost
+        }
+        upkeep = {
+            energy = 1
+        }
+    }
+
+    planet_modifier = {
+        planet_housing_add = @frame_housing
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = { is_gestalt = no }
+        }
+        job_resort_worker_add = 100
+    }
+
+    triggered_desc = {
+        trigger = { always = yes }
+        text = district_xhk_extraframe_resort_cap_desc
+    }
+
+    inline_script = {
+        script = districts/extraframe/xhk_extraframe_name_resort
+    }
+}
+
+## MUSEUM DISTRICT
+# A district that can only build museum buildings, max size 1, has 3 slots
+district_xhk_extraframe_museum = {
+	base_buildtime = @base_time
+    is_uncapped = {
+        always = no
+    }
+	base_cap_amount = 1
+	exempt_from_ai_planet_specialization = yes
+	district_background = district_resort_secondary_bg
+	icon = district_resort_museum
+	overlay_icon = GFX_district_amenities
+	gridbox = district_resort
+	
+
+	zone_slots = {
+		slot_xhk_extraframe_museum
+	}
+
+	show_on_uncolonized = {
+		always = no
+	}
+
+	potential = {
+		exists = owner
+		uses_district_set = giga_frameworld
+		owner = {
+			OR = {
+				has_country_flag = received_collection_stage_2_reward_xeno_geology
+				has_country_flag = received_collection_stage_2_reward_aesthetic_wonder
+				has_country_flag = received_collection_stage_2_reward_historical_item
+			}
+		}
+	}
+
+	resources = {
+		category = planet_districts
+		cost = {
+			minerals = @base_cost
+		}
+		upkeep = {
+			energy = 1
+		}
+	}
+
+	planet_modifier = {
+		planet_housing_add = @frame_housing
+    }
+
+	inline_script = {
+		script = districts/extraframe/xhk_extraframe_name_museum
+	}
+}
+
+# LAVA DISTRICT
+# like thermotechnics, but max size is restricted
+district_xhk_extraframe_lava = {
+    base_buildtime = @base_time
+    is_uncapped = {
+        always = no
+    }
+    base_cap_amount = 2
+    exempt_from_ai_planet_specialization = yes
+    district_background = district_polytechnic
+    icon = district_polytechnic
+    overlay_icon = GFX_district_research
+    gridbox = district_polytechnic
+
+
+    zone_slots = {
+        slot_polytechnic
+    }
+
+    show_on_uncolonized = {
+        always = no
+    }
+
+    potential = {
+        exists = owner
+        uses_district_set = giga_frameworld
+        has_carrier_flag = xhk_extraframe_lavaframe
+    }
+
+    resources = {
+        category = planet_districts
+        cost = {
+            minerals = @base_cost
+        }
+        upkeep = {
+            energy = 1
+        }
+    }
+
+    planet_modifier = {
+        planet_housing_add = @frame_housing
+    }
+
+    inline_script = {
+        script = jobs/thermotechnic_add
+    }
+
+    # descriptors for more cap
+    # this is a buffer
+    triggered_desc = {
+        trigger = {
+            OR = {
+                # the condition of the first desc
+                AND = {
+                    has_machine_age_dlc = yes
+                    exists = owner
+                    owner = {
+                        NOT = { has_technology = tech_orbital_arc_furnace }
+                    }
+                }
+                # the condition of the second desc
+                NOT = { has_carrier_flag = xhk_extraframe_molten_slorp}
+            }
+
+        }
+        text = district_xhk_extraframe_lava_buffer
+    }
+    triggered_desc = {
+        trigger = {
+            has_machine_age_dlc = yes
+            exists = owner
+            owner = {
+                NOT = { has_technology = tech_orbital_arc_furnace }
+            }
+        }
+        text = district_xhk_extraframe_lava_furnace_cap_desc
+    }
+    triggered_desc = {
+        trigger = {
+            NOT = { has_carrier_flag = xhk_extraframe_molten_slorp}
+        }
+        text = district_xhk_extraframe_lava_volslorp_cap_desc
+    }
+
+    triggered_name = {
+        trigger = {
+            exists = owner
+            owner = { is_regular_empire = yes }
+        }
+        text = thermotechnic_default
+    }
+    triggered_name = {
+        trigger = {
+            exists = owner
+            owner = { is_hive_empire = yes }
+        }
+        text = thermotechnic_hive
+    }
+    triggered_name = {
+        trigger = {
+            exists = owner
+            owner = { is_machine_empire = yes }
+        }
+        text = thermotechnic_machine
+    }
+}
+
+## MBRAIN DISTRICT
+# A district that can only build uplink buildings, has 3 slots
+district_xhk_extraframe_mbrain = {
+    base_buildtime = @mega_time
+    is_uncapped = {
+        always = yes
+    }
+    exempt_from_ai_planet_specialization = yes
+    district_background = district_arcology_research
+    overlay_icon = GFX_xhk_extraframe_mbrain_spec
+    gridbox = district_arcology_research
+
+    zone_slots = {
+        slot_xhk_extraframe_mbrain
+    }
+
+    show_on_uncolonized = {
+        uses_district_set = giga_frameworld
+        has_deposit = deposit_xhk_extraframe_mbrain
+    }
+
+    potential = {
+        exists = owner
+        uses_district_set = giga_frameworld
+        has_deposit = deposit_xhk_extraframe_mbrain
+    }
+
+    prerequisites = {
+        giga_tech_matrioshka_brain_1
+    }
+
+    show_tech_unlock_if = {
+        giga_has_frameworld_origin = yes
+    }
+
+    resources = {
+        category = planet_districts
+        cost = {
+            minerals = 200
+            alloys = 4000
+        }
+        # remember it takes 8 to make an uplink
+        upkeep = {
+            energy = 100
+            alloys = 12
+        }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = { is_regular_empire = yes }
+        }
+        modifier = {
+            job_clerk_add = 100
+        }
+    }
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = { is_gestalt = yes }
+        }
+        modifier = {
+            job_evaluator_add = 100
+        }
+    }
+
+    triggered_desc = {
+        trigger = {
+            OR = {
+                NOT = { has_global_flag = anz_voidframe_installed }
+                NOR = {
+                    has_zone = { zone = zone_xhk_voidframe_mbrain_dm}
+                    has_zone = { zone = zone_xhk_voidframe_mbrain_de}
+                    has_zone = { zone = zone_xhk_voidframe_mbrain_pe}
+                    has_zone = { zone = zone_xhk_voidframe_mbrain_se}
+                }
+            }
+        }
+        text = district_xhk_extraframe_mbrain_effect
+    }
+    # have to put this here sigh, the swaps dont work with the triggered_desc
+    triggered_desc = {
+        trigger = {
+            has_global_flag = anz_voidframe_installed
+            has_zone = { zone = zone_xhk_voidframe_mbrain_dm}
+        }
+        text = district_xhk_voidframe_mbrain_dm_effect
+    }
+    triggered_desc = {
+        trigger = {
+            has_global_flag = anz_voidframe_installed
+            has_zone = { zone = zone_xhk_voidframe_mbrain_de}
+        }
+        text = district_xhk_voidframe_mbrain_de_effect
+    }
+    triggered_desc = {
+        trigger = {
+            has_global_flag = anz_voidframe_installed
+            has_zone = { zone = zone_xhk_voidframe_mbrain_pe}
+        }
+        text = district_xhk_voidframe_mbrain_pe_effect
+    }
+    triggered_desc = {
+        trigger = {
+            has_global_flag = anz_voidframe_installed
+            has_zone = { zone = zone_xhk_voidframe_mbrain_se}
+        }
+        text = district_xhk_voidframe_mbrain_se_effect
+    }
+
+    triggered_name = {
+        trigger = {
+            has_zone = { zone = zone_xhk_extraframe_mbrain }
+        }
+        text = xhk_mbrain_extra_text
+    }
+}
+
+## CULTOBRIUM DISTRICT
+# only with sparble
+# uncapped, 1 building slot
+inline_script = {
+    script = xhk_toggle/xhk_toggled_code
+    code = "
+        district_xhk_extraframe_cultobrium = {
+            base_buildtime = @advanced_time
+            overlay_icon = GFX_xhk_extraframe_cultobrium_spec
+            district_background = district_arcology_arms_industry
+            gridbox = district_arcology_fortress
+
+            zone_slots = {
+                slot_xhk_extraframe_cultobrium
+            }
+
+            show_on_uncolonized = {
+                uses_district_set = giga_frameworld
+                has_global_flag = sparbles_stellar_hyperconstructs
+                exists = from
+                from = {
+                    has_technology = ssh_tech_nuclei_modification
+                }
+            }
+
+            potential = {
+                has_global_flag = sparbles_stellar_hyperconstructs
+                exists = owner
+                owner = {
+                    has_technology = ssh_tech_nuclei_modification
+                }
+                uses_district_set = giga_frameworld
+            }
+
+            resources = {
+                category = planet_districts
+                cost = {
+                    alloys = @advanced_cost
+                }
+                upkeep = {
+                    energy = 10
+                }
+            }
+
+            triggered_planet_modifier = {
+                potential = {
+                    exists = owner
+                    owner = {
+                        is_gestalt = no
+                    }
+                }
+                modifier = {
+                    job_ssh_cultrobium_foundry_add = @b2_jobs
+                }
+            }
+
+            triggered_planet_modifier = {
+                potential = {
+                    exists = owner
+                    owner = {
+                        is_gestalt = yes
+                    }
+                }
+                modifier = {
+                    job_ssh_cultrobium_foundry_drone_add = @b2_jobs
+                }
+            }
+
+            planet_modifier = {
+                planet_housing_add = @frame_housing
+            }
+
+            triggered_name = {
+                text = xhk_extraframe_cultobrium_base
+            }
+        }
+    "
+    toggle = @has_stellar_hyperconstructs
+}
+
+## STORAGE DISTRICT
+# 1 zone with no building slots
+# has Voidframe ver
+district_xhk_extraframe_storage = {
+	base_buildtime = @advanced_time
+    overlay_icon = GFX_xhk_extraframe_storage_spec
+	icon = district_xhk_extraframe_storage
+	gridbox = district_generator
+	
+	zone_slots = {
+		slot_xhk_extraframe_storage
+	}
+	
+	show_on_uncolonized = {
+		exists = from
+		owner = { has_technology = tech_construction_templates }
+		uses_district_set = giga_frameworld
+		# OR = {
+		# 	NOT = { has_global_flag = anz_extraframe_installed }
+		# 	is_extraframe_upgraded = no
+		# }
+	}
+	
+	potential = {
+		exists = owner
+		owner = { has_technology = tech_construction_templates }
+		uses_district_set = giga_frameworld
+		# OR = {
+		# 	NOT = { has_global_flag = anz_extraframe_installed }
+		# 	is_extraframe_upgraded = no
+		# }
+	}
+
+	show_tech_unlock_if = {
+		giga_has_frameworld_origin = yes
+	}
+
+	prerequisites = {
+		tech_construction_templates
+	}
+
+	# conversion_ratio = 1
+	# convert_to = {
+	# 	district_giga_frameworld_storage_xhk
+
+	# 	district_giga_extraframe_storage_dm
+	# 	district_giga_extraframe_storage_de
+	# 	district_giga_extraframe_storage_pe
+	# 	district_giga_extraframe_storage_se
+	# }
+	
+	resources = {
+		category = planet_districts_hab_research
+		cost = {
+			minerals = @city_cost
+		}
+		upkeep = {
+			energy = @city_upkeep
+		}
+	}
+
+	triggered_desc = {
+		trigger = {
+			NOR = {
+				has_deposit = deposit_xhk_extraframe_storage_kugel_norm
+				has_deposit = deposit_xhk_extraframe_storage_kugel_mega
+				has_deposit = deposit_xhk_extraframe_storage_kugel_tera
+			}
+		}
+		text = zone_xhk_extraframe_storage_effect_init
+	}
+
+	triggered_desc = {
+		trigger = {
+			has_deposit = deposit_xhk_extraframe_storage_kugel_norm
+		}
+		text = zone_xhk_extraframe_storage_effect_norm
+	}
+
+	triggered_desc = {
+		trigger = {
+			has_deposit = deposit_xhk_extraframe_storage_kugel_mega
+		}
+		text = zone_xhk_extraframe_storage_effect_mega
+	}
+
+	triggered_desc = {
+		trigger = {
+			has_deposit = deposit_xhk_extraframe_storage_kugel_tera
+		}
+		text = zone_xhk_extraframe_storage_effect_tera
+	}
+
+	inline_script = {
+		script = districts/extraframe/xhk_extraframe_name_storage
+	}
+}

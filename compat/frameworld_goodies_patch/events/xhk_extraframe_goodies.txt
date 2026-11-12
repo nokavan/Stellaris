@@ -1,0 +1,421 @@
+namespace = xhk_extraframe_goodies
+# GAME START
+##############################################################################
+
+# give main deposit
+country_event = {
+	id = xhk_extraframe_goodies.100
+	is_triggered_only = yes
+	hide_window = yes
+	
+	trigger = {
+		giga_has_frameworld_origin = yes
+	}
+	
+	immediate = {
+        # ADDS MAIN DEPOSIT
+		capital_scope = {
+			add_deposit = deposit_xhk_extraframe_district_control
+		}
+	}
+}
+
+# angler frame setup
+country_event = {
+    id = xhk_extraframe_goodies.101
+    is_triggered_only = yes
+    hide_window = yes
+
+    trigger = {
+        giga_has_frameworld_origin = yes
+        OR = {
+            has_civic = civic_anglers_xhk_voidframe
+            has_civic = civic_machine_anglers_xhk_voidframe
+            has_civic = civic_corporate_anglers_xhk_voidframe
+            has_civic = civic_corporate_machine_anglers_xhk_voidframe
+        }
+    }
+
+    immediate = {
+        ## NEED TO SWAP THE CIVIC FIRST
+        if = {
+            limit = {
+                has_civic = civic_corporate_machine_anglers_xhk_voidframe
+            }
+            force_remove_civic = civic_corporate_machine_anglers_xhk_voidframe
+            force_add_civic = civic_corporate_machine_anglers
+        }
+        if = {
+            limit = {
+                has_civic = civic_corporate_anglers_xhk_voidframe
+            }
+            force_remove_civic = civic_corporate_anglers_xhk_voidframe
+            force_add_civic = civic_corporate_anglers
+        }
+        if = {
+            limit = {
+                has_civic = civic_machine_anglers_xhk_voidframe
+            }
+            force_remove_civic = civic_machine_anglers_xhk_voidframe
+            force_add_civic = civic_machine_anglers
+        }
+        if = {
+            limit = {
+                has_civic = civic_anglers_xhk_voidframe
+            }
+            force_remove_civic = civic_anglers_xhk_voidframe
+            force_add_civic = civic_anglers
+        }
+
+
+        capital_scope = {
+            ## FLOOD THE PLACE
+            # THIS IS FOR THE SPECIES MODIFIER
+            add_modifier = { modifier = flooded_habitat days = -1 }
+
+            ## MAKE A FARM DISTRICT IF ITS DOESNT EXIST
+            if = {
+                limit = {
+                    NOT = { has_district = district_giga_frameworld_farming}
+                }
+                add_district = district_giga_frameworld_farming
+            }
+            ## ADD THE ZONE
+            add_zone = {
+                district = district_giga_frameworld_farming
+                zone = zone_anglers
+                replace = yes
+            }
+        }
+
+        ### SWAP THE TRAIT DELAYED 1 DAY
+        country_event = { id = xhk_extraframe_goodies.102 days = 1}
+    }
+}
+
+# delayed event to swap trait
+country_event = {
+    id = xhk_extraframe_goodies.102
+    is_triggered_only = yes
+    hide_window = yes
+
+    immediate = {
+        every_owned_species = {
+            limit = {
+                has_trait = trait_aquatic_xhk_dummy
+            }
+            change_species_characteristics = {
+                remove_trait = trait_aquatic_xhk_dummy
+                add_trait = trait_aquatic
+            }
+        }
+        every_owned_species = {
+            limit = {
+                has_trait = trait_robot_aquatic_xhk_dummy
+            }
+            change_species_characteristics = {
+                remove_trait = trait_robot_aquatic_xhk_dummy
+                add_trait = trait_robot_aquatic
+            }
+        }
+    }
+}
+
+# lavaframe event
+country_event = {
+    id = xhk_extraframe_goodies.105
+    is_triggered_only = yes
+    hide_window = yes
+
+    trigger = {
+        giga_has_frameworld_origin = yes
+        OR = {
+            is_infernal_empire = yes
+            OR = {
+                has_civic = civic_world_forgers
+                has_civic = civic_corporate_world_forgers
+                has_civic = civic_machine_world_forgers
+                has_civic = civic_hive_world_forgers
+            }
+        }
+    }
+
+    immediate = {
+        capital_scope = {
+            set_carrier_flag = xhk_extraframe_lavaframe
+        }
+    }
+}
+
+# apply tags to FE capitals (delay)
+country_event = {
+    id = xhk_extraframe_goodies.250
+    is_triggered_only = yes
+    hide_window = yes
+    trigger = {
+        is_fallen_empire = yes
+    }
+    immediate = {
+        country_event = { id = xhk_extraframe_goodies.251 days = 120}
+    }
+}
+# apply tags to FE capitals
+country_event = {
+    id = xhk_extraframe_goodies.251
+    is_triggered_only = yes
+    hide_window = yes
+
+    trigger = {
+        is_fallen_empire = yes
+    }
+
+    immediate = {
+        every_owned_planet  = {
+            limit = { has_building = building_master_archive }
+            set_carrier_flag = xhk_master_archive_planet
+        }
+        every_owned_planet  = {
+            limit = { has_building = building_empyrean_shrine }
+            set_carrier_flag = xhk_empyrean_shrine_planet
+        }
+        every_owned_planet  = {
+            limit = { has_building = building_ancient_cryo_chamber }
+            set_carrier_flag = xhk_ancient_cryo_chamber_planet
+        }
+    }
+}
+
+## GIVING SPECIFIC TECHS
+##############################################################################
+
+#giving techs that are locked behind num planets:
+# resort
+# planetary wonders stuff
+country_event = {
+	id = xhk_extraframe_goodies.300
+	is_triggered_only = yes
+	hide_window = yes
+	
+	trigger = {
+		giga_has_frameworld_origin = yes
+	}
+	
+	immediate = {
+		# give resort tech option because it needs >1 colony
+		if = { 
+			limit = {
+				# if we don't already have it, or have it available
+				nor = { 
+					has_technology = tech_resort_colonies
+					has_tech_option = tech_resort_colonies
+				}
+				# but we do have the prerequisities
+				has_technology = tech_artificial_moral_codes
+				# and some other techs of the tier below
+				num_researched_techs_of_tier = { tier = 2 value >= 5 }
+			}
+			add_research_option = tech_resort_colonies
+		}
+
+	}
+
+    immediate = {
+        # give penal tech option because it needs >1 colony
+        if = {
+            limit = {
+                # if we don't already have it, or have it available
+                nor = {
+                    has_technology = tech_penal_colonies
+                    has_tech_option = tech_penal_colonies
+                }
+                # but we do have the prerequisities
+                has_technology = tech_artificial_moral_codes
+                # and some other techs of the tier below
+                num_researched_techs_of_tier = { tier = 2 value >= 5 }
+            }
+            add_research_option = tech_penal_colonies
+        }
+
+    }
+}
+
+## BIRCHFRAME STUFF
+##############################################################################
+
+# triggered monthly, checks if the conquerer exists, and this is the conquerer
+# also checks if the conquerer is a frame
+# conquerer is set by giga_aeternum.4300 or giga_aeternum.43001
+event = {
+    id = xhk_extraframe_goodies.500
+    is_triggered_only = yes
+    hide_window = yes
+    fire_only_once = yes
+
+    trigger = {
+        exists = event_target:aeternite_conqueror
+
+    }
+
+    immediate = {
+        every_country = {
+            if = {
+                limit = {
+                    is_country = event_target:aeternite_conqueror
+                    giga_has_frameworld_origin = yes
+                }
+                country_event = {
+                    id = xhk_extraframe_goodies.501 days = 30
+                }
+            }
+        }
+    }
+}
+
+# notification event for physics special project
+country_event = {
+    id = xhk_extraframe_goodies.501
+    title = xhk_extraframe_goodies.501.title
+    desc = xhk_extraframe_goodies.501.desc
+    picture = GFX_evt_birch
+    is_triggered_only = yes
+    fire_only_once = yes
+
+    option = {
+        name = xhk_extraframe_goodies.501.a
+        enable_special_project = {
+            name = "XHK_EXTRAFRAME_PHYSICS_BIRCHFRAME"
+            owner = root
+        }
+    }
+}
+
+# completion event for physics
+# notification event for society special project
+country_event = {
+    id = xhk_extraframe_goodies.502
+    title = xhk_extraframe_goodies.502.title
+    desc = xhk_extraframe_goodies.502.desc
+    picture = GFX_evt_birch
+    is_triggered_only = yes
+    fire_only_once = yes
+
+    option = {
+        name = xhk_extraframe_goodies.502.a
+        enable_special_project = {
+            name = "XHK_EXTRAFRAME_SOCIETY_BIRCHFRAME"
+            owner = root
+        }
+    }
+}
+
+# completion event for society
+# notification event for construction ship special project
+country_event = {
+    id = xhk_extraframe_goodies.503
+    title = xhk_extraframe_goodies.503.title
+    desc = xhk_extraframe_goodies.503.desc
+    picture = GFX_evt_birch
+    is_triggered_only = yes
+    fire_only_once = yes
+
+    option = {
+        name = xhk_extraframe_goodies.503.a
+        event_target:aeternum_birch_world = {
+            enable_special_project = {
+                name = "XHK_EXTRAFRAME_ENGINEERING_BIRCHFRAME"
+                location = this
+                owner = root
+            }
+        }
+    }
+}
+
+# completion event for construction ship
+# notification event for research
+ship_event = {
+    id = xhk_extraframe_goodies.504
+    title = xhk_extraframe_goodies.504.title
+    desc = xhk_extraframe_goodies.504.desc
+    picture = GFX_evt_birch
+    is_triggered_only = yes
+    fire_only_once = yes
+
+    immediate = {
+        owner = {
+            set_country_flag = xhk_birchframe_possible
+        }
+    }
+    option = {
+        name = xhk_extraframe_goodies.504.a
+        owner = {
+            add_research_option = tech_xhk_birchframe
+        }
+    }
+}
+
+# notification event for decision
+country_event = {
+    id = xhk_extraframe_goodies.505
+    title = xhk_extraframe_goodies.505.title
+    desc = xhk_extraframe_goodies.505.desc
+    picture = GFX_evt_birch
+    is_triggered_only = yes
+    fire_only_once = yes
+
+    option = {
+        name = xhk_extraframe_goodies.505.a
+    }
+}
+
+
+## global flag
+##############################################################################
+event = {
+	id = xhk_extraframe_goodies.999
+	is_triggered_only = yes
+	hide_window = yes
+	trigger = {
+		NOT = {
+			has_global_flag = xhk_funny_frameworld_exists
+		}
+	}
+	immediate = {
+		set_global_flag = xhk_funny_frameworld_exists
+
+		# every_playable_country  = {
+		# 	limit = { giga_has_frameworld_origin = yes }
+		# 	country_event = { id = xhk_extraframe_goodies.600 days = 2 }
+		# }
+	}
+}
+
+# Menace Objective - Have Science Nexuses
+# Fired from on_action 'on_yearly_pulse'
+event = {
+    id = xhk_extraframe_goodies.1020
+    hide_window = yes
+    is_triggered_only = yes
+
+    trigger = {
+        any_country = {
+            has_ascension_perk = ap_cosmogenesis
+            any_owned_planet = {
+                has_deposit = deposit_xhk_extraframe_think_tank
+            }
+        }
+    }
+
+    immediate = {
+        every_playable_country = {
+            if = {
+                limit = {
+                    has_ascension_perk = ap_cosmogenesis
+                    any_owned_planet = {
+                        has_deposit = deposit_xhk_extraframe_think_tank
+                    }
+                }
+                complete_crisis_objective = crisobj_have_science_nexuses
+            }
+        }
+    }
+}

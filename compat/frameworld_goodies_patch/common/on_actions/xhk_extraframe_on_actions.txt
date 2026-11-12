@@ -1,0 +1,35 @@
+# This = Country
+on_tech_increased = {
+	events = {
+		xhk_extraframe_goodies.300 # give tech if needed
+	}
+}
+
+on_game_start_country = {
+	events = {
+		xhk_extraframe_goodies.100 # create main deposit
+        xhk_extraframe_goodies.101 # anglerframe
+        xhk_extraframe_goodies.105 # lavaframe
+
+        xhk_extraframe_goodies.250 # give tags to FE capitals on delay
+	}
+}
+
+# for global flag
+on_game_start = {
+    events = {
+        xhk_extraframe_goodies.999
+    }
+}
+
+on_monthly_pulse = {
+    events = {
+        xhk_extraframe_goodies.500
+    }
+}
+
+on_yearly_pulse = {
+    events = {
+        xhk_extraframe_goodies.1020 # integrated science nexus cosmo crisis points
+    }
+}

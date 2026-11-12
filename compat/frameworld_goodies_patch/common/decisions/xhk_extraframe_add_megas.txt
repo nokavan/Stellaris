@@ -1,0 +1,1692 @@
+
+### MAJOR UPGRADES
+############################################################################################################
+decision_xhk_extraframe_add_hyperstructural = {
+	owned_planets_only = yes
+	icon = decision_xhk_extraframe_add_hyperstructural
+
+	prerequisites = {
+		giga_tech_hyperstructural_ass
+	}
+
+	show_tech_unlock_if = {
+		owner = { giga_has_frameworld_origin = yes }
+	}
+
+	enactment_time = 3600
+	
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 10000
+			influence = 300
+		}
+	}
+	
+	potential = {
+		NOT = { has_global_flag = hyperstructural_ass_disabled }
+		exists = owner
+		owner = {
+			giga_has_frameworld_origin = yes
+			has_gigastructural_constructs = yes
+		}
+		giga_is_frame_world = yes
+		NOT = { has_carrier_flag = xhk_extraframe_hyperstructural }
+	}
+	
+	allow = {		
+		has_major_upgraded_capital = yes
+		has_deposit = d_frameworld_decompressor
+		custom_tooltip_fail = {
+			not = {
+				has_carrier_flag = frameworld_upgrade
+			}
+			text = giga_frameworld_upgrade_fail
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_capped"
+			from = {
+				OR = {
+					check_variable = { which = giga_hyperstructural_ass_cap value = 0 }						# No Cap
+					check_variable = { which = giga_current_hyperstructural_ass value < giga_hyperstructural_ass_cap }
+				}
+			}
+		}
+	}
+	
+	effect = {
+		custom_tooltip = giga_frameworld_upgrade_desc
+		custom_tooltip = giga_frameworld_upgrade_warning
+		custom_tooltip = xhk_extraframe_add_hyperstructural_effect
+
+		hidden_effect = {
+			set_carrier_flag = frameworld_upgrade
+			set_carrier_flag = xhk_extraframe_hyperstructural
+
+            solar_system = {
+                spawn_megastructure = {
+                    type = xhk_extraframe_hyperass_0
+                    planet = this.star
+                    owner = space_owner
+                    graphical_culture = owner
+                }
+                save_event_target_as = giga_system
+            }
+            save_event_target_as = giga_planet
+
+			from = {
+                country_event = { id = giga_dialog.3702 }
+                change_variable = { which = giga_current_hyperstructural_ass value = 1 }
+			}
+		}
+	}
+	
+	ai_weight = {
+		weight = 10
+	}
+}
+
+decision_xhk_extraframe_add_mbrain = {
+    icon = decision_xhk_extraframe_add_mbrain
+    owned_planets_only = yes
+
+    prerequisites = {
+        giga_tech_matrioshka_brain_1
+    }
+
+    show_tech_unlock_if = {
+        owner = { giga_has_frameworld_origin = yes }
+    }
+
+    enactment_time = 3600
+
+    resources = {
+        category = megastructures
+        cost = {
+            alloys = 10000
+            influence = 300
+        }
+    }
+
+    potential = {
+        NOT = { has_global_flag = matrioshka_brain_disabled }
+        exists = owner
+        owner = {
+            giga_has_frameworld_origin = yes
+            has_gigastructural_constructs = yes
+        }
+        giga_is_frame_world = yes
+        NOT = { has_carrier_flag = xhk_extraframe_mbrain }
+    }
+
+    allow = {
+        has_deposit = d_frameworld_penrose
+        custom_tooltip_fail = {
+            not = {
+                has_carrier_flag = frameworld_upgrade
+            }
+            text = giga_frameworld_upgrade_fail
+        }
+        custom_tooltip = {
+            fail_text = "requires_not_capped"
+            from = {
+                OR = {
+                    has_global_flag = matrioshka_brain_capped_u
+                    check_variable = {
+                        which = giga_current_matrioshka_brain
+                        value < value:giga_matrioshka_brain_limit
+                    }
+                }
+            }
+        }
+    }
+
+    effect = {
+        custom_tooltip = giga_frameworld_upgrade_desc
+        custom_tooltip = giga_frameworld_upgrade_warning
+        custom_tooltip = xhk_extraframe_add_mbrain_effect
+
+        hidden_effect = {
+            set_carrier_flag = frameworld_upgrade
+            set_carrier_flag = xhk_extraframe_mbrain
+
+            solar_system = {
+                spawn_megastructure = {
+                    type = xhk_extraframe_mbrain_0
+                    owner = owner
+                    planet = star
+                }
+                save_event_target_as = giga_system
+            }
+
+            if = {
+                limit = { exists = owner }
+                owner = {
+                    country_event = {
+                        id = xhk_extraframe_notif.002
+                    }
+                    change_variable = { which = giga_current_matrioshka_brain value = 1 }
+                }
+            }
+        }
+    }
+
+    ai_weight = {
+        weight = 10
+    }
+}
+
+### AMBIENT STRUCTURES
+###########################################################################################################
+
+# ang 270 dis 50
+decision_xhk_extraframe_add_think_tank = {
+	owned_planets_only = yes
+	icon = decision_xhk_extraframe_add_think_tank
+
+	prerequisites = {
+		tech_science_nexus
+	}
+
+	show_tech_unlock_if = {
+		owner = { giga_has_frameworld_origin = yes }
+	}
+
+	enactment_time = 1000
+	
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 5000
+			unity = @giga_big_mega_start_unity_cost
+		}
+	}
+	
+	potential = {
+		exists = owner
+		owner = {
+			giga_has_frameworld_origin = yes
+		}
+		is_planet_class = pc_giga_frameworld
+		NOT = { has_carrier_flag = xhk_extraframe_think_tank }
+	}
+	
+	allow = {		
+		has_major_upgraded_capital = yes
+		custom_tooltip_fail = {
+			not = {
+				has_carrier_flag = frameworld_upgrade
+			}
+			text = giga_frameworld_upgrade_fail
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_capped"
+			from = {
+				OR = {
+					check_variable = { which = giga_vanilla_nexus_cap value = 0 }						# No Cap
+					check_variable = { which = giga_current_vanilla_nexus value < giga_vanilla_nexus_cap }
+				}
+			}
+		}
+	}
+	
+	effect = {
+		custom_tooltip = giga_frameworld_upgrade_desc
+		custom_tooltip = decision_xhk_extraframe_add_think_tank_effect
+
+		hidden_effect = {
+			set_carrier_flag = xhk_extraframe_think_tank
+
+			from = {
+				set_timed_country_flag = { flag = has_recently_built_think_tank years = 20 }
+				set_country_flag = built_think_tank
+				change_variable = { which = giga_current_vanilla_nexus value = 1 }
+			}
+
+			from = {
+				solar_system = {
+					spawn_megastructure = {
+						type = xhk_extraframe_think_tank_0
+						planet = this.star
+						orbit_distance = 50 
+						orbit_angle = 270
+						owner = space_owner
+						graphical_culture = owner
+					}
+				}
+			}
+		}
+	}
+	
+	ai_weight = {
+		weight = 10
+	}
+}
+
+# ang 110 dis 30
+decision_xhk_extraframe_add_strat_coord = {
+	owned_planets_only = yes
+	icon = decision_xhk_extraframe_add_strat_coord
+
+	prerequisites = {
+		tech_strategic_coordination
+	}
+
+	show_tech_unlock_if = {
+		owner = { giga_has_frameworld_origin = yes }
+	}
+
+	enactment_time = 1000
+	
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 5000
+			unity = @giga_mega_unity_cost
+		}
+	}
+	
+	potential = {
+		exists = owner
+		owner = {
+			giga_has_frameworld_origin = yes
+		}
+		is_planet_class = pc_giga_frameworld
+		NOT = { has_carrier_flag = xhk_extraframe_strat_coord }
+	}
+	
+	allow = {		
+		has_major_upgraded_capital = yes
+		custom_tooltip_fail = {
+			not = {
+				has_carrier_flag = frameworld_upgrade
+			}
+			text = giga_frameworld_upgrade_fail
+		}
+		custom_tooltip = {
+			fail_text = "requires_not_capped"
+			from = {
+				OR = {
+					check_variable = { which = giga_vanilla_strategic_cap value = 0 }						# No Cap
+					check_variable = { which = giga_current_vanilla_strategic value < giga_vanilla_strategic_cap }
+				}
+			}
+		}
+	}
+	
+	effect = {
+		custom_tooltip = giga_frameworld_upgrade_desc
+		custom_tooltip = decision_xhk_extraframe_add_strat_coord_effect
+
+		hidden_effect = {
+			set_carrier_flag = xhk_extraframe_strat_coord
+
+			from = {
+				set_timed_country_flag = { flag = has_recently_built_strategic_coordination_center years = 20 }
+				set_country_flag = built_strategic_coordination_center_site
+				change_variable = { which = giga_current_vanilla_strategic value = 1 }
+			}	
+
+			from = {
+				solar_system = {
+					spawn_megastructure = {
+						type = xhk_extraframe_stratcoord_0
+						orbit_distance = 5 
+						orbit_angle = 145
+						planet = this.star
+						owner = space_owner
+						graphical_culture = owner
+					}
+				}
+			}
+		}
+	}
+	
+	ai_weight = {
+		weight = 10
+	}
+}
+
+# ang 210 dis 65
+decision_xhk_extraframe_add_sentry = {
+	owned_planets_only = yes
+	icon = decision_xhk_extraframe_add_sentry
+
+	prerequisites = {
+		tech_sentry_array
+	}
+
+	show_tech_unlock_if = {
+		owner = { giga_has_frameworld_origin = yes }
+	}
+
+	enactment_time = 3000
+	
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 5000
+			unity = @giga_big_mega_start_unity_cost
+		}
+	}
+	
+	potential = {
+		exists = owner
+		owner = {
+			giga_has_frameworld_origin = yes
+		}
+		is_planet_class = pc_giga_frameworld
+		NOT = { has_carrier_flag = xhk_extraframe_sentry }
+		NOT = { has_global_flag = vanilla_array_disabled }
+		OR = {
+			check_variable = { which = giga_vanilla_array_cap value = 0 }						# No Cap
+			check_variable = { which = giga_current_vanilla_array value < giga_vanilla_array_cap }
+		}
+	}
+	
+	allow = {		
+		has_major_upgraded_capital = yes
+		custom_tooltip = {
+			fail_text = "requires_not_capped"
+			from = {
+				OR = {
+					check_variable = { which = giga_vanilla_array_cap value = 0 }						# No Cap
+					check_variable = { which = giga_current_vanilla_array value < giga_vanilla_array_cap }
+				}
+			}
+		}
+		custom_tooltip_fail = {
+			not = {
+				has_carrier_flag = frameworld_upgrade
+			}
+			text = giga_frameworld_upgrade_fail
+		}
+	}
+	
+	effect = {
+		custom_tooltip = giga_frameworld_upgrade_desc
+		custom_tooltip = decision_xhk_extraframe_add_sentry_effect
+
+		hidden_effect = {
+			set_carrier_flag = xhk_extraframe_sentry
+			
+			set_star_flag = spy_orb_built
+			from = {
+				set_timed_country_flag = { flag = has_recently_built_spy_orb years = 20 }
+				set_country_flag = built_spyorb
+				change_variable = { which = giga_current_vanilla_array value = 1 }
+			}
+
+			from = {
+				solar_system = {
+					spawn_megastructure = {
+						type = xhk_extraframe_spy_orb_0
+						planet = this.star
+						orbit_distance = 65 
+						orbit_angle = 210
+						owner = space_owner
+						graphical_culture = owner
+					}
+				}
+			}
+		}
+	}
+	
+	ai_weight = {
+		weight = 10
+	}
+}
+
+# ang 270 dis 30
+decision_xhk_extraframe_add_art_install = {
+	owned_planets_only = yes
+	icon = decision_xhk_extraframe_add_art_install
+
+	prerequisites = {
+		tech_mega_art
+	}
+
+	show_tech_unlock_if = {
+		owner = { giga_has_frameworld_origin = yes }
+	}
+
+	enactment_time = 3000
+	
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 5000
+			unity = @giga_mega_unity_cost
+		}
+	}
+	
+	potential = {
+		exists = owner
+		owner = {
+			giga_has_frameworld_origin = yes
+		}
+		is_planet_class = pc_giga_frameworld
+		NOT = { has_carrier_flag = xhk_extraframe_art_install }
+	}
+	
+	allow = {		
+		has_major_upgraded_capital = yes
+		custom_tooltip = {
+			fail_text = "requires_not_capped"
+			from = {
+				OR = {
+					check_variable = { which = giga_vanilla_art_cap value = 0 }						# No Cap
+					check_variable = { which = giga_current_vanilla_art value < giga_vanilla_art_cap }
+				}
+			}
+		}
+		custom_tooltip_fail = {
+			not = {
+				has_carrier_flag = frameworld_upgrade
+			}
+			text = giga_frameworld_upgrade_fail
+		}
+	}
+	
+	effect = {
+		custom_tooltip = giga_frameworld_upgrade_desc
+		custom_tooltip = decision_xhk_extraframe_add_art_install_effect
+
+		hidden_effect = {
+			set_carrier_flag = xhk_extraframe_art_install
+
+			from = {
+				set_timed_country_flag = { flag = has_recently_built_mega_art_installation years = 20 }
+				set_country_flag = built_mega_art_installation_site
+				change_variable = { which = giga_current_vanilla_art value = 1 }
+			}
+
+			from = {
+				solar_system = {
+					spawn_megastructure = {
+						type = xhk_extraframe_megaart_0
+						orbit_distance = 30 
+						orbit_angle = 270
+						planet = this.star
+						owner = space_owner
+						graphical_culture = owner
+					}
+				}
+			}
+		}
+	}
+	
+	ai_weight = {
+		weight = 10
+	}
+}
+
+decision_xhk_extraframe_upgrade_art_install = {
+	owned_planets_only = yes
+	icon = decision_xhk_extraframe_add_art_install
+
+	prerequisites = {
+		tech_mega_art
+	}
+
+	show_tech_unlock_if = {
+		owner = { giga_has_frameworld_origin = yes }
+	}
+
+	enactment_time = 500
+	
+	resources = {
+		category = megastructures
+		cost = {
+			energy = 2000
+			minor_artifacts = 2000
+		}
+	}
+
+	potential = {
+		exists = owner
+		owner = {
+			giga_has_frameworld_origin = yes
+		}
+		is_planet_class = pc_giga_frameworld
+		has_deposit = deposit_xhk_extraframe_megaart
+	}
+	
+	allow = {		
+		has_major_upgraded_capital = yes
+	}
+	
+	effect = {
+		custom_tooltip = decision_xhk_extraframe_upgrade_art_install_effect
+
+		remove_deposit = deposit_xhk_extraframe_megaart
+		add_deposit = deposit_xhk_extraframe_megaart_2
+
+		hidden_effect = {
+			from = { country_event = { id = ancrel.10030 }}
+		}
+	}
+	
+	ai_weight = {
+		weight = 10
+	}
+}
+
+decision_xhk_extraframe_add_interstellar_assem = {
+	owned_planets_only = yes
+	icon = decision_xhk_extraframe_add_interstellar_assem
+
+	prerequisites = {
+		tech_interstellar_assembly
+	}
+
+	show_tech_unlock_if = {
+		owner = { giga_has_frameworld_origin = yes }
+	}
+
+	enactment_time = 3000
+	
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 5000
+			unity = @giga_big_mega_start_unity_cost
+		}
+	}
+	
+	potential = {
+		exists = owner
+		owner = {
+			giga_has_frameworld_origin = yes
+		}
+		is_planet_class = pc_giga_frameworld
+		NOT = { has_carrier_flag = xhk_extraframe_interstellar_assem }
+		NOT = { has_global_flag = vanilla_interstellar_disabled }
+		OR = {
+			check_variable = { which = giga_vanilla_interstellar_cap value = 0 }						# No Cap
+			check_variable = { which = giga_current_vanilla_interstellar value < giga_vanilla_interstellar_cap }
+		}
+	}
+	
+	allow = {		
+		has_major_upgraded_capital = yes
+		custom_tooltip = {
+			fail_text = "requires_not_capped"
+			from = {
+				OR = {
+					check_variable = { which = giga_vanilla_interstellar_cap value = 0 }						# No Cap
+					check_variable = { which = giga_current_vanilla_interstellar value < giga_vanilla_interstellar_cap }
+				}
+			}
+		}
+		custom_tooltip_fail = {
+			not = {
+				has_carrier_flag = frameworld_upgrade
+			}
+			text = giga_frameworld_upgrade_fail
+		}
+	}
+	
+	effect = {
+		custom_tooltip = giga_frameworld_upgrade_desc
+		custom_tooltip = decision_xhk_extraframe_add_interstellar_assem_effect
+
+		hidden_effect = {
+			set_carrier_flag = xhk_extraframe_interstellar_assem
+
+			from = {
+				set_timed_country_flag = { flag = has_recently_built_interstellar_assembly years = 20 }
+				set_country_flag = built_interstellar_assembly_site
+				change_variable = { which = giga_current_vanilla_interstellar value = 1 }
+			}
+			
+			from = {
+				solar_system = {
+					spawn_megastructure = {
+						type = xhk_extraframe_interassemb_0
+						planet = this.star
+						owner = space_owner
+						graphical_culture = owner
+					}
+				}
+			}
+		}
+	}
+	
+	ai_weight = {
+		weight = 10
+	}
+}
+
+# kugel
+decision_xhk_extraframe_add_kugel_norm = {
+	owned_planets_only = yes
+	icon = decision_xhk_extraframe_kugel_norm
+
+	prerequisites = {
+		giga_tech_kugelblitz
+	}
+
+	show_tech_unlock_if = {
+		owner = { giga_has_frameworld_origin = yes }
+	}
+
+	enactment_time = 1000
+	
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 5000
+			unity = @giga_big_mega_start_unity_cost
+		}
+	}
+	
+	potential = {
+		exists = owner
+		owner = {
+			giga_has_frameworld_origin = yes
+		}
+		is_planet_class = pc_giga_frameworld
+		NOR = { 
+			has_deposit = deposit_xhk_extraframe_storage_kugel_norm
+			has_deposit = deposit_xhk_extraframe_storage_kugel_mega
+			has_deposit = deposit_xhk_extraframe_storage_kugel_tera
+		}
+	}
+	
+	allow = {		
+		has_major_upgraded_capital = yes
+		custom_tooltip_fail = {
+			not = {
+				has_carrier_flag = frameworld_upgrade
+			}
+			text = giga_frameworld_upgrade_fail
+		}
+	}
+	
+	effect = {
+		custom_tooltip = giga_frameworld_upgrade_desc
+		custom_tooltip = decision_xhk_extraframe_add_kugel_norm_effect
+
+		hidden_effect = {
+			add_deposit = deposit_xhk_extraframe_storage_kugel_norm
+			create_ambient_object = {
+				type = amb_xhk_extraframe_kugelblitz
+				location = from
+				use_3d_location = yes
+				entity_face_object = no
+				entity_offset_angle = 215
+				entity_offset_height = 14
+				entity_offset = 40
+			}
+		}
+	}
+	
+	ai_weight = {
+		weight = 10
+	}
+}
+
+decision_xhk_extraframe_add_kugel_mega = {
+	owned_planets_only = yes
+	icon = decision_xhk_extraframe_kugel_norm
+
+	prerequisites = {
+		tech_mega_engineering
+	}
+
+	show_tech_unlock_if = {
+		owner = { giga_has_frameworld_origin = yes }
+	}
+
+	enactment_time = 1000
+	
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 5000
+			unity = @giga_big_mega_start_unity_cost
+		}
+	}
+	
+	potential = {
+		exists = owner
+		owner = {
+			giga_has_frameworld_origin = yes
+		}
+		is_planet_class = pc_giga_frameworld
+		has_deposit = deposit_xhk_extraframe_storage_kugel_norm
+	}
+	
+	allow = {		
+		has_major_upgraded_capital = yes
+		custom_tooltip_fail = {
+			not = {
+				has_carrier_flag = frameworld_upgrade
+			}
+			text = giga_frameworld_upgrade_fail
+		}
+	}
+	
+	effect = {
+		custom_tooltip = giga_frameworld_upgrade_desc
+		custom_tooltip = decision_xhk_extraframe_add_kugel_norm_effect
+
+		hidden_effect = {
+			remove_deposit = deposit_xhk_extraframe_storage_kugel_norm
+			add_deposit = deposit_xhk_extraframe_storage_kugel_mega
+		}
+	}
+	
+	ai_weight = {
+		weight = 10
+	}
+}
+
+decision_xhk_extraframe_add_kugel_tera = {
+	owned_planets_only = yes
+	icon = decision_xhk_extraframe_kugel_norm
+
+	prerequisites = {
+		giga_tech_tetradimensional_engineering
+	}
+
+	show_tech_unlock_if = {
+		owner = { giga_has_frameworld_origin = yes }
+	}
+
+	enactment_time = 1000
+	
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 5000
+			unity = @giga_big_mega_start_unity_cost
+		}
+	}
+	
+	potential = {
+		exists = owner
+		owner = {
+			giga_has_frameworld_origin = yes
+		}
+		is_planet_class = pc_giga_frameworld
+		has_deposit = deposit_xhk_extraframe_storage_kugel_mega
+	}
+	
+	allow = {		
+		has_major_upgraded_capital = yes
+		custom_tooltip_fail = {
+			not = {
+				has_carrier_flag = frameworld_upgrade
+			}
+			text = giga_frameworld_upgrade_fail
+		}
+	}
+	
+	effect = {
+		custom_tooltip = giga_frameworld_upgrade_desc
+		custom_tooltip = decision_xhk_extraframe_add_kugel_norm_effect
+
+		hidden_effect = {
+			remove_deposit = deposit_xhk_extraframe_storage_kugel_mega
+			add_deposit = deposit_xhk_extraframe_storage_kugel_tera
+		}
+	}
+	
+	ai_weight = {
+		weight = 10
+	}
+}
+
+### STRUCTURES
+###########################################################################################################
+
+decision_xhk_extraframe_add_catapult = {
+	owned_planets_only = yes
+	icon = decision_xhk_extraframe_add_catapult
+
+	prerequisites = {
+		tech_quantum_catapult
+	}
+
+	show_tech_unlock_if = {
+		owner = { giga_has_frameworld_origin = yes }
+	}
+
+	enactment_time = 3000
+	
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 5000
+			influence = 300
+		}
+	}
+	
+	potential = {
+		exists = owner
+		owner = {
+			giga_has_frameworld_origin = yes
+		}
+		is_planet_class = pc_giga_frameworld
+		NOT = { has_carrier_flag = xhk_extraframe_catapult }
+	}
+	
+	allow = {		
+		has_major_upgraded_capital = yes
+		custom_tooltip = {
+			fail_text = "requires_no_existing_quantum_catapult"
+			from = { NOT = { has_country_flag = built_quantum_catapult_site } }
+		}
+		custom_tooltip_fail = {
+			not = {
+				has_carrier_flag = frameworld_upgrade
+			}
+			text = giga_frameworld_upgrade_fail
+		}
+	}
+	
+	effect = {
+		custom_tooltip = giga_frameworld_upgrade_desc
+		custom_tooltip = decision_xhk_extraframe_add_catapult_effect
+
+		hidden_effect = {
+			set_carrier_flag = xhk_extraframe_catapult
+
+			from = {
+				set_country_flag = built_quantum_catapult_site
+				country_event = { id = tutorial.2126 }
+			}
+
+			from = {
+				solar_system = {
+					spawn_megastructure = {
+						type = quantum_catapult_0
+						planet = this.star
+						owner = space_owner
+						graphical_culture = owner
+					}
+				}
+			}
+		}
+	}
+	
+	ai_weight = {
+		weight = 10
+	}
+}
+
+# ang 145 dis 50
+decision_xhk_extraframe_add_big_vat = {
+	owned_planets_only = yes
+	icon = decision_xhk_extraframe_add_big_vat
+
+	prerequisites = {
+		giga_tech_the_vat
+	}
+
+	show_tech_unlock_if = {
+		owner = { giga_has_frameworld_origin = yes }
+	}
+
+	enactment_time = 3000
+	
+	resources = {
+		category = megastructures
+		cost = {
+			alloys = 5000
+			unity = @giga_mega_start_unity_cost
+		}
+	}
+	
+	potential = {
+		exists = owner
+		owner = {
+			giga_has_frameworld_origin = yes
+		}
+		is_planet_class = pc_giga_frameworld
+		NOT = { has_carrier_flag = xhk_extraframe_big_vat }
+	}
+	
+	allow = {		
+		has_major_upgraded_capital = yes
+		custom_tooltip = {
+			fail_text = "requires_not_capped"
+			from = {
+				OR = {
+					check_variable = { which = giga_the_vat_cap value = 0 }						# No Cap
+					check_variable = { which = giga_current_the_vat value < giga_the_vat_cap }
+				}
+			}
+		}
+		custom_tooltip_fail = {
+			not = {
+				has_carrier_flag = frameworld_upgrade
+			}
+			text = giga_frameworld_upgrade_fail
+		}
+	}
+	
+	effect = {
+		custom_tooltip = giga_frameworld_upgrade_desc
+		custom_tooltip = decision_xhk_extraframe_add_big_vat_effect
+
+		hidden_effect = {
+			set_carrier_flag = xhk_extraframe_big_vat
+
+			from = {
+				set_timed_country_flag = { flag = has_recently_built_the_vat years = 20 }
+				country_event = { id = giga_dialog.11301 }	# Notification
+				change_variable = { which = giga_current_the_vat value = 1 }
+			}
+
+			from = {
+				solar_system = {
+					spawn_megastructure = {
+						type = the_vat_0
+						orbit_distance = 50 
+						orbit_angle = 145
+						planet = this.star
+						owner = space_owner
+						graphical_culture = owner
+					}
+				}
+			}
+		}
+	}
+	
+	ai_weight = {
+		weight = 10
+	}
+}
+
+#lathe
+#45 deg, 60 dis
+decision_xhk_extraframe_add_cosmolathe = {
+    owned_planets_only = yes
+    icon = decision_xhk_extraframe_add_cosmolathe
+
+    prerequisites = {
+        tech_cosmogenesis_world
+    }
+
+    show_tech_unlock_if = {
+        owner = { giga_has_frameworld_origin = yes }
+    }
+
+    enactment_time = 2000
+
+    resources = {
+        category = megastructures
+        cost = {
+            alloys = 5000
+            influence = 300
+        }
+    }
+
+    potential = {
+        exists = owner
+        owner = {
+            giga_has_frameworld_origin = yes
+        }
+        is_planet_class = pc_giga_frameworld
+        NOT = { has_carrier_flag = xhk_extraframe_cosmolathe }
+        custom_tooltip = {
+            fail_text = "requires_no_existing_cosmogenesis_world"
+            from = {
+                NOT = { has_country_flag = cosmogenesis_world_built }
+            }
+        }
+    }
+
+    allow = {
+        has_major_upgraded_capital = yes
+        custom_tooltip_fail = {
+            not = {
+                has_carrier_flag = frameworld_upgrade
+            }
+            text = giga_frameworld_upgrade_fail
+        }
+    }
+
+    effect = {
+        custom_tooltip = giga_frameworld_upgrade_desc
+        custom_tooltip = decision_xhk_extraframe_add_cosmolathe_effect
+
+        hidden_effect = {
+            set_carrier_flag = xhk_extraframe_cosmolathe
+            from = { set_country_flag = cosmogenesis_world_built }
+            from = {
+                solar_system = {
+                    spawn_planet = {
+                        class = "pc_cosmogenesis_world"
+                        location = this.star
+                        orbit_location = yes
+                        orbit_angle_offset = 45
+                        orbit_distance_offset = 60
+                        plane_offset = 5
+                        size = 3
+                        has_ring = no
+
+                        init_effect = {
+                            set_name = {
+                                key = pc_cosmogenesis_world
+                            }
+                            set_planet_entity = {
+                                entity = "neural_calculator_phase_1_entity"
+                            }
+                            set_surveyed = {
+                                surveyed = yes
+                                surveyor = FROM
+                            }
+                            set_all_comms_surveyed = yes
+                            clear_blockers = yes
+
+                            set_carrier_flag = megastructure
+                            set_carrier_flag = cosmogenesis_world_resettle@from
+
+                            fromfrom.planet = {
+                                set_carrier_flag = has_megastructure
+                                set_carrier_flag = has_cosmogenesis_world
+                                if = {
+                                    limit = { has_orbital_station = yes }
+                                    orbital_station = {
+                                        dismantle = yes
+                                    }
+                                }
+                            }
+
+                            set_owner = fromfrom
+                            set_controller = fromfrom
+                            create_pop = {
+                                species = owner_main_species
+                            }
+                            from = {
+                                room_name_override = ""
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    ai_weight = {
+        weight = 10
+    }
+}
+
+
+### The fucking PRINTER
+##########################################################################################################
+#moon print 
+#angle 75 (90-15)
+decision_xhk_extraframe_add_moonprint_one = {
+    owned_planets_only = yes
+    icon = decision_xhk_extraframe_moonprint
+
+    prerequisites = {
+        giga_tech_lunar_assembly
+    }
+
+    show_tech_unlock_if = {
+        owner = { giga_has_frameworld_origin = yes }
+    }
+
+    enactment_time = 1000
+
+    resources = {
+        category = megastructures
+        cost = {
+            alloys = 5000
+            influence = 100
+            unity = @giga_giga_unity_cost
+        }
+    }
+
+    potential = {
+        exists = owner
+        owner = {
+            giga_has_frameworld_origin = yes
+        }
+        is_planet_class = pc_giga_frameworld
+        NOT = { has_global_flag = warmoon_disabled }
+        NOT = { has_carrier_flag = xhk_extraframe_moonprint_1 }
+        NOT = { has_carrier_flag = xhk_extraframe_moonprint_2 }
+        NOT = { has_carrier_flag = xhk_extraframe_moonprint_4 }
+        NOT = { has_carrier_flag = xhk_extraframe_moonprint_8 }
+    }
+
+    allow = {
+        has_major_upgraded_capital = yes
+        custom_tooltip_fail = {
+            not = {
+                has_carrier_flag = frameworld_upgrade
+            }
+            text = giga_frameworld_upgrade_fail
+        }
+    }
+
+    effect = {
+        custom_tooltip = giga_frameworld_upgrade_desc
+        custom_tooltip = decision_xhk_extraframe_add_moonprint_one_effect
+
+        hidden_effect = {
+            set_carrier_flag = xhk_extraframe_moonprint_1
+
+            from = {
+                country_event = { id = giga_printer.1010 }	# Notification
+            }
+
+            from = {
+                solar_system = {
+                    spawn_megastructure = {
+                        type = lunar_macroreplicator_0_real
+                        orbit_distance = 70
+                        orbit_angle = 75
+                        planet = this.star
+                        owner = space_owner
+                        graphical_culture = owner
+                    }
+                }
+            }
+        }
+    }
+
+    ai_weight = {
+        weight = 10
+    }
+}
+
+#angle 255 (270-15)
+decision_xhk_extraframe_add_moonprint_two = {
+    owned_planets_only = yes
+    icon = decision_xhk_extraframe_moonprint
+
+    prerequisites = {
+        giga_tech_lunar_assembly
+    }
+
+    show_tech_unlock_if = {
+        owner = { giga_has_frameworld_origin = yes }
+    }
+
+    enactment_time = 1000
+
+    resources = {
+        category = megastructures
+        cost = {
+            alloys = 5000
+            influence = 100
+            unity = @giga_giga_unity_cost
+        }
+    }
+
+    potential = {
+        exists = owner
+        owner = {
+            giga_has_frameworld_origin = yes
+        }
+        is_planet_class = pc_giga_frameworld
+        NOT = { has_global_flag = warmoon_disabled }
+        NOT = { has_carrier_flag = xhk_extraframe_moonprint_2 }
+        has_carrier_flag = xhk_extraframe_moonprint_1
+    }
+
+    allow = {
+        has_major_upgraded_capital = yes
+        custom_tooltip_fail = {
+            not = {
+                has_carrier_flag = frameworld_upgrade
+            }
+            text = giga_frameworld_upgrade_fail
+        }
+    }
+
+    effect = {
+        custom_tooltip = giga_frameworld_upgrade_desc
+        custom_tooltip = decision_xhk_extraframe_add_moonprint_two_effect
+
+        hidden_effect = {
+            remove_carrier_flag = xhk_extraframe_moonprint_1
+            set_carrier_flag = xhk_extraframe_moonprint_2
+
+            from = {
+                country_event = { id = giga_printer.1010 }	# Notification
+            }
+
+            from = {
+                solar_system = {
+                    spawn_megastructure = {
+                        type = lunar_macroreplicator_0_real
+                        orbit_distance = 70
+                        orbit_angle = 255
+                        planet = this.star
+                        owner = space_owner
+                        graphical_culture = owner
+                    }
+                }
+            }
+        }
+    }
+
+    ai_weight = {
+        weight = 10
+    }
+}
+
+#angle 105 (90+15) / 285 (270+15)
+decision_xhk_extraframe_add_moonprint_three = {
+    owned_planets_only = yes
+    icon = decision_xhk_extraframe_moonprint
+
+    prerequisites = {
+        giga_tech_lunar_assembly
+    }
+
+    show_tech_unlock_if = {
+        owner = { giga_has_frameworld_origin = yes }
+    }
+
+    enactment_time = 1000
+
+    resources = {
+        category = megastructures
+        cost = {
+            alloys = 10000
+            influence = 100
+            unity = @giga_giga_unity_cost
+        }
+    }
+
+    potential = {
+        exists = owner
+        owner = {
+            giga_has_frameworld_origin = yes
+        }
+        is_planet_class = pc_giga_frameworld
+        NOT = { has_global_flag = warmoon_disabled }
+        has_carrier_flag = xhk_extraframe_moonprint_2
+    }
+
+    allow = {
+        has_major_upgraded_capital = yes
+        custom_tooltip_fail = {
+            not = {
+                has_carrier_flag = frameworld_upgrade
+            }
+            text = giga_frameworld_upgrade_fail
+        }
+    }
+
+    effect = {
+        custom_tooltip = giga_frameworld_upgrade_desc
+        custom_tooltip = decision_xhk_extraframe_add_moonprint_three_effect
+
+        hidden_effect = {
+            remove_carrier_flag = xhk_extraframe_moonprint_2
+            set_carrier_flag = xhk_extraframe_moonprint_4
+
+            from = {
+                country_event = { id = giga_printer.1010 }	# Notification
+            }
+
+            from = {
+                solar_system = {
+                    spawn_megastructure = {
+                        type = lunar_macroreplicator_0_real
+                        orbit_distance = 70
+                        orbit_angle = 105
+                        planet = this.star
+                        owner = space_owner
+                        graphical_culture = owner
+                    }
+                }
+                solar_system = {
+                    spawn_megastructure = {
+                        type = lunar_macroreplicator_0_real
+                        orbit_distance = 70
+                        orbit_angle = 285
+                        planet = this.star
+                        owner = space_owner
+                        graphical_culture = owner
+                    }
+                }
+            }
+        }
+    }
+
+    ai_weight = {
+        weight = 10
+    }
+}
+
+#angle 270+-30, 90+-30
+decision_xhk_extraframe_add_moonprint_four_more = {
+    owned_planets_only = yes
+    icon = decision_xhk_extraframe_moonprint
+
+    prerequisites = {
+        giga_tech_lunar_assembly
+    }
+
+    show_tech_unlock_if = {
+        always = no
+    }
+
+    enactment_time = 4000
+
+    resources = {
+        category = megastructures
+        cost = {
+            alloys = 20000
+            influence = 300
+            unity = @giga_giga_unity_cost
+        }
+    }
+
+    potential = {
+        exists = owner
+        owner = {
+            giga_has_frameworld_origin = yes
+        }
+        is_planet_class = pc_giga_frameworld
+        NOT = { has_global_flag = warmoon_disabled }
+        has_carrier_flag = xhk_extraframe_moonprint_4
+    }
+
+    allow = {
+        has_major_upgraded_capital = yes
+        custom_tooltip_fail = {
+            not = {
+                has_carrier_flag = frameworld_upgrade
+            }
+            text = giga_frameworld_upgrade_fail
+        }
+    }
+
+    effect = {
+        custom_tooltip = giga_frameworld_upgrade_desc
+        custom_tooltip = decision_xhk_extraframe_add_moonprint_four_more_effect
+
+        hidden_effect = {
+            remove_carrier_flag = xhk_extraframe_moonprint_4
+            set_carrier_flag = xhk_extraframe_moonprint_8
+
+            from = {
+                solar_system = {
+                    spawn_megastructure = {
+                        type = lunar_macroreplicator_0_real
+                        orbit_distance = 70
+                        orbit_angle = 300
+                        planet = this.star
+                        owner = space_owner
+                        graphical_culture = owner
+                    }
+                    spawn_megastructure = {
+                        type = lunar_macroreplicator_0_real
+                        orbit_distance = 70
+                        orbit_angle = 240
+                        planet = this.star
+                        owner = space_owner
+                        graphical_culture = owner
+                    }
+                    spawn_megastructure = {
+                        type = lunar_macroreplicator_0_real
+                        orbit_distance = 70
+                        orbit_angle = 120
+                        planet = this.star
+                        owner = space_owner
+                        graphical_culture = owner
+                    }
+                    spawn_megastructure = {
+                        type = lunar_macroreplicator_0_real
+                        orbit_distance = 70
+                        orbit_angle = 60
+                        planet = this.star
+                        owner = space_owner
+                        graphical_culture = owner
+                    }
+                }
+            }
+        }
+    }
+
+    ai_weight = {
+        weight = 10
+    }
+}
+
+#planet print 
+#angle 90
+decision_xhk_extraframe_add_planetprint = {
+    owned_planets_only = yes
+    icon = decision_xhk_extraframe_planetprint
+
+    prerequisites = {
+        giga_tech_planet_assembly
+    }
+
+    show_tech_unlock_if = {
+        owner = { giga_has_frameworld_origin = yes }
+    }
+
+    enactment_time = 2000
+
+    resources = {
+        category = megastructures
+        cost = {
+            alloys = 5000
+            influence = 100
+            unity = @giga_giga_unity_cost
+        }
+    }
+
+    potential = {
+        exists = owner
+        owner = {
+            giga_has_frameworld_origin = yes
+        }
+        is_planet_class = pc_giga_frameworld
+        NOT = { has_global_flag = warplanet_disabled }
+        NOT = { has_carrier_flag = xhk_extraframe_planetprint_1 }
+        NOT = { has_carrier_flag = xhk_extraframe_planetprint_2 }
+    }
+
+    allow = {
+        has_major_upgraded_capital = yes
+        custom_tooltip_fail = {
+            not = {
+                has_carrier_flag = frameworld_upgrade
+            }
+            text = giga_frameworld_upgrade_fail
+        }
+    }
+
+    effect = {
+        custom_tooltip = giga_frameworld_upgrade_desc
+        custom_tooltip = decision_xhk_extraframe_add_planetprint_effect
+
+        hidden_effect = {
+            set_carrier_flag = xhk_extraframe_planetprint_1
+
+            from = {
+                country_event = { id = giga_printer.2010 }	# Notification
+            }
+
+            from = {
+                solar_system = {
+                    spawn_megastructure = {
+                        type = planetcraft_printer_0_real
+                        orbit_distance = 80
+                        orbit_angle = 90
+                        planet = this.star
+                        owner = space_owner
+                        graphical_culture = owner
+                    }
+                }
+            }
+        }
+    }
+
+    ai_weight = {
+        weight = 10
+    }
+}
+
+#angle 270
+decision_xhk_extraframe_add_planetprint_two = {
+    owned_planets_only = yes
+    icon = decision_xhk_extraframe_planetprint
+
+    prerequisites = {
+        giga_tech_planet_assembly
+    }
+
+    show_tech_unlock_if = {
+        owner = { giga_has_frameworld_origin = yes }
+    }
+
+    enactment_time = 2000
+
+    resources = {
+        category = megastructures
+        cost = {
+            alloys = 5000
+            influence = 100
+            unity = @giga_giga_unity_cost
+        }
+    }
+
+    potential = {
+        exists = owner
+        owner = {
+            giga_has_frameworld_origin = yes
+        }
+        is_planet_class = pc_giga_frameworld
+        NOT = { has_global_flag = warplanet_disabled }
+        has_carrier_flag = xhk_extraframe_planetprint_1
+    }
+
+    allow = {
+        has_major_upgraded_capital = yes
+        custom_tooltip_fail = {
+            not = {
+                has_carrier_flag = frameworld_upgrade
+            }
+            text = giga_frameworld_upgrade_fail
+        }
+    }
+
+    effect = {
+        custom_tooltip = giga_frameworld_upgrade_desc
+        custom_tooltip = decision_xhk_extraframe_add_planetprint_effect
+
+        hidden_effect = {
+            remove_carrier_flag = xhk_extraframe_planetprint_1
+            set_carrier_flag = xhk_extraframe_planetprint_2
+
+            from = {
+                country_event = { id = giga_printer.2010 }	# Notification
+            }
+
+            from = {
+                solar_system = {
+                    spawn_megastructure = {
+                        type = planetcraft_printer_0_real
+                        orbit_distance = 80
+                        orbit_angle = 270
+                        planet = this.star
+                        owner = space_owner
+                        graphical_culture = owner
+                    }
+                }
+            }
+        }
+    }
+
+    ai_weight = {
+        weight = 10
+    }
+}
+
+inline_script = {
+    script = xhk_toggle/xhk_toggled_code
+    code = "
+        #systemprinter
+        decision_xhk_extraframe_add_systemprint = {
+            owned_planets_only = yes
+            icon = decision_xhk_extraframe_add_systemprint
+
+            prerequisites = {
+                tech_stellar_assembler
+            }
+
+            show_tech_unlock_if = {
+                owner = { giga_has_frameworld_origin = yes }
+            }
+
+            enactment_time = 5000
+
+            resources = {
+                category = megastructures
+                cost = {
+                    alloys = 700000
+                    unity = @giga_tera_unity_cost
+                    rare_crystals = 8000
+                    volatile_motes = 8000
+                    exotic_gases = 8000
+                    #very expensive because we skip to level 3 to avoid the planet destroying effect on T2
+                }
+            }
+
+            potential = {
+                exists = owner
+                owner = {
+                    giga_has_frameworld_origin = yes
+                }
+                is_planet_class = pc_giga_frameworld
+                NOT = { has_carrier_flag = xhk_extraframe_systemprint }
+                stellar_manip_is_active = yes
+            }
+
+            allow = {
+                has_major_upgraded_capital = yes
+                custom_tooltip_fail = {
+                    not = {
+                        has_carrier_flag = frameworld_upgrade
+                    }
+                    text = giga_frameworld_upgrade_fail
+                }
+            }
+
+            effect = {
+                custom_tooltip = giga_frameworld_upgrade_desc
+                custom_tooltip = decision_xhk_extraframe_add_systemprint_effect
+
+                hidden_effect = {
+                    set_carrier_flag = xhk_extraframe_systemprint
+
+                    from = {
+                        solar_system = {
+                            spawn_megastructure = {
+                                type = systemcraft_assembler_3
+                                orbit_distance = 0
+                                orbit_angle = 0
+                                planet = this.star
+                                owner = space_owner
+                                graphical_culture = owner
+                            }
+                        }
+                    }
+                }
+            }
+
+            ai_weight = {
+                weight = 10
+            }
+        }
+    "
+    toggle = @has_stellar_manip
+}

@@ -1,0 +1,116 @@
+building_cryovault = {
+    base_buildtime = 420
+    base_cap_amount = 1
+    category = amenity
+
+    building_sets = {
+        urban
+    }
+
+    potential = {
+        has_shroud_dlc = yes
+        owner = {
+            has_technology = tech_cryovault
+        }
+    }
+
+    allow = {
+        OR = {
+            xhk_shared_trigger_can_build_cryovault = yes
+            is_cold = yes
+        }
+    }
+
+    resources = {
+        category = planet_buildings
+        cost = {
+            minerals = 300
+        }
+        upkeep = {
+            energy = 4
+        }
+    }
+
+    planet_modifier = {
+        planet_housing_add = 500
+        planet_pops_organics_upkeep_mult = -0.01
+        pop_environment_tolerance = 0.25
+    }
+}
+
+building_offworld_expedition_hub = {
+    base_buildtime = @b2_time
+    planet_limit = 1
+    category = manufacturing
+
+    building_sets = {
+        factory
+        foundry
+        industrial
+    }
+
+    allow = {
+        OR = {
+            owner = { is_nomadic = yes }
+            custom_tooltip = {
+                fail_text = offworld_molten_world_req
+                solar_system? = {
+                    any_system_planet = {
+                        is_planet_class = pc_molten
+                    }
+                }
+            }
+            AND = {
+                owner = { giga_has_frameworld_origin = yes }
+                custom_tooltip = {
+                    fail_text = xhk_extraframe_offworld_prospector_frame_tt
+                    has_carrier_flag = xhk_extraframe_molten_slorp
+                }
+            }
+        }
+    }
+    potential = {
+        exists = owner
+        owner = {
+            is_galvanic_empire = yes
+        }
+        OR = { # need to be not a frameworld empire, or is frame with lavaframe tag
+            owner = {
+                NOT = { giga_has_frameworld_origin = yes }
+            }
+            has_carrier_flag = xhk_extraframe_lavaframe
+        }
+    }
+    destroy_trigger = {
+        exists = owner
+        owner = {
+            is_galvanic_empire = no
+        }
+    }
+    resources = {
+        category = planet_buildings
+        inline_script = {
+            script = buildings/nomadic_cost_switcher
+            REGULAR_RESOURCE = minerals
+            NOMADIC_RESOURCE = volatile_motes
+            COST = @b2_minerals
+            NOMADIC_COST_MULT = @nomadic_minerals_to_strategic_ratio
+        }
+        upkeep = { energy = @b2_upkeep }
+    }
+
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = { is_gestalt = no }
+        }
+        job_offworld_prospector_add = @building_static_jobs
+    }
+    triggered_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = { is_gestalt = yes }
+        }
+        job_offworld_prospector_drone_add = @building_static_jobs
+    }
+}

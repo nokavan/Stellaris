@@ -1,0 +1,488 @@
+
+#################################################################################################################
+# NORMAL DISTRICTS
+#################################################################################################################
+zone_xhk_extraframe_darkmatter = {
+    icon = GFX_district_specialization_industrial
+    base_buildtime = @zone_buildtime
+
+    unlock = {
+        always = yes
+    }
+
+    resources = {
+        category = planet_districts
+        cost = {
+            alloys = @zone_cost
+        }
+    }
+
+    max_buildings = 1
+
+    include = { #TODO make this better later
+        all
+    }
+    excluded_building_sets = {
+        government
+        generator
+        mining
+        farming
+        knights
+        betharian
+        generator_automation
+        mining_automation
+        farming_automation
+        urban_automation_arcology
+        urban_automation
+        giga_automation
+    }
+
+    zone_sets = {
+        extraframe_darkmatter
+    } # not needed as we target the zone directly but whatever
+
+    planet_modifier = {
+        zone_building_slots_add = 1
+    }
+
+    triggered_district_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_gestalt = no
+            }
+        }
+        job_giga_dark_matter_weaver_add = 100
+    }
+
+    triggered_district_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = {
+                is_gestalt = yes
+            }
+        }
+        job_giga_dark_matter_weaver_drone_add = 100
+    }
+
+    ai_priority = 1
+}
+
+zone_xhk_extraframe_resort = {
+    icon = GFX_district_specialization_resort
+    base_buildtime = @zone_buildtime
+
+    unlock = {
+        always = yes
+    }
+
+    resources = {
+        category = planet_districts
+        cost = {
+            minerals = @zone_cost
+        }
+    }
+
+    max_buildings = 1
+
+    included_building_sets = {
+        resort
+    }
+    include = {
+        building_holo_theatres
+        building_hyper_entertainment_forum
+        building_xeno_zoo
+        building_toxic_bath
+    }
+
+    triggered_district_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = { is_gestalt = no }
+        }
+        job_resort_worker_add = 100
+    }
+
+    zone_sets = {
+        extraframe_resort
+    }
+
+    planet_modifier = {
+        zone_building_slots_add = 1
+    }
+
+    ai_priority = 1
+}
+
+zone_xhk_extraframe_medical = {
+    icon = GFX_district_specialization_healthcare
+    base_buildtime = @zone_buildtime
+
+    unlock = {
+        always = yes
+    }
+
+    resources = {
+        category = planet_districts
+        cost = {
+            minerals = @zone_cost
+        }
+    }
+
+    max_buildings = 1
+
+    included_building_sets = {
+        medical
+    }
+
+    triggered_district_planet_modifier = {
+        potential = {
+            exists = owner
+            owner = { is_gestalt = no }
+        }
+        job_healthcare_add = 100
+    }
+
+
+    zone_sets = {
+        extraframe_resort
+    }
+
+    planet_modifier = {
+        zone_building_slots_add = 1
+    }
+
+    ai_priority = 1
+}
+
+zone_xhk_extraframe_museum = {
+	icon = GFX_district_specialization_culture_worker
+    base_buildtime = @zone_buildtime
+
+	unlock = {
+		always = yes
+	}
+
+	resources = {                       
+      	category = planet_districts
+		cost = {
+			minerals = @zone_cost
+		}
+	}
+
+	max_buildings = 3
+
+	include = {    
+		xeno_geology_holomuseum
+		aesthetic_wonders_holomuseum
+		galactic_history_holomuseum
+	}
+
+	zone_sets = {
+		extraframe_museum
+	} # not needed as we target the zone directly but whatever
+
+	triggered_district_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_regular_empire = yes
+			}
+		}
+		job_clerk_add = 200
+	}
+
+	triggered_district_planet_modifier = {
+		potential = {
+			exists = owner
+			owner = {
+				is_gestalt = yes
+			}
+		}
+		job_evaluator_add = 200
+	}
+
+	planet_modifier = {
+		zone_building_slots_add = 3
+	}
+
+	ai_priority = 1
+}
+
+zone_xhk_extraframe_storage = {
+	icon = GFX_district_specialization_industrial
+	base_buildtime = @zone_buildtime
+
+	unlock = {
+		always = yes
+	}
+
+	resources = {
+		category = planet_zones
+		cost = {
+			minerals = @zone_cost
+		}
+	}
+
+	max_buildings = 0
+	zone_sets = {
+		extraframe_storage
+	}
+
+
+    triggered_district_country_modifier = {
+		potential = {
+			always = yes
+		}
+		country_resource_max_add = 10000
+	}
+    triggered_district_country_modifier = {
+        potential = {
+            owner = { has_technology = tech_fe_silo_1 }
+        }
+        country_resource_max_minor_artifacts_add = 500
+    }
+    triggered_district_country_modifier = {
+        potential = {
+            owner = { has_technology = tech_fe_silo_2 }
+        }
+        country_resource_max_minor_artifacts_add = 500
+    }
+	triggered_district_country_modifier = {
+		potential = { #this is actually planet scope
+            has_deposit = deposit_xhk_extraframe_storage_kugel_norm
+		}
+		country_resource_max_add = 5000
+	}
+	triggered_district_country_modifier = {
+		potential = { #this is actually planet scope
+            has_deposit = deposit_xhk_extraframe_storage_kugel_mega
+		}
+		country_resource_max_add = 10000
+	}
+	triggered_district_country_modifier = {
+		potential = { #this is actually planet scope
+            has_deposit = deposit_xhk_extraframe_storage_kugel_tera
+		}
+		country_resource_max_add = 20000
+	}
+}
+
+zone_xhk_extraframe_mbrain = {
+    icon = GFX_district_specialization_research
+
+    unlock = {
+        always = yes
+    }
+
+    resources = {
+        category = planet_districts
+        cost = {
+            minerals = @zone_cost
+        }
+    }
+
+    max_buildings = 3
+
+    include = {
+        building_giga_matrioshka_brain_uplink
+        building_giga_matrioshka_brain_uplink_amalgamation
+        building_giga_matrioshka_brain_uplink_anti_deviancy
+        building_giga_matrioshka_brain_uplink_diplomacy
+        building_giga_matrioshka_brain_uplink_entertainment
+        building_giga_matrioshka_brain_uplink_factory
+        building_giga_matrioshka_brain_uplink_foundry
+        building_giga_matrioshka_brain_uplink_hell
+        building_giga_matrioshka_brain_uplink_livestock
+        building_giga_matrioshka_brain_uplink_refinery
+        building_giga_matrioshka_brain_uplink_research
+        building_giga_matrioshka_brain_uplink_robot
+        building_giga_matrioshka_brain_uplink_sanctuary
+        building_giga_matrioshka_brain_uplink_training
+        building_giga_matrioshka_brain_uplink_unity
+        building_giga_matrioshka_brain_uplink_virtual
+    }
+    included_building_sets = {
+        giga_mbrain
+        quasarmod_teraforge
+    }
+
+    zone_sets = {
+        extraframe_mbrain
+    } # not needed as we target the zone directly but whatever
+
+    district_country_modifier = {
+        building_giga_matrioshka_brain_uplink_country_max = 0.125
+    }
+
+    planet_modifier = {
+        zone_building_slots_add = 3
+    }
+
+    ai_priority = 1
+}
+
+
+#################################################################################################################
+# COMPAT
+#################################################################################################################
+# for sparble
+zone_xhk_extraframe_cultobrium = {
+    base_buildtime = @zone_buildtime
+    resources = {
+        category = planet_zones
+        cost = {
+            minerals = @zone_cost
+        }
+    }
+    max_buildings = 1
+    included_building_sets = {
+        nuclei_soup
+    }
+    include = {
+        building_ssh_atomic_foundry
+    }
+
+    planet_modifier = {
+        zone_building_slots_add = 1
+    }
+    ai_priority = 10
+    icon = GFX_district_alloys
+}
+
+#################################################################################################################
+## FRAME BIRCH
+#################################################################################################################
+
+zone_xhk_extraframe_birchextra = {
+    unlock = {
+        always = yes
+    }
+
+    resources = {
+        category = planet_districts
+        cost = {
+            minerals = @zone_cost
+        }
+    }
+
+    included_building_sets = {
+        urban
+        government
+        origin
+        rural
+        mining
+        generator
+        research
+        unity
+        amenities
+        giga_refinery
+        factory
+        industrial
+        foundry
+    }
+
+    max_buildings = 6
+
+    ai_priority = 15
+    icon = GFX_district_specialization_urban
+}
+zone_xhk_extraframe_orykta = {
+    icon = GFX_zone_xhk_extraframe_orykta
+
+    unlock = {
+        always = yes
+    }
+
+    resources = {
+        category = planet_districts
+        cost = {
+            minerals = @zone_cost
+        }
+    }
+
+    max_buildings = 2
+
+    included_building_sets = {
+        xhk_extraframe_orykta
+    }
+
+    planet_modifier = {
+        zone_building_slots_add = 2
+    }
+
+    ai_priority = 1
+}
+zone_xhk_extraframe_ktisma = {
+    icon = GFX_zone_xhk_extraframe_ktisma
+
+    unlock = {
+        always = yes
+    }
+
+    resources = {
+        category = planet_districts
+        cost = {
+            minerals = @zone_cost
+        }
+    }
+
+    max_buildings = 2
+
+    included_building_sets = {
+        xhk_extraframe_ktisma
+    }
+
+    planet_modifier = {
+        zone_building_slots_add = 2
+    }
+
+    ai_priority = 1
+}
+zone_xhk_extraframe_physma = {
+    icon = GFX_zone_xhk_extraframe_physma
+
+    unlock = {
+        always = yes
+    }
+
+    resources = {
+        category = planet_districts
+        cost = {
+            minerals = @zone_cost
+        }
+    }
+
+    max_buildings = 2
+
+    included_building_sets = {
+        xhk_extraframe_physma
+    }
+
+    planet_modifier = {
+        zone_building_slots_add = 2
+    }
+
+    ai_priority = 1
+}
+zone_xhk_extraframe_birch_empty = {
+    icon = GFX_zone_xhk_extraframe_empty
+
+    potential = {
+        NOT = { has_global_flag = acot_activated}
+    }
+    unlock = {
+        always = yes
+    }
+
+    resources = {
+        category = planet_districts
+        cost = {
+            minerals = 0
+        }
+    }
+
+    max_buildings = 0
+
+    ai_priority = 1
+} # intentionally empty loc

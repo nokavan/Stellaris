@@ -1,0 +1,65 @@
+spriteTypes = {
+
+    spriteType = {
+        name = GFX_xhk_district_resources_sprite_sheet
+        textureFile = gfx/interface/icons/resources/xhk_extraframe_district_resources.dds
+        noOfFrames = 5
+    }
+    spriteType = { # not used, we use the gigas one
+        name = GFX_xhk_extraframe_dark_matter_spec
+        sprite_sheet_sprite_type = GFX_xhk_district_resources_sprite_sheet
+        default_frame = 1
+    }
+    spriteType = {
+        name = GFX_xhk_extraframe_storage_spec
+        sprite_sheet_sprite_type = GFX_xhk_district_resources_sprite_sheet
+        default_frame = 2
+    }
+    spriteType = {
+        name = GFX_xhk_extraframe_mbrain_spec
+        sprite_sheet_sprite_type = GFX_xhk_district_resources_sprite_sheet
+        default_frame = 3
+    }
+    # hello sparble
+    spriteType = {
+        name = GFX_xhk_extraframe_cultobrium_spec
+        sprite_sheet_sprite_type = GFX_xhk_district_resources_sprite_sheet
+        default_frame = 4
+    }
+    spriteType = {
+        name = GFX_xhk_extraframe_necrophage_spec
+        sprite_sheet_sprite_type = GFX_xhk_district_resources_sprite_sheet
+        default_frame = 5
+    }
+
+    ####################################################################################################################
+    # FRAME
+    corneredTileSpriteType = {
+        name = "GFX_district_xhk_extraframe_storage_bg"
+        texturefile = "gfx/interface/planetview/district_backgrounds/district_xhk_extraframe_storage_bg.dds"
+    }
+    corneredTileSpriteType = {
+        name = "GFX_district_xhk_extraframe_darkmatter_bg"
+        texturefile = "gfx/interface/planetview/district_backgrounds/district_arcology_industry.dds"
+    }
+
+    ##### ZONE SPRITES
+    spriteType = {
+        name = "GFX_zone_xhk_extraframe_orykta"
+        texturefile = "gfx/interface/icons/districts/district_specialization_icons/zone_xhk_extraframe_orykta.dds"
+    }
+    spriteType = {
+        name = "GFX_zone_xhk_extraframe_ktisma"
+        texturefile = "gfx/interface/icons/districts/district_specialization_icons/zone_xhk_extraframe_ktisma.dds"
+    }
+    spriteType = {
+        name = "GFX_zone_xhk_extraframe_physma"
+        texturefile = "gfx/interface/icons/districts/district_specialization_icons/zone_xhk_extraframe_physma.dds"
+    }
+    spriteType = {
+        name = "GFX_zone_xhk_extraframe_empty"
+        texturefile = "gfx/interface/icons/districts/district_specialization_icons/zone_xhk_extraframe_empty.dds"
+    }
+
+
+}

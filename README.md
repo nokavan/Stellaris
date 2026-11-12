@@ -402,7 +402,8 @@ python3 tools/gen_waystation_modules.py
 Необязательные патчи (см. `compat/README.md`):
 - без UIOD — [releases/partisan_syndicate_vanilla_ui_patch.zip](https://github.com/nokavan/stellaris/blob/main/releases/partisan_syndicate_vanilla_ui_patch.zip);
 - с XHK World Ark — [releases/partisan_syndicate_xhk_worldark_patch.zip](https://github.com/nokavan/stellaris/blob/main/releases/partisan_syndicate_xhk_worldark_patch.zip);
-- кочевники и мегаструктуры Gigastructures — [releases/partisan_syndicate_nomad_mega_patch.zip](https://github.com/nokavan/stellaris/blob/main/releases/partisan_syndicate_nomad_mega_patch.zip).
+- кочевники и мегаструктуры Gigastructures — [releases/partisan_syndicate_nomad_mega_patch.zip](https://github.com/nokavan/stellaris/blob/main/releases/partisan_syndicate_nomad_mega_patch.zip);
+- XHK Frameworld Extra Goodies (нужен Gigastructures, ставится вместо оригинала) — [releases/partisan_syndicate_frameworld_goodies_patch.zip](https://github.com/nokavan/stellaris/blob/main/releases/partisan_syndicate_frameworld_goodies_patch.zip).
 
 Распакуйте архив в `Документы/Paradox Interactive/Stellaris/mod/`: внутри уже лежат папка мода и файл `partisan_syndicate.mod` для лаунчера. Затем включите мод в лаунчере.
 

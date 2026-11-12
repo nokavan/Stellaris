@@ -27,3 +27,13 @@
 - Патч содержит код Gigastructures и Halo. Он предназначен для личной игры, публиковать его в мастерской без разрешения авторов этих модов нельзя.
 
 Архив: `releases/partisan_syndicate_nomad_mega_patch.zip`.
+
+## frameworld_goodies_patch — XHK Frameworld Extra Goodies в пакете «Синдиката»
+Это мод **[4.5] XHK Frameworld Extra Goodies** (Workshop 3071450599), встроенный в наш пакет с разрешения автора, файлы не изменены. Он расширяет происхождение **Frameworld** из Gigastructures: новые районы и зоны, мегаструктуры на секциях, анклавы, перемещение секций (framewarp), Frameworld-Бёрч, дополнительные залежи и многое другое.
+- Требует **Gigastructural Engineering & More (4.5)**. Отдельным модулем он сделан потому, что без Gigastructures игра выдаст сотни ошибок, а «Синдикат» должен работать и без Gigastructures.
+- Ставится **вместо** оригинала, после Gigastructures. Оригинал из плейсета уберите.
+- С XHK World Ark совместим: их общие файлы одинаковые.
+- Переопределяет ванильные `building_cryovault`, `building_offworld_expedition_hub`, `decision_market_nomination`, правило `has_full_sensor_range`, триггер `is_wet` и два инлайн-скрипта Gigastructures (`giga_birch_manager_swap_*`), как и оригинал.
+- Русская локализация в оригинале на английском, её можно перевести отдельно.
+
+Архив: `releases/partisan_syndicate_frameworld_goodies_patch.zip`.
