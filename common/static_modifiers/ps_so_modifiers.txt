@@ -1,0 +1,242 @@
+# АВТОГЕНЕРАЦИЯ (см. events/ps_shadow_overlord_events.txt): «Теневой сюзерен» — +5% единства за каждого вассала
+@ps_so_icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+
+ps_so_unity_1 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 0.05
+}
+
+ps_so_unity_2 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 0.10
+}
+
+ps_so_unity_3 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 0.15
+}
+
+ps_so_unity_4 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 0.20
+}
+
+ps_so_unity_5 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 0.25
+}
+
+ps_so_unity_6 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 0.30
+}
+
+ps_so_unity_7 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 0.35
+}
+
+ps_so_unity_8 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 0.40
+}
+
+ps_so_unity_9 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 0.45
+}
+
+ps_so_unity_10 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 0.50
+}
+
+ps_so_unity_11 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 0.55
+}
+
+ps_so_unity_12 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 0.60
+}
+
+ps_so_unity_13 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 0.65
+}
+
+ps_so_unity_14 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 0.70
+}
+
+ps_so_unity_15 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 0.75
+}
+
+ps_so_unity_16 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 0.80
+}
+
+ps_so_unity_17 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 0.85
+}
+
+ps_so_unity_18 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 0.90
+}
+
+ps_so_unity_19 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 0.95
+}
+
+ps_so_unity_20 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 1.00
+}
+
+ps_so_unity_21 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 1.05
+}
+
+ps_so_unity_22 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 1.10
+}
+
+ps_so_unity_23 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 1.15
+}
+
+ps_so_unity_24 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 1.20
+}
+
+ps_so_unity_25 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 1.25
+}
+
+ps_so_unity_26 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 1.30
+}
+
+ps_so_unity_27 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 1.35
+}
+
+ps_so_unity_28 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 1.40
+}
+
+ps_so_unity_29 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 1.45
+}
+
+ps_so_unity_30 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 1.50
+}
+
+ps_so_unity_31 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 1.55
+}
+
+ps_so_unity_32 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 1.60
+}
+
+ps_so_unity_33 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 1.65
+}
+
+ps_so_unity_34 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 1.70
+}
+
+ps_so_unity_35 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 1.75
+}
+
+ps_so_unity_36 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 1.80
+}
+
+ps_so_unity_37 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 1.85
+}
+
+ps_so_unity_38 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 1.90
+}
+
+ps_so_unity_39 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 1.95
+}
+
+ps_so_unity_40 = {
+	icon = @ps_so_icon
+	icon_frame = 1
+	country_unity_produces_mult = 2.00
+}

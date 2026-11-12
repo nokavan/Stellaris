@@ -1,0 +1,238 @@
+# Синдикат Сопротивления — «Теневой сюзерен»: +5% единства за каждого вассала (до 40)
+namespace = ps_so
+
+# Ежемесячно (on_monthly_pulse_country). Модификатор меняется только при изменении числа вассалов.
+country_event = {
+	id = ps_so.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		OR = {
+			has_valid_civic = civic_ps_shadow_overlord
+			is_variable_set = ps_so_subjects
+		}
+	}
+
+	immediate = {
+		set_variable = { which = ps_so_count value = 0 }
+		if = {
+			limit = { has_valid_civic = civic_ps_shadow_overlord }
+			every_subject = {
+				prev = { change_variable = { which = ps_so_count value = 1 } }
+			}
+		}
+		if = {
+			limit = {
+				OR = {
+					NOT = { is_variable_set = ps_so_subjects }
+					NOT = { check_variable = { which = ps_so_subjects value = ps_so_count } }
+				}
+			}
+			set_variable = { which = ps_so_subjects value = ps_so_count }
+			remove_modifier = ps_so_unity_1
+			remove_modifier = ps_so_unity_2
+			remove_modifier = ps_so_unity_3
+			remove_modifier = ps_so_unity_4
+			remove_modifier = ps_so_unity_5
+			remove_modifier = ps_so_unity_6
+			remove_modifier = ps_so_unity_7
+			remove_modifier = ps_so_unity_8
+			remove_modifier = ps_so_unity_9
+			remove_modifier = ps_so_unity_10
+			remove_modifier = ps_so_unity_11
+			remove_modifier = ps_so_unity_12
+			remove_modifier = ps_so_unity_13
+			remove_modifier = ps_so_unity_14
+			remove_modifier = ps_so_unity_15
+			remove_modifier = ps_so_unity_16
+			remove_modifier = ps_so_unity_17
+			remove_modifier = ps_so_unity_18
+			remove_modifier = ps_so_unity_19
+			remove_modifier = ps_so_unity_20
+			remove_modifier = ps_so_unity_21
+			remove_modifier = ps_so_unity_22
+			remove_modifier = ps_so_unity_23
+			remove_modifier = ps_so_unity_24
+			remove_modifier = ps_so_unity_25
+			remove_modifier = ps_so_unity_26
+			remove_modifier = ps_so_unity_27
+			remove_modifier = ps_so_unity_28
+			remove_modifier = ps_so_unity_29
+			remove_modifier = ps_so_unity_30
+			remove_modifier = ps_so_unity_31
+			remove_modifier = ps_so_unity_32
+			remove_modifier = ps_so_unity_33
+			remove_modifier = ps_so_unity_34
+			remove_modifier = ps_so_unity_35
+			remove_modifier = ps_so_unity_36
+			remove_modifier = ps_so_unity_37
+			remove_modifier = ps_so_unity_38
+			remove_modifier = ps_so_unity_39
+			remove_modifier = ps_so_unity_40
+			if = {
+				limit = { check_variable = { which = ps_so_subjects value > 0 } }
+				if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 40 } }
+					add_modifier = { modifier = ps_so_unity_40 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 39 } }
+					add_modifier = { modifier = ps_so_unity_39 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 38 } }
+					add_modifier = { modifier = ps_so_unity_38 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 37 } }
+					add_modifier = { modifier = ps_so_unity_37 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 36 } }
+					add_modifier = { modifier = ps_so_unity_36 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 35 } }
+					add_modifier = { modifier = ps_so_unity_35 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 34 } }
+					add_modifier = { modifier = ps_so_unity_34 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 33 } }
+					add_modifier = { modifier = ps_so_unity_33 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 32 } }
+					add_modifier = { modifier = ps_so_unity_32 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 31 } }
+					add_modifier = { modifier = ps_so_unity_31 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 30 } }
+					add_modifier = { modifier = ps_so_unity_30 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 29 } }
+					add_modifier = { modifier = ps_so_unity_29 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 28 } }
+					add_modifier = { modifier = ps_so_unity_28 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 27 } }
+					add_modifier = { modifier = ps_so_unity_27 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 26 } }
+					add_modifier = { modifier = ps_so_unity_26 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 25 } }
+					add_modifier = { modifier = ps_so_unity_25 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 24 } }
+					add_modifier = { modifier = ps_so_unity_24 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 23 } }
+					add_modifier = { modifier = ps_so_unity_23 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 22 } }
+					add_modifier = { modifier = ps_so_unity_22 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 21 } }
+					add_modifier = { modifier = ps_so_unity_21 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 20 } }
+					add_modifier = { modifier = ps_so_unity_20 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 19 } }
+					add_modifier = { modifier = ps_so_unity_19 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 18 } }
+					add_modifier = { modifier = ps_so_unity_18 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 17 } }
+					add_modifier = { modifier = ps_so_unity_17 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 16 } }
+					add_modifier = { modifier = ps_so_unity_16 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 15 } }
+					add_modifier = { modifier = ps_so_unity_15 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 14 } }
+					add_modifier = { modifier = ps_so_unity_14 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 13 } }
+					add_modifier = { modifier = ps_so_unity_13 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 12 } }
+					add_modifier = { modifier = ps_so_unity_12 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 11 } }
+					add_modifier = { modifier = ps_so_unity_11 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 10 } }
+					add_modifier = { modifier = ps_so_unity_10 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 9 } }
+					add_modifier = { modifier = ps_so_unity_9 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 8 } }
+					add_modifier = { modifier = ps_so_unity_8 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 7 } }
+					add_modifier = { modifier = ps_so_unity_7 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 6 } }
+					add_modifier = { modifier = ps_so_unity_6 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 5 } }
+					add_modifier = { modifier = ps_so_unity_5 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 4 } }
+					add_modifier = { modifier = ps_so_unity_4 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 3 } }
+					add_modifier = { modifier = ps_so_unity_3 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 2 } }
+					add_modifier = { modifier = ps_so_unity_2 days = -1 }
+				}
+				else_if = {
+					limit = { check_variable = { which = ps_so_subjects value >= 1 } }
+					add_modifier = { modifier = ps_so_unity_1 days = -1 }
+				}
+			}
+		}
+	}
+}

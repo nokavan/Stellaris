@@ -1,0 +1,181 @@
+# АВТОГЕНЕРАЦИЯ: tools/gen_spy_ops2.py
+namespace = ps_spy2
+
+# Этап 1 (общий для всех операций набора): агенты на месте
+espionage_operation_event = {
+	id = ps_spy2.1
+	title = ps_spy2.1.name
+	desc = ps_spy2.1.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_default
+	is_triggered_only = yes
+
+	option = { name = ps_spy2.1.a }
+}
+
+espionage_operation_event = {
+	id = ps_spy2.10
+	title = ps_spy2.10.name
+	desc = ps_spy2.10.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	option = {
+		name = ps_spy2.10.a
+		target = {
+			random_owned_planet = {
+				limit = { is_capital = no }
+				add_modifier = { modifier = ps_spy_bribed_governor days = 1800 }
+			}
+		}
+		owner = { add_resource = { influence = 75 } }
+	}
+
+	after = { destroy_espionage_operation = this }
+}
+
+espionage_operation_event = {
+	id = ps_spy2.11
+	title = ps_spy2.11.name
+	desc = ps_spy2.11.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	option = {
+		name = ps_spy2.11.a
+		owner = {
+			add_monthly_resource_mult = { resource = engineering_research value = 6 min = 200 max = 3000 }
+			add_monthly_resource_mult = { resource = physics_research value = 3 min = 100 max = 1500 }
+		}
+	}
+
+	after = { destroy_espionage_operation = this }
+}
+
+espionage_operation_event = {
+	id = ps_spy2.12
+	title = ps_spy2.12.name
+	desc = ps_spy2.12.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	option = {
+		name = ps_spy2.12.a
+		target = { add_modifier = { modifier = ps_spy_counterfeit days = 1800 } }
+		owner = { add_resource = { energy = 500 } }
+	}
+
+	after = { destroy_espionage_operation = this }
+}
+
+espionage_operation_event = {
+	id = ps_spy2.13
+	title = ps_spy2.13.name
+	desc = ps_spy2.13.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	option = {
+		name = ps_spy2.13.a
+		target = {
+			save_event_target_as = ps_spy_overlord
+			every_subject = {
+				save_event_target_as = ps_spy_sv
+				event_target:ps_spy_overlord = {
+					random_agreement = {
+						limit = {
+							owner = { is_same_value = event_target:ps_spy_overlord }
+							target = { is_same_value = event_target:ps_spy_sv }
+						}
+						add_loyalty = -40
+					}
+				}
+				set_timed_country_flag = { flag = ps_puppet_council days = 3600 }
+				add_opinion_modifier = { who = root.owner modifier = opinion_ps_puppet_council }
+			}
+		}
+	}
+
+	after = { destroy_espionage_operation = this }
+}
+
+espionage_operation_event = {
+	id = ps_spy2.14
+	title = ps_spy2.14.name
+	desc = ps_spy2.14.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	option = {
+		name = ps_spy2.14.a
+		target = { add_modifier = { modifier = ps_spy_blackmailed days = 1800 } }
+		owner = { add_modifier = { modifier = ps_spy_blackmail_income days = 1800 } }
+	}
+
+	after = { destroy_espionage_operation = this }
+}
+
+espionage_operation_event = {
+	id = ps_spy2.15
+	title = ps_spy2.15.name
+	desc = ps_spy2.15.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	option = {
+		name = ps_spy2.15.a
+		target = { add_modifier = { modifier = ps_spy_market_crash days = 1080 } }
+		owner = { add_resource = { energy = 300 minerals = 300 } }
+	}
+
+	after = { destroy_espionage_operation = this }
+}
+
+espionage_operation_event = {
+	id = ps_spy2.16
+	title = ps_spy2.16.name
+	desc = ps_spy2.16.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	option = {
+		name = ps_spy2.16.a
+		target = { add_modifier = { modifier = ps_spy_brain_drain days = 1800 } }
+		owner = { add_modifier = { modifier = ps_spy_defectors days = 1800 } }
+	}
+
+	after = { destroy_espionage_operation = this }
+}
+
+espionage_operation_event = {
+	id = ps_spy2.17
+	title = ps_spy2.17.name
+	desc = ps_spy2.17.desc
+	espionage_operation = yes
+	picture = GFX_evt_spy_network
+	show_sound = event_espionage_concluded
+	is_triggered_only = yes
+
+	option = {
+		name = ps_spy2.17.a
+		target = { add_modifier = { modifier = ps_spy_alloy_theft days = 1080 } }
+		owner = { add_resource = { alloys = 250 } }
+	}
+
+	after = { destroy_espionage_operation = this }
+}

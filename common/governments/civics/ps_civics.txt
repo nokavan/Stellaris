@@ -86,7 +86,9 @@ civic_ps_shadow_overlord = {
 	modifier = {
 		envoys_add = 1
 		intel_encryption_add = 1
+		country_subject_acceptance_add = 50	# +50 к согласию стать нашим вассалом
 	}
+	# +5% единства за каждого вассала — модификатор ps_so_unity_N (событие ps_so.1, ежемесячно)
 }
 
 ########################################

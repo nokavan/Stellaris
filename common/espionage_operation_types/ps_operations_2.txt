@@ -1,0 +1,318 @@
+# АВТОГЕНЕРАЦИЯ: tools/gen_spy_ops2.py — правьте генератор
+# Синдикат Сопротивления — шпионские операции, набор 2
+
+operation_ps_bribe_governors = {
+	target = none
+	categories = { op_cat_subterfuge op_cat_economy }
+	picture = GFX_evt_spy_network
+	desc = operation_ps_bribe_governors_desc
+	stages = 2
+	spy_power_cost = 30
+	resources = {
+		category = operations
+		cost = { influence = 40 }
+		upkeep = { energy = 5 }
+	}
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 4
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_spy2.1
+	}
+	stage = {
+		difficulty = 6
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_spy2.10
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}
+
+operation_ps_steal_blueprints = {
+	target = none
+	categories = { op_cat_subterfuge op_cat_economy }
+	picture = GFX_evt_spy_network
+	desc = operation_ps_steal_blueprints_desc
+	stages = 2
+	spy_power_cost = 35
+	resources = {
+		category = operations
+		cost = { influence = 30 }
+		upkeep = { energy = 5 }
+	}
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 5
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_spy2.1
+	}
+	stage = {
+		difficulty = 7
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_spy2.11
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}
+
+operation_ps_counterfeit_credits = {
+	target = none
+	categories = { op_cat_subterfuge op_cat_economy }
+	picture = GFX_evt_spy_network
+	desc = operation_ps_counterfeit_credits_desc
+	stages = 2
+	spy_power_cost = 35
+	resources = {
+		category = operations
+		cost = { influence = 40 }
+		upkeep = { energy = 5 }
+	}
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 5
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_spy2.1
+	}
+	stage = {
+		difficulty = 6
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_spy2.12
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}
+
+operation_ps_turn_vassals = {
+	target = none
+	categories = { op_cat_subterfuge op_cat_economy }
+	picture = GFX_evt_spy_network
+	desc = operation_ps_turn_vassals_desc
+	stages = 2
+	spy_power_cost = 50
+	resources = {
+		category = operations
+		cost = { influence = 75 }
+		upkeep = { energy = 5 }
+	}
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			fail_text = operation_ps_target_no_subjects
+			target = { any_subject = { always = yes } }
+		}
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 6
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_spy2.1
+	}
+	stage = {
+		difficulty = 8
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_spy2.13
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}
+
+operation_ps_blackmail_ruler = {
+	target = none
+	categories = { op_cat_subterfuge op_cat_economy }
+	picture = GFX_evt_spy_network
+	desc = operation_ps_blackmail_ruler_desc
+	stages = 2
+	spy_power_cost = 40
+	resources = {
+		category = operations
+		cost = { influence = 50 }
+		upkeep = { energy = 5 }
+	}
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 6
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_spy2.1
+	}
+	stage = {
+		difficulty = 7
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_spy2.14
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}
+
+operation_ps_market_crash = {
+	target = none
+	categories = { op_cat_subterfuge op_cat_economy }
+	picture = GFX_evt_spy_network
+	desc = operation_ps_market_crash_desc
+	stages = 2
+	spy_power_cost = 45
+	resources = {
+		category = operations
+		cost = { influence = 60 }
+		upkeep = { energy = 5 }
+	}
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 6
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_spy2.1
+	}
+	stage = {
+		difficulty = 8
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_spy2.15
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}
+
+operation_ps_brain_drain = {
+	target = none
+	categories = { op_cat_subterfuge op_cat_economy }
+	picture = GFX_evt_spy_network
+	desc = operation_ps_brain_drain_desc
+	stages = 2
+	spy_power_cost = 40
+	resources = {
+		category = operations
+		cost = { influence = 50 }
+		upkeep = { energy = 5 }
+	}
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 5
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_spy2.1
+	}
+	stage = {
+		difficulty = 7
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_spy2.16
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}
+
+operation_ps_smuggle_alloys = {
+	target = none
+	categories = { op_cat_subterfuge op_cat_economy }
+	picture = GFX_evt_spy_network
+	desc = operation_ps_smuggle_alloys_desc
+	stages = 2
+	spy_power_cost = 30
+	resources = {
+		category = operations
+		cost = { influence = 30 }
+		upkeep = { energy = 5 }
+	}
+	potential = {
+		has_nemesis = yes
+		owner = { ps_is_partisan_empire = yes }
+		target = { is_country_type = default }
+	}
+	allow = {
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	stage = {
+		difficulty = 4
+		icon = GFX_espionage_chapter_icon_surveillance
+		event = ps_spy2.1
+	}
+	stage = {
+		difficulty = 6
+		icon = GFX_espionage_chapter_icon_success
+		event = ps_spy2.17
+	}
+	on_roll_failed = {
+		standard_espionage_operation_on_roll_failed = { RANDOM_EVENTS = operation_random_events_generic }
+	}
+	on_create = {}
+}
