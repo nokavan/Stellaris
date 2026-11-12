@@ -1,7 +1,8 @@
 # Синдикат Сопротивления: переопределение ванильного файла (4.x).
-# Изменено ТОЛЬКО одно: у resource_subsidies_basic/advanced/research/strategic диапазон
+# Изменено: у resource_subsidies_basic/advanced/research/strategic диапазон
 # выплат всегда от -75% до +75% для любых вассалов, включая специализированных
 # (бастион можно оставить без обязательной субсидии или назначить выплаты сюзерену).
+# + предел владений (subject_holdings_limit) расширен до 15 значениями 5–15.
 # Всё остальное — ванильный текст. После крупных патчей игры сверить с ванилью.
 
 # Defines the different values available for given Agreement terms. The terms are defined in agreement_terms scripts.
@@ -1183,6 +1184,448 @@ subject_holdings_limit_4 = {
 	target_modifier = {
 		monthly_loyalty = -4
 		subject_holding_target_max_buildings_add = 4
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = not_allowed_for_tributary
+			NOT = {
+				agreement_preset = preset_tributary
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_galcom_resolution
+			OR = {
+				owner = { is_galactic_community_member = no }
+				NOR = {
+					is_active_resolution = resolution_bureaucraticsurveillance_borderless_authority
+					is_active_resolution = resolution_bureaucraticsurveillance_personal_oversight
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_luminarium
+			NOT = {
+				agreement_preset = preset_luminarium
+			}
+		}
+	}
+	potential = {
+		has_overlord_dlc = yes
+	}
+}
+
+# Синдикат Сопротивления: предел владений расширен до 15 (значения 5–15).
+
+subject_holdings_limit_5 = {
+	term = subject_holdings_limit
+	loyalty_change = -55
+	ai_acceptance = {
+		overlord = 360
+		subject = -300
+	}
+	target_modifier = {
+		monthly_loyalty = -4.25
+		subject_holding_target_max_buildings_add = 5
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = not_allowed_for_tributary
+			NOT = {
+				agreement_preset = preset_tributary
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_galcom_resolution
+			OR = {
+				owner = { is_galactic_community_member = no }
+				NOR = {
+					is_active_resolution = resolution_bureaucraticsurveillance_borderless_authority
+					is_active_resolution = resolution_bureaucraticsurveillance_personal_oversight
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_luminarium
+			NOT = {
+				agreement_preset = preset_luminarium
+			}
+		}
+	}
+	potential = {
+		has_overlord_dlc = yes
+	}
+}
+
+subject_holdings_limit_6 = {
+	term = subject_holdings_limit
+	loyalty_change = -60
+	ai_acceptance = {
+		overlord = 420
+		subject = -350
+	}
+	target_modifier = {
+		monthly_loyalty = -4.5
+		subject_holding_target_max_buildings_add = 6
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = not_allowed_for_tributary
+			NOT = {
+				agreement_preset = preset_tributary
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_galcom_resolution
+			OR = {
+				owner = { is_galactic_community_member = no }
+				NOR = {
+					is_active_resolution = resolution_bureaucraticsurveillance_borderless_authority
+					is_active_resolution = resolution_bureaucraticsurveillance_personal_oversight
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_luminarium
+			NOT = {
+				agreement_preset = preset_luminarium
+			}
+		}
+	}
+	potential = {
+		has_overlord_dlc = yes
+	}
+}
+
+subject_holdings_limit_7 = {
+	term = subject_holdings_limit
+	loyalty_change = -65
+	ai_acceptance = {
+		overlord = 480
+		subject = -400
+	}
+	target_modifier = {
+		monthly_loyalty = -4.75
+		subject_holding_target_max_buildings_add = 7
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = not_allowed_for_tributary
+			NOT = {
+				agreement_preset = preset_tributary
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_galcom_resolution
+			OR = {
+				owner = { is_galactic_community_member = no }
+				NOR = {
+					is_active_resolution = resolution_bureaucraticsurveillance_borderless_authority
+					is_active_resolution = resolution_bureaucraticsurveillance_personal_oversight
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_luminarium
+			NOT = {
+				agreement_preset = preset_luminarium
+			}
+		}
+	}
+	potential = {
+		has_overlord_dlc = yes
+	}
+}
+
+subject_holdings_limit_8 = {
+	term = subject_holdings_limit
+	loyalty_change = -70
+	ai_acceptance = {
+		overlord = 540
+		subject = -450
+	}
+	target_modifier = {
+		monthly_loyalty = -5
+		subject_holding_target_max_buildings_add = 8
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = not_allowed_for_tributary
+			NOT = {
+				agreement_preset = preset_tributary
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_galcom_resolution
+			OR = {
+				owner = { is_galactic_community_member = no }
+				NOR = {
+					is_active_resolution = resolution_bureaucraticsurveillance_borderless_authority
+					is_active_resolution = resolution_bureaucraticsurveillance_personal_oversight
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_luminarium
+			NOT = {
+				agreement_preset = preset_luminarium
+			}
+		}
+	}
+	potential = {
+		has_overlord_dlc = yes
+	}
+}
+
+subject_holdings_limit_9 = {
+	term = subject_holdings_limit
+	loyalty_change = -75
+	ai_acceptance = {
+		overlord = 600
+		subject = -500
+	}
+	target_modifier = {
+		monthly_loyalty = -5.25
+		subject_holding_target_max_buildings_add = 9
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = not_allowed_for_tributary
+			NOT = {
+				agreement_preset = preset_tributary
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_galcom_resolution
+			OR = {
+				owner = { is_galactic_community_member = no }
+				NOR = {
+					is_active_resolution = resolution_bureaucraticsurveillance_borderless_authority
+					is_active_resolution = resolution_bureaucraticsurveillance_personal_oversight
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_luminarium
+			NOT = {
+				agreement_preset = preset_luminarium
+			}
+		}
+	}
+	potential = {
+		has_overlord_dlc = yes
+	}
+}
+
+subject_holdings_limit_10 = {
+	term = subject_holdings_limit
+	loyalty_change = -80
+	ai_acceptance = {
+		overlord = 660
+		subject = -550
+	}
+	target_modifier = {
+		monthly_loyalty = -5.5
+		subject_holding_target_max_buildings_add = 10
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = not_allowed_for_tributary
+			NOT = {
+				agreement_preset = preset_tributary
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_galcom_resolution
+			OR = {
+				owner = { is_galactic_community_member = no }
+				NOR = {
+					is_active_resolution = resolution_bureaucraticsurveillance_borderless_authority
+					is_active_resolution = resolution_bureaucraticsurveillance_personal_oversight
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_luminarium
+			NOT = {
+				agreement_preset = preset_luminarium
+			}
+		}
+	}
+	potential = {
+		has_overlord_dlc = yes
+	}
+}
+
+subject_holdings_limit_11 = {
+	term = subject_holdings_limit
+	loyalty_change = -85
+	ai_acceptance = {
+		overlord = 720
+		subject = -600
+	}
+	target_modifier = {
+		monthly_loyalty = -5.75
+		subject_holding_target_max_buildings_add = 11
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = not_allowed_for_tributary
+			NOT = {
+				agreement_preset = preset_tributary
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_galcom_resolution
+			OR = {
+				owner = { is_galactic_community_member = no }
+				NOR = {
+					is_active_resolution = resolution_bureaucraticsurveillance_borderless_authority
+					is_active_resolution = resolution_bureaucraticsurveillance_personal_oversight
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_luminarium
+			NOT = {
+				agreement_preset = preset_luminarium
+			}
+		}
+	}
+	potential = {
+		has_overlord_dlc = yes
+	}
+}
+
+subject_holdings_limit_12 = {
+	term = subject_holdings_limit
+	loyalty_change = -90
+	ai_acceptance = {
+		overlord = 780
+		subject = -650
+	}
+	target_modifier = {
+		monthly_loyalty = -6
+		subject_holding_target_max_buildings_add = 12
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = not_allowed_for_tributary
+			NOT = {
+				agreement_preset = preset_tributary
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_galcom_resolution
+			OR = {
+				owner = { is_galactic_community_member = no }
+				NOR = {
+					is_active_resolution = resolution_bureaucraticsurveillance_borderless_authority
+					is_active_resolution = resolution_bureaucraticsurveillance_personal_oversight
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_luminarium
+			NOT = {
+				agreement_preset = preset_luminarium
+			}
+		}
+	}
+	potential = {
+		has_overlord_dlc = yes
+	}
+}
+
+subject_holdings_limit_13 = {
+	term = subject_holdings_limit
+	loyalty_change = -95
+	ai_acceptance = {
+		overlord = 840
+		subject = -700
+	}
+	target_modifier = {
+		monthly_loyalty = -6.25
+		subject_holding_target_max_buildings_add = 13
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = not_allowed_for_tributary
+			NOT = {
+				agreement_preset = preset_tributary
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_galcom_resolution
+			OR = {
+				owner = { is_galactic_community_member = no }
+				NOR = {
+					is_active_resolution = resolution_bureaucraticsurveillance_borderless_authority
+					is_active_resolution = resolution_bureaucraticsurveillance_personal_oversight
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_luminarium
+			NOT = {
+				agreement_preset = preset_luminarium
+			}
+		}
+	}
+	potential = {
+		has_overlord_dlc = yes
+	}
+}
+
+subject_holdings_limit_14 = {
+	term = subject_holdings_limit
+	loyalty_change = -100
+	ai_acceptance = {
+		overlord = 900
+		subject = -750
+	}
+	target_modifier = {
+		monthly_loyalty = -6.5
+		subject_holding_target_max_buildings_add = 14
+	}
+	possible = {
+		custom_tooltip = {
+			fail_text = not_allowed_for_tributary
+			NOT = {
+				agreement_preset = preset_tributary
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_galcom_resolution
+			OR = {
+				owner = { is_galactic_community_member = no }
+				NOR = {
+					is_active_resolution = resolution_bureaucraticsurveillance_borderless_authority
+					is_active_resolution = resolution_bureaucraticsurveillance_personal_oversight
+				}
+			}
+		}
+		custom_tooltip = {
+			fail_text = not_allowed_for_luminarium
+			NOT = {
+				agreement_preset = preset_luminarium
+			}
+		}
+	}
+	potential = {
+		has_overlord_dlc = yes
+	}
+}
+
+subject_holdings_limit_15 = {
+	term = subject_holdings_limit
+	loyalty_change = -105
+	ai_acceptance = {
+		overlord = 960
+		subject = -800
+	}
+	target_modifier = {
+		monthly_loyalty = -6.75
+		subject_holding_target_max_buildings_add = 15
 	}
 	possible = {
 		custom_tooltip = {
