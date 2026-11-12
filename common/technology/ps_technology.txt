@@ -49,3 +49,76 @@ tech_ps_ghost_networks = {
 		factor = 1.2
 	}
 }
+
+# ТЕНЕВОЙ ПОКРОВ I–III: усиление маскировки (нужна ванильная ветка маскировки, DLC First Contact)
+tech_ps_shadow_veil_1 = {
+	cost = @tier2cost2
+	area = physics
+	tier = 2
+	category = { field_manipulation }
+	prerequisites = { "tech_cloaking_1" }
+	weight = @tier2weight2
+
+	potential = { ps_is_partisan_empire = yes }
+
+	modifier = {
+		ship_cloaking_strength_add = 1
+	}
+
+	weight_modifier = {
+		factor = 2
+	}
+
+	ai_weight = {
+		factor = 1.5
+	}
+}
+
+tech_ps_shadow_veil_2 = {
+	cost = @tier3cost2
+	area = physics
+	tier = 3
+	category = { field_manipulation }
+	prerequisites = { "tech_ps_shadow_veil_1" "tech_cloaking_2" }
+	weight = @tier3weight2
+
+	potential = { ps_is_partisan_empire = yes }
+
+	modifier = {
+		ship_cloaking_strength_add = 1
+		ship_evasion_add = 5
+	}
+
+	weight_modifier = {
+		factor = 2
+	}
+
+	ai_weight = {
+		factor = 1.5
+	}
+}
+
+tech_ps_shadow_veil_3 = {
+	cost = @tier4cost2
+	area = physics
+	tier = 4
+	category = { field_manipulation }
+	prerequisites = { "tech_ps_shadow_veil_2" "tech_cloaking_3" }
+	weight = @tier4weight2
+
+	potential = { ps_is_partisan_empire = yes }
+
+	modifier = {
+		ship_cloaking_strength_add = 1
+		ship_evasion_add = 5
+		intel_encryption_add = 1
+	}
+
+	weight_modifier = {
+		factor = 1.5
+	}
+
+	ai_weight = {
+		factor = 1.2
+	}
+}

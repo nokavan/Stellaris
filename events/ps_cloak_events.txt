@@ -1,0 +1,47 @@
+# Синдикат Сопротивления — маскировка ковчега
+namespace = ps_cloak
+
+# Включить маскировку флота ковчега (scope = флот)
+fleet_event = {
+	id = ps_cloak.1
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		set_cloaking_active = yes
+	}
+}
+
+# Ежемесячно (scope = страна): если стелс-модуль включён, вернуть маскировку ковчегу после боя
+country_event = {
+	id = ps_cloak.2
+	hide_window = yes
+	is_triggered_only = yes
+
+	trigger = {
+		ps_is_partisan_empire = yes
+		NOT = { has_country_flag = ps_ark_cloak_off }
+		any_owned_starbase = {
+			is_arkship_starbase = yes
+			has_starbase_module = arkship_ps_stealth_field
+		}
+	}
+
+	immediate = {
+		every_owned_starbase = {
+			limit = {
+				is_arkship_starbase = yes
+				has_starbase_module = arkship_ps_stealth_field
+			}
+			fleet = {
+				if = {
+					limit = {
+						is_cloaked = no
+						has_cloaking_strength > 0
+					}
+					set_cloaking_active = yes
+				}
+			}
+		}
+	}
+}

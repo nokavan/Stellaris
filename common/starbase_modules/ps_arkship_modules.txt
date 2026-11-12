@@ -1,0 +1,68 @@
+# Синдикат Сопротивления — стелс-модуль ковчега
+# Формат сверен с vanilla starbase_modules/00_arkship_utility_modules.txt и
+# waystation_cloaking (00_waystation_modules.txt): набор компонентов маскировки + включение событием.
+arkship_ps_stealth_field = {
+	icon = "GFX_waystation_concealment_field"
+	section = "ARKSHIP_SCIENCE_MODULE"
+	construction_days = 180
+	starbase_type = arkship
+	category = sm_utility_cat
+
+	starbase_limit = {
+		base = 1
+	}
+
+	potential = {
+		is_arkship_starbase = yes
+		owner? = {
+			ps_is_partisan_empire = yes
+			has_technology = tech_ps_shadow_veil_1
+		}
+	}
+
+	show_in_tech = "tech_ps_shadow_veil_1"
+
+	show_tech_unlock_if = {
+		is_nomadic = yes
+	}
+
+	cannot_fit_on_slots = { spinal_mount_1 }
+
+	resources = {
+		category = starbase_arkship_upgrades
+		cost = {
+			alloys = 500
+			exotic_gases = 100
+		}
+		upkeep = {
+			energy = 5
+			exotic_gases = 0.5
+		}
+	}
+
+	component_set = ps_arkship_cloaking_components
+	station_modifier = {
+		ship_cloaking_strength_add = 1
+		ship_evasion_add = 10
+	}
+	custom_tooltip = sm_arkship_ps_stealth_field_tt
+
+	on_finished = {
+		fleet = {
+			fleet_event = {
+				id = ps_cloak.1
+				days = 1
+			}
+		}
+	}
+
+	on_destroyed = {
+		fleet = {
+			set_cloaking_active = no
+		}
+	}
+
+	ai_weight = {
+		weight = 100
+	}
+}

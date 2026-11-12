@@ -1,0 +1,6 @@
+# Набор компонентов маскировки ковчега (даёт модуль arkship_ps_stealth_field)
+component_set = {
+	key = "ps_arkship_cloaking_components"
+	icon = "GFX_ship_part_cloak_1"
+	icon_frame = 1
+}

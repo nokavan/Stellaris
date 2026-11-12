@@ -177,3 +177,71 @@ decision_ps_shadow_logistics_off = {
 		custom_tooltip = decision_ps_shadow_logistics_off_tooltip
 	}
 }
+
+# КОВЧЕГ: включить / выключить стелс-модуль
+decision_ps_ark_cloak_off = {
+	owned_planets_only = yes
+
+	potential = {
+		is_capital = yes
+		owner = {
+			NOT = { has_country_flag = ps_ark_cloak_off }
+			any_owned_starbase = {
+				is_arkship_starbase = yes
+				has_starbase_module = arkship_ps_stealth_field
+			}
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_ps_ark_cloak_off_tooltip
+		hidden_effect = {
+			owner = {
+				set_country_flag = ps_ark_cloak_off
+				every_owned_starbase = {
+					limit = {
+						is_arkship_starbase = yes
+						has_starbase_module = arkship_ps_stealth_field
+					}
+					fleet = { set_cloaking_active = no }
+				}
+			}
+		}
+	}
+}
+
+decision_ps_ark_cloak_on = {
+	owned_planets_only = yes
+
+	potential = {
+		is_capital = yes
+		owner = {
+			has_country_flag = ps_ark_cloak_off
+			any_owned_starbase = {
+				is_arkship_starbase = yes
+				has_starbase_module = arkship_ps_stealth_field
+			}
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_ps_ark_cloak_on_tooltip
+		hidden_effect = {
+			owner = {
+				remove_country_flag = ps_ark_cloak_off
+				every_owned_starbase = {
+					limit = {
+						is_arkship_starbase = yes
+						has_starbase_module = arkship_ps_stealth_field
+					}
+					fleet = {
+						if = {
+							limit = { has_cloaking_strength > 0 }
+							set_cloaking_active = yes
+						}
+					}
+				}
+			}
+		}
+	}
+}
