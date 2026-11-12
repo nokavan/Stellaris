@@ -13,14 +13,12 @@ ps_spend_network = {
 }
 
 # Сделать текущую страну вассалом сюзерена (параметр OVERLORD) по соглашению «Режим-клиент».
-# ВНИМАНИЕ: синтаксис set_subject_of не удалось сверить с ванильными файлами 4.x
-# (нужен файл, где ваниль создаёт вассалов скриптом). Если в error.log будет ошибка
-# на этой строке — исправить здесь. Запасной путь: страна получает «Марионеточный
-# совет» и +200 к отношению, поэтому примет вассалитет через обычную дипломатию.
+# Синтаксис 4.x: set_subject_of = { who = X preset = Y } (сверено по Gigastructures 4.5).
+# (было agreement_preset — error.log: «Unexpected token: agreement_preset»).
 ps_make_cell_subject = {
 	set_subject_of = {
 		who = $OVERLORD$
-		agreement_preset = preset_ps_client_regime
+		preset = preset_ps_client_regime
 	}
 }
 
@@ -31,7 +29,7 @@ ps_make_cell_subject = {
 ps_make_specialist_subject = {
 	set_subject_of = {
 		who = $OVERLORD$
-		agreement_preset = $PRESET$
+		preset = $PRESET$
 	}
 }
 

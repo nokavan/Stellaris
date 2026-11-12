@@ -240,7 +240,7 @@ def situation(c, idx):
                f"\t\t\ticon_background = GFX_situation_stage_frame_red\n\t\t\tend = {25 * i}\n"
                f"\t\t\tmodifier = {{\n{mods(sm, 4)}\t\t\t}}\n\t\t}}\n")
     ap = (f"\tapproach = {{\n\t\tname = ps_crisis_ignore\n\t\ticon = GFX_situation_approach_this_is_fine\n"
-          f"\t\ticon_background = GFX_situation_approach_bg_yellow\n\t\tdefault = yes\n\t\tai_weight = {{\n\t\t\tbase = 1\n\t\t}}\n\t}}\n")
+          f"\t\ticon_background = GFX_situation_approach_bg_yellow\n\t\tdefault = yes\n\t\ton_select = {{\n\t\t\tcustom_tooltip = ps_crisis_ignore_tt\n\t\t}}\n\t\tai_weight = {{\n\t\t\tbase = 1\n\t\t}}\n\t}}\n")
     mp = ""
     for (ak, icon, bg, up, am, red, *_t) in c["approaches"]:
         a = f"ps_{c['key']}_{ak}"
@@ -514,7 +514,7 @@ def loc(lang):
             n, d = c["final_mod_ru"] if ru else c["final_mod_en"]
             L += [f' {c["final_mod_key"]}:0 "{n}"', f' {c["final_mod_key"]}_desc:0 "{d}"']
     if ru:
-        L += [' ps_crisis_ignore:0 "Переждать"', ' ps_crisis_ignore_desc:0 "Ничего не предпринимать и надеяться, что само пройдёт."',
+        L += [' ps_crisis_ignore:0 "Переждать"', ' ps_crisis_ignore_desc:0 "Ничего не предпринимать и надеяться, что само пройдёт."', ' ps_crisis_ignore_tt:0 "Без расходов и бонусов: кризис развивается сам."',
               ' ps_crisis_progress_unrest:0 "Нестабильные планеты"', ' ps_crisis_progress_agents:0 "Иностранные агенты"',
               ' ps_crisis_fail_tooltip:0 "Кризис преодолён: §G+5§! стабильности и §G+5%§! единства на 5 лет."',
               ' ps_crisis_overcome:0 "Кризис преодолён"', ' ps_crisis_overcome_desc:0 "Мы выстояли, и это нас сплотило."',
@@ -525,7 +525,7 @@ def loc(lang):
               ' ps_crisis.victim.a:0 "Проклятые партизаны!"',
               ' ps_crisis.200.name:0 "Кризис разразился"', ' ps_crisis.200.desc:0 "Кризис, который наши агенты запустили в чужой империи, достиг пика. Цель не справилась."', ' ps_crisis.200.a:0 "Сеть делает своё дело."']
     else:
-        L += [' ps_crisis_ignore:0 "Wait It Out"', ' ps_crisis_ignore_desc:0 "Do nothing and hope it passes."',
+        L += [' ps_crisis_ignore:0 "Wait It Out"', ' ps_crisis_ignore_desc:0 "Do nothing and hope it passes."', ' ps_crisis_ignore_tt:0 "No costs or bonuses: the crisis runs its course."',
               ' ps_crisis_progress_unrest:0 "Unstable planets"', ' ps_crisis_progress_agents:0 "Foreign agents"',
               ' ps_crisis_fail_tooltip:0 "Crisis overcome: §G+5§! stability and §G+5%§! unity for 5 years."',
               ' ps_crisis_overcome:0 "Crisis Overcome"', ' ps_crisis_overcome_desc:0 "We endured, and it brought us together."',

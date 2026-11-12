@@ -6,7 +6,7 @@ ps_vm_collect_stats = {
 	export_trigger_value_to_variable = { trigger = used_naval_capacity_integer variable = ps_nav rounded = yes }
 	export_trigger_value_to_variable = { trigger = max_naval_capacity variable = ps_navmax rounded = yes }
 	export_trigger_value_to_variable = { trigger = controlled_systems variable = ps_sysn rounded = yes }
-	export_trigger_value_to_variable = { trigger = num_sapient_pops variable = ps_pops rounded = yes }
+	export_trigger_value_to_variable = { trigger = num_owned_planets variable = ps_pops rounded = yes }
 	export_trigger_value_to_variable = { trigger = diplomacy_weight variable = ps_dw rounded = yes }
 	export_trigger_value_to_variable = { trigger = expenses variable = ps_exp rounded = yes }
 	if = {

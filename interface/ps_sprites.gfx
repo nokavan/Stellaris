@@ -45,4 +45,12 @@ spriteTypes = {
 		name = "GFX_building_ps_partisan_academy"
 		texturefile = "gfx/interface/icons/buildings/building_ps_partisan_academy.dds"
 	}
+	spriteType = {
+		name = "GFX_wg_ps_red_storm"
+		texturefile = "gfx/interface/icons/diplomacy/ps_wg_red_storm.dds"
+	}
+	spriteType = {
+		name = "GFX_council_agenda_icon_agenda_ps_vassal_legates"
+		texturefile = "gfx/interface/icons/council_agendas/ps_vassal_legates.dds"
+	}
 }

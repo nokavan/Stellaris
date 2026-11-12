@@ -72,7 +72,7 @@ def gen_effects():
     s = "ps_vm_collect_stats = {\n"
     for trig, var in (("fleet_power", "ps_fp"), ("num_researched_techs", "ps_tech"),
                       ("used_naval_capacity_integer", "ps_nav"), ("max_naval_capacity", "ps_navmax"),
-                      ("controlled_systems", "ps_sysn"), ("num_sapient_pops", "ps_pops"),
+                      ("controlled_systems", "ps_sysn"), ("num_owned_planets", "ps_pops"),
                       ("diplomacy_weight", "ps_dw"), ("expenses", "ps_exp")):
         s += f"\texport_trigger_value_to_variable = {{ trigger = {trig} variable = {var} rounded = yes }}\n"
     for r in INCOME_RES:
@@ -569,6 +569,7 @@ ps_vm_admin_support = {
         for t in (1, 2, 3):
             dk = f"decision_ps_vp_{key}_{t}"
             prev = f"\n\t\t\thas_country_flag = ps_vp_{key}_{t-1}" if t > 1 else ""
+            rem_prev = f"\t\t\t\tremove_modifier = ps_vp_{key}_ov_{t-1}\n" if t > 1 else ""
             cost = mods_block(TIER_COST[t], "\t\t\t")
             d.append(f"""{dk} = {{
 	owned_planets_only = yes
@@ -603,8 +604,7 @@ ps_vm_admin_support = {
 			owner = {{
 				set_country_flag = ps_vp_{key}_{t}
 				set_timed_country_flag = {{ flag = ps_vp_cd days = 720 }}
-				remove_modifier = ps_vp_{key}_ov_{t-1}
-				add_modifier = {{ modifier = ps_vp_{key}_ov_{t} days = -1 }}
+{rem_prev}				add_modifier = {{ modifier = ps_vp_{key}_ov_{t} days = -1 }}
 				country_event = {{ id = ps_vm.90 }}
 			}}
 		}}
@@ -1027,7 +1027,7 @@ def gen_loc(ru_proj, en_proj):
                f"Флот: [ps_cell.ps_nav] из [ps_cell.ps_navmax] / [Root.ps_nav] из [Root.ps_navmax]{B}"
                f"Технологий: [ps_cell.ps_tech] / [Root.ps_tech]{B}"
                f"Систем: [ps_cell.ps_sysn] / [Root.ps_sysn]{B}"
-               f"Населения: [ps_cell.ps_pops] / [Root.ps_pops]{B}"
+               f"Колоний: [ps_cell.ps_pops] / [Root.ps_pops]{B}"
                f"Дипломатический вес: [ps_cell.ps_dw] / [Root.ps_dw]{B}"
                f"Баланс базовых ресурсов: [ps_cell.ps_inc_basic] / [Root.ps_inc_basic]{B}{B}"
                "§HПоддержка:§! экономическая — +10% к энергии, минералам и еде и +5% к сплавам на 10 лет; административная — +5 к стабильности, −10% к размеру империи, +10% к единству на 10 лет и §G+10§! лояльности. Каждая — раз в 5 лет.")
@@ -1035,7 +1035,7 @@ def gen_loc(ru_proj, en_proj):
                .replace("Принципы:", "Ethics:").replace("Лояльность — в окне вассала (дипломатия).", "Loyalty: see the subject's diplomacy window.")
                .replace("Сравнение (вассал / сюзерен)", "Comparison (subject / overlord)").replace("Мощь флота:", "Fleet power:")
                .replace("Флот:", "Fleet:").replace(" из ", " of ").replace("Технологий:", "Techs:").replace("Систем:", "Systems:")
-               .replace("Населения:", "Population:").replace("Дипломатический вес:", "Diplomatic weight:")
+               .replace("Колоний:", "Colonies:").replace("Дипломатический вес:", "Diplomatic weight:")
                .replace("Баланс базовых ресурсов:", "Basic resource balance:")
                .replace("§HПоддержка:§! экономическая — +10% к энергии, минералам и еде и +5% к сплавам на 10 лет; административная — +5 к стабильности, −10% к размеру империи, +10% к единству на 10 лет и §G+10§! лояльности. Каждая — раз в 5 лет.",
                         "§HSupport:§! economic — +10% energy, minerals and food and +5% alloys for 10 years; administrative — +5 stability, −10% empire size, +10% unity for 10 years and §G+10§! loyalty. Each once per 5 years."))
@@ -1043,12 +1043,12 @@ def gen_loc(ru_proj, en_proj):
     sys_ru = (f"Выбранная система: §Y[ps_sys.GetName]§!, владелец §Y[ps_sys_owner.GetName]§!, колоний владельца: [Root.ps_sys_colonies].{B}"
               f"Получатель при передаче: ячейка §Y[ps_cell.GetName]§!.{B}"
               f"Цена: §Y[Root.ps_sys_cost]§! влияния (25 + 50 за колонию).{B}{B}"
-              "Передавайте системы вассалам, забирайте их территории или перераспределяйте системы между ними. Общая граница не требуется.\n\n"
+              "Передавайте системы вассалам, забирайте их территории или перераспределяйте системы между ними. Общая граница не требуется." + B + B +
               "§HПравила:§! изъятие у вассала — §R−10§! лояльности; передача своей системы — без штрафа. Повторно ту же систему можно передать через 5 лет. Нужен мир, контроль форпоста и колоний. Столица и последняя система владельца защищены. Основание колонии, наземные бои и чужие обычные планеты мешают передаче. Чужие объекты (например, станции кочевников) сохраняют владельца.")
     sys_en = (f"Selected system: §Y[ps_sys.GetName]§!, owner §Y[ps_sys_owner.GetName]§!, owner's colonies: [Root.ps_sys_colonies].{B}"
               f"Receiver on transfer: cell §Y[ps_cell.GetName]§!.{B}"
               f"Cost: §Y[Root.ps_sys_cost]§! influence (25 + 50 per colony).{B}{B}"
-              "Transfer systems to subjects, take their territory or redistribute systems between them. No shared border required.\n\n"
+              "Transfer systems to subjects, take their territory or redistribute systems between them. No shared border required." + B + B +
               "§HRules:§! taking from a subject — §R−10§! loyalty; giving your own system — no penalty. The same system can be transferred again after 5 years. Requires peace and control of the outpost and colonies. Capital and the owner's last system are protected. Colonization in progress, ground combat and foreign regular planets block the transfer. Foreign objects (e.g. nomad stations) keep their owner.")
 
     ru = ["﻿l_russian:\n",

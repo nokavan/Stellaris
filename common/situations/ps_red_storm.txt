@@ -130,6 +130,9 @@ situation_ps_red_storm = {
 		icon = GFX_situation_approach_whip
 		icon_background = GFX_situation_approach_bg_red
 		default = yes
+		on_select = {
+			custom_tooltip = ps_storm_approach_world_revolution_tt
+		}
 		ai_weight = {
 			base = 1
 		}

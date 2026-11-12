@@ -94,6 +94,7 @@
  ps_crisis_fleet_purged_desc:0 "Командование больше не доверяет экипажам."
  ps_crisis_ignore:0 "Переждать"
  ps_crisis_ignore_desc:0 "Ничего не предпринимать и надеяться, что само пройдёт."
+ ps_crisis_ignore_tt:0 "Без расходов и бонусов: кризис развивается сам."
  ps_crisis_progress_unrest:0 "Нестабильные планеты"
  ps_crisis_progress_agents:0 "Иностранные агенты"
  ps_crisis_fail_tooltip:0 "Кризис преодолён: §G+5§! стабильности и §G+5%§! единства на 5 лет."

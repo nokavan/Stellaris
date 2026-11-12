@@ -129,12 +129,12 @@ nomad_total_war = {
 					has_purity_imperfection_remediation_tradition = yes
 				}
 			}
-		}
-		custom_tooltip = {
-			fail_text = nomad_total_war_requires_purge_allowed
-			OR = {
-				is_homicidal = yes
-				has_policy_flag = purge_allowed
+			custom_tooltip = {
+				fail_text = nomad_total_war_requires_purge_allowed
+				OR = {
+					is_homicidal = yes
+					has_policy_flag = purge_allowed
+				}
 			}
 		}
 

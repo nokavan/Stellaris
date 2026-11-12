@@ -1,4 +1,6 @@
 # Встроено из «Criminal Heritage Expanded» (Workshop 2631525996, с разрешения автора). 6 зданий филиалов для криминальных синдикатов.
+# Приведено к 4.5: переменные @trade_value_from_jobs (0.01) и @crime_floor_from_legal_crime (10) заменены числами;
+# envoys_add / country_trust_cap_add убраны из модификаторов планеты (там они не разрешены).
 # Не включайте оригинальный мод вместе с «Синдикатом».
 #Main Building
 building_criminal_headquarters = {
@@ -19,8 +21,6 @@ building_criminal_headquarters = {
 				is_legit_or_legal_criminal = yes
 			}
 		}
-		envoys_add = 0.5
-		country_trust_cap_add = -5
 		job_bureaucrat_add  = 200
 	}
 
@@ -29,8 +29,6 @@ building_criminal_headquarters = {
 			branch_office_owner = { is_illegal_criminal = yes }
 		}
 		job_bureaucrat_add = 100
-		envoys_add = 0.5
-		country_trust_cap_add = -5
 		job_corrupt_bureaucrat_per_pop = 0.01
 		job_criminal_per_pop = 0.01
 		planet_crime_add = 15
@@ -41,7 +39,7 @@ building_criminal_headquarters = {
 		potential = {
 			always = yes
 		}
-		planet_jobs_trade_produces_mult = @trade_value_from_jobs
+		planet_jobs_trade_produces_mult = 0.01
 		mult = value:num_jobs_with_tag|TAG|crime| #benefits from enforcers, criminals, slaves, livestock and purged pops
 	}
 	#Crims cause crime even with deal
@@ -52,7 +50,7 @@ building_criminal_headquarters = {
 				is_legit_or_legal_criminal = yes
 			}
 		}
-		planet_crime_floor_add = @crime_floor_from_legal_crime
+		planet_crime_floor_add = 10
 	}
 
 	custom_tooltip = trade_value_from_enforcers_and_criminals
@@ -120,7 +118,7 @@ building_union_busting_lawfirm = {
 		potential = {
 			always = yes
 		}
-		planet_jobs_trade_produces_mult = @trade_value_from_jobs
+		planet_jobs_trade_produces_mult = 0.01
 		mult = value:num_pops_in_strata|STRATA|worker| #benefits from enforcers, criminals, slaves, livestock and purged pops
 	}
 	#Crims cause crime even with deal
@@ -131,7 +129,7 @@ building_union_busting_lawfirm = {
 				is_legit_or_legal_criminal = yes
 			}
 		}
-		planet_crime_floor_add = @crime_floor_from_legal_crime
+		planet_crime_floor_add = 10
 	}
 
 	custom_tooltip = trade_value_from_workers
@@ -196,7 +194,7 @@ building_unregulated_factories = {
 		potential = {
 			always = yes
 		}
-		planet_jobs_trade_produces_mult = @trade_value_from_jobs
+		planet_jobs_trade_produces_mult = 0.01
 		mult = value:num_pops_in_strata|STRATA|specialist| #benefits from enforcers, criminals, slaves, livestock and purged pops
 	}
 
@@ -208,7 +206,7 @@ building_unregulated_factories = {
 				is_legit_or_legal_criminal = yes
 			}
 		}
-		planet_crime_floor_add = @crime_floor_from_legal_crime
+		planet_crime_floor_add = 10
 	}
 
 	custom_tooltip = trade_value_from_specialists
@@ -274,7 +272,7 @@ building_unregulated_research_labs = {
 		potential = {
 			always = yes
 		}
-		planet_jobs_trade_produces_mult = @trade_value_from_jobs
+		planet_jobs_trade_produces_mult = 0.01
 		mult = value:num_jobs_with_tag|TAG|research| #benefits from enforcers, criminals, slaves, livestock and purged pops
 	}
 
@@ -286,7 +284,7 @@ building_unregulated_research_labs = {
 				is_legit_or_legal_criminal = yes
 			}
 		}
-		planet_crime_floor_add = @crime_floor_from_legal_crime
+		planet_crime_floor_add = 10
 	}
 
 
@@ -341,10 +339,8 @@ building_Xeno_Relations_bureau = {
 		potential = {
 			always = yes
 		}
-		envoys_add = 0.5
 		intel_decryption_add = 0.25
 		intel_encryption_add = 0.25
-		country_trust_cap_add = -5
 		mult = value:branch_office_value_for_buildings
 	}
 
@@ -362,7 +358,7 @@ building_Xeno_Relations_bureau = {
 		potential = {
 			always = yes
 		}
-		planet_jobs_trade_produces_mult = @trade_value_from_jobs
+		planet_jobs_trade_produces_mult = 0.01
 		mult = value:num_pops_in_strata|STRATA|worker|
 	}
 
@@ -372,7 +368,7 @@ building_Xeno_Relations_bureau = {
 				has_civic = civic_worker_coop
 			}
 		}
-		planet_jobs_trade_produces_mult = @trade_value_from_jobs
+		planet_jobs_trade_produces_mult = 0.01
 		mult = value:num_pops_in_strata|STRATA|worker|
 	}
 
@@ -382,7 +378,7 @@ building_Xeno_Relations_bureau = {
 				has_civic = civic_corporate_dimensional_worship
 			}
 		}
-		planet_jobs_trade_produces_mult = @trade_value_from_jobs
+		planet_jobs_trade_produces_mult = 0.01
 		mult = value:num_pops_in_strata|STRATA|worker|
 	}
 
@@ -392,7 +388,7 @@ building_Xeno_Relations_bureau = {
 				has_civic = civic_death_cult_corporate
 			}
 		}
-		planet_jobs_trade_produces_mult = @trade_value_from_jobs
+		planet_jobs_trade_produces_mult = 0.01
 		mult = value:num_pops_in_strata|STRATA|worker|
 	}
 
@@ -499,7 +495,7 @@ building_high_society_clubs = {
 		potential = {
 			always = yes
 		}
-		planet_jobs_trade_produces_mult = @trade_value_from_jobs
+		planet_jobs_trade_produces_mult = 0.01
 		mult = value:num_jobs_with_tag|TAG|amenities|
 	}
 
@@ -509,7 +505,7 @@ building_high_society_clubs = {
 				has_valid_civic = civic_ruthless_competition
 			}
 		}
-		planet_jobs_trade_produces_mult = @trade_value_from_jobs
+		planet_jobs_trade_produces_mult = 0.01
 		mult = value:num_jobs_with_tag|TAG|amenities|
 	}
 
@@ -519,7 +515,7 @@ building_high_society_clubs = {
 				has_valid_civic = civic_task_delegation_corporate
 			}
 		}
-		planet_jobs_trade_produces_mult = @trade_value_from_jobs
+		planet_jobs_trade_produces_mult = 0.01
 		mult = value:num_jobs_with_tag|TAG|amenities|
 	}
 
@@ -529,7 +525,7 @@ building_high_society_clubs = {
 				has_valid_civic = civic_environmental_architects_megacorp
 			}
 		}
-		planet_jobs_trade_produces_mult = @trade_value_from_jobs
+		planet_jobs_trade_produces_mult = 0.01
 		mult = value:num_jobs_with_tag|TAG|amenities|
 	}
 
@@ -540,7 +536,7 @@ building_high_society_clubs = {
 				is_criminal_syndicate = yes
 			}
 		}
-		planet_crime_floor_add = @crime_floor_from_legal_crime
+		planet_crime_floor_add = 10
 	}
 
 	#Trader Jobs from civics

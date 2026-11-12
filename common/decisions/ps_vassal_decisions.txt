@@ -57,7 +57,6 @@ decision_ps_vp_chancellery_1 = {
 			owner = {
 				set_country_flag = ps_vp_chancellery_1
 				set_timed_country_flag = { flag = ps_vp_cd days = 720 }
-				remove_modifier = ps_vp_chancellery_ov_0
 				add_modifier = { modifier = ps_vp_chancellery_ov_1 days = -1 }
 				country_event = { id = ps_vm.90 }
 			}
@@ -203,7 +202,6 @@ decision_ps_vp_development_bank_1 = {
 			owner = {
 				set_country_flag = ps_vp_development_bank_1
 				set_timed_country_flag = { flag = ps_vp_cd days = 720 }
-				remove_modifier = ps_vp_development_bank_ov_0
 				add_modifier = { modifier = ps_vp_development_bank_ov_1 days = -1 }
 				country_event = { id = ps_vm.90 }
 			}
@@ -349,7 +347,6 @@ decision_ps_vp_governor_academy_1 = {
 			owner = {
 				set_country_flag = ps_vp_governor_academy_1
 				set_timed_country_flag = { flag = ps_vp_cd days = 720 }
-				remove_modifier = ps_vp_governor_academy_ov_0
 				add_modifier = { modifier = ps_vp_governor_academy_ov_1 days = -1 }
 				country_event = { id = ps_vm.90 }
 			}
@@ -495,7 +492,6 @@ decision_ps_vp_war_college_1 = {
 			owner = {
 				set_country_flag = ps_vp_war_college_1
 				set_timed_country_flag = { flag = ps_vp_cd days = 720 }
-				remove_modifier = ps_vp_war_college_ov_0
 				add_modifier = { modifier = ps_vp_war_college_ov_1 days = -1 }
 				country_event = { id = ps_vm.90 }
 			}
@@ -641,7 +637,6 @@ decision_ps_vp_science_exchange_1 = {
 			owner = {
 				set_country_flag = ps_vp_science_exchange_1
 				set_timed_country_flag = { flag = ps_vp_cd days = 720 }
-				remove_modifier = ps_vp_science_exchange_ov_0
 				add_modifier = { modifier = ps_vp_science_exchange_ov_1 days = -1 }
 				country_event = { id = ps_vm.90 }
 			}

@@ -4574,12 +4574,13 @@ building_ps_crim_negotiators_school = {
 	triggered_country_modifier = {
 		potential = { always = yes }
 		diplo_weight_mult = 0.05
+		envoys_add = 1
 	}
 
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
-		envoys_add = 1
+		planet_stability_add = 3
 	}
 
 	resources = {

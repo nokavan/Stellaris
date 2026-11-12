@@ -83,6 +83,9 @@ situation_ps_general_strike = {
 		icon = GFX_situation_approach_this_is_fine
 		icon_background = GFX_situation_approach_bg_yellow
 		default = yes
+		on_select = {
+			custom_tooltip = ps_crisis_ignore_tt
+		}
 		ai_weight = {
 			base = 1
 		}
@@ -223,6 +226,9 @@ situation_ps_insurgency = {
 		icon = GFX_situation_approach_this_is_fine
 		icon_background = GFX_situation_approach_bg_yellow
 		default = yes
+		on_select = {
+			custom_tooltip = ps_crisis_ignore_tt
+		}
 		ai_weight = {
 			base = 1
 		}
@@ -363,6 +369,9 @@ situation_ps_financial_collapse = {
 		icon = GFX_situation_approach_this_is_fine
 		icon_background = GFX_situation_approach_bg_yellow
 		default = yes
+		on_select = {
+			custom_tooltip = ps_crisis_ignore_tt
+		}
 		ai_weight = {
 			base = 1
 		}
@@ -495,6 +504,9 @@ situation_ps_legitimacy = {
 		icon = GFX_situation_approach_this_is_fine
 		icon_background = GFX_situation_approach_bg_yellow
 		default = yes
+		on_select = {
+			custom_tooltip = ps_crisis_ignore_tt
+		}
 		ai_weight = {
 			base = 1
 		}
@@ -631,6 +643,9 @@ situation_ps_naval_mutiny = {
 		icon = GFX_situation_approach_this_is_fine
 		icon_background = GFX_situation_approach_bg_yellow
 		default = yes
+		on_select = {
+			custom_tooltip = ps_crisis_ignore_tt
+		}
 		ai_weight = {
 			base = 1
 		}

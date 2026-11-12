@@ -6,4 +6,4 @@ tags={
 dependencies={
 	"Синдикат Сопротивления / Partisan Syndicate"
 }
-supported_version="v4.*"
+supported_version="v4.5.*"

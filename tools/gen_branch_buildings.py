@@ -31,7 +31,7 @@ STATIC = {
     "starbase_shipyard_build_speed_mult", "ship_speed_mult", "country_resource_max_add",
     "country_physics_research_produces_mult", "country_society_research_produces_mult",
     "country_engineering_research_produces_mult",
-    "intel_encryption_add", "diplo_weight_mult",
+    "intel_encryption_add", "diplo_weight_mult", "envoys_add",
 }
 PHY, SOC, ENG = ("country_physics_research_produces_mult", "country_society_research_produces_mult",
                  "country_engineering_research_produces_mult")
@@ -391,7 +391,7 @@ c("backdoor_cluster", "research", 2, {"intel_encryption_add": 1}, {"planet_jobs_
 c("pr_agency", "unity", 1, {U: 2}, {"planet_stability_add": 3},
   ("Подставное PR-агентство", "Хорошие новости о власти — по нашему прейскуранту."),
   ("Front PR Agency", "Good news about the authorities — at our rates."))
-c("negotiators_school", "government", 2, {"diplo_weight_mult": 0.05}, {"envoys_add": 1},
+c("negotiators_school", "government", 2, {"diplo_weight_mult": 0.05, "envoys_add": 1}, {"planet_stability_add": 3},
   ("Школа «переговорщиков»", "Здесь учат договариваться так, чтобы отказаться было невозможно."),
   ("«Negotiators» School", "Teaches negotiating so that refusal is impossible."))
 c("data_vault", "research", 2, {SPY: 1}, {"planet_jobs_physics_research_produces_mult": 0.05, "planet_jobs_society_research_produces_mult": 0.05, "planet_jobs_engineering_research_produces_mult": 0.05},

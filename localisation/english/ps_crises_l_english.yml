@@ -94,6 +94,7 @@
  ps_crisis_fleet_purged_desc:0 "Command no longer trusts its crews."
  ps_crisis_ignore:0 "Wait It Out"
  ps_crisis_ignore_desc:0 "Do nothing and hope it passes."
+ ps_crisis_ignore_tt:0 "No costs or bonuses: the crisis runs its course."
  ps_crisis_progress_unrest:0 "Unstable planets"
  ps_crisis_progress_agents:0 "Foreign agents"
  ps_crisis_fail_tooltip:0 "Crisis overcome: §G+5§! stability and §G+5%§! unity for 5 years."

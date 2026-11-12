@@ -9,4 +9,4 @@ dependencies={
 	"Gigastructural Engineering & More (4.5)"
 	"Halo: Forerunner Ships & Portraits"
 }
-supported_version="v4.*"
+supported_version="v4.5.*"

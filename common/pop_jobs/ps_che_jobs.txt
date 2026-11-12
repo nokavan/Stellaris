@@ -1,12 +1,15 @@
 # Встроено из «Criminal Heritage Expanded» (Workshop 2631525996, с разрешения автора). 5 «коррумпированных» работ.
+# Приведено к формату 4.5: building_icon -> swappable_data, убраны clothes_texture_index и ignores_favorite.
 corrupt_bureaucrat = {
 	category = criminal
 	is_capped_by_modifier = yes
 	can_set_priority = no
-	clothes_texture_index = 2
-	building_icon = building_residence
+	swappable_data = {
+		default = {
+			building_icon = building_residence
+		}
+	}
 	contributes_to_diplo_weight = no
-	ignores_favorite = yes #this means that if you favorite e.g. clerks, the +1000 bonus will not matter for jobs working as criminals
 
 	possible_pre_triggers = {
 		has_owner = yes
@@ -40,10 +43,12 @@ corrupt_researcher = {
 	category = criminal
 	is_capped_by_modifier = yes
 	can_set_priority = no
-	clothes_texture_index = 2
-	building_icon = building_residence
+	swappable_data = {
+		default = {
+			building_icon = building_residence
+		}
+	}
 	contributes_to_diplo_weight = no
-	ignores_favorite = yes #this means that if you favorite e.g. clerks, the +1000 bonus will not matter for jobs working as criminals
 
 	possible_pre_triggers = {
 		has_owner = yes
@@ -73,10 +78,12 @@ corrupt_lawyer = {
 	category = criminal
 	is_capped_by_modifier = yes
 	can_set_priority = no
-	clothes_texture_index = 2
-	building_icon = building_residence
+	swappable_data = {
+		default = {
+			building_icon = building_residence
+		}
+	}
 	contributes_to_diplo_weight = no
-	ignores_favorite = yes #this means that if you favorite e.g. clerks, the +1000 bonus will not matter for jobs working as criminals
 
 	possible_pre_triggers = {
 		has_owner = yes
@@ -107,10 +114,12 @@ corrupt_manager = {
 	category = criminal
 	is_capped_by_modifier = yes
 	can_set_priority = no
-	clothes_texture_index = 2
-	building_icon = building_residence
+	swappable_data = {
+		default = {
+			building_icon = building_residence
+		}
+	}
 	contributes_to_diplo_weight = no
-	ignores_favorite = yes #this means that if you favorite e.g. clerks, the +1000 bonus will not matter for jobs working as criminals
 
 	possible_pre_triggers = {
 		has_owner = yes
@@ -141,10 +150,12 @@ corrupt_entertainer = {
 	category = criminal
 	is_capped_by_modifier = yes
 	can_set_priority = no
-	clothes_texture_index = 2
-	building_icon = building_residence
+	swappable_data = {
+		default = {
+			building_icon = building_residence
+		}
+	}
 	contributes_to_diplo_weight = no
-	ignores_favorite = yes #this means that if you favorite e.g. clerks, the +1000 bonus will not matter for jobs working as criminals
 
 	possible_pre_triggers = {
 		has_owner = yes

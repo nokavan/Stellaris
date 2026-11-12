@@ -7,4 +7,4 @@ dependencies={
 	"Синдикат Сопротивления / Partisan Syndicate"
 	"[4.5] XHK World Ark"
 }
-supported_version="v4.*"
+supported_version="v4.5.*"
