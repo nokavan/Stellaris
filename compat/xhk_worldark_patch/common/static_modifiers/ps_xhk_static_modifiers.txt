@@ -5,4 +5,8 @@ ps_partisan_worldark_bonus = {
 	intel_encryption_add = 1
 	envoys_add = 1
 	leader_lifespan_add = 1000
+	arkship_action_speed = 0.15
+	shipsize_military_arkship_tier_1_hull_mult = 0.10
+	shipsize_military_arkship_tier_2_hull_mult = 0.10
+	shipsize_military_arkship_tier_3_hull_mult = 0.10
 }
