@@ -135,3 +135,189 @@ origin_ps_partisan_ark = {
 		shipsize_military_arkship_tier_3_hull_mult = 0.10
 	}
 }
+# Синдикат Сопротивления — происхождение и цивики
+# Иконки цивиков берутся по имени файла:
+#   gfx/interface/icons/governments/civics/<ключ>.dds
+
+########################################
+# ПРОИСХОЖДЕНИЕ: Наследие Сопротивления
+########################################
+origin_ps_partisan_legacy = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_ps_partisan_legacy.dds"
+	picture = GFX_origin_ps_partisan_legacy
+
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+	}
+	possible = {
+		authority = {
+			value = auth_corporate
+			text = civic_tooltip_ps_requires_megacorp
+		}
+		civics = {
+			value = civic_criminal_heritage
+			text = civic_tooltip_ps_requires_criminal_heritage
+		}
+	}
+
+	description = "origin_tooltip_ps_partisan_legacy_effects"
+	random_weight = { base = 5 }
+
+	modifier = {
+		leader_lifespan_add = 1000	# лидеры партизан не умирают от старости
+		intel_encryption_add = 1
+		army_damage_mult = 0.10
+		envoys_add = 1
+	}
+}
+
+########################################
+# ЦИВИК: Партизанская сеть
+########################################
+civic_ps_partisan_network = {
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { value = auth_corporate }
+	}
+	possible = {
+		authority = {
+			value = auth_corporate
+			text = civic_tooltip_ps_requires_megacorp
+		}
+	}
+
+	description = "civic_tooltip_ps_partisan_network_effects"
+	random_weight = { base = 5 }
+
+	modifier = {
+		# от «Пустотных налётчиков» (идея Corporate Pirates)
+		ship_cloaking_strength_add = 1
+		ship_military_alloys_cost_mult = -0.05
+		ship_military_energy_upkeep_mult = 0.05
+		leader_lifespan_add = 1000	# лидеры партизан не умирают от старости
+		intel_decryption_add = 1
+		envoys_add = 1
+		army_damage_mult = 0.15
+	}
+}
+
+########################################
+# ЦИВИК: Теневой сюзерен
+########################################
+civic_ps_shadow_overlord = {
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { value = auth_corporate }
+	}
+	possible = {
+		authority = {
+			value = auth_corporate
+			text = civic_tooltip_ps_requires_megacorp
+		}
+	}
+
+	description = "civic_tooltip_ps_shadow_overlord_effects"
+	random_weight = { base = 5 }
+
+	modifier = {
+		envoys_add = 1
+		intel_encryption_add = 1
+		country_subject_acceptance_add = 50	# +50 к согласию стать нашим вассалом
+	}
+	# +5% единства за каждого вассала — модификатор ps_so_unity_N (событие ps_so.1, ежемесячно)
+}
+
+########################################
+# ПРОИСХОЖДЕНИЕ: Ковчег Сопротивления (кочевники, DLC Nomads)
+# Формат сверен с vanilla origin_default_nomads / origin_heirs_of_the_khan
+########################################
+origin_ps_partisan_ark = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_ps_partisan_ark.dds"
+	picture = GFX_origin_ps_partisan_ark
+
+	non_colonizable_planet_class_neighbor = yes
+
+	playable = {
+		has_nomads_dlc = yes
+	}
+	ai_playable = { has_nomads_dlc = yes }
+
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+	}
+	possible = {
+		is_nomadic = yes
+		authority = {
+			value = auth_corporate
+			text = civic_tooltip_ps_requires_megacorp
+		}
+		civics = {
+			value = civic_criminal_heritage
+			text = civic_tooltip_ps_requires_criminal_heritage
+		}
+	}
+
+	description = "origin_tooltip_ps_partisan_ark_effects"
+	random_weight = { base = 1 }
+
+	modifier = {
+		leader_lifespan_add = 1000	# лидеры партизан не умирают от старости
+		arkship_action_speed = 0.15
+		intel_encryption_add = 1
+		envoys_add = 1
+		shipsize_military_arkship_tier_1_hull_mult = 0.10
+		shipsize_military_arkship_tier_2_hull_mult = 0.10
+		shipsize_military_arkship_tier_3_hull_mult = 0.10
+	}
+}
+
+# Синдикат Сопротивления — 3-е происхождение: «Мировой ковчег Сопротивления».
+# С модом XHK World Ark — старт на Мировом ковчеге (основной мод переопределяет триггер XHK
+# xhk_has_worldark_origin, см. scripted_triggers/zzz_ps_xhk_worldark_origin.txt; патч xhk_worldark_patch
+# дополнительно открывает тиры ковчега и специализации трёх ковчегов). Без XHK — обычный ковчег.
+# Все бонусы «Ковчега Сопротивления» (origin_ps_partisan_ark).
+origin_ps_partisan_worldark = {
+	is_origin = yes
+	icon = "gfx/interface/icons/origins/origin_ps_partisan_worldark.dds"
+	picture = GFX_origin_ps_partisan_worldark
+	flags = { custom_start_screen }
+
+	playable = { has_nomads_dlc = yes }
+	ai_playable = { always = no }
+
+	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+	}
+	possible = {
+		is_nomadic = yes
+		authority = {
+			value = auth_corporate
+			text = civic_tooltip_ps_requires_megacorp
+		}
+		civics = {
+			value = civic_criminal_heritage
+			text = civic_tooltip_ps_requires_criminal_heritage
+		}
+	}
+
+	description = "origin_tooltip_ps_partisan_worldark_effects"
+	random_weight = { base = 0 }
+
+	modifier = {
+		# Мировой ковчег (как origin_xhk_worldark)
+		planetary_ascension_effect_mult = -0.5
+		planetary_ascension_cost_mult = 1
+		shipsize_nomads_constructor_stockpile_capacity_mult = 0.5
+		colony_start_urban_districts_add = -10	# как у XHK: против action.361
+		# Ковчег Сопротивления (как origin_ps_partisan_ark)
+		leader_lifespan_add = 1000
+		arkship_action_speed = 0.15
+		intel_encryption_add = 1
+		envoys_add = 1
+		shipsize_military_arkship_tier_1_hull_mult = 0.10
+		shipsize_military_arkship_tier_2_hull_mult = 0.10
+		shipsize_military_arkship_tier_3_hull_mult = 0.10
+	}
+}

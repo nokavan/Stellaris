@@ -38,8 +38,12 @@ country_event = {
 			limit = { has_origin = origin_xhk_worldark }
 			add_modifier = { modifier = ps_partisan_worldark_bonus days = -1 }
 		}
-		# Пролог «Ковчег Сопротивления» (выбор доктрины) — после настройки ковчега XHK
-		country_event = { id = ps.5 days = 3 }
+		# Пролог «Ковчег Сопротивления» для происхождения XHK (наше 3-е происхождение получает
+		# пролог из on_game_start основного мода)
+		if = {
+			limit = { has_origin = origin_xhk_worldark }
+			country_event = { id = ps.5 days = 3 }
+		}
 		# Все специализации — после того как XHK создаст Мировой ковчег
 		country_event = { id = ps_xhk.2 days = 5 }
 		country_event = { id = ps_xhk.3 days = 6 }

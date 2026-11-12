@@ -112,6 +112,14 @@ def main():
     d.polygon(star_points(300, 70, 9, 4), fill=RED)
     save_dds(ark, "gfx/interface/icons/origins/ps_origin_ark_picture.dds")
     save_dds(ark, "gfx/event_pictures/ps_evt_ark.dds")
+    # 3-е происхождение: Мировой ковчег Сопротивления — огромный корпус на фоне
+    wark = scene(450, 150, (120, 70, 160, 255), 7)
+    d = ImageDraw.Draw(wark)
+    d.polygon([(40, 80), (300, 45), (420, 62), (420, 98), (300, 115)], fill=(120, 120, 140, 255))
+    d.rectangle([150, 70, 330, 90], fill=(90, 90, 110, 255))
+    d.polygon(star_points(360, 80, 12, 5), fill=RED)
+    save_dds(wark, "gfx/interface/icons/origins/ps_origin_worldark_picture.dds")
+    save_dds(icon("crown", 64), "gfx/interface/icons/origins/origin_ps_partisan_worldark.dds")
     save_dds(scene(450, 150, (60, 80, 140, 255), 3), "gfx/event_pictures/ps_evt_spy.dds")
     save_dds(scene(450, 150, (200, 160, 70, 255), 4), "gfx/event_pictures/ps_evt_syndicate.dds")
 

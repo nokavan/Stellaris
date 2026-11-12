@@ -1,0 +1,9 @@
+# Синдикат Сопротивления: XHK World Ark узнаёт наше 3-е происхождение и создаёт для него Мировой ковчег.
+# Переопределяет триггер XHK по ключу (грузится после XHK, если «Синдикат» стоит в плейсете ниже XHK).
+# Без XHK триггер просто не используется.
+xhk_has_worldark_origin = {
+	OR = {
+		has_origin = origin_xhk_worldark
+		has_origin = origin_ps_partisan_worldark
+	}
+}

@@ -14,6 +14,7 @@ ps_has_partisan_origin = {
 ps_is_partisan_ark = {
 	OR = {
 		has_origin = origin_ps_partisan_ark
+		has_origin = origin_ps_partisan_worldark
 		has_country_flag = ps_partisan_worldark
 	}
 }
