@@ -1,0 +1,155 @@
+# Синдикат Сопротивления: копия файла XHK World Ark с добавленным происхождением origin_ps_partisan_worldark.
+# Патч грузится после XHK World Ark и заменяет этот файл. При обновлении XHK пересоздать.
+xhk_worldark_situation_main = {
+    picture = GFX_evt_arkship_bridge
+    situation_log_category = xhk_worldark_situation_category
+
+    category = neutral
+
+    abort_trigger = {
+        OR = {
+            NOT = { exists = owner }
+            owner = {
+                NOT = { OR = { has_origin = origin_xhk_worldark has_origin = origin_ps_partisan_worldark } }
+            }
+        }
+    }
+
+    permanent = yes
+    show_in_outliner = no
+
+    monthly_progress = {
+        base = 0
+    }
+
+    initial_progress = 0
+
+    stages = {
+        xhk_worldark_situation_main_stage = {
+            icon = GFX_situation_stage_balanced
+            icon_background = GFX_situation_stage_frame_blue
+        }
+    }
+
+    approach = {
+        name = xhk_worldark_situation_main_approach
+		on_select = { custom_tooltip = xhk_worldark_situation_main_approach_tt }
+        icon = GFX_situation_approach_balance_sheet
+        icon_background = GFX_situation_approach_bg_yellow
+        default = yes
+    }
+
+    #############################################################################################
+    # empire modifiers
+    triggered_modifier = {
+        nomadic_constructor_limit_add = 1
+        multiplier = owner.capital_scope.xhk_worldark_logistics_expansions
+    }
+
+    # stop yelling at me pls it works
+    triggered_modifier = {
+        situation_nomad_economy_max_progress_add = 5000
+        multiplier = owner.capital_scope.carrier.starbase.value:xhk_worldark_level
+    }
+}
+
+# core spinal planet eater
+xhk_worldark_situation_planeteater = {
+	complete_icon_frame = GFX_situation_outcome_frame_green
+	complete_icon = GFX_situation_exploding_planet
+	situation_log_category = xhk_worldark_situation_category
+
+	inline_script = "situations/consume_world_planet_pictures"
+
+	stages = {
+		stage_1 = {
+			icon = GFX_situation_stage_1
+			icon_background = GFX_situation_stage_frame_green
+			end = 1000
+			custom_tooltip = xhk_worldark_stage_planeteater
+		}
+	}
+
+	category = positive
+	initial_progress = 0
+
+
+	on_progress_complete = {
+		custom_tooltip = xhk_worldark_corespinal_planeteater_finish_tt
+		hidden_effect = {
+			situation_event = { id = xhk_worldark.2003 }
+		}
+	}
+	on_monthly = {
+		events = {
+			xhk_worldark.2002
+		}
+	}
+	on_abort = {
+		owner = {
+			every_owned_fleet = {
+				limit = { has_fleet_flag = consuming_world_arkship@root.target }
+				remove_fleet_flag = consuming_world_arkship@root.target
+			}
+		}
+		target = {
+			remove_carrier_flag = being_devoured
+			remove_modifier = xhk_worldark_being_devoured_modifier
+			remove_carrier_flag = arkship_absent_grace
+			remove_carrier_flag = colony_event
+		}
+	}
+
+	approach = {
+		name = approach_xhk_planeteater
+		on_select = { custom_tooltip = xhk_worldark_stage_planeteater_effect }
+		default = yes
+		icon = GFX_situation_approach_engineering
+		icon_background = GFX_situation_approach_bg_green
+		ai_weight = { base = 10 }
+		resources = {
+			upkeep = {
+				energy = 100
+			}
+		}
+	}
+
+	monthly_progress = {
+		base = 0
+		modifier = {
+			add = value:xhk_worldark_dismantle_progress
+			desc = string_terravore_progress
+		}
+		modifier = {
+			desc = string_arkship_absent_grace
+			mult = 0
+			target = { has_carrier_flag = arkship_absent_grace }
+		}
+		modifier = {
+			desc = string_xhk_half_action_speed
+			mult = value:xhk_worldark_half_arkship_action_speed_mult
+			exists = owner.capital_scope.ship
+		}
+	}
+
+	triggered_blocked_desc = {
+		trigger = {
+			target = { has_carrier_flag = arkship_absent_grace }
+		}
+		text = situation_arkship_consuming_world_absent_desc
+	}
+
+	abort_trigger = {
+		OR = {
+			NOT = { exists = target }
+			target = {
+				NOR = {
+					has_carrier_flag = arkship_absent_grace
+					any_fleet_in_orbit = {
+						has_fleet_flag = consuming_world_arkship@root.target
+					}
+				}
+			}
+		}
+	}
+}

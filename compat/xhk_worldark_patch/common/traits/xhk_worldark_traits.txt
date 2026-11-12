@@ -1,0 +1,100 @@
+# Синдикат Сопротивления: копия файла XHK World Ark с добавленным происхождением origin_ps_partisan_worldark.
+# Патч грузится после XHK World Ark и заменяет этот файл. При обновлении XHK пересоздать.
+trait_auto_xhk_pc_worldark_preference = {
+    inline_script = {
+        script = traits/auto_preference_planet_class
+        PLANET_CLASS = pc_ark
+    }
+    modifier = {
+        # KEEP IT LOW SO IT DOESNT GET BUSTED WITH THE OVERCAP HAB
+        # +20% from trait + 100% from worldark
+        xhk_pc_worldark_habitability = 0.20
+        # Dry
+        pc_desert_habitability 			= @auto_penalty
+        pc_arid_habitability 			= @auto_penalty
+        pc_savannah_habitability 		= @auto_penalty
+        # Wet
+        pc_tropical_habitability 		= @auto_penalty
+        pc_continental_habitability 	= @auto_penalty
+        pc_ocean_habitability 			= @auto_penalty
+        # Cold
+        pc_tundra_habitability 			= @auto_penalty
+        pc_arctic_habitability 			= @auto_penalty
+        pc_alpine_habitability 			= @auto_penalty
+        # Special
+        pc_ark_habitability 			= @auto_base
+        pc_habitat_habitability			= @auto_ideal_bonus
+        pc_nuked_habitability 			= @auto_penalty
+        pc_volcanic_habitability 		= @auto_penalty
+    }
+}
+
+trait_xhk_worldark_recursive_learners = {
+	host_has_dlc = "Nomads"
+	cost = 1
+	icon = "gfx/interface/icons/traits/trait_recursive_learners.dds"
+	initial = yes
+	species_possible_add = {
+		can_add_genetic_traits = yes
+		from = {
+			OR = { has_origin = origin_xhk_worldark has_origin = origin_ps_partisan_worldark }
+		}
+	}
+	allowed_origins = { origin_xhk_worldark origin_ps_partisan_worldark }
+	species_possible_remove = {
+		always = yes
+	} # can be negative if ur not a wark
+	allowed_planet_classes = { pc_ark }
+	localized_tags = { SPECIES_TRAIT_NOMAD }
+	randomized = no
+	allowed_archetypes = { BIOLOGICAL LITHOID }
+	tags = { special }
+	opposites = { trait_recursive_learners  trait_natural_sociologists trait_natural_engineers }
+	custom_tooltip = trait_xhk_worldark_recursive_learners_effects
+	triggered_pop_group_modifier = {
+		potential = { planet.ship? = { xhk_is_worldark_ship = yes } }
+		specialist_and_complex_drone_cat_bonus_workforce_mult = 1
+		mult = planet.ship.value:xhk_worldark_recursive_learners_value
+	}
+	ai_weight = { weight = 0 }
+	slave_cost = { trade = 250 }
+}
+
+trait_xhk_worldark_structural_awareness = {
+	host_has_dlc = "Nomads"
+	cost = 1
+	icon = "gfx/interface/icons/traits/trait_structural_awareness.dds"
+	initial = yes
+	species_possible_add = {
+		from = {
+			OR = { has_origin = origin_xhk_worldark has_origin = origin_ps_partisan_worldark }
+		}
+	}
+	allowed_origins = { origin_xhk_worldark origin_ps_partisan_worldark }
+	allowed_planet_classes = { pc_ark }
+	localized_tags = { SPECIES_TRAIT_NOMAD }
+	randomized = yes
+	allowed_archetypes = { MACHINE ROBOT }
+	tags =  { special }
+	opposites = { trait_structural_awareness trait_robot_artificial_sociologists trait_robot_artificial_engineers }
+	custom_tooltip = trait_xhk_worldark_recursive_learners_effects
+	triggered_pop_group_modifier = {
+		potential = { planet.ship? = { xhk_is_worldark_ship = yes } }
+		specialist_and_complex_drone_cat_bonus_workforce_mult = 1
+		mult = planet.ship.value:xhk_worldark_recursive_learners_value
+	}
+	ai_weight = { weight = 0 }
+	slave_cost = { trade = 250 }
+	assembly_score = {
+		modifier = {
+			add = 1.5
+			from = { uses_district_set = xhk_pc_worldark }
+		}
+		modifier = {
+			subtract = 1.5
+			from = {
+				NOT = { uses_district_set = xhk_pc_worldark }
+			}
+		}
+	}
+}

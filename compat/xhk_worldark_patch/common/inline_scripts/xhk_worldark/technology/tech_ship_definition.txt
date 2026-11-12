@@ -1,0 +1,20 @@
+# Синдикат Сопротивления: копия файла XHK World Ark с добавленным происхождением origin_ps_partisan_worldark.
+# Патч грузится после XHK World Ark и заменяет этот файл. При обновлении XHK пересоздать.
+potential = {
+    is_nomadic = yes
+    OR = { has_origin = origin_xhk_worldark has_origin = origin_ps_partisan_worldark }
+}
+
+prereqfor_desc = {
+    ship = {
+        title = "XHK_TECH_UPGRADE_WORLDARK_$TIER$_TITLE"
+        desc = "XHK_TECH_UPGRADE_WORLDARK_$TIER$_DESC"
+    }
+}
+
+# ai_weight = {
+#     modifier = {
+#         factor = 100
+#         is_nomadic = yes
+#     }
+# }

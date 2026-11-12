@@ -372,6 +372,37 @@ waystation_ps_cell_bays = {{
 """
 
 
+# Подписи условных эффектов: игра не показывает цифры triggered_system_modifier в подсказке,
+# поэтому они вписываются в описание модуля.
+FX_NAMES = {
+    "planet_resettlement_unemployed_mult": ("Переселение безработных", "Unemployed resettlement"),
+    "planet_stability_add": ("Стабильность планет", "Planet stability"),
+    "pop_government_ethic_attraction": ("Привлекательность этики правительства", "Government ethic attraction"),
+    "ship_speed_mult": ("Скорость кораблей", "Ship speed"),
+    "station_gatherers_produces_mult": ("Добыча станций", "Station output"),
+    "station_gatherers_energy_produces_mult": ("Добыча энергии станциями", "Station energy output"),
+    "station_gatherers_minerals_produces_mult": ("Добыча минералов станциями", "Station mineral output"),
+    "station_gatherers_food_produces_mult": ("Добыча еды станциями", "Station food output"),
+    "station_gatherers_exotic_gases_produces_mult": ("Добыча экзотических газов", "Exotic gas output"),
+    "station_gatherers_rare_crystals_produces_mult": ("Добыча редких кристаллов", "Rare crystal output"),
+    "station_gatherers_volatile_motes_produces_mult": ("Добыча летучих частиц", "Volatile mote output"),
+    "station_researchers_produces_mult": ("Исследования станций", "Station research"),
+}
+
+
+def fx_lines(d, ru):
+    out = []
+    for k, v in d.items():
+        name = FX_NAMES.get(k, (k, k))[0 if ru else 1]
+        if k.endswith("_mult") or k == "pop_government_ethic_attraction":
+            val = f"{v * 100:+g}%"
+        else:
+            val = f"{v:+g}"
+        col = "G" if v > 0 else "R"
+        out.append(f"\\n  {name}: §{col}{val}§!")
+    return "".join(out)
+
+
 def main():
     (ROOT / "common/starbase_modules").mkdir(parents=True, exist_ok=True)
     hdr = "# АВТОГЕНЕРАЦИЯ: tools/gen_waystation_modules.py — правьте генератор, а не этот файл\n# 100 модулей станций-стоянок Синдиката\n\n"
@@ -393,13 +424,13 @@ def main():
             k = f"sm_waystation_ps_{x['key']}"
             name, desc = x["ru"] if ru else x["en"]
             if x["ally"]:
-                desc += "\\n\\n§Y" + ("Часть эффектов действует, только если система принадлежит союзнику: вассалу, сюзерену, члену федерации, партнёру по оборонному пакту или дружественной империи." if ru else
-                                     "Some effects apply only if the system belongs to an ally: subject, overlord, federation member, defensive pact partner or friendly empire.") + "§!"
+                desc += "\\n\\n§Y" + ("Если система принадлежит союзнику (вассалу, сюзерену, члену федерации, партнёру по оборонному пакту или дружественной империи):" if ru else
+                                     "If the system belongs to an ally (subject, overlord, federation member, defensive pact partner or friendly empire):") + "§!" + fx_lines(x["ally"], ru)
             if x["enemy"]:
-                desc += "\\n\\n§R" + ("Часть эффектов действует, только если система принадлежит сопернику, врагу или недружественной империи." if ru else
-                                     "Some effects apply only if the system belongs to a rival, enemy or unfriendly empire.") + "§!"
+                desc += "\\n\\n§R" + ("Если система принадлежит сопернику, врагу или недружественной империи:" if ru else
+                                     "If the system belongs to a rival, enemy or unfriendly empire:") + "§!" + fx_lines(x["enemy"], ru)
             if x["own"]:
-                desc += "\\n\\n§G" + ("Часть эффектов действует только в нашей системе." if ru else "Some effects apply only in our own system.") + "§!"
+                desc += "\\n\\n§G" + ("Если система наша:" if ru else "If the system is ours:") + "§!" + fx_lines(x["own"], ru)
             L += [f' {k}:0 "{name}"', f' {k}_plural:0 "{name}"', f' {k}_desc:0 "{desc}"']
         if ru:
             L += [' ps_waystation_ally_tt:0 "§YЕсли система принадлежит союзнику:§!"',

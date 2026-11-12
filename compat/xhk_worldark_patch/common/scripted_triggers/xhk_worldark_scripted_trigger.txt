@@ -1,0 +1,140 @@
+# Синдикат Сопротивления: копия файла XHK World Ark с добавленным происхождением origin_ps_partisan_worldark.
+# Патч грузится после XHK World Ark и заменяет этот файл. При обновлении XHK пересоздать.
+xhk_has_worldark_origin = {
+    OR = {
+        OR = { has_origin = origin_xhk_worldark has_origin = origin_ps_partisan_worldark }
+    }
+}
+
+xhk_is_worldark_ship = {
+	OR = {
+		is_ship_size = xhk_worldark_tier_1
+		is_ship_size = xhk_worldark_tier_2
+		is_ship_size = xhk_worldark_tier_3
+		is_ship_size = xhk_worldark_tier_4
+		is_ship_size = xhk_worldark_tier_5
+		is_ship_size = xhk_worldark_tier_6
+		is_ship_size = xhk_worldark_tier_7
+		is_ship_size = xhk_worldark_tier_8
+		is_ship_size = xhk_worldark_tier_9
+		is_ship_size = xhk_worldark_tier_10
+		is_ship_size = xhk_worldark_tier_11
+		is_ship_size = xhk_worldark_tier_12
+	}
+}
+xhk_is_worldark_starbase = {
+    OR = {
+        has_starbase_size = xhk_worldark_tier_1
+        has_starbase_size = xhk_worldark_tier_2
+        has_starbase_size = xhk_worldark_tier_3
+        has_starbase_size = xhk_worldark_tier_4
+        has_starbase_size = xhk_worldark_tier_5
+        has_starbase_size = xhk_worldark_tier_6
+        has_starbase_size = xhk_worldark_tier_7
+        has_starbase_size = xhk_worldark_tier_8
+        has_starbase_size = xhk_worldark_tier_9
+        has_starbase_size = xhk_worldark_tier_10
+		has_starbase_size = xhk_worldark_tier_11
+		has_starbase_size = xhk_worldark_tier_12
+    }
+}
+
+xhk_has_colossus_integrated = {
+	OR = {
+		has_starbase_module = xhk_worldark_spinal_pk_cracker
+		has_starbase_module = xhk_worldark_spinal_pk_shielder
+		has_starbase_module = xhk_worldark_spinal_pk_neutron
+		has_starbase_module = xhk_worldark_spinal_pk_godray
+		has_starbase_module = xhk_worldark_spinal_pk_nanobots
+		has_starbase_module = xhk_worldark_spinal_pk_devolution
+		has_starbase_module = xhk_worldark_spinal_pk_smelter
+	}
+}
+
+xhk_worldark_has_spinal = {
+	OR = {
+		is_ship_size = xhk_worldark_tier_8
+		is_ship_size = xhk_worldark_tier_9
+		is_ship_size = xhk_worldark_tier_10
+		is_ship_size = xhk_worldark_tier_11
+		is_ship_size = xhk_worldark_tier_12
+	}
+}
+
+xhk_worldark_has_corespinal = {
+	OR = {
+		is_ship_size = xhk_worldark_tier_12
+	}
+}
+
+# CANNOT TARGET ASTEROIDS
+xhk_worldark_is_valid_size_harvest_target = {
+    # Scope: planet
+    # Checks that a planet is a valid target for resource harvesting actions.
+    is_star = no
+    custom_tooltip = {
+        fail_text = arkship_target_habitable_world_fail_tt
+        habitable_planet = no
+    }
+    custom_tooltip = {
+        fail_text = arkship_target_artificial_world_fail_tt
+        is_artificial = no
+    }
+    custom_tooltip = {
+        fail_text = arkship_target_ring_world_fail_tt
+        is_ringworld = no
+    }
+    custom_tooltip = {
+        fail_text = arkship_target_astral_scar_fail_tt
+        NOT = {
+            is_planet_class = pc_astral_scar
+        }
+    }
+    custom_tooltip = {
+        fail_text = arkship_target_harvestable_resources_fail_tt
+        OR = {
+            is_planet_class = pc_barren
+            is_planet_class = pc_barren_cold
+            is_planet_class = pc_broken
+            is_planet_class = pc_shattered
+            is_planet_class = pc_shattered_2
+            is_planet_class = pc_junk
+            is_planet_class = pc_gas_giant
+            is_planet_class = pc_toxic
+            is_planet_class = pc_frozen
+            is_planet_class = pc_molten
+            is_planet_class = pc_gray_goo
+            is_planet_class = pc_shrouded
+        }
+    }
+}
+
+
+# updated versions of frameworld triggers
+xhk_worldark_has_robot_assembly_facilities = {
+    or = {
+        has_building = building_robot_assembly_plant
+        has_building = building_robot_assembly_complex
+        has_building = building_fe_assembly_1
+        has_building = building_fe_assembly_2
+    }
+}
+xhk_worldark_has_cloning_assembly_facilities = {
+    has_building = building_clone_vats
+}
+xhk_worldark_has_zombie_assembly_facilities = {
+    has_building = building_posthumous_employment_center
+}
+
+####
+# anything in here can will be ignored
+xhk_worldark_not_consumed_by_wark = {
+	OR = {
+		# exclude the wark just to be sure
+		is_planet_class = xhk_pc_worldark
+		# lathe
+		is_planet_class = pc_cosmogenesis_world
+		# for ancient empires i guess
+		ag_is_ancient_ringworld = yes
+	}
+}

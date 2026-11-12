@@ -20,14 +20,24 @@ country_event = {
 	is_triggered_only = yes
 
 	trigger = {
-		has_origin = origin_xhk_worldark
-		has_authority = auth_corporate
-		has_valid_civic = civic_criminal_heritage
+		OR = {
+			# 3-е происхождение «Мировой ковчег Сопротивления» (бонусы уже в происхождении)
+			has_origin = origin_ps_partisan_worldark
+			# или происхождение XHK у мегакорпорации с «Криминальным наследием»
+			AND = {
+				has_origin = origin_xhk_worldark
+				has_authority = auth_corporate
+				has_valid_civic = civic_criminal_heritage
+			}
+		}
 	}
 
 	immediate = {
 		set_country_flag = ps_partisan_worldark
-		add_modifier = { modifier = ps_partisan_worldark_bonus days = -1 }
+		if = {
+			limit = { has_origin = origin_xhk_worldark }
+			add_modifier = { modifier = ps_partisan_worldark_bonus days = -1 }
+		}
 		# Пролог «Ковчег Сопротивления» (выбор доктрины) — после настройки ковчега XHK
 		country_event = { id = ps.5 days = 3 }
 		# Все специализации — после того как XHK создаст Мировой ковчег

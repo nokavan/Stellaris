@@ -1,0 +1,42 @@
+# Синдикат Сопротивления: копия файла XHK World Ark с добавленным происхождением origin_ps_partisan_worldark.
+# Патч грузится после XHK World Ark и заменяет этот файл. При обновлении XHK пересоздать.
+can_nomad_settle = {
+    hidden_trigger = {
+        root = { is_nomadic = yes }
+    }
+    custom_tooltip = {
+        fail_text = "SETTLE_BLOCKED_BY_ORIGIN"
+        root = {
+            NOR = {
+                has_origin = origin_sacred_path
+                has_origin = origin_heirs_of_the_khan
+                AND = {
+                    has_origin = origin_forever_cruise
+                    NOT = {
+                        has_country_flag = forever_cruise_planetfall
+                    }
+                }
+                OR = { has_origin = origin_xhk_worldark has_origin = origin_ps_partisan_worldark }
+            }
+        }
+    }
+
+    custom_tooltip = {
+        fail_text = "SETTLE_MISSING_TRADITION"
+        if = {
+            limit = {
+                root = {
+                    NOR = {
+                        has_origin = origin_forever_cruise
+                        has_origin = origin_sacred_path
+                        has_origin = origin_heirs_of_the_khan
+                    }
+                }
+            }
+            OR = {
+                root = { has_tradition = tr_adaptability_finish }
+                root = { has_tradition = tr_versatility_finish }
+            }
+        }
+    }
+}
