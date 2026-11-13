@@ -12,12 +12,10 @@ building_ps_partisan_cell = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		spy_network_levels_add = 2
-		country_base_energy_produces_add = 2
-		mult = value:branch_office_value_for_buildings
 	}
 
 	# Планете-хозяину
@@ -27,8 +25,8 @@ building_ps_partisan_cell = {
 	}
 
 	triggered_planet_modifier = {
+		potential = { always = yes }
 		planet_crime_add = 15
-		mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|
 	}
 
 	triggered_planet_modifier = {
@@ -44,6 +42,11 @@ building_ps_partisan_cell = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -63,22 +66,15 @@ building_ps_arms_cache = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_alloys_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
-	# Владельцу филиала (фиксированно)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		army_damage_mult = 0.01
 	}
 
 	triggered_planet_modifier = {
+		potential = { always = yes }
 		planet_crime_add = 5
-		mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|
 	}
 
 	resources = {
@@ -89,6 +85,11 @@ building_ps_arms_cache = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			alloys = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -108,12 +109,10 @@ building_ps_safehouse = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		spy_network_levels_add = 1
-		country_base_unity_produces_add = 1
-		mult = value:branch_office_value_for_buildings
 	}
 
 	resources = {
@@ -124,6 +123,11 @@ building_ps_safehouse = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -143,14 +147,7 @@ building_ps_forest_camp = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
-	# Владельцу филиала (фиксированно)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		army_starting_experience_add = 5
@@ -170,6 +167,11 @@ building_ps_forest_camp = {
 		upkeep = {
 			energy = 2
 		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 1
+			mult = value:branch_office_value_for_buildings
+		}
 	}
 
 	ai_weight = {
@@ -188,12 +190,10 @@ building_ps_radio_station = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
-		country_base_unity_produces_add = 2
 		spy_network_levels_add = 1
-		mult = value:branch_office_value_for_buildings
 	}
 
 	resources = {
@@ -204,6 +204,11 @@ building_ps_radio_station = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -223,13 +228,6 @@ building_ps_partisan_hospital = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -244,6 +242,11 @@ building_ps_partisan_hospital = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -263,14 +266,6 @@ building_ps_courier_network = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 1
-		country_base_influence_produces_add = 0.25
-		mult = value:branch_office_value_for_buildings
-	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -279,6 +274,12 @@ building_ps_courier_network = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 1
+			influence = 0.25
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -302,17 +303,11 @@ building_ps_sabotage_school = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		spy_network_levels_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
-	# Владельцу филиала (фиксированно)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		army_damage_mult = 0.02
+		spy_network_levels_add = 2
 	}
 
 	triggered_planet_modifier = {
@@ -351,14 +346,7 @@ building_ps_veterans_club = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
-	# Владельцу филиала (фиксированно)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		army_starting_experience_add = 10
@@ -372,6 +360,11 @@ building_ps_veterans_club = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -395,13 +388,6 @@ building_ps_memorial = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 3
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -416,6 +402,11 @@ building_ps_memorial = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 3
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -439,16 +430,10 @@ building_ps_mountain_base = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_naval_cap_add = 3
-		mult = value:branch_office_value_for_buildings
-	}
-
-	# Владельцу филиала (фиксированно)
-	triggered_country_modifier = {
-		potential = { always = yes }
 		army_damage_mult = 0.02
 	}
 
@@ -483,17 +468,10 @@ building_ps_partisan_hq = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		spy_network_levels_add = 3
-		country_base_unity_produces_add = 3
-		mult = value:branch_office_value_for_buildings
-	}
-
-	# Владельцу филиала (фиксированно)
-	triggered_country_modifier = {
-		potential = { always = yes }
 		army_damage_mult = 0.02
 	}
 
@@ -517,6 +495,11 @@ building_ps_partisan_hq = {
 		upkeep = {
 			energy = 5
 		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 3
+			mult = value:branch_office_value_for_buildings
+		}
 	}
 
 	ai_weight = {
@@ -535,12 +518,10 @@ building_ps_dead_drop = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		spy_network_levels_add = 1
-		country_base_energy_produces_add = 1
-		mult = value:branch_office_value_for_buildings
 	}
 
 	resources = {
@@ -551,6 +532,11 @@ building_ps_dead_drop = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -570,11 +556,10 @@ building_ps_listening_post = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		spy_network_levels_add = 2
-		mult = value:branch_office_value_for_buildings
 	}
 
 	resources = {
@@ -604,12 +589,10 @@ building_ps_honey_trap = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		spy_network_levels_add = 2
-		country_base_influence_produces_add = 0.2
-		mult = value:branch_office_value_for_buildings
 	}
 
 	resources = {
@@ -620,6 +603,11 @@ building_ps_honey_trap = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			influence = 0.2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -639,12 +627,10 @@ building_ps_forgery_shop = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		spy_network_levels_add = 1
-		country_base_energy_produces_add = 1
-		mult = value:branch_office_value_for_buildings
 	}
 
 	resources = {
@@ -655,6 +641,11 @@ building_ps_forgery_shop = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -678,16 +669,10 @@ building_ps_cipher_bureau = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		spy_network_levels_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
-	# Владельцу филиала (фиксированно)
-	triggered_country_modifier = {
-		potential = { always = yes }
 		spy_network_daily_value_mult = 0.01
 	}
 
@@ -722,11 +707,10 @@ building_ps_informant_network = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		spy_network_levels_add = 3
-		mult = value:branch_office_value_for_buildings
 	}
 
 	resources = {
@@ -760,12 +744,10 @@ building_ps_embassy_cover = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		spy_network_levels_add = 2
-		country_base_influence_produces_add = 0.3
-		mult = value:branch_office_value_for_buildings
 	}
 
 	resources = {
@@ -776,6 +758,11 @@ building_ps_embassy_cover = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			influence = 0.3
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -799,12 +786,10 @@ building_ps_data_haven = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		spy_network_levels_add = 2
-		country_base_energy_produces_add = 1
-		mult = value:branch_office_value_for_buildings
 	}
 
 	resources = {
@@ -815,6 +800,11 @@ building_ps_data_haven = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -838,11 +828,10 @@ building_ps_sleeper_agents = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		spy_network_levels_add = 3
-		mult = value:branch_office_value_for_buildings
 	}
 
 	# Планете-хозяину
@@ -882,16 +871,10 @@ building_ps_counterintel_office = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		spy_network_levels_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
-	# Владельцу филиала (фиксированно)
-	triggered_country_modifier = {
-		potential = { always = yes }
 		spy_network_daily_value_mult = 0.02
 	}
 
@@ -926,12 +909,10 @@ building_ps_black_archive = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		spy_network_levels_add = 4
-		country_base_unity_produces_add = 2
-		mult = value:branch_office_value_for_buildings
 	}
 
 	resources = {
@@ -942,6 +923,11 @@ building_ps_black_archive = {
 		}
 		upkeep = {
 			energy = 5
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -965,12 +951,10 @@ building_ps_shadow_consulate = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		spy_network_levels_add = 3
-		country_base_influence_produces_add = 0.5
-		mult = value:branch_office_value_for_buildings
 	}
 
 	resources = {
@@ -981,6 +965,11 @@ building_ps_shadow_consulate = {
 		}
 		upkeep = {
 			energy = 5
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			influence = 0.5
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1000,13 +989,6 @@ building_ps_front_company = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 3
-		mult = value:branch_office_value_for_buildings
-	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1015,6 +997,11 @@ building_ps_front_company = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 3
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1034,16 +1021,9 @@ building_ps_money_laundry = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
 	triggered_planet_modifier = {
+		potential = { always = yes }
 		planet_crime_add = 5
-		mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|
 	}
 
 	triggered_planet_modifier = {
@@ -1059,6 +1039,11 @@ building_ps_money_laundry = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1078,14 +1063,6 @@ building_ps_pawnshop = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 2
-		country_base_consumer_goods_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1094,6 +1071,12 @@ building_ps_pawnshop = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 2
+			consumer_goods = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1113,13 +1096,6 @@ building_ps_currency_exchange = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1128,6 +1104,11 @@ building_ps_currency_exchange = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1151,13 +1132,6 @@ building_ps_underground_bank = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 4
-		mult = value:branch_office_value_for_buildings
-	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1166,6 +1140,11 @@ building_ps_underground_bank = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 4
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1189,14 +1168,6 @@ building_ps_casino = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 3
-		country_base_unity_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -1216,6 +1187,12 @@ building_ps_casino = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 3
+			unity = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1239,13 +1216,6 @@ building_ps_insurance_racket = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 4
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -1253,8 +1223,8 @@ building_ps_insurance_racket = {
 	}
 
 	triggered_planet_modifier = {
+		potential = { always = yes }
 		planet_crime_add = 5
-		mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|
 	}
 
 	triggered_planet_modifier = {
@@ -1270,6 +1240,11 @@ building_ps_insurance_racket = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 4
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1293,13 +1268,6 @@ building_ps_loan_sharks = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 3
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -1314,6 +1282,11 @@ building_ps_loan_sharks = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 3
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1337,14 +1310,6 @@ building_ps_smugglers_market = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 2
-		country_base_consumer_goods_produces_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
 	triggered_planet_modifier = {
 		potential = { always = yes }
 		job_criminal_add = 100
@@ -1358,6 +1323,12 @@ building_ps_smugglers_market = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 2
+			consumer_goods = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1381,13 +1352,6 @@ building_ps_offshore = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 6
-		mult = value:branch_office_value_for_buildings
-	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1396,6 +1360,11 @@ building_ps_offshore = {
 		}
 		upkeep = {
 			energy = 5
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 6
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1419,13 +1388,6 @@ building_ps_trade_guild = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 4
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -1445,6 +1407,11 @@ building_ps_trade_guild = {
 		}
 		upkeep = {
 			energy = 5
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 4
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1468,14 +1435,6 @@ building_ps_syndicate_exchange = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 5
-		country_base_influence_produces_add = 0.3
-		mult = value:branch_office_value_for_buildings
-	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1484,6 +1443,12 @@ building_ps_syndicate_exchange = {
 		}
 		upkeep = {
 			energy = 5
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 5
+			influence = 0.3
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1503,13 +1468,6 @@ building_ps_mining_claim = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_minerals_produces_add = 3
-		mult = value:branch_office_value_for_buildings
-	}
-
 	inline_script = {
 		script = jobs/miners_add
 		AMOUNT = 100
@@ -1523,6 +1481,11 @@ building_ps_mining_claim = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			minerals = 3
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1542,16 +1505,9 @@ building_ps_ore_smugglers = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_minerals_produces_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
 	triggered_planet_modifier = {
+		potential = { always = yes }
 		planet_crime_add = 3
-		mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|
 	}
 
 	resources = {
@@ -1562,6 +1518,11 @@ building_ps_ore_smugglers = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			minerals = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1581,14 +1542,6 @@ building_ps_scrap_yard = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_alloys_produces_add = 1
-		country_base_minerals_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1597,6 +1550,12 @@ building_ps_scrap_yard = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			alloys = 1
+			minerals = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1616,13 +1575,6 @@ building_ps_hydroponic_den = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_food_produces_add = 3
-		mult = value:branch_office_value_for_buildings
-	}
-
 	inline_script = {
 		script = jobs/farmers_add
 		AMOUNT = 100
@@ -1636,6 +1588,11 @@ building_ps_hydroponic_den = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			food = 3
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1655,13 +1612,6 @@ building_ps_goods_workshop = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_consumer_goods_produces_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1670,6 +1620,11 @@ building_ps_goods_workshop = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			consumer_goods = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1693,13 +1648,6 @@ building_ps_crystal_cartel = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_rare_crystals_produces_add = 0.5
-		mult = value:branch_office_value_for_buildings
-	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1708,6 +1656,11 @@ building_ps_crystal_cartel = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			rare_crystals = 0.5
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1731,13 +1684,6 @@ building_ps_gas_siphon = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_exotic_gases_produces_add = 0.5
-		mult = value:branch_office_value_for_buildings
-	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1746,6 +1692,11 @@ building_ps_gas_siphon = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			exotic_gases = 0.5
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1769,13 +1720,6 @@ building_ps_mote_refinery = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_volatile_motes_produces_add = 0.5
-		mult = value:branch_office_value_for_buildings
-	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1784,6 +1728,11 @@ building_ps_mote_refinery = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			volatile_motes = 0.5
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1807,13 +1756,6 @@ building_ps_alloy_forge = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_alloys_produces_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
 	inline_script = {
 		script = jobs/foundry_add
 		AMOUNT = 100
@@ -1827,6 +1769,11 @@ building_ps_alloy_forge = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			alloys = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1850,14 +1797,7 @@ building_ps_resource_depot = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_minerals_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
-	# Владельцу филиала (фиксированно)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_resource_max_add = 500
@@ -1871,6 +1811,11 @@ building_ps_resource_depot = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			minerals = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1894,13 +1839,6 @@ building_ps_strip_mine = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_minerals_produces_add = 5
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -1915,6 +1853,11 @@ building_ps_strip_mine = {
 		}
 		upkeep = {
 			energy = 5
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			minerals = 5
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1938,15 +1881,6 @@ building_ps_rare_trading_post = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_rare_crystals_produces_add = 0.5
-		country_base_exotic_gases_produces_add = 0.5
-		country_base_volatile_motes_produces_add = 0.5
-		mult = value:branch_office_value_for_buildings
-	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -1955,6 +1889,13 @@ building_ps_rare_trading_post = {
 		}
 		upkeep = {
 			energy = 5
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			rare_crystals = 0.5
+			exotic_gases = 0.5
+			volatile_motes = 0.5
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -1974,7 +1915,7 @@ building_ps_stolen_patents = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (фиксированно)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_physics_research_produces_mult = 0.01
@@ -2007,7 +1948,7 @@ building_ps_back_alley_lab = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (фиксированно)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_engineering_research_produces_mult = 0.01
@@ -2040,7 +1981,7 @@ building_ps_sociology_circle = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (фиксированно)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_society_research_produces_mult = 0.01
@@ -2077,7 +2018,7 @@ building_ps_xeno_dealers = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (фиксированно)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_society_research_produces_mult = 0.01
@@ -2115,7 +2056,7 @@ building_ps_tech_smugglers = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (фиксированно)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_engineering_research_produces_mult = 0.015
@@ -2152,7 +2093,7 @@ building_ps_brain_drain = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (фиксированно)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_physics_research_produces_mult = 0.01
@@ -2197,14 +2138,7 @@ building_ps_prototype_shop = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_alloys_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
-	# Владельцу филиала (фиксированно)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_engineering_research_produces_mult = 0.01
@@ -2218,6 +2152,11 @@ building_ps_prototype_shop = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			alloys = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -2241,17 +2180,11 @@ building_ps_data_brokers = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		spy_network_levels_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
-	# Владельцу филиала (фиксированно)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_physics_research_produces_mult = 0.02
+		spy_network_levels_add = 1
 	}
 
 	resources = {
@@ -2285,7 +2218,7 @@ building_ps_secret_institute = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (фиксированно)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_physics_research_produces_mult = 0.015
@@ -2329,14 +2262,7 @@ building_ps_dissident_academy = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
-	# Владельцу филиала (фиксированно)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_society_research_produces_mult = 0.02
@@ -2350,6 +2276,11 @@ building_ps_dissident_academy = {
 		}
 		upkeep = {
 			energy = 5
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -2369,12 +2300,10 @@ building_ps_underground_press = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
-		country_base_unity_produces_add = 2
 		spy_network_levels_add = 1
-		mult = value:branch_office_value_for_buildings
 	}
 
 	# Планете-хозяину
@@ -2398,6 +2327,11 @@ building_ps_underground_press = {
 		upkeep = {
 			energy = 2
 		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 2
+			mult = value:branch_office_value_for_buildings
+		}
 	}
 
 	ai_weight = {
@@ -2416,13 +2350,6 @@ building_ps_pirate_radio = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -2431,6 +2358,11 @@ building_ps_pirate_radio = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -2450,13 +2382,6 @@ building_ps_graffiti_crew = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -2471,6 +2396,11 @@ building_ps_graffiti_crew = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -2490,14 +2420,6 @@ building_ps_leaflet_drop = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 1
-		country_base_influence_produces_add = 0.1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -2506,6 +2428,12 @@ building_ps_leaflet_drop = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 1
+			influence = 0.1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -2525,13 +2453,6 @@ building_ps_resistance_choir = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -2546,6 +2467,11 @@ building_ps_resistance_choir = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -2569,13 +2495,6 @@ building_ps_holo_cinema = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -2590,6 +2509,11 @@ building_ps_holo_cinema = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -2613,13 +2537,6 @@ building_ps_martyr_shrine = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 3
-		mult = value:branch_office_value_for_buildings
-	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -2628,6 +2545,11 @@ building_ps_martyr_shrine = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 3
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -2651,14 +2573,6 @@ building_ps_agitprop = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 2
-		country_base_influence_produces_add = 0.2
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -2673,6 +2587,12 @@ building_ps_agitprop = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 2
+			influence = 0.2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -2696,14 +2616,6 @@ building_ps_ideology_school = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 4
-		country_base_influence_produces_add = 0.3
-		mult = value:branch_office_value_for_buildings
-	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -2712,6 +2624,12 @@ building_ps_ideology_school = {
 		}
 		upkeep = {
 			energy = 5
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 4
+			influence = 0.3
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -2735,13 +2653,6 @@ building_ps_legend_museum = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 5
-		mult = value:branch_office_value_for_buildings
-	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -2750,6 +2661,11 @@ building_ps_legend_museum = {
 		}
 		upkeep = {
 			energy = 5
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 5
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -2769,11 +2685,10 @@ building_ps_smuggler_dock = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_naval_cap_add = 2
-		mult = value:branch_office_value_for_buildings
 	}
 
 	resources = {
@@ -2803,14 +2718,6 @@ building_ps_ship_breakers = {
 		branch_office_owner = { ps_is_partisan_empire = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_alloys_produces_add = 1
-		country_base_minerals_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	resources = {
 		category = planet_branch_office_buildings
 		cost = {
@@ -2819,6 +2726,12 @@ building_ps_ship_breakers = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			alloys = 1
+			minerals = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -2842,11 +2755,10 @@ building_ps_crew_recruiters = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_naval_cap_add = 3
-		mult = value:branch_office_value_for_buildings
 	}
 
 	resources = {
@@ -2880,14 +2792,7 @@ building_ps_hidden_shipyard = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_alloys_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
-	# Владельцу филиала (фиксированно)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		starbase_shipyard_build_speed_mult = 0.01
@@ -2901,6 +2806,11 @@ building_ps_hidden_shipyard = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			alloys = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -2924,12 +2834,10 @@ building_ps_fuel_depot = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
-		country_base_energy_produces_add = 2
 		country_naval_cap_add = 1
-		mult = value:branch_office_value_for_buildings
 	}
 
 	resources = {
@@ -2940,6 +2848,11 @@ building_ps_fuel_depot = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -2963,12 +2876,10 @@ building_ps_privateer_berth = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_naval_cap_add = 3
-		country_base_energy_produces_add = 1
-		mult = value:branch_office_value_for_buildings
 	}
 
 	resources = {
@@ -2979,6 +2890,11 @@ building_ps_privateer_berth = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -3002,14 +2918,7 @@ building_ps_navigator_guild = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
-	# Владельцу филиала (фиксированно)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		ship_speed_mult = 0.01
@@ -3023,6 +2932,11 @@ building_ps_navigator_guild = {
 		}
 		upkeep = {
 			energy = 5
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -3046,12 +2960,10 @@ building_ps_fleet_yards = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_naval_cap_add = 5
-		country_base_alloys_produces_add = 2
-		mult = value:branch_office_value_for_buildings
 	}
 
 	resources = {
@@ -3062,6 +2974,11 @@ building_ps_fleet_yards = {
 		}
 		upkeep = {
 			energy = 5
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			alloys = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -3088,13 +3005,6 @@ building_ps_aid_clinic = {
 		}
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_friend = yes }
@@ -3114,6 +3024,11 @@ building_ps_aid_clinic = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -3140,13 +3055,6 @@ building_ps_aid_food_bank = {
 		}
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_influence_produces_add = 0.1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_friend = yes }
@@ -3166,6 +3074,11 @@ building_ps_aid_food_bank = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			influence = 0.1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -3192,13 +3105,6 @@ building_ps_aid_militia_trainers = {
 		}
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_friend = yes }
@@ -3214,6 +3120,11 @@ building_ps_aid_militia_trainers = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -3240,13 +3151,6 @@ building_ps_aid_engineers = {
 		}
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_friend = yes }
@@ -3261,6 +3165,11 @@ building_ps_aid_engineers = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -3287,13 +3196,6 @@ building_ps_aid_culture_house = {
 		}
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_friend = yes }
@@ -3313,6 +3215,11 @@ building_ps_aid_culture_house = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -3343,13 +3250,6 @@ building_ps_aid_power_grid = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_friend = yes }
@@ -3364,6 +3264,11 @@ building_ps_aid_power_grid = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -3394,13 +3299,6 @@ building_ps_aid_mining_advisers = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_minerals_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_friend = yes }
@@ -3420,6 +3318,11 @@ building_ps_aid_mining_advisers = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			minerals = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -3450,13 +3353,6 @@ building_ps_aid_foundry = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_alloys_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	inline_script = {
 		script = jobs/foundry_add
 		AMOUNT = 100
@@ -3470,6 +3366,11 @@ building_ps_aid_foundry = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			alloys = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -3500,13 +3401,6 @@ building_ps_aid_research_exchange = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	inline_script = {
 		script = jobs/researchers_add
 		AMOUNT = 100
@@ -3520,6 +3414,11 @@ building_ps_aid_research_exchange = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -3550,13 +3449,6 @@ building_ps_aid_security = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_influence_produces_add = 0.2
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_friend = yes }
@@ -3572,6 +3464,11 @@ building_ps_aid_security = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			influence = 0.2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -3602,13 +3499,6 @@ building_ps_aid_refugee_center = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_friend = yes }
@@ -3624,6 +3514,11 @@ building_ps_aid_refugee_center = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -3654,13 +3549,6 @@ building_ps_aid_trade_bridge = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_friend = yes }
@@ -3675,6 +3563,11 @@ building_ps_aid_trade_bridge = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -3705,13 +3598,6 @@ building_ps_aid_logistics = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_friend = yes }
@@ -3726,6 +3612,11 @@ building_ps_aid_logistics = {
 		}
 		upkeep = {
 			energy = 5
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -3756,13 +3647,6 @@ building_ps_aid_fortifications = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_friend = yes }
@@ -3779,6 +3663,11 @@ building_ps_aid_fortifications = {
 		}
 		upkeep = {
 			energy = 5
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -3809,13 +3698,6 @@ building_ps_aid_war_chest = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_alloys_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_friend = yes }
@@ -3830,6 +3712,11 @@ building_ps_aid_war_chest = {
 		}
 		upkeep = {
 			energy = 5
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			alloys = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -3860,13 +3747,6 @@ building_ps_aid_unity_council = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_influence_produces_add = 0.3
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_friend = yes }
@@ -3881,6 +3761,11 @@ building_ps_aid_unity_council = {
 		}
 		upkeep = {
 			energy = 5
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			influence = 0.3
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -3907,13 +3792,6 @@ building_ps_sub_strike_committee = {
 		}
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_enemy = yes }
@@ -3929,6 +3807,11 @@ building_ps_sub_strike_committee = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -3955,11 +3838,10 @@ building_ps_sub_rumor_mill = {
 		}
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		spy_network_levels_add = 2
-		mult = value:branch_office_value_for_buildings
 	}
 
 	# Планете-хозяину
@@ -4007,13 +3889,6 @@ building_ps_sub_saboteurs = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_alloys_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_enemy = yes }
@@ -4028,6 +3903,11 @@ building_ps_sub_saboteurs = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			alloys = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -4058,13 +3938,6 @@ building_ps_sub_blackout = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_enemy = yes }
@@ -4079,6 +3952,11 @@ building_ps_sub_blackout = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -4109,16 +3987,9 @@ building_ps_sub_crime_wave = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
 	triggered_planet_modifier = {
+		potential = { always = yes }
 		planet_crime_add = 20
-		mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|
 	}
 
 	triggered_planet_modifier = {
@@ -4134,6 +4005,11 @@ building_ps_sub_crime_wave = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -4164,13 +4040,6 @@ building_ps_sub_food_riots = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_food_produces_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_enemy = yes }
@@ -4186,6 +4055,11 @@ building_ps_sub_food_riots = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			food = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -4216,7 +4090,7 @@ building_ps_sub_brain_poaching = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (фиксированно)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_physics_research_produces_mult = 0.01
@@ -4270,11 +4144,10 @@ building_ps_sub_mutiny_cells = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		spy_network_levels_add = 3
-		mult = value:branch_office_value_for_buildings
 	}
 
 	# Планете-хозяину
@@ -4311,13 +4184,6 @@ building_ps_crim_aid_fund = {
 		branch_office_owner = { is_criminal_syndicate = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_influence_produces_add = 0.5
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -4332,6 +4198,11 @@ building_ps_crim_aid_fund = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			influence = 0.5
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -4351,11 +4222,10 @@ building_ps_crim_echo_botfarm = {
 		branch_office_owner = { is_criminal_syndicate = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		spy_network_levels_add = 1
-		mult = value:branch_office_value_for_buildings
 	}
 
 	# Планете-хозяину
@@ -4397,13 +4267,6 @@ building_ps_crim_kompromat_press = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_influence_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -4411,8 +4274,8 @@ building_ps_crim_kompromat_press = {
 	}
 
 	triggered_planet_modifier = {
+		potential = { always = yes }
 		planet_crime_add = 10
-		mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|
 	}
 
 	resources = {
@@ -4423,6 +4286,11 @@ building_ps_crim_kompromat_press = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			influence = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -4446,12 +4314,11 @@ building_ps_crim_web_informants = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		spy_network_levels_add = 2
 		add_base_country_intel = 1
-		mult = value:branch_office_value_for_buildings
 	}
 
 	resources = {
@@ -4485,7 +4352,7 @@ building_ps_crim_backdoor_cluster = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (фиксированно)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		intel_encryption_add = 1
@@ -4526,13 +4393,6 @@ building_ps_crim_pr_agency = {
 		branch_office_owner = { is_criminal_syndicate = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -4547,6 +4407,11 @@ building_ps_crim_pr_agency = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -4570,7 +4435,7 @@ building_ps_crim_negotiators_school = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (фиксированно)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		diplo_weight_mult = 0.05
@@ -4614,11 +4479,10 @@ building_ps_crim_data_vault = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		spy_network_levels_add = 1
-		mult = value:branch_office_value_for_buildings
 	}
 
 	# Планете-хозяину
@@ -4667,13 +4531,6 @@ building_ps_crim_leak_network = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_influence_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_enemy = yes }
@@ -4688,6 +4545,11 @@ building_ps_crim_leak_network = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			influence = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -4707,13 +4569,6 @@ building_ps_crim_cyber_brothel = {
 		branch_office_owner = { is_criminal_syndicate = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 3
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -4721,8 +4576,8 @@ building_ps_crim_cyber_brothel = {
 	}
 
 	triggered_planet_modifier = {
+		potential = { always = yes }
 		planet_crime_add = 5
-		mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|
 	}
 
 	resources = {
@@ -4733,6 +4588,11 @@ building_ps_crim_cyber_brothel = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 3
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -4752,13 +4612,6 @@ building_ps_crim_pirate_radio = {
 		branch_office_owner = { is_criminal_syndicate = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -4766,8 +4619,8 @@ building_ps_crim_pirate_radio = {
 	}
 
 	triggered_planet_modifier = {
+		potential = { always = yes }
 		planet_crime_add = 10
-		mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|
 	}
 
 	resources = {
@@ -4778,6 +4631,11 @@ building_ps_crim_pirate_radio = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -4797,13 +4655,6 @@ building_ps_crim_protection_racket = {
 		branch_office_owner = { is_criminal_syndicate = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -4818,6 +4669,11 @@ building_ps_crim_protection_racket = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -4837,13 +4693,6 @@ building_ps_crim_fight_club = {
 		branch_office_owner = { is_criminal_syndicate = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -4851,8 +4700,8 @@ building_ps_crim_fight_club = {
 	}
 
 	triggered_planet_modifier = {
+		potential = { always = yes }
 		planet_crime_add = 5
-		mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|
 	}
 
 	resources = {
@@ -4863,6 +4712,11 @@ building_ps_crim_fight_club = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -4882,13 +4736,6 @@ building_ps_crim_bouncers = {
 		branch_office_owner = { is_criminal_syndicate = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_alloys_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -4903,6 +4750,11 @@ building_ps_crim_bouncers = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			alloys = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -4926,11 +4778,10 @@ building_ps_crim_security_firm = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_naval_cap_add = 3
-		mult = value:branch_office_value_for_buildings
 	}
 
 	# Планете-хозяину
@@ -4970,13 +4821,6 @@ building_ps_crim_lost_weapons = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_alloys_produces_add = 1.5
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -4991,6 +4835,11 @@ building_ps_crim_lost_weapons = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			alloys = 1.5
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -5010,13 +4859,6 @@ building_ps_crim_shooting_ranges = {
 		branch_office_owner = { is_criminal_syndicate = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -5031,6 +4873,11 @@ building_ps_crim_shooting_ranges = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -5050,13 +4897,6 @@ building_ps_crim_debt_collectors = {
 		branch_office_owner = { is_criminal_syndicate = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 3
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -5064,8 +4904,8 @@ building_ps_crim_debt_collectors = {
 	}
 
 	triggered_planet_modifier = {
+		potential = { always = yes }
 		planet_crime_add = 5
-		mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|
 	}
 
 	resources = {
@@ -5076,6 +4916,11 @@ building_ps_crim_debt_collectors = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 3
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -5095,13 +4940,6 @@ building_ps_crim_front_gym = {
 		branch_office_owner = { is_criminal_syndicate = yes }
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 1.5
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -5116,6 +4954,11 @@ building_ps_crim_front_gym = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 1.5
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -5139,13 +4982,6 @@ building_ps_crim_silence_prison = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_influence_produces_add = 0.5
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -5160,6 +4996,11 @@ building_ps_crim_silence_prison = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			influence = 0.5
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -5183,13 +5024,6 @@ building_ps_crim_disposal_service = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_minerals_produces_add = 3
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { always = yes }
@@ -5197,8 +5031,8 @@ building_ps_crim_disposal_service = {
 	}
 
 	triggered_planet_modifier = {
+		potential = { always = yes }
 		planet_crime_add = 10
-		mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|
 	}
 
 	resources = {
@@ -5209,6 +5043,11 @@ building_ps_crim_disposal_service = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			minerals = 3
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -5235,13 +5074,6 @@ building_ps_corp_logistics_hub = {
 		}
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 3
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_friend = yes }
@@ -5256,6 +5088,11 @@ building_ps_corp_logistics_hub = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 3
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -5286,14 +5123,6 @@ building_ps_corp_bank = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_energy_produces_add = 4
-		country_base_influence_produces_add = 0.25
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_friend = yes }
@@ -5308,6 +5137,12 @@ building_ps_corp_bank = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			energy = 4
+			influence = 0.25
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -5334,13 +5169,6 @@ building_ps_corp_mining_consortium = {
 		}
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_minerals_produces_add = 4
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_friend = yes }
@@ -5355,6 +5183,11 @@ building_ps_corp_mining_consortium = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			minerals = 4
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -5381,13 +5214,6 @@ building_ps_corp_agri_holding = {
 		}
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_food_produces_add = 4
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_friend = yes }
@@ -5402,6 +5228,11 @@ building_ps_corp_agri_holding = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			food = 4
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -5432,13 +5263,6 @@ building_ps_corp_foundry_contract = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_alloys_produces_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_friend = yes }
@@ -5453,6 +5277,11 @@ building_ps_corp_foundry_contract = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			alloys = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -5479,13 +5308,6 @@ building_ps_corp_consumer_chain = {
 		}
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_consumer_goods_produces_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_friend = yes }
@@ -5500,6 +5322,11 @@ building_ps_corp_consumer_chain = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			consumer_goods = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -5530,7 +5357,7 @@ building_ps_corp_research_park = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (фиксированно)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_physics_research_produces_mult = 0.01
@@ -5580,13 +5407,6 @@ building_ps_corp_media_group = {
 		}
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 2
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_friend = yes }
@@ -5601,6 +5421,11 @@ building_ps_corp_media_group = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 2
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -5627,14 +5452,6 @@ building_ps_corp_clinic_network = {
 		}
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_unity_produces_add = 1
-		country_base_energy_produces_add = 1
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_friend = yes }
@@ -5649,6 +5466,12 @@ building_ps_corp_clinic_network = {
 		}
 		upkeep = {
 			energy = 2
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			unity = 1
+			energy = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -5679,12 +5502,10 @@ building_ps_corp_shipyard_contract = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		country_naval_cap_add = 2
-		country_base_alloys_produces_add = 1
-		mult = value:branch_office_value_for_buildings
 	}
 
 	# Планете-хозяину
@@ -5701,6 +5522,11 @@ building_ps_corp_shipyard_contract = {
 		}
 		upkeep = {
 			energy = 3
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			alloys = 1
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -5731,15 +5557,6 @@ building_ps_corp_strategic_traders = {
 		"tech_ps_ghost_networks"
 	}
 
-	# Владельцу филиала (растёт с ценностью филиала)
-	triggered_country_modifier = {
-		potential = { always = yes }
-		country_base_rare_crystals_produces_add = 0.25
-		country_base_exotic_gases_produces_add = 0.25
-		country_base_volatile_motes_produces_add = 0.25
-		mult = value:branch_office_value_for_buildings
-	}
-
 	# Планете-хозяину
 	triggered_planet_modifier = {
 		potential = { ps_branch_host_is_friend = yes }
@@ -5754,6 +5571,13 @@ building_ps_corp_strategic_traders = {
 		}
 		upkeep = {
 			energy = 5
+		}
+		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
+		produces = {
+			rare_crystals = 0.25
+			exotic_gases = 0.25
+			volatile_motes = 0.25
+			mult = value:branch_office_value_for_buildings
 		}
 	}
 
@@ -5784,7 +5608,7 @@ building_ps_corp_security_contract = {
 		"tech_ps_guerrilla_doctrine"
 	}
 
-	# Владельцу филиала (фиксированно)
+	# Владельцу филиала
 	triggered_country_modifier = {
 		potential = { always = yes }
 		army_damage_mult = 0.01

@@ -502,14 +502,19 @@ def building(x):
         o.append(f"\n\tallow = {{\n\t\tcustom_tooltip = {{\n\t\t\tfail_text = {trig}_fail\n\t\t\t{trig} = yes\n\t\t}}\n\t}}\n")
     if t["pre"]:
         o.append(f'\n\tprerequisites = {{\n\t\t"{t["pre"]}"\n\t}}\n')
-    scaled = {m: v for m, v in x["owner"].items() if m not in STATIC}
-    static = {m: v for m, v in x["owner"].items() if m in STATIC}
-    if scaled:
-        o.append("\n\t# Владельцу филиала (растёт с ценностью филиала)\n\ttriggered_country_modifier = {\n\t\tpotential = { always = yes }\n")
-        o += [f"\t\t{m} = {fmt(v)}\n" for m, v in scaled.items()]
-        o.append("\t\tmult = value:branch_office_value_for_buildings\n\t}\n")
+    # Доход владельцу — как в ванили (14_branch_office_buildings.txt): resources.produces с
+    # mult = value:branch_office_value_for_buildings (контекст филиала есть только там).
+    # Остальное владельцу — фиксированным triggered_country_modifier (без mult: в модификаторе
+    # страны branch_office_owner не определяется — error.log «Unable to resolve country»).
+    prod = {}
+    static = {}
+    for m, v in x["owner"].items():
+        if m.startswith("country_base_") and m.endswith("_produces_add"):
+            prod[m[len("country_base_"):-len("_produces_add")]] = v
+        else:
+            static[m] = v
     if static:
-        o.append("\n\t# Владельцу филиала (фиксированно)\n\ttriggered_country_modifier = {\n\t\tpotential = { always = yes }\n")
+        o.append("\n\t# Владельцу филиала\n\ttriggered_country_modifier = {\n\t\tpotential = { always = yes }\n")
         o += [f"\t\t{m} = {fmt(v)}\n" for m, v in static.items()]
         o.append("\t}\n")
     if x["host"]:
@@ -525,15 +530,18 @@ def building(x):
             o += [f"\t\t{m} = {fmt(v)}\n" for m, v in rest.items()]
             o.append("\t}\n")
         if crime and crime > 0:
-            o.append(f"\n\ttriggered_planet_modifier = {{\n\t\tplanet_crime_add = {fmt(crime)}\n"
-                     f"\t\tmult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|\n\t}}\n")
+            o.append(f"\n\ttriggered_planet_modifier = {{\n\t\tpotential = {{ always = yes }}\n\t\tplanet_crime_add = {fmt(crime)}\n\t}}\n")
     for script, amount in x["jobs"]:
         if script.startswith("job_"):
             o.append(f"\n\ttriggered_planet_modifier = {{\n\t\tpotential = {{ always = yes }}\n\t\t{script} = {amount}\n\t}}\n")
         else:
             o.append(f"\n\tinline_script = {{\n\t\tscript = {script}\n\t\tAMOUNT = {amount}\n\t}}\n")
     o.append(f"\n\tresources = {{\n\t\tcategory = planet_branch_office_buildings\n\t\tcost = {{\n\t\t\tminerals = {t['min']}\n"
-             f"\t\t\tinfluence = {t['inf']}\n\t\t}}\n\t\tupkeep = {{\n\t\t\tenergy = {t['up']}\n\t\t}}\n\t}}\n")
+             f"\t\t\tinfluence = {t['inf']}\n\t\t}}\n\t\tupkeep = {{\n\t\t\tenergy = {t['up']}\n\t\t}}\n"
+             + ("\t\t# доход владельцу филиала, растёт с ценностью филиала (как в ванили)\n\t\tproduces = {\n"
+                + "".join(f"\t\t\t{r} = {fmt(v)}\n" for r, v in prod.items())
+                + "\t\t\tmult = value:branch_office_value_for_buildings\n\t\t}\n" if prod else "")
+             + "\t}\n")
     o.append("\n\tai_weight = {\n\t\tfactor = 10\n\t}\n}\n")
     return "".join(o)
 

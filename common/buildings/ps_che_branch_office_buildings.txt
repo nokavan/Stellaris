@@ -339,9 +339,9 @@ building_Xeno_Relations_bureau = {
 		potential = {
 			always = yes
 		}
-		intel_decryption_add = 0.25
-		intel_encryption_add = 0.25
-		mult = value:branch_office_value_for_buildings
+		# было 0.25 × ценность филиала; в модификаторе страны ценность не вычисляется — фиксированно
+		intel_decryption_add = 0.5
+		intel_encryption_add = 0.5
 	}
 
 	planet_modifier = {
