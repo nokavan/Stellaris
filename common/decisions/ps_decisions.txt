@@ -245,3 +245,109 @@ decision_ps_ark_cloak_on = {
 		}
 	}
 }
+
+# ЯЧЕЙКА НА ПЛАНЕТЕ: заселить свободную пригодную планету в наших границах новым вассалом
+# (специализация — по «Доктрине заселения», без неё — «Режим-клиент»)
+decision_ps_found_planet_cell = {
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+		cost = {
+			alloys = 500
+			food = 300
+			influence = 100
+		}
+	}
+
+	potential = {
+		is_capital = yes
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		custom_tooltip = {
+			fail_text = decision_ps_planet_cell_cooldown
+			owner = { NOT = { has_country_flag = ps_planet_cell_cd } }
+		}
+		custom_tooltip = {
+			fail_text = decision_ps_no_free_planet
+			owner = {
+				any_system_within_border = {
+					any_system_planet = {
+						is_colonizable = yes
+						NOT = { exists = owner }
+					}
+				}
+			}
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_ps_found_planet_cell_tooltip
+		hidden_effect = {
+			owner = {
+				save_event_target_as = ps_seed_owner
+				set_timed_country_flag = { flag = ps_planet_cell_cd days = 1080 }
+				random_system_within_border = {
+					limit = {
+						any_system_planet = {
+							is_colonizable = yes
+							NOT = { exists = owner }
+						}
+					}
+					random_system_planet = {
+						limit = {
+							is_colonizable = yes
+							NOT = { exists = owner }
+						}
+						ps_cell_on_free_planet = yes
+					}
+				}
+				country_event = { id = ps_mega.8 }
+			}
+		}
+	}
+}
+
+# ВЫДЕЛИТЬ ПЛАНЕТУ В ЯЧЕЙКУ: наша колония (не столица) становится новым вассалом
+decision_ps_release_planet_cell = {
+	owned_planets_only = yes
+
+	resources = {
+		category = decisions
+		cost = {
+			influence = 75
+		}
+	}
+
+	potential = {
+		is_capital = no
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	allow = {
+		is_colony = yes
+		custom_tooltip = {
+			fail_text = decision_ps_planet_occupied
+			exists = controller
+			controller = { is_same_value = root.owner }
+		}
+		custom_tooltip = {
+			fail_text = decision_ps_planet_cell_cooldown
+			owner = { NOT = { has_country_flag = ps_planet_cell_cd } }
+		}
+	}
+
+	effect = {
+		custom_tooltip = decision_ps_release_planet_cell_tooltip
+		hidden_effect = {
+			owner = {
+				save_event_target_as = ps_seed_owner
+				set_timed_country_flag = { flag = ps_planet_cell_cd days = 1080 }
+			}
+			ps_cell_from_own_colony = yes
+			event_target:ps_seed_owner = { country_event = { id = ps_mega.8 } }
+		}
+	}
+}

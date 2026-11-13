@@ -76,37 +76,7 @@ ps_mega_seed_system = {
 		add_modifier = { modifier = ps_ark_cell_founding days = 3600 }
 	}
 	event_target:ps_new_cell = {
-		if = {
-			limit = { root = { has_country_flag = ps_mega_seed_strike } }
-			ps_make_specialist_subject = { OVERLORD = root PRESET = preset_ps_strike }
-		}
-		else_if = {
-			limit = { root = { has_country_flag = ps_mega_seed_assault } }
-			ps_make_specialist_subject = { OVERLORD = root PRESET = preset_ps_assault }
-		}
-		else_if = {
-			limit = { root = { has_country_flag = ps_mega_seed_raiders } }
-			ps_make_specialist_subject = { OVERLORD = root PRESET = preset_ps_raiders }
-		}
-		else_if = {
-			limit = { root = { has_country_flag = ps_mega_seed_residency } }
-			ps_make_specialist_subject = { OVERLORD = root PRESET = preset_ps_residency }
-		}
-		else_if = {
-			limit = { root = { has_country_flag = ps_mega_seed_exchange } }
-			ps_make_specialist_subject = { OVERLORD = root PRESET = preset_ps_exchange }
-		}
-		else_if = {
-			limit = { root = { has_country_flag = ps_mega_seed_trust } }
-			ps_make_specialist_subject = { OVERLORD = root PRESET = preset_ps_trust }
-		}
-		else_if = {
-			limit = { root = { has_country_flag = ps_mega_seed_devotee } }
-			ps_make_specialist_subject = { OVERLORD = root PRESET = preset_ps_devotee }
-		}
-		else = {
-			ps_make_cell_subject = { OVERLORD = root }
-		}
+		ps_apply_doctrine_subject = { OVERLORD = root }
 		add_resource = { energy = 1000 minerals = 1000 food = 500 alloys = 300 }
 		add_opinion_modifier = { who = root modifier = opinion_ps_liberators }
 		add_modifier = { modifier = ps_liberated_state days = 7200 }
@@ -123,4 +93,95 @@ ps_mega_clear_doctrine = {
 	remove_country_flag = ps_mega_seed_trust
 	remove_country_flag = ps_mega_seed_client
 	remove_country_flag = ps_mega_seed_devotee
+}
+
+# Сделать текущую страну вассалом OVERLORD по «Доктрине заселения» (флаги ps_mega_seed_*):
+# специализация из доктрины, без доктрины — «Режим-клиент». scope = новая страна.
+ps_apply_doctrine_subject = {
+	if = {
+		limit = { $OVERLORD$ = { has_country_flag = ps_mega_seed_strike } }
+		ps_make_specialist_subject = { OVERLORD = $OVERLORD$ PRESET = preset_ps_strike }
+	}
+	else_if = {
+		limit = { $OVERLORD$ = { has_country_flag = ps_mega_seed_assault } }
+		ps_make_specialist_subject = { OVERLORD = $OVERLORD$ PRESET = preset_ps_assault }
+	}
+	else_if = {
+		limit = { $OVERLORD$ = { has_country_flag = ps_mega_seed_raiders } }
+		ps_make_specialist_subject = { OVERLORD = $OVERLORD$ PRESET = preset_ps_raiders }
+	}
+	else_if = {
+		limit = { $OVERLORD$ = { has_country_flag = ps_mega_seed_residency } }
+		ps_make_specialist_subject = { OVERLORD = $OVERLORD$ PRESET = preset_ps_residency }
+	}
+	else_if = {
+		limit = { $OVERLORD$ = { has_country_flag = ps_mega_seed_exchange } }
+		ps_make_specialist_subject = { OVERLORD = $OVERLORD$ PRESET = preset_ps_exchange }
+	}
+	else_if = {
+		limit = { $OVERLORD$ = { has_country_flag = ps_mega_seed_trust } }
+		ps_make_specialist_subject = { OVERLORD = $OVERLORD$ PRESET = preset_ps_trust }
+	}
+	else_if = {
+		limit = { $OVERLORD$ = { has_country_flag = ps_mega_seed_devotee } }
+		ps_make_specialist_subject = { OVERLORD = $OVERLORD$ PRESET = preset_ps_devotee }
+	}
+	else = {
+		ps_make_cell_subject = { OVERLORD = $OVERLORD$ }
+	}
+}
+
+# Новое государство-ячейка вида SPECIES (scope любой). Сохраняет event_target:ps_new_cell.
+ps_create_cell_country = {
+	create_country = {
+		name = random
+		type = default
+		species = $SPECIES$
+		authority = random
+		civics = random
+		ethos = random
+		ignore_initial_colony_error = yes
+		effect = {
+			save_event_target_as = ps_new_cell
+			set_country_flag = ps_planet_cell
+			set_country_flag = ps_partisan_rebel_state
+			set_timed_country_flag = { flag = ps_puppet_council days = 3600 }
+		}
+	}
+}
+
+# ЯЧЕЙКА НА СВОБОДНОЙ ПЛАНЕТЕ. scope = свободная пригодная планета; event_target:ps_seed_owner — сюзерен.
+ps_cell_on_free_planet = {
+	save_event_target_as = ps_seed_world
+	ps_create_cell_country = { SPECIES = event_target:ps_seed_owner.owner_species }
+	set_owner = event_target:ps_new_cell
+	set_controller = event_target:ps_new_cell
+	while = {
+		count = 3
+		create_pop_group = {
+			species = event_target:ps_seed_owner.owner_species
+		}
+	}
+	add_modifier = { modifier = ps_ark_cell_founding days = 3600 }
+	event_target:ps_new_cell = {
+		ps_apply_doctrine_subject = { OVERLORD = event_target:ps_seed_owner }
+		add_resource = { energy = 500 minerals = 500 food = 300 alloys = 150 }
+		add_opinion_modifier = { who = event_target:ps_seed_owner modifier = opinion_ps_liberators }
+		add_modifier = { modifier = ps_liberated_state days = 7200 }
+	}
+}
+
+# ВЫДЕЛИТЬ НАШУ КОЛОНИЮ В ЯЧЕЙКУ. scope = наша колония (не столица); event_target:ps_seed_owner — сюзерен.
+ps_cell_from_own_colony = {
+	save_event_target_as = ps_seed_world
+	ps_create_cell_country = { SPECIES = event_target:ps_seed_owner.owner_species }
+	set_owner = event_target:ps_new_cell
+	set_controller = event_target:ps_new_cell
+	add_modifier = { modifier = ps_ark_cell_founding days = 1800 }
+	event_target:ps_new_cell = {
+		ps_apply_doctrine_subject = { OVERLORD = event_target:ps_seed_owner }
+		add_resource = { energy = 300 minerals = 300 food = 200 }
+		add_opinion_modifier = { who = event_target:ps_seed_owner modifier = opinion_ps_liberators }
+		add_modifier = { modifier = ps_liberated_state days = 3600 }
+	}
 }

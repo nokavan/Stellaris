@@ -144,6 +144,21 @@ country_event = {
 	}
 }
 
+# Уведомление: ячейка на планете (решения decision_ps_found_planet_cell / decision_ps_release_planet_cell)
+country_event = {
+	id = ps_mega.8
+	title = ps_mega.8.name
+	desc = ps_mega.8.desc
+	picture = GFX_ps_evt_syndicate
+	is_triggered_only = yes
+
+	trigger = { exists = event_target:ps_new_cell }
+
+	option = {
+		name = ps_mega.8.a
+	}
+}
+
 # ТЕНЕВАЯ ЛОГИСТИКА: строители, инженерные суда и корабли снабжения
 # партизан сами включают маскировку, если у них есть сила маскировки.
 # Ручное отключение кнопкой из модов Cloakable Construction / Logistics Ships
