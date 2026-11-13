@@ -122,8 +122,7 @@ country_event = {
 				limit = {
 					root = { ps_has_mega_doctrine = yes }
 					any_system_planet = {
-						is_colonizable = yes
-						NOT = { exists = owner }
+						ps_free_habitable_planet = { OWNER = root }
 					}
 				}
 				ps_mega_seed_system = yes

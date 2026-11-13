@@ -40,8 +40,7 @@ ps_make_specialist_subject = {
 ps_mega_seed_system = {
 	random_system_planet = {
 		limit = {
-			is_colonizable = yes
-			NOT = { exists = owner }
+			ps_free_habitable_planet = { OWNER = root }
 		}
 		save_event_target_as = ps_mega_world
 	}
@@ -62,8 +61,7 @@ ps_mega_seed_system = {
 	}
 	every_system_planet = {
 		limit = {
-			is_colonizable = yes
-			NOT = { exists = owner }
+			ps_free_habitable_planet = { OWNER = root }
 		}
 		set_owner = event_target:ps_new_cell
 		set_controller = event_target:ps_new_cell

@@ -26,16 +26,14 @@ carrier_event = {
 					}
 					solar_system = {
 						any_system_planet = {
-							is_colonizable = yes
-							NOT = { exists = owner }
+							ps_free_habitable_planet = { OWNER = event_target:ps_ark_owner }
 						}
 					}
 				}
 				solar_system = {
 					random_system_planet = {
 						limit = {
-							is_colonizable = yes
-							NOT = { exists = owner }
+							ps_free_habitable_planet = { OWNER = event_target:ps_ark_owner }
 						}
 						save_event_target_as = ps_cell_world
 					}
