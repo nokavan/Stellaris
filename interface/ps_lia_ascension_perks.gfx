@@ -1,0 +1,15 @@
+# Встроено из «Espionage Extended <Eng/Rus ver.>» (Workshop 2465577434; автор передал мод). Только новое содержимое, перенесено на 4.x.
+spriteTypes = {
+	spriteType = {
+		name = "GFX_ap_galactic_plan"
+		texturefile = "gfx/interface/icons/ascension_perks/ap_galactic_plan.dds"
+		alwaystransparent = yes
+	}
+}
+spriteTypes = {
+	spriteType = {
+		name = "GFX_diplomatic_stance_shadow"
+		texturefile = "gfx/interface/icons/diplomatic_stance/diplomatic_stance_shadow.dds"
+		alwaystransparent = yes
+	}
+}

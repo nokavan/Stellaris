@@ -1,0 +1,11 @@
+# Встроено из «Intrigue, Sabotage, & Espionage Expanded Uses» (Workshop 2630349402; автор передал мод). Перенесено на 4.x (tools/port_3x.py).
+iseeu_opinion_relic_stolen = {
+	opinion = {
+		base = -360
+	}
+	accumulative = yes
+	decay = {
+		base = 1
+	}
+	monthly = yes
+}

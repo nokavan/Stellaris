@@ -1,0 +1,300 @@
+# Встроено из «Intrigue, Sabotage, & Espionage Expanded Uses» (Workshop 2630349402; автор передал мод). Перенесено на 4.x (tools/port_3x.py).
+iseeu_close_selection_menu = {
+	iseeu_clear_variable_list = yes
+	set_variable = {
+		which = iseeu_selection_starting_index
+		value = 0
+	}
+	set_variable = {
+		which = iseeu_selection_index
+		value = 0
+	}
+	remove_country_flag = iseeu_selecting_target
+	event_target:iseeu_operation = {
+		set_espionage_operation_progress_locked = no
+	}
+}
+
+iseeu_clear_variable_list = {
+	set_variable = {
+		which = iseeu_target_0
+		value = 0
+	}
+	set_variable = {
+		which = iseeu_target_1
+		value = 0
+	}
+	set_variable = {
+		which = iseeu_target_2
+		value = 0
+	}
+	set_variable = {
+		which = iseeu_target_3
+		value = 0
+	}
+	set_variable = {
+		which = iseeu_target_4
+		value = 0
+	}
+	set_variable = {
+		which = iseeu_target_5
+		value = 0
+	}
+	set_variable = {
+		which = iseeu_target_6
+		value = 0
+	}
+	set_variable = {
+		which = iseeu_target_7
+		value = 0
+	}
+	set_variable = {
+		which = iseeu_target_8
+		value = 0
+	}
+	set_variable = {
+		which = iseeu_target_9
+		value = 0
+	}
+	set_variable = {
+		which = iseeu_target_a
+		value = 0
+	}
+	set_variable = {
+		which = iseeu_target_b
+		value = 0
+	}
+	set_variable = {
+		which = iseeu_target_c
+		value = 0
+	}
+	set_variable = {
+		which = iseeu_target_d
+		value = 0
+	}
+	set_variable = {
+		which = iseeu_target_e
+		value = 0
+	}
+	set_variable = {
+		which = iseeu_target_f
+		value = 0
+	}
+}
+
+# this = caller country
+# prev = leader
+# iseeu_selection_index < 0
+iseeu_store_target_list = {
+	if = {
+		limit = {
+			check_variable = {
+				which = iseeu_selection_index
+				value < -8
+			}
+		}
+		if = {
+			limit = {
+				check_variable = {
+					which = iseeu_selection_index
+					value < -12
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						which = iseeu_selection_index
+						value < -14
+					}
+				}
+				if = {
+					limit = {
+						check_variable = {
+							which = iseeu_selection_index
+							value < -15
+						}
+					}
+					iseeu_store_target = {
+						INDEX = f
+					}
+				}
+				else = {
+					iseeu_store_target = {
+						INDEX = e
+					}
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						check_variable = {
+							which = iseeu_selection_index
+							value < -13
+						}
+					}
+					iseeu_store_target = {
+						INDEX = d
+					}
+				}
+				else = {
+					iseeu_store_target = {
+						INDEX = c
+					}
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					check_variable = {
+						which = iseeu_selection_index
+						value < -10
+					}
+				}
+				if = {
+					limit = {
+						check_variable = {
+							which = iseeu_selection_index
+							value < -11
+						}
+					}
+					iseeu_store_target = {
+						INDEX = b
+					}
+				}
+				else = {
+					iseeu_store_target = {
+						INDEX = a
+					}
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						check_variable = {
+							which = iseeu_selection_index
+							value < -9
+						}
+					}
+					iseeu_store_target = {
+						INDEX = 9
+					}
+				}
+				else = {
+					iseeu_store_target = {
+						INDEX = 8
+					}
+				}
+			}
+		}
+	}
+	else = {
+		if = {
+			limit = {
+				check_variable = {
+					which = iseeu_selection_index
+					value < -4
+				}
+			}
+			if = {
+				limit = {
+					check_variable = {
+						which = iseeu_selection_index
+						value < -6
+					}
+				}
+				if = {
+					limit = {
+						check_variable = {
+							which = iseeu_selection_index
+							value < -7
+						}
+					}
+					iseeu_store_target = {
+						INDEX = 7
+					}
+				}
+				else = {
+					iseeu_store_target = {
+						INDEX = 6
+					}
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						check_variable = {
+							which = iseeu_selection_index
+							value < -5
+						}
+					}
+					iseeu_store_target = {
+						INDEX = 5
+					}
+				}
+				else = {
+					iseeu_store_target = {
+						INDEX = 4
+					}
+				}
+			}
+		}
+		else = {
+			if = {
+				limit = {
+					check_variable = {
+						which = iseeu_selection_index
+						value < -2
+					}
+				}
+				if = {
+					limit = {
+						check_variable = {
+							which = iseeu_selection_index
+							value < -3
+						}
+					}
+					iseeu_store_target = {
+						INDEX = 3
+					}
+				}
+				else = {
+					iseeu_store_target = {
+						INDEX = 2
+					}
+				}
+			}
+			else = {
+				if = {
+					limit = {
+						check_variable = {
+							which = iseeu_selection_index
+							value < -1
+						}
+					}
+					iseeu_store_target = {
+						INDEX = 1
+					}
+				}
+				else = {
+					iseeu_store_target = {
+						INDEX = 0
+					}
+				}
+			}
+		}
+	}
+}
+
+# this = caller country
+# prev = leader
+# INDEX = 0..f
+iseeu_store_target = {
+	set_variable = {
+		which = iseeu_target_$INDEX$
+		value = 1
+	}
+	prev = {
+		save_event_target_as = iseeu_target_$INDEX$
+	}
+}

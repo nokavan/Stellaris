@@ -1,0 +1,211 @@
+# Встроено из «Intrigue, Sabotage, & Espionage Expanded Uses» (Workshop 2630349402; автор передал мод). Перенесено на 4.x (tools/port_3x.py).
+# operation_type_name = {			# Key of the site, used for name lookup etc.
+#   target = <target type>			# Valid target types are country, megastructure, starbase, fleet, army, pop_faction, spynetwork, federation and none (spy network target is the target then)
+#	picture = <sprite key>			# GFX_* sprite key for the operation image
+#	desc = <triggered event desc>	# Description generator for the operation, with scope this=spy network
+#	stages = <int>					# Should match number of defined stages below.
+#	potential = <trigger>			# Trigger checking if a scope with this=spy network is potential to use (this will add/remove this operation without giving the player a reason).
+#	allow = <trigger>				# Trigger checking if a scope with this=spy network is allowed to use (this will toggle enable/disabled mode on buttons etc).
+#	stage = {						# Stage definition, order dependent.
+#		difficulty = <interval int>	# min max interval type. interval is defined either by '<int>' or '{ min = <int> max=<int> }' where the later will randomize a value between min and max.
+#		icon = <string>				# icon gfx type.
+#		event = <string>			# event to fire when finished the state.
+#	}
+#	stage = {...}					# Second stage, the total number of 'stage' entries should match value of 'stages'
+#	on_roll_failed = <effect>		# Effect to fire when a roll fails, with scope this=spy operation.
+#	on_create = <effect>			# Effect to fire upon operation creation, with scope this=spy operation.
+#}
+@diff_t0 = 4
+@diff_t1 = 5
+@diff_t2 = 6
+@diff_t3 = 7
+@diff_t4 = 8
+@diff_t5 = 9
+@diff_t6 = 10
+@diff_t7 = 11
+@diff_t8 = 12
+@diff_t9 = 13
+@operationTargetedByTimer = 10800
+#30 years during which the effects of an operation may be felt by select Spy Network events
+#
+# abduct pops as slaves
+iseeu_operation_abduct_slaves = {
+	target = none
+	categories = {
+		op_cat_subterfuge
+		op_cat_economy
+	}
+	picture = GFX_evt_dark_alley
+	desc = iseeu_operation_abduct_slaves_desc
+	stages = 2
+	resources = {
+		category = operations
+		cost = {
+			energy = 2000
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+	spy_power_cost = 20
+	# spy_network_lvl_requirement = 20
+	#remove 20
+	potential = {
+		owner = {
+			has_policy_flag = slavery_allowed
+		}
+		target = {
+			any_owned_pop_group = {
+				species = {
+					iseeu_is_slave = {
+						COUNTRY = root.owner
+					}
+				}
+			}
+		}
+	}
+	allow = {
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	abort = {
+		always = no
+	}
+	stage = {
+		difficulty = @diff_t0
+		icon = GFX_espionage_chapter_icon_target
+		event = iseeu_subterfuge.1
+	}
+	stage = {
+		difficulty = @diff_t3
+		icon = GFX_espionage_chapter_icon_success
+		event = iseeu_subterfuge.5
+	}
+	on_roll_failed = {
+		iseeu_espionage_operation_on_roll_failed = yes
+	}
+	on_create = {
+	}
+}
+
+# free slaves
+iseeu_operation_free_slaves = {
+	target = none
+	categories = {
+		op_cat_subterfuge
+		op_cat_economy
+	}
+	picture = GFX_evt_dark_alley
+	desc = iseeu_operation_free_slaves_desc
+	stages = 2
+	resources = {
+		category = operations
+		cost = {
+			energy = 2000
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+	spy_power_cost = 20
+	# spy_network_lvl_requirement = 20
+	#remove 20
+	potential = {
+		owner = {
+			has_policy_flag = slavery_allowed
+		}
+		target = {
+			any_owned_pop_group = {
+				species = {
+					iseeu_is_slave = {
+						COUNTRY = target.owner
+					}
+					iseeu_is_free = {
+						COUNTRY = root.owner
+					}
+				}
+			}
+		}
+	}
+	allow = {
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	abort = {
+		always = no
+	}
+	stage = {
+		difficulty = @diff_t0
+		icon = GFX_espionage_chapter_icon_target
+		event = iseeu_subterfuge.11
+	}
+	stage = {
+		difficulty = @diff_t3
+		icon = GFX_espionage_chapter_icon_success
+		event = iseeu_subterfuge.15
+	}
+	on_roll_failed = {
+		iseeu_espionage_operation_on_roll_failed = yes
+	}
+	on_create = {
+	}
+}
+
+# steal relic
+iseeu_operation_steal_relic = {
+	target = none
+	categories = {
+		op_cat_subterfuge
+		op_cat_government
+	}
+	picture = GFX_evt_analyzing_artifacts
+	desc = iseeu_operation_steal_relic_desc
+	stages = 2
+	resources = {
+		category = operations
+		cost = {
+			energy = 5000
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+	spy_power_cost = 70
+	# spy_network_lvl_requirement = 70
+	#remove 50
+	potential = {
+		target = {
+			num_owned_relics > 0
+		}
+	}
+	allow = {
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	abort = {
+		target = {
+			num_owned_relics = 0
+		}
+	}
+	stage = {
+		difficulty = @diff_t3
+		icon = GFX_espionage_chapter_icon_target
+		event = iseeu_subterfuge.21
+	}
+	stage = {
+		difficulty = @diff_t7
+		icon = GFX_espionage_chapter_icon_success
+		event = iseeu_subterfuge.25
+	}
+	on_roll_failed = {
+		iseeu_espionage_operation_on_roll_failed = yes
+	}
+	on_create = {
+	}
+}

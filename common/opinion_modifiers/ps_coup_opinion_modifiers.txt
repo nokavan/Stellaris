@@ -1,0 +1,12 @@
+# Встроено из «Stage a coup & assassinate ruler UNLIMITED» (Workshop 2923081890; автор передал мод). Перенесено на 4.x (tools/port_3x.py).
+opinion_staged_a_coup_for_us = {
+	opinion = {
+		base = 1000
+	}
+}
+
+opinion_helped_staging_a_coup = {
+	opinion = {
+		base = 1000
+	}
+}

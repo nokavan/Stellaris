@@ -1,0 +1,796 @@
+# Встроено из «Intrigue, Sabotage, & Espionage Expanded Uses» (Workshop 2630349402; автор передал мод). Перенесено на 4.x (tools/port_3x.py).
+namespace = iseeu_sabotage
+#
+########## Destroy outpost
+#
+espionage_operation_event = {
+	id = iseeu_sabotage.1
+	title = iseeu_sabotage.1.title
+	desc = iseeu_sabotage.1.desc
+	show_sound = station_explosion_small
+	espionage_operation = yes
+	picture = GFX_evt_large_explosion
+	is_triggered_only = yes
+	option = {
+		name = iseeu_sabotage.1.fireworks
+	}
+	after = {
+		if = {
+			limit = {
+				exists = target
+				target = {
+					solar_system = {
+						NOT = {
+							any_system_planet = {
+								is_colony = yes
+							}
+						}
+					}
+				}
+			}
+			target.solar_system = {
+				every_fleet_in_system = {
+					limit = {
+						OR = {
+							is_ship_size = mining_station
+							is_ship_size = research_station
+							is_ship_class = shipclass_starbase
+						}
+					}
+					destroy_fleet = this
+				}
+			}
+			spynetwork = {
+				add_spy_network_level = -20
+			}
+		}
+		destroy_espionage_operation = this
+	}
+}
+
+#
+################ Bomb planet
+#
+espionage_operation_event = {
+	id = iseeu_sabotage.11
+	title = iseeu_sabotage.11.title
+	desc = iseeu_sabotage.11.desc
+	show_sound = station_explosion_small
+	espionage_operation = yes
+	picture = GFX_evt_inhabited_solar_system
+	is_triggered_only = yes
+	immediate = {
+		target = {
+			save_event_target_as = iseeu_target_country
+		}
+		save_event_target_as = iseeu_operation
+		set_espionage_operation_progress_locked = yes
+	}
+	option = {
+		name = iseeu_sabotage.11.option
+		trigger = {
+			owner = {
+				is_ai = yes
+			}
+		}
+		target = {
+			random_owned_planet = {
+				save_event_target_as = iseeu_target
+				set_planet_flag = iseeu_operation_bomb_planet_target_by_@root.owner
+				# log = "old target name = [iseeu_target.GetName]"
+			}
+		}
+	}
+	option = {
+		name = iseeu_sabotage.11.option
+		trigger = {
+			owner = {
+				is_ai = no
+			}
+		}
+		allow = {
+			owner = {
+				NOT = {
+					has_country_flag = iseeu_selecting_target
+				}
+			}
+		}
+		owner = {
+			set_country_flag = iseeu_selecting_target
+			set_variable = {
+				which = iseeu_selection_starting_index
+				value = 0
+			}
+			country_event = {
+				id = iseeu_sabotage.12
+			}
+		}
+	}
+}
+
+country_event = {
+	id = iseeu_sabotage.12
+	is_triggered_only = yes
+	title = "iseeu_selection.name.planet"
+	desc = "iseeu_selection.desc"
+	diplomatic = yes
+	custom_gui = "iseeu_selection_window"
+	immediate = {
+		set_variable = {
+			which = iseeu_selection_index
+			value = iseeu_selection_starting_index
+		}
+		event_target:iseeu_target_country = {
+			every_owned_planet = {
+				root = {
+					subtract_variable = {
+						which = iseeu_selection_index
+						value = 1
+					}
+					if = {
+						limit = {
+							check_variable = {
+								which = iseeu_selection_index
+								value < 0
+							}
+							check_variable = {
+								which = iseeu_selection_index
+								value > -17
+							}
+						}
+						iseeu_store_target_list = yes
+					}
+				}
+			}
+		}
+	}
+	option = {
+		name = iseeu_selection.prev
+		custom_gui = "iseeu_previous_button"
+		allow = {
+			hidden_trigger = {
+				check_variable = {
+					which = iseeu_selection_starting_index
+					value > 15
+				}
+			}
+		}
+		hidden_effect = {
+			subtract_variable = {
+				which = iseeu_selection_starting_index
+				value = 16
+			}
+			iseeu_clear_variable_list = yes
+			country_event = {
+				id = iseeu_sabotage.12
+			}
+		}
+	}
+	option = {
+		name = iseeu_selection.close
+		custom_gui = "iseeu_close_button"
+		default_hide_option = yes
+		hidden_effect = {
+			iseeu_close_selection_menu = yes
+			event_target:iseeu_target_country = {
+				random_owned_planet = {
+					set_planet_flag = iseeu_operation_bomb_planet_target_by_@root
+				}
+			}
+		}
+	}
+	option = {
+		name = iseeu_selection.next
+		custom_gui = "iseeu_next_button"
+		allow = {
+			hidden_trigger = {
+				check_variable = {
+					which = iseeu_selection_index
+					value < -16
+				}
+			}
+		}
+		hidden_effect = {
+			change_variable = {
+				which = iseeu_selection_starting_index
+				value = 16
+			}
+			iseeu_clear_variable_list = yes
+			country_event = {
+				id = iseeu_sabotage.12
+			}
+		}
+	}
+	option = {
+		name = iseeu_selection.0
+		custom_gui = "iseeu_left_option"
+		trigger = {
+			hidden_trigger = {
+				check_variable = {
+					which = iseeu_target_0
+					value = 1
+				}
+			}
+		}
+		hidden_effect = {
+			event_target:iseeu_target_0 = {
+				set_planet_flag = iseeu_operation_bomb_planet_target_by_@root
+			}
+			iseeu_close_selection_menu = yes
+		}
+	}
+	option = {
+		name = iseeu_selection.1
+		custom_gui = "iseeu_right_option"
+		trigger = {
+			hidden_trigger = {
+				check_variable = {
+					which = iseeu_target_1
+					value = 1
+				}
+			}
+		}
+		hidden_effect = {
+			event_target:iseeu_target_1 = {
+				set_planet_flag = iseeu_operation_bomb_planet_target_by_@root
+			}
+			iseeu_close_selection_menu = yes
+		}
+	}
+	option = {
+		name = iseeu_selection.2
+		custom_gui = "iseeu_left_option"
+		trigger = {
+			hidden_trigger = {
+				check_variable = {
+					which = iseeu_target_2
+					value = 1
+				}
+			}
+		}
+		hidden_effect = {
+			event_target:iseeu_target_2 = {
+				set_planet_flag = iseeu_operation_bomb_planet_target_by_@root
+			}
+			iseeu_close_selection_menu = yes
+		}
+	}
+	option = {
+		name = iseeu_selection.3
+		custom_gui = "iseeu_right_option"
+		trigger = {
+			hidden_trigger = {
+				check_variable = {
+					which = iseeu_target_3
+					value = 1
+				}
+			}
+		}
+		hidden_effect = {
+			event_target:iseeu_target_3 = {
+				set_planet_flag = iseeu_operation_bomb_planet_target_by_@root
+			}
+			iseeu_close_selection_menu = yes
+		}
+	}
+	option = {
+		name = iseeu_selection.4
+		custom_gui = "iseeu_left_option"
+		trigger = {
+			hidden_trigger = {
+				check_variable = {
+					which = iseeu_target_4
+					value = 1
+				}
+			}
+		}
+		hidden_effect = {
+			event_target:iseeu_target_4 = {
+				set_planet_flag = iseeu_operation_bomb_planet_target_by_@root
+			}
+			iseeu_close_selection_menu = yes
+		}
+	}
+	option = {
+		name = iseeu_selection.5
+		custom_gui = "iseeu_right_option"
+		trigger = {
+			hidden_trigger = {
+				check_variable = {
+					which = iseeu_target_5
+					value = 1
+				}
+			}
+		}
+		hidden_effect = {
+			event_target:iseeu_target_5 = {
+				set_planet_flag = iseeu_operation_bomb_planet_target_by_@root
+			}
+			iseeu_close_selection_menu = yes
+		}
+	}
+	option = {
+		name = iseeu_selection.6
+		custom_gui = "iseeu_left_option"
+		trigger = {
+			hidden_trigger = {
+				check_variable = {
+					which = iseeu_target_6
+					value = 1
+				}
+			}
+		}
+		hidden_effect = {
+			event_target:iseeu_target_6 = {
+				set_planet_flag = iseeu_operation_bomb_planet_target_by_@root
+			}
+			iseeu_close_selection_menu = yes
+		}
+	}
+	option = {
+		name = iseeu_selection.7
+		custom_gui = "iseeu_right_option"
+		trigger = {
+			hidden_trigger = {
+				check_variable = {
+					which = iseeu_target_7
+					value = 1
+				}
+			}
+		}
+		hidden_effect = {
+			event_target:iseeu_target_7 = {
+				set_planet_flag = iseeu_operation_bomb_planet_target_by_@root
+			}
+			iseeu_close_selection_menu = yes
+		}
+	}
+	option = {
+		name = iseeu_selection.8
+		custom_gui = "iseeu_left_option"
+		trigger = {
+			hidden_trigger = {
+				check_variable = {
+					which = iseeu_target_8
+					value = 1
+				}
+			}
+		}
+		hidden_effect = {
+			event_target:iseeu_target_8 = {
+				set_planet_flag = iseeu_operation_bomb_planet_target_by_@root
+			}
+			iseeu_close_selection_menu = yes
+		}
+	}
+	option = {
+		name = iseeu_selection.9
+		custom_gui = "iseeu_right_option"
+		trigger = {
+			hidden_trigger = {
+				check_variable = {
+					which = iseeu_target_9
+					value = 1
+				}
+			}
+		}
+		hidden_effect = {
+			event_target:iseeu_target_9 = {
+				set_planet_flag = iseeu_operation_bomb_planet_target_by_@root
+			}
+			iseeu_close_selection_menu = yes
+		}
+	}
+	option = {
+		name = iseeu_selection.a
+		custom_gui = "iseeu_left_option"
+		trigger = {
+			hidden_trigger = {
+				check_variable = {
+					which = iseeu_target_a
+					value = 1
+				}
+			}
+		}
+		hidden_effect = {
+			event_target:iseeu_target_a = {
+				set_planet_flag = iseeu_operation_bomb_planet_target_by_@root
+			}
+			iseeu_close_selection_menu = yes
+		}
+	}
+	option = {
+		name = iseeu_selection.b
+		custom_gui = "iseeu_right_option"
+		trigger = {
+			hidden_trigger = {
+				check_variable = {
+					which = iseeu_target_b
+					value = 1
+				}
+			}
+		}
+		hidden_effect = {
+			event_target:iseeu_target_b = {
+				set_planet_flag = iseeu_operation_bomb_planet_target_by_@root
+			}
+			iseeu_close_selection_menu = yes
+		}
+	}
+	option = {
+		name = iseeu_selection.c
+		custom_gui = "iseeu_left_option"
+		trigger = {
+			hidden_trigger = {
+				check_variable = {
+					which = iseeu_target_c
+					value = 1
+				}
+			}
+		}
+		hidden_effect = {
+			event_target:iseeu_target_c = {
+				set_planet_flag = iseeu_operation_bomb_planet_target_by_@root
+			}
+			iseeu_close_selection_menu = yes
+		}
+	}
+	option = {
+		name = iseeu_selection.d
+		custom_gui = "iseeu_right_option"
+		trigger = {
+			hidden_trigger = {
+				check_variable = {
+					which = iseeu_target_d
+					value = 1
+				}
+			}
+		}
+		hidden_effect = {
+			event_target:iseeu_target_d = {
+				set_planet_flag = iseeu_operation_bomb_planet_target_by_@root
+			}
+			iseeu_close_selection_menu = yes
+		}
+	}
+	option = {
+		name = iseeu_selection.e
+		custom_gui = "iseeu_left_option"
+		trigger = {
+			hidden_trigger = {
+				check_variable = {
+					which = iseeu_target_e
+					value = 1
+				}
+			}
+		}
+		hidden_effect = {
+			event_target:iseeu_target_e = {
+				set_planet_flag = iseeu_operation_bomb_planet_target_by_@root
+			}
+			iseeu_close_selection_menu = yes
+		}
+	}
+	option = {
+		name = iseeu_selection.f
+		custom_gui = "iseeu_right_option"
+		trigger = {
+			hidden_trigger = {
+				check_variable = {
+					which = iseeu_target_f
+					value = 1
+				}
+			}
+		}
+		hidden_effect = {
+			event_target:iseeu_target_f = {
+				set_planet_flag = iseeu_operation_bomb_planet_target_by_@root
+			}
+			iseeu_close_selection_menu = yes
+		}
+	}
+	option = {
+		name = iseeu_selection.close
+		custom_gui = "iseeu_dummy_button"
+		hidden_effect = {
+			iseeu_close_selection_menu = yes
+			event_target:iseeu_target_country = {
+				random_owned_planet = {
+					set_planet_flag = iseeu_operation_bomb_planet_target_by_@root
+				}
+			}
+		}
+	}
+}
+
+espionage_operation_event = {
+	id = iseeu_sabotage.15
+	title = iseeu_sabotage.15.title
+	desc = iseeu_sabotage.15.desc
+	show_sound = station_explosion_small
+	espionage_operation = yes
+	picture = GFX_evt_night_raid
+	is_triggered_only = yes
+	immediate = {
+		target = {
+			random_owned_planet = {
+				limit = {
+					has_planet_flag = iseeu_operation_bomb_planet_target_by_@root.owner
+				}
+				save_event_target_as = iseeu_target
+				remove_planet_flag = iseeu_operation_bomb_planet_target_by_@root.owner
+				# log = "old target name = [iseeu_target.GetName]"
+			}
+		}
+	}
+	option = {
+		name = iseeu_sabotage.15.option
+	}
+	after = {
+		if = {
+			limit = {
+				exists = event_target:iseeu_target
+				event_target:iseeu_target = {
+					exists = owner
+				}
+			}
+			# log = "target exists!"
+			# log = "target name = [iseeu_target.GetName]"
+			event_target:iseeu_target = {
+				if = {
+					limit = {
+						has_district = district_city
+					}
+					remove_district = district_city
+				}
+				else_if = {
+					limit = {
+						has_district = district_arcology_housing
+					}
+					remove_district = district_arcology_housing
+				}
+				else_if = {
+					limit = {
+						has_district = district_nexus
+					}
+					remove_district = district_nexus
+				}
+				else_if = {
+					limit = {
+						has_district = district_hive
+					}
+					remove_district = district_hive
+				}
+			}
+			event_target:iseeu_target = {
+				if = {
+					limit = {
+						any_owned_pop_group = { always = yes }
+					}
+					random_owned_pop_group = {
+						kill_single_pop = yes
+					}
+				}
+				add_deposit = d_iseeu_bomb_crater
+				add_planet_devastation = 30
+				hidden_effect = {
+					owner = {
+						country_event = {
+							id = iseeu_sabotage.16
+						}
+					}
+				}
+			}
+			spynetwork = {
+				add_spy_network_level = -10
+			}
+		}
+		destroy_espionage_operation = this
+	}
+}
+
+country_event = {
+	id = iseeu_sabotage.16
+	title = iseeu_sabotage.16.title
+	desc = iseeu_sabotage.16.desc
+	picture = GFX_evt_night_raid
+	is_triggered_only = yes
+	option = {
+		name = iseeu_sabotage.16.option
+	}
+}
+
+#
+############# Nuke planet
+#
+espionage_operation_event = {
+	id = iseeu_sabotage.21
+	title = iseeu_sabotage.21.title
+	desc = iseeu_sabotage.21.desc
+	show_sound = station_explosion_small
+	espionage_operation = yes
+	picture = GFX_evt_inhabited_solar_system
+	is_triggered_only = yes
+	immediate = {
+		target = {
+			save_event_target_as = iseeu_target_country
+		}
+		save_event_target_as = iseeu_operation
+		set_espionage_operation_progress_locked = yes
+	}
+	option = {
+		name = iseeu_sabotage.21.option
+		trigger = {
+			owner = {
+				is_ai = yes
+			}
+		}
+		target = {
+			random_owned_planet = {
+				limit = {
+					is_capital = no
+					iseeu_is_colonizeable_planetary = yes
+				}
+				save_event_target_as = iseeu_target
+				set_planet_flag = iseeu_operation_bomb_planet_target_by_@root.owner
+				# log = "old target name = [iseeu_target.GetName]"
+			}
+		}
+	}
+	option = {
+		name = iseeu_sabotage.21.option
+		trigger = {
+			owner = {
+				is_ai = no
+			}
+		}
+		allow = {
+			owner = {
+				NOT = {
+					has_country_flag = iseeu_selecting_target
+				}
+			}
+		}
+		owner = {
+			set_country_flag = iseeu_selecting_target
+			set_variable = {
+				which = iseeu_selection_starting_index
+				value = 0
+			}
+			country_event = {
+				id = iseeu_sabotage.12
+			}
+		}
+	}
+}
+
+espionage_operation_event = {
+	id = iseeu_sabotage.23
+	title = iseeu_sabotage.23.title
+	desc = iseeu_sabotage.23.desc
+	show_sound = station_explosion_small
+	espionage_operation = yes
+	picture = GFX_evt_smugglers_in_bar
+	is_triggered_only = yes
+	immediate = {
+		target = {
+			random_owned_planet = {
+				limit = {
+					has_planet_flag = iseeu_operation_bomb_planet_target_by_@root.owner
+				}
+				save_event_target_as = iseeu_target
+				# remove_planet_flag = iseeu_operation_bomb_planet_target_by_@root.owner
+			}
+		}
+	}
+	option = {
+		name = iseeu_sabotage.23.option
+		allow = {
+			owner = {
+				has_resource = {
+					type = alloys
+					amount >= 1000
+				}
+				has_resource = {
+					type = energy
+					amount >= 2000
+				}
+			}
+		}
+		owner = {
+			add_resource = {
+				alloys = -1000
+				energy = -2000
+			}
+		}
+	}
+}
+
+espionage_operation_event = {
+	id = iseeu_sabotage.25
+	title = iseeu_sabotage.25.title
+	desc = iseeu_sabotage.25.desc
+	show_sound = station_explosion_small
+	espionage_operation = yes
+	picture = GFX_evt_nuclear_explosion
+	is_triggered_only = yes
+	immediate = {
+		target = {
+			random_owned_planet = {
+				limit = {
+					has_planet_flag = iseeu_operation_bomb_planet_target_by_@root.owner
+				}
+				save_event_target_as = iseeu_target
+				remove_planet_flag = iseeu_operation_bomb_planet_target_by_@root.owner
+			}
+		}
+	}
+	option = {
+		name = iseeu_sabotage.25.option
+	}
+	after = {
+		if = {
+			limit = {
+				exists = event_target:iseeu_target
+			}
+			# log = "target exists!"
+			# log = "target name = [iseeu_target.GetName]"
+			event_target:iseeu_target = {
+				# kill half the pops rounded down (shouldn't abandon the planet?)
+				every_owned_pop_group = {
+					if = {
+						limit = {
+							prev = {
+								has_planet_flag = iseeu_nuke_planet_temp_flag
+							}
+						}
+						kill_single_pop = yes
+						hidden_effect = {
+							prev = {
+								remove_planet_flag = iseeu_nuke_planet_temp_flag
+							}
+						}
+					}
+					else = {
+						hidden_effect = {
+							prev = {
+								set_planet_flag = iseeu_nuke_planet_temp_flag
+							}
+						}
+					}
+				}
+				hidden_effect = {
+					remove_planet_flag = iseeu_nuke_planet_temp_flag
+				}
+				change_pc = pc_nuked
+				add_planet_devastation = 99
+				hidden_effect = {
+					owner = {
+						country_event = {
+							id = iseeu_sabotage.26
+						}
+					}
+				}
+			}
+			spynetwork = {
+				add_spy_network_level = -50
+			}
+		}
+		destroy_espionage_operation = this
+	}
+}
+
+country_event = {
+	id = iseeu_sabotage.26
+	title = iseeu_sabotage.26.title
+	desc = iseeu_sabotage.26.desc
+	picture = GFX_evt_nuclear_explosion
+	is_triggered_only = yes
+	option = {
+		name = iseeu_sabotage.26.option
+		add_modifier = {
+			modifier = iseeu_planet_nuked
+			days = 360
+		}
+	}
+}

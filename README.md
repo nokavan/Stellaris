@@ -176,6 +176,22 @@
 
 Мод «Arkship Cloaking» из присланных не использован: он вызывает несуществующие в игре эффекты и работать не будет.
 
+### Шпионаж: три мода, переданные авторами (перенесены с 3.x на 4.x)
+- **Stage a coup & assassinate ruler UNLIMITED** (Workshop 2923081890): операции **«Устроить переворот»** (в стране-цели поднимается восстание, начинается гражданская война) и **«Убить правителя»**, без ограничения числа запусков. Русская локализация оригинальная.
+- **Intrigue, Sabotage, & Espionage Expanded Uses** (Workshop 2630349402): 8 операций — претензия третьей стороны на столицу цели, −50% к дипломатическому весу, уничтожение форпоста, бомба на планете, ядерный удар, похищение и освобождение рабов, кража реликвии. Плюс решение «Основать „чёрный объект“» (шпионская планета). Русскую локализацию (в оригинале она была на английском) я перевёл.
+- **Espionage Extended <Eng/Rus ver.>** (Workshop 2465577434): 53 новые операции (`op_*`) с событиями и модификаторами, цивик «Теневое государство», эдикты контрразведки, перк возвышения «Галактический план», стартовая технология «ЦРУ» (−25% к стоимости и содержанию операций). Русская локализация оригинальная.
+
+Как переносил:
+- **Ванильные файлы 3.8 из Espionage Extended не взяты.** Это старые операции и их события, традиция «Скрытность», политики, дипломатия, ИИ шпионажа и бюджета, переделанные ванильные технологии. В 4.5 они сломали бы ванильный шпионаж и наше переопределение федераций.
+- Новые операции Espionage Extended ИИ не использует: веса для ИИ были как раз в ванильном файле, который не перенесён.
+- Механические замены 3.x → 4.x сделаны скриптом `tools/port_3x.py`:
+  - `planet_event` → `carrier_event`;
+  - попы → группы населения: `create_pop_group`, `kill_single_pop`, `*_owned_pop_group`, `resettle_pop_group`;
+  - `kill_leader = { show_notification }`;
+  - `num_pops` → `pop_amount` (×100) у планет и число колоний у стран.
+
+**Оригиналы этих трёх модов не включайте.**
+
 ### Бессмертные лидеры
 У партизанских империй (оба происхождения и цивик «Партизанская сеть») и у Красной Бури лидеры получают **+1000 лет жизни** (`leader_lifespan_add`) и не умирают от старости. Погибнуть в бою или от покушения они по-прежнему могут.
 
@@ -405,7 +421,7 @@ python3 tools/gen_waystation_modules.py
 | Wawunga's Arkship Class Districts | районы ковчега |
 | Cloakable Logistics Ships, Cloakable Construction Ships | слот маскировки и кнопки; «Теневая логистика» Синдиката включает маскировку автоматически |
 | Corporate Pirates (Void Reavers) | не нужен: пиратские модули и бонусы налётчиков уже встроены в «Синдикат» |
-| Встроены — **не включайте** | Deep Scan Harvesting Improvement, Mega Arkships, Megacorp Imperial Elections, Nomad Conquest Population Capture, Nomad Can Build Megastructures (обе версии), Bigger Operational Reserves, Vassals Expanded – Devotee, Criminal Heritage Expanded, More Waystation Slots |
+| Встроены — **не включайте** | Deep Scan Harvesting Improvement, Mega Arkships, Megacorp Imperial Elections, Nomad Conquest Population Capture, Nomad Can Build Megastructures (обе версии), Bigger Operational Reserves, Vassals Expanded – Devotee, Criminal Heritage Expanded, More Waystation Slots, Stage a coup & assassinate ruler, Intrigue Sabotage & Espionage Expanded Uses, Espionage Extended |
 
 ## Скачать
 Последняя версия одним архивом: **[releases/partisan_syndicate.zip](https://github.com/nokavan/stellaris/blob/main/releases/partisan_syndicate.zip)** (на странице файла — кнопка «Download raw file»; репозиторий приватный, нужен вход в ваш аккаунт GitHub)

@@ -1,0 +1,70 @@
+# Встроено из «Intrigue, Sabotage, & Espionage Expanded Uses» (Workshop 2630349402; автор передал мод). Перенесено на 4.x (tools/port_3x.py).
+namespace = iseeu_manipulation
+#
+########## Add claim to a thrid party
+#
+espionage_operation_event = {
+	id = iseeu_manipulation.1
+	title = iseeu_manipulation.1.title
+	desc = iseeu_manipulation.1.desc
+	show_sound = no_sound
+	espionage_operation = yes
+	picture = GFX_evt_alien_propaganda
+	is_triggered_only = yes
+	option = {
+		name = iseeu_manipulation.1.success
+		# this = operation
+		# from = target
+		# target = target
+		# spy target = where spymaster is
+		# spy owner = player country
+		if = {
+			limit = {
+				from = {
+					NOT = {
+						is_same_value = root.spynetwork.target
+					}
+				}
+			}
+			from.capital_scope.solar_system = {
+				add_claims = {
+					who = root.spynetwork.target
+				}
+			}
+		}
+	}
+	after = {
+		spynetwork = {
+			add_spy_network_level = -20
+		}
+		destroy_espionage_operation = this
+	}
+}
+
+#
+########## Reduce diplo weight
+#
+espionage_operation_event = {
+	id = iseeu_manipulation.11
+	title = iseeu_manipulation.11.title
+	desc = iseeu_manipulation.11.desc
+	show_sound = no_sound
+	espionage_operation = yes
+	picture = GFX_evt_alien_propaganda
+	is_triggered_only = yes
+	option = {
+		name = iseeu_manipulation.11.success
+		from = {
+			add_modifier = {
+				days = 3600
+				modifier = iseeu_diplomatic_weight_reduced
+			}
+		}
+	}
+	after = {
+		spynetwork = {
+			add_spy_network_level = -20
+		}
+		destroy_espionage_operation = this
+	}
+}

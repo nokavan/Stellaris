@@ -1,0 +1,212 @@
+# Встроено из «Intrigue, Sabotage, & Espionage Expanded Uses» (Workshop 2630349402; автор передал мод). Перенесено на 4.x (tools/port_3x.py).
+# operation_type_name = {			# Key of the site, used for name lookup etc.
+#   target = <target type>			# Valid target types are country, megastructure, starbase, fleet, army, pop_faction, spynetwork, federation and none (spy network target is the target then)
+#	picture = <sprite key>			# GFX_* sprite key for the operation image
+#	desc = <triggered event desc>	# Description generator for the operation, with scope this=spy network
+#	stages = <int>					# Should match number of defined stages below.
+#	potential = <trigger>			# Trigger checking if a scope with this=spy network is potential to use (this will add/remove this operation without giving the player a reason).
+#	allow = <trigger>				# Trigger checking if a scope with this=spy network is allowed to use (this will toggle enable/disabled mode on buttons etc).
+#	stage = {						# Stage definition, order dependent.
+#		difficulty = <interval int>	# min max interval type. interval is defined either by '<int>' or '{ min = <int> max=<int> }' where the later will randomize a value between min and max.
+#		icon = <string>				# icon gfx type.
+#		event = <string>			# event to fire when finished the state.
+#	}
+#	stage = {...}					# Second stage, the total number of 'stage' entries should match value of 'stages'
+#	on_roll_failed = <effect>		# Effect to fire when a roll fails, with scope this=spy operation.
+#	on_create = <effect>			# Effect to fire upon operation creation, with scope this=spy operation.
+#}
+@diff_t0 = 4
+@diff_t1 = 5
+@diff_t2 = 6
+@diff_t3 = 7
+@diff_t4 = 8
+@diff_t5 = 9
+@diff_t6 = 10
+@diff_t7 = 11
+@diff_t8 = 12
+@diff_t9 = 13
+@operationTargetedByTimer = 10800#30 years during which the effects of an operation may be felt by select Spy Network events
+# this = operation
+# from = operation target
+iseeu_operation_destroy_outpost = {
+	target = starbase
+	categories = {
+		op_cat_sabotage
+		op_cat_military
+	}
+	picture = GFX_evt_sabotaged_ship
+	desc = iseeu_operation_destroy_outpost_desc
+	stages = 1
+	resources = {
+		category = operations
+		cost = {
+			energy = 1000
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+	spy_power_cost = 40
+	# spy_network_lvl_requirement = 40
+	# remove 20
+	potential = {
+	}
+	allow = {
+		target = {
+			any_owned_starbase = {
+				has_starbase_size = starbase_outpost
+				solar_system = {
+					NOT = {
+						any_system_planet = {
+							is_colony = yes
+						}
+					}
+				}
+			}
+		}
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	abort = {
+		always = no
+	}
+	target_potential = {
+		has_starbase_size = starbase_outpost
+		solar_system = {
+			NOT = {
+				any_system_planet = {
+					is_colony = yes
+				}
+			}
+		}
+	}
+	stage = {
+		difficulty = @diff_t4
+		icon = GFX_espionage_chapter_icon_document
+		event = iseeu_sabotage.1
+	}
+	on_roll_failed = {
+		iseeu_espionage_operation_on_roll_failed = yes
+	}
+	on_create = {
+		target.owner = {
+			set_timed_country_flag = {
+				flag = espionage_operation_targeted_by@root.owner				#Used in random Spy Network events
+				days = @operationTargetedByTimer
+			}
+		}
+	}
+}
+
+# small bomb
+iseeu_operation_bomb_planet = {
+	target = none
+	categories = {
+		op_cat_sabotage
+		op_cat_economy
+	}
+	picture = GFX_evt_night_raid
+	desc = iseeu_operation_bomb_planet_desc
+	stages = 2
+	resources = {
+		category = operations
+		cost = {
+			energy = 500
+		}
+		upkeep = {
+			energy = 3
+		}
+	}
+	spy_power_cost = 25
+	# spy_network_lvl_requirement = 25
+	#remove 10
+	potential = {
+	}
+	allow = {
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	abort = {
+		always = no
+	}
+	stage = {
+		difficulty = @diff_t0
+		icon = GFX_espionage_chapter_icon_target
+		event = iseeu_sabotage.11
+	}
+	stage = {
+		difficulty = @diff_t3
+		icon = GFX_espionage_chapter_icon_success
+		event = iseeu_sabotage.15
+	}
+	on_roll_failed = {
+		iseeu_espionage_operation_on_roll_failed = yes
+	}
+	on_create = {
+	}
+}
+
+# nuke planet to tombworld, not capital or structures 
+iseeu_operation_nuke_planet = {
+	target = none
+	categories = {
+		op_cat_sabotage
+		op_cat_economy
+	}
+	picture = GFX_evt_nuclear_explosion
+	desc = iseeu_operation_nuke_planet_desc
+	stages = 3
+	resources = {
+		category = operations
+		cost = {
+			energy = 2000
+		}
+		upkeep = {
+			energy = 5
+		}
+	}
+	spy_power_cost = 70
+	# spy_network_lvl_requirement = 70
+	#remove 50
+	potential = {
+	}
+	allow = {
+		custom_tooltip = {
+			owner = {
+				has_technology = tech_antimatter_power
+			}
+			fail_text = iseeu_operation_nuke_planet_require_tech
+		}
+		custom_tooltip = {
+			is_running_espionage_operation = no
+			fail_text = operation_one_at_a_time
+		}
+	}
+	abort = {
+		always = no
+	}
+	stage = {
+		difficulty = @diff_t0
+		icon = GFX_espionage_chapter_icon_target
+		event = iseeu_sabotage.21
+	}
+	stage = {
+		difficulty = @diff_t3
+		icon = GFX_espionage_chapter_icon_target
+		event = iseeu_sabotage.23
+	}
+	stage = {
+		difficulty = @diff_t7
+		icon = GFX_espionage_chapter_icon_success
+		event = iseeu_sabotage.25
+	}
+	on_roll_failed = {
+		iseeu_espionage_operation_on_roll_failed = yes
+	}
+	on_create = {
+	}
+}

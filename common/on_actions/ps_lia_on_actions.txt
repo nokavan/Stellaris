@@ -1,0 +1,9 @@
+# Встроено из «Espionage Extended <Eng/Rus ver.>» (Workshop 2465577434; автор передал мод). Только новое содержимое, перенесено на 4.x.
+# Triggers when the game starts
+on_game_start = {
+	events = {
+		operation.19999 # Global flag for mod identification
+		operation.19998 # AI전용 그림자국가 소폭 버프 이벤트
+	}	
+}
+

@@ -1,0 +1,63 @@
+﻿l_russian:
+  stage_a_coup:0 "Устроить переворот"
+  stage_a_coup_desc:0 "Мы определили ключевых лидеров внутри государства, при правильной поддержке которых ресурсами, можно было бы убедить восстать против правительства."
+  stage_a_coup_on_success:0 "$IF_SUCCESSFUL|E$\n вызовет восстание внутри §H[root.target.GetName]§!."
+  #ops events
+  stage_a_coup_operation.100.name:0 "Сбор разведданных"
+  stage_a_coup_operation.100.desc:0 "Наши агенты проникают в империю, выискивая потенциальных лидеров, которых правительство опустило на дно или заставило замолчать."
+
+  stage_a_coup_operation.101.name:0 "Налаживание контактов"
+  stage_a_coup_operation.101.desc:0 "Наши агенты сближаются с потенциальными лидерами, укрепляют доверие и показывают им, что они могут быть услышаны и способны повлиять на ситуацию в государстве."
+
+  stage_a_coup_operation.102.name:0 "Формирование сопротивления"
+  stage_a_coup_operation.102.desc:0 "Наши агенты связывают лидеров и предоставляют им ресурсы, необходимые для начала их восстания."
+
+  stage_a_coup_operation.103.name:0 "Поиск уязвимостей"
+  stage_a_coup_operation.103.desc:0 "Наши агенты изучают оборону государства, ищут уязвимые места, которые сопротивление может использовать, чтобы застать правительство врасплох."
+
+  stage_a_coup_operation.104.name:0 "Мобилизация сопротивления"
+  stage_a_coup_operation.104.desc:0 "Повстанцы готовы нанести удар. Наши агенты оказывают скрытую поддержку по мере того, как сопротивление выдвигается на позиции для скоординированной, многосторонней атаки."
+  #operation somehow interrupted
+  stage_a_coup_operation.105.name:0 "Целей в §H[root.target.GetName]§! больше нет!"
+  stage_a_coup_operation.105.desc:0 "Правительству удалось подавить восстание! Лидеров, готовых восстать, больше нет."
+  #confirmation for owner
+  stage_a_coup_operation.106.name:0 "Переворот в самом разгаре!"
+  stage_a_coup_operation.106.desc:0 "Наши усилия окупились. Восстание в разгаре, а правительство находится в осаде."
+
+  stage_a_coup.001.name:0 "Повстанцы устраивают Переворот"
+  stage_a_coup.001.desc:0 "Повстанцы мобилизовались в нескольких частях §H[root.target.GetName]§!. Они пытаются свергнуть правительство и захватить контроль."
+  stage_a_coup.201.a:0 "Повстанцы штурмуют столицу!"
+  stage_a_coup.201.a.tooltip:0 "Это может изменить все."
+  stage_a_coup.201.b:0 "Повстанцы штурмуют столицу!"
+  stage_a_coup.201.b.tooltip:0 "Ужасная ситуация."
+  stage_a_coup.300.name:0 "Новая Эра"
+  stage_a_coup.300.desc:0 "Восстанию удалось свергнуть правительство §H[root.target.GetName]§! Сопротивление захватило контроль над множеством систем и планет. Новое правительство укрепляет свою власть, очищая лоялистов старого режима и укрепляя свой контроль над государством."
+  stage_a_coup.300.a:0 "Новая эра проблем или возможностей?"
+
+  opinion_staged_a_coup_for_us:0 "Организовали восстание"
+  opinion_helped_staging_a_coup:0 "Помогли организовать восстание"
+
+  NAME_stage_a_coup_war:0 "Гражданская война!"
+
+  assassination_coup:0 "Совершить покушение на правителя"
+  assassination_coup_desc:0 "Мы определили ключевого лидера в государстве и разработали план по его устранению. Наши оперативники готовы нанести удар."
+  assassination_coup_on_success:0 "$IF_SUCCESSFUL|E$\n убьет текущего правителя §H[root.target.GetName]§!"
+  assassination_coup_operation:0 "Отдать приказ нашим агентам совершить покушение на правителя."
+  assassination_coup.001.name:0 "Правитель устранен!"
+  assassination_coup.001.desc:0 "Правитель §H[root.target.GetName]§! был устранен."
+  assassination_coup_operation.100.name:0 "Выбор агентов"
+  assassination_coup_operation.100.desc:0 "Наши агенты отбираются вручную за их навыки и опыт в совершении убийств."
+  assassination_coup_operation.101.name:0 "Проникновение"
+  assassination_coup_operation.101.desc:0 "Наши агенты проникают в обозначеное государство, ввозят контрабандой оборудование и готовятся к операции."
+  assassination_coup_operation.102.name:0 "Сбор разведданных"
+  assassination_coup_operation.102.desc:0 "Наши агенты собирают разведданные о цели, изучают его передвижения и распорядок дня."
+  assassination_coup_operation.103.name:0 "Планирование удара"
+  assassination_coup_operation.103.desc:0 "На основе собранных разведданных наши агенты завершают разработку плана по устранению правителя."
+  assassination_coup_operation.104.name:0 "Удар по цели"
+  assassination_coup_operation.104.desc:0 "Нанесение удара в процессе. Наши агенты все ближе приближаются к цели"
+  assassination_coup_operation.105.name:0 "Покушение провалилось"
+  assassination_coup_operation.105.desc:0 "Операция была скомпрометирована, наши агенты были обнаружены, и им пришлось прервать операцию."
+  assassination_coup_operation.106.name:0 "Цель устранена!"
+  assassination_coup_operation.106.desc:0 "Операция прошла успешно, правитель был устранен, а наши агенты бесследно скрылись."
+  assassination_coup_operation.00.name:0 "Проверка!"
+  assassination_coup_operation.00.desc:0 "Проверочка..."

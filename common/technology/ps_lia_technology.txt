@@ -1,0 +1,14 @@
+# Встроено из «Espionage Extended» (Workshop 2465577434; автор передал мод).
+# Взята только новая стартовая технология: остальные в оригинале — переделанные ванильные 3.8.
+tech_earlygame_spy_discount = {
+	cost = 10
+	area = physics
+	tier = 0
+	category = { computing }
+	start_tech = yes
+
+	modifier = {
+		operations_cost_mult = -0.25
+		operations_upkeep_mult = -0.25
+	}
+}

@@ -1,0 +1,34 @@
+# Встроено из «Intrigue, Sabotage, & Espionage Expanded Uses» (Workshop 2630349402; автор передал мод). Перенесено на 4.x (tools/port_3x.py).
+# TODO add global flag trigger check
+iseeu_decision_choose_espionage_planet = {
+	owned_planets_only = yes
+	sound = event_construction
+	resources = {
+		category = decisions
+		cost = {
+			influence = 50
+		}
+	}
+	potential = {
+		owner = {
+			is_country_type = default
+			NOT = {
+				any_owned_planet = {
+					has_modifier = iseeu_espionage_planet
+				}
+			}
+		}
+	}
+	effect = {
+		custom_tooltip = iseeu_decision_choose_espionage_planet_tooltip
+		hidden_effect = {
+			add_modifier = {
+				modifier = iseeu_espionage_planet
+				days = -1
+			}
+		}
+	}
+	ai_weight = {
+		weight = 10
+	}
+}

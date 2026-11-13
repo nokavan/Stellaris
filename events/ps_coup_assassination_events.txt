@@ -1,0 +1,23 @@
+# Встроено из «Stage a coup & assassinate ruler UNLIMITED» (Workshop 2923081890; автор передал мод). Перенесено на 4.x (tools/port_3x.py).
+namespace = assassination_coup
+carrier_event = {
+	id = assassination_coup.001
+	title = assassination_coup.001.name
+	desc = assassination_coup.001.desc
+	picture = GFX_evt_arguing_senate
+	show_sound = event_yellow_alert
+	is_triggered_only = yes
+	hide_window = yes
+	pre_triggers = {
+		has_owner = yes
+	}
+	trigger = {
+	}
+	immediate = {
+		owner = {
+			ruler = {
+				kill_leader = { show_notification = yes }
+			}
+		}
+	}
+}

@@ -1,0 +1,335 @@
+# Встроено из «Intrigue, Sabotage, & Espionage Expanded Uses» (Workshop 2630349402; автор передал мод). Перенесено на 4.x (tools/port_3x.py).
+namespace = iseeu_subterfuge
+#
+############# Abduct slaves
+#
+espionage_operation_event = {
+	id = iseeu_subterfuge.1
+	title = iseeu_subterfuge.1.title
+	desc = iseeu_subterfuge.1.desc
+	show_sound = station_explosion_small
+	espionage_operation = yes
+	picture = GFX_evt_inhabited_solar_system
+	is_triggered_only = yes
+	immediate = {
+		target = {
+			random_owned_planet = {
+				limit = {
+					any_owned_pop_group = {
+						species = {
+							iseeu_is_slave = {
+								COUNTRY = root.owner
+							}
+						}
+					}
+				}
+				save_event_target_as = iseeu_target
+				set_planet_flag = iseeu_operation_abduct_slaves_planet_target_by_@root.owner
+				# log = "old target name = [iseeu_target.GetName]"
+			}
+		}
+	}
+	option = {
+		name = iseeu_subterfuge.1.option
+	}
+}
+
+espionage_operation_event = {
+	id = iseeu_subterfuge.5
+	title = iseeu_subterfuge.5.title
+	desc = iseeu_subterfuge.5.desc
+	show_sound = station_explosion_small
+	espionage_operation = yes
+	picture = GFX_evt_dark_alley
+	is_triggered_only = yes
+	immediate = {
+		target = {
+			random_owned_planet = {
+				limit = {
+					has_planet_flag = iseeu_operation_abduct_slaves_planet_target_by_@root.owner
+				}
+				save_event_target_as = iseeu_target
+				remove_planet_flag = iseeu_operation_abduct_slaves_planet_target_by_@root.owner
+				# log = "old target name = [iseeu_target.GetName]"
+			}
+		}
+	}
+	option = {
+		name = iseeu_subterfuge.5.option
+	}
+	after = {
+		if = {
+			limit = {
+				exists = event_target:iseeu_target
+				event_target:iseeu_target = {
+					exists = owner
+				}
+			}
+			# log = "target exists!"
+			# log = "target name = [iseeu_target.GetName]"
+			hidden_effect = {
+				root.owner = {
+					iseeu_get_owner_destination_planet = yes
+				}
+			}
+			event_target:iseeu_target = {
+				while = {
+					count = 3
+					if = {
+						limit = {
+							any_owned_pop_group = { always = yes }
+						}
+						random_owned_pop_group = {
+							limit = {
+								species = {
+									iseeu_is_slave = {
+										COUNTRY = root.owner
+									}
+								}
+							}
+							resettle_pop_group = {
+								POP_GROUP = this
+								PLANET = event_target:iseeu_planet
+								PERCENTAGE = 25
+							}
+						}
+					}
+				}
+				hidden_effect = {
+					owner = {
+						country_event = {
+							id = iseeu_subterfuge.6
+						}
+					}
+				}
+			}
+			spynetwork = {
+				add_spy_network_level = -20
+			}
+		}
+		destroy_espionage_operation = this
+	}
+}
+
+country_event = {
+	id = iseeu_subterfuge.6
+	title = iseeu_subterfuge.6.title
+	desc = iseeu_subterfuge.6.desc
+	picture = GFX_evt_dark_alley
+	is_triggered_only = yes
+	option = {
+		name = iseeu_subterfuge.6.option
+		event_target:iseeu_target = {
+			add_modifier = {
+				modifier = iseeu_pop_disappeared
+				days = 360
+			}
+		}
+	}
+}
+
+#
+############# Free slaves
+#
+espionage_operation_event = {
+	id = iseeu_subterfuge.11
+	title = iseeu_subterfuge.11.title
+	desc = iseeu_subterfuge.11.desc
+	show_sound = station_explosion_small
+	espionage_operation = yes
+	picture = GFX_evt_inhabited_solar_system
+	is_triggered_only = yes
+	immediate = {
+		target = {
+			random_owned_planet = {
+				limit = {
+					any_owned_pop_group = {
+						species = {
+							iseeu_is_slave = {
+								COUNTRY = root.target.owner
+							}
+							iseeu_is_free = {
+								COUNTRY = root.owner
+							}
+						}
+					}
+				}
+				save_event_target_as = iseeu_target
+				set_planet_flag = iseeu_operation_free_slaves_planet_target_by_@root.owner
+				# log = "old target name = [iseeu_target.GetName]"
+			}
+		}
+	}
+	option = {
+		name = iseeu_subterfuge.11.option
+	}
+}
+
+espionage_operation_event = {
+	id = iseeu_subterfuge.15
+	title = iseeu_subterfuge.15.title
+	desc = iseeu_subterfuge.15.desc
+	show_sound = station_explosion_small
+	espionage_operation = yes
+	picture = GFX_evt_dark_alley
+	is_triggered_only = yes
+	immediate = {
+		target = {
+			random_owned_planet = {
+				limit = {
+					has_planet_flag = iseeu_operation_free_slaves_planet_target_by_@root.owner
+				}
+				save_event_target_as = iseeu_target
+				remove_planet_flag = iseeu_operation_free_slaves_planet_target_by_@root.owner
+				# log = "old target name = [iseeu_target.GetName]"
+			}
+		}
+	}
+	option = {
+		name = iseeu_subterfuge.15.option
+	}
+	after = {
+		if = {
+			limit = {
+				exists = event_target:iseeu_target
+				event_target:iseeu_target = {
+					exists = owner
+				}
+			}
+			# log = "target exists!"
+			# log = "target name = [iseeu_target.GetName]"
+			hidden_effect = {
+				root.owner = {
+					iseeu_get_owner_destination_planet = yes
+				}
+			}
+			event_target:iseeu_target = {
+				while = {
+					count = 3
+					if = {
+						limit = {
+							any_owned_pop_group = { always = yes }
+						}
+						random_owned_pop_group = {
+							limit = {
+								species = {
+									iseeu_is_slave = {
+										COUNTRY = root.target.owner
+									}
+									iseeu_is_free = {
+										COUNTRY = root.owner
+									}
+								}
+							}
+							resettle_pop_group = {
+								POP_GROUP = this
+								PLANET = event_target:iseeu_planet
+								PERCENTAGE = 25
+							}
+						}
+					}
+				}
+				hidden_effect = {
+					owner = {
+						country_event = {
+							id = iseeu_subterfuge.16
+						}
+					}
+				}
+			}
+			spynetwork = {
+				add_spy_network_level = -20
+			}
+		}
+		destroy_espionage_operation = this
+	}
+}
+
+country_event = {
+	id = iseeu_subterfuge.16
+	title = iseeu_subterfuge.16.title
+	desc = iseeu_subterfuge.16.desc
+	picture = GFX_evt_dark_alley
+	is_triggered_only = yes
+	option = {
+		name = iseeu_subterfuge.16.option
+		event_target:iseeu_target = {
+			add_modifier = {
+				modifier = iseeu_slaves_disappeared
+				days = 360
+			}
+		}
+	}
+}
+
+#
+############# Steal relic
+#
+espionage_operation_event = {
+	id = iseeu_subterfuge.21
+	title = iseeu_subterfuge.21.title
+	desc = iseeu_subterfuge.21.desc
+	show_sound = no_sound
+	espionage_operation = yes
+	picture = GFX_evt_inhabited_solar_system
+	is_triggered_only = yes
+	immediate = {
+	}
+	option = {
+		name = iseeu_subterfuge.21.option		# located relic
+		allow = {
+			owner = {
+				has_resource = {
+					type = influence
+					amount >= 250
+				}
+				has_resource = {
+					type = energy
+					amount >= 2500
+				}
+				has_resource = {
+					type = alloys
+					amount >= 500
+				}
+			}
+		}
+		owner = {
+			add_resource = {
+				influence = -250
+				energy = -2500
+				alloys = -500
+			}
+		}
+	}
+}
+
+espionage_operation_event = {
+	id = iseeu_subterfuge.25
+	title = iseeu_subterfuge.25.title
+	desc = iseeu_subterfuge.25.desc
+	show_sound = no_sound
+	espionage_operation = yes
+	picture = GFX_evt_analyzing_artifacts
+	is_triggered_only = yes
+	option = {
+		name = iseeu_subterfuge.25.option
+		owner = {
+			steal_relic = {
+				target = root.target
+				relic = random
+			}
+		}
+		target = {
+			add_opinion_modifier = {
+				who = root.owner
+				modifier = iseeu_opinion_relic_stolen
+			}
+		}
+	}
+	after = {
+		spynetwork = {
+			add_spy_network_level = -50
+		}
+		destroy_espionage_operation = this
+	}
+}

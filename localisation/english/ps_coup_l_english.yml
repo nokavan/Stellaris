@@ -1,0 +1,63 @@
+﻿l_english:
+  stage_a_coup:0 "Stage a Coup"
+  stage_a_coup_desc:0 "We've identified key leaders within the empire who, with the right support and resources, could be persuaded to rise up against the government."
+  stage_a_coup_on_success:0 "$IF_SUCCESSFUL|E$\n Will cause a rebellion inside §H[root.target.GetName]§!."
+  #ops events
+  stage_a_coup_operation.100.name:0 "Gathering Intelligence"
+  stage_a_coup_operation.100.desc:0 "Our agents are infiltrating the empire, seeking out potential leaders who have been silenced or marginalized by the government."
+
+  stage_a_coup_operation.101.name:0 "Making Contact"
+  stage_a_coup_operation.101.desc:0 "Our agents are approaching potential leaders, building trust and showing them how they could be heard and make a difference."
+
+  stage_a_coup_operation.102.name:0 "Organizing the Resistance"
+  stage_a_coup_operation.102.desc:0 "Our agents are linking together the leaders and providing them with the resources they need to launch their rebellion."
+
+  stage_a_coup_operation.103.name:0 "Scouting for Weak Points"
+  stage_a_coup_operation.103.desc:0 "Our agents are studying the empire's defenses, looking for vulnerabilities that the resistance can exploit to take the government by surprise."
+
+  stage_a_coup_operation.104.name:0 "Mobilizing the Resistance"
+  stage_a_coup_operation.104.desc:0 "The rebellion is ready to strike. Our agents are providing covert support as the resistance moves into position for a coordinated, multi-pronged attack."
+  #operation somehow interrupted
+  stage_a_coup_operation.105.name:0 "No more targets in §H[root.target.GetName]§!."
+  stage_a_coup_operation.105.desc:0 "The government has managed to quell the rebellion, there are no longer any leaders who are willing to rise up against it."
+  #confirmation for owner
+  stage_a_coup_operation.106.name:0 "The Coup is Underway"
+  stage_a_coup_operation.106.desc:0 "Our efforts have paid off. The rebellion is in motion and the government is under siege."
+
+  stage_a_coup.001.name:0 "Rebels Stage a Coup"
+  stage_a_coup.001.desc:0 "Rebels have mobilized in multiple parts of §H[root.target.GetName]§!. They are attempting to overthrow the government and seize control."
+  stage_a_coup.201.a:0 "Rebels storm the capital"
+  stage_a_coup.201.a.tooltip:0 "This could change everything."
+  stage_a_coup.201.b:0 "Rebels storm the capital"
+  stage_a_coup.201.b.tooltip:0 "The situation is dire."
+  stage_a_coup.300.name:0 "A New Era"
+  stage_a_coup.300.desc:0 "A rebellion has succeeded in overthrowing the government of §H[root.target.GetName]§! The resistance has seized control of multiple systems and planets. The new government is consolidating its power, purging loyalists of the old regime and solidifying its control over the empire."
+  stage_a_coup.300.a:0 "A new era of trouble or opportunity?"
+
+  opinion_staged_a_coup_for_us:0 "Staged a coup for us"
+  opinion_helped_staging_a_coup:0 "Helped us staging a coup"
+
+  NAME_stage_a_coup_war:0 "Civil War"
+
+  assassination_coup:0 "Carry Out Ruler Assassination"
+  assassination_coup_desc:0 "We've identified a key leader in the target empire and have devised a plan to eliminate them. Our operatives are ready to carry out the hit."
+  assassination_coup_on_success:0 "$IF_SUCCESSFUL|E$\n Will kill the current ruler of §H[root.target.GetName]§!"
+  assassination_coup_operation:0 "Ordering our agents to carry out the assassination of the ruler."
+  assassination_coup.001.name:0 "Ruler Eliminated"
+  assassination_coup.001.desc:0 "The ruler of §H[root.target.GetName]§! has been eliminated."
+  assassination_coup_operation.100.name:0 "Selecting Agents"
+  assassination_coup_operation.100.desc:0 "Our agents are being handpicked for their skills and expertise in carrying out assassinations."
+  assassination_coup_operation.101.name:0 "Infiltrating the Target"
+  assassination_coup_operation.101.desc:0 "Our agents are infiltrating the target empire, smuggling in equipment and preparing for the operation."
+  assassination_coup_operation.102.name:0 "Gathering Intelligence"
+  assassination_coup_operation.102.desc:0 "Our agents are gathering intelligence on the target, studying their movements and routines."
+  assassination_coup_operation.103.name:0 "Planning the Hit"
+  assassination_coup_operation.103.desc:0 "With the intelligence gathered, our agents are finalizing the plan to eliminate the ruler."
+  assassination_coup_operation.104.name:0 "Carrying out the Hit"
+  assassination_coup_operation.104.desc:0 "The hit is being carried out, our agents are closing in on the target."
+  assassination_coup_operation.105.name:0 "Assassination Failed"
+  assassination_coup_operation.105.desc:0 "The operation has been compromised, our agents have been discovered and have had to abort the hit."
+  assassination_coup_operation.106.name:0 "Target Eliminated"
+  assassination_coup_operation.106.desc:0 "The operation was a success, the ruler has been eliminated and our agents have escaped without a trace."
+  assassination_coup_operation.00.name:0 "test"
+  assassination_coup_operation.00.desc:0 "test"

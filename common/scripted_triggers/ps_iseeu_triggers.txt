@@ -1,0 +1,48 @@
+# Встроено из «Intrigue, Sabotage, & Espionage Expanded Uses» (Workshop 2630349402; автор передал мод). Перенесено на 4.x (tools/port_3x.py).
+# not ring world or habitat
+iseeu_is_colonizeable_planetary = {
+	colonizable_planet = yes
+	habitable_structure = no
+}
+
+# species
+# COUNTRY
+iseeu_is_slave = {
+	OR = {
+		has_citizenship_type = {
+			type = citizenship_slavery
+			country = $COUNTRY$
+		}
+		has_citizenship_type = {
+			type = citizenship_robot_servitude
+			country = $COUNTRY$
+		}
+	}
+}
+
+# species
+# COUNTRY
+iseeu_is_free = {
+	OR = {
+		has_citizenship_type = {
+			type = citizenship_full
+			country = $COUNTRY$
+		}
+		has_citizenship_type = {
+			type = citizenship_limited
+			country = $COUNTRY$
+		}
+		has_citizenship_type = {
+			type = citizenship_full_machine
+			country = $COUNTRY$
+		}
+		has_citizenship_type = {
+			type = citizenship_assimilation
+			country = $COUNTRY$
+		}
+		has_citizenship_type = {
+			type = citizenship_organic_trophy
+			country = $COUNTRY$
+		}
+	}
+}

@@ -1,0 +1,26 @@
+# Встроено из «Intrigue, Sabotage, & Espionage Expanded Uses» (Workshop 2630349402; автор передал мод). Перенесено на 4.x (tools/port_3x.py).
+d_iseeu_bomb_crater = {
+	icon = d_crater
+	time = 540
+	is_for_colonizable = yes
+	category = deposit_cat_blockers
+	potential = {
+		always = no
+	}
+	planet_modifier = {
+		planet_max_districts_add = -2
+		planet_amenities_add = -10
+		planet_jobs_produces_mult = -0.1
+		planet_stability_add = -10
+	}
+	resources = {
+		category = deposit_blockers
+		cost = {
+			energy = 1000
+			# alloys = 100			# AI doesn't remove it
+		}
+	}
+	drop_weight = {
+		weight = 0
+	}
+}
