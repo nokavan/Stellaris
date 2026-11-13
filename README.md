@@ -393,7 +393,7 @@ python3 tools/gen_waystation_modules.py
 ## Совместимость
 - **UI Overhaul Dynamic (UIOD):** совместим. Основной мод не переопределяет ни одного окна интерфейса (`.gui`), поэтому порядок загрузки относительно UIOD не важен. Патч для ванильного окна стоянки с UIOD **не ставьте**.
 - **Без UIOD:** для прокрутки 50 модулей стоянки поставьте патч `partisan_syndicate_vanilla_ui_patch` после основного мода.
-- Мод **не переопределяет** ванильных файлов уровней стоянок: слоты добавляет модуль «Отсеки Синдиката», поэтому мод совместим с More Waystation Slots и похожими модами.
+- Мод **переопределяет** ванильные `starbase_levels/05_waystation_levels.txt` и `ship_sizes/00_waystations.txt`: без ключей слотов и секций игра не показывает больше 2/4/6 клеток модулей, даже если вместимость выше. Основа взята из More Waystation Slots (с разрешения автора), сам мод **не включайте**. Базовая вместимость ванильная, прибавку до 10/25/50 даёт модуль «Отсеки Синдиката».
 
 ## Рекомендуемый плейсет (моды, присланные авторами)
 Эти моды **остаются отдельными**: они перезаписывают ванильные файлы целиком (мегасооружения, размеры кораблей, советников, события), и копирование их в «Синдикат» вызвало бы конфликты. Пересечений файлов и ключей с «Синдикатом» у них **нет** (проверено). Ставьте их **выше** «Синдиката» в списке лаунчера.
@@ -405,8 +405,7 @@ python3 tools/gen_waystation_modules.py
 | Wawunga's Arkship Class Districts | районы ковчега |
 | Cloakable Logistics Ships, Cloakable Construction Ships | слот маскировки и кнопки; «Теневая логистика» Синдиката включает маскировку автоматически |
 | Corporate Pirates (Void Reavers) | не нужен: пиратские модули и бонусы налётчиков уже встроены в «Синдикат» |
-| Встроены — **не включайте** | Deep Scan Harvesting Improvement, Mega Arkships, Megacorp Imperial Elections, Nomad Conquest Population Capture, Nomad Can Build Megastructures (обе версии), Bigger Operational Reserves, Vassals Expanded – Devotee, Criminal Heritage Expanded |
-| More Waystation Slots | не обязателен: «Отсеки Синдиката» уже дают до 50 слотов, конфликта нет |
+| Встроены — **не включайте** | Deep Scan Harvesting Improvement, Mega Arkships, Megacorp Imperial Elections, Nomad Conquest Population Capture, Nomad Can Build Megastructures (обе версии), Bigger Operational Reserves, Vassals Expanded – Devotee, Criminal Heritage Expanded, More Waystation Slots |
 
 ## Скачать
 Последняя версия одним архивом: **[releases/partisan_syndicate.zip](https://github.com/nokavan/stellaris/blob/main/releases/partisan_syndicate.zip)** (на странице файла — кнопка «Download raw file»; репозиторий приватный, нужен вход в ваш аккаунт GitHub)
