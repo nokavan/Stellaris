@@ -114,7 +114,8 @@ country_event = {
 	trigger = { ps_is_partisan_empire = yes }
 
 	immediate = {
-		every_system_within_border = {
+		# Не только в границах: кочевники (без границ) строят мегаструктуры у своих стоянок
+		every_system = {
 			limit = { has_star_flag = ps_mega_pending }
 			remove_star_flag = ps_mega_pending
 			if = {

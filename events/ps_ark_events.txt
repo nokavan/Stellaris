@@ -78,7 +78,7 @@ carrier_event = {
 
 			# 4. Вассалитет, ресурсы и благодарность
 			event_target:ps_new_cell = {
-				ps_make_cell_subject = { OVERLORD = event_target:ps_ark_owner }
+				ps_apply_doctrine_subject = { OVERLORD = event_target:ps_ark_owner }	# специализация по «Доктрине заселения»
 				add_resource = { energy = 1000 minerals = 1000 food = 500 alloys = 300 }
 				add_opinion_modifier = { who = event_target:ps_ark_owner modifier = opinion_ps_liberators }
 				add_modifier = { modifier = ps_liberated_state days = 7200 }

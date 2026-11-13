@@ -272,14 +272,7 @@ decision_ps_found_planet_cell = {
 		}
 		custom_tooltip = {
 			fail_text = decision_ps_no_free_planet
-			owner = {
-				any_system_within_border = {
-					any_system_planet = {
-						is_colonizable = yes
-						NOT = { exists = owner }
-					}
-				}
-			}
+			owner = { ps_has_cell_seed_site = yes }
 		}
 	}
 
@@ -289,13 +282,21 @@ decision_ps_found_planet_cell = {
 			owner = {
 				save_event_target_as = ps_seed_owner
 				set_timed_country_flag = { flag = ps_planet_cell_cd days = 1080 }
-				random_system_within_border = {
-					limit = {
-						any_system_planet = {
-							is_colonizable = yes
-							NOT = { exists = owner }
-						}
+				# сначала в своих границах, иначе — у своих станций (ковчег и стоянки кочевника)
+				if = {
+					limit = { any_system_within_border = { ps_cell_seed_system = { OWNER = root } } }
+					random_system_within_border = {
+						limit = { ps_cell_seed_system = { OWNER = root } }
+						save_event_target_as = ps_seed_system
 					}
+				}
+				else = {
+					random_owned_starbase = {
+						limit = { solar_system = { ps_cell_seed_system = { OWNER = root } } }
+						solar_system = { save_event_target_as = ps_seed_system }
+					}
+				}
+				event_target:ps_seed_system = {
 					random_system_planet = {
 						limit = {
 							is_colonizable = yes

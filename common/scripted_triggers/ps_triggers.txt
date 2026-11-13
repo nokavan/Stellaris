@@ -180,3 +180,25 @@ ps_is_logistics_fleet = {
 		}
 	}
 }
+
+# Система подходит для ячейки: есть свободная пригодная планета, система ничья или наша (scope = система)
+ps_cell_seed_system = {
+	any_system_planet = {
+		is_colonizable = yes
+		NOT = { exists = owner }
+	}
+	OR = {
+		NOT = { exists = space_owner }
+		space_owner = { is_same_value = $OWNER$ }
+	}
+}
+
+# Есть где основать ячейку (scope = страна): в границах ИЛИ у наших станций — ковчега и стоянок кочевника
+ps_has_cell_seed_site = {
+	OR = {
+		any_system_within_border = { ps_cell_seed_system = { OWNER = root } }
+		any_owned_starbase = {
+			solar_system = { ps_cell_seed_system = { OWNER = root } }
+		}
+	}
+}
