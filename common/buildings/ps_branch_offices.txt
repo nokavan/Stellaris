@@ -46,6 +46,7 @@ building_ps_partisan_cell = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -89,6 +90,7 @@ building_ps_arms_cache = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			alloys = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -127,6 +129,7 @@ building_ps_safehouse = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -170,6 +173,7 @@ building_ps_forest_camp = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -208,6 +212,7 @@ building_ps_radio_station = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -246,6 +251,7 @@ building_ps_partisan_hospital = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -279,6 +285,7 @@ building_ps_courier_network = {
 		produces = {
 			energy = 1
 			influence = 0.25
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -364,6 +371,7 @@ building_ps_veterans_club = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -406,6 +414,7 @@ building_ps_memorial = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 3
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -498,6 +507,7 @@ building_ps_partisan_hq = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 3
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -536,6 +546,7 @@ building_ps_dead_drop = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -607,6 +618,7 @@ building_ps_honey_trap = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			influence = 0.2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -645,6 +657,7 @@ building_ps_forgery_shop = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -762,6 +775,7 @@ building_ps_embassy_cover = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			influence = 0.3
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -804,6 +818,7 @@ building_ps_data_haven = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -927,6 +942,7 @@ building_ps_black_archive = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -969,6 +985,7 @@ building_ps_shadow_consulate = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			influence = 0.5
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1001,6 +1018,7 @@ building_ps_front_company = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 3
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1043,6 +1061,7 @@ building_ps_money_laundry = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1076,6 +1095,7 @@ building_ps_pawnshop = {
 		produces = {
 			energy = 2
 			consumer_goods = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1108,6 +1128,7 @@ building_ps_currency_exchange = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1144,6 +1165,7 @@ building_ps_underground_bank = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 4
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1192,6 +1214,7 @@ building_ps_casino = {
 		produces = {
 			energy = 3
 			unity = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1244,6 +1267,7 @@ building_ps_insurance_racket = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 4
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1286,6 +1310,7 @@ building_ps_loan_sharks = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 3
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1328,6 +1353,7 @@ building_ps_smugglers_market = {
 		produces = {
 			energy = 2
 			consumer_goods = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1364,6 +1390,7 @@ building_ps_offshore = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 6
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1411,6 +1438,7 @@ building_ps_trade_guild = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 4
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1448,6 +1476,7 @@ building_ps_syndicate_exchange = {
 		produces = {
 			energy = 5
 			influence = 0.3
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1485,6 +1514,7 @@ building_ps_mining_claim = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			minerals = 3
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1522,6 +1552,7 @@ building_ps_ore_smugglers = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			minerals = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1555,6 +1586,7 @@ building_ps_scrap_yard = {
 		produces = {
 			alloys = 1
 			minerals = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1592,6 +1624,7 @@ building_ps_hydroponic_den = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			food = 3
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1624,6 +1657,7 @@ building_ps_goods_workshop = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			consumer_goods = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1660,6 +1694,7 @@ building_ps_crystal_cartel = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			rare_crystals = 0.5
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1696,6 +1731,7 @@ building_ps_gas_siphon = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			exotic_gases = 0.5
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1732,6 +1768,7 @@ building_ps_mote_refinery = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			volatile_motes = 0.5
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1773,6 +1810,7 @@ building_ps_alloy_forge = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			alloys = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1815,6 +1853,7 @@ building_ps_resource_depot = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			minerals = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1857,6 +1896,7 @@ building_ps_strip_mine = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			minerals = 5
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -1895,6 +1935,7 @@ building_ps_rare_trading_post = {
 			rare_crystals = 0.5
 			exotic_gases = 0.5
 			volatile_motes = 0.5
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -2156,6 +2197,7 @@ building_ps_prototype_shop = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			alloys = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -2280,6 +2322,7 @@ building_ps_dissident_academy = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -2330,6 +2373,7 @@ building_ps_underground_press = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -2362,6 +2406,7 @@ building_ps_pirate_radio = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -2400,6 +2445,7 @@ building_ps_graffiti_crew = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -2433,6 +2479,7 @@ building_ps_leaflet_drop = {
 		produces = {
 			unity = 1
 			influence = 0.1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -2471,6 +2518,7 @@ building_ps_resistance_choir = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -2513,6 +2561,7 @@ building_ps_holo_cinema = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -2549,6 +2598,7 @@ building_ps_martyr_shrine = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 3
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -2592,6 +2642,7 @@ building_ps_agitprop = {
 		produces = {
 			unity = 2
 			influence = 0.2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -2629,6 +2680,7 @@ building_ps_ideology_school = {
 		produces = {
 			unity = 4
 			influence = 0.3
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -2665,6 +2717,7 @@ building_ps_legend_museum = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 5
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -2731,6 +2784,7 @@ building_ps_ship_breakers = {
 		produces = {
 			alloys = 1
 			minerals = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -2810,6 +2864,7 @@ building_ps_hidden_shipyard = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			alloys = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -2852,6 +2907,7 @@ building_ps_fuel_depot = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -2894,6 +2950,7 @@ building_ps_privateer_berth = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -2936,6 +2993,7 @@ building_ps_navigator_guild = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -2978,6 +3036,7 @@ building_ps_fleet_yards = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			alloys = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -3028,6 +3087,7 @@ building_ps_aid_clinic = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -3078,6 +3138,7 @@ building_ps_aid_food_bank = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			influence = 0.1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -3124,6 +3185,7 @@ building_ps_aid_militia_trainers = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -3169,6 +3231,7 @@ building_ps_aid_engineers = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -3219,6 +3282,7 @@ building_ps_aid_culture_house = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -3268,6 +3332,7 @@ building_ps_aid_power_grid = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -3322,6 +3387,7 @@ building_ps_aid_mining_advisers = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			minerals = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -3370,6 +3436,7 @@ building_ps_aid_foundry = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			alloys = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -3418,6 +3485,7 @@ building_ps_aid_research_exchange = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -3468,6 +3536,7 @@ building_ps_aid_security = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			influence = 0.2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -3518,6 +3587,7 @@ building_ps_aid_refugee_center = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -3567,6 +3637,7 @@ building_ps_aid_trade_bridge = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -3616,6 +3687,7 @@ building_ps_aid_logistics = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -3667,6 +3739,7 @@ building_ps_aid_fortifications = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -3716,6 +3789,7 @@ building_ps_aid_war_chest = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			alloys = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -3765,6 +3839,7 @@ building_ps_aid_unity_council = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			influence = 0.3
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -3811,6 +3886,7 @@ building_ps_sub_strike_committee = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -3907,6 +3983,7 @@ building_ps_sub_saboteurs = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			alloys = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -3956,6 +4033,7 @@ building_ps_sub_blackout = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -4009,6 +4087,7 @@ building_ps_sub_crime_wave = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -4059,6 +4138,7 @@ building_ps_sub_food_riots = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			food = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -4202,6 +4282,7 @@ building_ps_crim_aid_fund = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			influence = 0.5
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -4290,6 +4371,7 @@ building_ps_crim_kompromat_press = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			influence = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -4411,6 +4493,7 @@ building_ps_crim_pr_agency = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -4549,6 +4632,7 @@ building_ps_crim_leak_network = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			influence = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -4592,6 +4676,7 @@ building_ps_crim_cyber_brothel = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 3
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -4635,6 +4720,7 @@ building_ps_crim_pirate_radio = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -4673,6 +4759,7 @@ building_ps_crim_protection_racket = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -4716,6 +4803,7 @@ building_ps_crim_fight_club = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -4754,6 +4842,7 @@ building_ps_crim_bouncers = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			alloys = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -4839,6 +4928,7 @@ building_ps_crim_lost_weapons = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			alloys = 1.5
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -4877,6 +4967,7 @@ building_ps_crim_shooting_ranges = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -4920,6 +5011,7 @@ building_ps_crim_debt_collectors = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 3
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -4958,6 +5050,7 @@ building_ps_crim_front_gym = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 1.5
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -5000,6 +5093,7 @@ building_ps_crim_silence_prison = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			influence = 0.5
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -5047,6 +5141,7 @@ building_ps_crim_disposal_service = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			minerals = 3
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -5092,6 +5187,7 @@ building_ps_corp_logistics_hub = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			energy = 3
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -5142,6 +5238,7 @@ building_ps_corp_bank = {
 		produces = {
 			energy = 4
 			influence = 0.25
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -5187,6 +5284,7 @@ building_ps_corp_mining_consortium = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			minerals = 4
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -5232,6 +5330,7 @@ building_ps_corp_agri_holding = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			food = 4
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -5281,6 +5380,7 @@ building_ps_corp_foundry_contract = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			alloys = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -5326,6 +5426,7 @@ building_ps_corp_consumer_chain = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			consumer_goods = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -5425,6 +5526,7 @@ building_ps_corp_media_group = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			unity = 2
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -5471,6 +5573,7 @@ building_ps_corp_clinic_network = {
 		produces = {
 			unity = 1
 			energy = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -5526,6 +5629,7 @@ building_ps_corp_shipyard_contract = {
 		# доход владельцу филиала, растёт с ценностью филиала (как в ванили)
 		produces = {
 			alloys = 1
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}
@@ -5577,6 +5681,7 @@ building_ps_corp_strategic_traders = {
 			rare_crystals = 0.25
 			exotic_gases = 0.25
 			volatile_motes = 0.25
+			trigger = { exists = branch_office_owner }
 			mult = value:branch_office_value_for_buildings
 		}
 	}

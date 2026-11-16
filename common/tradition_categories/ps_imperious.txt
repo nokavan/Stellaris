@@ -14,7 +14,7 @@ tradition_ps_imperious = {
 	}
 
 	potential = {
-		is_gestalt = no
+		always = yes	# доступно и ульям, и машинам
 	}
 
 	ai_weight = {

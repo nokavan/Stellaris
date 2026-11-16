@@ -22,6 +22,7 @@ country_event = {
 		name = ps_mega.1.strike
 		trigger = { NOT = { has_country_flag = ps_mega_seed_strike } }
 		ps_mega_clear_doctrine = yes
+		ps_cell_chooser_reopen = yes
 		set_country_flag = ps_mega_seed_strike
 	}
 
@@ -29,6 +30,7 @@ country_event = {
 		name = ps_mega.1.assault
 		trigger = { NOT = { has_country_flag = ps_mega_seed_assault } }
 		ps_mega_clear_doctrine = yes
+		ps_cell_chooser_reopen = yes
 		set_country_flag = ps_mega_seed_assault
 	}
 
@@ -36,6 +38,7 @@ country_event = {
 		name = ps_mega.1.raiders
 		trigger = { NOT = { has_country_flag = ps_mega_seed_raiders } }
 		ps_mega_clear_doctrine = yes
+		ps_cell_chooser_reopen = yes
 		set_country_flag = ps_mega_seed_raiders
 	}
 
@@ -43,6 +46,7 @@ country_event = {
 		name = ps_mega.1.residency
 		trigger = { NOT = { has_country_flag = ps_mega_seed_residency } }
 		ps_mega_clear_doctrine = yes
+		ps_cell_chooser_reopen = yes
 		set_country_flag = ps_mega_seed_residency
 	}
 
@@ -50,6 +54,7 @@ country_event = {
 		name = ps_mega.1.exchange
 		trigger = { NOT = { has_country_flag = ps_mega_seed_exchange } }
 		ps_mega_clear_doctrine = yes
+		ps_cell_chooser_reopen = yes
 		set_country_flag = ps_mega_seed_exchange
 	}
 
@@ -57,6 +62,7 @@ country_event = {
 		name = ps_mega.1.trust
 		trigger = { NOT = { has_country_flag = ps_mega_seed_trust } }
 		ps_mega_clear_doctrine = yes
+		ps_cell_chooser_reopen = yes
 		set_country_flag = ps_mega_seed_trust
 	}
 
@@ -64,6 +70,7 @@ country_event = {
 		name = ps_mega.1.devotee
 		trigger = { NOT = { has_country_flag = ps_mega_seed_devotee } }
 		ps_mega_clear_doctrine = yes
+		ps_cell_chooser_reopen = yes
 		set_country_flag = ps_mega_seed_devotee
 	}
 
@@ -71,6 +78,7 @@ country_event = {
 		name = ps_mega.1.client
 		trigger = { NOT = { has_country_flag = ps_mega_seed_client } }
 		ps_mega_clear_doctrine = yes
+		ps_cell_chooser_reopen = yes
 		set_country_flag = ps_mega_seed_client
 	}
 
@@ -156,6 +164,206 @@ country_event = {
 
 	option = {
 		name = ps_mega.8.a
+	}
+}
+
+# ВЫБОР ПЛАНЕТЫ ДЛЯ ЯЧЕЙКИ (решение «Основать ячейку»): до 6 свободных пригодных планет
+# в наших границах и в системах наших станций (ковчег, стоянки). Специализация — по доктрине.
+country_event = {
+	id = ps_mega.30
+	title = ps_mega.30.name
+	desc = ps_mega.30.desc
+	picture = GFX_ps_evt_ark
+	is_triggered_only = yes
+
+	immediate = {
+		set_country_flag = ps_cell_chooser_open
+		ps_cell_chooser_clear = yes
+		save_event_target_as = ps_seed_owner
+		every_system_within_border = {
+			limit = { ps_cell_seed_system = { OWNER = root } }
+			every_system_planet = {
+				limit = { ps_free_habitable_planet = { OWNER = root } }
+				set_planet_flag = ps_cand_pool
+			}
+		}
+		every_owned_starbase = {
+			solar_system = {
+				if = {
+					limit = { ps_cell_seed_system = { OWNER = root } }
+					every_system_planet = {
+						limit = { ps_free_habitable_planet = { OWNER = root } }
+						set_planet_flag = ps_cand_pool
+					}
+				}
+			}
+		}
+		random_galaxy_planet = {
+			limit = { has_planet_flag = ps_cand_pool NOT = { has_planet_flag = ps_cand_taken } }
+			set_planet_flag = ps_cand_taken
+			save_event_target_as = ps_cand_1
+		}
+		random_galaxy_planet = {
+			limit = { has_planet_flag = ps_cand_pool NOT = { has_planet_flag = ps_cand_taken } }
+			set_planet_flag = ps_cand_taken
+			save_event_target_as = ps_cand_2
+		}
+		random_galaxy_planet = {
+			limit = { has_planet_flag = ps_cand_pool NOT = { has_planet_flag = ps_cand_taken } }
+			set_planet_flag = ps_cand_taken
+			save_event_target_as = ps_cand_3
+		}
+		random_galaxy_planet = {
+			limit = { has_planet_flag = ps_cand_pool NOT = { has_planet_flag = ps_cand_taken } }
+			set_planet_flag = ps_cand_taken
+			save_event_target_as = ps_cand_4
+		}
+		random_galaxy_planet = {
+			limit = { has_planet_flag = ps_cand_pool NOT = { has_planet_flag = ps_cand_taken } }
+			set_planet_flag = ps_cand_taken
+			save_event_target_as = ps_cand_5
+		}
+		random_galaxy_planet = {
+			limit = { has_planet_flag = ps_cand_pool NOT = { has_planet_flag = ps_cand_taken } }
+			set_planet_flag = ps_cand_taken
+			save_event_target_as = ps_cand_6
+		}
+	}
+
+	option = {
+		name = ps_mega.30.pick_1
+		trigger = { exists = event_target:ps_cand_1 }
+		allow = {
+			resource_stockpile_compare = { resource = alloys value >= 500 }
+			resource_stockpile_compare = { resource = food value >= 300 }
+			resource_stockpile_compare = { resource = influence value >= 100 }
+		}
+		custom_tooltip = ps_mega.30.pick_tt
+		hidden_effect = {
+			add_resource = { alloys = -500 food = -300 influence = -100 }
+			set_timed_country_flag = { flag = ps_planet_cell_cd days = 1080 }
+			remove_country_flag = ps_cell_chooser_open
+			save_event_target_as = ps_seed_owner
+			ps_cell_chooser_clear = yes
+			event_target:ps_cand_1 = { ps_cell_on_free_planet = yes }
+			country_event = { id = ps_mega.8 }
+		}
+	}
+
+	option = {
+		name = ps_mega.30.pick_2
+		trigger = { exists = event_target:ps_cand_2 }
+		allow = {
+			resource_stockpile_compare = { resource = alloys value >= 500 }
+			resource_stockpile_compare = { resource = food value >= 300 }
+			resource_stockpile_compare = { resource = influence value >= 100 }
+		}
+		custom_tooltip = ps_mega.30.pick_tt
+		hidden_effect = {
+			add_resource = { alloys = -500 food = -300 influence = -100 }
+			set_timed_country_flag = { flag = ps_planet_cell_cd days = 1080 }
+			remove_country_flag = ps_cell_chooser_open
+			save_event_target_as = ps_seed_owner
+			ps_cell_chooser_clear = yes
+			event_target:ps_cand_2 = { ps_cell_on_free_planet = yes }
+			country_event = { id = ps_mega.8 }
+		}
+	}
+
+	option = {
+		name = ps_mega.30.pick_3
+		trigger = { exists = event_target:ps_cand_3 }
+		allow = {
+			resource_stockpile_compare = { resource = alloys value >= 500 }
+			resource_stockpile_compare = { resource = food value >= 300 }
+			resource_stockpile_compare = { resource = influence value >= 100 }
+		}
+		custom_tooltip = ps_mega.30.pick_tt
+		hidden_effect = {
+			add_resource = { alloys = -500 food = -300 influence = -100 }
+			set_timed_country_flag = { flag = ps_planet_cell_cd days = 1080 }
+			remove_country_flag = ps_cell_chooser_open
+			save_event_target_as = ps_seed_owner
+			ps_cell_chooser_clear = yes
+			event_target:ps_cand_3 = { ps_cell_on_free_planet = yes }
+			country_event = { id = ps_mega.8 }
+		}
+	}
+
+	option = {
+		name = ps_mega.30.pick_4
+		trigger = { exists = event_target:ps_cand_4 }
+		allow = {
+			resource_stockpile_compare = { resource = alloys value >= 500 }
+			resource_stockpile_compare = { resource = food value >= 300 }
+			resource_stockpile_compare = { resource = influence value >= 100 }
+		}
+		custom_tooltip = ps_mega.30.pick_tt
+		hidden_effect = {
+			add_resource = { alloys = -500 food = -300 influence = -100 }
+			set_timed_country_flag = { flag = ps_planet_cell_cd days = 1080 }
+			remove_country_flag = ps_cell_chooser_open
+			save_event_target_as = ps_seed_owner
+			ps_cell_chooser_clear = yes
+			event_target:ps_cand_4 = { ps_cell_on_free_planet = yes }
+			country_event = { id = ps_mega.8 }
+		}
+	}
+
+	option = {
+		name = ps_mega.30.pick_5
+		trigger = { exists = event_target:ps_cand_5 }
+		allow = {
+			resource_stockpile_compare = { resource = alloys value >= 500 }
+			resource_stockpile_compare = { resource = food value >= 300 }
+			resource_stockpile_compare = { resource = influence value >= 100 }
+		}
+		custom_tooltip = ps_mega.30.pick_tt
+		hidden_effect = {
+			add_resource = { alloys = -500 food = -300 influence = -100 }
+			set_timed_country_flag = { flag = ps_planet_cell_cd days = 1080 }
+			remove_country_flag = ps_cell_chooser_open
+			save_event_target_as = ps_seed_owner
+			ps_cell_chooser_clear = yes
+			event_target:ps_cand_5 = { ps_cell_on_free_planet = yes }
+			country_event = { id = ps_mega.8 }
+		}
+	}
+
+	option = {
+		name = ps_mega.30.pick_6
+		trigger = { exists = event_target:ps_cand_6 }
+		allow = {
+			resource_stockpile_compare = { resource = alloys value >= 500 }
+			resource_stockpile_compare = { resource = food value >= 300 }
+			resource_stockpile_compare = { resource = influence value >= 100 }
+		}
+		custom_tooltip = ps_mega.30.pick_tt
+		hidden_effect = {
+			add_resource = { alloys = -500 food = -300 influence = -100 }
+			set_timed_country_flag = { flag = ps_planet_cell_cd days = 1080 }
+			remove_country_flag = ps_cell_chooser_open
+			save_event_target_as = ps_seed_owner
+			ps_cell_chooser_clear = yes
+			event_target:ps_cand_6 = { ps_cell_on_free_planet = yes }
+			country_event = { id = ps_mega.8 }
+		}
+	}
+
+	option = {
+		name = ps_mega.30.doctrine
+		hidden_effect = {
+			ps_cell_chooser_clear = yes
+			country_event = { id = ps_mega.1 }
+		}
+	}
+
+	option = {
+		name = ps_mega.30.cancel
+		hidden_effect = {
+			remove_country_flag = ps_cell_chooser_open
+			ps_cell_chooser_clear = yes
+		}
 	}
 }
 

@@ -183,3 +183,25 @@ ps_cell_from_own_colony = {
 		add_modifier = { modifier = ps_liberated_state days = 3600 }
 	}
 }
+
+# Окно выбора планеты для ячейки: снять служебные флаги планет
+ps_cell_chooser_clear = {
+	every_galaxy_planet = {
+		limit = {
+			OR = {
+				has_planet_flag = ps_cand_pool
+				has_planet_flag = ps_cand_taken
+			}
+		}
+		remove_planet_flag = ps_cand_pool
+		remove_planet_flag = ps_cand_taken
+	}
+}
+
+# После смены доктрины вернуться в окно выбора планеты (если оно было открыто)
+ps_cell_chooser_reopen = {
+	if = {
+		limit = { has_country_flag = ps_cell_chooser_open }
+		country_event = { id = ps_mega.30 days = 0 }
+	}
+}

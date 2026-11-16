@@ -540,6 +540,7 @@ def building(x):
              f"\t\t\tinfluence = {t['inf']}\n\t\t}}\n\t\tupkeep = {{\n\t\t\tenergy = {t['up']}\n\t\t}}\n"
              + ("\t\t# доход владельцу филиала, растёт с ценностью филиала (как в ванили)\n\t\tproduces = {\n"
                 + "".join(f"\t\t\t{r} = {fmt(v)}\n" for r, v in prod.items())
+                + "\t\t\ttrigger = { exists = branch_office_owner }\n"
                 + "\t\t\tmult = value:branch_office_value_for_buildings\n\t\t}\n" if prod else "")
              + "\t}\n")
     o.append("\n\tai_weight = {\n\t\tfactor = 10\n\t}\n}\n")

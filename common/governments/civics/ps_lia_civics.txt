@@ -1,4 +1,4 @@
-# Встроено из «Espionage Extended <Eng/Rus ver.>» (Workshop 2465577434; автор передал мод). Только новое содержимое, перенесено на 4.x.
+﻿# Встроено из «Espionage Extended <Eng/Rus ver.>» (Workshop 2465577434; автор передал мод). Только новое содержимое, перенесено на 4.x.
 #civic_example = {
 #	playable = {}								# AND trigger, no scope; use this to prevent the civic from being selectable by the player (UI)
 #	potential = {}								# requirements list, see ../readme_requirements.txt
@@ -64,7 +64,7 @@ civic_shadow_state = {
 	modifier = {
 		pop_government_ethic_attraction = 0.5
 		country_unity_produces_mult = 0.10
-		pop_growth_speed = -0.1		
+		planet_pop_assembly_mult = -0.1	# (port 4.x) было pop_growth_speed		
 		pop_happiness = -0.1
 		planet_amenities_mult = -0.1		
 		planet_crime_add = -50

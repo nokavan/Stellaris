@@ -80,6 +80,7 @@ decision_ps_ark_seed_cell = {
 	}
 
 	potential = {
+		always = no	# заменено общим решением «Основать ячейку» (выбор планеты: ковчег, стоянки, границы)
 		is_capital = yes
 		owner = { ps_is_partisan_ark = yes }
 	}
@@ -251,15 +252,6 @@ decision_ps_ark_cloak_on = {
 decision_ps_found_planet_cell = {
 	owned_planets_only = yes
 
-	resources = {
-		category = decisions
-		cost = {
-			alloys = 500
-			food = 300
-			influence = 100
-		}
-	}
-
 	potential = {
 		is_capital = yes
 		owner = { ps_is_partisan_empire = yes }
@@ -279,31 +271,7 @@ decision_ps_found_planet_cell = {
 	effect = {
 		custom_tooltip = decision_ps_found_planet_cell_tooltip
 		hidden_effect = {
-			owner = {
-				save_event_target_as = ps_seed_owner
-				set_timed_country_flag = { flag = ps_planet_cell_cd days = 1080 }
-				# сначала в своих границах, иначе — у своих станций (ковчег и стоянки кочевника)
-				if = {
-					limit = { any_system_within_border = { ps_cell_seed_system = { OWNER = event_target:ps_seed_owner } } }
-					random_system_within_border = {
-						limit = { ps_cell_seed_system = { OWNER = event_target:ps_seed_owner } }
-						save_event_target_as = ps_seed_system
-					}
-				}
-				else = {
-					random_owned_starbase = {
-						limit = { solar_system = { ps_cell_seed_system = { OWNER = event_target:ps_seed_owner } } }
-						solar_system = { save_event_target_as = ps_seed_system }
-					}
-				}
-				event_target:ps_seed_system = {
-					random_system_planet = {
-						limit = { ps_free_habitable_planet = { OWNER = event_target:ps_seed_owner } }
-						ps_cell_on_free_planet = yes
-					}
-				}
-				country_event = { id = ps_mega.8 }
-			}
+			owner = { country_event = { id = ps_mega.30 } }
 		}
 	}
 }

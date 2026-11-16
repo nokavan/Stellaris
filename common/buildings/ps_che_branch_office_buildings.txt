@@ -1,6 +1,7 @@
 # Встроено из «Criminal Heritage Expanded» (Workshop 2631525996, с разрешения автора). 6 зданий филиалов для криминальных синдикатов.
 # Приведено к 4.5: переменные @trade_value_from_jobs (0.01) и @crime_floor_from_legal_crime (10) заменены числами;
 # envoys_add / country_trust_cap_add убраны из модификаторов планеты (там они не разрешены).
+# + множитель преступности через branch_office_owner убран (как в ванили), проверки владельца филиала защищены exists.
 # Не включайте оригинальный мод вместе с «Синдикатом».
 #Main Building
 building_criminal_headquarters = {
@@ -17,6 +18,7 @@ building_criminal_headquarters = {
 
 	triggered_planet_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = {
 				is_legit_or_legal_criminal = yes
 			}
@@ -26,6 +28,7 @@ building_criminal_headquarters = {
 
 	triggered_planet_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = { is_illegal_criminal = yes }
 		}
 		job_bureaucrat_add = 100
@@ -45,6 +48,7 @@ building_criminal_headquarters = {
 	#Crims cause crime even with deal
 	triggered_planet_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = {
 				is_criminal_syndicate = yes
 				is_legit_or_legal_criminal = yes
@@ -99,6 +103,7 @@ building_union_busting_lawfirm = {
 	}
 	triggered_planet_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = {
 				is_legit_or_legal_criminal = yes
 			}
@@ -108,6 +113,7 @@ building_union_busting_lawfirm = {
 
 	triggered_planet_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = { is_illegal_criminal = yes }
 		}
 		job_corrupt_lawyer_per_pop = 0.01
@@ -124,6 +130,7 @@ building_union_busting_lawfirm = {
 	#Crims cause crime even with deal
 	triggered_planet_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = {
 				is_criminal_syndicate = yes
 				is_legit_or_legal_criminal = yes
@@ -176,6 +183,7 @@ building_unregulated_factories = {
 	}
 	triggered_planet_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = {
 				is_legit_or_legal_criminal = yes
 			}
@@ -185,6 +193,7 @@ building_unregulated_factories = {
 
 	triggered_planet_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = { is_illegal_criminal = yes }
 		}
 		job_corrupt_manager_per_pop = 0.01
@@ -201,6 +210,7 @@ building_unregulated_factories = {
 	#Crims cause crime even with deal
 	triggered_planet_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = {
 				is_criminal_syndicate = yes
 				is_legit_or_legal_criminal = yes
@@ -253,6 +263,7 @@ building_unregulated_research_labs = {
 	}
 	triggered_planet_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = {
 				is_legit_or_legal_criminal = yes
 			}
@@ -262,6 +273,7 @@ building_unregulated_research_labs = {
 
 	triggered_planet_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = { is_illegal_criminal = yes }
 		}
 		job_corrupt_researcher_per_pop = 0.01
@@ -279,6 +291,7 @@ building_unregulated_research_labs = {
 	#Crims cause crime even with deal
 	triggered_planet_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = {
 				is_criminal_syndicate = yes
 				is_legit_or_legal_criminal = yes
@@ -330,6 +343,7 @@ building_Xeno_Relations_bureau = {
 
 	potential = {
 		has_branch_office = yes
+		exists = branch_office_owner
 		branch_office_owner = {
 			is_illegal_criminal = yes
 		}
@@ -351,7 +365,6 @@ building_Xeno_Relations_bureau = {
 
 		triggered_planet_modifier = {
 		planet_crime_add = 25
-		mult = branch_office_owner.value:scripted_modifier_mult|MODIFIER|branch_office_holding_crime_mult|
 	}
 
 	triggered_planet_modifier = {
@@ -364,6 +377,7 @@ building_Xeno_Relations_bureau = {
 
 	triggered_planet_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = {
 				has_civic = civic_worker_coop
 			}
@@ -374,6 +388,7 @@ building_Xeno_Relations_bureau = {
 
 	triggered_planet_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = {
 				has_civic = civic_corporate_dimensional_worship
 			}
@@ -384,6 +399,7 @@ building_Xeno_Relations_bureau = {
 
 	triggered_planet_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = {
 				has_civic = civic_death_cult_corporate
 			}
@@ -396,6 +412,7 @@ building_Xeno_Relations_bureau = {
 	#Trader Jobs from civics
 	triggered_country_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = {
 				has_valid_civic = civic_worker_coop
 			}
@@ -405,6 +422,7 @@ building_Xeno_Relations_bureau = {
 
 	triggered_country_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = {
 				has_valid_civic = civic_corporate_dimensional_worship
 			}
@@ -414,6 +432,7 @@ building_Xeno_Relations_bureau = {
 
 	triggered_country_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = {
 				has_valid_civic = civic_death_cult_corporate
 			}
@@ -446,6 +465,7 @@ building_Xeno_Relations_bureau = {
 
 		destroy_trigger = {
 		exists = owner
+		exists = branch_office_owner
 		branch_office_owner = {
 			is_legit_or_legal_criminal = yes
 		}
@@ -471,6 +491,7 @@ building_high_society_clubs = {
 
 	potential = {
 		has_branch_office = yes
+		exists = branch_office_owner
 		branch_office_owner = {
 			is_illegal_criminal = yes
 		}
@@ -501,6 +522,7 @@ building_high_society_clubs = {
 
 	triggered_planet_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = {
 				has_valid_civic = civic_ruthless_competition
 			}
@@ -511,6 +533,7 @@ building_high_society_clubs = {
 
 	triggered_planet_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = {
 				has_valid_civic = civic_task_delegation_corporate
 			}
@@ -521,6 +544,7 @@ building_high_society_clubs = {
 
 	triggered_planet_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = {
 				has_valid_civic = civic_environmental_architects_megacorp
 			}
@@ -532,6 +556,7 @@ building_high_society_clubs = {
 	#Crims cause crime even with deal
 	triggered_planet_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = {
 				is_criminal_syndicate = yes
 			}
@@ -542,6 +567,7 @@ building_high_society_clubs = {
 	#Trader Jobs from civics
 	triggered_country_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = {
 				has_valid_civic = civic_ruthless_competition
 			}
@@ -551,6 +577,7 @@ building_high_society_clubs = {
 
 	triggered_country_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = {
 				has_valid_civic = civic_task_delegation_corporate
 			}
@@ -560,6 +587,7 @@ building_high_society_clubs = {
 
 	triggered_country_modifier = {
 		potential = {
+			exists = branch_office_owner
 			branch_office_owner = {
 				has_valid_civic = civic_environmental_architects_megacorp
 			}
@@ -591,6 +619,7 @@ building_high_society_clubs = {
 	}
 			destroy_trigger = {
 		exists = owner
+		exists = branch_office_owner
 		branch_office_owner = {
 			is_legit_or_legal_criminal = yes
 		}

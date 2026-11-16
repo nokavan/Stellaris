@@ -1,0 +1,35 @@
+# Текущая «Доктрина заселения» (scope = страна)
+defined_text = {
+	name = PsDoctrineName
+	text = {
+		trigger = { has_country_flag = ps_mega_seed_strike }
+		localization_key = specialist_ps_strike
+	}
+	text = {
+		trigger = { has_country_flag = ps_mega_seed_assault }
+		localization_key = specialist_ps_assault
+	}
+	text = {
+		trigger = { has_country_flag = ps_mega_seed_raiders }
+		localization_key = specialist_ps_raiders
+	}
+	text = {
+		trigger = { has_country_flag = ps_mega_seed_residency }
+		localization_key = specialist_ps_residency
+	}
+	text = {
+		trigger = { has_country_flag = ps_mega_seed_exchange }
+		localization_key = specialist_ps_exchange
+	}
+	text = {
+		trigger = { has_country_flag = ps_mega_seed_trust }
+		localization_key = specialist_ps_trust
+	}
+	text = {
+		trigger = { has_country_flag = ps_mega_seed_devotee }
+		localization_key = specialist_ps_devotee
+	}
+	text = {
+		localization_key = ps_doctrine_client
+	}
+}
