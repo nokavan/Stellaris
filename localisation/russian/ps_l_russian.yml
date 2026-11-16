@@ -1,7 +1,7 @@
 ﻿l_russian:
  # ===== Общее =====
- civic_tooltip_ps_requires_megacorp:0 "Требуется власть §YМегакорпорация§!, §YРазум улья§! или §YМашинный разум§!"
- civic_tooltip_ps_requires_criminal_heritage:0 "Требуется цивик §YКриминальное наследие§!, §YПартизанская сеть§! или §YТеневой сюзерен§!"
+ civic_tooltip_ps_requires_megacorp:0 "Требуется §YКорпоративная§! власть (мегакорпорация)"
+ civic_tooltip_ps_requires_criminal_heritage:0 "Требуется цивик §YКриминальное наследие§!"
 
  # ===== Происхождение =====
  origin_ps_partisan_legacy:0 "Наследие Сопротивления"

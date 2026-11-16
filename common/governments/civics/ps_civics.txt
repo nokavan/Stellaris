@@ -11,22 +11,19 @@ origin_ps_partisan_legacy = {
 	picture = GFX_origin_ps_partisan_legacy
 
 	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
 	}
 	possible = {
 		authority = {
 			OR = { # нужно для своей подсказки (как в ванили)
 				text = civic_tooltip_ps_requires_megacorp
 				value = auth_corporate
-				value = auth_hive_mind
-				value = auth_machine_intelligence
 			}
 		}
 		civics = {
 			OR = { # нужно для своей подсказки (как в ванили)
 				text = civic_tooltip_ps_requires_criminal_heritage
 				value = civic_criminal_heritage
-				value = civic_ps_partisan_network
-				value = civic_ps_shadow_overlord
 			}
 		}
 	}
@@ -47,15 +44,14 @@ origin_ps_partisan_legacy = {
 ########################################
 civic_ps_partisan_network = {
 	potential = {
-		authority = { OR = { value = auth_corporate value = auth_hive_mind value = auth_machine_intelligence } }
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { value = auth_corporate }
 	}
 	possible = {
 		authority = {
 			OR = { # нужно для своей подсказки (как в ванили)
 				text = civic_tooltip_ps_requires_megacorp
 				value = auth_corporate
-				value = auth_hive_mind
-				value = auth_machine_intelligence
 			}
 		}
 	}
@@ -80,15 +76,14 @@ civic_ps_partisan_network = {
 ########################################
 civic_ps_shadow_overlord = {
 	potential = {
-		authority = { OR = { value = auth_corporate value = auth_hive_mind value = auth_machine_intelligence } }
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
+		authority = { value = auth_corporate }
 	}
 	possible = {
 		authority = {
 			OR = { # нужно для своей подсказки (как в ванили)
 				text = civic_tooltip_ps_requires_megacorp
 				value = auth_corporate
-				value = auth_hive_mind
-				value = auth_machine_intelligence
 			}
 		}
 	}
@@ -121,6 +116,7 @@ origin_ps_partisan_ark = {
 	ai_playable = { has_nomads_dlc = yes }
 
 	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
 	}
 	possible = {
 		is_nomadic = yes
@@ -128,16 +124,12 @@ origin_ps_partisan_ark = {
 			OR = { # нужно для своей подсказки (как в ванили)
 				text = civic_tooltip_ps_requires_megacorp
 				value = auth_corporate
-				value = auth_hive_mind
-				value = auth_machine_intelligence
 			}
 		}
 		civics = {
 			OR = { # нужно для своей подсказки (как в ванили)
 				text = civic_tooltip_ps_requires_criminal_heritage
 				value = civic_criminal_heritage
-				value = civic_ps_partisan_network
-				value = civic_ps_shadow_overlord
 			}
 		}
 	}
@@ -175,6 +167,7 @@ origin_ps_partisan_worldark = {
 	ai_playable = { always = no }
 
 	potential = {
+		ethics = { NOT = { value = ethic_gestalt_consciousness } }
 	}
 	possible = {
 		is_nomadic = yes
@@ -182,16 +175,12 @@ origin_ps_partisan_worldark = {
 			OR = { # нужно для своей подсказки (как в ванили)
 				text = civic_tooltip_ps_requires_megacorp
 				value = auth_corporate
-				value = auth_hive_mind
-				value = auth_machine_intelligence
 			}
 		}
 		civics = {
 			OR = { # нужно для своей подсказки (как в ванили)
 				text = civic_tooltip_ps_requires_criminal_heritage
 				value = civic_criminal_heritage
-				value = civic_ps_partisan_network
-				value = civic_ps_shadow_overlord
 			}
 		}
 	}

@@ -1,7 +1,7 @@
 ﻿l_english:
  # ===== Common =====
- civic_tooltip_ps_requires_megacorp:0 "Requires §YMegacorporation§!, §YHive Mind§! or §YMachine Intelligence§! authority"
- civic_tooltip_ps_requires_criminal_heritage:0 "Requires the §YCriminal Heritage§!, §YPartisan Network§! or §YShadow Overlord§! civic"
+ civic_tooltip_ps_requires_megacorp:0 "Requires §YCorporate§! authority (Megacorporation)"
+ civic_tooltip_ps_requires_criminal_heritage:0 "Requires the §YCriminal Heritage§! civic"
 
  # ===== Origin =====
  origin_ps_partisan_legacy:0 "Legacy of the Resistance"
