@@ -564,9 +564,17 @@ guiTypes = {
 					containerWindowType = {
 						name = "modules_info"
 						position = { x = 0 y = 15 }
-						size = { width = 268 height = -20 }
+						# fixed height: a container only scrolls when its size is explicit
+						if_scaled_resolution = {
+							max_height = 800
+							size = { width = 268 height = 170 }
+						}
+						if_scaled_resolution = {
+							min_height = 801
+							size = { width = 268 height = 360 }
+						}
 						clipping = yes
-						verticalScrollbar = "standardlistbox_slider"
+						verticalScrollbar = "right_vertical_slider"
 						smooth_scrolling = yes
 
 						instantTextBoxType = {

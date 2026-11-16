@@ -198,6 +198,29 @@ country_event = {
 				}
 			}
 		}
+		every_owned_fleet = {
+			limit = { is_arkship_fleet = yes }
+			solar_system = {
+				if = {
+					limit = { ps_cell_seed_system = { OWNER = root } }
+					every_system_planet = {
+						limit = { ps_free_habitable_planet = { OWNER = root } }
+						set_planet_flag = ps_cand_pool
+					}
+				}
+			}
+		}
+		capital_scope = {
+			solar_system = {
+				if = {
+					limit = { ps_cell_seed_system = { OWNER = root } }
+					every_system_planet = {
+						limit = { ps_free_habitable_planet = { OWNER = root } }
+						set_planet_flag = ps_cand_pool
+					}
+				}
+			}
+		}
 		random_galaxy_planet = {
 			limit = { has_planet_flag = ps_cand_pool NOT = { has_planet_flag = ps_cand_taken } }
 			set_planet_flag = ps_cand_taken

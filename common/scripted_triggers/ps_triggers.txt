@@ -24,6 +24,7 @@ ps_is_partisan_empire = {
 	OR = {
 		has_origin = origin_ps_partisan_legacy
 		has_origin = origin_ps_partisan_ark
+		has_origin = origin_ps_partisan_worldark
 		has_country_flag = ps_partisan_worldark
 		has_valid_civic = civic_ps_partisan_network
 	}
@@ -34,6 +35,7 @@ ps_is_shadow_overlord = {
 	OR = {
 		has_origin = origin_ps_partisan_legacy
 		has_origin = origin_ps_partisan_ark
+		has_origin = origin_ps_partisan_worldark
 		has_country_flag = ps_partisan_worldark
 		has_valid_civic = civic_ps_shadow_overlord
 	}
@@ -187,23 +189,47 @@ ps_cell_seed_system = {
 	}
 }
 
-# Есть где основать ячейку (scope = страна): в границах ИЛИ у наших станций — ковчега и стоянок кочевника
+# Есть где основать ячейку (scope = страна): в границах, у наших станций (стоянки)
+# или в системе любого нашего ковчега (кочевники)
 ps_has_cell_seed_site = {
 	OR = {
 		any_system_within_border = { ps_cell_seed_system = { OWNER = $OWNER$ } }
 		any_owned_starbase = {
 			solar_system = { ps_cell_seed_system = { OWNER = $OWNER$ } }
 		}
+		any_owned_fleet = {
+			is_arkship_fleet = yes
+			solar_system = { ps_cell_seed_system = { OWNER = $OWNER$ } }
+		}
+		capital_scope = {
+			solar_system = { ps_cell_seed_system = { OWNER = $OWNER$ } }
+		}
 	}
 }
 
-# Свободная планета, пригодная для вида страны OWNER (scope = планета).
-# Вместо is_colonizable: у Мирового ковчега и других «неоседлых» происхождений
-# is_colonizable = no, хотя планета пригодна (XHK запрещает обычную колонизацию).
+# Свободная планета, где может жить вид страны OWNER (scope = планета).
+# Вместо is_colonizable (у кочевников он всегда «нет»): пригодность для основного вида
+# ИЛИ обычный жилой класс планеты — как у кнопки «Поселиться» у кочевников.
 ps_free_habitable_planet = {
 	NOT = { exists = owner }
-	habitability = {
-		who = $OWNER$
-		value >= 0.1
+	is_artificial = no
+	OR = {
+		habitability = {
+			who = $OWNER$.owner_species
+			value >= 0.1
+		}
+		is_planet_class = pc_desert
+		is_planet_class = pc_arid
+		is_planet_class = pc_savannah
+		is_planet_class = pc_tropical
+		is_planet_class = pc_continental
+		is_planet_class = pc_ocean
+		is_planet_class = pc_tundra
+		is_planet_class = pc_arctic
+		is_planet_class = pc_alpine
+		is_planet_class = pc_gaia
+		is_planet_class = pc_volcanic
+		is_planet_class = pc_nuked
+		is_planet_class = pc_relic
 	}
 }
