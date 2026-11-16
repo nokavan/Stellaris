@@ -564,15 +564,8 @@ guiTypes = {
 					containerWindowType = {
 						name = "modules_info"
 						position = { x = 0 y = 15 }
-						# fixed height: a container only scrolls when its size is explicit
-						if_scaled_resolution = {
-							max_height = 800
-							size = { width = 268 height = 170 }
-						}
-						if_scaled_resolution = {
-							min_height = 801
-							size = { width = 268 height = 360 }
-						}
+						# fixed size: a container only scrolls when its size is explicit
+						size = { width = 255 height = 165 }
 						clipping = yes
 						verticalScrollbar = "right_vertical_slider"
 						smooth_scrolling = yes
@@ -582,7 +575,7 @@ guiTypes = {
 							font = "malgun_goth_24"
 							text = "STARBASE_MODULES"
 							position = { x = 0 y = 0 }
-							maxWidth = 270
+							maxWidth = 240
 							maxHeight = 20
 							fixedSize = yes
 							format = center
@@ -591,8 +584,9 @@ guiTypes = {
 
 						gridBoxType = {
 							name = "modules_grid"
-							position = { x = 16 y = 35 }
-							size = { width = 0 height = 0 }
+							position = { x = 8 y = 35 }
+							# real size so the container knows its content height (13 rows x 58 = 754) and scrolls
+							size = { width = 232 height = 760 }
 							format = "UPPER_LEFT"
 							slotsize = { width = 58 height = 58 }
 							add_horizontal = yes
