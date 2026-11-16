@@ -233,3 +233,9 @@ ps_free_habitable_planet = {
 		is_planet_class = pc_relic
 	}
 }
+
+# Есть свободная пригодная планета для нового ковчега-вассала: у ковчега-столицы, у других наших
+# ковчегов, в границах или у стоянок (scope = страна)
+ps_arkv_has_world = {
+	ps_has_cell_seed_site = { OWNER = this }
+}

@@ -427,3 +427,27 @@ country_event = {
 		}
 	}
 }
+
+# ДЕЙСТВИЕ КОВЧЕГА «Основать ячейку здесь»: This = планета, From = флот ковчега.
+# Стоимость (500 сплавов, 300 еды, 100 влияния) списывает само действие.
+planet_event = {
+	id = ps_mega.40
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		from.controller = { save_event_target_as = ps_seed_owner }
+		if = {
+			limit = {
+				ps_free_habitable_planet = { OWNER = event_target:ps_seed_owner }
+				event_target:ps_seed_owner = { NOT = { has_country_flag = ps_planet_cell_cd } }
+			}
+			event_target:ps_seed_owner = { set_timed_country_flag = { flag = ps_planet_cell_cd days = 1080 } }
+			ps_cell_on_free_planet = yes
+			event_target:ps_seed_owner = { country_event = { id = ps_mega.8 } }
+		}
+		else = {
+			event_target:ps_seed_owner = { add_resource = { alloys = 500 food = 300 influence = 100 } }
+		}
+	}
+}

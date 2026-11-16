@@ -46,19 +46,102 @@ ps_arkv_split = {
 	country_event = { id = ps_arkv.5 days = 3 }
 }
 
-# Построить новый ковчег-ячейку в системе столицы. scope = сюзерен.
+# Построить новый ковчег-ячейку у ковчега-столицы. scope = сюзерен.
+# Ванильный путь nomads.4710 (вариант «Наш вассал отправляется в путь»): свободную планету рядом
+# заселяет новая страна, и планета «садится» на ковчег (create_embarking_arkship + embark_planet_effect).
+# ARK = military / science / civilian.
 ps_arkv_build = {
-	ps_arkv_new_country = { TYPE = $TYPE$ PRESET = $PRESET$ }
-	event_target:ps_new_cell = { set_country_flag = ps_arkv_check }
-	capital_scope.solar_system = { save_event_target_as = ps_arkv_system }
-	create_arkship_effect = {
-		TYPE = $ARK$
-		OWNER = event_target:ps_new_cell
-		LOCATION = event_target:ps_arkv_system
+	save_event_target_as = ps_seed_owner
+	ps_arkv_pick_world = yes
+	create_embarking_subject_country_effect = { PLAYER_COUNTRY = event_target:ps_seed_owner }
+	last_created_country? = { save_event_target_as = ps_new_cell }
+	event_target:ps_arkv_world = {
+		set_owner = event_target:ps_new_cell
+		set_controller = event_target:ps_new_cell
+		while = {
+			count = 4
+			create_pop_group = { species = event_target:ps_seed_owner.owner_species }
+		}
 	}
-	event_target:ps_new_cell = { country_event = { id = nomads.20 days = 1 } }
+	create_embarking_arkship = {
+		NOMAD_COUNTRY = event_target:ps_new_cell
+		ARKSHIP_TYPE = $ARK$
+		EMBARKED_PLANET = event_target:ps_arkv_world
+	}
+	embark_planet_effect = {
+		EMBARKING_PLANET = event_target:ps_arkv_world
+		NEW_ARKSHIP = event_target:embarking_arkship
+	}
+	event_target:ps_new_cell = {
+		clean_up_settlement_subject_country_effect = { OVERLORD = event_target:ps_seed_owner }
+		set_origin_effect = { SOURCE_COUNTRY = event_target:ps_seed_owner }
+		give_embarking_empire_logistic_ship = { EMBARKING_PLANET = event_target:ps_arkv_world }
+		set_country_flag = ps_arkv_check
+		set_country_flag = ps_partisan_rebel_state
+		set_country_flag = ps_arkv
+		set_country_flag = ps_arkv_$TYPE$
+		set_variable = { which = ps_arkv_level value = 1 }
+		if = {
+			limit = { is_nomadic = no }
+			set_country_as_nomad_effect = { IS_NOMAD = yes }
+			set_faction_properties = { needs_border_access = no }
+			set_resource_converter = nomadic_operational_reserves
+		}
+		if = {
+			limit = { NOT = { any_situation = { is_situation_type = situation_nomad_economy } } }
+			country_event = { id = nomads.20 days = 1 }
+		}
+		if = {
+			limit = { has_origin = origin_default }
+			set_origin = origin_nomadic_subject
+		}
+		ps_make_specialist_subject = { OVERLORD = event_target:ps_seed_owner PRESET = $PRESET$ }
+		add_modifier = { modifier = ps_arkv_$TYPE$_1 }
+		add_resource = { energy = 500 minerals = 500 food = 300 alloys = 200 }
+		add_opinion_modifier = { who = event_target:ps_seed_owner modifier = opinion_ps_liberators }
+	}
 	set_timed_country_flag = { flag = ps_arkv_cd days = 720 }
 	country_event = { id = ps_arkv.5 days = 3 }
+}
+
+# Выбрать планету для нового ковчега: сначала система ковчега-столицы, потом системы других
+# наших ковчегов, потом границы и стоянки. scope = сюзерен.
+ps_arkv_pick_world = {
+	capital_scope.solar_system = {
+		random_system_planet = {
+			limit = { ps_free_habitable_planet = { OWNER = event_target:ps_seed_owner } }
+			save_event_target_as = ps_arkv_world
+		}
+	}
+	if = {
+		limit = { NOT = { exists = event_target:ps_arkv_world } }
+		random_owned_fleet = {
+			limit = {
+				is_arkship_fleet = yes
+				solar_system = { any_system_planet = { ps_free_habitable_planet = { OWNER = event_target:ps_seed_owner } } }
+			}
+			solar_system = {
+				random_system_planet = {
+					limit = { ps_free_habitable_planet = { OWNER = event_target:ps_seed_owner } }
+					save_event_target_as = ps_arkv_world
+				}
+			}
+		}
+	}
+	if = {
+		limit = { NOT = { exists = event_target:ps_arkv_world } }
+		random_galaxy_planet = {
+			limit = {
+				ps_free_habitable_planet = { OWNER = event_target:ps_seed_owner }
+				solar_system = { ps_cell_seed_system = { OWNER = event_target:ps_seed_owner } }
+				OR = {
+					solar_system = { space_owner? = { is_same_value = event_target:ps_seed_owner } }
+					solar_system = { any_starbase_in_system = { owner? = { is_same_value = event_target:ps_seed_owner } } }
+				}
+			}
+			save_event_target_as = ps_arkv_world
+		}
+	}
 }
 
 # Пересчитать бонусы сюзерена от ковчегов-вассалов (берётся высший уровень каждой специализации). scope = сюзерен.

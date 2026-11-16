@@ -31,6 +31,10 @@ country_event = {
 		name = ps_arkv.1.build
 		allow = {
 			NOT = { has_country_flag = ps_arkv_cd }
+			custom_tooltip = {
+				fail_text = ps_arkv_no_world_tt
+				ps_arkv_has_world = yes
+			}
 			resource_stockpile_compare = { resource = alloys value >= 1500 }
 			resource_stockpile_compare = { resource = food value >= 500 }
 			resource_stockpile_compare = { resource = influence value >= 200 }
@@ -112,7 +116,7 @@ country_event = {
 			}
 			else = {
 				add_resource = { alloys = -1500 food = -500 influence = -200 }
-				ps_arkv_build = { TYPE = scout PRESET = preset_ps_residency ARK = science_arkship }
+				ps_arkv_build = { TYPE = scout PRESET = preset_ps_residency ARK = science }
 			}
 			remove_country_flag = ps_arkv_mode_split
 			ps_arkv_refresh = yes
@@ -130,7 +134,7 @@ country_event = {
 			}
 			else = {
 				add_resource = { alloys = -1500 food = -500 influence = -200 }
-				ps_arkv_build = { TYPE = harvester PRESET = preset_ps_exchange ARK = civilian_arkship }
+				ps_arkv_build = { TYPE = harvester PRESET = preset_ps_exchange ARK = civilian }
 			}
 			remove_country_flag = ps_arkv_mode_split
 			ps_arkv_refresh = yes
@@ -148,7 +152,7 @@ country_event = {
 			}
 			else = {
 				add_resource = { alloys = -1500 food = -500 influence = -200 }
-				ps_arkv_build = { TYPE = caravan PRESET = preset_ps_trust ARK = civilian_arkship }
+				ps_arkv_build = { TYPE = caravan PRESET = preset_ps_trust ARK = civilian }
 			}
 			remove_country_flag = ps_arkv_mode_split
 			ps_arkv_refresh = yes
@@ -166,7 +170,7 @@ country_event = {
 			}
 			else = {
 				add_resource = { alloys = -1500 food = -500 influence = -200 }
-				ps_arkv_build = { TYPE = fortress PRESET = preset_ps_strike ARK = military_arkship }
+				ps_arkv_build = { TYPE = fortress PRESET = preset_ps_strike ARK = military }
 			}
 			remove_country_flag = ps_arkv_mode_split
 			ps_arkv_refresh = yes
