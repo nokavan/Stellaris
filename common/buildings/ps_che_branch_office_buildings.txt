@@ -14,6 +14,7 @@ building_criminal_headquarters = {
 
 	potential = {
 		has_branch_office = yes
+		NOT = { owner = { is_gestalt = yes } } # гештальтам — свои здания (ps_gst_*)
 	}
 
 	triggered_planet_modifier = {
@@ -95,6 +96,7 @@ building_union_busting_lawfirm = {
 
 	potential = {
 		has_branch_office = yes
+		NOT = { owner = { is_gestalt = yes } } # гештальтам — свои здания (ps_gst_*)
 	}
 	country_modifier = {
 		spy_network_daily_value_add = 0.05
@@ -175,6 +177,7 @@ building_unregulated_factories = {
 
 	potential = {
 		has_branch_office = yes
+		NOT = { owner = { is_gestalt = yes } } # гештальтам — свои здания (ps_gst_*)
 	}
 	country_modifier = {
 		spy_network_daily_value_add = 0.05
@@ -255,6 +258,7 @@ building_unregulated_research_labs = {
 
 	potential = {
 		has_branch_office = yes
+		NOT = { owner = { is_gestalt = yes } } # гештальтам — свои здания (ps_gst_*)
 	}
 	country_modifier = {
 		spy_network_daily_value_add = 0.05
@@ -343,6 +347,7 @@ building_Xeno_Relations_bureau = {
 
 	potential = {
 		has_branch_office = yes
+		NOT = { owner = { is_gestalt = yes } } # гештальтам — свои здания (ps_gst_*)
 		exists = branch_office_owner
 		branch_office_owner = {
 			is_illegal_criminal = yes
@@ -491,6 +496,7 @@ building_high_society_clubs = {
 
 	potential = {
 		has_branch_office = yes
+		NOT = { owner = { is_gestalt = yes } } # гештальтам — свои здания (ps_gst_*)
 		exists = branch_office_owner
 		branch_office_owner = {
 			is_illegal_criminal = yes

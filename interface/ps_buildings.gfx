@@ -531,4 +531,56 @@ spriteTypes = {
 		name = "GFX_building_ps_corp_security_contract"
 		texturefile = "gfx/interface/icons/buildings/building_ps_corp_security_contract.dds"
 	}
+	spriteType = {
+		name = "GFX_building_ps_gst_mining_swarm"
+		texturefile = "gfx/interface/icons/buildings/building_ps_gst_mining_swarm.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_gst_agri_incubator"
+		texturefile = "gfx/interface/icons/buildings/building_ps_gst_agri_incubator.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_gst_drone_foundry"
+		texturefile = "gfx/interface/icons/buildings/building_ps_gst_drone_foundry.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_gst_power_tap"
+		texturefile = "gfx/interface/icons/buildings/building_ps_gst_power_tap.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_gst_server_farm"
+		texturefile = "gfx/interface/icons/buildings/building_ps_gst_server_farm.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_gst_synaptic_relay"
+		texturefile = "gfx/interface/icons/buildings/building_ps_gst_synaptic_relay.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_gst_signal_tap"
+		texturefile = "gfx/interface/icons/buildings/building_ps_gst_signal_tap.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_gst_logic_backdoor"
+		texturefile = "gfx/interface/icons/buildings/building_ps_gst_logic_backdoor.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_gst_deviant_node"
+		texturefile = "gfx/interface/icons/buildings/building_ps_gst_deviant_node.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_gst_drone_garrison"
+		texturefile = "gfx/interface/icons/buildings/building_ps_gst_drone_garrison.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_gst_maintenance_dock"
+		texturefile = "gfx/interface/icons/buildings/building_ps_gst_maintenance_dock.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_gst_exotic_exchange"
+		texturefile = "gfx/interface/icons/buildings/building_ps_gst_exotic_exchange.dds"
+	}
+	spriteType = {
+		name = "GFX_building_ps_gst_coordination_cluster"
+		texturefile = "gfx/interface/icons/buildings/building_ps_gst_coordination_cluster.dds"
+	}
 }

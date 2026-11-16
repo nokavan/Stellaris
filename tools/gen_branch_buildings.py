@@ -42,9 +42,9 @@ PHY, SOC, ENG = ("country_physics_research_produces_mult", "country_society_rese
 B = []
 
 
-def b(key, cat, tier, owner, host=None, jobs=None, req=None, ru=("", ""), en=("", ""), crim=False):
+def b(key, cat, tier, owner, host=None, jobs=None, req=None, ru=("", ""), en=("", ""), crim=False, gest=False):
     B.append(dict(key=key, cat=cat, tier=tier, owner=owner, host=host or {}, jobs=jobs or [], req=req,
-                  ru=ru, en=en, crim=crim))
+                  ru=ru, en=en, crim=crim, gest=gest))
 
 
 CRIM = [("job_criminal_add", 100)]
@@ -478,12 +478,69 @@ k("security_contract", "army", 2, {"army_damage_mult": 0.01}, {"army_defense_hea
   ("Охранный контракт", "Частные военные корпорации защищают союзника."),
   ("Security Contract", "The corporation's private military protects the ally."))
 
-assert len(B) == 133, len(B)
-assert len({x["key"] for x in B}) == 133
+
+# ===== L. Филиалы для ульев и машинных разумов (только партизанские мегакорпорации) =====
+# Должности — через ванильные inline_script jobs/*_add: они сами подставляют дронов у гештальтов.
+# Никаких счастья/торговли/преступников — у гештальтов этого нет.
+def g(key, cat, tier, owner, host, ru, en, jobs=None, req=None):
+    b("gst_" + key, cat, tier, owner, host, jobs, req, ru=ru, en=en, gest=True)
+
+g("mining_swarm", "resource", 1, {M: 4}, {"planet_jobs_minerals_produces_mult": 0.05},
+  ("Подрядный шахтный рой", "Синдикат поставляет буры, рой — дронов. Добыча делится по договору."),
+  ("Contract Mining Swarm", "The Syndicate supplies drills, the swarm supplies drones. The yield is split by contract."),
+  jobs=[("jobs/miners_add", 200)])
+g("agri_incubator", "resource", 1, {F: 4}, {"planet_jobs_food_produces_mult": 0.05},
+  ("Агро-инкубатор", "Питательные чаны, которые обслуживают дроны хозяина."),
+  ("Agri-Incubator", "Nutrient vats tended by the host's drones."),
+  jobs=[("jobs/farmers_add", 200)])
+g("drone_foundry", "resource", 2, {A: 2}, {"planet_jobs_alloys_produces_mult": 0.05},
+  ("Литейная дронов", "Синдикат закупает сплавы прямо с конвейера роя."),
+  ("Drone Foundry", "The Syndicate buys alloys straight off the swarm's assembly line."),
+  jobs=[("jobs/foundry_add", 200)])
+g("power_tap", "resource", 1, {E: 4}, {"planet_jobs_energy_produces_mult": 0.05},
+  ("Подключение к энергосети", "Тихий отвод энергии из сети разума — по взаимной выгоде."),
+  ("Power Grid Tap", "A quiet draw from the mind's power grid, to mutual benefit."))
+g("server_farm", "research", 2, {PHY: 0.01, SOC: 0.01, ENG: 0.01},
+  {"planet_jobs_physics_research_produces_mult": 0.05, "planet_jobs_society_research_produces_mult": 0.05, "planet_jobs_engineering_research_produces_mult": 0.05},
+  ("Арендованная вычислительная ферма", "Синдикат снимает часть мощностей разума под свои расчёты."),
+  ("Leased Compute Farm", "The Syndicate rents part of the mind's capacity for its own computations."))
+g("synaptic_relay", "unity", 1, {U: 2}, {"planet_jobs_unity_produces_mult": 0.05},
+  ("Синаптический ретранслятор", "Усилитель сигнала сети разума с нашим каналом внутри."),
+  ("Synaptic Relay", "An amplifier for the mind's network with our own channel inside."),
+  jobs=[("jobs/unity_jobs_add", 100)])
+g("signal_tap", "government", 1, {SPY: 2, E: 1}, {},
+  ("Перехват сигналов разума", "Мы слышим, о чём «думает» рой."),
+  ("Mind Signal Tap", "We hear what the swarm is «thinking»."))
+g("logic_backdoor", "government", 2, {SPY: 3, "add_base_country_intel": 1}, {},
+  ("Логическая лазейка", "Закладка в протоколах разума, о которой он не знает."),
+  ("Logic Backdoor", "A hidden flaw in the mind's protocols it does not know about."))
+g("deviant_node", "government", 2, {I: 1, SPY: 2}, {"planet_stability_add": -5, "planet_crime_add": 15},
+  ("Девиантный узел", "Сбившиеся с сети дроны работают на Синдикат."),
+  ("Deviant Node", "Drones cut off from the network work for the Syndicate."), req="enemy")
+g("drone_garrison", "army", 2, {NAVAL: 3, "army_damage_mult": 0.02}, {"army_defense_health_mult": 0.15},
+  ("Оборонный подряд дронов", "Боевые дроны хозяина охраняют наши склады, а мы платим им сплавами."),
+  ("Drone Defence Contract", "The host's war drones guard our depots; we pay them in alloys."),
+  jobs=[("jobs/soldiers_add", 100)], req="ally")
+g("maintenance_dock", "army", 2, {NAVAL: 2, A: 1}, {"planet_building_build_speed_mult": 0.10},
+  ("Ремонтный док Синдиката", "Дроны-ремонтники латают корабли Синдиката вне очереди."),
+  ("Syndicate Maintenance Dock", "Repair drones patch Syndicate ships out of turn."), req="ally")
+g("exotic_exchange", "trade", 3, {RC: 0.25, EG: 0.25, VM: 0.25}, {"planet_stability_add": 3},
+  ("Обменник экзотики", "Рою не нужны деньги, но нужны кристаллы и газы. Меняем."),
+  ("Exotic Exchange", "The swarm needs no money, but it needs crystals and gases. We trade."), req="ally")
+g("coordination_cluster", "unity", 3, {U: 3, I: 0.5}, {"planet_stability_add": 5},
+  ("Кластер координации", "Совместный узел управления: разум и Синдикат планируют вместе."),
+  ("Coordination Cluster", "A joint control node: the mind and the Syndicate plan together."), req="ally")
+
+assert len(B) == 146, len(B)
+assert len({x["key"] for x in B}) == 146
 
 TIER = {1: dict(time="@b1_time", min=300, inf=10, up=2, pre=None),
         2: dict(time="@b2_time", min=500, inf=20, up=3, pre="tech_ps_guerrilla_doctrine"),
         3: dict(time="@b3_time", min=800, inf=30, up=5, pre="tech_ps_ghost_networks")}
+
+
+GEST_BAD = {"pop_happiness", "planet_amenities_add", "planet_jobs_trade_produces_mult",
+            "planet_jobs_consumer_goods_produces_mult"}
 
 
 def fmt(v):
@@ -496,7 +553,13 @@ def building(x):
     o = []
     o.append(f"{k} = {{\n\tbase_buildtime = {t['time']}\n\tplanet_limit = 1\n\n\towner_type = corporate\n\tcategory = {x['cat']}\n")
     owner_trig = "is_criminal_syndicate = yes" if x.get("crim") else "ps_is_partisan_empire = yes"
-    o.append(f"\tpotential = {{\n\t\thas_branch_office = yes\n\t\tbranch_office_owner = {{ {owner_trig} }}\n\t}}\n")
+    # Гештальт-хозяин: свои здания (gest), а здания с должностями/счастьем/торговлей скрыты
+    host_gest = ""
+    if x.get("gest"):
+        host_gest = "\t\texists = owner\n\t\towner = { is_gestalt = yes }\n"
+    elif x["jobs"] or any(m in x["host"] for m in GEST_BAD):
+        host_gest = "\t\tNOT = { owner = { is_gestalt = yes } }\n"
+    o.append(f"\tpotential = {{\n\t\thas_branch_office = yes\n\t\tbranch_office_owner = {{ {owner_trig} }}\n{host_gest}\t}}\n")
     if x["req"]:
         trig = "ps_branch_host_is_friend" if x["req"] == "ally" else "ps_branch_host_is_enemy"
         o.append(f"\n\tallow = {{\n\t\tcustom_tooltip = {{\n\t\t\tfail_text = {trig}_fail\n\t\t\t{trig} = yes\n\t\t}}\n\t}}\n")
@@ -553,7 +616,7 @@ THEMES_RU = {"army": "армия/флот", "government": "шпионаж/под
 
 def main():
     hdr = ("# АВТОГЕНЕРАЦИЯ: tools/gen_branch_buildings.py — правьте генератор, а не этот файл\n"
-           "# Синдикат Сопротивления — 133 здания филиалов\n\n")
+           "# Синдикат Сопротивления — 146 зданий филиалов\n\n")
     (ROOT / "common/buildings/ps_branch_offices.txt").write_text(hdr + "\n".join(building(x) for x in B), encoding="utf-8")
 
     gfx = ["spriteTypes = {"]
@@ -572,6 +635,8 @@ def main():
             if x["req"] == "ally":
                 desc += "\\n\\n§Y" + ("Только на планетах союзников, вассалов, членов федерации и дружественных империй." if ru else
                                      "Allied, subject, federation or friendly worlds only.") + "§!"
+            if x.get("gest"):
+                desc += "\\n\\n§Y" + ("Только на планетах ульев и машинных разумов." if ru else "Hive mind and machine intelligence worlds only.") + "§!"
             if x.get("crim"):
                 desc += "\\n\\n§Y" + ("Только для криминальных синдикатов." if ru else "Criminal syndicates only.") + "§!"
             if x["req"] == "enemy":
@@ -580,10 +645,12 @@ def main():
             L += [f' {k}:0 "{name}"', f' {k}_desc:0 "{desc}"']
         if ru:
             L += [' ps_branch_host_is_friend_fail:0 "Планета должна принадлежать §Yсоюзнику§!: вассалу, члену федерации, партнёру по оборонному пакту или дружественной империи."',
-                  ' ps_branch_host_is_enemy_fail:0 "Планета должна принадлежать §Rсоппернику§!, врагу или недружественной империи."'.replace("соппернику", "сопернику")]
+                  ' ps_branch_host_is_enemy_fail:0 "Планета должна принадлежать §Rсоппернику§!, врагу или недружественной империи."'.replace("соппернику", "сопернику"),
+                  ' PS_BRANCH_GESTALT_ONLY_PARTISAN:0 "На планетах §Yульев§! и §Yмашинных разумов§! филиалы может открывать только §Yпартизанская мегакорпорация§!."']
         else:
             L += [' ps_branch_host_is_friend_fail:0 "The planet must belong to an §Yally§!: a subject, federation member, defensive pact partner or friendly empire."',
-                  ' ps_branch_host_is_enemy_fail:0 "The planet must belong to a §Rrival§!, enemy or unfriendly empire."']
+                  ' ps_branch_host_is_enemy_fail:0 "The planet must belong to a §Rrival§!, enemy or unfriendly empire."',
+                  ' PS_BRANCH_GESTALT_ONLY_PARTISAN:0 "Only a §Ypartisan megacorporation§! can open branch offices on §Yhive mind§! and §Ymachine intelligence§! worlds."']
         (ROOT / f"localisation/{lang}/ps_buildings_l_{lang}.yml").write_bytes(b"\xef\xbb\xbf" + ("\n".join(L) + "\n").encode())
 
     try:
