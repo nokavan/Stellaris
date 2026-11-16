@@ -1,0 +1,181 @@
+# Синдикат Сопротивления — ковчеги-вассалы (ps_arkv): модификаторы вассала (ps_arkv_<тип>_<ур>) и сюзерена (ps_arkv_ov_<тип>_<ур>)
+
+ps_arkv_scout_1 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 2
+	ship_speed_mult = 0.1
+	ship_sensor_range_add = 1
+	country_physics_research_produces_mult = 0.05
+}
+
+ps_arkv_ov_scout_1 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 1
+	spy_network_levels_add = 1
+	country_society_research_produces_mult = 0.03
+}
+
+ps_arkv_scout_2 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 2
+	ship_speed_mult = 0.2
+	ship_sensor_range_add = 2
+	country_physics_research_produces_mult = 0.1
+}
+
+ps_arkv_ov_scout_2 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 1
+	spy_network_levels_add = 2
+	country_society_research_produces_mult = 0.06
+}
+
+ps_arkv_scout_3 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 2
+	ship_speed_mult = 0.3
+	ship_sensor_range_add = 3
+	country_physics_research_produces_mult = 0.15
+}
+
+ps_arkv_ov_scout_3 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 1
+	spy_network_levels_add = 3
+	country_society_research_produces_mult = 0.09
+}
+
+ps_arkv_harvester_1 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 2
+	planet_jobs_minerals_produces_mult = 0.1
+	planet_jobs_energy_produces_mult = 0.1
+	country_resource_max_add = 2000
+}
+
+ps_arkv_ov_harvester_1 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 1
+	country_base_minerals_produces_add = 5
+	country_base_volatile_motes_produces_add = 0.5
+}
+
+ps_arkv_harvester_2 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 2
+	planet_jobs_minerals_produces_mult = 0.2
+	planet_jobs_energy_produces_mult = 0.2
+	country_resource_max_add = 4000
+}
+
+ps_arkv_ov_harvester_2 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 1
+	country_base_minerals_produces_add = 10
+	country_base_volatile_motes_produces_add = 1
+}
+
+ps_arkv_harvester_3 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 2
+	planet_jobs_minerals_produces_mult = 0.3
+	planet_jobs_energy_produces_mult = 0.3
+	country_resource_max_add = 6000
+}
+
+ps_arkv_ov_harvester_3 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 1
+	country_base_minerals_produces_add = 15
+	country_base_volatile_motes_produces_add = 1.5
+}
+
+ps_arkv_caravan_1 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 2
+	planet_jobs_trade_produces_mult = 0.1
+	ship_speed_mult = 0.05
+}
+
+ps_arkv_ov_caravan_1 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 1
+	country_base_energy_produces_add = 5
+	country_base_influence_produces_add = 0.5
+	country_base_consumer_goods_produces_add = 2
+}
+
+ps_arkv_caravan_2 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 2
+	planet_jobs_trade_produces_mult = 0.2
+	ship_speed_mult = 0.1
+}
+
+ps_arkv_ov_caravan_2 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 1
+	country_base_energy_produces_add = 10
+	country_base_influence_produces_add = 1
+	country_base_consumer_goods_produces_add = 4
+}
+
+ps_arkv_caravan_3 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 2
+	planet_jobs_trade_produces_mult = 0.3
+	ship_speed_mult = 0.15
+}
+
+ps_arkv_ov_caravan_3 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 1
+	country_base_energy_produces_add = 15
+	country_base_influence_produces_add = 1.5
+	country_base_consumer_goods_produces_add = 6
+}
+
+ps_arkv_fortress_1 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 2
+	ship_hull_mult = 0.1
+	ship_weapon_damage = 0.05
+	country_naval_cap_add = 10
+}
+
+ps_arkv_ov_fortress_1 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 1
+	country_naval_cap_add = 5
+	ship_armor_mult = 0.03
+}
+
+ps_arkv_fortress_2 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 2
+	ship_hull_mult = 0.2
+	ship_weapon_damage = 0.1
+	country_naval_cap_add = 20
+}
+
+ps_arkv_ov_fortress_2 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 1
+	country_naval_cap_add = 10
+	ship_armor_mult = 0.06
+}
+
+ps_arkv_fortress_3 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 2
+	ship_hull_mult = 0.3
+	ship_weapon_damage = 0.15
+	country_naval_cap_add = 30
+}
+
+ps_arkv_ov_fortress_3 = {
+	icon = "gfx/interface/icons/modifiers/mod_ps_partisan.dds"
+	icon_frame = 1
+	country_naval_cap_add = 15
+	ship_armor_mult = 0.09
+}

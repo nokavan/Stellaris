@@ -1,5 +1,5 @@
 name="Синдикат Сопротивления / Partisan Syndicate"
-version="0.30.0"
+version="0.31.0"
 tags={
 	"Gameplay"
 	"Government"

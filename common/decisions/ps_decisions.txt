@@ -317,3 +317,20 @@ decision_ps_release_planet_cell = {
 		}
 	}
 }
+
+# КОВЧЕГИ-ЯЧЕЙКИ: кочевые вассалы на ковчегах со специализацией (события ps_arkv)
+decision_ps_ark_vassals = {
+	owned_planets_only = yes
+
+	potential = {
+		is_capital = yes
+		owner = { ps_is_partisan_empire = yes }
+	}
+
+	effect = {
+		custom_tooltip = decision_ps_ark_vassals_desc
+		hidden_effect = {
+			owner = { country_event = { id = ps_arkv.1 } }
+		}
+	}
+}

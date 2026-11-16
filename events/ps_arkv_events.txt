@@ -1,0 +1,238 @@
+namespace = ps_arkv
+
+# МЕНЮ КОВЧЕГОВ-ВАССАЛОВ (из решения «Ковчеги-ячейки» и из окна выбора планеты ps_mega.30)
+country_event = {
+	id = ps_arkv.1
+	title = ps_arkv.1.name
+	desc = ps_arkv.1.desc
+	picture = GFX_ps_evt_ark
+	is_triggered_only = yes
+
+	immediate = { ps_arkv_refresh = yes }
+
+	option = {
+		name = ps_arkv.1.split
+		trigger = {
+			is_nomadic = yes
+			any_owned_colony = { is_planet_class = pc_ark is_capital = no }
+		}
+		allow = {
+			NOT = { has_country_flag = ps_arkv_cd }
+			resource_stockpile_compare = { resource = influence value >= 100 }
+		}
+		custom_tooltip = ps_arkv.1.split.tt
+		hidden_effect = {
+			set_country_flag = ps_arkv_mode_split
+			country_event = { id = ps_arkv.2 }
+		}
+	}
+
+	option = {
+		name = ps_arkv.1.build
+		allow = {
+			NOT = { has_country_flag = ps_arkv_cd }
+			resource_stockpile_compare = { resource = alloys value >= 1500 }
+			resource_stockpile_compare = { resource = food value >= 500 }
+			resource_stockpile_compare = { resource = influence value >= 200 }
+		}
+		custom_tooltip = ps_arkv.1.build.tt
+		hidden_effect = {
+			remove_country_flag = ps_arkv_mode_split
+			country_event = { id = ps_arkv.2 }
+		}
+	}
+
+	option = {
+		name = ps_arkv.1.up2
+		trigger = { any_subject = { has_country_flag = ps_arkv check_variable = { which = ps_arkv_level value = 1 } } }
+		allow = {
+			resource_stockpile_compare = { resource = alloys value >= 1000 }
+			resource_stockpile_compare = { resource = influence value >= 150 }
+		}
+		custom_tooltip = ps_arkv.1.up2.tt
+		hidden_effect = {
+			add_resource = { alloys = -1000 influence = -150 }
+			random_subject = {
+				limit = { has_country_flag = ps_arkv check_variable = { which = ps_arkv_level value = 1 } }
+				ps_arkv_level_up = yes
+			}
+			ps_arkv_refresh = yes
+			country_event = { id = ps_arkv.1 }
+		}
+	}
+
+	option = {
+		name = ps_arkv.1.up3
+		trigger = { any_subject = { has_country_flag = ps_arkv check_variable = { which = ps_arkv_level value = 2 } } }
+		allow = {
+			resource_stockpile_compare = { resource = alloys value >= 2500 }
+			resource_stockpile_compare = { resource = influence value >= 300 }
+			resource_stockpile_compare = { resource = unity value >= 1000 }
+		}
+		custom_tooltip = ps_arkv.1.up3.tt
+		hidden_effect = {
+			add_resource = { alloys = -2500 influence = -300 unity = -1000 }
+			random_subject = {
+				limit = { has_country_flag = ps_arkv check_variable = { which = ps_arkv_level value = 2 } }
+				ps_arkv_level_up = yes
+			}
+			ps_arkv_refresh = yes
+			country_event = { id = ps_arkv.1 }
+		}
+	}
+
+	option = {
+		name = ps_arkv.1.cells
+		trigger = { ps_has_cell_seed_site = { OWNER = root } }
+		hidden_effect = { country_event = { id = ps_mega.30 } }
+	}
+
+	option = {
+		name = ps_arkv.1.cancel
+		default_hide_option = yes
+	}
+}
+
+# ВЫБОР СПЕЦИАЛИЗАЦИИ
+country_event = {
+	id = ps_arkv.2
+	title = ps_arkv.2.name
+	desc = ps_arkv.2.desc
+	picture = GFX_ps_evt_ark
+	is_triggered_only = yes
+
+	option = {
+		name = ps_arkv.2.scout
+		custom_tooltip = ps_arkv.2.scout.tt
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = ps_arkv_mode_split }
+				add_resource = { influence = -100 }
+				ps_arkv_split = { TYPE = scout PRESET = preset_ps_residency }
+			}
+			else = {
+				add_resource = { alloys = -1500 food = -500 influence = -200 }
+				ps_arkv_build = { TYPE = scout PRESET = preset_ps_residency ARK = science_arkship }
+			}
+			remove_country_flag = ps_arkv_mode_split
+			ps_arkv_refresh = yes
+		}
+	}
+
+	option = {
+		name = ps_arkv.2.harvester
+		custom_tooltip = ps_arkv.2.harvester.tt
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = ps_arkv_mode_split }
+				add_resource = { influence = -100 }
+				ps_arkv_split = { TYPE = harvester PRESET = preset_ps_exchange }
+			}
+			else = {
+				add_resource = { alloys = -1500 food = -500 influence = -200 }
+				ps_arkv_build = { TYPE = harvester PRESET = preset_ps_exchange ARK = civilian_arkship }
+			}
+			remove_country_flag = ps_arkv_mode_split
+			ps_arkv_refresh = yes
+		}
+	}
+
+	option = {
+		name = ps_arkv.2.caravan
+		custom_tooltip = ps_arkv.2.caravan.tt
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = ps_arkv_mode_split }
+				add_resource = { influence = -100 }
+				ps_arkv_split = { TYPE = caravan PRESET = preset_ps_trust }
+			}
+			else = {
+				add_resource = { alloys = -1500 food = -500 influence = -200 }
+				ps_arkv_build = { TYPE = caravan PRESET = preset_ps_trust ARK = civilian_arkship }
+			}
+			remove_country_flag = ps_arkv_mode_split
+			ps_arkv_refresh = yes
+		}
+	}
+
+	option = {
+		name = ps_arkv.2.fortress
+		custom_tooltip = ps_arkv.2.fortress.tt
+		hidden_effect = {
+			if = {
+				limit = { has_country_flag = ps_arkv_mode_split }
+				add_resource = { influence = -100 }
+				ps_arkv_split = { TYPE = fortress PRESET = preset_ps_strike }
+			}
+			else = {
+				add_resource = { alloys = -1500 food = -500 influence = -200 }
+				ps_arkv_build = { TYPE = fortress PRESET = preset_ps_strike ARK = military_arkship }
+			}
+			remove_country_flag = ps_arkv_mode_split
+			ps_arkv_refresh = yes
+		}
+	}
+
+	option = {
+		name = ps_arkv.2.back
+		hidden_effect = {
+			remove_country_flag = ps_arkv_mode_split
+			country_event = { id = ps_arkv.1 }
+		}
+	}
+}
+
+# ПРОВЕРКА через 3 дня: у нового вассала есть ковчег? Если нет — возврат затрат и роспуск.
+# Если ковчег есть, но пустой — заселить.
+country_event = {
+	id = ps_arkv.5
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		every_subject = {
+			limit = { has_country_flag = ps_arkv }
+			if = {
+				limit = { NOT = { any_owned_colony = { is_planet_class = pc_ark } } }
+				if = {
+					limit = { has_country_flag = ps_arkv_check }
+					prev = { add_resource = { alloys = 1500 food = 500 influence = 200 } }
+				}
+				prev = { country_event = { id = ps_arkv.6 } }
+				destroy_country = yes
+			}
+			else = {
+				random_owned_colony = {
+					limit = {
+						is_planet_class = pc_ark
+						pop_amount < 100
+					}
+					while = {
+						count = 4
+						create_pop_group = { species = root.owner_species }
+					}
+				}
+				remove_country_flag = ps_arkv_check
+			}
+		}
+		ps_arkv_refresh = yes
+	}
+}
+
+country_event = {
+	id = ps_arkv.6
+	title = ps_arkv.6.name
+	desc = ps_arkv.6.desc
+	picture = GFX_ps_evt_ark
+	is_triggered_only = yes
+	option = { name = OK }
+}
+
+# Ежегодно: пересчитать бонусы сюзерена (вассал мог погибнуть или уйти)
+country_event = {
+	id = ps_arkv.10
+	hide_window = yes
+	is_triggered_only = yes
+	trigger = { ps_is_partisan_empire = yes }
+	immediate = { ps_arkv_refresh = yes }
+}

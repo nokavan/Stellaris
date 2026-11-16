@@ -351,6 +351,15 @@ country_event = {
 	}
 
 	option = {
+		name = ps_mega.30.arks
+		hidden_effect = {
+			remove_country_flag = ps_cell_chooser_open
+			ps_cell_chooser_clear = yes
+			country_event = { id = ps_arkv.1 }
+		}
+	}
+
+	option = {
 		name = ps_mega.30.doctrine
 		hidden_effect = {
 			ps_cell_chooser_clear = yes
