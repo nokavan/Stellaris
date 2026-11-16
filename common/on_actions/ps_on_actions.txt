@@ -91,11 +91,3 @@ on_megastructure_upgraded = {
 		ps_mega.5	# Мегаструктурное заселение (кольцевые миры, аркологии и т. п.)
 	}
 }
-
-# Действие ковчега «Основать ячейку здесь» (common/scripted_actions/ps_actions.txt)
-# This = планета, From = флот ковчега
-on_ps_found_cell_here = {
-	events = {
-		ps_mega.40
-	}
-}
