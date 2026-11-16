@@ -1,7 +1,7 @@
 # Partisan Syndicate: OVERRIDE of vanilla interface/waystation_view.gui
-# Only modules_info changed: scrolling + 4 modules per row (for 50 module slots).
+# Changed: window taller (@view_h 960, middle background 389), modules_info scrolling + 4 per row (50 module slots).
 @view_w = 562
-@view_h = 765
+@view_h = 960	# Partisan Syndicate: taller window (vanilla 765) to fit 5 module rows
 @tabs_pos_y = 230
 @tabs_size_h = -50
 @side_view_panel_width = 334
@@ -51,7 +51,7 @@ guiTypes = {
 			#Same as planet view
 			containerWindowType = {
 				name = "background_window"
-				size = { width = 562 height = 194 }
+				size = { width = 562 height = 389 }	# Partisan Syndicate: 194 + 195 (window is 195 taller)
 				position = { x = 0 y = 272 }		# Y Controlls upper part of steaching middle
 
 				background = {

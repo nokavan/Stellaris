@@ -28,19 +28,9 @@ waystation_ps_cell_bays = {
 		}
 	}
 
-	triggered_station_modifier = {
-		potential = { has_starbase_size = starbase_waystation_1 }
-		starbase_module_capacity_add = 8
-	}
-
-	triggered_station_modifier = {
-		potential = { has_starbase_size = starbase_waystation_2 }
-		starbase_module_capacity_add = 21
-	}
-
-	triggered_station_modifier = {
-		potential = { has_starbase_size = starbase_waystation_3 }
-		starbase_module_capacity_add = 44
+	station_modifier = {
+		starbase_module_build_speed_mult = 0.5
+		starbase_stockpile_capacity_add = 1000
 	}
 
 	ai_weight = {

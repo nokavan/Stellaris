@@ -1,7 +1,7 @@
 ﻿l_russian:
  sm_waystation_ps_cell_bays:0 "Отсеки Синдиката"
  sm_waystation_ps_cell_bays_plural:0 "Отсеки Синдиката"
- sm_waystation_ps_cell_bays_desc:0 "Расширяет станцию дополнительными отсеками для модулей: до §G10§! слотов на 1-м уровне, §G25§! на 2-м и §G50§! на 3-м. Постройте его первым."
+ sm_waystation_ps_cell_bays_desc:0 "Монтажные отсеки Синдиката: модули стоянки строятся на §G50%§! быстрее, склад станции §G+1000§!."
  sm_waystation_ps_raider_dock:0 "Док рейдеров"
  sm_waystation_ps_raider_dock_plural:0 "Док рейдеров"
  sm_waystation_ps_raider_dock_desc:0 "Причал для быстрых кораблей Синдиката."

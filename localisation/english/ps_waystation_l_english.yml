@@ -1,7 +1,7 @@
 ﻿l_english:
  sm_waystation_ps_cell_bays:0 "Syndicate Bays"
  sm_waystation_ps_cell_bays_plural:0 "Syndicate Bays"
- sm_waystation_ps_cell_bays_desc:0 "Expands the station with extra module bays: up to §G10§! slots at level 1, §G25§! at level 2 and §G50§! at level 3. Build it first."
+ sm_waystation_ps_cell_bays_desc:0 "Syndicate assembly bays: station modules build §G50%§! faster, station stockpile §G+1000§!."
  sm_waystation_ps_raider_dock:0 "Raider Dock"
  sm_waystation_ps_raider_dock_plural:0 "Raider Dock"
  sm_waystation_ps_raider_dock_desc:0 "A berth for the Syndicate's fast ships."

@@ -2,7 +2,7 @@
 """Генератор модулей кочевых станций-стоянок (waystations) Синдиката — 100 шт.
 
 Создаёт:
-  (+ модуль «Отсеки Синдиката»: starbase_module_capacity_add — до 10/25/50 слотов, только у партизан)
+  (+ модуль «Отсеки Синдиката»: ускорение постройки модулей и склад; слоты 10/25/50 — в ship_sizes)
   common/starbase_modules/ps_waystation_modules.txt
   interface/ps_waystation_modules.gfx + DDS-иконки (заглушки)
   localisation/{russian,english}/ps_waystation_l_*.yml
@@ -327,17 +327,13 @@ def module(x):
 THEME = {NAV: "star", DEF: "crown", ECO: "press", UTL: "eye", PIR: "net"}
 
 
-# Особый модуль: увеличивает вместимость модулей ЭТОЙ стоянки (только у партизан).
-# Ванильная вместимость стоянки: 2 / 4 / 6 слотов на уровнях 1 / 2 / 3
-# (starbase_modules/00_example.txt: «Slot count can be increased with modifiers:
-#  starbase_module_capacity_add»). С модулем: 10 / 25 / 50.
-CAPACITY = {1: 8, 2: 21, 3: 44}
-
-
+# Особый модуль «Отсеки Синдиката». Раньше давал слоты через triggered_station_modifier, но такие
+# модификаторы игра пересчитывает раз в несколько месяцев, и слоты «не появлялись». Теперь вместимость
+# 10 / 25 / 50 задана прямо в ship_sizes/00_waystations.txt (как в More Waystation Slots), а модуль
+# ускоряет постройку модулей и расширяет склад.
 def capacity_module():
-    trig = "".join(
-        f"\n\ttriggered_station_modifier = {{\n\t\tpotential = {{ has_starbase_size = starbase_waystation_{lvl} }}\n"
-        f"\t\tstarbase_module_capacity_add = {add}\n\t}}\n" for lvl, add in CAPACITY.items())
+    trig = ("\n\tstation_modifier = {\n\t\tstarbase_module_build_speed_mult = 0.5\n"
+            "\t\tstarbase_stockpile_capacity_add = 1000\n\t}\n")
     return f"""
 waystation_ps_cell_bays = {{
 	icon = "GFX_waystation_ps_cell_bays"
@@ -417,8 +413,8 @@ def main():
     for lang in ("russian", "english"):
         ru = lang == "russian"
         L = [f"l_{lang}:"]
-        bay_n, bay_d = (("Отсеки Синдиката", "Расширяет станцию дополнительными отсеками для модулей: до §G10§! слотов на 1-м уровне, §G25§! на 2-м и §G50§! на 3-м. Постройте его первым.") if ru else
-                        ("Syndicate Bays", "Expands the station with extra module bays: up to §G10§! slots at level 1, §G25§! at level 2 and §G50§! at level 3. Build it first."))
+        bay_n, bay_d = (("Отсеки Синдиката", "Монтажные отсеки Синдиката: модули стоянки строятся на §G50%§! быстрее, склад станции §G+1000§!.") if ru else
+                        ("Syndicate Bays", "Syndicate assembly bays: station modules build §G50%§! faster, station stockpile §G+1000§!."))
         L += [f' sm_waystation_ps_cell_bays:0 "{bay_n}"', f' sm_waystation_ps_cell_bays_plural:0 "{bay_n}"', f' sm_waystation_ps_cell_bays_desc:0 "{bay_d}"']
         for x in M:
             k = f"sm_waystation_ps_{x['key']}"
